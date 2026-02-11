@@ -14,7 +14,7 @@ use serde::{Serialize, Deserialize};
 #[cfg(any(feature = "client", feature = "server"))]
 type ServiceError = Box<dyn Error + Send + Sync + 'static>;
 
-pub const BASE_PATH: &str = "";
+pub const BASE_PATH: &str = "/api/3.18";
 pub const API_VERSION: &str = "3.16";
 
 mod auth;
@@ -266,7 +266,7 @@ pub enum ValidatePasswordResetResponse {
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum ApiVersionAchievementTierSearchPostResponse {
+pub enum AchievementTierSearchPostResponse {
     /// successful operation
     SuccessfulOperation
     (models::AchievementTierResponse)
@@ -4737,7 +4737,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Consumer
     async fn consumer_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         hostname: String,
@@ -4757,7 +4756,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Consumer
     async fn consumer_update(
         &self,
-        version: f64,
         app_key: String,
         queue_id: i64,
         data_mapping: String,
@@ -4769,7 +4767,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Queue
     async fn queue_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -4787,7 +4784,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Queue
     async fn queue_delete(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -4796,7 +4792,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Queue
     async fn queue_get(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         queue_id: Option<i64>,
@@ -4809,7 +4804,6 @@ pub trait Api<C: Send + Sync> {
     /// Publish Queue
     async fn queue_publish(
         &self,
-        version: f64,
         message: String,
         queue_id: Option<i64>,
         app_key: Option<String>,
@@ -4821,7 +4815,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Queue
     async fn queue_search(
         &self,
-        version: f64,
         queue_id: Option<i64>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -4833,7 +4826,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Queue
     async fn queue_update(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -4851,7 +4843,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Accounts by Location
     async fn account_location_search(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -4891,7 +4882,6 @@ pub trait Api<C: Send + Sync> {
     /// Block Account
     async fn block_account(
         &self,
-        version: f64,
         account_id_being_blocked: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -4904,7 +4894,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Account
     async fn create_account(
         &self,
-        version: f64,
         username: String,
         password: String,
         name: Option<String>,
@@ -4982,7 +4971,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Account
     async fn edit_account(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -5070,7 +5058,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Username and Email
     async fn edit_username(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         email_address: Option<String>,
@@ -5080,7 +5067,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Account
     async fn get_account(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5098,7 +5084,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Profile Assets
     async fn get_profile_assets(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5118,7 +5103,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Accounts
     async fn get_referral_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         retrieve_type: Option<String>,
@@ -5135,7 +5119,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Account Settings
     async fn get_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -5145,7 +5128,6 @@ pub trait Api<C: Send + Sync> {
     /// Login as Account
     async fn login_delegate(
         &self,
-        version: f64,
         access_token: String,
         app_key: String,
         device_id: Option<String>,
@@ -5162,7 +5144,6 @@ pub trait Api<C: Send + Sync> {
     /// Login Account
     async fn login_general(
         &self,
-        version: f64,
         access_token: String,
         network_uid: String,
         app_key: String,
@@ -5181,7 +5162,6 @@ pub trait Api<C: Send + Sync> {
     /// Login Account (Username)
     async fn login_username(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -5197,7 +5177,6 @@ pub trait Api<C: Send + Sync> {
     /// Logout Account
     async fn logout(
         &self,
-        version: f64,
         device_id: Option<String>,
         device_id_type: Option<String>,
         account_id: Option<i64>,
@@ -5208,7 +5187,6 @@ pub trait Api<C: Send + Sync> {
     /// Merge Account
     async fn merge_account(
         &self,
-        version: f64,
         merge_account_id: i64,
         app_key: String,
         device_id: Option<String>,
@@ -5218,7 +5196,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Password
     async fn password_change(
         &self,
-        version: f64,
         account_id: i64,
         old_password: String,
         new_password: String,
@@ -5228,7 +5205,6 @@ pub trait Api<C: Send + Sync> {
     /// Reset Password
     async fn password_reset(
         &self,
-        version: f64,
         token: String,
         password: String,
         confirm: String,
@@ -5237,7 +5213,6 @@ pub trait Api<C: Send + Sync> {
     /// Request Password Reset
     async fn request_password_reset(
         &self,
-        version: f64,
         email: String,
         from: Option<String>,
         domain: Option<String>,
@@ -5248,14 +5223,12 @@ pub trait Api<C: Send + Sync> {
     /// Send Validation Request
     async fn request_validate_account(
         &self,
-        version: f64,
         account_id: i64,
         context: &C) -> Result<RequestValidateAccountResponse, ApiError>;
 
     /// Search Accounts
     async fn search_accounts(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -5279,7 +5252,6 @@ pub trait Api<C: Send + Sync> {
     /// Login Account (Encrypted Username)
     async fn secure_login(
         &self,
-        version: f64,
         username: String,
         password: String,
         game_type: String,
@@ -5294,7 +5266,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Account (Encrypted Username)
     async fn secure_signup(
         &self,
-        version: f64,
         device_id: String,
         username: String,
         password: String,
@@ -5361,7 +5332,6 @@ pub trait Api<C: Send + Sync> {
     /// Save Match Token
     async fn set_match_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         match_token: Option<String>,
@@ -5374,7 +5344,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Account Active Status
     async fn update_actve_status(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         active: bool,
@@ -5385,7 +5354,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Location
     async fn update_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -5396,7 +5364,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Account Settings
     async fn update_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         blocked_notifications: Option<String>,
@@ -5414,21 +5381,18 @@ pub trait Api<C: Send + Sync> {
     /// Save Validation Status
     async fn validate_account_signup(
         &self,
-        version: f64,
         token: String,
         context: &C) -> Result<ValidateAccountSignupResponse, ApiError>;
 
     /// Validate Password Reset Token
     async fn validate_password_reset(
         &self,
-        version: f64,
         token: String,
         context: &C) -> Result<ValidatePasswordResetResponse, ApiError>;
 
     /// Searches an Achievement Tier
-    async fn api_version_achievement_tier_search_post(
+    async fn achievement_tier_search_post(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -5440,12 +5404,11 @@ pub trait Api<C: Send + Sync> {
         descending_goal: Option<bool>,
         start: Option<i64>,
         limit: Option<i64>,
-        context: &C) -> Result<ApiVersionAchievementTierSearchPostResponse, ApiError>;
+        context: &C) -> Result<AchievementTierSearchPostResponse, ApiError>;
 
     /// Create Achievement
     async fn create_achievement(
         &self,
-        version: f64,
         app_key: String,
         title: String,
         device_id: Option<String>,
@@ -5464,7 +5427,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Achievement Tier
     async fn create_achievement_tier(
         &self,
-        version: f64,
         achievement_id: i64,
         score_all_instances: bool,
         device_id: Option<String>,
@@ -5484,7 +5446,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Achievement
     async fn delete_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         account_id: Option<i64>,
         context: &C) -> Result<DeleteAchievementResponse, ApiError>;
@@ -5492,7 +5453,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Achievement Tier
     async fn delete_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         account_id: Option<i64>,
         context: &C) -> Result<DeleteAchievementTierResponse, ApiError>;
@@ -5500,7 +5460,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Achievement
     async fn get_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5510,7 +5469,6 @@ pub trait Api<C: Send + Sync> {
     /// Gets an achievement tier
     async fn get_achievement_tier(
         &self,
-        version: f64,
         account_id: i64,
         achievement_tier_id: i64,
         context: &C) -> Result<GetAchievementTierResponse, ApiError>;
@@ -5518,7 +5476,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Achievement Progress
     async fn get_user_achievements(
         &self,
-        version: f64,
         return_nulls: bool,
         app_key: String,
         include_undiscovered: bool,
@@ -5535,14 +5492,12 @@ pub trait Api<C: Send + Sync> {
     /// List Achievement Tags
     async fn list_achievement_tags(
         &self,
-        version: f64,
         app_key: Option<String>,
         context: &C) -> Result<ListAchievementTagsResponse, ApiError>;
 
     /// List Achievements
     async fn list_achievements(
         &self,
-        version: f64,
         sort_field: models::ListAchievementsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -5559,7 +5514,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Achievements
     async fn search_achievements(
         &self,
-        version: f64,
         app_key: String,
         sort_field: models::SearchAchievementsSortFieldParameter,
         descending: bool,
@@ -5577,7 +5531,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Achievement
     async fn update_achievement(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         achievement_id: Option<i64>,
@@ -5598,7 +5551,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Achievement Tier
     async fn update_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5618,7 +5570,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Achievement Progress
     async fn update_user_achievement(
         &self,
-        version: f64,
         account_id: i64,
         achievement_id: Option<i64>,
         tag: Option<String>,
@@ -5632,14 +5583,12 @@ pub trait Api<C: Send + Sync> {
     /// Create an entity reference.
     async fn create_entity_reference(
         &self,
-        version: f64,
         body: models::EntityReference,
         context: &C) -> Result<CreateEntityReferenceResponse, ApiError>;
 
     /// Create Album
     async fn add_album_collection(
         &self,
-        version: f64,
         title: String,
         cover_asset_nullable: bool,
         include_cover_in_asset_list: bool,
@@ -5691,7 +5640,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Album Users
     async fn add_album_users(
         &self,
-        version: f64,
         album_id: i64,
         include_friend_group: bool,
         device_id: Option<String>,
@@ -5707,7 +5655,6 @@ pub trait Api<C: Send + Sync> {
     /// Approve Album
     async fn approve_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5718,7 +5665,6 @@ pub trait Api<C: Send + Sync> {
     ///  Get Album
     async fn get_album_collection(
         &self,
-        version: f64,
         return_nulls: bool,
         album_id: i64,
         device_id: Option<String>,
@@ -5733,7 +5679,6 @@ pub trait Api<C: Send + Sync> {
     /// Leave Album
     async fn leave_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5742,7 +5687,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Album
     async fn remove_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5751,7 +5695,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Album Users
     async fn remove_album_users(
         &self,
-        version: f64,
         album_id: i64,
         remove_friend_group: bool,
         device_id: Option<String>,
@@ -5763,7 +5706,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Albums
     async fn search_albums(
         &self,
-        version: f64,
         filter: String,
         album_type_id: i64,
         sub_type: String,
@@ -5829,7 +5771,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Album
     async fn update_album_collection(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -5880,7 +5821,6 @@ pub trait Api<C: Send + Sync> {
     /// Get User Activity
     async fn activities(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         account_id: i64,
@@ -5889,7 +5829,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Aggregated Filtered Usage
     async fn aggregated_filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -5926,7 +5865,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Filtered Usage
     async fn filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -5971,7 +5909,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Usage Record
     async fn usage(
         &self,
-        version: f64,
         tag: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6008,7 +5945,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Multiple Usage Records
     async fn usage_batch(
         &self,
-        version: f64,
         app_key: String,
         device: String,
         data: String,
@@ -6025,7 +5961,6 @@ pub trait Api<C: Send + Sync> {
     /// Get App Data
     async fn get_app_data(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         device_id: Option<String>,
@@ -6056,7 +5991,6 @@ pub trait Api<C: Send + Sync> {
     /// Create App Data
     async fn post_app_data(
         &self,
-        version: f64,
         game_type: String,
         start: i32,
         limit: i32,
@@ -6088,7 +6022,6 @@ pub trait Api<C: Send + Sync> {
     /// Regenerate App Data
     async fn regen_app_data(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         build_version: Option<String>,
@@ -6098,7 +6031,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Application
     async fn create_application(
         &self,
-        version: f64,
         app_name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6183,7 +6115,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Ad Placement
     async fn create_application_placement(
         &self,
-        version: f64,
         app_key: String,
         size: models::CreateApplicationPlacementSizeParameter,
         device_id: Option<String>,
@@ -6200,7 +6131,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Application
     async fn delete_application(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         context: &C) -> Result<DeleteApplicationResponse, ApiError>;
@@ -6208,7 +6138,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Ad Placement
     async fn delete_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6217,7 +6146,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Application
     async fn get_application(
         &self,
-        version: f64,
         app_key: Option<String>,
         application_id: Option<i64>,
         context: &C) -> Result<GetApplicationResponse, ApiError>;
@@ -6225,7 +6153,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Ad Placement
     async fn get_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6234,13 +6161,11 @@ pub trait Api<C: Send + Sync> {
     /// Get API versions
     async fn get_application_versions(
         &self,
-        version: f64,
         context: &C) -> Result<GetApplicationVersionsResponse, ApiError>;
 
     /// Search Application Users
     async fn get_unique_users_by_app(
         &self,
-        version: f64,
         app_key: String,
         q: Option<String>,
         keyword: Option<String>,
@@ -6254,7 +6179,6 @@ pub trait Api<C: Send + Sync> {
     /// List Applications
     async fn list_applications(
         &self,
-        version: f64,
         account_id: Option<i64>,
         q: Option<String>,
         keyword: Option<String>,
@@ -6280,7 +6204,6 @@ pub trait Api<C: Send + Sync> {
     /// Search for Ad Placements
     async fn search_application_placement(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6291,7 +6214,6 @@ pub trait Api<C: Send + Sync> {
     /// Search for Application Settings
     async fn search_application_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -6305,7 +6227,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Applications
     async fn search_applications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -6327,7 +6248,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Application
     async fn update_application(
         &self,
-        version: f64,
         app_key: String,
         app_name: String,
         device_id: Option<String>,
@@ -6413,7 +6333,6 @@ pub trait Api<C: Send + Sync> {
     /// Change Appliation Status
     async fn update_application_active(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: bool,
@@ -6422,7 +6341,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Ad Placement
     async fn update_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6439,7 +6357,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Application Certificate
     async fn upload_application_certificate(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6449,7 +6366,6 @@ pub trait Api<C: Send + Sync> {
     /// Create AppConfig
     async fn create_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         config_version: String,
@@ -6462,7 +6378,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete AppConfig
     async fn delete_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         context: &C) -> Result<DeleteApplicationConfigResponse, ApiError>;
@@ -6470,7 +6385,6 @@ pub trait Api<C: Send + Sync> {
     /// Get AppConfig
     async fn get_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         context: &C) -> Result<GetApplicationConfigResponse, ApiError>;
@@ -6478,7 +6392,6 @@ pub trait Api<C: Send + Sync> {
     /// Get AppConfig by Version
     async fn get_application_config_by_config_version(
         &self,
-        version: f64,
         app_key: String,
         config_version: String,
         retailer_id: Option<i64>,
@@ -6490,7 +6403,6 @@ pub trait Api<C: Send + Sync> {
     /// Search AppConfigs
     async fn search_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         retailer_id: Option<i64>,
@@ -6506,7 +6418,6 @@ pub trait Api<C: Send + Sync> {
     /// Update AppConfig
     async fn update_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         app_key: Option<String>,
@@ -6520,7 +6431,6 @@ pub trait Api<C: Send + Sync> {
     /// Convert Offer to Creative
     async fn asset_morph(
         &self,
-        version: f64,
         offer_id: i64,
         ad_size: models::CreateApplicationPlacementSizeParameter,
         creative_id: Option<i64>,
@@ -6533,7 +6443,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Asset
     async fn create_asset(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6573,7 +6482,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Asset
     async fn delete_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6584,7 +6492,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Asset
     async fn get_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6594,7 +6501,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Asset from Collection
     async fn remove_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6608,7 +6514,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Assets
     async fn search_assets(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         album_ids: Option<String>,
@@ -6638,7 +6543,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Asset
     async fn update_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -6675,14 +6579,12 @@ pub trait Api<C: Send + Sync> {
     /// Download Asset
     async fn asset_download(
         &self,
-        version: f64,
         filename: String,
         context: &C) -> Result<AssetDownloadResponse, ApiError>;
 
     /// Search Assignment Assignees
     async fn assigment_assignee_account_search(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         context: &C) -> Result<AssigmentAssigneeAccountSearchResponse, ApiError>;
@@ -6690,7 +6592,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Assignment
     async fn assignment_create(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         assignee_account_id: i64,
@@ -6703,7 +6604,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Assignment
     async fn assignment_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         context: &C) -> Result<AssignmentDeleteResponse, ApiError>;
@@ -6711,7 +6611,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Assignment
     async fn assignment_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         context: &C) -> Result<AssignmentGetResponse, ApiError>;
@@ -6719,7 +6618,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Assignments
     async fn assignment_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentSearchSortFieldParameter,
         descending: bool,
@@ -6736,7 +6634,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Assignment Status
     async fn assignment_status_create(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -6753,7 +6650,6 @@ pub trait Api<C: Send + Sync> {
     /// Deletes Assignment Status
     async fn assignment_status_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         context: &C) -> Result<AssignmentStatusDeleteResponse, ApiError>;
@@ -6761,7 +6657,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Assignment Status
     async fn assignment_status_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         context: &C) -> Result<AssignmentStatusGetResponse, ApiError>;
@@ -6769,7 +6664,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Assignment Statuses
     async fn assignment_status_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentStatusSearchSortFieldParameter,
         descending: bool,
@@ -6787,7 +6681,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Assignment Status
     async fn assignment_status_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -6804,7 +6697,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Assignment
     async fn assignment_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         name: Option<String>,
@@ -6818,7 +6710,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Audience
     async fn create_audience(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         description: Option<String>,
@@ -6853,7 +6744,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Audience
     async fn delete_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         context: &C) -> Result<DeleteAudienceResponse, ApiError>;
@@ -6861,13 +6751,11 @@ pub trait Api<C: Send + Sync> {
     /// Get Age Groups
     async fn get_age_groups(
         &self,
-        version: f64,
         context: &C) -> Result<GetAgeGroupsResponse, ApiError>;
 
     /// Get Audience
     async fn get_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         app_key: Option<String>,
@@ -6879,7 +6767,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Audiences
     async fn get_audience_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         album_ids: Option<String>,
         keyword: Option<String>,
@@ -6904,20 +6791,17 @@ pub trait Api<C: Send + Sync> {
     /// Get Devices
     async fn get_devices(
         &self,
-        version: f64,
         include_inactive: bool,
         context: &C) -> Result<GetDevicesResponse, ApiError>;
 
     /// Get Experiences
     async fn get_experiences(
         &self,
-        version: f64,
         context: &C) -> Result<GetExperiencesResponse, ApiError>;
 
     /// Get GroupedAudiences
     async fn get_grouped_audiences(
         &self,
-        version: f64,
         account_id: i64,
         audience_grouping_id: String,
         context: &C) -> Result<GetGroupedAudiencesResponse, ApiError>;
@@ -6925,7 +6809,6 @@ pub trait Api<C: Send + Sync> {
     /// List Suggestions by Audience
     async fn list_by_account(
         &self,
-        version: f64,
         account_id: i64,
         limit: i32,
         suggestion_type: String,
@@ -6934,7 +6817,6 @@ pub trait Api<C: Send + Sync> {
     /// List Offers by Audience
     async fn list_by_audience(
         &self,
-        version: f64,
         limit: i32,
         gender: Option<String>,
         age: Option<i32>,
@@ -6946,7 +6828,6 @@ pub trait Api<C: Send + Sync> {
     /// List Sent Suggestions 
     async fn list_lastest_by_account(
         &self,
-        version: f64,
         account_id: i64,
         timeframe: i32,
         suggestion_type: String,
@@ -6955,7 +6836,6 @@ pub trait Api<C: Send + Sync> {
     /// Send Suggestions
     async fn send_by_account(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
@@ -6964,7 +6844,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Audience
     async fn update_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         name: Option<String>,
@@ -7001,7 +6880,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Bid
     async fn create_bid(
         &self,
-        version: f64,
         biddable_type: String,
         biddable_id: i64,
         amount_per_view: f64,
@@ -7015,7 +6893,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Bid
     async fn delete_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7024,7 +6901,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Bid
     async fn get_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7033,7 +6909,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Bid
     async fn update_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7046,7 +6921,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Billable
     async fn create_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -7064,7 +6938,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Billable
     async fn delete_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         context: &C) -> Result<DeleteBillableEntityResponse, ApiError>;
@@ -7072,7 +6945,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Billable
     async fn get_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         include_counts: Option<bool>,
@@ -7082,7 +6954,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Billable
     async fn update_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -7100,7 +6971,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Payment Method
     async fn add_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         account_name: Option<String>,
@@ -7129,7 +6999,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Payment Method
     async fn create_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         account_name: Option<String>,
         first_name: Option<String>,
@@ -7160,7 +7029,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Smart Contract
     async fn create_smart_contract(
         &self,
-        version: f64,
         account_id: i64,
         token_name: String,
         token_symbol: String,
@@ -7170,7 +7038,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Crypto Balances
     async fn get_crypto_balance(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: Option<i64>,
         payment_method_id: Option<i64>,
@@ -7179,7 +7046,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Payment Method
     async fn get_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         get_current_balance: Option<bool>,
@@ -7188,7 +7054,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Payment Methods
     async fn search_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         provider: Option<String>,
         param_type: Option<String>,
@@ -7202,7 +7067,6 @@ pub trait Api<C: Send + Sync> {
     /// Detail Status
     async fn get_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         response_group: models::GetStatusCsvResponseGroupParameter,
@@ -7213,7 +7077,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Status
     async fn list_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -7222,7 +7085,6 @@ pub trait Api<C: Send + Sync> {
     /// Batch Status
     async fn status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         context: &C) -> Result<StatusCsvResponse, ApiError>;
@@ -7230,7 +7092,6 @@ pub trait Api<C: Send + Sync> {
     /// Upload CSV
     async fn upload_csv(
         &self,
-        version: f64,
         account_id: i64,
         upload_type: models::UploadCsvUploadTypeParameter,
         import_file: swagger::ByteArray,
@@ -7241,14 +7102,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Cargo Type
     async fn create_cargo_type(
         &self,
-        version: f64,
         body: Option<models::CargoType>,
         context: &C) -> Result<CreateCargoTypeResponse, ApiError>;
 
     /// Search Cargo Type
     async fn search_cargo_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -7261,21 +7120,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Cargo Type
     async fn delete_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         context: &C) -> Result<DeleteCargoTypeResponse, ApiError>;
 
     /// Get Cargo Type
     async fn get_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         context: &C) -> Result<GetCargoTypeResponse, ApiError>;
 
     /// Update Cargo Type
     async fn update_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         body: Option<models::CargoType>,
         context: &C) -> Result<UpdateCargoTypeResponse, ApiError>;
@@ -7283,7 +7139,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Carriers
     async fn search_carriers(
         &self,
-        version: f64,
         keyword: Option<String>,
         descending: Option<bool>,
         start: Option<i32>,
@@ -7294,7 +7149,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Categories by Distance
     async fn category_distance_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -7320,7 +7174,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Category
     async fn create_category(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -7340,7 +7193,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Category
     async fn delete_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         context: &C) -> Result<DeleteCategoryResponse, ApiError>;
@@ -7348,7 +7200,6 @@ pub trait Api<C: Send + Sync> {
     /// Duplicate Category
     async fn duplicate_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         app_key: Option<String>,
@@ -7358,7 +7209,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Category
     async fn get_category(
         &self,
-        version: f64,
         category_id: i64,
         return_external: Option<bool>,
         context: &C) -> Result<GetCategoryResponse, ApiError>;
@@ -7366,7 +7216,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Categories
     async fn search_categories(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -7393,7 +7242,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Category
     async fn update_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         parent_category_id: Option<i64>,
@@ -7413,7 +7261,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Connection
     async fn add_connection_to_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -7428,7 +7275,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Connections
     async fn add_connections_to_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7441,7 +7287,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Connection Groups
     async fn add_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -7454,7 +7299,6 @@ pub trait Api<C: Send + Sync> {
     /// Create or Update Connection
     async fn create_or_update_connection(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_id: Option<i64>,
@@ -7474,7 +7318,6 @@ pub trait Api<C: Send + Sync> {
     /// Create or Update Connection Group
     async fn create_or_update_group(
         &self,
-        version: f64,
         return_nulls: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7494,7 +7337,6 @@ pub trait Api<C: Send + Sync> {
     /// Accept Follow Request
     async fn follow_accept(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -7503,7 +7345,6 @@ pub trait Api<C: Send + Sync> {
     /// Reject Follow Request
     async fn follow_reject(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -7512,7 +7353,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Follower / Unfollow
     async fn follow_remove(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -7521,7 +7361,6 @@ pub trait Api<C: Send + Sync> {
     /// Send Follow Request
     async fn follow_request(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -7531,7 +7370,6 @@ pub trait Api<C: Send + Sync> {
     /// Accept Friend
     async fn friend_accept(
         &self,
-        version: f64,
         friend_account_id: i64,
         notify_friend: bool,
         device_id: Option<String>,
@@ -7544,7 +7382,6 @@ pub trait Api<C: Send + Sync> {
     /// Decline Friend
     async fn friend_reject(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7557,7 +7394,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Friend
     async fn friend_remove(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7568,7 +7404,6 @@ pub trait Api<C: Send + Sync> {
     /// Request Friend
     async fn friend_request(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7580,7 +7415,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Sent Friend Requests
     async fn get_connection_sent_friend_requests(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         context: &C) -> Result<GetConnectionSentFriendRequestsResponse, ApiError>;
@@ -7588,7 +7422,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Connections
     async fn get_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         filter: String,
         sort_field: String,
@@ -7609,7 +7442,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Connection Group
     async fn get_group_details(
         &self,
-        version: f64,
         combine_connections: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7621,7 +7453,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Connection Groups
     async fn group_search(
         &self,
-        version: f64,
         sort_field: models::GroupSearchSortFieldParameter,
         descending: bool,
         active_only: bool,
@@ -7637,7 +7468,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Connection
     async fn remove_connection_from_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -7652,7 +7482,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Connections
     async fn remove_connections_from_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7665,7 +7494,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Connection Group
     async fn remove_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -7677,7 +7505,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Connection Groups
     async fn remove_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -7690,7 +7517,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Possible Connections
     async fn search_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         start: i32,
         limit: i32,
@@ -7711,7 +7537,6 @@ pub trait Api<C: Send + Sync> {
     /// Create or Update Contest
     async fn add_or_update_album_contest(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -7742,7 +7567,6 @@ pub trait Api<C: Send + Sync> {
     /// Approve Contest
     async fn approve_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         approval_status: models::ApproveAlbumApprovalStatusParameter,
         device_id: Option<String>,
@@ -7752,7 +7576,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Contest
     async fn delete_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7763,7 +7586,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Contest
     async fn get_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -7774,7 +7596,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Contests
     async fn get_album_contests(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -7799,7 +7620,6 @@ pub trait Api<C: Send + Sync> {
     /// Vote on Contest
     async fn vote_on_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         album_id: i64,
         device_id: Option<String>,
@@ -7812,7 +7632,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Preview
     async fn add_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         context: &C) -> Result<AddPreviewResponse, ApiError>;
@@ -7820,7 +7639,6 @@ pub trait Api<C: Send + Sync> {
     /// Find Missions
     async fn ads_find(
         &self,
-        version: f64,
         app_key: String,
         randomize: bool,
         targeted_ads_only: bool,
@@ -7842,7 +7660,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Creative
     async fn create_creative(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: bool,
@@ -7863,7 +7680,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Creative
     async fn delete_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         context: &C) -> Result<DeleteCreativeResponse, ApiError>;
@@ -7871,7 +7687,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Creative
     async fn get_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         context: &C) -> Result<GetCreativeResponse, ApiError>;
@@ -7879,7 +7694,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Creatives
     async fn get_creatives_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -7891,7 +7705,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove Preview
     async fn remove_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         context: &C) -> Result<RemovePreviewResponse, ApiError>;
@@ -7899,7 +7712,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Creative
     async fn update_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         name: Option<String>,
@@ -7919,7 +7731,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Dependent
     async fn create(
         &self,
-        version: f64,
         account_id: i64,
         body: Option<models::Account>,
         context: &C) -> Result<CreateResponse, ApiError>;
@@ -7927,14 +7738,12 @@ pub trait Api<C: Send + Sync> {
     /// Get dependent list of an account
     async fn get_dependents(
         &self,
-        version: f64,
         account_id: i64,
         context: &C) -> Result<GetDependentsResponse, ApiError>;
 
     /// Delete Dependent
     async fn remove_dependent(
         &self,
-        version: f64,
         account_id: i64,
         dependent_id: i64,
         context: &C) -> Result<RemoveDependentResponse, ApiError>;
@@ -7942,14 +7751,12 @@ pub trait Api<C: Send + Sync> {
     /// Check Disbursements
     async fn check_disbursements(
         &self,
-        version: f64,
         disbursement_id: i64,
         context: &C) -> Result<CheckDisbursementsResponse, ApiError>;
 
     /// Create Disbursement
     async fn create_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: i64,
         original_sender_account_id: i64,
@@ -7965,7 +7772,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Disbursement
     async fn get_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         context: &C) -> Result<GetDisbursementResponse, ApiError>;
@@ -7973,7 +7779,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Disbursements
     async fn search_disbursements(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: Option<i64>,
         statuses: Option<String>,
@@ -7989,7 +7794,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Disbursement
     async fn update_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         amount: Option<f64>,
@@ -8005,7 +7809,6 @@ pub trait Api<C: Send + Sync> {
     /// Assign Employee
     async fn assign_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         employee_account_id: i64,
@@ -8015,7 +7818,6 @@ pub trait Api<C: Send + Sync> {
     /// Assign Employee to Location
     async fn assign_to_location_employee(
         &self,
-        version: f64,
         account_id: i64,
         retailer_location_id: i64,
         employee_account_id: Option<i64>,
@@ -8025,7 +7827,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Employee
     async fn create_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         username: String,
@@ -8061,7 +7862,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Employee
     async fn delete_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         context: &C) -> Result<DeleteEmployeeResponse, ApiError>;
@@ -8069,7 +7869,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Employee
     async fn get_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         settings_app_key: Option<String>,
@@ -8078,7 +7877,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Employees
     async fn search_employees(
         &self,
-        version: f64,
         account_id: i64,
         role: Option<String>,
         retailer_id: Option<i64>,
@@ -8101,7 +7899,6 @@ pub trait Api<C: Send + Sync> {
     /// Unassign Employee
     async fn unassign_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         context: &C) -> Result<UnassignEmployeeResponse, ApiError>;
@@ -8109,7 +7906,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Employee
     async fn update_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         manager_account_id: Option<i64>,
@@ -8145,7 +7941,6 @@ pub trait Api<C: Send + Sync> {
     /// Attend Event
     async fn attend_event(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -8161,7 +7956,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Event
     async fn create_event(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         retailer_location_ids: Option<String>,
@@ -8179,7 +7973,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Event
     async fn delete_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         context: &C) -> Result<DeleteEventResponse, ApiError>;
@@ -8187,7 +7980,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Event
     async fn get_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         context: &C) -> Result<GetEventResponse, ApiError>;
@@ -8195,7 +7987,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Event Attendance
     async fn search_event_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -8220,7 +8011,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Events
     async fn search_events(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         active_only: Option<bool>,
@@ -8239,7 +8029,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Event
     async fn update_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         retailer_location_ids: Option<String>,
@@ -8257,7 +8046,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Facebook Token
     async fn get_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -8267,7 +8055,6 @@ pub trait Api<C: Send + Sync> {
     /// Post to Facebook
     async fn graph_interface(
         &self,
-        version: f64,
         event: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -8283,7 +8070,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Favorite
     async fn add_favorite(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         device_id: Option<String>,
@@ -8295,7 +8081,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Favorite
     async fn delete_favorite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         favorite_id: Option<i64>,
@@ -8306,7 +8091,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Favorite
     async fn get_favorite(
         &self,
-        version: f64,
         favorite_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -8317,7 +8101,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Favorites
     async fn search_favorites(
         &self,
-        version: f64,
         favoritable_type: String,
         sort_field: models::SearchFavoritesSortFieldParameter,
         descending: bool,
@@ -8337,7 +8120,6 @@ pub trait Api<C: Send + Sync> {
     /// Who has Favorited
     async fn who_has_favorited(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         start: i32,
@@ -8352,7 +8134,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Filter
     async fn create_filter(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -8367,7 +8148,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Filter
     async fn delete_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         context: &C) -> Result<DeleteFilterResponse, ApiError>;
@@ -8375,14 +8155,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Filter
     async fn get_filter(
         &self,
-        version: f64,
         filter_id: i64,
         context: &C) -> Result<GetFilterResponse, ApiError>;
 
     /// Search Filters
     async fn search_filters(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -8398,7 +8176,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Filter
     async fn update_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         parent_filter_id: Option<i64>,
@@ -8413,7 +8190,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Flag
     async fn create_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -8426,7 +8202,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Flag
     async fn delete_flag(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         item_being_flagged_type: Option<String>,
@@ -8438,7 +8213,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Flag
     async fn get_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -8450,7 +8224,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Flag Threshold
     async fn get_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         app_key: String,
         context: &C) -> Result<GetFlagThresholdResponse, ApiError>;
@@ -8458,7 +8231,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Flag Threshold
     async fn update_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         threshold: i64,
         app_key: String,
@@ -8469,7 +8241,6 @@ pub trait Api<C: Send + Sync> {
     /// Create a Game
     async fn create_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         title: Option<String>,
@@ -8482,7 +8253,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete a Game
     async fn delete_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         context: &C) -> Result<DeleteGameResponse, ApiError>;
@@ -8490,7 +8260,6 @@ pub trait Api<C: Send + Sync> {
     /// Get a Game by id
     async fn get_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         include_game_data: Option<bool>,
@@ -8499,7 +8268,6 @@ pub trait Api<C: Send + Sync> {
     /// Search a Game
     async fn search_games(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -8513,7 +8281,6 @@ pub trait Api<C: Send + Sync> {
     /// Update a Game
     async fn update_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         game_id: Option<i64>,
         app_key: Option<String>,
@@ -8527,7 +8294,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Game Level
     async fn create_game_level(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         game_data: String,
@@ -8559,7 +8325,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Game Level
     async fn delete_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         context: &C) -> Result<DeleteGameLevelResponse, ApiError>;
@@ -8567,7 +8332,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Game Level
     async fn get_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         include_game_data: Option<bool>,
@@ -8576,7 +8340,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Game Levels
     async fn get_game_levels_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -8592,7 +8355,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Game Level by Billable Entity
     async fn get_game_levels_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         keyword: Option<String>,
@@ -8606,7 +8368,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Level Questions
     async fn get_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         context: &C) -> Result<GetQuestionsInLevelResponse, ApiError>;
@@ -8614,7 +8375,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Level Words
     async fn get_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         context: &C) -> Result<GetWordsInLevelResponse, ApiError>;
@@ -8622,7 +8382,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Game Level
     async fn update_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         app_key: Option<String>,
@@ -8655,7 +8414,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Level Questions
     async fn update_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         question_ids: String,
@@ -8664,7 +8422,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Level Words
     async fn update_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         word_ids: String,
@@ -8673,7 +8430,6 @@ pub trait Api<C: Send + Sync> {
     /// Accept Invite
     async fn accept_invite(
         &self,
-        version: f64,
         token: String,
         account_id: i64,
         album_id: Option<i64>,
@@ -8693,7 +8449,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Contest
     async fn album_contest_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -8706,7 +8461,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Collection
     async fn album_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -8719,7 +8473,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Event
     async fn event_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         listing_id: i64,
@@ -8730,7 +8483,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Game Level
     async fn game_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -8743,7 +8495,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Invite
     async fn get_invite(
         &self,
-        version: f64,
         account_id: Option<i64>,
         token: Option<String>,
         album_id: Option<i64>,
@@ -8758,7 +8509,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Mission
     async fn mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -8771,7 +8521,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Offer
     async fn offer_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_id: i64,
@@ -8780,7 +8529,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Offer Location
     async fn offer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_location_id: i64,
@@ -8789,7 +8537,6 @@ pub trait Api<C: Send + Sync> {
     /// Invite to Retailer Location
     async fn retailer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         retailer_location_id: i64,
@@ -8799,7 +8546,6 @@ pub trait Api<C: Send + Sync> {
     /// Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn create_leaderboard(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         rank_type: Option<String>,
@@ -8818,7 +8564,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete the Leader Board
     async fn delete_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         context: &C) -> Result<DeleteLeaderboardResponse, ApiError>;
@@ -8826,7 +8571,6 @@ pub trait Api<C: Send + Sync> {
     /// Read a leaderboard by id and retrieve the matching ranking list
     async fn get_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         include_full_ranking_list: Option<bool>,
@@ -8835,7 +8579,6 @@ pub trait Api<C: Send + Sync> {
     /// Search leaderboard and retrieve the matching ranking list
     async fn search_leaderboards(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         global_only: Option<bool>,
@@ -8853,7 +8596,6 @@ pub trait Api<C: Send + Sync> {
     /// Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn update_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -8874,7 +8616,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Like
     async fn register_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -8892,7 +8633,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Like
     async fn remove_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -8904,7 +8644,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Likes
     async fn search_likes(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -8921,7 +8660,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Listing
     async fn create_listing(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         filter_ids: Option<String>,
@@ -8941,7 +8679,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Listing
     async fn delete_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         context: &C) -> Result<DeleteListingResponse, ApiError>;
@@ -8949,14 +8686,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Listing
     async fn get_listing(
         &self,
-        version: f64,
         listing_id: i64,
         context: &C) -> Result<GetListingResponse, ApiError>;
 
     /// Search Listings
     async fn search_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         start: Option<i32>,
@@ -8977,7 +8712,6 @@ pub trait Api<C: Send + Sync> {
     /// Summary Listing
     async fn summary_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start_date: Option<i64>,
         category_ids: Option<String>,
@@ -8988,7 +8722,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Listing
     async fn update_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         filter_ids: Option<String>,
@@ -9009,7 +8742,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Trilateration Data with File
     async fn cache_trilateration_data(
         &self,
-        version: f64,
         udid: String,
         source_time: Option<i64>,
         minimum_sample_size: Option<i32>,
@@ -9020,21 +8752,18 @@ pub trait Api<C: Send + Sync> {
     /// Create Trilateration Data with Rest
     async fn cache_trilateration_data_gzip(
         &self,
-        version: f64,
         body: Option<models::TrilatCacheRequest>,
         context: &C) -> Result<CacheTrilaterationDataGzipResponse, ApiError>;
 
     /// Get Location by IP
     async fn get_location_by_ip(
         &self,
-        version: f64,
         ip: Option<String>,
         context: &C) -> Result<GetLocationByIpResponse, ApiError>;
 
     /// Get Location by Trilateration
     async fn get_location_by_trilateration(
         &self,
-        version: f64,
         account_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -9045,7 +8774,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Regions or Postal Codes
     async fn get_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         currentlatitude: Option<f64>,
@@ -9070,14 +8798,12 @@ pub trait Api<C: Send + Sync> {
     /// Create new location
     async fn create_location_v2(
         &self,
-        version: f64,
         body: Option<models::Location>,
         context: &C) -> Result<CreateLocationV2Response, ApiError>;
 
     /// Update an existing location
     async fn update_location_v2(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Location>,
         context: &C) -> Result<UpdateLocationV2Response, ApiError>;
@@ -9085,7 +8811,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Media
     async fn create_media(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -9148,7 +8873,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Media
     async fn delete_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         context: &C) -> Result<DeleteMediaResponse, ApiError>;
@@ -9156,7 +8880,6 @@ pub trait Api<C: Send + Sync> {
     /// Media Get
     async fn get_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         context: &C) -> Result<GetMediaResponse, ApiError>;
@@ -9164,7 +8887,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Media
     async fn search_media(
         &self,
-        version: f64,
         account_id: i64,
         active_only: bool,
         sort_field: models::SearchEventsSortFieldParameter,
@@ -9179,7 +8901,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Media
     async fn update_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         retailer_location_ids: Option<String>,
@@ -9244,7 +8965,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Mission
     async fn create_mission(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         description: Option<String>,
@@ -9276,7 +8996,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Mission
     async fn delete_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         context: &C) -> Result<DeleteMissionResponse, ApiError>;
@@ -9284,7 +9003,6 @@ pub trait Api<C: Send + Sync> {
     /// Find Missions
     async fn find_missions(
         &self,
-        version: f64,
         app_key: String,
         suffix: Option<String>,
         param_type: Option<String>,
@@ -9309,7 +9027,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Mission
     async fn get_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         return_creative: Option<bool>,
@@ -9318,7 +9035,6 @@ pub trait Api<C: Send + Sync> {
     /// Import Mission
     async fn import_mission(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
@@ -9332,7 +9048,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Mission Formats
     async fn search_mission_formats(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         active_only: bool,
@@ -9341,7 +9056,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Missions
     async fn search_missions(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         sub_type: Option<String>,
@@ -9358,7 +9072,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Missions by Billable Entity
     async fn search_missions_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start: Option<i32>,
@@ -9374,7 +9087,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Mission
     async fn update_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -9405,7 +9117,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Mission Invite
     async fn create_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -9416,7 +9127,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Mission Invite
     async fn delete_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -9427,7 +9137,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Mission Invite
     async fn get_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -9439,7 +9148,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Mission Invites
     async fn search_mission_invites(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -9458,7 +9166,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Mission Invite
     async fn update_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -9475,7 +9182,6 @@ pub trait Api<C: Send + Sync> {
     /// Batch Note Operation
     async fn batch_operation(
         &self,
-        version: f64,
         notable_id: i64,
         notable_type: String,
         device_id: Option<String>,
@@ -9486,7 +9192,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Note
     async fn create_note(
         &self,
-        version: f64,
         comment: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9534,7 +9239,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Note
     async fn delete_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9546,7 +9250,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Note
     async fn get_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9556,7 +9259,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Notes
     async fn search_notes(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         notable_type: Option<String>,
@@ -9579,7 +9281,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Note
     async fn update_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9626,7 +9327,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Notification Template
     async fn create_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         conduit: String,
         title: String,
@@ -9639,7 +9339,6 @@ pub trait Api<C: Send + Sync> {
     /// Create or update blocked notification settings
     async fn create_or_update_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         data: String,
         account_id: Option<i64>,
@@ -9648,7 +9347,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Notification Template
     async fn delete_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         context: &C) -> Result<DeleteNotificationTemplateResponse, ApiError>;
@@ -9656,7 +9354,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Notification Template
     async fn get_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         context: &C) -> Result<GetNotificationTemplateResponse, ApiError>;
@@ -9664,7 +9361,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Notifications
     async fn get_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -9691,7 +9387,6 @@ pub trait Api<C: Send + Sync> {
     /// Register Notification Token
     async fn register_notification_token(
         &self,
-        version: f64,
         token: String,
         push_type: models::RegisterNotificationTokenPushTypeParameter,
         device_id: Option<String>,
@@ -9707,7 +9402,6 @@ pub trait Api<C: Send + Sync> {
     /// Search on the user's blocked notification settings
     async fn search_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         account_id: Option<i64>,
         search_tags: Option<String>,
@@ -9725,7 +9419,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Notification Templates
     async fn search_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -9742,7 +9435,6 @@ pub trait Api<C: Send + Sync> {
     /// Search for Recipients
     async fn search_recipients(
         &self,
-        version: f64,
         sort_field: models::SearchRecipientsSortFieldParameter,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9761,7 +9453,6 @@ pub trait Api<C: Send + Sync> {
     /// Search for Recipients (Counts/Grouped)
     async fn search_recipients_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -9779,7 +9470,6 @@ pub trait Api<C: Send + Sync> {
     /// Send Batch Notifications
     async fn send_batch_notifications(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         custom_message: String,
@@ -9794,7 +9484,6 @@ pub trait Api<C: Send + Sync> {
     /// Send Custom Notifications
     async fn send_custom_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         receiver_account_ids: Option<String>,
@@ -9818,7 +9507,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Notification Template
     async fn update_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         title: Option<String>,
@@ -9829,7 +9517,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Field
     async fn add_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -9840,7 +9527,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Object
     async fn create_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -9849,7 +9535,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Field
     async fn delete_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -9859,7 +9544,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Object
     async fn delete_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -9868,7 +9552,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Object
     async fn get_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -9877,7 +9560,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Objects
     async fn search_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i64,
@@ -9888,7 +9570,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Data
     async fn create_data(
         &self,
-        version: f64,
         object_name: String,
         account_id: Option<i64>,
         body: Option<String>,
@@ -9897,7 +9578,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Data
     async fn search_data(
         &self,
-        version: f64,
         object_name: String,
         count: bool,
         start: i64,
@@ -9911,7 +9591,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Data
     async fn delete_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -9920,7 +9599,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Data
     async fn get_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -9930,7 +9608,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Data
     async fn update_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -9940,7 +9617,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Offer Locations
     async fn batch_update_offer_locations(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -9949,7 +9625,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Offer
     async fn create_offer(
         &self,
-        version: f64,
         include_offer_locations: bool,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -10041,7 +9716,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Offer
     async fn delete_offer(
         &self,
-        version: f64,
         offer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -10050,7 +9724,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Offer Location
     async fn delete_offer_location(
         &self,
-        version: f64,
         offer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -10059,7 +9732,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offer
     async fn get_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -10069,7 +9741,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offer
     async fn get_offer_details(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -10085,7 +9756,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offers (Counts)
     async fn get_offer_list_counts(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: Option<f64>,
@@ -10095,7 +9765,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offer Location
     async fn get_offer_location(
         &self,
-        version: f64,
         offer_location_id: Option<i64>,
         udid: Option<String>,
         context: &C) -> Result<GetOfferLocationResponse, ApiError>;
@@ -10103,7 +9772,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offer Locations
     async fn get_offer_locations_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchOffersForConsumerGroupByParameter,
         descending: bool,
         start: i32,
@@ -10129,7 +9797,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offers
     async fn get_offers_for_retailers(
         &self,
-        version: f64,
         offer_visibility: models::CreateMediaOfferVisibilityParameter,
         sort_field: models::SearchEventsSortFieldParameter,
         descending: bool,
@@ -10166,7 +9833,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Offer Transaction
     async fn redeem_offer_transaction(
         &self,
-        version: f64,
         offer_transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -10177,7 +9843,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offer Transactions
     async fn search_offer_transactions_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchEventTransactionsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -10207,7 +9872,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offers
     async fn search_offers_for_consumer(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         recommendation_type: models::SearchOffersForConsumerRecommendationTypeParameter,
@@ -10244,7 +9908,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offers (Top)
     async fn top_offer_transactions(
         &self,
-        version: f64,
         start: Option<i32>,
         limit: Option<i32>,
         context: &C) -> Result<TopOfferTransactionsResponse, ApiError>;
@@ -10252,7 +9915,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Offer
     async fn update_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -10345,7 +10007,6 @@ pub trait Api<C: Send + Sync> {
     /// Activate Offer
     async fn update_offer_status(
         &self,
-        version: f64,
         offer_ids: String,
         active: bool,
         device_id: Option<String>,
@@ -10355,7 +10016,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Offer Status
     async fn create_offer_transaction_status(
         &self,
-        version: f64,
         name: String,
         code: i32,
         device_id: Option<String>,
@@ -10371,7 +10031,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Offer Status
     async fn delete_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -10382,7 +10041,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offer Status
     async fn get_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -10393,7 +10051,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offer Status
     async fn search_offer_transaction_statuses(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -10411,7 +10068,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Offer Status
     async fn update_offer_transaction_status(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -10428,7 +10084,6 @@ pub trait Api<C: Send + Sync> {
     /// Generate images with OpenAI
     async fn image_generation(
         &self,
-        version: f64,
         account_id: i64,
         post_body: String,
         return_raw_response: Option<bool>,
@@ -10437,14 +10092,12 @@ pub trait Api<C: Send + Sync> {
     /// Request Optimization
     async fn request_optimization(
         &self,
-        version: f64,
         body: Option<models::Orders>,
         context: &C) -> Result<RequestOptimizationResponse, ApiError>;
 
     /// Get Optimization Result
     async fn get_optimization_result(
         &self,
-        version: f64,
         batch_id: String,
         start: i32,
         limit: i32,
@@ -10453,7 +10106,6 @@ pub trait Api<C: Send + Sync> {
     /// Add Movie
     async fn add_movie(
         &self,
-        version: f64,
         account_id: i64,
         movie_name: String,
         third_party_account_id: Option<String>,
@@ -10466,7 +10118,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Docs
     async fn ai_docs(
         &self,
-        version: f64,
         account_id: i64,
         doc: String,
         return_topics: Option<bool>,
@@ -10477,7 +10128,6 @@ pub trait Api<C: Send + Sync> {
     /// Find images
     async fn ai_find_images(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         parse_flag: Option<String>,
@@ -10488,7 +10138,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tags
     async fn ai_tags(
         &self,
-        version: f64,
         account_id: i64,
         tags: String,
         conditional: Option<String>,
@@ -10499,7 +10148,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Text
     async fn ai_text(
         &self,
-        version: f64,
         account_id: i64,
         terms: String,
         conditional: Option<String>,
@@ -10510,7 +10158,6 @@ pub trait Api<C: Send + Sync> {
     /// Batch Analysis
     async fn batch(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         limit: Option<i32>,
@@ -10523,7 +10170,6 @@ pub trait Api<C: Send + Sync> {
     /// Creates an instant episode
     async fn create_instant_episode(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         context: &C) -> Result<CreateInstantEpisodeResponse, ApiError>;
@@ -10531,7 +10177,6 @@ pub trait Api<C: Send + Sync> {
     /// Create VoiceCanvas images
     async fn create_voice_canvas(
         &self,
-        version: f64,
         account_id: i64,
         dimensions: String,
         third_party_account_id: Option<String>,
@@ -10546,7 +10191,6 @@ pub trait Api<C: Send + Sync> {
     /// Detect emotions
     async fn emotion(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         file: Option<swagger::ByteArray>,
@@ -10557,7 +10201,6 @@ pub trait Api<C: Send + Sync> {
     /// Starts a StoryStitch video render
     async fn start_video_render(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         context: &C) -> Result<StartVideoRenderResponse, ApiError>;
@@ -10565,7 +10208,6 @@ pub trait Api<C: Send + Sync> {
     /// Speach to Text
     async fn stt(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         source_language: Option<String>,
@@ -10578,7 +10220,6 @@ pub trait Api<C: Send + Sync> {
     /// Summarize Topics
     async fn summarize_topics(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         doc: Option<String>,
@@ -10592,7 +10233,6 @@ pub trait Api<C: Send + Sync> {
     /// Detect Technical Issues
     async fn tech_tune(
         &self,
-        version: f64,
         account_id: i64,
         num_faces_expected: i32,
         third_party_account_id: Option<String>,
@@ -10604,7 +10244,6 @@ pub trait Api<C: Send + Sync> {
     /// Text to Speach
     async fn tts(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         third_party_account_id: Option<String>,
@@ -10616,7 +10255,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Add Movie Result
     async fn get_add_movie_result(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetAddMovieResultResponse, ApiError>;
@@ -10624,7 +10262,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Batch Analysis Results
     async fn get_batch(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetBatchResponse, ApiError>;
@@ -10632,7 +10269,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Emotion Results
     async fn get_emotion(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetEmotionResponse, ApiError>;
@@ -10640,7 +10276,6 @@ pub trait Api<C: Send + Sync> {
     /// Check episode status
     async fn get_episode_status(
         &self,
-        version: f64,
         episode_id: i64,
         account_id: i64,
         context: &C) -> Result<GetEpisodeStatusResponse, ApiError>;
@@ -10648,7 +10283,6 @@ pub trait Api<C: Send + Sync> {
     /// Check episode status
     async fn get_render_status(
         &self,
-        version: f64,
         render_id: String,
         account_id: i64,
         context: &C) -> Result<GetRenderStatusResponse, ApiError>;
@@ -10656,7 +10290,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Speach to Text Result
     async fn get_stt(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetSttResponse, ApiError>;
@@ -10664,7 +10297,6 @@ pub trait Api<C: Send + Sync> {
     /// Get TechTune Results
     async fn get_tech_tune(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetTechTuneResponse, ApiError>;
@@ -10672,7 +10304,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Topics
     async fn get_topics(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetTopicsResponse, ApiError>;
@@ -10680,7 +10311,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Text to Speach Result
     async fn get_tts(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetTtsResponse, ApiError>;
@@ -10688,7 +10318,6 @@ pub trait Api<C: Send + Sync> {
     /// Get VoiceCanvas images
     async fn get_voice_canvas(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         context: &C) -> Result<GetVoiceCanvasResponse, ApiError>;
@@ -10696,7 +10325,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Pack
     async fn create_pack(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         pack_order: i64,
@@ -10726,7 +10354,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Pack
     async fn delete_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         context: &C) -> Result<DeletePackResponse, ApiError>;
@@ -10734,7 +10361,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Pack
     async fn get_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         include_game_data: bool,
@@ -10743,7 +10369,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Packs
     async fn search_packs(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchPacksSortFieldParameter,
         descending: bool,
@@ -10759,7 +10384,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Pack
     async fn update_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         allocate_tickets: bool,
@@ -10790,7 +10414,6 @@ pub trait Api<C: Send + Sync> {
     /// Process All Participant Feeds
     async fn process_all_participants(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         use_short_name_as_id: Option<bool>,
@@ -10799,7 +10422,6 @@ pub trait Api<C: Send + Sync> {
     /// Process Participants Feed
     async fn process_participants(
         &self,
-        version: f64,
         account_id: i64,
         league: String,
         app_key: Option<String>,
@@ -10810,7 +10432,6 @@ pub trait Api<C: Send + Sync> {
     /// Calculate Path
     async fn compute_path(
         &self,
-        version: f64,
         data: String,
         units: models::ComputePathUnitsParameter,
         reduce_path: bool,
@@ -10820,7 +10441,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Postal Code
     async fn create_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         code: String,
         latitude: f64,
@@ -10833,7 +10453,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Postal Code
     async fn delete_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         context: &C) -> Result<DeletePostalCodeResponse, ApiError>;
@@ -10841,14 +10460,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Postal Code
     async fn get_postal_code(
         &self,
-        version: f64,
         postal_code_id: i64,
         context: &C) -> Result<GetPostalCodeResponse, ApiError>;
 
     /// Search Postal Codes
     async fn get_postal_codes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         latitude: Option<f64>,
@@ -10862,7 +10479,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Postal Code
     async fn update_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         code: Option<String>,
@@ -10876,7 +10492,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Persona
     async fn create_persona(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         preview_accounts: Option<String>,
@@ -10891,7 +10506,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Persona
     async fn delete_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         context: &C) -> Result<DeletePersonaResponse, ApiError>;
@@ -10899,7 +10513,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Persona
     async fn get_persona_list(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         context: &C) -> Result<GetPersonaListResponse, ApiError>;
@@ -10907,7 +10520,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Personas
     async fn search_persona(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -10916,7 +10528,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Persona
     async fn update_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         title: Option<String>,
@@ -10933,14 +10544,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Program
     async fn create_program(
         &self,
-        version: f64,
         body: Option<models::Program>,
         context: &C) -> Result<CreateProgramResponse, ApiError>;
 
     /// Search Programs
     async fn search_programs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -10952,21 +10561,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Program
     async fn delete_program(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<DeleteProgramResponse, ApiError>;
 
     /// Get Program
     async fn get_program(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetProgramResponse, ApiError>;
 
     /// Update Program
     async fn post_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         context: &C) -> Result<PostProgramResponse, ApiError>;
@@ -10974,7 +10580,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Program
     async fn put_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         context: &C) -> Result<PutProgramResponse, ApiError>;
@@ -10982,7 +10587,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Purchase
     async fn create_purchase_item(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         purchase_type: models::CreatePurchaseItemPurchaseTypeParameter,
@@ -11008,7 +10612,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Purchase
     async fn delete_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11017,7 +10620,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Purchase
     async fn get_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11026,7 +10628,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Purchases
     async fn search_purchase_items(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -11044,7 +10645,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Purchase
     async fn update_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11071,7 +10671,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Order
     async fn create_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -11089,7 +10688,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Order
     async fn delete_order(
         &self,
-        version: f64,
         order_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11098,7 +10696,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Order
     async fn get_order(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         order_id: Option<i64>,
@@ -11108,7 +10705,6 @@ pub trait Api<C: Send + Sync> {
     /// Preview Order
     async fn preview_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -11126,7 +10722,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Orders
     async fn search_orders(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11163,7 +10758,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Order
     async fn update_order(
         &self,
-        version: f64,
         order_id: i64,
         app_key: String,
         cart: String,
@@ -11180,7 +10774,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Question
     async fn create_question(
         &self,
-        version: f64,
         account_id: i64,
         question: String,
         answers: String,
@@ -11197,7 +10790,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Question
     async fn delete_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         context: &C) -> Result<DeleteQuestionResponse, ApiError>;
@@ -11205,7 +10797,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Question
     async fn get_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         context: &C) -> Result<GetQuestionResponse, ApiError>;
@@ -11213,7 +10804,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Questions
     async fn search_questions(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -11226,7 +10816,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Question
     async fn update_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -11244,7 +10833,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Historical Rankings
     async fn get_historical_rankings(
         &self,
-        version: f64,
         app_key: String,
         rank_type: String,
         start_date: i64,
@@ -11260,7 +10848,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Rankings
     async fn get_rankings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -11284,7 +10871,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Personal Rankings
     async fn get_user_rank(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -11301,7 +10887,6 @@ pub trait Api<C: Send + Sync> {
     /// Override User Rank
     async fn override_user_rank(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: i64,
         app_key: String,
@@ -11329,7 +10914,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Ranking
     async fn update_rankings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         rank_type: String,
@@ -11345,7 +10929,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Rating
     async fn create_rating(
         &self,
-        version: f64,
         ratable_type: String,
         ratable_id: i64,
         rating_value: i32,
@@ -11362,7 +10945,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Rating
     async fn delete_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11371,7 +10953,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Location Rating Indexes
     async fn search_location_rating_indexes(
         &self,
-        version: f64,
         category_ids: Option<String>,
         keyword: Option<String>,
         location_type: Option<String>,
@@ -11394,7 +10975,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Rating Indexes
     async fn search_rating_indexes(
         &self,
-        version: f64,
         ratable_type: models::SearchRatingIndexesRatableTypeParameter,
         ratable_ids: Option<String>,
         category_ids: Option<String>,
@@ -11413,7 +10993,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Ratings
     async fn search_ratings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         filter_account_id: Option<i64>,
@@ -11430,7 +11009,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Rating
     async fn update_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11446,7 +11024,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Region
     async fn create_region(
         &self,
-        version: f64,
         account_id: i64,
         region_class: String,
         short_name: String,
@@ -11473,7 +11050,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Region
     async fn delete_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         context: &C) -> Result<DeleteRegionResponse, ApiError>;
@@ -11481,7 +11057,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Region
     async fn get_region(
         &self,
-        version: f64,
         region_id: i64,
         account_id: Option<i64>,
         context: &C) -> Result<GetRegionResponse, ApiError>;
@@ -11489,7 +11064,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Regions
     async fn search_regions(
         &self,
-        version: f64,
         account_id: Option<i64>,
         query: Option<String>,
         keyword: Option<String>,
@@ -11517,7 +11091,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Region
     async fn update_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         region_class: Option<String>,
@@ -11546,7 +11119,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Offline Report
     async fn create_batch(
         &self,
-        version: f64,
         account_id: i64,
         status: models::CreateBatchStatusParameter,
         preview_limit: i32,
@@ -11563,14 +11135,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Offline Report
     async fn create_region_leg_summary_batch<'a>(
         &self,
-        version: f64,
         body: Option<&'a Vec<models::RegionLegSummary>>,
         context: &C) -> Result<CreateRegionLegSummaryBatchResponse, ApiError>;
 
     /// Delete Offline Report
     async fn delete_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         context: &C) -> Result<DeleteBatchResponse, ApiError>;
@@ -11578,7 +11148,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Offline Report
     async fn get_report_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         all_results: bool,
@@ -11587,7 +11156,6 @@ pub trait Api<C: Send + Sync> {
     /// Run Report
     async fn run_report(
         &self,
-        version: f64,
         desc: bool,
         account_id: Option<i64>,
         query: Option<String>,
@@ -11601,7 +11169,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Offline Reports
     async fn search_batch(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -11616,7 +11183,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Reservation
     async fn create_reservation(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         start_date: Option<i64>,
@@ -11630,7 +11196,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Reservation
     async fn delete_reservation(
         &self,
-        version: f64,
         reservation_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11639,7 +11204,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Availability
     async fn reservable_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -11651,7 +11215,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Availability
     async fn search_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -11665,7 +11228,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Reservations
     async fn search_reservations(
         &self,
-        version: f64,
         device_id: Option<String>,
         app_key: Option<String>,
         account_id: Option<i64>,
@@ -11682,7 +11244,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Schedule
     async fn search_schedule(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         start_date: i64,
@@ -11695,7 +11256,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Retailer
     async fn create_retailer(
         &self,
-        version: f64,
         name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11734,7 +11294,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Retailer
     async fn delete_retailer(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_id: Option<i64>,
@@ -11743,7 +11302,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Retailer
     async fn get_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11753,7 +11311,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Retailers
     async fn get_retailers(
         &self,
-        version: f64,
         visibility: models::AddAlbumCollectionVisibilityParameter,
         sort_field: models::GetRetailersSortFieldParameter,
         descending: bool,
@@ -11773,7 +11330,6 @@ pub trait Api<C: Send + Sync> {
     /// Login Retailer
     async fn retailer_login_check(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -11785,7 +11341,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Retailer
     async fn update_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11823,7 +11378,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Retailer Location (Consumer)
     async fn create_retailer_location_consumer(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -11858,7 +11412,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Retailer Location
     async fn create_retailer_locations(
         &self,
-        version: f64,
         retailer_id: i64,
         name: String,
         street_address: String,
@@ -11903,7 +11456,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Retailer Location
     async fn delete_retailer_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_location_id: Option<i64>,
@@ -11912,7 +11464,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Retailer Location
     async fn get_retailer_location(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11922,7 +11473,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Retailer Location (Consumer)
     async fn get_retailer_location_consumer(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -11931,7 +11481,6 @@ pub trait Api<C: Send + Sync> {
     /// Distance Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_distance_search(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: f64,
@@ -11971,7 +11520,6 @@ pub trait Api<C: Send + Sync> {
     /// Keyword Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start: Option<i32>,
         limit: Option<i32>,
@@ -12005,7 +11553,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Retailer Locations (Owned)
     async fn search_retailer_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -12036,7 +11583,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Retailer Location
     async fn update_retailer_locations(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -12083,7 +11629,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Retailer
     async fn get_retaokiler(
         &self,
-        version: f64,
         retailer_id: i64,
         active_only: bool,
         keyword: Option<String>,
@@ -12095,14 +11640,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Route
     async fn create_route(
         &self,
-        version: f64,
         body: Option<models::Route>,
         context: &C) -> Result<CreateRouteResponse, ApiError>;
 
     /// Search Routes
     async fn search_routes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -12129,14 +11672,12 @@ pub trait Api<C: Send + Sync> {
     /// Approve Route
     async fn approve_route(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<ApproveRouteResponse, ApiError>;
 
     /// Copy Route
     async fn copy_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         context: &C) -> Result<CopyRouteResponse, ApiError>;
@@ -12144,35 +11685,30 @@ pub trait Api<C: Send + Sync> {
     /// Update Route Directions
     async fn create_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<CreateRouteDirectionsResponse, ApiError>;
 
     /// Create Route Polyline
     async fn create_route_polyline(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<CreateRoutePolylineResponse, ApiError>;
 
     /// Delete Route
     async fn delete_route(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<DeleteRouteResponse, ApiError>;
 
     /// Disapprove Route
     async fn disapprove_route(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<DisapproveRouteResponse, ApiError>;
 
     /// Get Route
     async fn get_route(
         &self,
-        version: f64,
         route_id: i64,
         show_inherited_properties: bool,
         context: &C) -> Result<GetRouteResponse, ApiError>;
@@ -12180,21 +11716,18 @@ pub trait Api<C: Send + Sync> {
     /// Get Route Directions
     async fn get_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<GetRouteDirectionsResponse, ApiError>;
 
     /// Get Route Shipments
     async fn get_route_shipments(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<GetRouteShipmentsResponse, ApiError>;
 
     /// Get Route Stops
     async fn get_route_stops(
         &self,
-        version: f64,
         route_id: i64,
         confirmed_only: bool,
         context: &C) -> Result<GetRouteStopsResponse, ApiError>;
@@ -12202,14 +11735,12 @@ pub trait Api<C: Send + Sync> {
     /// Optimize Route
     async fn optimize_route(
         &self,
-        version: f64,
         route_id: i64,
         context: &C) -> Result<OptimizeRouteResponse, ApiError>;
 
     /// Reorder Route Stops
     async fn reorder_route_stops_patch<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         context: &C) -> Result<ReorderRouteStopsPatchResponse, ApiError>;
@@ -12217,7 +11748,6 @@ pub trait Api<C: Send + Sync> {
     /// Reorder Route Stops
     async fn reorder_route_stops_post<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         context: &C) -> Result<ReorderRouteStopsPostResponse, ApiError>;
@@ -12225,7 +11755,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Route
     async fn update_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         context: &C) -> Result<UpdateRouteResponse, ApiError>;
@@ -12233,7 +11762,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Route Stop
     async fn get_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         context: &C) -> Result<GetRouteStopResponse, ApiError>;
@@ -12241,7 +11769,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Shipments At Stop
     async fn get_shipments_at_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         context: &C) -> Result<GetShipmentsAtStopResponse, ApiError>;
@@ -12249,7 +11776,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Stop
     async fn remove_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         context: &C) -> Result<RemoveStopResponse, ApiError>;
@@ -12257,7 +11783,6 @@ pub trait Api<C: Send + Sync> {
     /// Set Driver
     async fn set_driver(
         &self,
-        version: f64,
         id: i64,
         driver_id: i64,
         context: &C) -> Result<SetDriverResponse, ApiError>;
@@ -12265,7 +11790,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Route Stop
     async fn update_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         body: Option<models::Stop>,
@@ -12274,14 +11798,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Route Setting
     async fn create_route_settings(
         &self,
-        version: f64,
         body: Option<models::RouteSettings>,
         context: &C) -> Result<CreateRouteSettingsResponse, ApiError>;
 
     /// Search Route Settings
     async fn search_route_settings(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -12295,21 +11817,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Route Setting
     async fn delete_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         context: &C) -> Result<DeleteRouteSettingsResponse, ApiError>;
 
     /// Get Route Setting
     async fn get_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         context: &C) -> Result<GetRouteSettingsResponse, ApiError>;
 
     /// Update Route Setting
     async fn update_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         body: Option<models::RouteSettings>,
         context: &C) -> Result<UpdateRouteSettingsResponse, ApiError>;
@@ -12317,14 +11836,12 @@ pub trait Api<C: Send + Sync> {
     /// Compute Route
     async fn compute_routing(
         &self,
-        version: f64,
         data: String,
         context: &C) -> Result<ComputeRoutingResponse, ApiError>;
 
     /// Create Scheduled Notification
     async fn create_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         param_type: String,
@@ -12364,7 +11881,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Scheduled Notification
     async fn delete_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         delete_by_grouping_id: Option<bool>,
@@ -12373,7 +11889,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Scheduled Notification
     async fn get_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         context: &C) -> Result<GetScheduledNotificationResponse, ApiError>;
@@ -12381,7 +11896,6 @@ pub trait Api<C: Send + Sync> {
     /// Generate Schedule Notifications
     async fn schedule_notification_listings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         report_name: String,
@@ -12395,7 +11909,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Scheduled Notifications
     async fn search_scheduled_notifications(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         audience_id: Option<i64>,
@@ -12421,7 +11934,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Scheduled Notification
     async fn update_scheduled_notification(
         &self,
-        version: f64,
         scheduled_notification_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -12465,7 +11977,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Score
     async fn create_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         points: i32,
@@ -12481,7 +11992,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Score
     async fn get_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -12496,7 +12006,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Score
     async fn search_scores(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -12509,7 +12018,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Secure Application
     async fn create_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         key_cert: swagger::ByteArray,
@@ -12525,7 +12033,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Secure Application
     async fn delete_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         context: &C) -> Result<DeleteSecureApplicationResponse, ApiError>;
@@ -12533,7 +12040,6 @@ pub trait Api<C: Send + Sync> {
     /// Login Clear
     async fn login_secure(
         &self,
-        version: f64,
         app_key: String,
         biometric_file: swagger::ByteArray,
         device_id: Option<String>,
@@ -12548,14 +12054,12 @@ pub trait Api<C: Send + Sync> {
     /// Purchase Clear
     async fn purchase_secure(
         &self,
-        version: f64,
         body: models::PaymentRequest,
         context: &C) -> Result<PurchaseSecureResponse, ApiError>;
 
     /// Rest Secure Application
     async fn reset_secure(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         context: &C) -> Result<ResetSecureResponse, ApiError>;
@@ -12563,7 +12067,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Secure Application
     async fn update_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: Option<bool>,
@@ -12579,14 +12082,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Service Hub
     async fn create_service_hub(
         &self,
-        version: f64,
         body: Option<models::ServiceHub>,
         context: &C) -> Result<CreateServiceHubResponse, ApiError>;
 
     /// Search Service Hubs
     async fn search_service_hubs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -12599,21 +12100,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Service Hub
     async fn delete_service_hub(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<DeleteServiceHubResponse, ApiError>;
 
     /// Get Service Hub
     async fn get_service_hub(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetServiceHubResponse, ApiError>;
 
     /// Update Service Hub
     async fn post_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         context: &C) -> Result<PostServiceHubResponse, ApiError>;
@@ -12621,7 +12119,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Service Hub
     async fn put_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         context: &C) -> Result<PutServiceHubResponse, ApiError>;
@@ -12629,14 +12126,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Shipment
     async fn create_shipment(
         &self,
-        version: f64,
         body: Option<models::Shipment>,
         context: &C) -> Result<CreateShipmentResponse, ApiError>;
 
     /// Search Shipments
     async fn search_shipments(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -12650,28 +12145,24 @@ pub trait Api<C: Send + Sync> {
     /// Cancel Shipment
     async fn cancel_shipment(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<CancelShipmentResponse, ApiError>;
 
     /// Delete Shipment
     async fn delete_shipment(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<DeleteShipmentResponse, ApiError>;
 
     /// Get Shipment
     async fn get_shipment(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetShipmentResponse, ApiError>;
 
     /// Update Shipment
     async fn update_shipment(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Shipment>,
         context: &C) -> Result<UpdateShipmentResponse, ApiError>;
@@ -12679,7 +12170,6 @@ pub trait Api<C: Send + Sync> {
     /// Uupdate Shipment Status
     async fn update_shipment_status(
         &self,
-        version: f64,
         id: i64,
         body: Option<std::collections::HashMap<String, bool>>,
         context: &C) -> Result<UpdateShipmentStatusResponse, ApiError>;
@@ -12687,14 +12177,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Shipment Batch
     async fn create_shipment_batch(
         &self,
-        version: f64,
         body: Option<models::ShipmentBatch>,
         context: &C) -> Result<CreateShipmentBatchResponse, ApiError>;
 
     /// Search Shipment Batch
     async fn search_shipment_batch(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -12705,21 +12193,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Shipment Batch
     async fn delete_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         context: &C) -> Result<DeleteShipmentBatchResponse, ApiError>;
 
     /// Get Shipment Batch
     async fn get_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         context: &C) -> Result<GetShipmentBatchResponse, ApiError>;
 
     /// Get Shipment Batch Status
     async fn get_shipment_batch_status(
         &self,
-        version: f64,
         batch_id: i64,
         account_id: i64,
         sort_field: String,
@@ -12737,7 +12222,6 @@ pub trait Api<C: Send + Sync> {
     /// Routing Simulation
     async fn simulation(
         &self,
-        version: f64,
         data: String,
         real_time: bool,
         context: &C) -> Result<SimulationResponse, ApiError>;
@@ -12745,14 +12229,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Stop
     async fn get_stop(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetStopResponse, ApiError>;
 
     /// Update Stop
     async fn update_stop(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Stop>,
         context: &C) -> Result<UpdateStopResponse, ApiError>;
@@ -12760,7 +12242,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Stripe Checkout Session
     async fn create_stripe_checkout_session(
         &self,
-        version: f64,
         app_key: String,
         stripe_parameters: String,
         context: &C) -> Result<CreateStripeCheckoutSessionResponse, ApiError>;
@@ -12768,7 +12249,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Subscription
     async fn create_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
@@ -12777,28 +12257,24 @@ pub trait Api<C: Send + Sync> {
     /// Delete Subscription
     async fn delete_subscription(
         &self,
-        version: f64,
         account_id: i64,
         context: &C) -> Result<DeleteSubscriptionResponse, ApiError>;
 
     /// Get Subscription
     async fn get_subscription(
         &self,
-        version: f64,
         account_id: i64,
         context: &C) -> Result<GetSubscriptionResponse, ApiError>;
 
     /// Get Subscription Plan
     async fn get_subscription_plan(
         &self,
-        version: f64,
         plan_id: i64,
         context: &C) -> Result<GetSubscriptionPlanResponse, ApiError>;
 
     /// List Subscription Plans
     async fn get_subscription_plans(
         &self,
-        version: f64,
         visible: Option<bool>,
         role: Option<String>,
         context: &C) -> Result<GetSubscriptionPlansResponse, ApiError>;
@@ -12806,7 +12282,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Subscription Usage
     async fn get_subscription_usage(
         &self,
-        version: f64,
         account_id: i64,
         application_id: Option<i64>,
         start: Option<i64>,
@@ -12816,7 +12291,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Subscription
     async fn update_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
@@ -12826,7 +12300,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Task
     async fn create_task(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -12844,7 +12317,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Task
     async fn delete_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         context: &C) -> Result<DeleteTaskResponse, ApiError>;
@@ -12852,7 +12324,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Task
     async fn get_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         context: &C) -> Result<GetTaskResponse, ApiError>;
@@ -12860,7 +12331,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tasks
     async fn search_tasks(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -12878,7 +12348,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Task
     async fn update_task(
         &self,
-        version: f64,
         task_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -12897,7 +12366,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Territory
     async fn create_territory(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: Option<bool>,
@@ -12906,7 +12374,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Territory
     async fn delete_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         context: &C) -> Result<DeleteTerritoryResponse, ApiError>;
@@ -12914,14 +12381,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Territory
     async fn get_territory(
         &self,
-        version: f64,
         territory_id: i64,
         context: &C) -> Result<GetTerritoryResponse, ApiError>;
 
     /// Search Territories
     async fn search_territories(
         &self,
-        version: f64,
         sort_field: models::SearchTerritoriesSortFieldParameter,
         descending: bool,
         keyword: Option<String>,
@@ -12932,7 +12397,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Territory
     async fn update_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         name: Option<String>,
@@ -12942,7 +12406,6 @@ pub trait Api<C: Send + Sync> {
     /// Create/Update Theme
     async fn add_or_update_theme_descriptor(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -12975,7 +12438,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Theme
     async fn get_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -12987,7 +12449,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Themes
     async fn get_theme_descriptors(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -13011,7 +12472,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Theme
     async fn remove_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -13023,7 +12483,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Credential
     async fn create_credential(
         &self,
-        version: f64,
         third_party_id: String,
         third_party_token: String,
         network_uid: String,
@@ -13046,7 +12505,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Network
     async fn create_network(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         enable_introspection: bool,
@@ -13069,7 +12527,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Credential
     async fn delete_credential(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         third_party_id: String,
@@ -13079,7 +12536,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Network
     async fn delete_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         context: &C) -> Result<DeleteNetworkResponse, ApiError>;
@@ -13087,7 +12543,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Credential
     async fn get_credential(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         account_id: Option<i64>,
@@ -13108,7 +12563,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Network
     async fn get_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         context: &C) -> Result<GetNetworkResponse, ApiError>;
@@ -13116,7 +12570,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Credentials
     async fn search_credentials(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         network_uid: Option<String>,
@@ -13128,7 +12581,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Networks
     async fn search_networks(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchNetworksSortFieldParameter,
         descending: bool,
@@ -13142,7 +12594,6 @@ pub trait Api<C: Send + Sync> {
     /// Send MFA Challenge
     async fn send_mfa_challenge(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         third_party_token: Option<String>,
@@ -13153,7 +12604,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Credential
     async fn update_credential(
         &self,
-        version: f64,
         network_uid: String,
         third_party_id: String,
         app_key: String,
@@ -13168,7 +12618,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Network
     async fn update_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         name: Option<String>,
@@ -13192,7 +12641,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Ticket Count
     async fn get_ticket_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -13203,7 +12651,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Ticket List
     async fn get_ticket_list(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ticket_object_type: Option<String>,
@@ -13218,7 +12665,6 @@ pub trait Api<C: Send + Sync> {
     /// Gift Tickets
     async fn gift_purchase(
         &self,
-        version: f64,
         receiver_account_id: i64,
         ticket_id: i64,
         device_id: Option<String>,
@@ -13232,7 +12678,6 @@ pub trait Api<C: Send + Sync> {
     /// Save Ticket
     async fn save_ticket(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         return_nulls: Option<bool>,
@@ -13256,7 +12701,6 @@ pub trait Api<C: Send + Sync> {
     /// Save Ticket with Reciept
     async fn save_ticket_via_file_upload(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         receipt_data: swagger::ByteArray,
@@ -13280,13 +12724,11 @@ pub trait Api<C: Send + Sync> {
     /// Get Ticket Offers
     async fn ticket_offers(
         &self,
-        version: f64,
         context: &C) -> Result<TicketOffersResponse, ApiError>;
 
     /// Create Tournament
     async fn create_tournament(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         title: String,
@@ -13327,7 +12769,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Tournament
     async fn delete_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         context: &C) -> Result<DeleteTournamentResponse, ApiError>;
@@ -13335,7 +12776,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Tournament
     async fn get_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: Option<i64>,
         join_code: Option<String>,
@@ -13346,7 +12786,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tournament Objects
     async fn search_objects(
         &self,
-        version: f64,
         account_id: i64,
         game_level_id: i64,
         sort_field: Option<models::SearchObjectsSortFieldParameter>,
@@ -13358,7 +12797,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tournament Rounds
     async fn search_rounds(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         status: Option<String>,
@@ -13372,7 +12810,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tournaments
     async fn search_tournaments(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -13390,7 +12827,6 @@ pub trait Api<C: Send + Sync> {
     /// Submit Tournament Score
     async fn submit_tournament_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -13403,7 +12839,6 @@ pub trait Api<C: Send + Sync> {
     /// Submit a vote for a multi-stage album tournament.
     async fn submit_tournament_vote(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -13415,7 +12850,6 @@ pub trait Api<C: Send + Sync> {
     /// Substitute Tournament Player
     async fn substitute_tournament_player(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         pack_id: i64,
@@ -13425,7 +12859,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Tournament
     async fn update_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -13465,7 +12898,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Batch Tracking
     async fn batch_save_tracking(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -13478,7 +12910,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Predicted Locations
     async fn get_predicted_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -13493,7 +12924,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Tracking Path
     async fn get_predicted_path(
         &self,
-        version: f64,
         account_id: i64,
         start_step_id: i64,
         end_step_id: i64,
@@ -13502,7 +12932,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Preferred Locations
     async fn get_preferred_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -13519,7 +12948,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tracking
     async fn get_tracking_legs(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         owner_id: Option<i64>,
@@ -13533,7 +12961,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Tracking Leg
     async fn save_tracking_leg(
         &self,
-        version: f64,
         start_lat: f64,
         start_lng: f64,
         start_date: i64,
@@ -13551,7 +12978,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Tracking Step
     async fn save_tracking_step(
         &self,
-        version: f64,
         leg_id: i64,
         start_lat: f64,
         start_lng: f64,
@@ -13568,7 +12994,6 @@ pub trait Api<C: Send + Sync> {
     /// List Tracking
     async fn search_accounts_with_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start_date: Option<i64>,
@@ -13588,7 +13013,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Tracking (Billable)
     async fn search_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         tracking_device_id: Option<String>,
@@ -13602,7 +13026,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Trigger
     async fn create_trigger(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -13621,7 +13044,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Trigger
     async fn delete_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         context: &C) -> Result<DeleteTriggerResponse, ApiError>;
@@ -13629,7 +13051,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Trigger
     async fn get_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         context: &C) -> Result<GetTriggerResponse, ApiError>;
@@ -13637,7 +13058,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Triggers
     async fn search_triggers(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -13655,7 +13075,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Trigger
     async fn update_trigger(
         &self,
-        version: f64,
         trigger_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -13675,14 +13094,12 @@ pub trait Api<C: Send + Sync> {
     /// Create Trip
     async fn create_trip(
         &self,
-        version: f64,
         body: Option<models::Trip>,
         context: &C) -> Result<CreateTripResponse, ApiError>;
 
     /// Process Trip Matches
     async fn process_trip_matches(
         &self,
-        version: f64,
         start_date: Option<i64>,
         end_date: Option<i64>,
         trip_id: Option<i64>,
@@ -13691,7 +13108,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Trips
     async fn search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -13706,7 +13122,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Trips
     async fn search_trips(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -13722,7 +13137,6 @@ pub trait Api<C: Send + Sync> {
     /// Trip Notifications
     async fn update_trip_notifications(
         &self,
-        version: f64,
         id: i64,
         notifications: Option<String>,
         context: &C) -> Result<UpdateTripNotificationsResponse, ApiError>;
@@ -13730,14 +13144,12 @@ pub trait Api<C: Send + Sync> {
     /// Delete Trip
     async fn delete(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<DeleteResponse, ApiError>;
 
     /// Set Trip Preference Driver
     async fn drive_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         context: &C) -> Result<DriveTripResponse, ApiError>;
@@ -13745,7 +13157,6 @@ pub trait Api<C: Send + Sync> {
     /// Set Trip Preference Flexible
     async fn flexible_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         context: &C) -> Result<FlexibleTripResponse, ApiError>;
@@ -13753,14 +13164,12 @@ pub trait Api<C: Send + Sync> {
     /// Get Trip
     async fn get_trip(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetTripResponse, ApiError>;
 
     /// Get Trip Matches
     async fn get_trip_matches(
         &self,
-        version: f64,
         id: i64,
         sort_field: String,
         descending: bool,
@@ -13774,7 +13183,6 @@ pub trait Api<C: Send + Sync> {
     /// Set Trip Preference Rider
     async fn ride(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         context: &C) -> Result<RideResponse, ApiError>;
@@ -13782,7 +13190,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Trip Locations
     async fn update_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         context: &C) -> Result<UpdateLocationsResponse, ApiError>;
@@ -13790,7 +13197,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Recurrence Locations
     async fn update_recurrence_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         context: &C) -> Result<UpdateRecurrenceLocationsResponse, ApiError>;
@@ -13798,7 +13204,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Recurrence Shipments
     async fn update_recurrence_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         context: &C) -> Result<UpdateRecurrenceShipmentsResponse, ApiError>;
@@ -13806,7 +13211,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Trip Shipments
     async fn update_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         context: &C) -> Result<UpdateShipmentsResponse, ApiError>;
@@ -13814,7 +13218,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Trip
     async fn update_trip(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         context: &C) -> Result<UpdateTripResponse, ApiError>;
@@ -13822,7 +13225,6 @@ pub trait Api<C: Send + Sync> {
     /// Buy Offer by SMS
     async fn sms_buy_offer(
         &self,
-        version: f64,
         app_key: String,
         body: String,
         from: String,
@@ -13832,14 +13234,12 @@ pub trait Api<C: Send + Sync> {
     /// Authorize Twitter
     async fn authorize_twitter(
         &self,
-        version: f64,
         app_key: String,
         context: &C) -> Result<AuthorizeTwitterResponse, ApiError>;
 
     /// Login Twitter
     async fn login_twitter(
         &self,
-        version: f64,
         access_token: String,
         access_token_secret: String,
         app_key: String,
@@ -13852,7 +13252,6 @@ pub trait Api<C: Send + Sync> {
     /// Add User
     async fn add_users_to_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -13875,7 +13274,6 @@ pub trait Api<C: Send + Sync> {
     /// Approve Permissionable
     async fn approve_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -13886,7 +13284,6 @@ pub trait Api<C: Send + Sync> {
     /// Leave
     async fn leave_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: String,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -13898,7 +13295,6 @@ pub trait Api<C: Send + Sync> {
     /// Remove User
     async fn remove_users_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -13915,7 +13311,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Permissionables
     async fn search_permissionables(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -13934,7 +13329,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Permissionables by Distnace
     async fn search_permissionables_following_distance(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         device_id: Option<String>,
@@ -13954,7 +13348,6 @@ pub trait Api<C: Send + Sync> {
     /// Create following
     async fn create_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -13963,7 +13356,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Vatom Space
     async fn create_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -13973,7 +13365,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Vatom Event
     async fn create_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -13983,7 +13374,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete following
     async fn delete_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_rels_key: String,
         return_raw_response: Option<bool>,
@@ -13992,7 +13382,6 @@ pub trait Api<C: Send + Sync> {
     /// Reset All Points Balance
     async fn delete_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14002,7 +13391,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Vatom Space
     async fn delete_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -14012,7 +13400,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Vatom Event
     async fn delete_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -14022,7 +13409,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Vatom NFT
     async fn delete_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
@@ -14031,7 +13417,6 @@ pub trait Api<C: Send + Sync> {
     /// Execute Action on NFT
     async fn execute_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_parameters: String,
@@ -14041,7 +13426,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Vatom Geo Map
     async fn geomap_search(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -14050,7 +13434,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Business Behaviors
     async fn get_business_behaviors(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -14059,7 +13442,6 @@ pub trait Api<C: Send + Sync> {
     /// Get the coins for a Business
     async fn get_business_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -14068,7 +13450,6 @@ pub trait Api<C: Send + Sync> {
     /// Get the user business ids
     async fn get_business_ids(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         context: &C) -> Result<GetBusinessIdsResponse, ApiError>;
@@ -14076,7 +13457,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Business Info
     async fn get_business_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -14086,7 +13466,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Business Users
     async fn get_business_users(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -14095,7 +13474,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Campaign Group Entities
     async fn get_campaign_group_entities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14105,7 +13483,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Campaign Group Rules
     async fn get_campaign_group_rules(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14115,7 +13492,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Campaign Group Stats
     async fn get_campaign_group_stats(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14125,7 +13501,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Campaign Info
     async fn get_campaign_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14135,7 +13510,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Event Guest List
     async fn get_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -14145,7 +13519,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom User's Inventory
     async fn get_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -14154,7 +13527,6 @@ pub trait Api<C: Send + Sync> {
     /// Get following
     async fn get_my_following(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         context: &C) -> Result<GetMyFollowingResponse, ApiError>;
@@ -14162,7 +13534,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Points Balance
     async fn get_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_campaign_id: String,
@@ -14172,7 +13543,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Points Balance as Business
     async fn get_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -14183,7 +13553,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Space
     async fn get_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -14193,7 +13562,6 @@ pub trait Api<C: Send + Sync> {
     /// Get the coins for a user (as a Business)
     async fn get_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -14203,7 +13571,6 @@ pub trait Api<C: Send + Sync> {
     /// Gets the coins balance for a Vatom User
     async fn get_user_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -14213,7 +13580,6 @@ pub trait Api<C: Send + Sync> {
     /// Get user followers
     async fn get_user_followers(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -14222,7 +13588,6 @@ pub trait Api<C: Send + Sync> {
     /// Get user following
     async fn get_user_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -14231,7 +13596,6 @@ pub trait Api<C: Send + Sync> {
     /// Get User Info
     async fn get_user_info(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -14240,7 +13604,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom User Profile
     async fn get_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         context: &C) -> Result<GetUserProfileResponse, ApiError>;
@@ -14248,7 +13611,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom Event
     async fn get_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -14258,7 +13620,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Vatom NFT Details
     async fn get_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
@@ -14267,7 +13628,6 @@ pub trait Api<C: Send + Sync> {
     /// List Vatom Communities
     async fn list_communities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -14277,7 +13637,6 @@ pub trait Api<C: Send + Sync> {
     /// List Vatom Events
     async fn list_events(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -14287,7 +13646,6 @@ pub trait Api<C: Send + Sync> {
     /// List Vatom Spaces
     async fn list_spaces(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -14297,7 +13655,6 @@ pub trait Api<C: Send + Sync> {
     /// List Coin Transactions for a Vatom User
     async fn list_user_coin_transactions(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -14307,7 +13664,6 @@ pub trait Api<C: Send + Sync> {
     /// List coin transactions for a user (as a Business)
     async fn list_user_coin_transactions_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -14318,7 +13674,6 @@ pub trait Api<C: Send + Sync> {
     /// Perform Action on NFT
     async fn perform_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_action: String,
@@ -14329,7 +13684,6 @@ pub trait Api<C: Send + Sync> {
     /// Redeem NFT
     async fn redeem_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -14339,7 +13693,6 @@ pub trait Api<C: Send + Sync> {
     /// Redeem the coins for a user (as a Business)
     async fn redeem_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -14350,7 +13703,6 @@ pub trait Api<C: Send + Sync> {
     /// Search for Vatom Businesses
     async fn search_businesses(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
@@ -14359,7 +13711,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Campaign Groups
     async fn search_campaign_groups(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -14368,7 +13719,6 @@ pub trait Api<C: Send + Sync> {
     /// Search User Identities
     async fn search_identities(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         context: &C) -> Result<SearchIdentitiesResponse, ApiError>;
@@ -14376,7 +13726,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Vatom User's Inventory
     async fn search_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
@@ -14385,7 +13734,6 @@ pub trait Api<C: Send + Sync> {
     /// Send NFT
     async fn send_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -14396,7 +13744,6 @@ pub trait Api<C: Send + Sync> {
     /// Set Points Balance as Business
     async fn set_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -14408,7 +13755,6 @@ pub trait Api<C: Send + Sync> {
     /// Transfer coins from Vatom Users
     async fn transfer_user_coins(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: String,
@@ -14418,7 +13764,6 @@ pub trait Api<C: Send + Sync> {
     /// Fund coins for a Business
     async fn update_business_coins(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -14428,7 +13773,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Vatom Event Guest List
     async fn update_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -14439,7 +13783,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Vatom Space
     async fn update_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -14450,7 +13793,6 @@ pub trait Api<C: Send + Sync> {
     /// Update the coins for a user (as a Business)
     async fn update_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -14461,7 +13803,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Vatom User Profile
     async fn update_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -14470,7 +13811,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Vatom Event
     async fn update_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -14481,7 +13821,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Vehicle
     async fn create_vehicle(
         &self,
-        version: f64,
         vehicle: String,
         body: Option<models::Vehicle>,
         context: &C) -> Result<CreateVehicleResponse, ApiError>;
@@ -14489,7 +13828,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Vehicle
     async fn search_vehicle(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -14502,21 +13840,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Vehicle
     async fn delete_vehicle(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<DeleteVehicleResponse, ApiError>;
 
     /// Get Vehicle
     async fn get_vehicle(
         &self,
-        version: f64,
         id: i64,
         context: &C) -> Result<GetVehicleResponse, ApiError>;
 
     /// Update Vehicle
     async fn update_vehicle(
         &self,
-        version: f64,
         id: i64,
         vehicle: String,
         body: Option<models::Vehicle>,
@@ -14525,7 +13860,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Vehicle Type
     async fn create_vehicle_type(
         &self,
-        version: f64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
         context: &C) -> Result<CreateVehicleTypeResponse, ApiError>;
@@ -14533,7 +13867,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Vehicle Type
     async fn search_vehicle_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -14546,21 +13879,18 @@ pub trait Api<C: Send + Sync> {
     /// Delete Vehicle Type
     async fn delete_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         context: &C) -> Result<DeleteVehicleTypeResponse, ApiError>;
 
     /// Get Vehicle Type
     async fn get_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         context: &C) -> Result<GetVehicleTypeResponse, ApiError>;
 
     /// Update Vehicle Type
     async fn update_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
@@ -14569,7 +13899,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Wallet Offers
     async fn create_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -14586,7 +13915,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Wallet Offer
     async fn delete_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14595,7 +13923,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Wallet Offer
     async fn get_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14608,7 +13935,6 @@ pub trait Api<C: Send + Sync> {
     /// Preview Wallet Offers
     async fn preview_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -14624,7 +13950,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Wallet Offers
     async fn search_offer_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         keyword: Option<String>,
@@ -14671,7 +13996,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Wallet Offer
     async fn update_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -14690,7 +14014,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Weather
     async fn search_weather(
         &self,
-        version: f64,
         region_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -14700,7 +14023,6 @@ pub trait Api<C: Send + Sync> {
     /// Create Word
     async fn create_word(
         &self,
-        version: f64,
         account_id: i64,
         word: String,
         definition: String,
@@ -14715,7 +14037,6 @@ pub trait Api<C: Send + Sync> {
     /// Delete Word
     async fn delete_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         context: &C) -> Result<DeleteWordResponse, ApiError>;
@@ -14723,7 +14044,6 @@ pub trait Api<C: Send + Sync> {
     /// Get Word
     async fn get_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         context: &C) -> Result<GetWordResponse, ApiError>;
@@ -14731,7 +14051,6 @@ pub trait Api<C: Send + Sync> {
     /// Search Words
     async fn get_words(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -14744,7 +14063,6 @@ pub trait Api<C: Send + Sync> {
     /// Update Word
     async fn update_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -14760,7 +14078,6 @@ pub trait Api<C: Send + Sync> {
     /// Run Workflow
     async fn run_workflow(
         &self,
-        version: f64,
         account_id: i64,
         workflow_id: i64,
         sku_id: Option<i64>,
@@ -14785,7 +14102,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Consumer
     async fn consumer_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         hostname: String,
@@ -14805,7 +14121,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Consumer
     async fn consumer_update(
         &self,
-        version: f64,
         app_key: String,
         queue_id: i64,
         data_mapping: String,
@@ -14817,7 +14132,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Queue
     async fn queue_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -14835,7 +14149,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Queue
     async fn queue_delete(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14844,7 +14157,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Queue
     async fn queue_get(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         queue_id: Option<i64>,
@@ -14857,7 +14169,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Publish Queue
     async fn queue_publish(
         &self,
-        version: f64,
         message: String,
         queue_id: Option<i64>,
         app_key: Option<String>,
@@ -14869,7 +14180,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Queue
     async fn queue_search(
         &self,
-        version: f64,
         queue_id: Option<i64>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14881,7 +14191,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Queue
     async fn queue_update(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14899,7 +14208,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Accounts by Location
     async fn account_location_search(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -14939,7 +14247,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Block Account
     async fn block_account(
         &self,
-        version: f64,
         account_id_being_blocked: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -14952,7 +14259,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Account
     async fn create_account(
         &self,
-        version: f64,
         username: String,
         password: String,
         name: Option<String>,
@@ -15030,7 +14336,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Account
     async fn edit_account(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -15118,7 +14423,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Username and Email
     async fn edit_username(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         email_address: Option<String>,
@@ -15128,7 +14432,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Account
     async fn get_account(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15146,7 +14449,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Profile Assets
     async fn get_profile_assets(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15166,7 +14468,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Accounts
     async fn get_referral_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         retrieve_type: Option<String>,
@@ -15183,7 +14484,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Account Settings
     async fn get_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -15193,7 +14493,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login as Account
     async fn login_delegate(
         &self,
-        version: f64,
         access_token: String,
         app_key: String,
         device_id: Option<String>,
@@ -15210,7 +14509,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login Account
     async fn login_general(
         &self,
-        version: f64,
         access_token: String,
         network_uid: String,
         app_key: String,
@@ -15229,7 +14527,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login Account (Username)
     async fn login_username(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -15245,7 +14542,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Logout Account
     async fn logout(
         &self,
-        version: f64,
         device_id: Option<String>,
         device_id_type: Option<String>,
         account_id: Option<i64>,
@@ -15256,7 +14552,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Merge Account
     async fn merge_account(
         &self,
-        version: f64,
         merge_account_id: i64,
         app_key: String,
         device_id: Option<String>,
@@ -15266,7 +14561,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Password
     async fn password_change(
         &self,
-        version: f64,
         account_id: i64,
         old_password: String,
         new_password: String,
@@ -15276,7 +14570,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Reset Password
     async fn password_reset(
         &self,
-        version: f64,
         token: String,
         password: String,
         confirm: String,
@@ -15285,7 +14578,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Request Password Reset
     async fn request_password_reset(
         &self,
-        version: f64,
         email: String,
         from: Option<String>,
         domain: Option<String>,
@@ -15296,14 +14588,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send Validation Request
     async fn request_validate_account(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<RequestValidateAccountResponse, ApiError>;
 
     /// Search Accounts
     async fn search_accounts(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -15327,7 +14617,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login Account (Encrypted Username)
     async fn secure_login(
         &self,
-        version: f64,
         username: String,
         password: String,
         game_type: String,
@@ -15342,7 +14631,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Account (Encrypted Username)
     async fn secure_signup(
         &self,
-        version: f64,
         device_id: String,
         username: String,
         password: String,
@@ -15409,7 +14697,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Save Match Token
     async fn set_match_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         match_token: Option<String>,
@@ -15422,7 +14709,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Account Active Status
     async fn update_actve_status(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         active: bool,
@@ -15433,7 +14719,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Location
     async fn update_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -15444,7 +14729,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Account Settings
     async fn update_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         blocked_notifications: Option<String>,
@@ -15462,21 +14746,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Save Validation Status
     async fn validate_account_signup(
         &self,
-        version: f64,
         token: String,
         ) -> Result<ValidateAccountSignupResponse, ApiError>;
 
     /// Validate Password Reset Token
     async fn validate_password_reset(
         &self,
-        version: f64,
         token: String,
         ) -> Result<ValidatePasswordResetResponse, ApiError>;
 
     /// Searches an Achievement Tier
-    async fn api_version_achievement_tier_search_post(
+    async fn achievement_tier_search_post(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -15488,12 +14769,11 @@ pub trait ApiNoContext<C: Send + Sync> {
         descending_goal: Option<bool>,
         start: Option<i64>,
         limit: Option<i64>,
-        ) -> Result<ApiVersionAchievementTierSearchPostResponse, ApiError>;
+        ) -> Result<AchievementTierSearchPostResponse, ApiError>;
 
     /// Create Achievement
     async fn create_achievement(
         &self,
-        version: f64,
         app_key: String,
         title: String,
         device_id: Option<String>,
@@ -15512,7 +14792,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Achievement Tier
     async fn create_achievement_tier(
         &self,
-        version: f64,
         achievement_id: i64,
         score_all_instances: bool,
         device_id: Option<String>,
@@ -15532,7 +14811,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Achievement
     async fn delete_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteAchievementResponse, ApiError>;
@@ -15540,7 +14818,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Achievement Tier
     async fn delete_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteAchievementTierResponse, ApiError>;
@@ -15548,7 +14825,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Achievement
     async fn get_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15558,7 +14834,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Gets an achievement tier
     async fn get_achievement_tier(
         &self,
-        version: f64,
         account_id: i64,
         achievement_tier_id: i64,
         ) -> Result<GetAchievementTierResponse, ApiError>;
@@ -15566,7 +14841,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Achievement Progress
     async fn get_user_achievements(
         &self,
-        version: f64,
         return_nulls: bool,
         app_key: String,
         include_undiscovered: bool,
@@ -15583,14 +14857,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Achievement Tags
     async fn list_achievement_tags(
         &self,
-        version: f64,
         app_key: Option<String>,
         ) -> Result<ListAchievementTagsResponse, ApiError>;
 
     /// List Achievements
     async fn list_achievements(
         &self,
-        version: f64,
         sort_field: models::ListAchievementsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -15607,7 +14879,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Achievements
     async fn search_achievements(
         &self,
-        version: f64,
         app_key: String,
         sort_field: models::SearchAchievementsSortFieldParameter,
         descending: bool,
@@ -15625,7 +14896,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Achievement
     async fn update_achievement(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         achievement_id: Option<i64>,
@@ -15646,7 +14916,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Achievement Tier
     async fn update_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15666,7 +14935,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Achievement Progress
     async fn update_user_achievement(
         &self,
-        version: f64,
         account_id: i64,
         achievement_id: Option<i64>,
         tag: Option<String>,
@@ -15680,14 +14948,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create an entity reference.
     async fn create_entity_reference(
         &self,
-        version: f64,
         body: models::EntityReference,
         ) -> Result<CreateEntityReferenceResponse, ApiError>;
 
     /// Create Album
     async fn add_album_collection(
         &self,
-        version: f64,
         title: String,
         cover_asset_nullable: bool,
         include_cover_in_asset_list: bool,
@@ -15739,7 +15005,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Album Users
     async fn add_album_users(
         &self,
-        version: f64,
         album_id: i64,
         include_friend_group: bool,
         device_id: Option<String>,
@@ -15755,7 +15020,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Approve Album
     async fn approve_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15766,7 +15030,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     ///  Get Album
     async fn get_album_collection(
         &self,
-        version: f64,
         return_nulls: bool,
         album_id: i64,
         device_id: Option<String>,
@@ -15781,7 +15044,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Leave Album
     async fn leave_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15790,7 +15052,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Album
     async fn remove_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15799,7 +15060,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Album Users
     async fn remove_album_users(
         &self,
-        version: f64,
         album_id: i64,
         remove_friend_group: bool,
         device_id: Option<String>,
@@ -15811,7 +15071,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Albums
     async fn search_albums(
         &self,
-        version: f64,
         filter: String,
         album_type_id: i64,
         sub_type: String,
@@ -15877,7 +15136,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Album
     async fn update_album_collection(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -15928,7 +15186,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get User Activity
     async fn activities(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         account_id: i64,
@@ -15937,7 +15194,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Aggregated Filtered Usage
     async fn aggregated_filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -15974,7 +15230,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Filtered Usage
     async fn filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -16019,7 +15274,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Usage Record
     async fn usage(
         &self,
-        version: f64,
         tag: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16056,7 +15310,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Multiple Usage Records
     async fn usage_batch(
         &self,
-        version: f64,
         app_key: String,
         device: String,
         data: String,
@@ -16073,7 +15326,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get App Data
     async fn get_app_data(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         device_id: Option<String>,
@@ -16104,7 +15356,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create App Data
     async fn post_app_data(
         &self,
-        version: f64,
         game_type: String,
         start: i32,
         limit: i32,
@@ -16136,7 +15387,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Regenerate App Data
     async fn regen_app_data(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         build_version: Option<String>,
@@ -16146,7 +15396,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Application
     async fn create_application(
         &self,
-        version: f64,
         app_name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16231,7 +15480,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Ad Placement
     async fn create_application_placement(
         &self,
-        version: f64,
         app_key: String,
         size: models::CreateApplicationPlacementSizeParameter,
         device_id: Option<String>,
@@ -16248,7 +15496,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Application
     async fn delete_application(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         ) -> Result<DeleteApplicationResponse, ApiError>;
@@ -16256,7 +15503,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Ad Placement
     async fn delete_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16265,7 +15511,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Application
     async fn get_application(
         &self,
-        version: f64,
         app_key: Option<String>,
         application_id: Option<i64>,
         ) -> Result<GetApplicationResponse, ApiError>;
@@ -16273,7 +15518,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Ad Placement
     async fn get_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16282,13 +15526,11 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get API versions
     async fn get_application_versions(
         &self,
-        version: f64,
         ) -> Result<GetApplicationVersionsResponse, ApiError>;
 
     /// Search Application Users
     async fn get_unique_users_by_app(
         &self,
-        version: f64,
         app_key: String,
         q: Option<String>,
         keyword: Option<String>,
@@ -16302,7 +15544,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Applications
     async fn list_applications(
         &self,
-        version: f64,
         account_id: Option<i64>,
         q: Option<String>,
         keyword: Option<String>,
@@ -16328,7 +15569,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search for Ad Placements
     async fn search_application_placement(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16339,7 +15579,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search for Application Settings
     async fn search_application_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -16353,7 +15592,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Applications
     async fn search_applications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -16375,7 +15613,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Application
     async fn update_application(
         &self,
-        version: f64,
         app_key: String,
         app_name: String,
         device_id: Option<String>,
@@ -16461,7 +15698,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Change Appliation Status
     async fn update_application_active(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: bool,
@@ -16470,7 +15706,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Ad Placement
     async fn update_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16487,7 +15722,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Application Certificate
     async fn upload_application_certificate(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16497,7 +15731,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create AppConfig
     async fn create_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         config_version: String,
@@ -16510,7 +15743,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete AppConfig
     async fn delete_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         ) -> Result<DeleteApplicationConfigResponse, ApiError>;
@@ -16518,7 +15750,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get AppConfig
     async fn get_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         ) -> Result<GetApplicationConfigResponse, ApiError>;
@@ -16526,7 +15757,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get AppConfig by Version
     async fn get_application_config_by_config_version(
         &self,
-        version: f64,
         app_key: String,
         config_version: String,
         retailer_id: Option<i64>,
@@ -16538,7 +15768,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search AppConfigs
     async fn search_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         retailer_id: Option<i64>,
@@ -16554,7 +15783,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update AppConfig
     async fn update_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         app_key: Option<String>,
@@ -16568,7 +15796,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Convert Offer to Creative
     async fn asset_morph(
         &self,
-        version: f64,
         offer_id: i64,
         ad_size: models::CreateApplicationPlacementSizeParameter,
         creative_id: Option<i64>,
@@ -16581,7 +15808,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Asset
     async fn create_asset(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16621,7 +15847,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Asset
     async fn delete_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16632,7 +15857,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Asset
     async fn get_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16642,7 +15866,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Asset from Collection
     async fn remove_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16656,7 +15879,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Assets
     async fn search_assets(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         album_ids: Option<String>,
@@ -16686,7 +15908,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Asset
     async fn update_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -16723,14 +15944,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Download Asset
     async fn asset_download(
         &self,
-        version: f64,
         filename: String,
         ) -> Result<AssetDownloadResponse, ApiError>;
 
     /// Search Assignment Assignees
     async fn assigment_assignee_account_search(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         ) -> Result<AssigmentAssigneeAccountSearchResponse, ApiError>;
@@ -16738,7 +15957,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Assignment
     async fn assignment_create(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         assignee_account_id: i64,
@@ -16751,7 +15969,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Assignment
     async fn assignment_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         ) -> Result<AssignmentDeleteResponse, ApiError>;
@@ -16759,7 +15976,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Assignment
     async fn assignment_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         ) -> Result<AssignmentGetResponse, ApiError>;
@@ -16767,7 +15983,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Assignments
     async fn assignment_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentSearchSortFieldParameter,
         descending: bool,
@@ -16784,7 +15999,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Assignment Status
     async fn assignment_status_create(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -16801,7 +16015,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Deletes Assignment Status
     async fn assignment_status_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         ) -> Result<AssignmentStatusDeleteResponse, ApiError>;
@@ -16809,7 +16022,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Assignment Status
     async fn assignment_status_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         ) -> Result<AssignmentStatusGetResponse, ApiError>;
@@ -16817,7 +16029,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Assignment Statuses
     async fn assignment_status_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentStatusSearchSortFieldParameter,
         descending: bool,
@@ -16835,7 +16046,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Assignment Status
     async fn assignment_status_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -16852,7 +16062,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Assignment
     async fn assignment_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         name: Option<String>,
@@ -16866,7 +16075,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Audience
     async fn create_audience(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         description: Option<String>,
@@ -16901,7 +16109,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Audience
     async fn delete_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         ) -> Result<DeleteAudienceResponse, ApiError>;
@@ -16909,13 +16116,11 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Age Groups
     async fn get_age_groups(
         &self,
-        version: f64,
         ) -> Result<GetAgeGroupsResponse, ApiError>;
 
     /// Get Audience
     async fn get_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         app_key: Option<String>,
@@ -16927,7 +16132,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Audiences
     async fn get_audience_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         album_ids: Option<String>,
         keyword: Option<String>,
@@ -16952,20 +16156,17 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Devices
     async fn get_devices(
         &self,
-        version: f64,
         include_inactive: bool,
         ) -> Result<GetDevicesResponse, ApiError>;
 
     /// Get Experiences
     async fn get_experiences(
         &self,
-        version: f64,
         ) -> Result<GetExperiencesResponse, ApiError>;
 
     /// Get GroupedAudiences
     async fn get_grouped_audiences(
         &self,
-        version: f64,
         account_id: i64,
         audience_grouping_id: String,
         ) -> Result<GetGroupedAudiencesResponse, ApiError>;
@@ -16973,7 +16174,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Suggestions by Audience
     async fn list_by_account(
         &self,
-        version: f64,
         account_id: i64,
         limit: i32,
         suggestion_type: String,
@@ -16982,7 +16182,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Offers by Audience
     async fn list_by_audience(
         &self,
-        version: f64,
         limit: i32,
         gender: Option<String>,
         age: Option<i32>,
@@ -16994,7 +16193,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Sent Suggestions 
     async fn list_lastest_by_account(
         &self,
-        version: f64,
         account_id: i64,
         timeframe: i32,
         suggestion_type: String,
@@ -17003,7 +16201,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send Suggestions
     async fn send_by_account(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
@@ -17012,7 +16209,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Audience
     async fn update_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         name: Option<String>,
@@ -17049,7 +16245,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Bid
     async fn create_bid(
         &self,
-        version: f64,
         biddable_type: String,
         biddable_id: i64,
         amount_per_view: f64,
@@ -17063,7 +16258,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Bid
     async fn delete_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17072,7 +16266,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Bid
     async fn get_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17081,7 +16274,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Bid
     async fn update_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17094,7 +16286,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Billable
     async fn create_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -17112,7 +16303,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Billable
     async fn delete_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteBillableEntityResponse, ApiError>;
@@ -17120,7 +16310,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Billable
     async fn get_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         include_counts: Option<bool>,
@@ -17130,7 +16319,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Billable
     async fn update_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -17148,7 +16336,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Payment Method
     async fn add_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         account_name: Option<String>,
@@ -17177,7 +16364,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Payment Method
     async fn create_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         account_name: Option<String>,
         first_name: Option<String>,
@@ -17208,7 +16394,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Smart Contract
     async fn create_smart_contract(
         &self,
-        version: f64,
         account_id: i64,
         token_name: String,
         token_symbol: String,
@@ -17218,7 +16403,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Crypto Balances
     async fn get_crypto_balance(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: Option<i64>,
         payment_method_id: Option<i64>,
@@ -17227,7 +16411,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Payment Method
     async fn get_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         get_current_balance: Option<bool>,
@@ -17236,7 +16419,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Payment Methods
     async fn search_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         provider: Option<String>,
         param_type: Option<String>,
@@ -17250,7 +16432,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Detail Status
     async fn get_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         response_group: models::GetStatusCsvResponseGroupParameter,
@@ -17261,7 +16442,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Status
     async fn list_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -17270,7 +16450,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Batch Status
     async fn status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         ) -> Result<StatusCsvResponse, ApiError>;
@@ -17278,7 +16457,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Upload CSV
     async fn upload_csv(
         &self,
-        version: f64,
         account_id: i64,
         upload_type: models::UploadCsvUploadTypeParameter,
         import_file: swagger::ByteArray,
@@ -17289,14 +16467,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Cargo Type
     async fn create_cargo_type(
         &self,
-        version: f64,
         body: Option<models::CargoType>,
         ) -> Result<CreateCargoTypeResponse, ApiError>;
 
     /// Search Cargo Type
     async fn search_cargo_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -17309,21 +16485,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Cargo Type
     async fn delete_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         ) -> Result<DeleteCargoTypeResponse, ApiError>;
 
     /// Get Cargo Type
     async fn get_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         ) -> Result<GetCargoTypeResponse, ApiError>;
 
     /// Update Cargo Type
     async fn update_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         body: Option<models::CargoType>,
         ) -> Result<UpdateCargoTypeResponse, ApiError>;
@@ -17331,7 +16504,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Carriers
     async fn search_carriers(
         &self,
-        version: f64,
         keyword: Option<String>,
         descending: Option<bool>,
         start: Option<i32>,
@@ -17342,7 +16514,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Categories by Distance
     async fn category_distance_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -17368,7 +16539,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Category
     async fn create_category(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -17388,7 +16558,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Category
     async fn delete_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         ) -> Result<DeleteCategoryResponse, ApiError>;
@@ -17396,7 +16565,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Duplicate Category
     async fn duplicate_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         app_key: Option<String>,
@@ -17406,7 +16574,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Category
     async fn get_category(
         &self,
-        version: f64,
         category_id: i64,
         return_external: Option<bool>,
         ) -> Result<GetCategoryResponse, ApiError>;
@@ -17414,7 +16581,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Categories
     async fn search_categories(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -17441,7 +16607,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Category
     async fn update_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         parent_category_id: Option<i64>,
@@ -17461,7 +16626,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Connection
     async fn add_connection_to_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -17476,7 +16640,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Connections
     async fn add_connections_to_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17489,7 +16652,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Connection Groups
     async fn add_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -17502,7 +16664,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create or Update Connection
     async fn create_or_update_connection(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_id: Option<i64>,
@@ -17522,7 +16683,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create or Update Connection Group
     async fn create_or_update_group(
         &self,
-        version: f64,
         return_nulls: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17542,7 +16702,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Accept Follow Request
     async fn follow_accept(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -17551,7 +16710,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Reject Follow Request
     async fn follow_reject(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -17560,7 +16718,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Follower / Unfollow
     async fn follow_remove(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -17569,7 +16726,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send Follow Request
     async fn follow_request(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -17579,7 +16735,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Accept Friend
     async fn friend_accept(
         &self,
-        version: f64,
         friend_account_id: i64,
         notify_friend: bool,
         device_id: Option<String>,
@@ -17592,7 +16747,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Decline Friend
     async fn friend_reject(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17605,7 +16759,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Friend
     async fn friend_remove(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17616,7 +16769,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Request Friend
     async fn friend_request(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17628,7 +16780,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Sent Friend Requests
     async fn get_connection_sent_friend_requests(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetConnectionSentFriendRequestsResponse, ApiError>;
@@ -17636,7 +16787,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Connections
     async fn get_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         filter: String,
         sort_field: String,
@@ -17657,7 +16807,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Connection Group
     async fn get_group_details(
         &self,
-        version: f64,
         combine_connections: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17669,7 +16818,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Connection Groups
     async fn group_search(
         &self,
-        version: f64,
         sort_field: models::GroupSearchSortFieldParameter,
         descending: bool,
         active_only: bool,
@@ -17685,7 +16833,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Connection
     async fn remove_connection_from_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -17700,7 +16847,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Connections
     async fn remove_connections_from_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17713,7 +16859,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Connection Group
     async fn remove_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -17725,7 +16870,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Connection Groups
     async fn remove_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -17738,7 +16882,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Possible Connections
     async fn search_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         start: i32,
         limit: i32,
@@ -17759,7 +16902,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create or Update Contest
     async fn add_or_update_album_contest(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -17790,7 +16932,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Approve Contest
     async fn approve_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         approval_status: models::ApproveAlbumApprovalStatusParameter,
         device_id: Option<String>,
@@ -17800,7 +16941,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Contest
     async fn delete_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17811,7 +16951,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Contest
     async fn get_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -17822,7 +16961,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Contests
     async fn get_album_contests(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -17847,7 +16985,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Vote on Contest
     async fn vote_on_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         album_id: i64,
         device_id: Option<String>,
@@ -17860,7 +16997,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Preview
     async fn add_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<AddPreviewResponse, ApiError>;
@@ -17868,7 +17004,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Find Missions
     async fn ads_find(
         &self,
-        version: f64,
         app_key: String,
         randomize: bool,
         targeted_ads_only: bool,
@@ -17890,7 +17025,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Creative
     async fn create_creative(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: bool,
@@ -17911,7 +17045,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Creative
     async fn delete_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<DeleteCreativeResponse, ApiError>;
@@ -17919,7 +17052,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Creative
     async fn get_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<GetCreativeResponse, ApiError>;
@@ -17927,7 +17059,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Creatives
     async fn get_creatives_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -17939,7 +17070,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove Preview
     async fn remove_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<RemovePreviewResponse, ApiError>;
@@ -17947,7 +17077,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Creative
     async fn update_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         name: Option<String>,
@@ -17967,7 +17096,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Dependent
     async fn create(
         &self,
-        version: f64,
         account_id: i64,
         body: Option<models::Account>,
         ) -> Result<CreateResponse, ApiError>;
@@ -17975,14 +17103,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get dependent list of an account
     async fn get_dependents(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<GetDependentsResponse, ApiError>;
 
     /// Delete Dependent
     async fn remove_dependent(
         &self,
-        version: f64,
         account_id: i64,
         dependent_id: i64,
         ) -> Result<RemoveDependentResponse, ApiError>;
@@ -17990,14 +17116,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Check Disbursements
     async fn check_disbursements(
         &self,
-        version: f64,
         disbursement_id: i64,
         ) -> Result<CheckDisbursementsResponse, ApiError>;
 
     /// Create Disbursement
     async fn create_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: i64,
         original_sender_account_id: i64,
@@ -18013,7 +17137,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Disbursement
     async fn get_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         ) -> Result<GetDisbursementResponse, ApiError>;
@@ -18021,7 +17144,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Disbursements
     async fn search_disbursements(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: Option<i64>,
         statuses: Option<String>,
@@ -18037,7 +17159,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Disbursement
     async fn update_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         amount: Option<f64>,
@@ -18053,7 +17174,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Assign Employee
     async fn assign_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         employee_account_id: i64,
@@ -18063,7 +17183,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Assign Employee to Location
     async fn assign_to_location_employee(
         &self,
-        version: f64,
         account_id: i64,
         retailer_location_id: i64,
         employee_account_id: Option<i64>,
@@ -18073,7 +17192,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Employee
     async fn create_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         username: String,
@@ -18109,7 +17227,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Employee
     async fn delete_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         ) -> Result<DeleteEmployeeResponse, ApiError>;
@@ -18117,7 +17234,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Employee
     async fn get_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         settings_app_key: Option<String>,
@@ -18126,7 +17242,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Employees
     async fn search_employees(
         &self,
-        version: f64,
         account_id: i64,
         role: Option<String>,
         retailer_id: Option<i64>,
@@ -18149,7 +17264,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Unassign Employee
     async fn unassign_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         ) -> Result<UnassignEmployeeResponse, ApiError>;
@@ -18157,7 +17271,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Employee
     async fn update_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         manager_account_id: Option<i64>,
@@ -18193,7 +17306,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Attend Event
     async fn attend_event(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -18209,7 +17321,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Event
     async fn create_event(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         retailer_location_ids: Option<String>,
@@ -18227,7 +17338,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Event
     async fn delete_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         ) -> Result<DeleteEventResponse, ApiError>;
@@ -18235,7 +17345,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Event
     async fn get_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         ) -> Result<GetEventResponse, ApiError>;
@@ -18243,7 +17352,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Event Attendance
     async fn search_event_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -18268,7 +17376,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Events
     async fn search_events(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         active_only: Option<bool>,
@@ -18287,7 +17394,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Event
     async fn update_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         retailer_location_ids: Option<String>,
@@ -18305,7 +17411,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Facebook Token
     async fn get_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -18315,7 +17420,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Post to Facebook
     async fn graph_interface(
         &self,
-        version: f64,
         event: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -18331,7 +17435,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Favorite
     async fn add_favorite(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         device_id: Option<String>,
@@ -18343,7 +17446,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Favorite
     async fn delete_favorite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         favorite_id: Option<i64>,
@@ -18354,7 +17456,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Favorite
     async fn get_favorite(
         &self,
-        version: f64,
         favorite_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -18365,7 +17466,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Favorites
     async fn search_favorites(
         &self,
-        version: f64,
         favoritable_type: String,
         sort_field: models::SearchFavoritesSortFieldParameter,
         descending: bool,
@@ -18385,7 +17485,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Who has Favorited
     async fn who_has_favorited(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         start: i32,
@@ -18400,7 +17499,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Filter
     async fn create_filter(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -18415,7 +17513,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Filter
     async fn delete_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         ) -> Result<DeleteFilterResponse, ApiError>;
@@ -18423,14 +17520,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Filter
     async fn get_filter(
         &self,
-        version: f64,
         filter_id: i64,
         ) -> Result<GetFilterResponse, ApiError>;
 
     /// Search Filters
     async fn search_filters(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -18446,7 +17541,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Filter
     async fn update_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         parent_filter_id: Option<i64>,
@@ -18461,7 +17555,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Flag
     async fn create_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -18474,7 +17567,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Flag
     async fn delete_flag(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         item_being_flagged_type: Option<String>,
@@ -18486,7 +17578,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Flag
     async fn get_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -18498,7 +17589,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Flag Threshold
     async fn get_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         app_key: String,
         ) -> Result<GetFlagThresholdResponse, ApiError>;
@@ -18506,7 +17596,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Flag Threshold
     async fn update_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         threshold: i64,
         app_key: String,
@@ -18517,7 +17606,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create a Game
     async fn create_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         title: Option<String>,
@@ -18530,7 +17618,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete a Game
     async fn delete_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         ) -> Result<DeleteGameResponse, ApiError>;
@@ -18538,7 +17625,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get a Game by id
     async fn get_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         include_game_data: Option<bool>,
@@ -18547,7 +17633,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search a Game
     async fn search_games(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -18561,7 +17646,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update a Game
     async fn update_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         game_id: Option<i64>,
         app_key: Option<String>,
@@ -18575,7 +17659,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Game Level
     async fn create_game_level(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         game_data: String,
@@ -18607,7 +17690,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Game Level
     async fn delete_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         ) -> Result<DeleteGameLevelResponse, ApiError>;
@@ -18615,7 +17697,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Game Level
     async fn get_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         include_game_data: Option<bool>,
@@ -18624,7 +17705,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Game Levels
     async fn get_game_levels_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -18640,7 +17720,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Game Level by Billable Entity
     async fn get_game_levels_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         keyword: Option<String>,
@@ -18654,7 +17733,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Level Questions
     async fn get_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         ) -> Result<GetQuestionsInLevelResponse, ApiError>;
@@ -18662,7 +17740,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Level Words
     async fn get_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         ) -> Result<GetWordsInLevelResponse, ApiError>;
@@ -18670,7 +17747,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Game Level
     async fn update_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         app_key: Option<String>,
@@ -18703,7 +17779,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Level Questions
     async fn update_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         question_ids: String,
@@ -18712,7 +17787,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Level Words
     async fn update_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         word_ids: String,
@@ -18721,7 +17795,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Accept Invite
     async fn accept_invite(
         &self,
-        version: f64,
         token: String,
         account_id: i64,
         album_id: Option<i64>,
@@ -18741,7 +17814,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Contest
     async fn album_contest_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -18754,7 +17826,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Collection
     async fn album_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -18767,7 +17838,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Event
     async fn event_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         listing_id: i64,
@@ -18778,7 +17848,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Game Level
     async fn game_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -18791,7 +17860,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Invite
     async fn get_invite(
         &self,
-        version: f64,
         account_id: Option<i64>,
         token: Option<String>,
         album_id: Option<i64>,
@@ -18806,7 +17874,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Mission
     async fn mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -18819,7 +17886,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Offer
     async fn offer_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_id: i64,
@@ -18828,7 +17894,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Offer Location
     async fn offer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_location_id: i64,
@@ -18837,7 +17902,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Invite to Retailer Location
     async fn retailer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         retailer_location_id: i64,
@@ -18847,7 +17911,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn create_leaderboard(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         rank_type: Option<String>,
@@ -18866,7 +17929,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete the Leader Board
     async fn delete_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteLeaderboardResponse, ApiError>;
@@ -18874,7 +17936,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Read a leaderboard by id and retrieve the matching ranking list
     async fn get_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         include_full_ranking_list: Option<bool>,
@@ -18883,7 +17944,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search leaderboard and retrieve the matching ranking list
     async fn search_leaderboards(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         global_only: Option<bool>,
@@ -18901,7 +17961,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn update_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -18922,7 +17981,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Like
     async fn register_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -18940,7 +17998,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Like
     async fn remove_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -18952,7 +18009,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Likes
     async fn search_likes(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -18969,7 +18025,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Listing
     async fn create_listing(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         filter_ids: Option<String>,
@@ -18989,7 +18044,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Listing
     async fn delete_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         ) -> Result<DeleteListingResponse, ApiError>;
@@ -18997,14 +18051,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Listing
     async fn get_listing(
         &self,
-        version: f64,
         listing_id: i64,
         ) -> Result<GetListingResponse, ApiError>;
 
     /// Search Listings
     async fn search_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         start: Option<i32>,
@@ -19025,7 +18077,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Summary Listing
     async fn summary_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start_date: Option<i64>,
         category_ids: Option<String>,
@@ -19036,7 +18087,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Listing
     async fn update_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         filter_ids: Option<String>,
@@ -19057,7 +18107,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Trilateration Data with File
     async fn cache_trilateration_data(
         &self,
-        version: f64,
         udid: String,
         source_time: Option<i64>,
         minimum_sample_size: Option<i32>,
@@ -19068,21 +18117,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Trilateration Data with Rest
     async fn cache_trilateration_data_gzip(
         &self,
-        version: f64,
         body: Option<models::TrilatCacheRequest>,
         ) -> Result<CacheTrilaterationDataGzipResponse, ApiError>;
 
     /// Get Location by IP
     async fn get_location_by_ip(
         &self,
-        version: f64,
         ip: Option<String>,
         ) -> Result<GetLocationByIpResponse, ApiError>;
 
     /// Get Location by Trilateration
     async fn get_location_by_trilateration(
         &self,
-        version: f64,
         account_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -19093,7 +18139,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Regions or Postal Codes
     async fn get_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         currentlatitude: Option<f64>,
@@ -19118,14 +18163,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create new location
     async fn create_location_v2(
         &self,
-        version: f64,
         body: Option<models::Location>,
         ) -> Result<CreateLocationV2Response, ApiError>;
 
     /// Update an existing location
     async fn update_location_v2(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Location>,
         ) -> Result<UpdateLocationV2Response, ApiError>;
@@ -19133,7 +18176,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Media
     async fn create_media(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -19196,7 +18238,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Media
     async fn delete_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         ) -> Result<DeleteMediaResponse, ApiError>;
@@ -19204,7 +18245,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Media Get
     async fn get_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         ) -> Result<GetMediaResponse, ApiError>;
@@ -19212,7 +18252,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Media
     async fn search_media(
         &self,
-        version: f64,
         account_id: i64,
         active_only: bool,
         sort_field: models::SearchEventsSortFieldParameter,
@@ -19227,7 +18266,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Media
     async fn update_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         retailer_location_ids: Option<String>,
@@ -19292,7 +18330,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Mission
     async fn create_mission(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         description: Option<String>,
@@ -19324,7 +18361,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Mission
     async fn delete_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         ) -> Result<DeleteMissionResponse, ApiError>;
@@ -19332,7 +18368,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Find Missions
     async fn find_missions(
         &self,
-        version: f64,
         app_key: String,
         suffix: Option<String>,
         param_type: Option<String>,
@@ -19357,7 +18392,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Mission
     async fn get_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         return_creative: Option<bool>,
@@ -19366,7 +18400,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Import Mission
     async fn import_mission(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
@@ -19380,7 +18413,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Mission Formats
     async fn search_mission_formats(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         active_only: bool,
@@ -19389,7 +18421,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Missions
     async fn search_missions(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         sub_type: Option<String>,
@@ -19406,7 +18437,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Missions by Billable Entity
     async fn search_missions_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start: Option<i32>,
@@ -19422,7 +18452,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Mission
     async fn update_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -19453,7 +18482,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Mission Invite
     async fn create_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -19464,7 +18492,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Mission Invite
     async fn delete_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -19475,7 +18502,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Mission Invite
     async fn get_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -19487,7 +18513,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Mission Invites
     async fn search_mission_invites(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -19506,7 +18531,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Mission Invite
     async fn update_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -19523,7 +18547,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Batch Note Operation
     async fn batch_operation(
         &self,
-        version: f64,
         notable_id: i64,
         notable_type: String,
         device_id: Option<String>,
@@ -19534,7 +18557,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Note
     async fn create_note(
         &self,
-        version: f64,
         comment: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19582,7 +18604,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Note
     async fn delete_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19594,7 +18615,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Note
     async fn get_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19604,7 +18624,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Notes
     async fn search_notes(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         notable_type: Option<String>,
@@ -19627,7 +18646,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Note
     async fn update_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19674,7 +18692,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Notification Template
     async fn create_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         conduit: String,
         title: String,
@@ -19687,7 +18704,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create or update blocked notification settings
     async fn create_or_update_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         data: String,
         account_id: Option<i64>,
@@ -19696,7 +18712,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Notification Template
     async fn delete_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         ) -> Result<DeleteNotificationTemplateResponse, ApiError>;
@@ -19704,7 +18719,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Notification Template
     async fn get_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         ) -> Result<GetNotificationTemplateResponse, ApiError>;
@@ -19712,7 +18726,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Notifications
     async fn get_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -19739,7 +18752,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Register Notification Token
     async fn register_notification_token(
         &self,
-        version: f64,
         token: String,
         push_type: models::RegisterNotificationTokenPushTypeParameter,
         device_id: Option<String>,
@@ -19755,7 +18767,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search on the user's blocked notification settings
     async fn search_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         account_id: Option<i64>,
         search_tags: Option<String>,
@@ -19773,7 +18784,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Notification Templates
     async fn search_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -19790,7 +18800,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search for Recipients
     async fn search_recipients(
         &self,
-        version: f64,
         sort_field: models::SearchRecipientsSortFieldParameter,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19809,7 +18818,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search for Recipients (Counts/Grouped)
     async fn search_recipients_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -19827,7 +18835,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send Batch Notifications
     async fn send_batch_notifications(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         custom_message: String,
@@ -19842,7 +18849,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send Custom Notifications
     async fn send_custom_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         receiver_account_ids: Option<String>,
@@ -19866,7 +18872,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Notification Template
     async fn update_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         title: Option<String>,
@@ -19877,7 +18882,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Field
     async fn add_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -19888,7 +18892,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Object
     async fn create_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -19897,7 +18900,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Field
     async fn delete_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -19907,7 +18909,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Object
     async fn delete_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -19916,7 +18917,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Object
     async fn get_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -19925,7 +18925,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Objects
     async fn search_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i64,
@@ -19936,7 +18935,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Data
     async fn create_data(
         &self,
-        version: f64,
         object_name: String,
         account_id: Option<i64>,
         body: Option<String>,
@@ -19945,7 +18943,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Data
     async fn search_data(
         &self,
-        version: f64,
         object_name: String,
         count: bool,
         start: i64,
@@ -19959,7 +18956,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Data
     async fn delete_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -19968,7 +18964,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Data
     async fn get_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -19978,7 +18973,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Data
     async fn update_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -19988,7 +18982,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Offer Locations
     async fn batch_update_offer_locations(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -19997,7 +18990,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Offer
     async fn create_offer(
         &self,
-        version: f64,
         include_offer_locations: bool,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -20089,7 +19081,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Offer
     async fn delete_offer(
         &self,
-        version: f64,
         offer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -20098,7 +19089,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Offer Location
     async fn delete_offer_location(
         &self,
-        version: f64,
         offer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -20107,7 +19097,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offer
     async fn get_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -20117,7 +19106,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offer
     async fn get_offer_details(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -20133,7 +19121,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offers (Counts)
     async fn get_offer_list_counts(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: Option<f64>,
@@ -20143,7 +19130,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offer Location
     async fn get_offer_location(
         &self,
-        version: f64,
         offer_location_id: Option<i64>,
         udid: Option<String>,
         ) -> Result<GetOfferLocationResponse, ApiError>;
@@ -20151,7 +19137,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offer Locations
     async fn get_offer_locations_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchOffersForConsumerGroupByParameter,
         descending: bool,
         start: i32,
@@ -20177,7 +19162,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offers
     async fn get_offers_for_retailers(
         &self,
-        version: f64,
         offer_visibility: models::CreateMediaOfferVisibilityParameter,
         sort_field: models::SearchEventsSortFieldParameter,
         descending: bool,
@@ -20214,7 +19198,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Offer Transaction
     async fn redeem_offer_transaction(
         &self,
-        version: f64,
         offer_transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -20225,7 +19208,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offer Transactions
     async fn search_offer_transactions_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchEventTransactionsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -20255,7 +19237,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offers
     async fn search_offers_for_consumer(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         recommendation_type: models::SearchOffersForConsumerRecommendationTypeParameter,
@@ -20292,7 +19273,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offers (Top)
     async fn top_offer_transactions(
         &self,
-        version: f64,
         start: Option<i32>,
         limit: Option<i32>,
         ) -> Result<TopOfferTransactionsResponse, ApiError>;
@@ -20300,7 +19280,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Offer
     async fn update_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -20393,7 +19372,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Activate Offer
     async fn update_offer_status(
         &self,
-        version: f64,
         offer_ids: String,
         active: bool,
         device_id: Option<String>,
@@ -20403,7 +19381,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Offer Status
     async fn create_offer_transaction_status(
         &self,
-        version: f64,
         name: String,
         code: i32,
         device_id: Option<String>,
@@ -20419,7 +19396,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Offer Status
     async fn delete_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -20430,7 +19406,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offer Status
     async fn get_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -20441,7 +19416,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offer Status
     async fn search_offer_transaction_statuses(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -20459,7 +19433,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Offer Status
     async fn update_offer_transaction_status(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -20476,7 +19449,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Generate images with OpenAI
     async fn image_generation(
         &self,
-        version: f64,
         account_id: i64,
         post_body: String,
         return_raw_response: Option<bool>,
@@ -20485,14 +19457,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Request Optimization
     async fn request_optimization(
         &self,
-        version: f64,
         body: Option<models::Orders>,
         ) -> Result<RequestOptimizationResponse, ApiError>;
 
     /// Get Optimization Result
     async fn get_optimization_result(
         &self,
-        version: f64,
         batch_id: String,
         start: i32,
         limit: i32,
@@ -20501,7 +19471,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add Movie
     async fn add_movie(
         &self,
-        version: f64,
         account_id: i64,
         movie_name: String,
         third_party_account_id: Option<String>,
@@ -20514,7 +19483,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Docs
     async fn ai_docs(
         &self,
-        version: f64,
         account_id: i64,
         doc: String,
         return_topics: Option<bool>,
@@ -20525,7 +19493,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Find images
     async fn ai_find_images(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         parse_flag: Option<String>,
@@ -20536,7 +19503,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tags
     async fn ai_tags(
         &self,
-        version: f64,
         account_id: i64,
         tags: String,
         conditional: Option<String>,
@@ -20547,7 +19513,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Text
     async fn ai_text(
         &self,
-        version: f64,
         account_id: i64,
         terms: String,
         conditional: Option<String>,
@@ -20558,7 +19523,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Batch Analysis
     async fn batch(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         limit: Option<i32>,
@@ -20571,7 +19535,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Creates an instant episode
     async fn create_instant_episode(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         ) -> Result<CreateInstantEpisodeResponse, ApiError>;
@@ -20579,7 +19542,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create VoiceCanvas images
     async fn create_voice_canvas(
         &self,
-        version: f64,
         account_id: i64,
         dimensions: String,
         third_party_account_id: Option<String>,
@@ -20594,7 +19556,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Detect emotions
     async fn emotion(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         file: Option<swagger::ByteArray>,
@@ -20605,7 +19566,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Starts a StoryStitch video render
     async fn start_video_render(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         ) -> Result<StartVideoRenderResponse, ApiError>;
@@ -20613,7 +19573,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Speach to Text
     async fn stt(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         source_language: Option<String>,
@@ -20626,7 +19585,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Summarize Topics
     async fn summarize_topics(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         doc: Option<String>,
@@ -20640,7 +19598,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Detect Technical Issues
     async fn tech_tune(
         &self,
-        version: f64,
         account_id: i64,
         num_faces_expected: i32,
         third_party_account_id: Option<String>,
@@ -20652,7 +19609,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Text to Speach
     async fn tts(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         third_party_account_id: Option<String>,
@@ -20664,7 +19620,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Add Movie Result
     async fn get_add_movie_result(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetAddMovieResultResponse, ApiError>;
@@ -20672,7 +19627,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Batch Analysis Results
     async fn get_batch(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetBatchResponse, ApiError>;
@@ -20680,7 +19634,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Emotion Results
     async fn get_emotion(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetEmotionResponse, ApiError>;
@@ -20688,7 +19641,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Check episode status
     async fn get_episode_status(
         &self,
-        version: f64,
         episode_id: i64,
         account_id: i64,
         ) -> Result<GetEpisodeStatusResponse, ApiError>;
@@ -20696,7 +19648,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Check episode status
     async fn get_render_status(
         &self,
-        version: f64,
         render_id: String,
         account_id: i64,
         ) -> Result<GetRenderStatusResponse, ApiError>;
@@ -20704,7 +19655,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Speach to Text Result
     async fn get_stt(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetSttResponse, ApiError>;
@@ -20712,7 +19662,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get TechTune Results
     async fn get_tech_tune(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTechTuneResponse, ApiError>;
@@ -20720,7 +19669,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Topics
     async fn get_topics(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTopicsResponse, ApiError>;
@@ -20728,7 +19676,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Text to Speach Result
     async fn get_tts(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTtsResponse, ApiError>;
@@ -20736,7 +19683,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get VoiceCanvas images
     async fn get_voice_canvas(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetVoiceCanvasResponse, ApiError>;
@@ -20744,7 +19690,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Pack
     async fn create_pack(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         pack_order: i64,
@@ -20774,7 +19719,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Pack
     async fn delete_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         ) -> Result<DeletePackResponse, ApiError>;
@@ -20782,7 +19726,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Pack
     async fn get_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         include_game_data: bool,
@@ -20791,7 +19734,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Packs
     async fn search_packs(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchPacksSortFieldParameter,
         descending: bool,
@@ -20807,7 +19749,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Pack
     async fn update_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         allocate_tickets: bool,
@@ -20838,7 +19779,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Process All Participant Feeds
     async fn process_all_participants(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         use_short_name_as_id: Option<bool>,
@@ -20847,7 +19787,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Process Participants Feed
     async fn process_participants(
         &self,
-        version: f64,
         account_id: i64,
         league: String,
         app_key: Option<String>,
@@ -20858,7 +19797,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Calculate Path
     async fn compute_path(
         &self,
-        version: f64,
         data: String,
         units: models::ComputePathUnitsParameter,
         reduce_path: bool,
@@ -20868,7 +19806,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Postal Code
     async fn create_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         code: String,
         latitude: f64,
@@ -20881,7 +19818,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Postal Code
     async fn delete_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         ) -> Result<DeletePostalCodeResponse, ApiError>;
@@ -20889,14 +19825,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Postal Code
     async fn get_postal_code(
         &self,
-        version: f64,
         postal_code_id: i64,
         ) -> Result<GetPostalCodeResponse, ApiError>;
 
     /// Search Postal Codes
     async fn get_postal_codes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         latitude: Option<f64>,
@@ -20910,7 +19844,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Postal Code
     async fn update_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         code: Option<String>,
@@ -20924,7 +19857,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Persona
     async fn create_persona(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         preview_accounts: Option<String>,
@@ -20939,7 +19871,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Persona
     async fn delete_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         ) -> Result<DeletePersonaResponse, ApiError>;
@@ -20947,7 +19878,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Persona
     async fn get_persona_list(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         ) -> Result<GetPersonaListResponse, ApiError>;
@@ -20955,7 +19885,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Personas
     async fn search_persona(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -20964,7 +19893,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Persona
     async fn update_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         title: Option<String>,
@@ -20981,14 +19909,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Program
     async fn create_program(
         &self,
-        version: f64,
         body: Option<models::Program>,
         ) -> Result<CreateProgramResponse, ApiError>;
 
     /// Search Programs
     async fn search_programs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -21000,21 +19926,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Program
     async fn delete_program(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteProgramResponse, ApiError>;
 
     /// Get Program
     async fn get_program(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetProgramResponse, ApiError>;
 
     /// Update Program
     async fn post_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         ) -> Result<PostProgramResponse, ApiError>;
@@ -21022,7 +19945,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Program
     async fn put_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         ) -> Result<PutProgramResponse, ApiError>;
@@ -21030,7 +19952,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Purchase
     async fn create_purchase_item(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         purchase_type: models::CreatePurchaseItemPurchaseTypeParameter,
@@ -21056,7 +19977,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Purchase
     async fn delete_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21065,7 +19985,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Purchase
     async fn get_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21074,7 +19993,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Purchases
     async fn search_purchase_items(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -21092,7 +20010,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Purchase
     async fn update_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21119,7 +20036,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Order
     async fn create_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -21137,7 +20053,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Order
     async fn delete_order(
         &self,
-        version: f64,
         order_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21146,7 +20061,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Order
     async fn get_order(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         order_id: Option<i64>,
@@ -21156,7 +20070,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Preview Order
     async fn preview_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -21174,7 +20087,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Orders
     async fn search_orders(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21211,7 +20123,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Order
     async fn update_order(
         &self,
-        version: f64,
         order_id: i64,
         app_key: String,
         cart: String,
@@ -21228,7 +20139,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Question
     async fn create_question(
         &self,
-        version: f64,
         account_id: i64,
         question: String,
         answers: String,
@@ -21245,7 +20155,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Question
     async fn delete_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ) -> Result<DeleteQuestionResponse, ApiError>;
@@ -21253,7 +20162,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Question
     async fn get_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ) -> Result<GetQuestionResponse, ApiError>;
@@ -21261,7 +20169,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Questions
     async fn search_questions(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -21274,7 +20181,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Question
     async fn update_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -21292,7 +20198,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Historical Rankings
     async fn get_historical_rankings(
         &self,
-        version: f64,
         app_key: String,
         rank_type: String,
         start_date: i64,
@@ -21308,7 +20213,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Rankings
     async fn get_rankings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -21332,7 +20236,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Personal Rankings
     async fn get_user_rank(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -21349,7 +20252,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Override User Rank
     async fn override_user_rank(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: i64,
         app_key: String,
@@ -21377,7 +20279,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Ranking
     async fn update_rankings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         rank_type: String,
@@ -21393,7 +20294,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Rating
     async fn create_rating(
         &self,
-        version: f64,
         ratable_type: String,
         ratable_id: i64,
         rating_value: i32,
@@ -21410,7 +20310,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Rating
     async fn delete_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21419,7 +20318,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Location Rating Indexes
     async fn search_location_rating_indexes(
         &self,
-        version: f64,
         category_ids: Option<String>,
         keyword: Option<String>,
         location_type: Option<String>,
@@ -21442,7 +20340,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Rating Indexes
     async fn search_rating_indexes(
         &self,
-        version: f64,
         ratable_type: models::SearchRatingIndexesRatableTypeParameter,
         ratable_ids: Option<String>,
         category_ids: Option<String>,
@@ -21461,7 +20358,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Ratings
     async fn search_ratings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         filter_account_id: Option<i64>,
@@ -21478,7 +20374,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Rating
     async fn update_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21494,7 +20389,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Region
     async fn create_region(
         &self,
-        version: f64,
         account_id: i64,
         region_class: String,
         short_name: String,
@@ -21521,7 +20415,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Region
     async fn delete_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         ) -> Result<DeleteRegionResponse, ApiError>;
@@ -21529,7 +20422,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Region
     async fn get_region(
         &self,
-        version: f64,
         region_id: i64,
         account_id: Option<i64>,
         ) -> Result<GetRegionResponse, ApiError>;
@@ -21537,7 +20429,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Regions
     async fn search_regions(
         &self,
-        version: f64,
         account_id: Option<i64>,
         query: Option<String>,
         keyword: Option<String>,
@@ -21565,7 +20456,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Region
     async fn update_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         region_class: Option<String>,
@@ -21594,7 +20484,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Offline Report
     async fn create_batch(
         &self,
-        version: f64,
         account_id: i64,
         status: models::CreateBatchStatusParameter,
         preview_limit: i32,
@@ -21611,14 +20500,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Offline Report
     async fn create_region_leg_summary_batch<'a>(
         &self,
-        version: f64,
         body: Option<&'a Vec<models::RegionLegSummary>>,
         ) -> Result<CreateRegionLegSummaryBatchResponse, ApiError>;
 
     /// Delete Offline Report
     async fn delete_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         ) -> Result<DeleteBatchResponse, ApiError>;
@@ -21626,7 +20513,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Offline Report
     async fn get_report_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         all_results: bool,
@@ -21635,7 +20521,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Run Report
     async fn run_report(
         &self,
-        version: f64,
         desc: bool,
         account_id: Option<i64>,
         query: Option<String>,
@@ -21649,7 +20534,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Offline Reports
     async fn search_batch(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -21664,7 +20548,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Reservation
     async fn create_reservation(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         start_date: Option<i64>,
@@ -21678,7 +20561,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Reservation
     async fn delete_reservation(
         &self,
-        version: f64,
         reservation_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21687,7 +20569,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Availability
     async fn reservable_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -21699,7 +20580,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Availability
     async fn search_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -21713,7 +20593,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Reservations
     async fn search_reservations(
         &self,
-        version: f64,
         device_id: Option<String>,
         app_key: Option<String>,
         account_id: Option<i64>,
@@ -21730,7 +20609,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Schedule
     async fn search_schedule(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         start_date: i64,
@@ -21743,7 +20621,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Retailer
     async fn create_retailer(
         &self,
-        version: f64,
         name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21782,7 +20659,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Retailer
     async fn delete_retailer(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_id: Option<i64>,
@@ -21791,7 +20667,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Retailer
     async fn get_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21801,7 +20676,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Retailers
     async fn get_retailers(
         &self,
-        version: f64,
         visibility: models::AddAlbumCollectionVisibilityParameter,
         sort_field: models::GetRetailersSortFieldParameter,
         descending: bool,
@@ -21821,7 +20695,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login Retailer
     async fn retailer_login_check(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -21833,7 +20706,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Retailer
     async fn update_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21871,7 +20743,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Retailer Location (Consumer)
     async fn create_retailer_location_consumer(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -21906,7 +20777,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Retailer Location
     async fn create_retailer_locations(
         &self,
-        version: f64,
         retailer_id: i64,
         name: String,
         street_address: String,
@@ -21951,7 +20821,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Retailer Location
     async fn delete_retailer_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_location_id: Option<i64>,
@@ -21960,7 +20829,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Retailer Location
     async fn get_retailer_location(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21970,7 +20838,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Retailer Location (Consumer)
     async fn get_retailer_location_consumer(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -21979,7 +20846,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Distance Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_distance_search(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: f64,
@@ -22019,7 +20885,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Keyword Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start: Option<i32>,
         limit: Option<i32>,
@@ -22053,7 +20918,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Retailer Locations (Owned)
     async fn search_retailer_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -22084,7 +20948,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Retailer Location
     async fn update_retailer_locations(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -22131,7 +20994,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Retailer
     async fn get_retaokiler(
         &self,
-        version: f64,
         retailer_id: i64,
         active_only: bool,
         keyword: Option<String>,
@@ -22143,14 +21005,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Route
     async fn create_route(
         &self,
-        version: f64,
         body: Option<models::Route>,
         ) -> Result<CreateRouteResponse, ApiError>;
 
     /// Search Routes
     async fn search_routes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -22177,14 +21037,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Approve Route
     async fn approve_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<ApproveRouteResponse, ApiError>;
 
     /// Copy Route
     async fn copy_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         ) -> Result<CopyRouteResponse, ApiError>;
@@ -22192,35 +21050,30 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Route Directions
     async fn create_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<CreateRouteDirectionsResponse, ApiError>;
 
     /// Create Route Polyline
     async fn create_route_polyline(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<CreateRoutePolylineResponse, ApiError>;
 
     /// Delete Route
     async fn delete_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<DeleteRouteResponse, ApiError>;
 
     /// Disapprove Route
     async fn disapprove_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<DisapproveRouteResponse, ApiError>;
 
     /// Get Route
     async fn get_route(
         &self,
-        version: f64,
         route_id: i64,
         show_inherited_properties: bool,
         ) -> Result<GetRouteResponse, ApiError>;
@@ -22228,21 +21081,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Route Directions
     async fn get_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<GetRouteDirectionsResponse, ApiError>;
 
     /// Get Route Shipments
     async fn get_route_shipments(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<GetRouteShipmentsResponse, ApiError>;
 
     /// Get Route Stops
     async fn get_route_stops(
         &self,
-        version: f64,
         route_id: i64,
         confirmed_only: bool,
         ) -> Result<GetRouteStopsResponse, ApiError>;
@@ -22250,14 +21100,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Optimize Route
     async fn optimize_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<OptimizeRouteResponse, ApiError>;
 
     /// Reorder Route Stops
     async fn reorder_route_stops_patch<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         ) -> Result<ReorderRouteStopsPatchResponse, ApiError>;
@@ -22265,7 +21113,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Reorder Route Stops
     async fn reorder_route_stops_post<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         ) -> Result<ReorderRouteStopsPostResponse, ApiError>;
@@ -22273,7 +21120,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Route
     async fn update_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         ) -> Result<UpdateRouteResponse, ApiError>;
@@ -22281,7 +21127,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Route Stop
     async fn get_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<GetRouteStopResponse, ApiError>;
@@ -22289,7 +21134,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Shipments At Stop
     async fn get_shipments_at_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<GetShipmentsAtStopResponse, ApiError>;
@@ -22297,7 +21141,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Stop
     async fn remove_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<RemoveStopResponse, ApiError>;
@@ -22305,7 +21148,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Set Driver
     async fn set_driver(
         &self,
-        version: f64,
         id: i64,
         driver_id: i64,
         ) -> Result<SetDriverResponse, ApiError>;
@@ -22313,7 +21155,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Route Stop
     async fn update_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         body: Option<models::Stop>,
@@ -22322,14 +21163,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Route Setting
     async fn create_route_settings(
         &self,
-        version: f64,
         body: Option<models::RouteSettings>,
         ) -> Result<CreateRouteSettingsResponse, ApiError>;
 
     /// Search Route Settings
     async fn search_route_settings(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -22343,21 +21182,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Route Setting
     async fn delete_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         ) -> Result<DeleteRouteSettingsResponse, ApiError>;
 
     /// Get Route Setting
     async fn get_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         ) -> Result<GetRouteSettingsResponse, ApiError>;
 
     /// Update Route Setting
     async fn update_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         body: Option<models::RouteSettings>,
         ) -> Result<UpdateRouteSettingsResponse, ApiError>;
@@ -22365,14 +21201,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Compute Route
     async fn compute_routing(
         &self,
-        version: f64,
         data: String,
         ) -> Result<ComputeRoutingResponse, ApiError>;
 
     /// Create Scheduled Notification
     async fn create_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         param_type: String,
@@ -22412,7 +21246,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Scheduled Notification
     async fn delete_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         delete_by_grouping_id: Option<bool>,
@@ -22421,7 +21254,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Scheduled Notification
     async fn get_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         ) -> Result<GetScheduledNotificationResponse, ApiError>;
@@ -22429,7 +21261,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Generate Schedule Notifications
     async fn schedule_notification_listings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         report_name: String,
@@ -22443,7 +21274,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Scheduled Notifications
     async fn search_scheduled_notifications(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         audience_id: Option<i64>,
@@ -22469,7 +21299,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Scheduled Notification
     async fn update_scheduled_notification(
         &self,
-        version: f64,
         scheduled_notification_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -22513,7 +21342,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Score
     async fn create_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         points: i32,
@@ -22529,7 +21357,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Score
     async fn get_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -22544,7 +21371,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Score
     async fn search_scores(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -22557,7 +21383,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Secure Application
     async fn create_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         key_cert: swagger::ByteArray,
@@ -22573,7 +21398,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Secure Application
     async fn delete_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         ) -> Result<DeleteSecureApplicationResponse, ApiError>;
@@ -22581,7 +21405,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Login Clear
     async fn login_secure(
         &self,
-        version: f64,
         app_key: String,
         biometric_file: swagger::ByteArray,
         device_id: Option<String>,
@@ -22596,14 +21419,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Purchase Clear
     async fn purchase_secure(
         &self,
-        version: f64,
         body: models::PaymentRequest,
         ) -> Result<PurchaseSecureResponse, ApiError>;
 
     /// Rest Secure Application
     async fn reset_secure(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         ) -> Result<ResetSecureResponse, ApiError>;
@@ -22611,7 +21432,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Secure Application
     async fn update_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: Option<bool>,
@@ -22627,14 +21447,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Service Hub
     async fn create_service_hub(
         &self,
-        version: f64,
         body: Option<models::ServiceHub>,
         ) -> Result<CreateServiceHubResponse, ApiError>;
 
     /// Search Service Hubs
     async fn search_service_hubs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -22647,21 +21465,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Service Hub
     async fn delete_service_hub(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteServiceHubResponse, ApiError>;
 
     /// Get Service Hub
     async fn get_service_hub(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetServiceHubResponse, ApiError>;
 
     /// Update Service Hub
     async fn post_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         ) -> Result<PostServiceHubResponse, ApiError>;
@@ -22669,7 +21484,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Service Hub
     async fn put_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         ) -> Result<PutServiceHubResponse, ApiError>;
@@ -22677,14 +21491,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Shipment
     async fn create_shipment(
         &self,
-        version: f64,
         body: Option<models::Shipment>,
         ) -> Result<CreateShipmentResponse, ApiError>;
 
     /// Search Shipments
     async fn search_shipments(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -22698,28 +21510,24 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Cancel Shipment
     async fn cancel_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<CancelShipmentResponse, ApiError>;
 
     /// Delete Shipment
     async fn delete_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteShipmentResponse, ApiError>;
 
     /// Get Shipment
     async fn get_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetShipmentResponse, ApiError>;
 
     /// Update Shipment
     async fn update_shipment(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Shipment>,
         ) -> Result<UpdateShipmentResponse, ApiError>;
@@ -22727,7 +21535,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Uupdate Shipment Status
     async fn update_shipment_status(
         &self,
-        version: f64,
         id: i64,
         body: Option<std::collections::HashMap<String, bool>>,
         ) -> Result<UpdateShipmentStatusResponse, ApiError>;
@@ -22735,14 +21542,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Shipment Batch
     async fn create_shipment_batch(
         &self,
-        version: f64,
         body: Option<models::ShipmentBatch>,
         ) -> Result<CreateShipmentBatchResponse, ApiError>;
 
     /// Search Shipment Batch
     async fn search_shipment_batch(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -22753,21 +21558,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Shipment Batch
     async fn delete_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         ) -> Result<DeleteShipmentBatchResponse, ApiError>;
 
     /// Get Shipment Batch
     async fn get_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         ) -> Result<GetShipmentBatchResponse, ApiError>;
 
     /// Get Shipment Batch Status
     async fn get_shipment_batch_status(
         &self,
-        version: f64,
         batch_id: i64,
         account_id: i64,
         sort_field: String,
@@ -22785,7 +21587,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Routing Simulation
     async fn simulation(
         &self,
-        version: f64,
         data: String,
         real_time: bool,
         ) -> Result<SimulationResponse, ApiError>;
@@ -22793,14 +21594,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Stop
     async fn get_stop(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetStopResponse, ApiError>;
 
     /// Update Stop
     async fn update_stop(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Stop>,
         ) -> Result<UpdateStopResponse, ApiError>;
@@ -22808,7 +21607,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Stripe Checkout Session
     async fn create_stripe_checkout_session(
         &self,
-        version: f64,
         app_key: String,
         stripe_parameters: String,
         ) -> Result<CreateStripeCheckoutSessionResponse, ApiError>;
@@ -22816,7 +21614,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Subscription
     async fn create_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
@@ -22825,28 +21622,24 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Subscription
     async fn delete_subscription(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<DeleteSubscriptionResponse, ApiError>;
 
     /// Get Subscription
     async fn get_subscription(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<GetSubscriptionResponse, ApiError>;
 
     /// Get Subscription Plan
     async fn get_subscription_plan(
         &self,
-        version: f64,
         plan_id: i64,
         ) -> Result<GetSubscriptionPlanResponse, ApiError>;
 
     /// List Subscription Plans
     async fn get_subscription_plans(
         &self,
-        version: f64,
         visible: Option<bool>,
         role: Option<String>,
         ) -> Result<GetSubscriptionPlansResponse, ApiError>;
@@ -22854,7 +21647,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Subscription Usage
     async fn get_subscription_usage(
         &self,
-        version: f64,
         account_id: i64,
         application_id: Option<i64>,
         start: Option<i64>,
@@ -22864,7 +21656,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Subscription
     async fn update_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
@@ -22874,7 +21665,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Task
     async fn create_task(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -22892,7 +21682,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Task
     async fn delete_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         ) -> Result<DeleteTaskResponse, ApiError>;
@@ -22900,7 +21689,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Task
     async fn get_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         ) -> Result<GetTaskResponse, ApiError>;
@@ -22908,7 +21696,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tasks
     async fn search_tasks(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -22926,7 +21713,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Task
     async fn update_task(
         &self,
-        version: f64,
         task_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -22945,7 +21731,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Territory
     async fn create_territory(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: Option<bool>,
@@ -22954,7 +21739,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Territory
     async fn delete_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         ) -> Result<DeleteTerritoryResponse, ApiError>;
@@ -22962,14 +21746,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Territory
     async fn get_territory(
         &self,
-        version: f64,
         territory_id: i64,
         ) -> Result<GetTerritoryResponse, ApiError>;
 
     /// Search Territories
     async fn search_territories(
         &self,
-        version: f64,
         sort_field: models::SearchTerritoriesSortFieldParameter,
         descending: bool,
         keyword: Option<String>,
@@ -22980,7 +21762,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Territory
     async fn update_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         name: Option<String>,
@@ -22990,7 +21771,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create/Update Theme
     async fn add_or_update_theme_descriptor(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -23023,7 +21803,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Theme
     async fn get_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -23035,7 +21814,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Themes
     async fn get_theme_descriptors(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -23059,7 +21837,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Theme
     async fn remove_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -23071,7 +21848,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Credential
     async fn create_credential(
         &self,
-        version: f64,
         third_party_id: String,
         third_party_token: String,
         network_uid: String,
@@ -23094,7 +21870,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Network
     async fn create_network(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         enable_introspection: bool,
@@ -23117,7 +21892,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Credential
     async fn delete_credential(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         third_party_id: String,
@@ -23127,7 +21901,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Network
     async fn delete_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         ) -> Result<DeleteNetworkResponse, ApiError>;
@@ -23135,7 +21908,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Credential
     async fn get_credential(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         account_id: Option<i64>,
@@ -23156,7 +21928,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Network
     async fn get_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         ) -> Result<GetNetworkResponse, ApiError>;
@@ -23164,7 +21935,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Credentials
     async fn search_credentials(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         network_uid: Option<String>,
@@ -23176,7 +21946,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Networks
     async fn search_networks(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchNetworksSortFieldParameter,
         descending: bool,
@@ -23190,7 +21959,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send MFA Challenge
     async fn send_mfa_challenge(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         third_party_token: Option<String>,
@@ -23201,7 +21969,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Credential
     async fn update_credential(
         &self,
-        version: f64,
         network_uid: String,
         third_party_id: String,
         app_key: String,
@@ -23216,7 +21983,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Network
     async fn update_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         name: Option<String>,
@@ -23240,7 +22006,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Ticket Count
     async fn get_ticket_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -23251,7 +22016,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Ticket List
     async fn get_ticket_list(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ticket_object_type: Option<String>,
@@ -23266,7 +22030,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Gift Tickets
     async fn gift_purchase(
         &self,
-        version: f64,
         receiver_account_id: i64,
         ticket_id: i64,
         device_id: Option<String>,
@@ -23280,7 +22043,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Save Ticket
     async fn save_ticket(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         return_nulls: Option<bool>,
@@ -23304,7 +22066,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Save Ticket with Reciept
     async fn save_ticket_via_file_upload(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         receipt_data: swagger::ByteArray,
@@ -23328,13 +22089,11 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Ticket Offers
     async fn ticket_offers(
         &self,
-        version: f64,
         ) -> Result<TicketOffersResponse, ApiError>;
 
     /// Create Tournament
     async fn create_tournament(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         title: String,
@@ -23375,7 +22134,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Tournament
     async fn delete_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         ) -> Result<DeleteTournamentResponse, ApiError>;
@@ -23383,7 +22141,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Tournament
     async fn get_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: Option<i64>,
         join_code: Option<String>,
@@ -23394,7 +22151,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tournament Objects
     async fn search_objects(
         &self,
-        version: f64,
         account_id: i64,
         game_level_id: i64,
         sort_field: Option<models::SearchObjectsSortFieldParameter>,
@@ -23406,7 +22162,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tournament Rounds
     async fn search_rounds(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         status: Option<String>,
@@ -23420,7 +22175,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tournaments
     async fn search_tournaments(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -23438,7 +22192,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Submit Tournament Score
     async fn submit_tournament_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -23451,7 +22204,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Submit a vote for a multi-stage album tournament.
     async fn submit_tournament_vote(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -23463,7 +22215,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Substitute Tournament Player
     async fn substitute_tournament_player(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         pack_id: i64,
@@ -23473,7 +22224,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Tournament
     async fn update_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -23513,7 +22263,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Batch Tracking
     async fn batch_save_tracking(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -23526,7 +22275,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Predicted Locations
     async fn get_predicted_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -23541,7 +22289,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Tracking Path
     async fn get_predicted_path(
         &self,
-        version: f64,
         account_id: i64,
         start_step_id: i64,
         end_step_id: i64,
@@ -23550,7 +22297,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Preferred Locations
     async fn get_preferred_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -23567,7 +22313,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tracking
     async fn get_tracking_legs(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         owner_id: Option<i64>,
@@ -23581,7 +22326,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Tracking Leg
     async fn save_tracking_leg(
         &self,
-        version: f64,
         start_lat: f64,
         start_lng: f64,
         start_date: i64,
@@ -23599,7 +22343,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Tracking Step
     async fn save_tracking_step(
         &self,
-        version: f64,
         leg_id: i64,
         start_lat: f64,
         start_lng: f64,
@@ -23616,7 +22359,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Tracking
     async fn search_accounts_with_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start_date: Option<i64>,
@@ -23636,7 +22378,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Tracking (Billable)
     async fn search_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         tracking_device_id: Option<String>,
@@ -23650,7 +22391,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Trigger
     async fn create_trigger(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -23669,7 +22409,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Trigger
     async fn delete_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         ) -> Result<DeleteTriggerResponse, ApiError>;
@@ -23677,7 +22416,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Trigger
     async fn get_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         ) -> Result<GetTriggerResponse, ApiError>;
@@ -23685,7 +22423,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Triggers
     async fn search_triggers(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -23703,7 +22440,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Trigger
     async fn update_trigger(
         &self,
-        version: f64,
         trigger_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -23723,14 +22459,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Trip
     async fn create_trip(
         &self,
-        version: f64,
         body: Option<models::Trip>,
         ) -> Result<CreateTripResponse, ApiError>;
 
     /// Process Trip Matches
     async fn process_trip_matches(
         &self,
-        version: f64,
         start_date: Option<i64>,
         end_date: Option<i64>,
         trip_id: Option<i64>,
@@ -23739,7 +22473,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Trips
     async fn search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -23754,7 +22487,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Trips
     async fn search_trips(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -23770,7 +22502,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Trip Notifications
     async fn update_trip_notifications(
         &self,
-        version: f64,
         id: i64,
         notifications: Option<String>,
         ) -> Result<UpdateTripNotificationsResponse, ApiError>;
@@ -23778,14 +22509,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Trip
     async fn delete(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteResponse, ApiError>;
 
     /// Set Trip Preference Driver
     async fn drive_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<DriveTripResponse, ApiError>;
@@ -23793,7 +22522,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Set Trip Preference Flexible
     async fn flexible_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<FlexibleTripResponse, ApiError>;
@@ -23801,14 +22529,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Trip
     async fn get_trip(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetTripResponse, ApiError>;
 
     /// Get Trip Matches
     async fn get_trip_matches(
         &self,
-        version: f64,
         id: i64,
         sort_field: String,
         descending: bool,
@@ -23822,7 +22548,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Set Trip Preference Rider
     async fn ride(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<RideResponse, ApiError>;
@@ -23830,7 +22555,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Trip Locations
     async fn update_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateLocationsResponse, ApiError>;
@@ -23838,7 +22562,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Recurrence Locations
     async fn update_recurrence_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateRecurrenceLocationsResponse, ApiError>;
@@ -23846,7 +22569,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Recurrence Shipments
     async fn update_recurrence_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateRecurrenceShipmentsResponse, ApiError>;
@@ -23854,7 +22576,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Trip Shipments
     async fn update_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateShipmentsResponse, ApiError>;
@@ -23862,7 +22583,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Trip
     async fn update_trip(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateTripResponse, ApiError>;
@@ -23870,7 +22590,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Buy Offer by SMS
     async fn sms_buy_offer(
         &self,
-        version: f64,
         app_key: String,
         body: String,
         from: String,
@@ -23880,14 +22599,12 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Authorize Twitter
     async fn authorize_twitter(
         &self,
-        version: f64,
         app_key: String,
         ) -> Result<AuthorizeTwitterResponse, ApiError>;
 
     /// Login Twitter
     async fn login_twitter(
         &self,
-        version: f64,
         access_token: String,
         access_token_secret: String,
         app_key: String,
@@ -23900,7 +22617,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Add User
     async fn add_users_to_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -23923,7 +22639,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Approve Permissionable
     async fn approve_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -23934,7 +22649,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Leave
     async fn leave_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: String,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -23946,7 +22660,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Remove User
     async fn remove_users_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -23963,7 +22676,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Permissionables
     async fn search_permissionables(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -23982,7 +22694,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Permissionables by Distnace
     async fn search_permissionables_following_distance(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         device_id: Option<String>,
@@ -24002,7 +22713,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create following
     async fn create_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -24011,7 +22721,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Vatom Space
     async fn create_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -24021,7 +22730,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Vatom Event
     async fn create_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -24031,7 +22739,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete following
     async fn delete_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_rels_key: String,
         return_raw_response: Option<bool>,
@@ -24040,7 +22747,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Reset All Points Balance
     async fn delete_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24050,7 +22756,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Vatom Space
     async fn delete_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -24060,7 +22765,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Vatom Event
     async fn delete_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -24070,7 +22774,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Vatom NFT
     async fn delete_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
@@ -24079,7 +22782,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Execute Action on NFT
     async fn execute_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_parameters: String,
@@ -24089,7 +22791,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Vatom Geo Map
     async fn geomap_search(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -24098,7 +22799,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Business Behaviors
     async fn get_business_behaviors(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -24107,7 +22807,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get the coins for a Business
     async fn get_business_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -24116,7 +22815,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get the user business ids
     async fn get_business_ids(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetBusinessIdsResponse, ApiError>;
@@ -24124,7 +22822,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Business Info
     async fn get_business_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -24134,7 +22831,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Business Users
     async fn get_business_users(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -24143,7 +22839,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Campaign Group Entities
     async fn get_campaign_group_entities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24153,7 +22848,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Campaign Group Rules
     async fn get_campaign_group_rules(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24163,7 +22857,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Campaign Group Stats
     async fn get_campaign_group_stats(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24173,7 +22866,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Campaign Info
     async fn get_campaign_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24183,7 +22875,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Event Guest List
     async fn get_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -24193,7 +22884,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom User's Inventory
     async fn get_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -24202,7 +22892,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get following
     async fn get_my_following(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetMyFollowingResponse, ApiError>;
@@ -24210,7 +22899,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Points Balance
     async fn get_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_campaign_id: String,
@@ -24220,7 +22908,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Points Balance as Business
     async fn get_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -24231,7 +22918,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Space
     async fn get_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -24241,7 +22927,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get the coins for a user (as a Business)
     async fn get_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -24251,7 +22936,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Gets the coins balance for a Vatom User
     async fn get_user_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -24261,7 +22945,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get user followers
     async fn get_user_followers(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -24270,7 +22953,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get user following
     async fn get_user_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -24279,7 +22961,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get User Info
     async fn get_user_info(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
@@ -24288,7 +22969,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom User Profile
     async fn get_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetUserProfileResponse, ApiError>;
@@ -24296,7 +22976,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom Event
     async fn get_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -24306,7 +22985,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Vatom NFT Details
     async fn get_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
@@ -24315,7 +22993,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Vatom Communities
     async fn list_communities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -24325,7 +23002,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Vatom Events
     async fn list_events(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -24335,7 +23011,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Vatom Spaces
     async fn list_spaces(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -24345,7 +23020,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List Coin Transactions for a Vatom User
     async fn list_user_coin_transactions(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -24355,7 +23029,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// List coin transactions for a user (as a Business)
     async fn list_user_coin_transactions_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -24366,7 +23039,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Perform Action on NFT
     async fn perform_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_action: String,
@@ -24377,7 +23049,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Redeem NFT
     async fn redeem_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -24387,7 +23058,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Redeem the coins for a user (as a Business)
     async fn redeem_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -24398,7 +23068,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search for Vatom Businesses
     async fn search_businesses(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
@@ -24407,7 +23076,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Campaign Groups
     async fn search_campaign_groups(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
@@ -24416,7 +23084,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search User Identities
     async fn search_identities(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<SearchIdentitiesResponse, ApiError>;
@@ -24424,7 +23091,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Vatom User's Inventory
     async fn search_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
@@ -24433,7 +23099,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Send NFT
     async fn send_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -24444,7 +23109,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Set Points Balance as Business
     async fn set_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -24456,7 +23120,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Transfer coins from Vatom Users
     async fn transfer_user_coins(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: String,
@@ -24466,7 +23129,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Fund coins for a Business
     async fn update_business_coins(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -24476,7 +23138,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Vatom Event Guest List
     async fn update_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -24487,7 +23148,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Vatom Space
     async fn update_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -24498,7 +23158,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update the coins for a user (as a Business)
     async fn update_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -24509,7 +23168,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Vatom User Profile
     async fn update_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
@@ -24518,7 +23176,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Vatom Event
     async fn update_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -24529,7 +23186,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Vehicle
     async fn create_vehicle(
         &self,
-        version: f64,
         vehicle: String,
         body: Option<models::Vehicle>,
         ) -> Result<CreateVehicleResponse, ApiError>;
@@ -24537,7 +23193,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Vehicle
     async fn search_vehicle(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -24550,21 +23205,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Vehicle
     async fn delete_vehicle(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteVehicleResponse, ApiError>;
 
     /// Get Vehicle
     async fn get_vehicle(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetVehicleResponse, ApiError>;
 
     /// Update Vehicle
     async fn update_vehicle(
         &self,
-        version: f64,
         id: i64,
         vehicle: String,
         body: Option<models::Vehicle>,
@@ -24573,7 +23225,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Vehicle Type
     async fn create_vehicle_type(
         &self,
-        version: f64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
         ) -> Result<CreateVehicleTypeResponse, ApiError>;
@@ -24581,7 +23232,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Vehicle Type
     async fn search_vehicle_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -24594,21 +23244,18 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Vehicle Type
     async fn delete_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         ) -> Result<DeleteVehicleTypeResponse, ApiError>;
 
     /// Get Vehicle Type
     async fn get_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         ) -> Result<GetVehicleTypeResponse, ApiError>;
 
     /// Update Vehicle Type
     async fn update_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
@@ -24617,7 +23264,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Wallet Offers
     async fn create_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -24634,7 +23280,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Wallet Offer
     async fn delete_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -24643,7 +23288,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Wallet Offer
     async fn get_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -24656,7 +23300,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Preview Wallet Offers
     async fn preview_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -24672,7 +23315,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Wallet Offers
     async fn search_offer_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         keyword: Option<String>,
@@ -24719,7 +23361,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Wallet Offer
     async fn update_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -24738,7 +23379,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Weather
     async fn search_weather(
         &self,
-        version: f64,
         region_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -24748,7 +23388,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Create Word
     async fn create_word(
         &self,
-        version: f64,
         account_id: i64,
         word: String,
         definition: String,
@@ -24763,7 +23402,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Delete Word
     async fn delete_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ) -> Result<DeleteWordResponse, ApiError>;
@@ -24771,7 +23409,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Get Word
     async fn get_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ) -> Result<GetWordResponse, ApiError>;
@@ -24779,7 +23416,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Search Words
     async fn get_words(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -24792,7 +23428,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Update Word
     async fn update_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -24808,7 +23443,6 @@ pub trait ApiNoContext<C: Send + Sync> {
     /// Run Workflow
     async fn run_workflow(
         &self,
-        version: f64,
         account_id: i64,
         workflow_id: i64,
         sku_id: Option<i64>,
@@ -24840,7 +23474,6 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
     /// Create Consumer
     async fn consumer_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         hostname: String,
@@ -24858,13 +23491,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ConsumerCreateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().consumer_create(version, app_key, name, hostname, username, password, data_mapping, device_id, account_id, port, virtual_host, exchanger, exchanger_type, workers, use_ssl, &context).await
+        self.api().consumer_create(app_key, name, hostname, username, password, data_mapping, device_id, account_id, port, virtual_host, exchanger, exchanger_type, workers, use_ssl, &context).await
     }
 
     /// Update Consumer
     async fn consumer_update(
         &self,
-        version: f64,
         app_key: String,
         queue_id: i64,
         data_mapping: String,
@@ -24874,13 +23506,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ConsumerUpdateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().consumer_update(version, app_key, queue_id, data_mapping, device_id, account_id, use_ssl, &context).await
+        self.api().consumer_update(app_key, queue_id, data_mapping, device_id, account_id, use_ssl, &context).await
     }
 
     /// Create Queue
     async fn queue_create(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -24896,26 +23527,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<QueueCreateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_create(version, app_key, name, device_id, account_id, workers, analytic_tags, hostname, port, username, password, virtual_host, use_ssl, &context).await
+        self.api().queue_create(app_key, name, device_id, account_id, workers, analytic_tags, hostname, port, username, password, virtual_host, use_ssl, &context).await
     }
 
     /// Delete Queue
     async fn queue_delete(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<QueueDeleteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_delete(version, queue_id, device_id, account_id, &context).await
+        self.api().queue_delete(queue_id, device_id, account_id, &context).await
     }
 
     /// Get Queue
     async fn queue_get(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         queue_id: Option<i64>,
@@ -24926,13 +23555,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<QueueGetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_get(version, device_id, account_id, queue_id, app_key, name, hostname, virtual_host, &context).await
+        self.api().queue_get(device_id, account_id, queue_id, app_key, name, hostname, virtual_host, &context).await
     }
 
     /// Publish Queue
     async fn queue_publish(
         &self,
-        version: f64,
         message: String,
         queue_id: Option<i64>,
         app_key: Option<String>,
@@ -24942,13 +23570,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<QueuePublishResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_publish(version, message, queue_id, app_key, name, hostname, virtual_host, &context).await
+        self.api().queue_publish(message, queue_id, app_key, name, hostname, virtual_host, &context).await
     }
 
     /// Search Queue
     async fn queue_search(
         &self,
-        version: f64,
         queue_id: Option<i64>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -24958,13 +23585,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<QueueSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_search(version, queue_id, device_id, account_id, name, start, limit, &context).await
+        self.api().queue_search(queue_id, device_id, account_id, name, start, limit, &context).await
     }
 
     /// Update Queue
     async fn queue_update(
         &self,
-        version: f64,
         queue_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -24980,13 +23606,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<QueueUpdateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().queue_update(version, queue_id, device_id, account_id, app_key, workers, analytic_tags, hostname, port, username, password, virtual_host, use_ssl, &context).await
+        self.api().queue_update(queue_id, device_id, account_id, app_key, workers, analytic_tags, hostname, port, username, password, virtual_host, use_ssl, &context).await
     }
 
     /// Search Accounts by Location
     async fn account_location_search(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -25024,13 +23649,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AccountLocationSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().account_location_search(version, device_id, account_id, q, keyword, postal_code, latitude, longitude, app_key, range, location_last_updated, gender, min_age, max_age, companionship_index, _i, start, _l, limit, search_mode, sort_field, descending, roles, tags, experience, category_ids, audience_ids, audience_operator, update_current_location, update_preferred_settings, show_exact_locations, show_connection_to_searcher, flag_count_minimum, verified_user_only, content_admin_only, &context).await
+        self.api().account_location_search(device_id, account_id, q, keyword, postal_code, latitude, longitude, app_key, range, location_last_updated, gender, min_age, max_age, companionship_index, _i, start, _l, limit, search_mode, sort_field, descending, roles, tags, experience, category_ids, audience_ids, audience_operator, update_current_location, update_preferred_settings, show_exact_locations, show_connection_to_searcher, flag_count_minimum, verified_user_only, content_admin_only, &context).await
     }
 
     /// Block Account
     async fn block_account(
         &self,
-        version: f64,
         account_id_being_blocked: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -25041,13 +23665,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<BlockAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().block_account(version, account_id_being_blocked, device_id, account_id, block_flag_value, remove_from_groups_if_blocked, latitude, longitude, &context).await
+        self.api().block_account(account_id_being_blocked, device_id, account_id, block_flag_value, remove_from_groups_if_blocked, latitude, longitude, &context).await
     }
 
     /// Create Account
     async fn create_account(
         &self,
-        version: f64,
         username: String,
         password: String,
         name: Option<String>,
@@ -25123,13 +23746,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_account(version, username, password, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, device_id, device_id_type, email_address, asset_id, street_address, zipcode, gender, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, role, platforms, tags, about_us, game_experience, category_ids, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, latitude, longitude, accepted_terms, invite_token, referral_account_id, send_validation, game_type, app_key, app_version, response_type, audience_ids_to_add, app_blob, app_enable_push, app_enable_sms, app_enable_email, location_visibility, home_latitude, home_longitude, app_nickname, personal_audience_id, &context).await
+        self.api().create_account(username, password, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, device_id, device_id_type, email_address, asset_id, street_address, zipcode, gender, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, role, platforms, tags, about_us, game_experience, category_ids, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, latitude, longitude, accepted_terms, invite_token, referral_account_id, send_validation, game_type, app_key, app_version, response_type, audience_ids_to_add, app_blob, app_enable_push, app_enable_sms, app_enable_email, location_visibility, home_latitude, home_longitude, app_nickname, personal_audience_id, &context).await
     }
 
     /// Update Account
     async fn edit_account(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -25215,13 +23837,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<EditAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().edit_account(version, device_id, account_id, connection_account_id, role, asset_id, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, gender, age, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, make_profile_info_public, make_game_info_public, make_friends_info_public, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, platforms, tags, about_us, match_token, game_experience, categories, category_ids, response_filters, show_as_zipcode, show_exact_location, show_others_exact_location, accepted_terms, location_visibility, app_blob, app_enable_push, app_enable_sms, app_enable_email, game_type, app_key, latitude, longitude, return_profile, audience_ids_to_add, audience_ids_to_remove, referral_account_id, app_nickname, personal_audience_id, non_guest_username, &context).await
+        self.api().edit_account(device_id, account_id, connection_account_id, role, asset_id, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, gender, age, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, make_profile_info_public, make_game_info_public, make_friends_info_public, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, platforms, tags, about_us, match_token, game_experience, categories, category_ids, response_filters, show_as_zipcode, show_exact_location, show_others_exact_location, accepted_terms, location_visibility, app_blob, app_enable_push, app_enable_sms, app_enable_email, game_type, app_key, latitude, longitude, return_profile, audience_ids_to_add, audience_ids_to_remove, referral_account_id, app_nickname, personal_audience_id, non_guest_username, &context).await
     }
 
     /// Update Username and Email
     async fn edit_username(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         email_address: Option<String>,
@@ -25229,13 +23850,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<EditUsernameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().edit_username(version, device_id, account_id, email_address, username, &context).await
+        self.api().edit_username(device_id, account_id, email_address, username, &context).await
     }
 
     /// Get Account
     async fn get_account(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -25251,13 +23871,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_account(version, return_nulls, device_id, account_id, connection_account_email, connection_account_id, response_filters, game_type, app_key, purchase_type, update_viewed_date, latitude, longitude, &context).await
+        self.api().get_account(return_nulls, device_id, account_id, connection_account_email, connection_account_id, response_filters, game_type, app_key, purchase_type, update_viewed_date, latitude, longitude, &context).await
     }
 
     /// Get Profile Assets
     async fn get_profile_assets(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -25275,13 +23894,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetProfileAssetsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_profile_assets(version, return_nulls, device_id, account_id, owner_id, media_types, mime_types, sort_field, descending, latitude, longitude, _i, start, _l, limit, &context).await
+        self.api().get_profile_assets(return_nulls, device_id, account_id, owner_id, media_types, mime_types, sort_field, descending, latitude, longitude, _i, start, _l, limit, &context).await
     }
 
     /// Search Accounts
     async fn get_referral_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         retrieve_type: Option<String>,
@@ -25296,13 +23914,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetReferralListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_referral_list(version, account_id, app_key, retrieve_type, level_limit, ancestor_level_limit, children_level_limit, ancestor_list_start, ancestor_list_limit, children_list_start, children_list_limit, children_children, &context).await
+        self.api().get_referral_list(account_id, app_key, retrieve_type, level_limit, ancestor_level_limit, children_level_limit, ancestor_list_start, ancestor_list_limit, children_list_start, children_list_limit, children_children, &context).await
     }
 
     /// Get Account Settings
     async fn get_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -25310,13 +23927,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_settings(version, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_settings(device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Login as Account
     async fn login_delegate(
         &self,
-        version: f64,
         access_token: String,
         app_key: String,
         device_id: Option<String>,
@@ -25331,13 +23947,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LoginDelegateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().login_delegate(version, access_token, app_key, device_id, access_token_secret, delegated_account_id, delegated_username, network_uid, age_restriction, response_filters, latitude, longitude, &context).await
+        self.api().login_delegate(access_token, app_key, device_id, access_token_secret, delegated_account_id, delegated_username, network_uid, age_restriction, response_filters, latitude, longitude, &context).await
     }
 
     /// Login Account
     async fn login_general(
         &self,
-        version: f64,
         access_token: String,
         network_uid: String,
         app_key: String,
@@ -25354,13 +23969,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LoginGeneralResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().login_general(version, access_token, network_uid, app_key, device_id, device_id_type, access_token_secret, age_restriction, response_filters, latitude, longitude, email_match, chosen_account_id, third_party_credential_id, &context).await
+        self.api().login_general(access_token, network_uid, app_key, device_id, device_id_type, access_token_secret, age_restriction, response_filters, latitude, longitude, email_match, chosen_account_id, third_party_credential_id, &context).await
     }
 
     /// Login Account (Username)
     async fn login_username(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -25374,13 +23988,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LoginUsernameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().login_username(version, username, password, device_id, latitude, longitude, app, game_type, app_key, return_profile, response_filters, &context).await
+        self.api().login_username(username, password, device_id, latitude, longitude, app, game_type, app_key, return_profile, response_filters, &context).await
     }
 
     /// Logout Account
     async fn logout(
         &self,
-        version: f64,
         device_id: Option<String>,
         device_id_type: Option<String>,
         account_id: Option<i64>,
@@ -25389,13 +24002,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LogoutResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().logout(version, device_id, device_id_type, account_id, latitude, longitude, &context).await
+        self.api().logout(device_id, device_id_type, account_id, latitude, longitude, &context).await
     }
 
     /// Merge Account
     async fn merge_account(
         &self,
-        version: f64,
         merge_account_id: i64,
         app_key: String,
         device_id: Option<String>,
@@ -25403,13 +24015,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<MergeAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().merge_account(version, merge_account_id, app_key, device_id, account_id, &context).await
+        self.api().merge_account(merge_account_id, app_key, device_id, account_id, &context).await
     }
 
     /// Update Password
     async fn password_change(
         &self,
-        version: f64,
         account_id: i64,
         old_password: String,
         new_password: String,
@@ -25417,26 +24028,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<PasswordChangeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().password_change(version, account_id, old_password, new_password, confirm_password, &context).await
+        self.api().password_change(account_id, old_password, new_password, confirm_password, &context).await
     }
 
     /// Reset Password
     async fn password_reset(
         &self,
-        version: f64,
         token: String,
         password: String,
         confirm: String,
         ) -> Result<PasswordResetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().password_reset(version, token, password, confirm, &context).await
+        self.api().password_reset(token, password, confirm, &context).await
     }
 
     /// Request Password Reset
     async fn request_password_reset(
         &self,
-        version: f64,
         email: String,
         from: Option<String>,
         domain: Option<String>,
@@ -25445,24 +24054,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RequestPasswordResetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().request_password_reset(version, email, from, domain, sub_url, referer, &context).await
+        self.api().request_password_reset(email, from, domain, sub_url, referer, &context).await
     }
 
     /// Send Validation Request
     async fn request_validate_account(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<RequestValidateAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().request_validate_account(version, account_id, &context).await
+        self.api().request_validate_account(account_id, &context).await
     }
 
     /// Search Accounts
     async fn search_accounts(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -25484,13 +24091,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAccountsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_accounts(version, account_id, app_key, keyword, latitude, longitude, radius, gender, game_experience, age, category_ids, return_nulls, response_filters, purchase_type, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_accounts(account_id, app_key, keyword, latitude, longitude, radius, gender, game_experience, age, category_ids, return_nulls, response_filters, purchase_type, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Login Account (Encrypted Username)
     async fn secure_login(
         &self,
-        version: f64,
         username: String,
         password: String,
         game_type: String,
@@ -25503,13 +24109,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SecureLoginResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().secure_login(version, username, password, game_type, device_id, charset_name, latitude, longitude, return_profile, response_filters, &context).await
+        self.api().secure_login(username, password, game_type, device_id, charset_name, latitude, longitude, return_profile, response_filters, &context).await
     }
 
     /// Create Account (Encrypted Username)
     async fn secure_signup(
         &self,
-        version: f64,
         device_id: String,
         username: String,
         password: String,
@@ -25574,13 +24179,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SecureSignupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().secure_signup(version, device_id, username, password, name, invite_token, prefix_name, first_name, middle_name, last_name, suffix_name, title, device_id_type, email_address, asset_id, address, zipcode, gender, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, role, platforms, tags, about_us, game_experience, category_ids, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, latitude, longitude, accepted_terms, charset_name, game_type, app_key, app_version, response_type, &context).await
+        self.api().secure_signup(device_id, username, password, name, invite_token, prefix_name, first_name, middle_name, last_name, suffix_name, title, device_id_type, email_address, asset_id, address, zipcode, gender, birthday, home_phone, cell_phone, cell_phone_carrier, business_phone, role, platforms, tags, about_us, game_experience, category_ids, hometown, height, height_index, ethnicity, body_type, marital_status, children, religion, education, education_index, smoke, drink, companionship, companionship_index, preferred_min_age, preferred_max_age, preferred_min_height, preferred_max_height, preferred_gender, preferred_education, preferred_education_index, preferred_body_type, preferred_ethnicity, preferred_location, preferred_location_range, latitude, longitude, accepted_terms, charset_name, game_type, app_key, app_version, response_type, &context).await
     }
 
     /// Save Match Token
     async fn set_match_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         match_token: Option<String>,
@@ -25591,13 +24195,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SetMatchTokenResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().set_match_token(version, device_id, account_id, match_token, game_type, app_key, latitude, longitude, &context).await
+        self.api().set_match_token(device_id, account_id, match_token, game_type, app_key, latitude, longitude, &context).await
     }
 
     /// Update Account Active Status
     async fn update_actve_status(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         active: bool,
@@ -25606,13 +24209,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateActveStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_actve_status(version, account_id, connection_account_id, active, device_id, app_key, &context).await
+        self.api().update_actve_status(account_id, connection_account_id, active, device_id, app_key, &context).await
     }
 
     /// Update Location
     async fn update_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -25621,13 +24223,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateLocationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_location(version, device_id, account_id, latitude, longitude, client_time, &context).await
+        self.api().update_location(device_id, account_id, latitude, longitude, client_time, &context).await
     }
 
     /// Update Account Settings
     async fn update_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         blocked_notifications: Option<String>,
@@ -25643,35 +24244,32 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_settings(version, device_id, account_id, blocked_notifications, suggestion_method, suggestion_count, suggestion_time_frame, show_others_exact_location, show_as_zipcode, show_exact_location, favorite_visibility, latitude, longitude, &context).await
+        self.api().update_settings(device_id, account_id, blocked_notifications, suggestion_method, suggestion_count, suggestion_time_frame, show_others_exact_location, show_as_zipcode, show_exact_location, favorite_visibility, latitude, longitude, &context).await
     }
 
     /// Save Validation Status
     async fn validate_account_signup(
         &self,
-        version: f64,
         token: String,
         ) -> Result<ValidateAccountSignupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().validate_account_signup(version, token, &context).await
+        self.api().validate_account_signup(token, &context).await
     }
 
     /// Validate Password Reset Token
     async fn validate_password_reset(
         &self,
-        version: f64,
         token: String,
         ) -> Result<ValidatePasswordResetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().validate_password_reset(version, token, &context).await
+        self.api().validate_password_reset(token, &context).await
     }
 
     /// Searches an Achievement Tier
-    async fn api_version_achievement_tier_search_post(
+    async fn achievement_tier_search_post(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -25683,16 +24281,15 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         descending_goal: Option<bool>,
         start: Option<i64>,
         limit: Option<i64>,
-        ) -> Result<ApiVersionAchievementTierSearchPostResponse, ApiError>
+        ) -> Result<AchievementTierSearchPostResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().api_version_achievement_tier_search_post(version, device_id, account_id, app_key, keyword, achievement_type, rank_type, sort_field, descending, descending_goal, start, limit, &context).await
+        self.api().achievement_tier_search_post(device_id, account_id, app_key, keyword, achievement_type, rank_type, sort_field, descending, descending_goal, start, limit, &context).await
     }
 
     /// Create Achievement
     async fn create_achievement(
         &self,
-        version: f64,
         app_key: String,
         title: String,
         device_id: Option<String>,
@@ -25709,13 +24306,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateAchievementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_achievement(version, app_key, title, device_id, account_id, analytics_tag, description, rank_type, rank_increment, min_increment, max_increment, validate, active, trigger_definition, &context).await
+        self.api().create_achievement(app_key, title, device_id, account_id, analytics_tag, description, rank_type, rank_increment, min_increment, max_increment, validate, active, trigger_definition, &context).await
     }
 
     /// Create Achievement Tier
     async fn create_achievement_tier(
         &self,
-        version: f64,
         achievement_id: i64,
         score_all_instances: bool,
         device_id: Option<String>,
@@ -25733,37 +24329,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateAchievementTierResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_achievement_tier(version, achievement_id, score_all_instances, device_id, account_id, icon, icon_asset_id, title, description, goal_count, mission_id, game_id, pack_id, game_level_id, game_object_id, &context).await
+        self.api().create_achievement_tier(achievement_id, score_all_instances, device_id, account_id, icon, icon_asset_id, title, description, goal_count, mission_id, game_id, pack_id, game_level_id, game_object_id, &context).await
     }
 
     /// Delete Achievement
     async fn delete_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteAchievementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_achievement(version, achievement_id, account_id, &context).await
+        self.api().delete_achievement(achievement_id, account_id, &context).await
     }
 
     /// Delete Achievement Tier
     async fn delete_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteAchievementTierResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_achievement_tier(version, achievement_tier_id, account_id, &context).await
+        self.api().delete_achievement_tier(achievement_tier_id, account_id, &context).await
     }
 
     /// Get Achievement
     async fn get_achievement(
         &self,
-        version: f64,
         achievement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -25771,25 +24364,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAchievementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_achievement(version, achievement_id, device_id, account_id, achievement_type, &context).await
+        self.api().get_achievement(achievement_id, device_id, account_id, achievement_type, &context).await
     }
 
     /// Gets an achievement tier
     async fn get_achievement_tier(
         &self,
-        version: f64,
         account_id: i64,
         achievement_tier_id: i64,
         ) -> Result<GetAchievementTierResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_achievement_tier(version, account_id, achievement_tier_id, &context).await
+        self.api().get_achievement_tier(account_id, achievement_tier_id, &context).await
     }
 
     /// Get Achievement Progress
     async fn get_user_achievements(
         &self,
-        version: f64,
         return_nulls: bool,
         app_key: String,
         include_undiscovered: bool,
@@ -25804,24 +24395,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetUserAchievementsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_achievements(version, return_nulls, app_key, include_undiscovered, device_id, account_id, connection_account_email, connection_account_id, rank_type, achievement_type, latitude, longitude, &context).await
+        self.api().get_user_achievements(return_nulls, app_key, include_undiscovered, device_id, account_id, connection_account_email, connection_account_id, rank_type, achievement_type, latitude, longitude, &context).await
     }
 
     /// List Achievement Tags
     async fn list_achievement_tags(
         &self,
-        version: f64,
         app_key: Option<String>,
         ) -> Result<ListAchievementTagsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_achievement_tags(version, app_key, &context).await
+        self.api().list_achievement_tags(app_key, &context).await
     }
 
     /// List Achievements
     async fn list_achievements(
         &self,
-        version: f64,
         sort_field: models::ListAchievementsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -25836,13 +24425,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListAchievementsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_achievements(version, sort_field, descending, start, limit, active_only, device_id, account_id, app_key, keyword, achievement_type, rank_type, &context).await
+        self.api().list_achievements(sort_field, descending, start, limit, active_only, device_id, account_id, app_key, keyword, achievement_type, rank_type, &context).await
     }
 
     /// Search Achievements
     async fn search_achievements(
         &self,
-        version: f64,
         app_key: String,
         sort_field: models::SearchAchievementsSortFieldParameter,
         descending: bool,
@@ -25858,13 +24446,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAchievementsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_achievements(version, app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id, account_id, keyword, achievement_type, rank_type, &context).await
+        self.api().search_achievements(app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id, account_id, keyword, achievement_type, rank_type, &context).await
     }
 
     /// Update Achievement
     async fn update_achievement(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         achievement_id: Option<i64>,
@@ -25883,13 +24470,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateAchievementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_achievement(version, device_id, account_id, achievement_id, analytics_tag, title, description, rank_type, rank_increment, min_increment, null_min_increment, max_increment, null_max_increment, validate, active, trigger_definition, &context).await
+        self.api().update_achievement(device_id, account_id, achievement_id, analytics_tag, title, description, rank_type, rank_increment, min_increment, null_min_increment, max_increment, null_max_increment, validate, active, trigger_definition, &context).await
     }
 
     /// Update Achievement Tier
     async fn update_achievement_tier(
         &self,
-        version: f64,
         achievement_tier_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -25907,13 +24493,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateAchievementTierResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_achievement_tier(version, achievement_tier_id, device_id, account_id, icon, icon_asset_id, title, description, goal_count, mission_id, game_id, pack_id, game_level_id, game_object_id, score_all_instances, &context).await
+        self.api().update_achievement_tier(achievement_tier_id, device_id, account_id, icon, icon_asset_id, title, description, goal_count, mission_id, game_id, pack_id, game_level_id, game_object_id, score_all_instances, &context).await
     }
 
     /// Update Achievement Progress
     async fn update_user_achievement(
         &self,
-        version: f64,
         account_id: i64,
         achievement_id: Option<i64>,
         tag: Option<String>,
@@ -25925,24 +24510,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateUserAchievementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_user_achievement(version, account_id, achievement_id, tag, custom_id, increment, start_date, end_date, return_progress, &context).await
+        self.api().update_user_achievement(account_id, achievement_id, tag, custom_id, increment, start_date, end_date, return_progress, &context).await
     }
 
     /// Create an entity reference.
     async fn create_entity_reference(
         &self,
-        version: f64,
         body: models::EntityReference,
         ) -> Result<CreateEntityReferenceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_entity_reference(version, body, &context).await
+        self.api().create_entity_reference(body, &context).await
     }
 
     /// Create Album
     async fn add_album_collection(
         &self,
-        version: f64,
         title: String,
         cover_asset_nullable: bool,
         include_cover_in_asset_list: bool,
@@ -25992,13 +24575,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddAlbumCollectionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_album_collection(version, title, cover_asset_nullable, include_cover_in_asset_list, public_read, public_write, public_delete, public_add, anonymous, device_id, account_id, assets_to_add, media, media_url, asset_id, attached_media, attached_media_url, start_date, end_date, tags, description, album_type, album_type_id, sub_type, latitude, longitude, location_description, visibility, game_type, app_key, cell_phone, street_address, street_address2, city, state, postal_code, full_address, meta_data, category_ids, category_filter_ids, audience_ids, include_all_app_users_as_members, include_audiences_as_members, audience_operator, approval_status, linked_object_type, linked_object_id, &context).await
+        self.api().add_album_collection(title, cover_asset_nullable, include_cover_in_asset_list, public_read, public_write, public_delete, public_add, anonymous, device_id, account_id, assets_to_add, media, media_url, asset_id, attached_media, attached_media_url, start_date, end_date, tags, description, album_type, album_type_id, sub_type, latitude, longitude, location_description, visibility, game_type, app_key, cell_phone, street_address, street_address2, city, state, postal_code, full_address, meta_data, category_ids, category_filter_ids, audience_ids, include_all_app_users_as_members, include_audiences_as_members, audience_operator, approval_status, linked_object_type, linked_object_id, &context).await
     }
 
     /// Add Album Users
     async fn add_album_users(
         &self,
-        version: f64,
         album_id: i64,
         include_friend_group: bool,
         device_id: Option<String>,
@@ -26012,13 +24594,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddAlbumUsersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_album_users(version, album_id, include_friend_group, device_id, account_id, read, write, delete, add, connections, connection_groups, &context).await
+        self.api().add_album_users(album_id, include_friend_group, device_id, account_id, read, write, delete, add, connections, connection_groups, &context).await
     }
 
     /// Approve Album
     async fn approve_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26027,13 +24608,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ApproveAlbumResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().approve_album(version, album_id, device_id, account_id, approval_status, verified, &context).await
+        self.api().approve_album(album_id, device_id, account_id, approval_status, verified, &context).await
     }
 
     ///  Get Album
     async fn get_album_collection(
         &self,
-        version: f64,
         return_nulls: bool,
         album_id: i64,
         device_id: Option<String>,
@@ -26046,39 +24626,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAlbumCollectionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_album_collection(version, return_nulls, album_id, device_id, account_id, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, &context).await
+        self.api().get_album_collection(return_nulls, album_id, device_id, account_id, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, &context).await
     }
 
     /// Leave Album
     async fn leave_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<LeaveAlbumResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().leave_album(version, album_id, device_id, account_id, &context).await
+        self.api().leave_album(album_id, device_id, account_id, &context).await
     }
 
     /// Delete Album
     async fn remove_album(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<RemoveAlbumResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_album(version, album_id, device_id, account_id, &context).await
+        self.api().remove_album(album_id, device_id, account_id, &context).await
     }
 
     /// Remove Album Users
     async fn remove_album_users(
         &self,
-        version: f64,
         album_id: i64,
         remove_friend_group: bool,
         device_id: Option<String>,
@@ -26088,13 +24665,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveAlbumUsersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_album_users(version, album_id, remove_friend_group, device_id, account_id, connections, connection_groups, &context).await
+        self.api().remove_album_users(album_id, remove_friend_group, device_id, account_id, connections, connection_groups, &context).await
     }
 
     /// Search Albums
     async fn search_albums(
         &self,
-        version: f64,
         filter: String,
         album_type_id: i64,
         sub_type: String,
@@ -26158,13 +24734,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAlbumsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_albums(version, filter, album_type_id, sub_type, include_inactive, sort_field, descending, start, limit, range, include_liked, include_favorited, include_permissions, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, device_id, account_id, connection_account_id, owner_id, album_ids, exclude_album_ids, media_id, keyword, album_type, limit_per_album_type, date_created, updated_since, updated_before, created_since, created_before, started_since, started_before, ended_since, ended_before, latitude, longitude, app_key, category_ids, category_filter_ids, audience_ids, exclude_audience_ids, include_completable, include_rating, search_mode, stack_search, stack_window_size, min_stack_per_page, stack_pagination_identifier, stack_details, flag_count_minimum, remove_flagged_content, verified_filter, linked_object_type, linked_object_id, order_audience_id, ignore_default_app_filter, search_expression, generate_albums, &context).await
+        self.api().search_albums(filter, album_type_id, sub_type, include_inactive, sort_field, descending, start, limit, range, include_liked, include_favorited, include_permissions, like_preview_size, asset_preview_size, note_preview_size, connection_preview_size, audience_preview_size, device_id, account_id, connection_account_id, owner_id, album_ids, exclude_album_ids, media_id, keyword, album_type, limit_per_album_type, date_created, updated_since, updated_before, created_since, created_before, started_since, started_before, ended_since, ended_before, latitude, longitude, app_key, category_ids, category_filter_ids, audience_ids, exclude_audience_ids, include_completable, include_rating, search_mode, stack_search, stack_window_size, min_stack_per_page, stack_pagination_identifier, stack_details, flag_count_minimum, remove_flagged_content, verified_filter, linked_object_type, linked_object_id, order_audience_id, ignore_default_app_filter, search_expression, generate_albums, &context).await
     }
 
     /// Update Album
     async fn update_album_collection(
         &self,
-        version: f64,
         album_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26213,26 +24788,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateAlbumCollectionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_album_collection(version, album_id, device_id, account_id, assets_to_add, assets_to_remove, asset_id, media, media_url, active, title, start_date, end_date, tags, description, album_type, album_type_id, sub_type, public_read, public_write, public_delete, public_add, latitude, longitude, location_description, visibility, cell_phone, street_address, street_address2, city, state, postal_code, full_address, anonymous, meta_data, category_ids, category_filter_ids, audience_ids, audience_ids_to_add, audience_ids_to_remove, include_all_app_users_as_members, include_audiences_as_members, audience_operator, linked_object_type, linked_object_id, index_now, &context).await
+        self.api().update_album_collection(album_id, device_id, account_id, assets_to_add, assets_to_remove, asset_id, media, media_url, active, title, start_date, end_date, tags, description, album_type, album_type_id, sub_type, public_read, public_write, public_delete, public_add, latitude, longitude, location_description, visibility, cell_phone, street_address, street_address2, city, state, postal_code, full_address, anonymous, meta_data, category_ids, category_filter_ids, audience_ids, audience_ids_to_add, audience_ids_to_remove, include_all_app_users_as_members, include_audiences_as_members, audience_operator, linked_object_type, linked_object_id, index_now, &context).await
     }
 
     /// Get User Activity
     async fn activities(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         account_id: i64,
         ) -> Result<ActivitiesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().activities(version, start, limit, account_id, &context).await
+        self.api().activities(start, limit, account_id, &context).await
     }
 
     /// Get Aggregated Filtered Usage
     async fn aggregated_filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -26267,13 +24840,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AggregatedFilteredUsageResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().aggregated_filtered_usage(version, device_id, account_id, application_id, app_key, start_date, end_date, device_type, device, device_os, gender, age_group, country, state, city, zip, model, tag, user_account_id, user_account_display, user_account_username, group_by_root, group_by, distinct_count, sort_field, descending, hide_unknown, response_format, _l, limit, latitude, longitude, &context).await
+        self.api().aggregated_filtered_usage(device_id, account_id, application_id, app_key, start_date, end_date, device_type, device, device_os, gender, age_group, country, state, city, zip, model, tag, user_account_id, user_account_display, user_account_username, group_by_root, group_by, distinct_count, sort_field, descending, hide_unknown, response_format, _l, limit, latitude, longitude, &context).await
     }
 
     /// Get Filtered Usage
     async fn filtered_usage(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         application_id: Option<i64>,
@@ -26316,13 +24888,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FilteredUsageResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().filtered_usage(version, device_id, account_id, application_id, app_key, start_date, end_date, device_type, device, device_os, gender, age_group, country, state, city, zip, model, tag, user_account_id, user_account_display, user_account_username, custom_id, custom_type, custom_value, custom_value2, custom_long, custom_long2, custom_message, custom_message2, group_by, distinct_count, sum_column, sort_field, descending, hide_unknown, response_format, _l, limit, latitude, longitude, &context).await
+        self.api().filtered_usage(device_id, account_id, application_id, app_key, start_date, end_date, device_type, device, device_os, gender, age_group, country, state, city, zip, model, tag, user_account_id, user_account_display, user_account_username, custom_id, custom_type, custom_value, custom_value2, custom_long, custom_long2, custom_message, custom_message2, group_by, distinct_count, sum_column, sort_field, descending, hide_unknown, response_format, _l, limit, latitude, longitude, &context).await
     }
 
     /// Create Usage Record
     async fn usage(
         &self,
-        version: f64,
         tag: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26357,13 +24928,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UsageResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().usage(version, tag, device_id, account_id, application_id, app_key, app_version, device, device_type, device_os, model, latitude, longitude, custom_id, custom_type, achievement_increment, city, state, country, zip, location_description, client_time, error_message, ip, user_agent, background_event, custom_message, custom_message2, custom_value, custom_value2, custom_long, custom_long2, &context).await
+        self.api().usage(tag, device_id, account_id, application_id, app_key, app_version, device, device_type, device_os, model, latitude, longitude, custom_id, custom_type, achievement_increment, city, state, country, zip, location_description, client_time, error_message, ip, user_agent, background_event, custom_message, custom_message2, custom_value, custom_value2, custom_long, custom_long2, &context).await
     }
 
     /// Create Multiple Usage Records
     async fn usage_batch(
         &self,
-        version: f64,
         app_key: String,
         device: String,
         data: String,
@@ -26378,13 +24948,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UsageBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().usage_batch(version, app_key, device, data, device_id, account_id, app_version, device_type, device_os, model, update_ranking, return_summary_response, &context).await
+        self.api().usage_batch(app_key, device, data, device_id, account_id, app_version, device_type, device_os, model, update_ranking, return_summary_response, &context).await
     }
 
     /// Get App Data
     async fn get_app_data(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         device_id: Option<String>,
@@ -26413,13 +24982,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAppDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_app_data(version, start, limit, device_id, account_id, game_type, include_game_data, q, keyword, sort_field, descending, _i, _l, game_object_count, filter, date_created, owner_id, mission_ids, game_ids, pack_ids, game_level_ids, app_version, include_higher_version_packs, include_higher_version_levels, response_groups, purchase_type, &context).await
+        self.api().get_app_data(start, limit, device_id, account_id, game_type, include_game_data, q, keyword, sort_field, descending, _i, _l, game_object_count, filter, date_created, owner_id, mission_ids, game_ids, pack_ids, game_level_ids, app_version, include_higher_version_packs, include_higher_version_levels, response_groups, purchase_type, &context).await
     }
 
     /// Create App Data
     async fn post_app_data(
         &self,
-        version: f64,
         game_type: String,
         start: i32,
         limit: i32,
@@ -26449,13 +25017,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<PostAppDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().post_app_data(version, game_type, start, limit, data, device_id, account_id, include_game_data, q, keyword, sort_field, descending, _i, _l, game_object_count, filter, date_created, owner_id, mission_ids, game_ids, pack_ids, game_level_ids, app_version, include_higher_version_packs, include_higher_version_levels, response_groups, purchase_type, &context).await
+        self.api().post_app_data(game_type, start, limit, data, device_id, account_id, include_game_data, q, keyword, sort_field, descending, _i, _l, game_object_count, filter, date_created, owner_id, mission_ids, game_ids, pack_ids, game_level_ids, app_version, include_higher_version_packs, include_higher_version_levels, response_groups, purchase_type, &context).await
     }
 
     /// Regenerate App Data
     async fn regen_app_data(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         build_version: Option<String>,
@@ -26463,13 +25030,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RegenAppDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().regen_app_data(version, account_id, app_key, build_version, api_version, &context).await
+        self.api().regen_app_data(account_id, app_key, build_version, api_version, &context).await
     }
 
     /// Create Application
     async fn create_application(
         &self,
-        version: f64,
         app_name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26552,13 +25118,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_application(version, app_name, device_id, account_id, about, bundle_id, app_icon_asset_id, app_logo_asset_id, facebook_app_id, facebook_app_secret, google_api_key, update_eula_date, eula_version, landing_page_url, show_in_activities, activity_description, invite_welcome_text, invite_page_url, url_scheme, platforms, download_urls, category_ids, scoring_type, hint_cost, max_score, tickets_per_point, has_game_data, public_notifications, use_matching_algorithm, global_tickets, build_version, api_version, placement_name, placement_description, placement_size, placement_height, placement_width, placement_refresh_interval, create_object_store, public_content_approval, production_mode, minimum_session_length, session_gap_length, local_ads_enabled, sqoot_api_key, trilat_processing_type, max_sample_size, min_rssi, modules, authorized_count, authorized_servers, default_timezone, smtp_pass, meta_data, placement_meta_data, ips_floor, enable_apns_badge, include_in_report, default_app_filter_id, enable_welcome_email, apple_app_id, apple_team_id, apple_auth_key_id, apple_auth_key, apple_issuer_id, app_store_key_id, app_store_key, google_private_key_file, authorize_net_api_key, authorize_net_transaction_key, email_sender, smtp_user, smtp_host, vatom_business_id, vatom_rest_client_id, vatom_rest_secret_key, twilio_account_sid, twilio_auth_token, twilio_sender_phone_number, open_ai_secret_key, &context).await
+        self.api().create_application(app_name, device_id, account_id, about, bundle_id, app_icon_asset_id, app_logo_asset_id, facebook_app_id, facebook_app_secret, google_api_key, update_eula_date, eula_version, landing_page_url, show_in_activities, activity_description, invite_welcome_text, invite_page_url, url_scheme, platforms, download_urls, category_ids, scoring_type, hint_cost, max_score, tickets_per_point, has_game_data, public_notifications, use_matching_algorithm, global_tickets, build_version, api_version, placement_name, placement_description, placement_size, placement_height, placement_width, placement_refresh_interval, create_object_store, public_content_approval, production_mode, minimum_session_length, session_gap_length, local_ads_enabled, sqoot_api_key, trilat_processing_type, max_sample_size, min_rssi, modules, authorized_count, authorized_servers, default_timezone, smtp_pass, meta_data, placement_meta_data, ips_floor, enable_apns_badge, include_in_report, default_app_filter_id, enable_welcome_email, apple_app_id, apple_team_id, apple_auth_key_id, apple_auth_key, apple_issuer_id, app_store_key_id, app_store_key, google_private_key_file, authorize_net_api_key, authorize_net_transaction_key, email_sender, smtp_user, smtp_host, vatom_business_id, vatom_rest_client_id, vatom_rest_secret_key, twilio_account_sid, twilio_auth_token, twilio_sender_phone_number, open_ai_secret_key, &context).await
     }
 
     /// Create Ad Placement
     async fn create_application_placement(
         &self,
-        version: f64,
         app_key: String,
         size: models::CreateApplicationPlacementSizeParameter,
         device_id: Option<String>,
@@ -26573,73 +25138,67 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateApplicationPlacementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_application_placement(version, app_key, size, device_id, account_id, name, description, height, width, refresh_interval, default_image_id, active, &context).await
+        self.api().create_application_placement(app_key, size, device_id, account_id, name, description, height, width, refresh_interval, default_image_id, active, &context).await
     }
 
     /// Delete Application
     async fn delete_application(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         ) -> Result<DeleteApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_application(version, account_id, app_key, &context).await
+        self.api().delete_application(account_id, app_key, &context).await
     }
 
     /// Delete Ad Placement
     async fn delete_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteApplicationPlacementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_application_placement(version, placement_id, device_id, account_id, &context).await
+        self.api().delete_application_placement(placement_id, device_id, account_id, &context).await
     }
 
     /// Get Application
     async fn get_application(
         &self,
-        version: f64,
         app_key: Option<String>,
         application_id: Option<i64>,
         ) -> Result<GetApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_application(version, app_key, application_id, &context).await
+        self.api().get_application(app_key, application_id, &context).await
     }
 
     /// Get Ad Placement
     async fn get_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetApplicationPlacementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_application_placement(version, placement_id, device_id, account_id, &context).await
+        self.api().get_application_placement(placement_id, device_id, account_id, &context).await
     }
 
     /// Get API versions
     async fn get_application_versions(
         &self,
-        version: f64,
         ) -> Result<GetApplicationVersionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_application_versions(version, &context).await
+        self.api().get_application_versions(&context).await
     }
 
     /// Search Application Users
     async fn get_unique_users_by_app(
         &self,
-        version: f64,
         app_key: String,
         q: Option<String>,
         keyword: Option<String>,
@@ -26651,13 +25210,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetUniqueUsersByAppResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_unique_users_by_app(version, app_key, q, keyword, since, _i, start, _l, limit, &context).await
+        self.api().get_unique_users_by_app(app_key, q, keyword, since, _i, start, _l, limit, &context).await
     }
 
     /// List Applications
     async fn list_applications(
         &self,
-        version: f64,
         account_id: Option<i64>,
         q: Option<String>,
         keyword: Option<String>,
@@ -26681,13 +25239,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListApplicationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_applications(version, account_id, q, keyword, platforms, device_ids, device_versions, category_ids, sort_field, has_ads, public_notifications, filter_billable, filter_content_admin, descending, _i, start, _l, limit, application_ids, has_object_store, active_only, &context).await
+        self.api().list_applications(account_id, q, keyword, platforms, device_ids, device_versions, category_ids, sort_field, has_ads, public_notifications, filter_billable, filter_content_admin, descending, _i, start, _l, limit, application_ids, has_object_store, active_only, &context).await
     }
 
     /// Search for Ad Placements
     async fn search_application_placement(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26696,13 +25253,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchApplicationPlacementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_application_placement(version, app_key, device_id, account_id, start, limit, &context).await
+        self.api().search_application_placement(app_key, device_id, account_id, start, limit, &context).await
     }
 
     /// Search for Application Settings
     async fn search_application_settings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -26714,13 +25270,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchApplicationSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_application_settings(version, device_id, account_id, connection_account_id, keyword, sort_field, descending, start, limit, &context).await
+        self.api().search_application_settings(device_id, account_id, connection_account_id, keyword, sort_field, descending, start, limit, &context).await
     }
 
     /// Search Applications
     async fn search_applications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -26740,13 +25295,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchApplicationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_applications(version, device_id, account_id, latitude, longitude, q, keyword, q_search_fields, sort_field, descending, _i, start, _l, limit, has_ads, public_notifications, active_only, &context).await
+        self.api().search_applications(device_id, account_id, latitude, longitude, q, keyword, q_search_fields, sort_field, descending, _i, start, _l, limit, has_ads, public_notifications, active_only, &context).await
     }
 
     /// Update Application
     async fn update_application(
         &self,
-        version: f64,
         app_key: String,
         app_name: String,
         device_id: Option<String>,
@@ -26830,26 +25384,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_application(version, app_key, app_name, device_id, account_id, about, bundle_id, app_icon_asset_id, app_logo_asset_id, facebook_app_id, facebook_app_secret, google_api_key, update_eula_date, eula_version, landing_page_url, show_in_activities, activity_description, invite_welcome_text, invite_page_url, url_scheme, platforms, download_urls, category_ids, scoring_type, hint_cost, max_score, tickets_per_point, has_game_data, public_notifications, use_matching_algorithm, global_tickets, build_version, api_version, placement_name, placement_description, placement_size, placement_height, placement_width, placement_refresh_interval, create_object_store, public_content_approval, production_mode, minimum_session_length, session_gap_length, local_ads_enabled, sqoot_api_key, trilat_processing_type, max_sample_size, min_rssi, modules, authorized_count, authorized_servers, default_timezone, smtp_pass, meta_data, placement_meta_data, ips_floor, enable_apns_badge, include_in_report, default_app_filter_id, enable_welcome_email, apple_app_id, apple_team_id, apple_auth_key_id, apple_auth_key, apple_issuer_id, app_store_key_id, app_store_key, google_private_key_file, authorize_net_api_key, authorize_net_transaction_key, email_sender, smtp_user, smtp_host, vatom_business_id, vatom_rest_client_id, vatom_rest_secret_key, twilio_account_sid, twilio_auth_token, twilio_sender_phone_number, open_ai_secret_key, &context).await
+        self.api().update_application(app_key, app_name, device_id, account_id, about, bundle_id, app_icon_asset_id, app_logo_asset_id, facebook_app_id, facebook_app_secret, google_api_key, update_eula_date, eula_version, landing_page_url, show_in_activities, activity_description, invite_welcome_text, invite_page_url, url_scheme, platforms, download_urls, category_ids, scoring_type, hint_cost, max_score, tickets_per_point, has_game_data, public_notifications, use_matching_algorithm, global_tickets, build_version, api_version, placement_name, placement_description, placement_size, placement_height, placement_width, placement_refresh_interval, create_object_store, public_content_approval, production_mode, minimum_session_length, session_gap_length, local_ads_enabled, sqoot_api_key, trilat_processing_type, max_sample_size, min_rssi, modules, authorized_count, authorized_servers, default_timezone, smtp_pass, meta_data, placement_meta_data, ips_floor, enable_apns_badge, include_in_report, default_app_filter_id, enable_welcome_email, apple_app_id, apple_team_id, apple_auth_key_id, apple_auth_key, apple_issuer_id, app_store_key_id, app_store_key, google_private_key_file, authorize_net_api_key, authorize_net_transaction_key, email_sender, smtp_user, smtp_host, vatom_business_id, vatom_rest_client_id, vatom_rest_secret_key, twilio_account_sid, twilio_auth_token, twilio_sender_phone_number, open_ai_secret_key, &context).await
     }
 
     /// Change Appliation Status
     async fn update_application_active(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: bool,
         ) -> Result<UpdateApplicationActiveResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_application_active(version, account_id, app_key, active, &context).await
+        self.api().update_application_active(account_id, app_key, active, &context).await
     }
 
     /// Update Ad Placement
     async fn update_application_placement(
         &self,
-        version: f64,
         placement_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26864,13 +25416,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateApplicationPlacementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_application_placement(version, placement_id, device_id, account_id, name, description, size, height, width, refresh_interval, default_image_id, active, &context).await
+        self.api().update_application_placement(placement_id, device_id, account_id, name, description, size, height, width, refresh_interval, default_image_id, active, &context).await
     }
 
     /// Create Application Certificate
     async fn upload_application_certificate(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -26878,13 +25429,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UploadApplicationCertificateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().upload_application_certificate(version, app_key, device_id, account_id, certificate, &context).await
+        self.api().upload_application_certificate(app_key, device_id, account_id, certificate, &context).await
     }
 
     /// Create AppConfig
     async fn create_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         config_version: String,
@@ -26895,37 +25445,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateApplicationConfigResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_application_config(version, account_id, app_key, config_version, asset_id, retailer_id, retailer_location_id, udid, &context).await
+        self.api().create_application_config(account_id, app_key, config_version, asset_id, retailer_id, retailer_location_id, udid, &context).await
     }
 
     /// Delete AppConfig
     async fn delete_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         ) -> Result<DeleteApplicationConfigResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_application_config(version, account_id, config_id, &context).await
+        self.api().delete_application_config(account_id, config_id, &context).await
     }
 
     /// Get AppConfig
     async fn get_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         ) -> Result<GetApplicationConfigResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_application_config(version, account_id, config_id, &context).await
+        self.api().get_application_config(account_id, config_id, &context).await
     }
 
     /// Get AppConfig by Version
     async fn get_application_config_by_config_version(
         &self,
-        version: f64,
         app_key: String,
         config_version: String,
         retailer_id: Option<i64>,
@@ -26935,13 +25482,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetApplicationConfigByConfigVersionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_application_config_by_config_version(version, app_key, config_version, retailer_id, retailer_location_id, udid, allow_older_versions, &context).await
+        self.api().get_application_config_by_config_version(app_key, config_version, retailer_id, retailer_location_id, udid, allow_older_versions, &context).await
     }
 
     /// Search AppConfigs
     async fn search_application_config(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         retailer_id: Option<i64>,
@@ -26955,13 +25501,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchApplicationConfigResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_application_config(version, account_id, app_key, retailer_id, retailer_location_id, udid, config_version, sort_field, descending, start, limit, &context).await
+        self.api().search_application_config(account_id, app_key, retailer_id, retailer_location_id, udid, config_version, sort_field, descending, start, limit, &context).await
     }
 
     /// Update AppConfig
     async fn update_application_config(
         &self,
-        version: f64,
         account_id: i64,
         config_id: i64,
         app_key: Option<String>,
@@ -26973,13 +25518,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateApplicationConfigResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_application_config(version, account_id, config_id, app_key, config_version, asset_id, retailer_id, retailer_location_id, udid, &context).await
+        self.api().update_application_config(account_id, config_id, app_key, config_version, asset_id, retailer_id, retailer_location_id, udid, &context).await
     }
 
     /// Convert Offer to Creative
     async fn asset_morph(
         &self,
-        version: f64,
         offer_id: i64,
         ad_size: models::CreateApplicationPlacementSizeParameter,
         creative_id: Option<i64>,
@@ -26990,13 +25534,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssetMorphResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().asset_morph(version, offer_id, ad_size, creative_id, width, height, background_size, template, &context).await
+        self.api().asset_morph(offer_id, ad_size, creative_id, width, height, background_size, template, &context).await
     }
 
     /// Create Asset
     async fn create_asset(
         &self,
-        version: f64,
         return_nulls: Option<bool>,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27034,13 +25577,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateAssetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_asset(version, return_nulls, device_id, account_id, album_id, collection_id, add_to_default_album, add_to_media_library, version_code, version_name, meta_data, caption, asset_type, approval_status, assigned_account_id, media, media_url, media_string, media_string_file_name, media_string_content_type, media_height, media_width, attached_media, attached_media_url, attached_media_string, attached_media_string_file_name, attached_media_string_content_type, attached_media_height, attached_media_width, location_description, app, app_key, search_tags, latitude, longitude, &context).await
+        self.api().create_asset(return_nulls, device_id, account_id, album_id, collection_id, add_to_default_album, add_to_media_library, version_code, version_name, meta_data, caption, asset_type, approval_status, assigned_account_id, media, media_url, media_string, media_string_file_name, media_string_content_type, media_height, media_width, attached_media, attached_media_url, attached_media_string, attached_media_string_file_name, attached_media_string_content_type, attached_media_height, attached_media_width, location_description, app, app_key, search_tags, latitude, longitude, &context).await
     }
 
     /// Delete Asset
     async fn delete_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27049,13 +25591,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteAssetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_asset(version, asset_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().delete_asset(asset_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Get Asset
     async fn get_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27063,13 +25604,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAssetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_asset(version, asset_id, device_id, account_id, note_descending, &context).await
+        self.api().get_asset(asset_id, device_id, account_id, note_descending, &context).await
     }
 
     /// Remove Asset from Collection
     async fn remove_asset(
         &self,
-        version: f64,
         asset_id: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27081,13 +25621,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveAssetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_asset(version, asset_id, device_id, account_id, album_id, collection_id, remove_from_default_albums, latitude, longitude, &context).await
+        self.api().remove_asset(asset_id, device_id, account_id, album_id, collection_id, remove_from_default_albums, latitude, longitude, &context).await
     }
 
     /// Search Assets
     async fn search_assets(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         album_ids: Option<String>,
@@ -27115,13 +25654,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAssetsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_assets(version, device_id, account_id, album_ids, asset_ids, app_key, media_type, mime_type, keyword, version_code, version_name, updated_since, updated_before, sort_field, descending, search_media_library, filter_by_billable, active_only, return_app, start, limit, search_mode, asset_type, approval_status, assigned_account_id, &context).await
+        self.api().search_assets(device_id, account_id, album_ids, asset_ids, app_key, media_type, mime_type, keyword, version_code, version_name, updated_since, updated_before, sort_field, descending, search_media_library, filter_by_billable, active_only, return_app, start, limit, search_mode, asset_type, approval_status, assigned_account_id, &context).await
     }
 
     /// Update Asset
     async fn update_asset(
         &self,
-        version: f64,
         asset_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27156,36 +25694,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateAssetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_asset(version, asset_id, device_id, account_id, album_id, attached_asset_id, version_code, version_name, meta_data, caption, asset_type, approval_status, assigned_account_id, media, media_url, media_string, media_string_file_name, media_string_content_type, media_height, media_width, attached_media, attached_media_url, attached_media_string, attached_media_string_file_name, attached_media_string_content_type, attached_media_height, attached_media_width, location_description, search_tags, app_key, latitude, longitude, &context).await
+        self.api().update_asset(asset_id, device_id, account_id, album_id, attached_asset_id, version_code, version_name, meta_data, caption, asset_type, approval_status, assigned_account_id, media, media_url, media_string, media_string_file_name, media_string_content_type, media_height, media_width, attached_media, attached_media_url, attached_media_string, attached_media_string_file_name, attached_media_string_content_type, attached_media_height, attached_media_width, location_description, search_tags, app_key, latitude, longitude, &context).await
     }
 
     /// Download Asset
     async fn asset_download(
         &self,
-        version: f64,
         filename: String,
         ) -> Result<AssetDownloadResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().asset_download(version, filename, &context).await
+        self.api().asset_download(filename, &context).await
     }
 
     /// Search Assignment Assignees
     async fn assigment_assignee_account_search(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         ) -> Result<AssigmentAssigneeAccountSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assigment_assignee_account_search(version, account_id, keyword, &context).await
+        self.api().assigment_assignee_account_search(account_id, keyword, &context).await
     }
 
     /// Create Assignment
     async fn assignment_create(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         assignee_account_id: i64,
@@ -27196,37 +25731,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentCreateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_create(version, account_id, name, assignee_account_id, description, retailer_location_id, tags, active, &context).await
+        self.api().assignment_create(account_id, name, assignee_account_id, description, retailer_location_id, tags, active, &context).await
     }
 
     /// Delete Assignment
     async fn assignment_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         ) -> Result<AssignmentDeleteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_delete(version, account_id, assignment_id, &context).await
+        self.api().assignment_delete(account_id, assignment_id, &context).await
     }
 
     /// Get Assignment
     async fn assignment_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         ) -> Result<AssignmentGetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_get(version, account_id, assignment_id, &context).await
+        self.api().assignment_get(account_id, assignment_id, &context).await
     }
 
     /// Search Assignments
     async fn assignment_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentSearchSortFieldParameter,
         descending: bool,
@@ -27241,13 +25773,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_search(version, account_id, sort_field, descending, active_only, start, limit, creator_account_id, assignee_account_ids, retailer_location_ids, current_status_type, keyword, &context).await
+        self.api().assignment_search(account_id, sort_field, descending, active_only, start, limit, creator_account_id, assignee_account_ids, retailer_location_ids, current_status_type, keyword, &context).await
     }
 
     /// Create Assignment Status
     async fn assignment_status_create(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -27262,37 +25793,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentStatusCreateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_status_create(version, account_id, assignment_id, scheduled_notification_id, to_do, connection, method, status, closure, message, follow_up, active, &context).await
+        self.api().assignment_status_create(account_id, assignment_id, scheduled_notification_id, to_do, connection, method, status, closure, message, follow_up, active, &context).await
     }
 
     /// Deletes Assignment Status
     async fn assignment_status_delete(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         ) -> Result<AssignmentStatusDeleteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_status_delete(version, account_id, assignment_status_id, &context).await
+        self.api().assignment_status_delete(account_id, assignment_status_id, &context).await
     }
 
     /// Get Assignment Status
     async fn assignment_status_get(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         ) -> Result<AssignmentStatusGetResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_status_get(version, account_id, assignment_status_id, &context).await
+        self.api().assignment_status_get(account_id, assignment_status_id, &context).await
     }
 
     /// Search Assignment Statuses
     async fn assignment_status_search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::AssignmentStatusSearchSortFieldParameter,
         descending: bool,
@@ -27308,13 +25836,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentStatusSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_status_search(version, account_id, sort_field, descending, active_only, start, limit, assignment_id, creator_account_id, assignee_account_id, retailer_location_id, status_type, keyword, &context).await
+        self.api().assignment_status_search(account_id, sort_field, descending, active_only, start, limit, assignment_id, creator_account_id, assignee_account_id, retailer_location_id, status_type, keyword, &context).await
     }
 
     /// Update Assignment Status
     async fn assignment_status_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_status_id: i64,
         scheduled_notification_id: Option<i64>,
@@ -27329,13 +25856,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentStatusUpdateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_status_update(version, account_id, assignment_status_id, scheduled_notification_id, to_do, connection, method, status, closure, message, follow_up, active, &context).await
+        self.api().assignment_status_update(account_id, assignment_status_id, scheduled_notification_id, to_do, connection, method, status, closure, message, follow_up, active, &context).await
     }
 
     /// Update Assignment
     async fn assignment_update(
         &self,
-        version: f64,
         account_id: i64,
         assignment_id: i64,
         name: Option<String>,
@@ -27347,13 +25873,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignmentUpdateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assignment_update(version, account_id, assignment_id, name, description, assignee_account_id, retailer_location_id, tags, active, &context).await
+        self.api().assignment_update(account_id, assignment_id, name, description, assignee_account_id, retailer_location_id, tags, active, &context).await
     }
 
     /// Create Audience
     async fn create_audience(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         description: Option<String>,
@@ -27386,35 +25911,32 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateAudienceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_audience(version, account_id, name, description, search_tags, gender, age_groups, category_ids, application_ids, game_experience_level, devices, device_ids, device_versions, locations, radius, start_time_offset, end_time_offset, send_suggestion, associate_description, associate_type, associate_id, grouping_id, meta_data, visibility, audience_type, use_order, cohort_regions_data, app_key, trilateration_types, unique_name, &context).await
+        self.api().create_audience(account_id, name, description, search_tags, gender, age_groups, category_ids, application_ids, game_experience_level, devices, device_ids, device_versions, locations, radius, start_time_offset, end_time_offset, send_suggestion, associate_description, associate_type, associate_id, grouping_id, meta_data, visibility, audience_type, use_order, cohort_regions_data, app_key, trilateration_types, unique_name, &context).await
     }
 
     /// Delete Audience
     async fn delete_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         ) -> Result<DeleteAudienceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_audience(version, account_id, audience_id, &context).await
+        self.api().delete_audience(account_id, audience_id, &context).await
     }
 
     /// Get Age Groups
     async fn get_age_groups(
         &self,
-        version: f64,
         ) -> Result<GetAgeGroupsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_age_groups(version, &context).await
+        self.api().get_age_groups(&context).await
     }
 
     /// Get Audience
     async fn get_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         app_key: Option<String>,
@@ -27424,13 +25946,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAudienceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_audience(version, account_id, audience_id, app_key, return_account_count, return_album_count, album_types_for_count, &context).await
+        self.api().get_audience(account_id, audience_id, app_key, return_account_count, return_album_count, album_types_for_count, &context).await
     }
 
     /// Search Audiences
     async fn get_audience_list(
         &self,
-        version: f64,
         account_id: Option<i64>,
         album_ids: Option<String>,
         keyword: Option<String>,
@@ -27453,59 +25974,54 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAudienceListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_audience_list(version, account_id, album_ids, keyword, keyword_fields, sort_field, descending, start, limit, send_suggestion, active_only, group_by_grouping_id, app_key, return_global, exact_keyword, audience_type, audience_types, return_account_count, return_album_count, album_types_for_count, &context).await
+        self.api().get_audience_list(account_id, album_ids, keyword, keyword_fields, sort_field, descending, start, limit, send_suggestion, active_only, group_by_grouping_id, app_key, return_global, exact_keyword, audience_type, audience_types, return_account_count, return_album_count, album_types_for_count, &context).await
     }
 
     /// Get Devices
     async fn get_devices(
         &self,
-        version: f64,
         include_inactive: bool,
         ) -> Result<GetDevicesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_devices(version, include_inactive, &context).await
+        self.api().get_devices(include_inactive, &context).await
     }
 
     /// Get Experiences
     async fn get_experiences(
         &self,
-        version: f64,
         ) -> Result<GetExperiencesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_experiences(version, &context).await
+        self.api().get_experiences(&context).await
     }
 
     /// Get GroupedAudiences
     async fn get_grouped_audiences(
         &self,
-        version: f64,
         account_id: i64,
         audience_grouping_id: String,
         ) -> Result<GetGroupedAudiencesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_grouped_audiences(version, account_id, audience_grouping_id, &context).await
+        self.api().get_grouped_audiences(account_id, audience_grouping_id, &context).await
     }
 
     /// List Suggestions by Audience
     async fn list_by_account(
         &self,
-        version: f64,
         account_id: i64,
         limit: i32,
         suggestion_type: String,
         ) -> Result<ListByAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_by_account(version, account_id, limit, suggestion_type, &context).await
+        self.api().list_by_account(account_id, limit, suggestion_type, &context).await
     }
 
     /// List Offers by Audience
     async fn list_by_audience(
         &self,
-        version: f64,
         limit: i32,
         gender: Option<String>,
         age: Option<i32>,
@@ -27515,39 +26031,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListByAudienceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_by_audience(version, limit, gender, age, category_ids, latitude, longitude, &context).await
+        self.api().list_by_audience(limit, gender, age, category_ids, latitude, longitude, &context).await
     }
 
     /// List Sent Suggestions 
     async fn list_lastest_by_account(
         &self,
-        version: f64,
         account_id: i64,
         timeframe: i32,
         suggestion_type: String,
         ) -> Result<ListLastestByAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_lastest_by_account(version, account_id, timeframe, suggestion_type, &context).await
+        self.api().list_lastest_by_account(account_id, timeframe, suggestion_type, &context).await
     }
 
     /// Send Suggestions
     async fn send_by_account(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
         ) -> Result<SendByAccountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().send_by_account(version, account_id, latitude, longitude, &context).await
+        self.api().send_by_account(account_id, latitude, longitude, &context).await
     }
 
     /// Update Audience
     async fn update_audience(
         &self,
-        version: f64,
         account_id: i64,
         audience_id: i64,
         name: Option<String>,
@@ -27582,13 +26095,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateAudienceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_audience(version, account_id, audience_id, name, description, search_tags, gender, age_groups, category_ids, application_ids, game_experience_level, devices, device_ids, device_versions, locations, radius, active, send_suggestion, start_time_offset, end_time_offset, associate_description, associate_type, associate_id, grouping_id, meta_data, visibility, audience_type, use_order, cohort_regions_data, app_key, trilateration_types, unique_name, &context).await
+        self.api().update_audience(account_id, audience_id, name, description, search_tags, gender, age_groups, category_ids, application_ids, game_experience_level, devices, device_ids, device_versions, locations, radius, active, send_suggestion, start_time_offset, end_time_offset, associate_description, associate_type, associate_id, grouping_id, meta_data, visibility, audience_type, use_order, cohort_regions_data, app_key, trilateration_types, unique_name, &context).await
     }
 
     /// Create Bid
     async fn create_bid(
         &self,
-        version: f64,
         biddable_type: String,
         biddable_id: i64,
         amount_per_view: f64,
@@ -27600,39 +26112,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateBidResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_bid(version, biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id, account_id, &context).await
+        self.api().create_bid(biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id, account_id, &context).await
     }
 
     /// Delete Bid
     async fn delete_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteBidResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_bid(version, bid_id, device_id, account_id, &context).await
+        self.api().delete_bid(bid_id, device_id, account_id, &context).await
     }
 
     /// Get Bid
     async fn get_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetBidResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_bid(version, bid_id, device_id, account_id, &context).await
+        self.api().get_bid(bid_id, device_id, account_id, &context).await
     }
 
     /// Update Bid
     async fn update_bid(
         &self,
-        version: f64,
         bid_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -27643,13 +26152,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateBidResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_bid(version, bid_id, device_id, account_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, &context).await
+        self.api().update_bid(bid_id, device_id, account_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, &context).await
     }
 
     /// Create Billable
     async fn create_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -27665,25 +26173,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_billable_entity(version, device_id, account_id, name, street_address, street_address2, city, state, postal_code, business_phone, business_phone_ext, authorize_net_api_key, authorize_net_transaction_key, &context).await
+        self.api().create_billable_entity(device_id, account_id, name, street_address, street_address2, city, state, postal_code, business_phone, business_phone_ext, authorize_net_api_key, authorize_net_transaction_key, &context).await
     }
 
     /// Delete Billable
     async fn delete_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_billable_entity(version, device_id, account_id, &context).await
+        self.api().delete_billable_entity(device_id, account_id, &context).await
     }
 
     /// Get Billable
     async fn get_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         include_counts: Option<bool>,
@@ -27691,13 +26197,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_billable_entity(version, device_id, account_id, include_counts, include_payments, &context).await
+        self.api().get_billable_entity(device_id, account_id, include_counts, include_payments, &context).await
     }
 
     /// Update Billable
     async fn update_billable_entity(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         name: Option<String>,
@@ -27713,13 +26218,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_billable_entity(version, device_id, account_id, name, street_address, street_address2, city, state, postal_code, business_phone, business_phone_ext, authorize_net_api_key, authorize_net_transaction_key, &context).await
+        self.api().update_billable_entity(device_id, account_id, name, street_address, street_address2, city, state, postal_code, business_phone, business_phone_ext, authorize_net_api_key, authorize_net_transaction_key, &context).await
     }
 
     /// Update Payment Method
     async fn add_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         account_name: Option<String>,
@@ -27746,13 +26250,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddPaymentMethodResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_payment_method(version, account_id, payment_method_id, account_name, first_name, last_name, address, city, state, postal_code, country, phone, credit_card_number, expiration_date, ccv, account_number, bank_name, routing_number, default_payment_method, payment_method_nickname, tax_id, provider_customer_profile_id, provider_payment_profile_id, meta_data, &context).await
+        self.api().add_payment_method(account_id, payment_method_id, account_name, first_name, last_name, address, city, state, postal_code, country, phone, credit_card_number, expiration_date, ccv, account_number, bank_name, routing_number, default_payment_method, payment_method_nickname, tax_id, provider_customer_profile_id, provider_payment_profile_id, meta_data, &context).await
     }
 
     /// Create Payment Method
     async fn create_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         account_name: Option<String>,
         first_name: Option<String>,
@@ -27781,13 +26284,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreatePaymentMethodResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_payment_method(version, account_id, account_name, first_name, last_name, address, city, state, postal_code, country, phone, credit_card_number, expiration_date, ccv, account_number, bank_name, routing_number, payment_method_nickname, tax_id, default_payment_method, auth_token, provider, provider_customer_profile_id, provider_payment_profile_id, meta_data, app_key, &context).await
+        self.api().create_payment_method(account_id, account_name, first_name, last_name, address, city, state, postal_code, country, phone, credit_card_number, expiration_date, ccv, account_number, bank_name, routing_number, payment_method_nickname, tax_id, default_payment_method, auth_token, provider, provider_customer_profile_id, provider_payment_profile_id, meta_data, app_key, &context).await
     }
 
     /// Create Smart Contract
     async fn create_smart_contract(
         &self,
-        version: f64,
         account_id: i64,
         token_name: String,
         token_symbol: String,
@@ -27795,39 +26297,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateSmartContractResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_smart_contract(version, account_id, token_name, token_symbol, payment_method_id, &context).await
+        self.api().create_smart_contract(account_id, token_name, token_symbol, payment_method_id, &context).await
     }
 
     /// Get Crypto Balances
     async fn get_crypto_balance(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: Option<i64>,
         payment_method_id: Option<i64>,
         ) -> Result<GetCryptoBalanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_crypto_balance(version, account_id, owner_account_id, payment_method_id, &context).await
+        self.api().get_crypto_balance(account_id, owner_account_id, payment_method_id, &context).await
     }
 
     /// Get Payment Method
     async fn get_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         payment_method_id: Option<i64>,
         get_current_balance: Option<bool>,
         ) -> Result<GetPaymentMethodResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_payment_method(version, account_id, payment_method_id, get_current_balance, &context).await
+        self.api().get_payment_method(account_id, payment_method_id, get_current_balance, &context).await
     }
 
     /// Search Payment Methods
     async fn search_payment_method(
         &self,
-        version: f64,
         account_id: i64,
         provider: Option<String>,
         param_type: Option<String>,
@@ -27839,13 +26338,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchPaymentMethodResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_payment_method(version, account_id, provider, param_type, keyword, sort_field, descending, start, limit, &context).await
+        self.api().search_payment_method(account_id, provider, param_type, keyword, sort_field, descending, start, limit, &context).await
     }
 
     /// Detail Status
     async fn get_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         response_group: models::GetStatusCsvResponseGroupParameter,
@@ -27854,38 +26352,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetStatusCsvResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_status_csv(version, account_id, batch_id, response_group, start, limit, &context).await
+        self.api().get_status_csv(account_id, batch_id, response_group, start, limit, &context).await
     }
 
     /// Search Status
     async fn list_status_csv(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
         ) -> Result<ListStatusCsvResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_status_csv(version, account_id, start, limit, &context).await
+        self.api().list_status_csv(account_id, start, limit, &context).await
     }
 
     /// Batch Status
     async fn status_csv(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         ) -> Result<StatusCsvResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().status_csv(version, account_id, batch_id, &context).await
+        self.api().status_csv(account_id, batch_id, &context).await
     }
 
     /// Upload CSV
     async fn upload_csv(
         &self,
-        version: f64,
         account_id: i64,
         upload_type: models::UploadCsvUploadTypeParameter,
         import_file: swagger::ByteArray,
@@ -27894,24 +26389,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UploadCsvResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().upload_csv(version, account_id, upload_type, import_file, file_format, app_key, &context).await
+        self.api().upload_csv(account_id, upload_type, import_file, file_format, app_key, &context).await
     }
 
     /// Create Cargo Type
     async fn create_cargo_type(
         &self,
-        version: f64,
         body: Option<models::CargoType>,
         ) -> Result<CreateCargoTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_cargo_type(version, body, &context).await
+        self.api().create_cargo_type(body, &context).await
     }
 
     /// Search Cargo Type
     async fn search_cargo_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -27922,47 +26415,43 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchCargoTypesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_cargo_types(version, sort_field, descending, start, limit, active_only, retailer_id, hub_id, &context).await
+        self.api().search_cargo_types(sort_field, descending, start, limit, active_only, retailer_id, hub_id, &context).await
     }
 
     /// Delete Cargo Type
     async fn delete_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         ) -> Result<DeleteCargoTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_cargo_type(version, cargo_type_id, &context).await
+        self.api().delete_cargo_type(cargo_type_id, &context).await
     }
 
     /// Get Cargo Type
     async fn get_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         ) -> Result<GetCargoTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_cargo_type(version, cargo_type_id, &context).await
+        self.api().get_cargo_type(cargo_type_id, &context).await
     }
 
     /// Update Cargo Type
     async fn update_cargo_type(
         &self,
-        version: f64,
         cargo_type_id: i64,
         body: Option<models::CargoType>,
         ) -> Result<UpdateCargoTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_cargo_type(version, cargo_type_id, body, &context).await
+        self.api().update_cargo_type(cargo_type_id, body, &context).await
     }
 
     /// Search Carriers
     async fn search_carriers(
         &self,
-        version: f64,
         keyword: Option<String>,
         descending: Option<bool>,
         start: Option<i32>,
@@ -27971,13 +26460,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchCarriersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_carriers(version, keyword, descending, start, limit, active_only, &context).await
+        self.api().search_carriers(keyword, descending, start, limit, active_only, &context).await
     }
 
     /// Search Categories by Distance
     async fn category_distance_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -28001,13 +26489,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CategoryDistanceSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().category_distance_search(version, account_id, keyword, app_key, category_ids, parent_category_ids, root_only, sort_field, response_group, descending, start, limit, active_only, return_external, exact_match, param_type, external_type, min_offer_count, latitude, longitude, range, &context).await
+        self.api().category_distance_search(account_id, keyword, app_key, category_ids, parent_category_ids, root_only, sort_field, response_group, descending, start, limit, active_only, return_external, exact_match, param_type, external_type, min_offer_count, latitude, longitude, range, &context).await
     }
 
     /// Create Category
     async fn create_category(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -28025,25 +26512,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateCategoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_category(version, account_id, name, app_key, parent_category_id, description, param_type, asset_id, external_id, external_type, external_category_slug, sqoot_slug, active, meta_data, search_tags, &context).await
+        self.api().create_category(account_id, name, app_key, parent_category_id, description, param_type, asset_id, external_id, external_type, external_category_slug, sqoot_slug, active, meta_data, search_tags, &context).await
     }
 
     /// Delete Category
     async fn delete_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         ) -> Result<DeleteCategoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_category(version, account_id, category_id, &context).await
+        self.api().delete_category(account_id, category_id, &context).await
     }
 
     /// Duplicate Category
     async fn duplicate_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         app_key: Option<String>,
@@ -28051,25 +26536,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DuplicateCategoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().duplicate_category(version, account_id, category_id, app_key, parent_category_id, &context).await
+        self.api().duplicate_category(account_id, category_id, app_key, parent_category_id, &context).await
     }
 
     /// Get Category
     async fn get_category(
         &self,
-        version: f64,
         category_id: i64,
         return_external: Option<bool>,
         ) -> Result<GetCategoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_category(version, category_id, return_external, &context).await
+        self.api().get_category(category_id, return_external, &context).await
     }
 
     /// Search Categories
     async fn search_categories(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -28094,13 +26577,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchCategoriesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_categories(version, account_id, keyword, app_key, category_id, category_ids, parent_category_ids, root_only, sort_field, response_group, descending, start, limit, active_only, return_external, exact_match, param_type, external_type, exclude_external_type, min_offer_count, search_depth, search_mode, &context).await
+        self.api().search_categories(account_id, keyword, app_key, category_id, category_ids, parent_category_ids, root_only, sort_field, response_group, descending, start, limit, active_only, return_external, exact_match, param_type, external_type, exclude_external_type, min_offer_count, search_depth, search_mode, &context).await
     }
 
     /// Update Category
     async fn update_category(
         &self,
-        version: f64,
         account_id: i64,
         category_id: i64,
         parent_category_id: Option<i64>,
@@ -28118,13 +26600,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateCategoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_category(version, account_id, category_id, parent_category_id, name, description, param_type, asset_id, external_id, external_type, external_category_slug, sqoot_slug, active, meta_data, search_tags, &context).await
+        self.api().update_category(account_id, category_id, parent_category_id, name, description, param_type, asset_id, external_id, external_type, external_category_slug, sqoot_slug, active, meta_data, search_tags, &context).await
     }
 
     /// Add Connection
     async fn add_connection_to_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -28137,13 +26618,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddConnectionToGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_connection_to_group(version, return_nulls, group_id, device_id, account_id, connection_id, connection_account_id, pending_id, latitude, longitude, &context).await
+        self.api().add_connection_to_group(return_nulls, group_id, device_id, account_id, connection_id, connection_account_id, pending_id, latitude, longitude, &context).await
     }
 
     /// Add Connections
     async fn add_connections_to_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28154,13 +26634,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddConnectionsToGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_connections_to_group(version, connection_group_id, device_id, account_id, connection_ids, connection_account_ids, latitude, longitude, &context).await
+        self.api().add_connections_to_group(connection_group_id, device_id, account_id, connection_ids, connection_account_ids, latitude, longitude, &context).await
     }
 
     /// Add Connection Groups
     async fn add_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -28171,13 +26650,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddSubGroupsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id, account_id, latitude, longitude, &context).await
+        self.api().add_sub_groups(return_nulls, group_id, sub_group_ids, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Create or Update Connection
     async fn create_or_update_connection(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_id: Option<i64>,
@@ -28195,13 +26673,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOrUpdateConnectionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_or_update_connection(version, device_id, account_id, connection_id, connection_account_id, pending_id, group_id, game_type, app_key, is_trusted, ignore_friend_request, is_contact, is_blocked, is_following, connection_response, &context).await
+        self.api().create_or_update_connection(device_id, account_id, connection_id, connection_account_id, pending_id, group_id, game_type, app_key, is_trusted, ignore_friend_request, is_contact, is_blocked, is_following, connection_response, &context).await
     }
 
     /// Create or Update Connection Group
     async fn create_or_update_group(
         &self,
-        version: f64,
         return_nulls: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28219,52 +26696,48 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOrUpdateGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_or_update_group(version, return_nulls, device_id, account_id, name, group_id, asset_id, connections, description, can_view_profile_info, can_view_game_info, can_view_friend_info, active, latitude, longitude, &context).await
+        self.api().create_or_update_group(return_nulls, device_id, account_id, name, group_id, asset_id, connections, description, can_view_profile_info, can_view_game_info, can_view_friend_info, active, latitude, longitude, &context).await
     }
 
     /// Accept Follow Request
     async fn follow_accept(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
         ) -> Result<FollowAcceptResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().follow_accept(version, account_id, connection_account_id, app_key, &context).await
+        self.api().follow_accept(account_id, connection_account_id, app_key, &context).await
     }
 
     /// Reject Follow Request
     async fn follow_reject(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
         ) -> Result<FollowRejectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().follow_reject(version, account_id, connection_account_id, app_key, &context).await
+        self.api().follow_reject(account_id, connection_account_id, app_key, &context).await
     }
 
     /// Remove Follower / Unfollow
     async fn follow_remove(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
         ) -> Result<FollowRemoveResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().follow_remove(version, account_id, connection_account_id, app_key, &context).await
+        self.api().follow_remove(account_id, connection_account_id, app_key, &context).await
     }
 
     /// Send Follow Request
     async fn follow_request(
         &self,
-        version: f64,
         account_id: i64,
         connection_account_id: i64,
         app_key: String,
@@ -28272,13 +26745,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FollowRequestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().follow_request(version, account_id, connection_account_id, app_key, approval_needed, &context).await
+        self.api().follow_request(account_id, connection_account_id, app_key, approval_needed, &context).await
     }
 
     /// Accept Friend
     async fn friend_accept(
         &self,
-        version: f64,
         friend_account_id: i64,
         notify_friend: bool,
         device_id: Option<String>,
@@ -28289,13 +26761,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FriendAcceptResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().friend_accept(version, friend_account_id, notify_friend, device_id, account_id, game_type, app_key, notification_message, &context).await
+        self.api().friend_accept(friend_account_id, notify_friend, device_id, account_id, game_type, app_key, notification_message, &context).await
     }
 
     /// Decline Friend
     async fn friend_reject(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28306,13 +26777,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FriendRejectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().friend_reject(version, friend_account_id, device_id, account_id, game_type, app_key, notify_friend, notification_message, &context).await
+        self.api().friend_reject(friend_account_id, device_id, account_id, game_type, app_key, notify_friend, notification_message, &context).await
     }
 
     /// Delete Friend
     async fn friend_remove(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28321,13 +26791,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FriendRemoveResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().friend_remove(version, friend_account_id, device_id, account_id, notify_friend, remove_from_groups, &context).await
+        self.api().friend_remove(friend_account_id, device_id, account_id, notify_friend, remove_from_groups, &context).await
     }
 
     /// Request Friend
     async fn friend_request(
         &self,
-        version: f64,
         friend_account_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28337,25 +26806,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FriendRequestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().friend_request(version, friend_account_id, device_id, account_id, game_type, app_key, notification_message, &context).await
+        self.api().friend_request(friend_account_id, device_id, account_id, game_type, app_key, notification_message, &context).await
     }
 
     /// Get Sent Friend Requests
     async fn get_connection_sent_friend_requests(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetConnectionSentFriendRequestsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_connection_sent_friend_requests(version, device_id, account_id, &context).await
+        self.api().get_connection_sent_friend_requests(device_id, account_id, &context).await
     }
 
     /// Search Connections
     async fn get_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         filter: String,
         sort_field: String,
@@ -28374,13 +26841,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetConnectionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_connections(version, return_nulls, filter, sort_field, descending, start, limit, device_id, account_id, connection_account_id, q, keyword, _i, _l, latitude, longitude, &context).await
+        self.api().get_connections(return_nulls, filter, sort_field, descending, start, limit, device_id, account_id, connection_account_id, q, keyword, _i, _l, latitude, longitude, &context).await
     }
 
     /// Get Connection Group
     async fn get_group_details(
         &self,
-        version: f64,
         combine_connections: bool,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28390,13 +26856,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetGroupDetailsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_group_details(version, combine_connections, device_id, account_id, group_id, latitude, longitude, &context).await
+        self.api().get_group_details(combine_connections, device_id, account_id, group_id, latitude, longitude, &context).await
     }
 
     /// Search Connection Groups
     async fn group_search(
         &self,
-        version: f64,
         sort_field: models::GroupSearchSortFieldParameter,
         descending: bool,
         active_only: bool,
@@ -28410,13 +26875,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GroupSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().group_search(version, sort_field, descending, active_only, start, limit, device_id, account_id, latitude, longitude, keyword, &context).await
+        self.api().group_search(sort_field, descending, active_only, start, limit, device_id, account_id, latitude, longitude, keyword, &context).await
     }
 
     /// Delete Connection
     async fn remove_connection_from_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -28429,13 +26893,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveConnectionFromGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_connection_from_group(version, return_nulls, group_id, device_id, account_id, connection_id, connection_account_id, pending_id, latitude, longitude, &context).await
+        self.api().remove_connection_from_group(return_nulls, group_id, device_id, account_id, connection_id, connection_account_id, pending_id, latitude, longitude, &context).await
     }
 
     /// Remove Connections
     async fn remove_connections_from_group(
         &self,
-        version: f64,
         connection_group_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28446,13 +26909,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveConnectionsFromGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_connections_from_group(version, connection_group_id, device_id, account_id, connection_ids, connection_account_ids, latitude, longitude, &context).await
+        self.api().remove_connections_from_group(connection_group_id, device_id, account_id, connection_ids, connection_account_ids, latitude, longitude, &context).await
     }
 
     /// Delete Connection Group
     async fn remove_group(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         device_id: Option<String>,
@@ -28462,13 +26924,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveGroupResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_group(version, return_nulls, group_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().remove_group(return_nulls, group_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Remove Connection Groups
     async fn remove_sub_groups(
         &self,
-        version: f64,
         return_nulls: bool,
         group_id: i64,
         sub_group_ids: String,
@@ -28479,13 +26940,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveSubGroupsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id, account_id, latitude, longitude, &context).await
+        self.api().remove_sub_groups(return_nulls, group_id, sub_group_ids, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Search Possible Connections
     async fn search_connections(
         &self,
-        version: f64,
         return_nulls: bool,
         start: i32,
         limit: i32,
@@ -28504,13 +26964,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchConnectionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_connections(version, return_nulls, start, limit, device_id, account_id, q, keyword, latitude, longitude, game_type, app_key, _i, _l, sort_field, has_location, &context).await
+        self.api().search_connections(return_nulls, start, limit, device_id, account_id, q, keyword, latitude, longitude, game_type, app_key, _i, _l, sort_field, has_location, &context).await
     }
 
     /// Create or Update Contest
     async fn add_or_update_album_contest(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -28539,13 +26998,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddOrUpdateAlbumContestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_or_update_album_contest(version, public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id, account_id, game_type, app_key, contest_type, album_contest_id, title, description, album_id1, remove_album1, album_id2, remove_album2, start_date, end_date, location_description, connection_ids_to_add, connection_group_ids_to_add, latitude, longitude, &context).await
+        self.api().add_or_update_album_contest(public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id, account_id, game_type, app_key, contest_type, album_contest_id, title, description, album_id1, remove_album1, album_id2, remove_album2, start_date, end_date, location_description, connection_ids_to_add, connection_group_ids_to_add, latitude, longitude, &context).await
     }
 
     /// Approve Contest
     async fn approve_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         approval_status: models::ApproveAlbumApprovalStatusParameter,
         device_id: Option<String>,
@@ -28553,13 +27011,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ApproveAlbumContestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().approve_album_contest(version, album_contest_id, approval_status, device_id, account_id, &context).await
+        self.api().approve_album_contest(album_contest_id, approval_status, device_id, account_id, &context).await
     }
 
     /// Delete Contest
     async fn delete_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28568,13 +27025,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteContestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_contest(version, album_contest_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().delete_contest(album_contest_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Get Contest
     async fn get_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -28583,13 +27039,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAlbumContestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_album_contest(version, album_contest_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_album_contest(album_contest_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Search Contests
     async fn get_album_contests(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -28612,13 +27067,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetAlbumContestsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_album_contests(version, filter, sort_field, descending, start, limit, device_id, account_id, game_type, app_key, app_type, contest_type, owner_id, q, keyword, _i, _l, date_created, latitude, longitude, &context).await
+        self.api().get_album_contests(filter, sort_field, descending, start, limit, device_id, account_id, game_type, app_key, app_type, contest_type, owner_id, q, keyword, _i, _l, date_created, latitude, longitude, &context).await
     }
 
     /// Vote on Contest
     async fn vote_on_album_contest(
         &self,
-        version: f64,
         album_contest_id: i64,
         album_id: i64,
         device_id: Option<String>,
@@ -28629,25 +27083,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<VoteOnAlbumContestResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().vote_on_album_contest(version, album_contest_id, album_id, device_id, account_id, contest_type, latitude, longitude, &context).await
+        self.api().vote_on_album_contest(album_contest_id, album_id, device_id, account_id, contest_type, latitude, longitude, &context).await
     }
 
     /// Add Preview
     async fn add_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<AddPreviewResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_preview(version, account_id, creative_id, &context).await
+        self.api().add_preview(account_id, creative_id, &context).await
     }
 
     /// Find Missions
     async fn ads_find(
         &self,
-        version: f64,
         app_key: String,
         randomize: bool,
         targeted_ads_only: bool,
@@ -28667,13 +27119,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AdsFindResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ads_find(version, app_key, randomize, targeted_ads_only, param_type, account_id, app_version, latitude, longitude, device, device_identifier, device_version, start, limit, include_audiences, allocates_tickets, mission_ids, &context).await
+        self.api().ads_find(app_key, randomize, targeted_ads_only, param_type, account_id, app_version, latitude, longitude, device, device_identifier, device_version, start, limit, include_audiences, allocates_tickets, mission_ids, &context).await
     }
 
     /// Create Creative
     async fn create_creative(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: bool,
@@ -28692,37 +27143,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateCreativeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_creative(version, account_id, name, active, wait_for_asset, description, asset_image_id, action, data, suffix, param_type, balance, reference_id, app_version, mission_id, offer_id, &context).await
+        self.api().create_creative(account_id, name, active, wait_for_asset, description, asset_image_id, action, data, suffix, param_type, balance, reference_id, app_version, mission_id, offer_id, &context).await
     }
 
     /// Delete Creative
     async fn delete_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<DeleteCreativeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_creative(version, account_id, creative_id, &context).await
+        self.api().delete_creative(account_id, creative_id, &context).await
     }
 
     /// Get Creative
     async fn get_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<GetCreativeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_creative(version, account_id, creative_id, &context).await
+        self.api().get_creative(account_id, creative_id, &context).await
     }
 
     /// Search Creatives
     async fn get_creatives_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -28732,25 +27180,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCreativesByApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_creatives_by_application(version, account_id, app_key, start, limit, mission_id, keyword, &context).await
+        self.api().get_creatives_by_application(account_id, app_key, start, limit, mission_id, keyword, &context).await
     }
 
     /// Remove Preview
     async fn remove_preview(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         ) -> Result<RemovePreviewResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_preview(version, account_id, creative_id, &context).await
+        self.api().remove_preview(account_id, creative_id, &context).await
     }
 
     /// Update Creative
     async fn update_creative(
         &self,
-        version: f64,
         account_id: i64,
         creative_id: i64,
         name: Option<String>,
@@ -28768,59 +27214,54 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateCreativeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_creative(version, account_id, creative_id, name, description, asset_image_id, action, data, suffix, param_type, balance, active, reference_id, app_version, mission_id, &context).await
+        self.api().update_creative(account_id, creative_id, name, description, asset_image_id, action, data, suffix, param_type, balance, active, reference_id, app_version, mission_id, &context).await
     }
 
     /// Create Dependent
     async fn create(
         &self,
-        version: f64,
         account_id: i64,
         body: Option<models::Account>,
         ) -> Result<CreateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create(version, account_id, body, &context).await
+        self.api().create(account_id, body, &context).await
     }
 
     /// Get dependent list of an account
     async fn get_dependents(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<GetDependentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_dependents(version, account_id, &context).await
+        self.api().get_dependents(account_id, &context).await
     }
 
     /// Delete Dependent
     async fn remove_dependent(
         &self,
-        version: f64,
         account_id: i64,
         dependent_id: i64,
         ) -> Result<RemoveDependentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_dependent(version, account_id, dependent_id, &context).await
+        self.api().remove_dependent(account_id, dependent_id, &context).await
     }
 
     /// Check Disbursements
     async fn check_disbursements(
         &self,
-        version: f64,
         disbursement_id: i64,
         ) -> Result<CheckDisbursementsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().check_disbursements(version, disbursement_id, &context).await
+        self.api().check_disbursements(disbursement_id, &context).await
     }
 
     /// Create Disbursement
     async fn create_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: i64,
         original_sender_account_id: i64,
@@ -28834,25 +27275,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateDisbursementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_disbursement(version, account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date, title, comment, external_id, introspection_params, &context).await
+        self.api().create_disbursement(account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date, title, comment, external_id, introspection_params, &context).await
     }
 
     /// Get Disbursement
     async fn get_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         ) -> Result<GetDisbursementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_disbursement(version, account_id, disbursement_id, &context).await
+        self.api().get_disbursement(account_id, disbursement_id, &context).await
     }
 
     /// Search Disbursements
     async fn search_disbursements(
         &self,
-        version: f64,
         account_id: i64,
         receiver_account_id: Option<i64>,
         statuses: Option<String>,
@@ -28866,13 +27305,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchDisbursementsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_disbursements(version, account_id, receiver_account_id, statuses, providers, before_date, after_date, start, limit, active_only, external_id, &context).await
+        self.api().search_disbursements(account_id, receiver_account_id, statuses, providers, before_date, after_date, start, limit, active_only, external_id, &context).await
     }
 
     /// Update Disbursement
     async fn update_disbursement(
         &self,
-        version: f64,
         account_id: i64,
         disbursement_id: i64,
         amount: Option<f64>,
@@ -28886,13 +27324,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateDisbursementResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_disbursement(version, account_id, disbursement_id, amount, provider, scheduled_date, title, comment, external_id, retry, introspection_params, &context).await
+        self.api().update_disbursement(account_id, disbursement_id, amount, provider, scheduled_date, title, comment, external_id, retry, introspection_params, &context).await
     }
 
     /// Assign Employee
     async fn assign_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         employee_account_id: i64,
@@ -28900,13 +27337,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assign_employee(version, account_id, manager_account_id, employee_account_id, role, &context).await
+        self.api().assign_employee(account_id, manager_account_id, employee_account_id, role, &context).await
     }
 
     /// Assign Employee to Location
     async fn assign_to_location_employee(
         &self,
-        version: f64,
         account_id: i64,
         retailer_location_id: i64,
         employee_account_id: Option<i64>,
@@ -28914,13 +27350,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AssignToLocationEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().assign_to_location_employee(version, account_id, retailer_location_id, employee_account_id, assign, &context).await
+        self.api().assign_to_location_employee(account_id, retailer_location_id, employee_account_id, assign, &context).await
     }
 
     /// Create Employee
     async fn create_employee(
         &self,
-        version: f64,
         account_id: i64,
         manager_account_id: i64,
         username: String,
@@ -28954,38 +27389,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_employee(version, account_id, manager_account_id, username, password, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, about_us, asset_id, gender, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, role, retailer_location_ids, settings_app_key, app_blob, assigned_device_id, &context).await
+        self.api().create_employee(account_id, manager_account_id, username, password, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, about_us, asset_id, gender, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, role, retailer_location_ids, settings_app_key, app_blob, assigned_device_id, &context).await
     }
 
     /// Delete Employee
     async fn delete_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         ) -> Result<DeleteEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_employee(version, account_id, employee_account_id, &context).await
+        self.api().delete_employee(account_id, employee_account_id, &context).await
     }
 
     /// Get Employee
     async fn get_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         settings_app_key: Option<String>,
         ) -> Result<GetEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_employee(version, account_id, employee_account_id, settings_app_key, &context).await
+        self.api().get_employee(account_id, employee_account_id, settings_app_key, &context).await
     }
 
     /// Search Employees
     async fn search_employees(
         &self,
-        version: f64,
         account_id: i64,
         role: Option<String>,
         retailer_id: Option<i64>,
@@ -29006,25 +27438,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchEmployeesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_employees(version, account_id, role, retailer_id, retailer_location_id, q, keyword, sort_field, descending, _i, start, _l, limit, active_only, managed_only, settings_app_key, category_ids, query, &context).await
+        self.api().search_employees(account_id, role, retailer_id, retailer_location_id, q, keyword, sort_field, descending, _i, start, _l, limit, active_only, managed_only, settings_app_key, category_ids, query, &context).await
     }
 
     /// Unassign Employee
     async fn unassign_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         ) -> Result<UnassignEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().unassign_employee(version, account_id, employee_account_id, &context).await
+        self.api().unassign_employee(account_id, employee_account_id, &context).await
     }
 
     /// Update Employee
     async fn update_employee(
         &self,
-        version: f64,
         account_id: i64,
         employee_account_id: i64,
         manager_account_id: Option<i64>,
@@ -29058,13 +27488,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateEmployeeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_employee(version, account_id, employee_account_id, manager_account_id, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, asset_id, gender, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, role, active, password, retailer_location_ids, settings_app_key, app_blob, assigned_device_id, &context).await
+        self.api().update_employee(account_id, employee_account_id, manager_account_id, name, prefix_name, first_name, middle_name, last_name, suffix_name, title, asset_id, gender, home_phone, cell_phone, cell_phone_carrier, business_phone, email_address, street_address, street_address2, city, state, zipcode, country, role, active, password, retailer_location_ids, settings_app_key, app_blob, assigned_device_id, &context).await
     }
 
     /// Attend Event
     async fn attend_event(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -29078,13 +27507,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AttendEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().attend_event(version, device_id, account_id, app_key, listing_id, retailer_location_id, offer_location_id, transaction_id, status, latitude, longitude, &context).await
+        self.api().attend_event(device_id, account_id, app_key, listing_id, retailer_location_id, offer_location_id, transaction_id, status, latitude, longitude, &context).await
     }
 
     /// Create Event
     async fn create_event(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         retailer_location_ids: Option<String>,
@@ -29100,37 +27528,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_event(version, account_id, title, retailer_location_ids, sub_title, details, category_ids, filter_ids, active, image_asset_id, redeemable_start, redeemable_end, meta_data, &context).await
+        self.api().create_event(account_id, title, retailer_location_ids, sub_title, details, category_ids, filter_ids, active, image_asset_id, redeemable_start, redeemable_end, meta_data, &context).await
     }
 
     /// Delete Event
     async fn delete_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         ) -> Result<DeleteEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_event(version, account_id, event_id, &context).await
+        self.api().delete_event(account_id, event_id, &context).await
     }
 
     /// Get Event
     async fn get_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         ) -> Result<GetEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_event(version, account_id, event_id, &context).await
+        self.api().get_event(account_id, event_id, &context).await
     }
 
     /// Search Event Attendance
     async fn search_event_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -29153,13 +27578,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchEventTransactionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_event_transactions(version, device_id, account_id, app_key, keyword, retailer_id, retailer_location_id, exclude_retailer_location_id, listing_id, offer_id, offer_location_id, customer_account_ids, affiliated_category_ids, start_date, end_date, statuses, sort_field, descending, start, limit, &context).await
+        self.api().search_event_transactions(device_id, account_id, app_key, keyword, retailer_id, retailer_location_id, exclude_retailer_location_id, listing_id, offer_id, offer_location_id, customer_account_ids, affiliated_category_ids, start_date, end_date, statuses, sort_field, descending, start, limit, &context).await
     }
 
     /// Search Events
     async fn search_events(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         active_only: Option<bool>,
@@ -29176,13 +27600,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchEventsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_events(version, account_id, keyword, active_only, category_ids, filter_ids, offer_audience_ids, transaction_audience_ids, sort_field, descending, start_date, end_date, start, limit, &context).await
+        self.api().search_events(account_id, keyword, active_only, category_ids, filter_ids, offer_audience_ids, transaction_audience_ids, sort_field, descending, start_date, end_date, start, limit, &context).await
     }
 
     /// Update Event
     async fn update_event(
         &self,
-        version: f64,
         account_id: i64,
         event_id: i64,
         retailer_location_ids: Option<String>,
@@ -29198,13 +27621,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_event(version, account_id, event_id, retailer_location_ids, title, sub_title, details, category_ids, filter_ids, active, image_asset_id, redeemable_start, redeemable_end, &context).await
+        self.api().update_event(account_id, event_id, retailer_location_ids, title, sub_title, details, category_ids, filter_ids, active, image_asset_id, redeemable_start, redeemable_end, &context).await
     }
 
     /// Get Facebook Token
     async fn get_token(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -29212,13 +27634,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTokenResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_token(version, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_token(device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Post to Facebook
     async fn graph_interface(
         &self,
-        version: f64,
         event: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -29232,13 +27653,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GraphInterfaceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().graph_interface(version, event, device_id, account_id, permissionable_type, permissionable_id, asset_id, game_type, app_key, latitude, longitude, &context).await
+        self.api().graph_interface(event, device_id, account_id, permissionable_type, permissionable_id, asset_id, game_type, app_key, latitude, longitude, &context).await
     }
 
     /// Create Favorite
     async fn add_favorite(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         device_id: Option<String>,
@@ -29248,13 +27668,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddFavoriteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_favorite(version, favoritable_id, favoritable_type, device_id, account_id, latitude, longitude, &context).await
+        self.api().add_favorite(favoritable_id, favoritable_type, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Delete Favorite
     async fn delete_favorite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         favorite_id: Option<i64>,
@@ -29263,13 +27682,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteFavoriteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_favorite(version, device_id, account_id, favorite_id, favoritable_id, favoritable_type, &context).await
+        self.api().delete_favorite(device_id, account_id, favorite_id, favoritable_id, favoritable_type, &context).await
     }
 
     /// Get Favorite
     async fn get_favorite(
         &self,
-        version: f64,
         favorite_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -29278,13 +27696,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetFavoriteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_favorite(version, favorite_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_favorite(favorite_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Search Favorites
     async fn search_favorites(
         &self,
-        version: f64,
         favoritable_type: String,
         sort_field: models::SearchFavoritesSortFieldParameter,
         descending: bool,
@@ -29302,13 +27719,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchFavoritesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_favorites(version, favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id, account_id, connection_account_id, secondary_type, keyword, latitude, longitude, &context).await
+        self.api().search_favorites(favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id, account_id, connection_account_id, secondary_type, keyword, latitude, longitude, &context).await
     }
 
     /// Who has Favorited
     async fn who_has_favorited(
         &self,
-        version: f64,
         favoritable_id: i64,
         favoritable_type: String,
         start: i32,
@@ -29321,13 +27737,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<WhoHasFavoritedResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().who_has_favorited(version, favoritable_id, favoritable_type, start, limit, device_id, account_id, latitude, longitude, keyword, &context).await
+        self.api().who_has_favorited(favoritable_id, favoritable_type, start, limit, device_id, account_id, latitude, longitude, keyword, &context).await
     }
 
     /// Create Filter
     async fn create_filter(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -29340,36 +27755,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateFilterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_filter(version, account_id, name, app_key, parent_filter_id, description, external_id, external_type, active, meta_data, &context).await
+        self.api().create_filter(account_id, name, app_key, parent_filter_id, description, external_id, external_type, active, meta_data, &context).await
     }
 
     /// Delete Filter
     async fn delete_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         ) -> Result<DeleteFilterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_filter(version, account_id, filter_id, &context).await
+        self.api().delete_filter(account_id, filter_id, &context).await
     }
 
     /// Get Filter
     async fn get_filter(
         &self,
-        version: f64,
         filter_id: i64,
         ) -> Result<GetFilterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_filter(version, filter_id, &context).await
+        self.api().get_filter(filter_id, &context).await
     }
 
     /// Search Filters
     async fn search_filters(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         app_key: Option<String>,
@@ -29383,13 +27795,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchFiltersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_filters(version, account_id, keyword, app_key, response_group, root_only, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_filters(account_id, keyword, app_key, response_group, root_only, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Update Filter
     async fn update_filter(
         &self,
-        version: f64,
         account_id: i64,
         filter_id: i64,
         parent_filter_id: Option<i64>,
@@ -29402,13 +27813,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateFilterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_filter(version, account_id, filter_id, parent_filter_id, name, description, external_id, external_type, active, meta_data, &context).await
+        self.api().update_filter(account_id, filter_id, parent_filter_id, name, description, external_id, external_type, active, meta_data, &context).await
     }
 
     /// Create Flag
     async fn create_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -29419,13 +27829,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateFlagResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_flag(version, flagable_type, flagable_id, device_id, account_id, flag_description, latitude, longitude, &context).await
+        self.api().create_flag(flagable_type, flagable_id, device_id, account_id, flag_description, latitude, longitude, &context).await
     }
 
     /// Delete Flag
     async fn delete_flag(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         item_being_flagged_type: Option<String>,
@@ -29435,13 +27844,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteFlagResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_flag(version, device_id, account_id, item_being_flagged_type, item_being_flagged_id, flagable_type, flagable_id, &context).await
+        self.api().delete_flag(device_id, account_id, item_being_flagged_type, item_being_flagged_id, flagable_type, flagable_id, &context).await
     }
 
     /// Get Flag
     async fn get_flag(
         &self,
-        version: f64,
         flagable_type: String,
         flagable_id: i64,
         device_id: Option<String>,
@@ -29451,25 +27859,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetFlagResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_flag(version, flagable_type, flagable_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_flag(flagable_type, flagable_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Get Flag Threshold
     async fn get_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         app_key: String,
         ) -> Result<GetFlagThresholdResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_flag_threshold(version, item_being_flagged_type, app_key, &context).await
+        self.api().get_flag_threshold(item_being_flagged_type, app_key, &context).await
     }
 
     /// Update Flag Threshold
     async fn update_flag_threshold(
         &self,
-        version: f64,
         item_being_flagged_type: String,
         threshold: i64,
         app_key: String,
@@ -29478,13 +27884,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateFlagThresholdResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_flag_threshold(version, item_being_flagged_type, threshold, app_key, device_id, account_id, &context).await
+        self.api().update_flag_threshold(item_being_flagged_type, threshold, app_key, device_id, account_id, &context).await
     }
 
     /// Create a Game
     async fn create_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         title: Option<String>,
@@ -29495,38 +27900,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateGameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_game(version, account_id, app_key, title, description, meta_data, pack_ids, include_game_data, &context).await
+        self.api().create_game(account_id, app_key, title, description, meta_data, pack_ids, include_game_data, &context).await
     }
 
     /// Delete a Game
     async fn delete_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         ) -> Result<DeleteGameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_game(version, account_id, game_id, &context).await
+        self.api().delete_game(account_id, game_id, &context).await
     }
 
     /// Get a Game by id
     async fn get_game(
         &self,
-        version: f64,
         account_id: i64,
         game_id: i64,
         include_game_data: Option<bool>,
         ) -> Result<GetGameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_game(version, account_id, game_id, include_game_data, &context).await
+        self.api().get_game(account_id, game_id, include_game_data, &context).await
     }
 
     /// Search a Game
     async fn search_games(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i32,
@@ -29538,13 +27940,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchGamesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_games(version, account_id, app_key, start, limit, keyword, app_version, include_game_data, include_inactive, &context).await
+        self.api().search_games(account_id, app_key, start, limit, keyword, app_version, include_game_data, include_inactive, &context).await
     }
 
     /// Update a Game
     async fn update_game(
         &self,
-        version: f64,
         account_id: Option<i64>,
         game_id: Option<i64>,
         app_key: Option<String>,
@@ -29556,13 +27957,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateGameResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_game(version, account_id, game_id, app_key, title, description, meta_data, pack_ids, include_game_data, &context).await
+        self.api().update_game(account_id, game_id, app_key, title, description, meta_data, pack_ids, include_game_data, &context).await
     }
 
     /// Create Game Level
     async fn create_game_level(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         game_data: String,
@@ -29592,38 +27992,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateGameLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_game_level(version, account_id, name, game_data, game_data_suffix, app_key, description, difficulty, app_version, asset_image_id, asset_icon_id, visibility, friend_group, connection_ids, connection_group_ids, balance, active, allocate_tickets, ticket_count, ticket_type, points, tutorial_title, tutorial_message, tutorial_alignment, tutorial_image_asset_id, offer_id, meta_data, &context).await
+        self.api().create_game_level(account_id, name, game_data, game_data_suffix, app_key, description, difficulty, app_version, asset_image_id, asset_icon_id, visibility, friend_group, connection_ids, connection_group_ids, balance, active, allocate_tickets, ticket_count, ticket_type, points, tutorial_title, tutorial_message, tutorial_alignment, tutorial_image_asset_id, offer_id, meta_data, &context).await
     }
 
     /// Delete Game Level
     async fn delete_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         ) -> Result<DeleteGameLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_game_level(version, account_id, level_id, &context).await
+        self.api().delete_game_level(account_id, level_id, &context).await
     }
 
     /// Get Game Level
     async fn get_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         include_game_data: Option<bool>,
         ) -> Result<GetGameLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_game_level(version, account_id, level_id, include_game_data, &context).await
+        self.api().get_game_level(account_id, level_id, include_game_data, &context).await
     }
 
     /// Search Game Levels
     async fn get_game_levels_by_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -29637,13 +28034,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetGameLevelsByApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_game_levels_by_application(version, account_id, app_key, keyword, sort_field, descending, start, limit, app_version, include_game_data, filters, &context).await
+        self.api().get_game_levels_by_application(account_id, app_key, keyword, sort_field, descending, start, limit, app_version, include_game_data, filters, &context).await
     }
 
     /// Search Game Level by Billable Entity
     async fn get_game_levels_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         keyword: Option<String>,
@@ -29655,37 +28051,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetGameLevelsByBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_game_levels_by_billable_entity(version, account_id, app_key, keyword, sort_field, descending, active_only, start, limit, &context).await
+        self.api().get_game_levels_by_billable_entity(account_id, app_key, keyword, sort_field, descending, active_only, start, limit, &context).await
     }
 
     /// Get Level Questions
     async fn get_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         ) -> Result<GetQuestionsInLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_questions_in_level(version, level_id, account_id, &context).await
+        self.api().get_questions_in_level(level_id, account_id, &context).await
     }
 
     /// Get Level Words
     async fn get_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         ) -> Result<GetWordsInLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_words_in_level(version, level_id, account_id, &context).await
+        self.api().get_words_in_level(level_id, account_id, &context).await
     }
 
     /// Update Game Level
     async fn update_game_level(
         &self,
-        version: f64,
         account_id: i64,
         level_id: i64,
         app_key: Option<String>,
@@ -29716,39 +28109,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateGameLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_game_level(version, account_id, level_id, app_key, name, description, difficulty, app_version, asset_image_id, asset_icon_id, game_data, game_data_suffix, visibility, friend_group, connection_ids, connection_group_ids, balance, active, allocate_tickets, ticket_count, ticket_type, points, tutorial_title, tutorial_message, tutorial_alignment, tutorial_image_asset_id, offer_id, meta_data, &context).await
+        self.api().update_game_level(account_id, level_id, app_key, name, description, difficulty, app_version, asset_image_id, asset_icon_id, game_data, game_data_suffix, visibility, friend_group, connection_ids, connection_group_ids, balance, active, allocate_tickets, ticket_count, ticket_type, points, tutorial_title, tutorial_message, tutorial_alignment, tutorial_image_asset_id, offer_id, meta_data, &context).await
     }
 
     /// Update Level Questions
     async fn update_questions_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         question_ids: String,
         ) -> Result<UpdateQuestionsInLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_questions_in_level(version, level_id, account_id, question_ids, &context).await
+        self.api().update_questions_in_level(level_id, account_id, question_ids, &context).await
     }
 
     /// Update Level Words
     async fn update_words_in_level(
         &self,
-        version: f64,
         level_id: i64,
         account_id: i64,
         word_ids: String,
         ) -> Result<UpdateWordsInLevelResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_words_in_level(version, level_id, account_id, word_ids, &context).await
+        self.api().update_words_in_level(level_id, account_id, word_ids, &context).await
     }
 
     /// Accept Invite
     async fn accept_invite(
         &self,
-        version: f64,
         token: String,
         account_id: i64,
         album_id: Option<i64>,
@@ -29766,13 +28156,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AcceptInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().accept_invite(version, token, account_id, album_id, mission_id, album_contest_id, offer_id, offer_location_id, retailer_location_id, app_key, auto_friend, auto_attend_event, auto_favorite_offer, auto_favorite_offer_location, auto_favorite_retailer_location, &context).await
+        self.api().accept_invite(token, account_id, album_id, mission_id, album_contest_id, offer_id, offer_location_id, retailer_location_id, app_key, auto_friend, auto_attend_event, auto_favorite_offer, auto_favorite_offer_location, auto_favorite_retailer_location, &context).await
     }
 
     /// Invite to Contest
     async fn album_contest_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -29783,13 +28172,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AlbumContestInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().album_contest_invite(version, device_id, account_id, app_id, app_key, album_contest_id, latitude, longitude, &context).await
+        self.api().album_contest_invite(device_id, account_id, app_id, app_key, album_contest_id, latitude, longitude, &context).await
     }
 
     /// Invite to Collection
     async fn album_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -29800,13 +28188,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AlbumInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().album_invite(version, device_id, account_id, app_id, app_key, album_id, latitude, longitude, &context).await
+        self.api().album_invite(device_id, account_id, app_id, app_key, album_id, latitude, longitude, &context).await
     }
 
     /// Invite to Event
     async fn event_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         listing_id: i64,
@@ -29815,13 +28202,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<EventInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().event_invite(version, account_id, app_key, listing_id, receiver_account_ids, retailer_location_id, &context).await
+        self.api().event_invite(account_id, app_key, listing_id, receiver_account_ids, retailer_location_id, &context).await
     }
 
     /// Invite to Game Level
     async fn game_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -29832,13 +28218,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GameInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().game_invite(version, device_id, account_id, app_id, app_key, game_level_id, latitude, longitude, &context).await
+        self.api().game_invite(device_id, account_id, app_id, app_key, game_level_id, latitude, longitude, &context).await
     }
 
     /// Get Invite
     async fn get_invite(
         &self,
-        version: f64,
         account_id: Option<i64>,
         token: Option<String>,
         album_id: Option<i64>,
@@ -29851,13 +28236,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_invite(version, account_id, token, album_id, mission_id, album_contest_id, offer_id, offer_location_id, retailer_location_id, app_key, &context).await
+        self.api().get_invite(account_id, token, album_id, mission_id, album_contest_id, offer_id, offer_location_id, retailer_location_id, app_key, &context).await
     }
 
     /// Invite to Mission
     async fn mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_id: Option<i64>,
@@ -29868,39 +28252,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<MissionInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().mission_invite(version, device_id, account_id, app_id, app_key, mission_id, latitude, longitude, &context).await
+        self.api().mission_invite(device_id, account_id, app_id, app_key, mission_id, latitude, longitude, &context).await
     }
 
     /// Invite to Offer
     async fn offer_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_id: i64,
         ) -> Result<OfferInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().offer_invite(version, account_id, app_key, offer_id, &context).await
+        self.api().offer_invite(account_id, app_key, offer_id, &context).await
     }
 
     /// Invite to Offer Location
     async fn offer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         offer_location_id: i64,
         ) -> Result<OfferLocationInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().offer_location_invite(version, account_id, app_key, offer_location_id, &context).await
+        self.api().offer_location_invite(account_id, app_key, offer_location_id, &context).await
     }
 
     /// Invite to Retailer Location
     async fn retailer_location_invite(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         retailer_location_id: i64,
@@ -29908,13 +28289,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RetailerLocationInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().retailer_location_invite(version, account_id, app_key, retailer_location_id, album_id, &context).await
+        self.api().retailer_location_invite(account_id, app_key, retailer_location_id, album_id, &context).await
     }
 
     /// Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn create_leaderboard(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         rank_type: Option<String>,
@@ -29931,38 +28311,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateLeaderboardResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_leaderboard(version, account_id, app_key, rank_type, leaderboard_mode, icon_media, icon_asset_id, banner_media, banner_asset_id, limitation, sort_field, title, description, meta_data, &context).await
+        self.api().create_leaderboard(account_id, app_key, rank_type, leaderboard_mode, icon_media, icon_asset_id, banner_media, banner_asset_id, limitation, sort_field, title, description, meta_data, &context).await
     }
 
     /// Delete the Leader Board
     async fn delete_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         ) -> Result<DeleteLeaderboardResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_leaderboard(version, leaderboard_id, account_id, &context).await
+        self.api().delete_leaderboard(leaderboard_id, account_id, &context).await
     }
 
     /// Read a leaderboard by id and retrieve the matching ranking list
     async fn get_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         include_full_ranking_list: Option<bool>,
         ) -> Result<GetLeaderboardResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_leaderboard(version, leaderboard_id, account_id, include_full_ranking_list, &context).await
+        self.api().get_leaderboard(leaderboard_id, account_id, include_full_ranking_list, &context).await
     }
 
     /// Search leaderboard and retrieve the matching ranking list
     async fn search_leaderboards(
         &self,
-        version: f64,
         account_id: Option<i64>,
         app_key: Option<String>,
         global_only: Option<bool>,
@@ -29978,13 +28355,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchLeaderboardsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_leaderboards(version, account_id, app_key, global_only, keyword, leaderboard_ids, rank_types, sort_field, descending, include_inactive, include_app_response, start, limit, &context).await
+        self.api().search_leaderboards(account_id, app_key, global_only, keyword, leaderboard_ids, rank_types, sort_field, descending, include_inactive, include_app_response, start, limit, &context).await
     }
 
     /// Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     async fn update_leaderboard(
         &self,
-        version: f64,
         leaderboard_id: i64,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -30003,13 +28379,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateLeaderboardResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_leaderboard(version, leaderboard_id, account_id, app_key, rank_type, leaderboard_mode, sort_field, icon_media, icon_asset_id, banner_media, banner_asset_id, limitation, active, title, description, meta_data, &context).await
+        self.api().update_leaderboard(leaderboard_id, account_id, app_key, rank_type, leaderboard_mode, sort_field, icon_media, icon_asset_id, banner_media, banner_asset_id, limitation, active, title, description, meta_data, &context).await
     }
 
     /// Create Like
     async fn register_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -30025,13 +28400,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RegisterLikeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().register_like(version, likable_type, likable_id, device_id, account_id, permissionable_type, permissionable_id, like, app, game_type, app_key, latitude, longitude, &context).await
+        self.api().register_like(likable_type, likable_id, device_id, account_id, permissionable_type, permissionable_id, like, app, game_type, app_key, latitude, longitude, &context).await
     }
 
     /// Delete Like
     async fn remove_like(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -30041,13 +28415,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveLikeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_like(version, likable_type, likable_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().remove_like(likable_type, likable_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Search Likes
     async fn search_likes(
         &self,
-        version: f64,
         likable_type: String,
         likable_id: i64,
         device_id: Option<String>,
@@ -30062,13 +28435,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchLikesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_likes(version, likable_type, likable_id, device_id, account_id, connection_account_ids, sort_field, descending, updated_since, updated_before, start, limit, &context).await
+        self.api().search_likes(likable_type, likable_id, device_id, account_id, connection_account_ids, sort_field, descending, updated_since, updated_before, start, limit, &context).await
     }
 
     /// Create Listing
     async fn create_listing(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         filter_ids: Option<String>,
@@ -30086,36 +28458,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_listing(version, account_id, name, filter_ids, description, start, end, location_name, location_description, is_private, external_id, external_id2, external_group_id, active, meta_data, &context).await
+        self.api().create_listing(account_id, name, filter_ids, description, start, end, location_name, location_description, is_private, external_id, external_id2, external_group_id, active, meta_data, &context).await
     }
 
     /// Delete Listing
     async fn delete_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         ) -> Result<DeleteListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_listing(version, account_id, listing_id, &context).await
+        self.api().delete_listing(account_id, listing_id, &context).await
     }
 
     /// Get Listing
     async fn get_listing(
         &self,
-        version: f64,
         listing_id: i64,
         ) -> Result<GetListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_listing(version, listing_id, &context).await
+        self.api().get_listing(listing_id, &context).await
     }
 
     /// Search Listings
     async fn search_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         keyword: Option<String>,
         start: Option<i32>,
@@ -30134,13 +28503,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_listing(version, account_id, keyword, start, limit, active_only, latitude, longitude, start_date, end_date, category_ids, filter_ids, use_listing_order_ids, external_id, external_id2, external_group_id, &context).await
+        self.api().search_listing(account_id, keyword, start, limit, active_only, latitude, longitude, start_date, end_date, category_ids, filter_ids, use_listing_order_ids, external_id, external_id2, external_group_id, &context).await
     }
 
     /// Summary Listing
     async fn summary_listing(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start_date: Option<i64>,
         category_ids: Option<String>,
@@ -30149,13 +28517,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SummaryListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().summary_listing(version, account_id, start_date, category_ids, days_to_include, use_listing_order_ids, &context).await
+        self.api().summary_listing(account_id, start_date, category_ids, days_to_include, use_listing_order_ids, &context).await
     }
 
     /// Update Listing
     async fn update_listing(
         &self,
-        version: f64,
         account_id: i64,
         listing_id: i64,
         filter_ids: Option<String>,
@@ -30174,13 +28541,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateListingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_listing(version, account_id, listing_id, filter_ids, name, description, start, end, location_name, location_description, is_private, external_id, external_id2, external_group_id, active, meta_data, &context).await
+        self.api().update_listing(account_id, listing_id, filter_ids, name, description, start, end, location_name, location_description, is_private, external_id, external_id2, external_group_id, active, meta_data, &context).await
     }
 
     /// Create Trilateration Data with File
     async fn cache_trilateration_data(
         &self,
-        version: f64,
         udid: String,
         source_time: Option<i64>,
         minimum_sample_size: Option<i32>,
@@ -30189,35 +28555,32 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CacheTrilaterationDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().cache_trilateration_data(version, udid, source_time, minimum_sample_size, data, data_file, &context).await
+        self.api().cache_trilateration_data(udid, source_time, minimum_sample_size, data, data_file, &context).await
     }
 
     /// Create Trilateration Data with Rest
     async fn cache_trilateration_data_gzip(
         &self,
-        version: f64,
         body: Option<models::TrilatCacheRequest>,
         ) -> Result<CacheTrilaterationDataGzipResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().cache_trilateration_data_gzip(version, body, &context).await
+        self.api().cache_trilateration_data_gzip(body, &context).await
     }
 
     /// Get Location by IP
     async fn get_location_by_ip(
         &self,
-        version: f64,
         ip: Option<String>,
         ) -> Result<GetLocationByIpResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_location_by_ip(version, ip, &context).await
+        self.api().get_location_by_ip(ip, &context).await
     }
 
     /// Get Location by Trilateration
     async fn get_location_by_trilateration(
         &self,
-        version: f64,
         account_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -30226,13 +28589,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetLocationByTrilaterationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_location_by_trilateration(version, account_id, latitude, longitude, data, response_filters, &context).await
+        self.api().get_location_by_trilateration(account_id, latitude, longitude, data, response_filters, &context).await
     }
 
     /// Search Regions or Postal Codes
     async fn get_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         currentlatitude: Option<f64>,
@@ -30255,36 +28617,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_locations(version, device_id, account_id, currentlatitude, currentlongitude, current_latitude, current_longitude, query, zipcode, zip_code, selected_maplatitude, selected_maplongitude, selected_map_latitude, selected_map_longitude, search_range, use_geocode, _i, start, _l, limit, &context).await
+        self.api().get_locations(device_id, account_id, currentlatitude, currentlongitude, current_latitude, current_longitude, query, zipcode, zip_code, selected_maplatitude, selected_maplongitude, selected_map_latitude, selected_map_longitude, search_range, use_geocode, _i, start, _l, limit, &context).await
     }
 
     /// Create new location
     async fn create_location_v2(
         &self,
-        version: f64,
         body: Option<models::Location>,
         ) -> Result<CreateLocationV2Response, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_location_v2(version, body, &context).await
+        self.api().create_location_v2(body, &context).await
     }
 
     /// Update an existing location
     async fn update_location_v2(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Location>,
         ) -> Result<UpdateLocationV2Response, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_location_v2(version, id, body, &context).await
+        self.api().update_location_v2(id, body, &context).await
     }
 
     /// Create Media
     async fn create_media(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -30345,37 +28704,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateMediaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_media(version, account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids, sub_title, details, sub_details, fine_print, barcode_entry, external_redeem_options, external_url, tickets_reward_type, tickets_reward, activated, expires, ticket_price_type, show_remaining, show_redeemed, replaced, featured, category_ids, filter_ids, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, condition_type, isbn, asin, catalog_numbers, parental_rating, availability_date, media_type, duration, author, release_date, collection_ids, availability, availability_summary, &context).await
+        self.api().create_media(account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids, sub_title, details, sub_details, fine_print, barcode_entry, external_redeem_options, external_url, tickets_reward_type, tickets_reward, activated, expires, ticket_price_type, show_remaining, show_redeemed, replaced, featured, category_ids, filter_ids, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, condition_type, isbn, asin, catalog_numbers, parental_rating, availability_date, media_type, duration, author, release_date, collection_ids, availability, availability_summary, &context).await
     }
 
     /// Delete Media
     async fn delete_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         ) -> Result<DeleteMediaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_media(version, account_id, media_id, &context).await
+        self.api().delete_media(account_id, media_id, &context).await
     }
 
     /// Media Get
     async fn get_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         ) -> Result<GetMediaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_media(version, account_id, media_id, &context).await
+        self.api().get_media(account_id, media_id, &context).await
     }
 
     /// Search Media
     async fn search_media(
         &self,
-        version: f64,
         account_id: i64,
         active_only: bool,
         sort_field: models::SearchEventsSortFieldParameter,
@@ -30388,13 +28744,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchMediaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_media(version, account_id, active_only, sort_field, descending, keyword, category_ids, filter_ids, start, limit, &context).await
+        self.api().search_media(account_id, active_only, sort_field, descending, keyword, category_ids, filter_ids, start, limit, &context).await
     }
 
     /// Update Media
     async fn update_media(
         &self,
-        version: f64,
         account_id: i64,
         media_id: i64,
         retailer_location_ids: Option<String>,
@@ -30457,13 +28812,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateMediaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_media(version, account_id, media_id, retailer_location_ids, offer_locations, title, sub_title, details, sub_details, fine_print, barcode_type, barcode_entry, external_redeem_options, external_url, tickets_reward_type, tickets_reward, activated, expires, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price_type, ticket_price, full_price, discount_price, show_remaining, show_redeemed, replaced, featured, special_offer_type, offer_visibility, category_ids, filter_ids, active, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, condition_type, isbn, asin, catalog_numbers, availability_date, parental_rating, media_type, duration, author, release_date, collection_ids, availability, availability_summary, &context).await
+        self.api().update_media(account_id, media_id, retailer_location_ids, offer_locations, title, sub_title, details, sub_details, fine_print, barcode_type, barcode_entry, external_redeem_options, external_url, tickets_reward_type, tickets_reward, activated, expires, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price_type, ticket_price, full_price, discount_price, show_remaining, show_redeemed, replaced, featured, special_offer_type, offer_visibility, category_ids, filter_ids, active, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, condition_type, isbn, asin, catalog_numbers, availability_date, parental_rating, media_type, duration, author, release_date, collection_ids, availability, availability_summary, &context).await
     }
 
     /// Create Mission
     async fn create_mission(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         description: Option<String>,
@@ -30493,25 +28847,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateMissionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_mission(version, account_id, title, description, sub_type, start_date, end_date, active, game_level_ids, creative_ids, audience_ids, mission_task, format_type, offer_id, balance, advanced_reporting, allocate_tickets, ticket_count, ticket_type, points, meta_data, application_ids, devices, device_ids, device_versions, locations, radius, &context).await
+        self.api().create_mission(account_id, title, description, sub_type, start_date, end_date, active, game_level_ids, creative_ids, audience_ids, mission_task, format_type, offer_id, balance, advanced_reporting, allocate_tickets, ticket_count, ticket_type, points, meta_data, application_ids, devices, device_ids, device_versions, locations, radius, &context).await
     }
 
     /// Delete Mission
     async fn delete_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         ) -> Result<DeleteMissionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_mission(version, account_id, mission_id, &context).await
+        self.api().delete_mission(account_id, mission_id, &context).await
     }
 
     /// Find Missions
     async fn find_missions(
         &self,
-        version: f64,
         app_key: String,
         suffix: Option<String>,
         param_type: Option<String>,
@@ -30534,26 +28886,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<FindMissionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().find_missions(version, app_key, suffix, param_type, account_id, app_version, latitude, longitude, device, device_identifier, device_version, start, limit, include_game_data, include_audiences, allocates_tickets, randomize, targeted_ads_only, mission_ids, audience_operator, &context).await
+        self.api().find_missions(app_key, suffix, param_type, account_id, app_version, latitude, longitude, device, device_identifier, device_version, start, limit, include_game_data, include_audiences, allocates_tickets, randomize, targeted_ads_only, mission_ids, audience_operator, &context).await
     }
 
     /// Get Mission
     async fn get_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         return_creative: Option<bool>,
         ) -> Result<GetMissionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_mission(version, account_id, mission_id, return_creative, &context).await
+        self.api().get_mission(account_id, mission_id, return_creative, &context).await
     }
 
     /// Import Mission
     async fn import_mission(
         &self,
-        version: f64,
         account_id: i64,
         latitude: f64,
         longitude: f64,
@@ -30565,26 +28915,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ImportMissionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().import_mission(version, account_id, latitude, longitude, app_key, keyword, start, limit, ad_size, &context).await
+        self.api().import_mission(account_id, latitude, longitude, app_key, keyword, start, limit, ad_size, &context).await
     }
 
     /// Search Mission Formats
     async fn search_mission_formats(
         &self,
-        version: f64,
         start: i32,
         limit: i32,
         active_only: bool,
         ) -> Result<SearchMissionFormatsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_mission_formats(version, start, limit, active_only, &context).await
+        self.api().search_mission_formats(start, limit, active_only, &context).await
     }
 
     /// Search Missions
     async fn search_missions(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         sub_type: Option<String>,
@@ -30599,13 +28947,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchMissionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_missions(version, account_id, keyword, sub_type, start, limit, include_game_data, include_audiences, include_inactive, suffix, sort_field, descending, &context).await
+        self.api().search_missions(account_id, keyword, sub_type, start, limit, include_game_data, include_audiences, include_inactive, suffix, sort_field, descending, &context).await
     }
 
     /// Search Missions by Billable Entity
     async fn search_missions_by_billable_entity(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start: Option<i32>,
@@ -30619,13 +28966,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchMissionsByBillableEntityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_missions_by_billable_entity(version, account_id, keyword, start, limit, include_game_data, include_audiences, include_inactive, suffix, sort_field, descending, &context).await
+        self.api().search_missions_by_billable_entity(account_id, keyword, start, limit, include_game_data, include_audiences, include_inactive, suffix, sort_field, descending, &context).await
     }
 
     /// Update Mission
     async fn update_mission(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -30654,13 +29000,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateMissionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_mission(version, account_id, mission_id, title, description, sub_type, meta_data, start_date, end_date, active, game_level_ids, creative_ids, audience_ids, offer_id, balance, advanced_reporting, allocate_tickets, ticket_count, ticket_type, points, application_ids, devices, device_ids, device_versions, locations, radius, &context).await
+        self.api().update_mission(account_id, mission_id, title, description, sub_type, meta_data, start_date, end_date, active, game_level_ids, creative_ids, audience_ids, offer_id, balance, advanced_reporting, allocate_tickets, ticket_count, ticket_type, points, application_ids, devices, device_ids, device_versions, locations, radius, &context).await
     }
 
     /// Create Mission Invite
     async fn create_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -30669,13 +29014,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateMissionInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_mission_invite(version, device_id, account_id, mission_id, join_code, include_game_data, &context).await
+        self.api().create_mission_invite(device_id, account_id, mission_id, join_code, include_game_data, &context).await
     }
 
     /// Delete Mission Invite
     async fn delete_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -30684,13 +29028,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteMissionInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_mission_invite(version, device_id, account_id, mission_id, mission_invite_id, include_game_data, &context).await
+        self.api().delete_mission_invite(device_id, account_id, mission_id, mission_invite_id, include_game_data, &context).await
     }
 
     /// Get Mission Invite
     async fn get_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         mission_id: Option<i64>,
@@ -30700,13 +29043,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetMissionInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_mission_invite(version, device_id, account_id, mission_id, mission_invite_id, include_game_data, include_scores, &context).await
+        self.api().get_mission_invite(device_id, account_id, mission_id, mission_invite_id, include_game_data, include_scores, &context).await
     }
 
     /// Search Mission Invites
     async fn search_mission_invites(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -30723,13 +29065,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchMissionInvitesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_mission_invites(version, device_id, account_id, app_key, app_version, mission_id, status, last_updated, start, limit, keyword, mission_types, filter_by_billable, include_game_data, &context).await
+        self.api().search_mission_invites(device_id, account_id, app_key, app_version, mission_id, status, last_updated, start, limit, keyword, mission_types, filter_by_billable, include_game_data, &context).await
     }
 
     /// Update Mission Invite
     async fn update_mission_invite(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -30744,13 +29085,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateMissionInviteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_mission_invite(version, device_id, account_id, app_key, mission_id, mission_invite_id, pack_id, game_level_id, status, permissionable_type, permissionable_id, include_game_data, &context).await
+        self.api().update_mission_invite(device_id, account_id, app_key, mission_id, mission_invite_id, pack_id, game_level_id, status, permissionable_type, permissionable_id, include_game_data, &context).await
     }
 
     /// Batch Note Operation
     async fn batch_operation(
         &self,
-        version: f64,
         notable_id: i64,
         notable_type: String,
         device_id: Option<String>,
@@ -30759,13 +29099,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<BatchOperationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().batch_operation(version, notable_id, notable_type, device_id, account_id, batch_operation, &context).await
+        self.api().batch_operation(notable_id, notable_type, device_id, account_id, batch_operation, &context).await
     }
 
     /// Create Note
     async fn create_note(
         &self,
-        version: f64,
         comment: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -30811,13 +29150,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateNoteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_note(version, comment, device_id, account_id, notable_type, notable_id, note_type, asset_ids, tags, permissionable_type, permissionable_id, app_key, location_description, latitude, longitude, meta_data, receiver_account_ids, return_full_response, initialize_asset, asset_return_nulls, asset_album_id, asset_collection_id, asset_add_to_default_album, asset_add_to_media_library, asset_version_code, asset_version_name, asset_meta_data, asset_caption, asset_media, asset_media_url, asset_media_string, asset_media_string_file_name, asset_media_string_content_type, asset_attached_media, asset_attached_media_url, asset_attached_media_string, asset_attached_media_string_file_name, asset_attached_media_string_content_type, asset_location_description, asset_app, asset_search_tags, asset_latitude, asset_longitude, &context).await
+        self.api().create_note(comment, device_id, account_id, notable_type, notable_id, note_type, asset_ids, tags, permissionable_type, permissionable_id, app_key, location_description, latitude, longitude, meta_data, receiver_account_ids, return_full_response, initialize_asset, asset_return_nulls, asset_album_id, asset_collection_id, asset_add_to_default_album, asset_add_to_media_library, asset_version_code, asset_version_name, asset_meta_data, asset_caption, asset_media, asset_media_url, asset_media_string, asset_media_string_file_name, asset_media_string_content_type, asset_attached_media, asset_attached_media_url, asset_attached_media_string, asset_attached_media_string_file_name, asset_attached_media_string_content_type, asset_location_description, asset_app, asset_search_tags, asset_latitude, asset_longitude, &context).await
     }
 
     /// Delete Note
     async fn delete_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -30827,13 +29165,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteNoteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_note(version, note_id, device_id, account_id, latitude, longitude, app_key, &context).await
+        self.api().delete_note(note_id, device_id, account_id, latitude, longitude, app_key, &context).await
     }
 
     /// Get Note
     async fn get_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -30841,13 +29178,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetNoteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_note(version, note_id, device_id, account_id, return_full_response, &context).await
+        self.api().get_note(note_id, device_id, account_id, return_full_response, &context).await
     }
 
     /// Search Notes
     async fn search_notes(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         notable_type: Option<String>,
@@ -30868,13 +29204,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchNotesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_notes(version, device_id, account_id, notable_type, notable_id, note_types, app_key, keyword, flag_count_minimum, flags_exceed_threshold, include_inactive, sort_field, descending, return_full_response, updated_since, updated_before, start, limit, &context).await
+        self.api().search_notes(device_id, account_id, notable_type, notable_id, note_types, app_key, keyword, flag_count_minimum, flags_exceed_threshold, include_inactive, sort_field, descending, return_full_response, updated_since, updated_before, start, limit, &context).await
     }
 
     /// Update Note
     async fn update_note(
         &self,
-        version: f64,
         note_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -30919,13 +29254,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateNoteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_note(version, note_id, device_id, account_id, comment, note_type, asset_ids, tags, permissionable_type, permissionable_id, app_key, location_description, latitude, longitude, meta_data, return_full_response, active, update_asset, asset_return_nulls, asset_album_id, asset_collection_id, asset_add_to_default_album, asset_add_to_media_library, asset_version_code, asset_version_name, asset_meta_data, asset_caption, asset_media, asset_media_url, asset_media_string, asset_media_string_file_name, asset_media_string_content_type, asset_attached_media, asset_attached_media_url, asset_attached_media_string, asset_attached_media_string_file_name, asset_attached_media_string_content_type, asset_location_description, asset_app, asset_search_tags, asset_latitude, asset_longitude, &context).await
+        self.api().update_note(note_id, device_id, account_id, comment, note_type, asset_ids, tags, permissionable_type, permissionable_id, app_key, location_description, latitude, longitude, meta_data, return_full_response, active, update_asset, asset_return_nulls, asset_album_id, asset_collection_id, asset_add_to_default_album, asset_add_to_media_library, asset_version_code, asset_version_name, asset_meta_data, asset_caption, asset_media, asset_media_url, asset_media_string, asset_media_string_file_name, asset_media_string_content_type, asset_attached_media, asset_attached_media_url, asset_attached_media_string, asset_attached_media_string_file_name, asset_attached_media_string_content_type, asset_location_description, asset_app, asset_search_tags, asset_latitude, asset_longitude, &context).await
     }
 
     /// Create Notification Template
     async fn create_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         conduit: String,
         title: String,
@@ -30936,50 +29270,46 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateNotificationTemplateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_notification_template(version, account_id, conduit, title, body, app_key, event, tags, &context).await
+        self.api().create_notification_template(account_id, conduit, title, body, app_key, event, tags, &context).await
     }
 
     /// Create or update blocked notification settings
     async fn create_or_update_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         data: String,
         account_id: Option<i64>,
         ) -> Result<CreateOrUpdateBlockedNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_or_update_blocked_notifications(version, app_key, data, account_id, &context).await
+        self.api().create_or_update_blocked_notifications(app_key, data, account_id, &context).await
     }
 
     /// Delete Notification Template
     async fn delete_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         ) -> Result<DeleteNotificationTemplateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_notification_template(version, account_id, notification_template_id, &context).await
+        self.api().delete_notification_template(account_id, notification_template_id, &context).await
     }
 
     /// Get Notification Template
     async fn get_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         ) -> Result<GetNotificationTemplateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_notification_template(version, account_id, notification_template_id, &context).await
+        self.api().get_notification_template(account_id, notification_template_id, &context).await
     }
 
     /// Get Notifications
     async fn get_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -31004,13 +29334,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_notifications(version, device_id, account_id, connection_account_id, app_key, event_type, content_ids, content_types, parent_ids, parent_types, action_category, conduits, keyword, return_read_messages, mark_as_read, from_date, latitude, longitude, return_sent, ignore_flagged, start, limit, &context).await
+        self.api().get_notifications(device_id, account_id, connection_account_id, app_key, event_type, content_ids, content_types, parent_ids, parent_types, action_category, conduits, keyword, return_read_messages, mark_as_read, from_date, latitude, longitude, return_sent, ignore_flagged, start, limit, &context).await
     }
 
     /// Register Notification Token
     async fn register_notification_token(
         &self,
-        version: f64,
         token: String,
         push_type: models::RegisterNotificationTokenPushTypeParameter,
         device_id: Option<String>,
@@ -31024,13 +29353,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RegisterNotificationTokenResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().register_notification_token(version, token, push_type, device_id, account_id, environment, app_key, game_type, active, latitude, longitude, &context).await
+        self.api().register_notification_token(token, push_type, device_id, account_id, environment, app_key, game_type, active, latitude, longitude, &context).await
     }
 
     /// Search on the user's blocked notification settings
     async fn search_blocked_notifications(
         &self,
-        version: f64,
         app_key: String,
         account_id: Option<i64>,
         search_tags: Option<String>,
@@ -31046,13 +29374,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchBlockedNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_blocked_notifications(version, app_key, account_id, search_tags, events, conduits, custom_types, content_types, content_ids, sort_field, descending, start, limit, &context).await
+        self.api().search_blocked_notifications(app_key, account_id, search_tags, events, conduits, custom_types, content_types, content_ids, sort_field, descending, start, limit, &context).await
     }
 
     /// Search Notification Templates
     async fn search_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -31067,13 +29394,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchNotificationTemplateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_notification_template(version, account_id, sort_field, descending, start, limit, app_key, event, conduit, global_only, reserved_only, keyword, &context).await
+        self.api().search_notification_template(account_id, sort_field, descending, start, limit, app_key, event, conduit, global_only, reserved_only, keyword, &context).await
     }
 
     /// Search for Recipients
     async fn search_recipients(
         &self,
-        version: f64,
         sort_field: models::SearchRecipientsSortFieldParameter,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -31090,13 +29416,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRecipientsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_recipients(version, sort_field, device_id, account_id, app_key, conduit, keyword, audience_id, audience_ids, connection_group_ids, recipient_account_ids, descending, start, limit, &context).await
+        self.api().search_recipients(sort_field, device_id, account_id, app_key, conduit, keyword, audience_id, audience_ids, connection_group_ids, recipient_account_ids, descending, start, limit, &context).await
     }
 
     /// Search for Recipients (Counts/Grouped)
     async fn search_recipients_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -31112,13 +29437,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRecipientsCountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_recipients_count(version, device_id, account_id, app_key, conduit, keyword, audience_id, audience_ids, connection_group_ids, sort_field, descending, start, limit, &context).await
+        self.api().search_recipients_count(device_id, account_id, app_key, conduit, keyword, audience_id, audience_ids, connection_group_ids, sort_field, descending, start, limit, &context).await
     }
 
     /// Send Batch Notifications
     async fn send_batch_notifications(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         custom_message: String,
@@ -31131,13 +29455,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SendBatchNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().send_batch_notifications(version, account_id, app_key, custom_message, conduit, content_id, content_name, content_type, parent_id, parent_type, &context).await
+        self.api().send_batch_notifications(account_id, app_key, custom_message, conduit, content_id, content_name, content_type, parent_id, parent_type, &context).await
     }
 
     /// Send Custom Notifications
     async fn send_custom_notifications(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         receiver_account_ids: Option<String>,
@@ -31159,13 +29482,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SendCustomNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().send_custom_notifications(version, device_id, account_id, receiver_account_ids, include_friend_group, app_key, game_type, conduit, content_id, content_name, content_type, parent_id, parent_type, action_category, subject, custom_message, friend_only_apns, latitude, longitude, &context).await
+        self.api().send_custom_notifications(device_id, account_id, receiver_account_ids, include_friend_group, app_key, game_type, conduit, content_id, content_name, content_type, parent_id, parent_type, action_category, subject, custom_message, friend_only_apns, latitude, longitude, &context).await
     }
 
     /// Update Notification Template
     async fn update_notification_template(
         &self,
-        version: f64,
         account_id: i64,
         notification_template_id: i64,
         title: Option<String>,
@@ -31174,13 +29496,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateNotificationTemplateResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_notification_template(version, account_id, notification_template_id, title, body, tags, &context).await
+        self.api().update_notification_template(account_id, notification_template_id, title, body, tags, &context).await
     }
 
     /// Create Field
     async fn add_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -31189,26 +29510,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddFieldResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_field(version, account_id, app_key, object_name, field_name, field_type, &context).await
+        self.api().add_field(account_id, app_key, object_name, field_name, field_type, &context).await
     }
 
     /// Create Object
     async fn create_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
         ) -> Result<CreateObjectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_object(version, account_id, app_key, object_name, &context).await
+        self.api().create_object(account_id, app_key, object_name, &context).await
     }
 
     /// Delete Field
     async fn delete_field(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
@@ -31216,39 +29535,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteFieldResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_field(version, account_id, app_key, object_name, field_name, &context).await
+        self.api().delete_field(account_id, app_key, object_name, field_name, &context).await
     }
 
     /// Delete Object
     async fn delete_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
         ) -> Result<DeleteObjectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_object(version, account_id, app_key, object_name, &context).await
+        self.api().delete_object(account_id, app_key, object_name, &context).await
     }
 
     /// Get Object
     async fn get_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         object_name: String,
         ) -> Result<GetObjectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_object(version, account_id, app_key, object_name, &context).await
+        self.api().get_object(account_id, app_key, object_name, &context).await
     }
 
     /// Search Objects
     async fn search_object(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         start: i64,
@@ -31257,26 +29573,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchObjectResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_object(version, account_id, app_key, start, limit, keyword, &context).await
+        self.api().search_object(account_id, app_key, start, limit, keyword, &context).await
     }
 
     /// Create Data
     async fn create_data(
         &self,
-        version: f64,
         object_name: String,
         account_id: Option<i64>,
         body: Option<String>,
         ) -> Result<CreateDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_data(version, object_name, account_id, body, &context).await
+        self.api().create_data(object_name, account_id, body, &context).await
     }
 
     /// Search Data
     async fn search_data(
         &self,
-        version: f64,
         object_name: String,
         count: bool,
         start: i64,
@@ -31288,26 +29602,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_data(version, object_name, count, start, limit, account_id, criteria, order, include, &context).await
+        self.api().search_data(object_name, count, start, limit, account_id, criteria, order, include, &context).await
     }
 
     /// Delete Data
     async fn delete_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
         ) -> Result<DeleteDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_data(version, object_name, object_id, account_id, &context).await
+        self.api().delete_data(object_name, object_id, account_id, &context).await
     }
 
     /// Get Data
     async fn get_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -31315,13 +29627,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_data(version, object_name, object_id, account_id, include, &context).await
+        self.api().get_data(object_name, object_id, account_id, include, &context).await
     }
 
     /// Update Data
     async fn update_data(
         &self,
-        version: f64,
         object_name: String,
         object_id: String,
         account_id: Option<i64>,
@@ -31329,26 +29640,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateDataResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_data(version, object_name, object_id, account_id, body, &context).await
+        self.api().update_data(object_name, object_id, account_id, body, &context).await
     }
 
     /// Update Offer Locations
     async fn batch_update_offer_locations(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<BatchUpdateOfferLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().batch_update_offer_locations(version, data, device_id, account_id, &context).await
+        self.api().batch_update_offer_locations(data, device_id, account_id, &context).await
     }
 
     /// Create Offer
     async fn create_offer(
         &self,
-        version: f64,
         include_offer_locations: bool,
         title: String,
         barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -31438,39 +29747,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOfferResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_offer(version, include_offer_locations, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, offer_type, special_offer_type, offer_visibility, active, device_id, account_id, tags, parent_offer_id, retailer_location_ids, offer_locations, sub_title, details, sub_details, fine_print, barcode_entry, external_redeem_options, external_url, external_id, tickets_reward_type, tickets_reward, activated, expires, ticket_price_type, show_remaining, show_redeemed, replaced, featured, category_ids, filter_ids, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, brand, product_type, condition_type, isbn, asin, catalog_numbers, department, features, minimum_price, width, height, depth, weight, unit, studio, parental_rating, publish_date, availability_date, size_id, listing_id, media_type, duration, author, release_date, collection_ids, reboot_time_hour, reboot_time_minute, idle_timeout_in_second, serial_number, udid, device_type, device_power, device_interference, availability, availability_summary, &context).await
+        self.api().create_offer(include_offer_locations, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, offer_type, special_offer_type, offer_visibility, active, device_id, account_id, tags, parent_offer_id, retailer_location_ids, offer_locations, sub_title, details, sub_details, fine_print, barcode_entry, external_redeem_options, external_url, external_id, tickets_reward_type, tickets_reward, activated, expires, ticket_price_type, show_remaining, show_redeemed, replaced, featured, category_ids, filter_ids, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, brand, product_type, condition_type, isbn, asin, catalog_numbers, department, features, minimum_price, width, height, depth, weight, unit, studio, parental_rating, publish_date, availability_date, size_id, listing_id, media_type, duration, author, release_date, collection_ids, reboot_time_hour, reboot_time_minute, idle_timeout_in_second, serial_number, udid, device_type, device_power, device_interference, availability, availability_summary, &context).await
     }
 
     /// Delete Offer
     async fn delete_offer(
         &self,
-        version: f64,
         offer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteOfferResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_offer(version, offer_id, device_id, account_id, &context).await
+        self.api().delete_offer(offer_id, device_id, account_id, &context).await
     }
 
     /// Delete Offer Location
     async fn delete_offer_location(
         &self,
-        version: f64,
         offer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteOfferLocationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_offer_location(version, offer_location_id, device_id, account_id, &context).await
+        self.api().delete_offer_location(offer_location_id, device_id, account_id, &context).await
     }
 
     /// Get Offer
     async fn get_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -31478,13 +29784,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer(version, offer_id, include_offer_locations, device_id, account_id, &context).await
+        self.api().get_offer(offer_id, include_offer_locations, device_id, account_id, &context).await
     }
 
     /// Get Offer
     async fn get_offer_details(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -31498,13 +29803,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferDetailsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_details(version, device_id, account_id, offer_id, offer_location_id, distance, latitude, longitude, include_offer_locations, include_retailer_locations, include_child_offers, &context).await
+        self.api().get_offer_details(device_id, account_id, offer_id, offer_location_id, distance, latitude, longitude, include_offer_locations, include_retailer_locations, include_child_offers, &context).await
     }
 
     /// Get Offers (Counts)
     async fn get_offer_list_counts(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: Option<f64>,
@@ -31512,25 +29816,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferListCountsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_list_counts(version, latitude, longitude, search_range, distance_unit, &context).await
+        self.api().get_offer_list_counts(latitude, longitude, search_range, distance_unit, &context).await
     }
 
     /// Get Offer Location
     async fn get_offer_location(
         &self,
-        version: f64,
         offer_location_id: Option<i64>,
         udid: Option<String>,
         ) -> Result<GetOfferLocationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_location(version, offer_location_id, udid, &context).await
+        self.api().get_offer_location(offer_location_id, udid, &context).await
     }
 
     /// Search Offer Locations
     async fn get_offer_locations_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchOffersForConsumerGroupByParameter,
         descending: bool,
         start: i32,
@@ -31554,13 +29856,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferLocationsForRetailersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_locations_for_retailers(version, sort_field, descending, start, limit, active_only, include_retailer_location, device_id, account_id, keyword, retailer_id, retailer_location_id, offer_type, special_offer_type, barcode_type, barcode_entry, isbn, asin, device_status, needs_notification_sent, last_notification_sent, &context).await
+        self.api().get_offer_locations_for_retailers(sort_field, descending, start, limit, active_only, include_retailer_location, device_id, account_id, keyword, retailer_id, retailer_location_id, offer_type, special_offer_type, barcode_type, barcode_entry, isbn, asin, device_status, needs_notification_sent, last_notification_sent, &context).await
     }
 
     /// Search Offers
     async fn get_offers_for_retailers(
         &self,
-        version: f64,
         offer_visibility: models::CreateMediaOfferVisibilityParameter,
         sort_field: models::SearchEventsSortFieldParameter,
         descending: bool,
@@ -31595,13 +29896,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOffersForRetailersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offers_for_retailers(version, offer_visibility, sort_field, descending, start, limit, available_only, active_only, include_categories, include_filters, include_offer_locations, device_id, account_id, category_ids, filter_ids, q, keyword, retailer_id, retailer_location_id, coupon_type, offer_type, offer_types, special_offer_type, _i, _l, barcode_type, barcode_entry, isbn, asin, device_status, needs_notification_sent, last_notification_sent, &context).await
+        self.api().get_offers_for_retailers(offer_visibility, sort_field, descending, start, limit, available_only, active_only, include_categories, include_filters, include_offer_locations, device_id, account_id, category_ids, filter_ids, q, keyword, retailer_id, retailer_location_id, coupon_type, offer_type, offer_types, special_offer_type, _i, _l, barcode_type, barcode_entry, isbn, asin, device_status, needs_notification_sent, last_notification_sent, &context).await
     }
 
     /// Update Offer Transaction
     async fn redeem_offer_transaction(
         &self,
-        version: f64,
         offer_transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -31610,13 +29910,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RedeemOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().redeem_offer_transaction(version, offer_transaction_id, status, device_id, account_id, offer_location_id, &context).await
+        self.api().redeem_offer_transaction(offer_transaction_id, status, device_id, account_id, offer_location_id, &context).await
     }
 
     /// Search Offer Transactions
     async fn search_offer_transactions_for_retailers(
         &self,
-        version: f64,
         sort_field: models::SearchEventTransactionsSortFieldParameter,
         descending: bool,
         start: i32,
@@ -31644,13 +29943,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchOfferTransactionsForRetailersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_offer_transactions_for_retailers(version, sort_field, descending, start, limit, active_only, device_id, account_id, q, keyword, retailer_id, retailer_location_id, offer_id, offer_location_id, redeemed, reservations_only, coupon_type, offer_type, special_offer_type, customer_account_ids, category_ids, redeemable_start_date, redeemable_end_date, _i, _l, &context).await
+        self.api().search_offer_transactions_for_retailers(sort_field, descending, start, limit, active_only, device_id, account_id, q, keyword, retailer_id, retailer_location_id, offer_id, offer_location_id, redeemed, reservations_only, coupon_type, offer_type, special_offer_type, customer_account_ids, category_ids, redeemable_start_date, redeemable_end_date, _i, _l, &context).await
     }
 
     /// Search Offers
     async fn search_offers_for_consumer(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         recommendation_type: models::SearchOffersForConsumerRecommendationTypeParameter,
@@ -31685,25 +29983,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchOffersForConsumerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_offers_for_consumer(version, latitude, longitude, recommendation_type, location_id, start, limit, max_recommendations, distance_unit, app_key, device_id, account_id, search_range, tags, supported_postal_codes, keyword, categories, filters, offer_types, param_type, sort_field, recommend_offer_ids, retailer_location_ids, offer_id, include_mission, include_categories, include_filters, include_expired, include_favorite, closest_offer_only, search_expression, group_by, &context).await
+        self.api().search_offers_for_consumer(latitude, longitude, recommendation_type, location_id, start, limit, max_recommendations, distance_unit, app_key, device_id, account_id, search_range, tags, supported_postal_codes, keyword, categories, filters, offer_types, param_type, sort_field, recommend_offer_ids, retailer_location_ids, offer_id, include_mission, include_categories, include_filters, include_expired, include_favorite, closest_offer_only, search_expression, group_by, &context).await
     }
 
     /// Get Offers (Top)
     async fn top_offer_transactions(
         &self,
-        version: f64,
         start: Option<i32>,
         limit: Option<i32>,
         ) -> Result<TopOfferTransactionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().top_offer_transactions(version, start, limit, &context).await
+        self.api().top_offer_transactions(start, limit, &context).await
     }
 
     /// Update Offer
     async fn update_offer(
         &self,
-        version: f64,
         offer_id: i64,
         include_offer_locations: bool,
         device_id: Option<String>,
@@ -31794,13 +30090,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateOfferResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_offer(version, offer_id, include_offer_locations, device_id, account_id, parent_offer_id, retailer_location_ids, offer_locations, tags, title, sub_title, details, sub_details, fine_print, barcode_type, barcode_entry, external_redeem_options, external_url, external_id, tickets_reward_type, tickets_reward, activated, expires, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price_type, ticket_price, full_price, discount_price, show_remaining, show_redeemed, replaced, featured, offer_type, special_offer_type, offer_visibility, category_ids, filter_ids, active, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, brand, product_type, condition_type, isbn, asin, catalog_numbers, department, features, minimum_price, width, height, depth, weight, unit, studio, parental_rating, publish_date, availability_date, size_id, listing_id, media_type, duration, author, release_date, collection_ids, reboot_time_hour, reboot_time_minute, idle_timeout_in_second, serial_number, udid, device_type, device_power, device_interference, availability, availability_summary, &context).await
+        self.api().update_offer(offer_id, include_offer_locations, device_id, account_id, parent_offer_id, retailer_location_ids, offer_locations, tags, title, sub_title, details, sub_details, fine_print, barcode_type, barcode_entry, external_redeem_options, external_url, external_id, tickets_reward_type, tickets_reward, activated, expires, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price_type, ticket_price, full_price, discount_price, show_remaining, show_redeemed, replaced, featured, offer_type, special_offer_type, offer_visibility, category_ids, filter_ids, active, barcode_asset_id, image_asset_id, image_asset_id1, image_asset_id2, image_asset_id3, image_asset_id4, image_asset_id5, publisher, redeemable_start, redeemable_end, brand, product_type, condition_type, isbn, asin, catalog_numbers, department, features, minimum_price, width, height, depth, weight, unit, studio, parental_rating, publish_date, availability_date, size_id, listing_id, media_type, duration, author, release_date, collection_ids, reboot_time_hour, reboot_time_minute, idle_timeout_in_second, serial_number, udid, device_type, device_power, device_interference, availability, availability_summary, &context).await
     }
 
     /// Activate Offer
     async fn update_offer_status(
         &self,
-        version: f64,
         offer_ids: String,
         active: bool,
         device_id: Option<String>,
@@ -31808,13 +30103,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateOfferStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_offer_status(version, offer_ids, active, device_id, account_id, &context).await
+        self.api().update_offer_status(offer_ids, active, device_id, account_id, &context).await
     }
 
     /// Create Offer Status
     async fn create_offer_transaction_status(
         &self,
-        version: f64,
         name: String,
         code: i32,
         device_id: Option<String>,
@@ -31828,13 +30122,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOfferTransactionStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_offer_transaction_status(version, name, code, device_id, account_id, latitude, longitude, description, role, active, application_ids, &context).await
+        self.api().create_offer_transaction_status(name, code, device_id, account_id, latitude, longitude, description, role, active, application_ids, &context).await
     }
 
     /// Delete Offer Status
     async fn delete_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -31843,13 +30136,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteOfferTransactionStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_offer_transaction_status(version, status_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().delete_offer_transaction_status(status_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Get Offer Status
     async fn get_offer_transaction_status(
         &self,
-        version: f64,
         status_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -31858,13 +30150,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferTransactionStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_transaction_status(version, status_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().get_offer_transaction_status(status_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Search Offer Status
     async fn search_offer_transaction_statuses(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -31880,13 +30171,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchOfferTransactionStatusesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_offer_transaction_statuses(version, device_id, account_id, latitude, longitude, keyword, role, app_key, sort_field, descending, start, limit, include_inactive, &context).await
+        self.api().search_offer_transaction_statuses(device_id, account_id, latitude, longitude, keyword, role, app_key, sort_field, descending, start, limit, include_inactive, &context).await
     }
 
     /// Update Offer Status
     async fn update_offer_transaction_status(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         latitude: Option<f64>,
@@ -31901,50 +30191,46 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateOfferTransactionStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_offer_transaction_status(version, device_id, account_id, latitude, longitude, status_id, name, description, code, role, active, application_ids, &context).await
+        self.api().update_offer_transaction_status(device_id, account_id, latitude, longitude, status_id, name, description, code, role, active, application_ids, &context).await
     }
 
     /// Generate images with OpenAI
     async fn image_generation(
         &self,
-        version: f64,
         account_id: i64,
         post_body: String,
         return_raw_response: Option<bool>,
         ) -> Result<ImageGenerationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().image_generation(version, account_id, post_body, return_raw_response, &context).await
+        self.api().image_generation(account_id, post_body, return_raw_response, &context).await
     }
 
     /// Request Optimization
     async fn request_optimization(
         &self,
-        version: f64,
         body: Option<models::Orders>,
         ) -> Result<RequestOptimizationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().request_optimization(version, body, &context).await
+        self.api().request_optimization(body, &context).await
     }
 
     /// Get Optimization Result
     async fn get_optimization_result(
         &self,
-        version: f64,
         batch_id: String,
         start: i32,
         limit: i32,
         ) -> Result<GetOptimizationResultResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_optimization_result(version, batch_id, start, limit, &context).await
+        self.api().get_optimization_result(batch_id, start, limit, &context).await
     }
 
     /// Add Movie
     async fn add_movie(
         &self,
-        version: f64,
         account_id: i64,
         movie_name: String,
         third_party_account_id: Option<String>,
@@ -31955,13 +30241,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddMovieResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_movie(version, account_id, movie_name, third_party_account_id, tags, file, url, callback, &context).await
+        self.api().add_movie(account_id, movie_name, third_party_account_id, tags, file, url, callback, &context).await
     }
 
     /// Search Docs
     async fn ai_docs(
         &self,
-        version: f64,
         account_id: i64,
         doc: String,
         return_topics: Option<bool>,
@@ -31970,13 +30255,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AiDocsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ai_docs(version, account_id, doc, return_topics, limit, offset, &context).await
+        self.api().ai_docs(account_id, doc, return_topics, limit, offset, &context).await
     }
 
     /// Find images
     async fn ai_find_images(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         parse_flag: Option<String>,
@@ -31985,13 +30269,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AiFindImagesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ai_find_images(version, account_id, text, parse_flag, fetch_flag, size, &context).await
+        self.api().ai_find_images(account_id, text, parse_flag, fetch_flag, size, &context).await
     }
 
     /// Search Tags
     async fn ai_tags(
         &self,
-        version: f64,
         account_id: i64,
         tags: String,
         conditional: Option<String>,
@@ -32000,13 +30283,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AiTagsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ai_tags(version, account_id, tags, conditional, limit, offset, &context).await
+        self.api().ai_tags(account_id, tags, conditional, limit, offset, &context).await
     }
 
     /// Search Text
     async fn ai_text(
         &self,
-        version: f64,
         account_id: i64,
         terms: String,
         conditional: Option<String>,
@@ -32015,13 +30297,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AiTextResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ai_text(version, account_id, terms, conditional, limit, offset, &context).await
+        self.api().ai_text(account_id, terms, conditional, limit, offset, &context).await
     }
 
     /// Batch Analysis
     async fn batch(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         limit: Option<i32>,
@@ -32032,25 +30313,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<BatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().batch(version, account_id, third_party_account_id, limit, operations, file, url, callback, &context).await
+        self.api().batch(account_id, third_party_account_id, limit, operations, file, url, callback, &context).await
     }
 
     /// Creates an instant episode
     async fn create_instant_episode(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         ) -> Result<CreateInstantEpisodeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_instant_episode(version, account_id, data, &context).await
+        self.api().create_instant_episode(account_id, data, &context).await
     }
 
     /// Create VoiceCanvas images
     async fn create_voice_canvas(
         &self,
-        version: f64,
         account_id: i64,
         dimensions: String,
         third_party_account_id: Option<String>,
@@ -32063,13 +30342,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateVoiceCanvasResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_voice_canvas(version, account_id, dimensions, third_party_account_id, text, file, url, parse_flag, fetch_flag, callback, &context).await
+        self.api().create_voice_canvas(account_id, dimensions, third_party_account_id, text, file, url, parse_flag, fetch_flag, callback, &context).await
     }
 
     /// Detect emotions
     async fn emotion(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         file: Option<swagger::ByteArray>,
@@ -32078,25 +30356,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<EmotionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().emotion(version, account_id, third_party_account_id, file, url, callback, &context).await
+        self.api().emotion(account_id, third_party_account_id, file, url, callback, &context).await
     }
 
     /// Starts a StoryStitch video render
     async fn start_video_render(
         &self,
-        version: f64,
         account_id: i64,
         data: String,
         ) -> Result<StartVideoRenderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().start_video_render(version, account_id, data, &context).await
+        self.api().start_video_render(account_id, data, &context).await
     }
 
     /// Speach to Text
     async fn stt(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         source_language: Option<String>,
@@ -32107,13 +30383,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SttResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().stt(version, account_id, third_party_account_id, source_language, target_language, file, url, callback, &context).await
+        self.api().stt(account_id, third_party_account_id, source_language, target_language, file, url, callback, &context).await
     }
 
     /// Summarize Topics
     async fn summarize_topics(
         &self,
-        version: f64,
         account_id: i64,
         third_party_account_id: Option<String>,
         doc: Option<String>,
@@ -32125,13 +30400,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SummarizeTopicsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().summarize_topics(version, account_id, third_party_account_id, doc, file, url, limit, offset, callback, &context).await
+        self.api().summarize_topics(account_id, third_party_account_id, doc, file, url, limit, offset, callback, &context).await
     }
 
     /// Detect Technical Issues
     async fn tech_tune(
         &self,
-        version: f64,
         account_id: i64,
         num_faces_expected: i32,
         third_party_account_id: Option<String>,
@@ -32141,13 +30415,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<TechTuneResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().tech_tune(version, account_id, num_faces_expected, third_party_account_id, file, url, callback, &context).await
+        self.api().tech_tune(account_id, num_faces_expected, third_party_account_id, file, url, callback, &context).await
     }
 
     /// Text to Speach
     async fn tts(
         &self,
-        version: f64,
         account_id: i64,
         text: String,
         third_party_account_id: Option<String>,
@@ -32157,133 +30430,122 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<TtsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().tts(version, account_id, text, third_party_account_id, language, voice, callback, &context).await
+        self.api().tts(account_id, text, third_party_account_id, language, voice, callback, &context).await
     }
 
     /// Get Add Movie Result
     async fn get_add_movie_result(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetAddMovieResultResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_add_movie_result(version, request_id, account_id, &context).await
+        self.api().get_add_movie_result(request_id, account_id, &context).await
     }
 
     /// Get Batch Analysis Results
     async fn get_batch(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_batch(version, request_id, account_id, &context).await
+        self.api().get_batch(request_id, account_id, &context).await
     }
 
     /// Get Emotion Results
     async fn get_emotion(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetEmotionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_emotion(version, request_id, account_id, &context).await
+        self.api().get_emotion(request_id, account_id, &context).await
     }
 
     /// Check episode status
     async fn get_episode_status(
         &self,
-        version: f64,
         episode_id: i64,
         account_id: i64,
         ) -> Result<GetEpisodeStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_episode_status(version, episode_id, account_id, &context).await
+        self.api().get_episode_status(episode_id, account_id, &context).await
     }
 
     /// Check episode status
     async fn get_render_status(
         &self,
-        version: f64,
         render_id: String,
         account_id: i64,
         ) -> Result<GetRenderStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_render_status(version, render_id, account_id, &context).await
+        self.api().get_render_status(render_id, account_id, &context).await
     }
 
     /// Get Speach to Text Result
     async fn get_stt(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetSttResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_stt(version, request_id, account_id, &context).await
+        self.api().get_stt(request_id, account_id, &context).await
     }
 
     /// Get TechTune Results
     async fn get_tech_tune(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTechTuneResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_tech_tune(version, request_id, account_id, &context).await
+        self.api().get_tech_tune(request_id, account_id, &context).await
     }
 
     /// Get Topics
     async fn get_topics(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTopicsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_topics(version, request_id, account_id, &context).await
+        self.api().get_topics(request_id, account_id, &context).await
     }
 
     /// Get Text to Speach Result
     async fn get_tts(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetTtsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_tts(version, request_id, account_id, &context).await
+        self.api().get_tts(request_id, account_id, &context).await
     }
 
     /// Get VoiceCanvas images
     async fn get_voice_canvas(
         &self,
-        version: f64,
         request_id: String,
         account_id: i64,
         ) -> Result<GetVoiceCanvasResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_voice_canvas(version, request_id, account_id, &context).await
+        self.api().get_voice_canvas(request_id, account_id, &context).await
     }
 
     /// Create Pack
     async fn create_pack(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         pack_order: i64,
@@ -32311,38 +30573,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreatePackResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_pack(version, account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description, search_tags, active, game_type, app_key, pack_type, sequence_type, background_id, image_id, start_date, end_date, author_override, price_type, game_level_ids, in_game, ticket_type, points, &context).await
+        self.api().create_pack(account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description, search_tags, active, game_type, app_key, pack_type, sequence_type, background_id, image_id, start_date, end_date, author_override, price_type, game_level_ids, in_game, ticket_type, points, &context).await
     }
 
     /// Delete Pack
     async fn delete_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         ) -> Result<DeletePackResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_pack(version, account_id, pack_id, &context).await
+        self.api().delete_pack(account_id, pack_id, &context).await
     }
 
     /// Get Pack
     async fn get_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         include_game_data: bool,
         ) -> Result<GetPackResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_pack(version, account_id, pack_id, include_game_data, &context).await
+        self.api().get_pack(account_id, pack_id, include_game_data, &context).await
     }
 
     /// Search Packs
     async fn search_packs(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchPacksSortFieldParameter,
         descending: bool,
@@ -32356,13 +30615,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchPacksResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_packs(version, account_id, sort_field, descending, keyword, pack_type, start, limit, include_game_data, include_inactive, app_key, &context).await
+        self.api().search_packs(account_id, sort_field, descending, keyword, pack_type, start, limit, include_game_data, include_inactive, app_key, &context).await
     }
 
     /// Update Pack
     async fn update_pack(
         &self,
-        version: f64,
         account_id: i64,
         pack_id: i64,
         allocate_tickets: bool,
@@ -32391,26 +30649,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdatePackResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_pack(version, account_id, pack_id, allocate_tickets, ticket_count, title, description, search_tags, active, game_type, app_key, pack_type, pack_order, sequence_type, background_id, image_id, start_date, end_date, author_override, price, price_type, game_level_ids, in_game, highest, ticket_type, points, &context).await
+        self.api().update_pack(account_id, pack_id, allocate_tickets, ticket_count, title, description, search_tags, active, game_type, app_key, pack_type, pack_order, sequence_type, background_id, image_id, start_date, end_date, author_override, price, price_type, game_level_ids, in_game, highest, ticket_type, points, &context).await
     }
 
     /// Process All Participant Feeds
     async fn process_all_participants(
         &self,
-        version: f64,
         account_id: i64,
         app_key: Option<String>,
         use_short_name_as_id: Option<bool>,
         ) -> Result<ProcessAllParticipantsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().process_all_participants(version, account_id, app_key, use_short_name_as_id, &context).await
+        self.api().process_all_participants(account_id, app_key, use_short_name_as_id, &context).await
     }
 
     /// Process Participants Feed
     async fn process_participants(
         &self,
-        version: f64,
         account_id: i64,
         league: String,
         app_key: Option<String>,
@@ -32419,13 +30675,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ProcessParticipantsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().process_participants(version, account_id, league, app_key, use_short_name_as_id, file, &context).await
+        self.api().process_participants(account_id, league, app_key, use_short_name_as_id, file, &context).await
     }
 
     /// Calculate Path
     async fn compute_path(
         &self,
-        version: f64,
         data: String,
         units: models::ComputePathUnitsParameter,
         reduce_path: bool,
@@ -32433,13 +30688,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ComputePathResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().compute_path(version, data, units, reduce_path, directions, &context).await
+        self.api().compute_path(data, units, reduce_path, directions, &context).await
     }
 
     /// Create Postal Code
     async fn create_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         code: String,
         latitude: f64,
@@ -32450,36 +30704,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreatePostalCodeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_postal_code(version, account_id, code, latitude, longitude, state_code, city, active, &context).await
+        self.api().create_postal_code(account_id, code, latitude, longitude, state_code, city, active, &context).await
     }
 
     /// Delete Postal Code
     async fn delete_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         ) -> Result<DeletePostalCodeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_postal_code(version, account_id, postal_code_id, &context).await
+        self.api().delete_postal_code(account_id, postal_code_id, &context).await
     }
 
     /// Get Postal Code
     async fn get_postal_code(
         &self,
-        version: f64,
         postal_code_id: i64,
         ) -> Result<GetPostalCodeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_postal_code(version, postal_code_id, &context).await
+        self.api().get_postal_code(postal_code_id, &context).await
     }
 
     /// Search Postal Codes
     async fn get_postal_codes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         latitude: Option<f64>,
@@ -32491,13 +30742,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetPostalCodesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_postal_codes(version, sort_field, descending, latitude, longitude, keyword, miles, start, limit, &context).await
+        self.api().get_postal_codes(sort_field, descending, latitude, longitude, keyword, miles, start, limit, &context).await
     }
 
     /// Update Postal Code
     async fn update_postal_code(
         &self,
-        version: f64,
         account_id: i64,
         postal_code_id: i64,
         code: Option<String>,
@@ -32509,13 +30759,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdatePostalCodeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_postal_code(version, account_id, postal_code_id, code, latitude, longitude, state_code, city, active, &context).await
+        self.api().update_postal_code(account_id, postal_code_id, code, latitude, longitude, state_code, city, active, &context).await
     }
 
     /// Create Persona
     async fn create_persona(
         &self,
-        version: f64,
         account_id: i64,
         title: String,
         preview_accounts: Option<String>,
@@ -32528,50 +30777,46 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreatePersonaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_persona(version, account_id, title, preview_accounts, date, age, gender, game_experience_level, latitude, longitude, &context).await
+        self.api().create_persona(account_id, title, preview_accounts, date, age, gender, game_experience_level, latitude, longitude, &context).await
     }
 
     /// Delete Persona
     async fn delete_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         ) -> Result<DeletePersonaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_persona(version, account_id, persona_id, &context).await
+        self.api().delete_persona(account_id, persona_id, &context).await
     }
 
     /// Get Persona
     async fn get_persona_list(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         ) -> Result<GetPersonaListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_persona_list(version, account_id, persona_id, &context).await
+        self.api().get_persona_list(account_id, persona_id, &context).await
     }
 
     /// Search Personas
     async fn search_persona(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
         ) -> Result<SearchPersonaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_persona(version, account_id, start, limit, &context).await
+        self.api().search_persona(account_id, start, limit, &context).await
     }
 
     /// Update Persona
     async fn update_persona(
         &self,
-        version: f64,
         account_id: i64,
         persona_id: i64,
         title: Option<String>,
@@ -32586,24 +30831,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdatePersonaResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_persona(version, account_id, persona_id, title, preview_accounts, active, date, age, gender, game_experience_level, latitude, longitude, &context).await
+        self.api().update_persona(account_id, persona_id, title, preview_accounts, active, date, age, gender, game_experience_level, latitude, longitude, &context).await
     }
 
     /// Create Program
     async fn create_program(
         &self,
-        version: f64,
         body: Option<models::Program>,
         ) -> Result<CreateProgramResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_program(version, body, &context).await
+        self.api().create_program(body, &context).await
     }
 
     /// Search Programs
     async fn search_programs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -32613,59 +30856,54 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchProgramsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_programs(version, sort_field, descending, start, limit, active_only, keyword, &context).await
+        self.api().search_programs(sort_field, descending, start, limit, active_only, keyword, &context).await
     }
 
     /// Delete Program
     async fn delete_program(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteProgramResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_program(version, id, &context).await
+        self.api().delete_program(id, &context).await
     }
 
     /// Get Program
     async fn get_program(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetProgramResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_program(version, id, &context).await
+        self.api().get_program(id, &context).await
     }
 
     /// Update Program
     async fn post_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         ) -> Result<PostProgramResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().post_program(version, id, body, &context).await
+        self.api().post_program(id, body, &context).await
     }
 
     /// Update Program
     async fn put_program(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Program>,
         ) -> Result<PutProgramResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().put_program(version, id, body, &context).await
+        self.api().put_program(id, body, &context).await
     }
 
     /// Create Purchase
     async fn create_purchase_item(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         purchase_type: models::CreatePurchaseItemPurchaseTypeParameter,
@@ -32689,39 +30927,36 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreatePurchaseItemResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_purchase_item(version, app_key, name, purchase_type, device_id, account_id, description, tickets, price, purchase_code, secret_key, purchase_limit, service_action, cover_asset_id, promo_asset_id, giftable, assetable, allocate_tickets, ticket_type, points, offer_location_id, &context).await
+        self.api().create_purchase_item(app_key, name, purchase_type, device_id, account_id, description, tickets, price, purchase_code, secret_key, purchase_limit, service_action, cover_asset_id, promo_asset_id, giftable, assetable, allocate_tickets, ticket_type, points, offer_location_id, &context).await
     }
 
     /// Delete Purchase
     async fn delete_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeletePurchaseItemResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_purchase_item(version, purchase_item_id, device_id, account_id, &context).await
+        self.api().delete_purchase_item(purchase_item_id, device_id, account_id, &context).await
     }
 
     /// Get Purchase
     async fn get_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetPurchaseItemResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_purchase_item(version, purchase_item_id, device_id, account_id, &context).await
+        self.api().get_purchase_item(purchase_item_id, device_id, account_id, &context).await
     }
 
     /// Search Purchases
     async fn search_purchase_items(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -32737,13 +30972,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchPurchaseItemsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_purchase_items(version, device_id, account_id, app_key, filter_by_billable, purchase_type, service_action, keyword, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_purchase_items(device_id, account_id, app_key, filter_by_billable, purchase_type, service_action, keyword, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Update Purchase
     async fn update_purchase_item(
         &self,
-        version: f64,
         purchase_item_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -32768,13 +31002,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdatePurchaseItemResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_purchase_item(version, purchase_item_id, device_id, account_id, name, description, tickets, price, purchase_type, purchase_code, secret_key, purchase_limit, service_action, cover_asset_id, promo_asset_id, giftable, assetable, active, allocate_tickets, ticket_type, points, offer_location_id, &context).await
+        self.api().update_purchase_item(purchase_item_id, device_id, account_id, name, description, tickets, price, purchase_type, purchase_code, secret_key, purchase_limit, service_action, cover_asset_id, promo_asset_id, giftable, assetable, active, allocate_tickets, ticket_type, points, offer_location_id, &context).await
     }
 
     /// Create Order
     async fn create_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -32790,26 +31023,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOrderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_order(version, app_key, cart, device_id, account_id, description, currency_type, payment_method_id, external_order_id, external_payment_id, remote_ref_type, external_date, promo_code, &context).await
+        self.api().create_order(app_key, cart, device_id, account_id, description, currency_type, payment_method_id, external_order_id, external_payment_id, remote_ref_type, external_date, promo_code, &context).await
     }
 
     /// Delete Order
     async fn delete_order(
         &self,
-        version: f64,
         order_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteOrderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_order(version, order_id, device_id, account_id, &context).await
+        self.api().delete_order(order_id, device_id, account_id, &context).await
     }
 
     /// Get Order
     async fn get_order(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         order_id: Option<i64>,
@@ -32817,13 +31048,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOrderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_order(version, device_id, account_id, order_id, external_order_id, &context).await
+        self.api().get_order(device_id, account_id, order_id, external_order_id, &context).await
     }
 
     /// Preview Order
     async fn preview_order(
         &self,
-        version: f64,
         app_key: String,
         cart: String,
         device_id: Option<String>,
@@ -32839,13 +31069,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<PreviewOrderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().preview_order(version, app_key, cart, device_id, account_id, description, currency_type, payment_method_id, external_order_id, external_payment_id, remote_ref_type, external_date, promo_code, &context).await
+        self.api().preview_order(app_key, cart, device_id, account_id, description, currency_type, payment_method_id, external_order_id, external_payment_id, remote_ref_type, external_date, promo_code, &context).await
     }
 
     /// Search Orders
     async fn search_orders(
         &self,
-        version: f64,
         app_key: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -32880,13 +31109,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchOrdersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_orders(version, app_key, device_id, account_id, start, limit, descending, active_only, ignore_customer_filter, order_item_types, order_item_ids, order_custom_types, order_custom_ids, sort_field, offer_types, special_offer_types, category_ids, filter_ids, offer_audience_ids, transaction_audience_ids, offer_ids, offer_location_ids, retailer_ids, retailer_location_ids, statuses, keyword, redeemable_start_date, redeemable_end_date, started_since, started_before, ended_since, ended_before, &context).await
+        self.api().search_orders(app_key, device_id, account_id, start, limit, descending, active_only, ignore_customer_filter, order_item_types, order_item_ids, order_custom_types, order_custom_ids, sort_field, offer_types, special_offer_types, category_ids, filter_ids, offer_audience_ids, transaction_audience_ids, offer_ids, offer_location_ids, retailer_ids, retailer_location_ids, statuses, keyword, redeemable_start_date, redeemable_end_date, started_since, started_before, ended_since, ended_before, &context).await
     }
 
     /// Update Order
     async fn update_order(
         &self,
-        version: f64,
         order_id: i64,
         app_key: String,
         cart: String,
@@ -32901,13 +31129,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateOrderResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_order(version, order_id, app_key, cart, device_id, account_id, payment_transaction_id, description, currency_type, payment_method_id, external_payment_id, external_date, &context).await
+        self.api().update_order(order_id, app_key, cart, device_id, account_id, payment_transaction_id, description, currency_type, payment_method_id, external_payment_id, external_date, &context).await
     }
 
     /// Create Question
     async fn create_question(
         &self,
-        version: f64,
         account_id: i64,
         question: String,
         answers: String,
@@ -32922,37 +31149,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateQuestionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_question(version, account_id, question, answers, active, allocate_tickets, ticket_count, tags, video_url, asset_id, ticket_type, points, &context).await
+        self.api().create_question(account_id, question, answers, active, allocate_tickets, ticket_count, tags, video_url, asset_id, ticket_type, points, &context).await
     }
 
     /// Delete Question
     async fn delete_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ) -> Result<DeleteQuestionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_question(version, question_id, account_id, &context).await
+        self.api().delete_question(question_id, account_id, &context).await
     }
 
     /// Get Question
     async fn get_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ) -> Result<GetQuestionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_question(version, question_id, account_id, &context).await
+        self.api().get_question(question_id, account_id, &context).await
     }
 
     /// Search Questions
     async fn search_questions(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -32963,13 +31187,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchQuestionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_questions(version, account_id, sort_field, descending, active_only, start, limit, keyword, &context).await
+        self.api().search_questions(account_id, sort_field, descending, active_only, start, limit, keyword, &context).await
     }
 
     /// Update Question
     async fn update_question(
         &self,
-        version: f64,
         question_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -32985,13 +31208,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateQuestionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_question(version, question_id, account_id, ticket_count, question, answers, tags, video_url, asset_id, active, allocate_tickets, ticket_type, points, &context).await
+        self.api().update_question(question_id, account_id, ticket_count, question, answers, tags, video_url, asset_id, active, allocate_tickets, ticket_type, points, &context).await
     }
 
     /// Search Historical Rankings
     async fn get_historical_rankings(
         &self,
-        version: f64,
         app_key: String,
         rank_type: String,
         start_date: i64,
@@ -33005,13 +31227,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetHistoricalRankingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_historical_rankings(version, app_key, rank_type, start_date, end_date, device_id, account_id, sort_field, descending, start, limit, &context).await
+        self.api().get_historical_rankings(app_key, rank_type, start_date, end_date, device_id, account_id, sort_field, descending, start, limit, &context).await
     }
 
     /// Search Rankings
     async fn get_rankings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -33033,13 +31254,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetRankingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_rankings(version, device_id, account_id, game_type, app_key, q, keyword, rank_type, leaderboard_mode, within_account_ids, return_user_rank, album_id, audience_id, sort_field, descending, _i, start, _l, limit, &context).await
+        self.api().get_rankings(device_id, account_id, game_type, app_key, q, keyword, rank_type, leaderboard_mode, within_account_ids, return_user_rank, album_id, audience_id, sort_field, descending, _i, start, _l, limit, &context).await
     }
 
     /// Get Personal Rankings
     async fn get_user_rank(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         app_key: Option<String>,
@@ -33054,13 +31274,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetUserRankResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_rank(version, device_id, account_id, app_key, rank_type, return_user_rank, leaderboard_mode, sort_field, keyword, descending, start, limit, &context).await
+        self.api().get_user_rank(device_id, account_id, app_key, rank_type, return_user_rank, leaderboard_mode, sort_field, keyword, descending, start, limit, &context).await
     }
 
     /// Override User Rank
     async fn override_user_rank(
         &self,
-        version: f64,
         account_id: i64,
         owner_account_id: i64,
         app_key: String,
@@ -33086,13 +31305,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<OverrideUserRankResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().override_user_rank(version, account_id, owner_account_id, app_key, rank_type, total_score, total_count, total_time, daily_score, daily_count, daily_time, weekly_score, weekly_count, weekly_time, monthly_score, monthly_count, monthly_time, top_score, lowest_score, streak_count, streak_best_count, start_date, end_date, &context).await
+        self.api().override_user_rank(account_id, owner_account_id, app_key, rank_type, total_score, total_count, total_time, daily_score, daily_count, daily_time, weekly_score, weekly_count, weekly_time, monthly_score, monthly_count, monthly_time, top_score, lowest_score, streak_count, streak_best_count, start_date, end_date, &context).await
     }
 
     /// Update Ranking
     async fn update_rankings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         rank_type: String,
@@ -33106,13 +31324,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateRankingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_rankings(version, account_id, app_key, rank_type, increment, time_increment, tag, start_date, end_date, update_global, create_leaderboard, &context).await
+        self.api().update_rankings(account_id, app_key, rank_type, increment, time_increment, tag, start_date, end_date, update_global, create_leaderboard, &context).await
     }
 
     /// Create Rating
     async fn create_rating(
         &self,
-        version: f64,
         ratable_type: String,
         ratable_id: i64,
         rating_value: i32,
@@ -33127,26 +31344,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateRatingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_rating(version, ratable_type, ratable_id, rating_value, device_id, account_id, category_id, display, description, location_description, latitude, longitude, &context).await
+        self.api().create_rating(ratable_type, ratable_id, rating_value, device_id, account_id, category_id, display, description, location_description, latitude, longitude, &context).await
     }
 
     /// Delete Rating
     async fn delete_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteRatingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_rating(version, rating_id, device_id, account_id, &context).await
+        self.api().delete_rating(rating_id, device_id, account_id, &context).await
     }
 
     /// Search Location Rating Indexes
     async fn search_location_rating_indexes(
         &self,
-        version: f64,
         category_ids: Option<String>,
         keyword: Option<String>,
         location_type: Option<String>,
@@ -33167,13 +31382,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchLocationRatingIndexesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_location_rating_indexes(version, category_ids, keyword, location_type, sort_field, descending, start, limit, search_range, latitude, longitude, return_overall_rating, distance_unit, return_retailer, return_assets, return_offers, return_categories, return_filters, &context).await
+        self.api().search_location_rating_indexes(category_ids, keyword, location_type, sort_field, descending, start, limit, search_range, latitude, longitude, return_overall_rating, distance_unit, return_retailer, return_assets, return_offers, return_categories, return_filters, &context).await
     }
 
     /// Search Rating Indexes
     async fn search_rating_indexes(
         &self,
-        version: f64,
         ratable_type: models::SearchRatingIndexesRatableTypeParameter,
         ratable_ids: Option<String>,
         category_ids: Option<String>,
@@ -33190,13 +31404,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRatingIndexesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_rating_indexes(version, ratable_type, ratable_ids, category_ids, secondary_type, keyword, sort_field, descending, start, limit, latitude, longitude, return_ratable, return_overall_rating, &context).await
+        self.api().search_rating_indexes(ratable_type, ratable_ids, category_ids, secondary_type, keyword, sort_field, descending, start, limit, latitude, longitude, return_ratable, return_overall_rating, &context).await
     }
 
     /// Search Ratings
     async fn search_ratings(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         filter_account_id: Option<i64>,
@@ -33211,13 +31424,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRatingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_ratings(version, device_id, account_id, filter_account_id, ratable_type, ratable_id, category_ids, keyword, sort_field, descending, start, limit, &context).await
+        self.api().search_ratings(device_id, account_id, filter_account_id, ratable_type, ratable_id, category_ids, keyword, sort_field, descending, start, limit, &context).await
     }
 
     /// Update Rating
     async fn update_rating(
         &self,
-        version: f64,
         rating_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33231,13 +31443,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateRatingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_rating(version, rating_id, device_id, account_id, rating_value, category_id, display, description, location_description, latitude, longitude, &context).await
+        self.api().update_rating(rating_id, device_id, account_id, rating_value, category_id, display, description, location_description, latitude, longitude, &context).await
     }
 
     /// Create Region
     async fn create_region(
         &self,
-        version: f64,
         account_id: i64,
         region_class: String,
         short_name: String,
@@ -33262,37 +31473,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateRegionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_region(version, account_id, region_class, short_name, full_name, parent_ids, children_ids, postal_code_ids, locations, retailer_location_id, visibility, category_ids, filter_ids, start, end, polygon, meta_data, latitude, longitude, version_code, root, active, &context).await
+        self.api().create_region(account_id, region_class, short_name, full_name, parent_ids, children_ids, postal_code_ids, locations, retailer_location_id, visibility, category_ids, filter_ids, start, end, polygon, meta_data, latitude, longitude, version_code, root, active, &context).await
     }
 
     /// Delete Region
     async fn delete_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         ) -> Result<DeleteRegionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_region(version, account_id, region_id, &context).await
+        self.api().delete_region(account_id, region_id, &context).await
     }
 
     /// Get Region
     async fn get_region(
         &self,
-        version: f64,
         region_id: i64,
         account_id: Option<i64>,
         ) -> Result<GetRegionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_region(version, region_id, account_id, &context).await
+        self.api().get_region(region_id, account_id, &context).await
     }
 
     /// Search Regions
     async fn search_regions(
         &self,
-        version: f64,
         account_id: Option<i64>,
         query: Option<String>,
         keyword: Option<String>,
@@ -33318,13 +31526,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRegionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_regions(version, account_id, query, keyword, latitude, longitude, range, region_class, visibility, search_mode, sort_field, descending, include_parent, include_children, include_postal_codes, category_ids, filter_ids, version_code, active_only, show_deleted, last_updated_since, start, limit, &context).await
+        self.api().search_regions(account_id, query, keyword, latitude, longitude, range, region_class, visibility, search_mode, sort_field, descending, include_parent, include_children, include_postal_codes, category_ids, filter_ids, version_code, active_only, show_deleted, last_updated_since, start, limit, &context).await
     }
 
     /// Update Region
     async fn update_region(
         &self,
-        version: f64,
         account_id: i64,
         region_id: i64,
         region_class: Option<String>,
@@ -33351,13 +31558,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateRegionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_region(version, account_id, region_id, region_class, short_name, full_name, parent_ids, children_ids, postal_code_ids, locations, retailer_location_id, visibility, category_ids, filter_ids, start, end, polygon, meta_data, latitude, longitude, version_code, root, active, clear_lists, &context).await
+        self.api().update_region(account_id, region_id, region_class, short_name, full_name, parent_ids, children_ids, postal_code_ids, locations, retailer_location_id, visibility, category_ids, filter_ids, start, end, polygon, meta_data, latitude, longitude, version_code, root, active, clear_lists, &context).await
     }
 
     /// Create Offline Report
     async fn create_batch(
         &self,
-        version: f64,
         account_id: i64,
         status: models::CreateBatchStatusParameter,
         preview_limit: i32,
@@ -33372,49 +31578,45 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_batch(version, account_id, status, preview_limit, app_key, endpoint, parameters, name, start_date, end_date, description, page_url, &context).await
+        self.api().create_batch(account_id, status, preview_limit, app_key, endpoint, parameters, name, start_date, end_date, description, page_url, &context).await
     }
 
     /// Create Offline Report
     async fn create_region_leg_summary_batch<'a>(
         &self,
-        version: f64,
         body: Option<&'a Vec<models::RegionLegSummary>>,
         ) -> Result<CreateRegionLegSummaryBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_region_leg_summary_batch(version, body, &context).await
+        self.api().create_region_leg_summary_batch(body, &context).await
     }
 
     /// Delete Offline Report
     async fn delete_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         ) -> Result<DeleteBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_batch(version, account_id, batch_id, &context).await
+        self.api().delete_batch(account_id, batch_id, &context).await
     }
 
     /// Get Offline Report
     async fn get_report_batch(
         &self,
-        version: f64,
         account_id: i64,
         batch_id: i64,
         all_results: bool,
         ) -> Result<GetReportBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_report_batch(version, account_id, batch_id, all_results, &context).await
+        self.api().get_report_batch(account_id, batch_id, all_results, &context).await
     }
 
     /// Run Report
     async fn run_report(
         &self,
-        version: f64,
         desc: bool,
         account_id: Option<i64>,
         query: Option<String>,
@@ -33426,13 +31628,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RunReportResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().run_report(version, desc, account_id, query, parameters, order, start, limit, response_format, &context).await
+        self.api().run_report(desc, account_id, query, parameters, order, start, limit, response_format, &context).await
     }
 
     /// Search Offline Reports
     async fn search_batch(
         &self,
-        version: f64,
         account_id: i64,
         start: i32,
         limit: i32,
@@ -33445,13 +31646,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_batch(version, account_id, start, limit, names, app_key, status, global_app_search, start_date, end_date, &context).await
+        self.api().search_batch(account_id, start, limit, names, app_key, status, global_app_search, start_date, end_date, &context).await
     }
 
     /// Create Reservation
     async fn create_reservation(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         start_date: Option<i64>,
@@ -33463,26 +31663,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateReservationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_reservation(version, device_id, account_id, start_date, end_date, offer_id, offer_location_id, app_key, meta_data, &context).await
+        self.api().create_reservation(device_id, account_id, start_date, end_date, offer_id, offer_location_id, app_key, meta_data, &context).await
     }
 
     /// Delete Reservation
     async fn delete_reservation(
         &self,
-        version: f64,
         reservation_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteReservationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_reservation(version, reservation_id, device_id, account_id, &context).await
+        self.api().delete_reservation(reservation_id, device_id, account_id, &context).await
     }
 
     /// Update Availability
     async fn reservable_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -33492,13 +31690,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ReservableAvailabilityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().reservable_availability(version, reservable_id, reservable_type, device_id, account_id, availability, availability_summary, &context).await
+        self.api().reservable_availability(reservable_id, reservable_type, device_id, account_id, availability, availability_summary, &context).await
     }
 
     /// Search Availability
     async fn search_availability(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         device_id: Option<String>,
@@ -33510,13 +31707,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAvailabilityResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_availability(version, reservable_id, reservable_type, device_id, account_id, start_date, end_date, start, limit, &context).await
+        self.api().search_availability(reservable_id, reservable_type, device_id, account_id, start_date, end_date, start, limit, &context).await
     }
 
     /// Search Reservations
     async fn search_reservations(
         &self,
-        version: f64,
         device_id: Option<String>,
         app_key: Option<String>,
         account_id: Option<i64>,
@@ -33531,13 +31727,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchReservationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_reservations(version, device_id, app_key, account_id, filter_account_id, reservable_id, reservable_type, keyword, start_date, end_date, start, limit, &context).await
+        self.api().search_reservations(device_id, app_key, account_id, filter_account_id, reservable_id, reservable_type, keyword, start_date, end_date, start, limit, &context).await
     }
 
     /// Search Schedule
     async fn search_schedule(
         &self,
-        version: f64,
         reservable_id: i64,
         reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         start_date: i64,
@@ -33548,13 +31743,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchScheduleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_schedule(version, reservable_id, reservable_type, start_date, end_date, device_id, account_id, time_bucket_mins, &context).await
+        self.api().search_schedule(reservable_id, reservable_type, start_date, end_date, device_id, account_id, time_bucket_mins, &context).await
     }
 
     /// Create Retailer
     async fn create_retailer(
         &self,
-        version: f64,
         name: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33591,26 +31785,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateRetailerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_retailer(version, name, device_id, account_id, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, facebook_url, twitter_url, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, category_ids_to_add, category_ids_to_remove, filter_ids, latitude, longitude, meta_data, search_tags, retailer_type, visibility, create_default_location, response_format, &context).await
+        self.api().create_retailer(name, device_id, account_id, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, facebook_url, twitter_url, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, category_ids_to_add, category_ids_to_remove, filter_ids, latitude, longitude, meta_data, search_tags, retailer_type, visibility, create_default_location, response_format, &context).await
     }
 
     /// Delete Retailer
     async fn delete_retailer(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_id: Option<i64>,
         ) -> Result<DeleteRetailerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_retailer(version, device_id, account_id, retailer_id, &context).await
+        self.api().delete_retailer(device_id, account_id, retailer_id, &context).await
     }
 
     /// Get Retailer
     async fn get_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33618,13 +31810,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetRetailerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_retailer(version, retailer_id, device_id, account_id, include_counts, &context).await
+        self.api().get_retailer(retailer_id, device_id, account_id, include_counts, &context).await
     }
 
     /// Search Retailers
     async fn get_retailers(
         &self,
-        version: f64,
         visibility: models::AddAlbumCollectionVisibilityParameter,
         sort_field: models::GetRetailersSortFieldParameter,
         descending: bool,
@@ -33642,13 +31833,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetRetailersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_retailers(version, visibility, sort_field, descending, start, limit, active_only, device_id, account_id, q, keyword, category_ids, filter_ids, _i, _l, &context).await
+        self.api().get_retailers(visibility, sort_field, descending, start, limit, active_only, device_id, account_id, q, keyword, category_ids, filter_ids, _i, _l, &context).await
     }
 
     /// Login Retailer
     async fn retailer_login_check(
         &self,
-        version: f64,
         username: String,
         password: String,
         device_id: Option<String>,
@@ -33658,13 +31848,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RetailerLoginCheckResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().retailer_login_check(version, username, password, device_id, latitude, longitude, app_key, &context).await
+        self.api().retailer_login_check(username, password, device_id, latitude, longitude, app_key, &context).await
     }
 
     /// Update Retailer
     async fn update_retailer(
         &self,
-        version: f64,
         retailer_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33700,13 +31889,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateRetailerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_retailer(version, retailer_id, device_id, account_id, name, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, facebook_url, twitter_url, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, meta_data, search_tags, retailer_type, visibility, active, response_format, &context).await
+        self.api().update_retailer(retailer_id, device_id, account_id, name, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, facebook_url, twitter_url, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, meta_data, search_tags, retailer_type, visibility, active, response_format, &context).await
     }
 
     /// Create Retailer Location (Consumer)
     async fn create_retailer_location_consumer(
         &self,
-        version: f64,
         app_key: String,
         name: String,
         device_id: Option<String>,
@@ -33739,13 +31927,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateRetailerLocationConsumerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_retailer_location_consumer(version, app_key, name, device_id, account_id, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, details_header, details_body, hours, tags, logo_asset_id, picture1_asset_id, picture2_asset_id, category_ids, filter_ids, meta_data, public_location, active, location_type, latitude, longitude, &context).await
+        self.api().create_retailer_location_consumer(app_key, name, device_id, account_id, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, details_header, details_body, hours, tags, logo_asset_id, picture1_asset_id, picture2_asset_id, category_ids, filter_ids, meta_data, public_location, active, location_type, latitude, longitude, &context).await
     }
 
     /// Create Retailer Location
     async fn create_retailer_locations(
         &self,
-        version: f64,
         retailer_id: i64,
         name: String,
         street_address: String,
@@ -33788,26 +31975,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateRetailerLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_retailer_locations(version, retailer_id, name, street_address, city, state, postal_code, device_id, account_id, street_address2, country, business_phone, business_phone_ext, website, email, internal_id, details_header, details_body, hours, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, building, google_place_id, yelp_id, active, public_location, location_type, audience_ids, audience_ids_to_add, audience_ids_to_remove, response_format, response_includes, &context).await
+        self.api().create_retailer_locations(retailer_id, name, street_address, city, state, postal_code, device_id, account_id, street_address2, country, business_phone, business_phone_ext, website, email, internal_id, details_header, details_body, hours, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, building, google_place_id, yelp_id, active, public_location, location_type, audience_ids, audience_ids_to_add, audience_ids_to_remove, response_format, response_includes, &context).await
     }
 
     /// Delete Retailer Location
     async fn delete_retailer_location(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         retailer_location_id: Option<i64>,
         ) -> Result<DeleteRetailerLocationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_retailer_location(version, device_id, account_id, retailer_location_id, &context).await
+        self.api().delete_retailer_location(device_id, account_id, retailer_location_id, &context).await
     }
 
     /// Get Retailer Location
     async fn get_retailer_location(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33815,26 +32000,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetRetailerLocationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_retailer_location(version, retailer_location_id, device_id, account_id, retailer_location_token, &context).await
+        self.api().get_retailer_location(retailer_location_id, device_id, account_id, retailer_location_token, &context).await
     }
 
     /// Get Retailer Location (Consumer)
     async fn get_retailer_location_consumer(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<GetRetailerLocationConsumerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_retailer_location_consumer(version, retailer_location_id, device_id, account_id, &context).await
+        self.api().get_retailer_location_consumer(retailer_location_id, device_id, account_id, &context).await
     }
 
     /// Distance Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_distance_search(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         search_range: f64,
@@ -33872,13 +32055,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<IndexedRetailerLocationDistanceSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().indexed_retailer_location_distance_search(version, latitude, longitude, search_range, start, limit, account_id, address, has_offers, categories, filters, audiences, retailer_ids, retailer_location_ids, tags, location_type, sort_field, descending, q, keyword, keyword_operator, search_expression, distance_unit, return_favorited, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, return_external_category_data, include_favorite, include_liked, include_rating, &context).await
+        self.api().indexed_retailer_location_distance_search(latitude, longitude, search_range, start, limit, account_id, address, has_offers, categories, filters, audiences, retailer_ids, retailer_location_ids, tags, location_type, sort_field, descending, q, keyword, keyword_operator, search_expression, distance_unit, return_favorited, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, return_external_category_data, include_favorite, include_liked, include_rating, &context).await
     }
 
     /// Keyword Search Retailer Locations (Indexed)
     async fn indexed_retailer_location_search(
         &self,
-        version: f64,
         account_id: Option<i64>,
         start: Option<i32>,
         limit: Option<i32>,
@@ -33910,13 +32092,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<IndexedRetailerLocationSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().indexed_retailer_location_search(version, account_id, start, limit, has_offers, categories, filters, audiences, retailer_ids, retailer_location_ids, tags, location_type, sort_field, descending, q, keyword, keyword_operator, search_expression, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, return_external_category_data, include_favorite, include_liked, include_rating, &context).await
+        self.api().indexed_retailer_location_search(account_id, start, limit, has_offers, categories, filters, audiences, retailer_ids, retailer_location_ids, tags, location_type, sort_field, descending, q, keyword, keyword_operator, search_expression, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, return_external_category_data, include_favorite, include_liked, include_rating, &context).await
     }
 
     /// Search Retailer Locations (Owned)
     async fn search_retailer_locations(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         q: Option<String>,
@@ -33945,13 +32126,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRetailerLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_retailer_locations(version, device_id, account_id, q, keyword, retailer_ids, retailer_location_ids, location_type, sort_field, descending, _i, start, _l, limit, show_public_locations, active_only, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, include_favorite, include_liked, include_rating, &context).await
+        self.api().search_retailer_locations(device_id, account_id, q, keyword, retailer_ids, retailer_location_ids, location_type, sort_field, descending, _i, start, _l, limit, show_public_locations, active_only, return_retailer, return_assets, return_offers, return_categories, return_filters, return_audiences, return_qr_code, include_favorite, include_liked, include_rating, &context).await
     }
 
     /// Update Retailer Location
     async fn update_retailer_locations(
         &self,
-        version: f64,
         retailer_location_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -33996,13 +32176,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateRetailerLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_retailer_locations(version, retailer_location_id, device_id, account_id, name, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, internal_id, details_header, details_body, hours, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, building, google_place_id, yelp_id, meta_data, payment_provider, active, public_location, location_type, audience_ids, audience_ids_to_add, audience_ids_to_remove, response_format, tags, &context).await
+        self.api().update_retailer_locations(retailer_location_id, device_id, account_id, name, street_address, street_address2, city, state, postal_code, country, business_phone, business_phone_ext, website, email, internal_id, details_header, details_body, hours, logo, logo_asset_id, picture1, picture1_asset_id, picture2, picture2_asset_id, category_ids, filter_ids, latitude, longitude, building, google_place_id, yelp_id, meta_data, payment_provider, active, public_location, location_type, audience_ids, audience_ids_to_add, audience_ids_to_remove, response_format, tags, &context).await
     }
 
     /// Get Retailer
     async fn get_retaokiler(
         &self,
-        version: f64,
         retailer_id: i64,
         active_only: bool,
         keyword: Option<String>,
@@ -34012,24 +32191,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetRetaokilerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_retaokiler(version, retailer_id, active_only, keyword, sort_field, start, limit, &context).await
+        self.api().get_retaokiler(retailer_id, active_only, keyword, sort_field, start, limit, &context).await
     }
 
     /// Create Route
     async fn create_route(
         &self,
-        version: f64,
         body: Option<models::Route>,
         ) -> Result<CreateRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_route(version, body, &context).await
+        self.api().create_route(body, &context).await
     }
 
     /// Search Routes
     async fn search_routes(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -34054,245 +32231,224 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRoutesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_routes(version, sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id, program_id, scheduled_start, scheduled_end, updated_start, updated_end, featured, seat_count, approved, started, completed, valid, parent_id, &context).await
+        self.api().search_routes(sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id, program_id, scheduled_start, scheduled_end, updated_start, updated_end, featured, seat_count, approved, started, completed, valid, parent_id, &context).await
     }
 
     /// Approve Route
     async fn approve_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<ApproveRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().approve_route(version, route_id, &context).await
+        self.api().approve_route(route_id, &context).await
     }
 
     /// Copy Route
     async fn copy_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         ) -> Result<CopyRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().copy_route(version, route_id, body, &context).await
+        self.api().copy_route(route_id, body, &context).await
     }
 
     /// Update Route Directions
     async fn create_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<CreateRouteDirectionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_route_directions(version, route_id, &context).await
+        self.api().create_route_directions(route_id, &context).await
     }
 
     /// Create Route Polyline
     async fn create_route_polyline(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<CreateRoutePolylineResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_route_polyline(version, route_id, &context).await
+        self.api().create_route_polyline(route_id, &context).await
     }
 
     /// Delete Route
     async fn delete_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<DeleteRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_route(version, route_id, &context).await
+        self.api().delete_route(route_id, &context).await
     }
 
     /// Disapprove Route
     async fn disapprove_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<DisapproveRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().disapprove_route(version, route_id, &context).await
+        self.api().disapprove_route(route_id, &context).await
     }
 
     /// Get Route
     async fn get_route(
         &self,
-        version: f64,
         route_id: i64,
         show_inherited_properties: bool,
         ) -> Result<GetRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route(version, route_id, show_inherited_properties, &context).await
+        self.api().get_route(route_id, show_inherited_properties, &context).await
     }
 
     /// Get Route Directions
     async fn get_route_directions(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<GetRouteDirectionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route_directions(version, route_id, &context).await
+        self.api().get_route_directions(route_id, &context).await
     }
 
     /// Get Route Shipments
     async fn get_route_shipments(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<GetRouteShipmentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route_shipments(version, route_id, &context).await
+        self.api().get_route_shipments(route_id, &context).await
     }
 
     /// Get Route Stops
     async fn get_route_stops(
         &self,
-        version: f64,
         route_id: i64,
         confirmed_only: bool,
         ) -> Result<GetRouteStopsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route_stops(version, route_id, confirmed_only, &context).await
+        self.api().get_route_stops(route_id, confirmed_only, &context).await
     }
 
     /// Optimize Route
     async fn optimize_route(
         &self,
-        version: f64,
         route_id: i64,
         ) -> Result<OptimizeRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().optimize_route(version, route_id, &context).await
+        self.api().optimize_route(route_id, &context).await
     }
 
     /// Reorder Route Stops
     async fn reorder_route_stops_patch<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         ) -> Result<ReorderRouteStopsPatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().reorder_route_stops_patch(version, route_id, body, &context).await
+        self.api().reorder_route_stops_patch(route_id, body, &context).await
     }
 
     /// Reorder Route Stops
     async fn reorder_route_stops_post<'a>(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<&'a Vec<models::Stop>>,
         ) -> Result<ReorderRouteStopsPostResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().reorder_route_stops_post(version, route_id, body, &context).await
+        self.api().reorder_route_stops_post(route_id, body, &context).await
     }
 
     /// Update Route
     async fn update_route(
         &self,
-        version: f64,
         route_id: i64,
         body: Option<models::Route>,
         ) -> Result<UpdateRouteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_route(version, route_id, body, &context).await
+        self.api().update_route(route_id, body, &context).await
     }
 
     /// Get Route Stop
     async fn get_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<GetRouteStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route_stop(version, route_id, stop_id, &context).await
+        self.api().get_route_stop(route_id, stop_id, &context).await
     }
 
     /// Get Shipments At Stop
     async fn get_shipments_at_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<GetShipmentsAtStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_shipments_at_stop(version, route_id, stop_id, &context).await
+        self.api().get_shipments_at_stop(route_id, stop_id, &context).await
     }
 
     /// Delete Stop
     async fn remove_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         ) -> Result<RemoveStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_stop(version, route_id, stop_id, &context).await
+        self.api().remove_stop(route_id, stop_id, &context).await
     }
 
     /// Set Driver
     async fn set_driver(
         &self,
-        version: f64,
         id: i64,
         driver_id: i64,
         ) -> Result<SetDriverResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().set_driver(version, id, driver_id, &context).await
+        self.api().set_driver(id, driver_id, &context).await
     }
 
     /// Update Route Stop
     async fn update_route_stop(
         &self,
-        version: f64,
         route_id: i64,
         stop_id: i64,
         body: Option<models::Stop>,
         ) -> Result<UpdateRouteStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_route_stop(version, route_id, stop_id, body, &context).await
+        self.api().update_route_stop(route_id, stop_id, body, &context).await
     }
 
     /// Create Route Setting
     async fn create_route_settings(
         &self,
-        version: f64,
         body: Option<models::RouteSettings>,
         ) -> Result<CreateRouteSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_route_settings(version, body, &context).await
+        self.api().create_route_settings(body, &context).await
     }
 
     /// Search Route Settings
     async fn search_route_settings(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -34304,58 +32460,53 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRouteSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_route_settings(version, sort_field, descending, start, limit, active_only, hub_id, program_id, keyword, &context).await
+        self.api().search_route_settings(sort_field, descending, start, limit, active_only, hub_id, program_id, keyword, &context).await
     }
 
     /// Delete Route Setting
     async fn delete_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         ) -> Result<DeleteRouteSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_route_settings(version, route_settings_id, &context).await
+        self.api().delete_route_settings(route_settings_id, &context).await
     }
 
     /// Get Route Setting
     async fn get_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         ) -> Result<GetRouteSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_route_settings(version, route_settings_id, &context).await
+        self.api().get_route_settings(route_settings_id, &context).await
     }
 
     /// Update Route Setting
     async fn update_route_settings(
         &self,
-        version: f64,
         route_settings_id: i64,
         body: Option<models::RouteSettings>,
         ) -> Result<UpdateRouteSettingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_route_settings(version, route_settings_id, body, &context).await
+        self.api().update_route_settings(route_settings_id, body, &context).await
     }
 
     /// Compute Route
     async fn compute_routing(
         &self,
-        version: f64,
         data: String,
         ) -> Result<ComputeRoutingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().compute_routing(version, data, &context).await
+        self.api().compute_routing(data, &context).await
     }
 
     /// Create Scheduled Notification
     async fn create_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         param_type: String,
@@ -34393,38 +32544,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateScheduledNotificationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_scheduled_notification(version, account_id, name, param_type, message, content_id, content_name, content_type, parent_id, parent_type, app_key, grouping_id, connection_group_ids, connection_account_ids, audience_id, audience_ids, album_ids, report_id, report_params, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, cron_type, meta_data, conditional_input, template_type, visibility, active, send_now, event_type, deep_link_uri, send_to_all, &context).await
+        self.api().create_scheduled_notification(account_id, name, param_type, message, content_id, content_name, content_type, parent_id, parent_type, app_key, grouping_id, connection_group_ids, connection_account_ids, audience_id, audience_ids, album_ids, report_id, report_params, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, cron_type, meta_data, conditional_input, template_type, visibility, active, send_now, event_type, deep_link_uri, send_to_all, &context).await
     }
 
     /// Delete Scheduled Notification
     async fn delete_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         delete_by_grouping_id: Option<bool>,
         ) -> Result<DeleteScheduledNotificationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_scheduled_notification(version, account_id, scheduled_notification_id, delete_by_grouping_id, &context).await
+        self.api().delete_scheduled_notification(account_id, scheduled_notification_id, delete_by_grouping_id, &context).await
     }
 
     /// Get Scheduled Notification
     async fn get_scheduled_notification(
         &self,
-        version: f64,
         account_id: i64,
         scheduled_notification_id: i64,
         ) -> Result<GetScheduledNotificationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_scheduled_notification(version, account_id, scheduled_notification_id, &context).await
+        self.api().get_scheduled_notification(account_id, scheduled_notification_id, &context).await
     }
 
     /// Generate Schedule Notifications
     async fn schedule_notification_listings(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         report_name: String,
@@ -34436,13 +32584,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ScheduleNotificationListingsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().schedule_notification_listings(version, account_id, app_key, report_name, message, offset, recipient_report_id, report_params, param_type, &context).await
+        self.api().schedule_notification_listings(account_id, app_key, report_name, message, offset, recipient_report_id, report_params, param_type, &context).await
     }
 
     /// Search Scheduled Notifications
     async fn search_scheduled_notifications(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         audience_id: Option<i64>,
@@ -34466,13 +32613,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchScheduledNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_scheduled_notifications(version, account_id, grouping_id, audience_id, filter, types, content_ids, content_types, parent_ids, parent_types, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, group_by_grouping_id, return_audience_account_count, &context).await
+        self.api().search_scheduled_notifications(account_id, grouping_id, audience_id, filter, types, content_ids, content_types, parent_ids, parent_types, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, group_by_grouping_id, return_audience_account_count, &context).await
     }
 
     /// Update Scheduled Notification
     async fn update_scheduled_notification(
         &self,
-        version: f64,
         scheduled_notification_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -34514,13 +32660,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateScheduledNotificationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_scheduled_notification(version, scheduled_notification_id, account_id, name, param_type, message, payload, content_id, content_name, content_type, parent_id, parent_type, app_key, grouping_id, connection_group_ids, connection_account_ids, audience_id, audience_ids, album_ids, report_id, report_params, endpoint_url, scheduled_date, start_date, end_date, cron_expression, cron_type, meta_data, conditional_input, template_type, visibility, active, error_message, status, update_by_grouping_id, send_now, event_type, deep_link_uri, send_to_all, &context).await
+        self.api().update_scheduled_notification(scheduled_notification_id, account_id, name, param_type, message, payload, content_id, content_name, content_type, parent_id, parent_type, app_key, grouping_id, connection_group_ids, connection_account_ids, audience_id, audience_ids, album_ids, report_id, report_params, endpoint_url, scheduled_date, start_date, end_date, cron_expression, cron_type, meta_data, conditional_input, template_type, visibility, active, error_message, status, update_by_grouping_id, send_now, event_type, deep_link_uri, send_to_all, &context).await
     }
 
     /// Create Score
     async fn create_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         points: i32,
@@ -34534,13 +32679,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateScoreResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_score(version, account_id, app_key, points, mission_id, game_id, pack_id, game_level_id, game_object_id, time_taken, highest, &context).await
+        self.api().create_score(account_id, app_key, points, mission_id, game_id, pack_id, game_level_id, game_object_id, time_taken, highest, &context).await
     }
 
     /// Get Score
     async fn get_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -34553,13 +32697,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetScoreResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_score(version, account_id, app_key, mission_id, game_id, pack_id, game_level_id, game_object_id, score_object_type, score_status, &context).await
+        self.api().get_score(account_id, app_key, mission_id, game_id, pack_id, game_level_id, game_object_id, score_object_type, score_status, &context).await
     }
 
     /// Search Score
     async fn search_scores(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: Option<i64>,
@@ -34570,13 +32713,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchScoresResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_scores(version, account_id, app_key, mission_id, game_id, pack_id, game_level_id, game_object_id, &context).await
+        self.api().search_scores(account_id, app_key, mission_id, game_id, pack_id, game_level_id, game_object_id, &context).await
     }
 
     /// Create Secure Application
     async fn create_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         key_cert: swagger::ByteArray,
@@ -34590,25 +32732,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateSecureApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_secure_application(version, account_id, app_key, key_cert, trust_store, username, password, active, biometric_type, biometric_position, biometric_position2, &context).await
+        self.api().create_secure_application(account_id, app_key, key_cert, trust_store, username, password, active, biometric_type, biometric_position, biometric_position2, &context).await
     }
 
     /// Delete Secure Application
     async fn delete_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         ) -> Result<DeleteSecureApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_secure_application(version, account_id, app_key, &context).await
+        self.api().delete_secure_application(account_id, app_key, &context).await
     }
 
     /// Login Clear
     async fn login_secure(
         &self,
-        version: f64,
         app_key: String,
         biometric_file: swagger::ByteArray,
         device_id: Option<String>,
@@ -34621,36 +32761,33 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LoginSecureResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().login_secure(version, app_key, biometric_file, device_id, biometric_file2, age_restriction, return_profile, response_filters, latitude, longitude, &context).await
+        self.api().login_secure(app_key, biometric_file, device_id, biometric_file2, age_restriction, return_profile, response_filters, latitude, longitude, &context).await
     }
 
     /// Purchase Clear
     async fn purchase_secure(
         &self,
-        version: f64,
         body: models::PaymentRequest,
         ) -> Result<PurchaseSecureResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().purchase_secure(version, body, &context).await
+        self.api().purchase_secure(body, &context).await
     }
 
     /// Rest Secure Application
     async fn reset_secure(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         ) -> Result<ResetSecureResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().reset_secure(version, account_id, app_key, &context).await
+        self.api().reset_secure(account_id, app_key, &context).await
     }
 
     /// Update Secure Application
     async fn update_secure_application(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         active: Option<bool>,
@@ -34664,24 +32801,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateSecureApplicationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_secure_application(version, account_id, app_key, active, key_cert, trust_store, username, password, biometric_type, biometric_position, biometric_position2, &context).await
+        self.api().update_secure_application(account_id, app_key, active, key_cert, trust_store, username, password, biometric_type, biometric_position, biometric_position2, &context).await
     }
 
     /// Create Service Hub
     async fn create_service_hub(
         &self,
-        version: f64,
         body: Option<models::ServiceHub>,
         ) -> Result<CreateServiceHubResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_service_hub(version, body, &context).await
+        self.api().create_service_hub(body, &context).await
     }
 
     /// Search Service Hubs
     async fn search_service_hubs(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -34692,70 +32827,64 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchServiceHubsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_service_hubs(version, sort_field, descending, start, limit, active_only, keyword, retailer_id, &context).await
+        self.api().search_service_hubs(sort_field, descending, start, limit, active_only, keyword, retailer_id, &context).await
     }
 
     /// Delete Service Hub
     async fn delete_service_hub(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteServiceHubResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_service_hub(version, id, &context).await
+        self.api().delete_service_hub(id, &context).await
     }
 
     /// Get Service Hub
     async fn get_service_hub(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetServiceHubResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_service_hub(version, id, &context).await
+        self.api().get_service_hub(id, &context).await
     }
 
     /// Update Service Hub
     async fn post_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         ) -> Result<PostServiceHubResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().post_service_hub(version, id, body, &context).await
+        self.api().post_service_hub(id, body, &context).await
     }
 
     /// Update Service Hub
     async fn put_service_hub(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::ServiceHub>,
         ) -> Result<PutServiceHubResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().put_service_hub(version, id, body, &context).await
+        self.api().put_service_hub(id, body, &context).await
     }
 
     /// Create Shipment
     async fn create_shipment(
         &self,
-        version: f64,
         body: Option<models::Shipment>,
         ) -> Result<CreateShipmentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_shipment(version, body, &context).await
+        self.api().create_shipment(body, &context).await
     }
 
     /// Search Shipments
     async fn search_shipments(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -34767,81 +32896,74 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchShipmentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_shipments(version, sort_field, descending, start, limit, active_only, owner_id, rider_id, route_id, &context).await
+        self.api().search_shipments(sort_field, descending, start, limit, active_only, owner_id, rider_id, route_id, &context).await
     }
 
     /// Cancel Shipment
     async fn cancel_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<CancelShipmentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().cancel_shipment(version, id, &context).await
+        self.api().cancel_shipment(id, &context).await
     }
 
     /// Delete Shipment
     async fn delete_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteShipmentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_shipment(version, id, &context).await
+        self.api().delete_shipment(id, &context).await
     }
 
     /// Get Shipment
     async fn get_shipment(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetShipmentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_shipment(version, id, &context).await
+        self.api().get_shipment(id, &context).await
     }
 
     /// Update Shipment
     async fn update_shipment(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Shipment>,
         ) -> Result<UpdateShipmentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_shipment(version, id, body, &context).await
+        self.api().update_shipment(id, body, &context).await
     }
 
     /// Uupdate Shipment Status
     async fn update_shipment_status(
         &self,
-        version: f64,
         id: i64,
         body: Option<std::collections::HashMap<String, bool>>,
         ) -> Result<UpdateShipmentStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_shipment_status(version, id, body, &context).await
+        self.api().update_shipment_status(id, body, &context).await
     }
 
     /// Create Shipment Batch
     async fn create_shipment_batch(
         &self,
-        version: f64,
         body: Option<models::ShipmentBatch>,
         ) -> Result<CreateShipmentBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_shipment_batch(version, body, &context).await
+        self.api().create_shipment_batch(body, &context).await
     }
 
     /// Search Shipment Batch
     async fn search_shipment_batch(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -34850,35 +32972,32 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchShipmentBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_shipment_batch(version, hub_id, sort_field, descending, start, limit, &context).await
+        self.api().search_shipment_batch(hub_id, sort_field, descending, start, limit, &context).await
     }
 
     /// Delete Shipment Batch
     async fn delete_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         ) -> Result<DeleteShipmentBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_shipment_batch(version, batch_id, &context).await
+        self.api().delete_shipment_batch(batch_id, &context).await
     }
 
     /// Get Shipment Batch
     async fn get_shipment_batch(
         &self,
-        version: f64,
         batch_id: i64,
         ) -> Result<GetShipmentBatchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_shipment_batch(version, batch_id, &context).await
+        self.api().get_shipment_batch(batch_id, &context).await
     }
 
     /// Get Shipment Batch Status
     async fn get_shipment_batch_status(
         &self,
-        version: f64,
         batch_id: i64,
         account_id: i64,
         sort_field: String,
@@ -34894,118 +33013,108 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetShipmentBatchStatusResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_shipment_batch_status(version, batch_id, account_id, sort_field, descending, start, limit, valid, started, completed, has_shipment, has_route, keyword, &context).await
+        self.api().get_shipment_batch_status(batch_id, account_id, sort_field, descending, start, limit, valid, started, completed, has_shipment, has_route, keyword, &context).await
     }
 
     /// Routing Simulation
     async fn simulation(
         &self,
-        version: f64,
         data: String,
         real_time: bool,
         ) -> Result<SimulationResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().simulation(version, data, real_time, &context).await
+        self.api().simulation(data, real_time, &context).await
     }
 
     /// Get Stop
     async fn get_stop(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_stop(version, id, &context).await
+        self.api().get_stop(id, &context).await
     }
 
     /// Update Stop
     async fn update_stop(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Stop>,
         ) -> Result<UpdateStopResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_stop(version, id, body, &context).await
+        self.api().update_stop(id, body, &context).await
     }
 
     /// Create Stripe Checkout Session
     async fn create_stripe_checkout_session(
         &self,
-        version: f64,
         app_key: String,
         stripe_parameters: String,
         ) -> Result<CreateStripeCheckoutSessionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_stripe_checkout_session(version, app_key, stripe_parameters, &context).await
+        self.api().create_stripe_checkout_session(app_key, stripe_parameters, &context).await
     }
 
     /// Create Subscription
     async fn create_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
         ) -> Result<CreateSubscriptionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_subscription(version, account_id, plan_id, promo_code, &context).await
+        self.api().create_subscription(account_id, plan_id, promo_code, &context).await
     }
 
     /// Delete Subscription
     async fn delete_subscription(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<DeleteSubscriptionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_subscription(version, account_id, &context).await
+        self.api().delete_subscription(account_id, &context).await
     }
 
     /// Get Subscription
     async fn get_subscription(
         &self,
-        version: f64,
         account_id: i64,
         ) -> Result<GetSubscriptionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_subscription(version, account_id, &context).await
+        self.api().get_subscription(account_id, &context).await
     }
 
     /// Get Subscription Plan
     async fn get_subscription_plan(
         &self,
-        version: f64,
         plan_id: i64,
         ) -> Result<GetSubscriptionPlanResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_subscription_plan(version, plan_id, &context).await
+        self.api().get_subscription_plan(plan_id, &context).await
     }
 
     /// List Subscription Plans
     async fn get_subscription_plans(
         &self,
-        version: f64,
         visible: Option<bool>,
         role: Option<String>,
         ) -> Result<GetSubscriptionPlansResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_subscription_plans(version, visible, role, &context).await
+        self.api().get_subscription_plans(visible, role, &context).await
     }
 
     /// Get Subscription Usage
     async fn get_subscription_usage(
         &self,
-        version: f64,
         account_id: i64,
         application_id: Option<i64>,
         start: Option<i64>,
@@ -35013,13 +33122,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetSubscriptionUsageResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_subscription_usage(version, account_id, application_id, start, end, &context).await
+        self.api().get_subscription_usage(account_id, application_id, start, end, &context).await
     }
 
     /// Update Subscription
     async fn update_subscription(
         &self,
-        version: f64,
         account_id: i64,
         plan_id: Option<i64>,
         promo_code: Option<String>,
@@ -35027,13 +33135,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateSubscriptionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_subscription(version, account_id, plan_id, promo_code, active, &context).await
+        self.api().update_subscription(account_id, plan_id, promo_code, active, &context).await
     }
 
     /// Create Task
     async fn create_task(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -35049,37 +33156,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateTaskResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_task(version, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, visibility, active, &context).await
+        self.api().create_task(account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, visibility, active, &context).await
     }
 
     /// Delete Task
     async fn delete_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         ) -> Result<DeleteTaskResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_task(version, account_id, task_id, &context).await
+        self.api().delete_task(account_id, task_id, &context).await
     }
 
     /// Get Task
     async fn get_task(
         &self,
-        version: f64,
         account_id: i64,
         task_id: i64,
         ) -> Result<GetTaskResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_task(version, account_id, task_id, &context).await
+        self.api().get_task(account_id, task_id, &context).await
     }
 
     /// Search Tasks
     async fn search_tasks(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -35095,13 +33199,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTasksResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_tasks(version, account_id, grouping_id, filter, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_tasks(account_id, grouping_id, filter, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Update Task
     async fn update_task(
         &self,
-        version: f64,
         task_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -35118,49 +33221,45 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateTaskResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_task(version, task_id, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, visibility, active, &context).await
+        self.api().update_task(task_id, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, visibility, active, &context).await
     }
 
     /// Create Territory
     async fn create_territory(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         active: Option<bool>,
         ) -> Result<CreateTerritoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_territory(version, account_id, name, active, &context).await
+        self.api().create_territory(account_id, name, active, &context).await
     }
 
     /// Delete Territory
     async fn delete_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         ) -> Result<DeleteTerritoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_territory(version, account_id, territory_id, &context).await
+        self.api().delete_territory(account_id, territory_id, &context).await
     }
 
     /// Get Territory
     async fn get_territory(
         &self,
-        version: f64,
         territory_id: i64,
         ) -> Result<GetTerritoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_territory(version, territory_id, &context).await
+        self.api().get_territory(territory_id, &context).await
     }
 
     /// Search Territories
     async fn search_territories(
         &self,
-        version: f64,
         sort_field: models::SearchTerritoriesSortFieldParameter,
         descending: bool,
         keyword: Option<String>,
@@ -35169,13 +33268,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTerritoriesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_territories(version, sort_field, descending, keyword, start, limit, &context).await
+        self.api().search_territories(sort_field, descending, keyword, start, limit, &context).await
     }
 
     /// Update Territory
     async fn update_territory(
         &self,
-        version: f64,
         account_id: i64,
         territory_id: i64,
         name: Option<String>,
@@ -35183,13 +33281,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateTerritoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_territory(version, account_id, territory_id, name, active, &context).await
+        self.api().update_territory(account_id, territory_id, name, active, &context).await
     }
 
     /// Create/Update Theme
     async fn add_or_update_theme_descriptor(
         &self,
-        version: f64,
         public_read: bool,
         public_write: bool,
         public_delete: bool,
@@ -35220,13 +33317,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddOrUpdateThemeDescriptorResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_or_update_theme_descriptor(version, public_read, public_write, public_delete, public_add, visibility, include_friend_group, complete_with_default_values, device_id, account_id, game_type, theme_descriptor_id, title, description, connection_ids_to_add, connection_group_ids_to_add, app_version, color_value_json, string_replacer_json, custom_json_objects, icon_image, scene_atlas_image, bg_image, bg_sound, music_selection, location_description, latitude, longitude, &context).await
+        self.api().add_or_update_theme_descriptor(public_read, public_write, public_delete, public_add, visibility, include_friend_group, complete_with_default_values, device_id, account_id, game_type, theme_descriptor_id, title, description, connection_ids_to_add, connection_group_ids_to_add, app_version, color_value_json, string_replacer_json, custom_json_objects, icon_image, scene_atlas_image, bg_image, bg_sound, music_selection, location_description, latitude, longitude, &context).await
     }
 
     /// Get Theme
     async fn get_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -35236,13 +33332,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetThemeDescriptorResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_theme_descriptor(version, theme_descriptor_id, device_id, account_id, game_type, latitude, longitude, &context).await
+        self.api().get_theme_descriptor(theme_descriptor_id, device_id, account_id, game_type, latitude, longitude, &context).await
     }
 
     /// Search Themes
     async fn get_theme_descriptors(
         &self,
-        version: f64,
         filter: String,
         sort_field: String,
         descending: bool,
@@ -35264,13 +33359,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetThemeDescriptorsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_theme_descriptors(version, filter, sort_field, descending, start, limit, device_id, account_id, game_type, contest_type, owner_id, q, keyword, _i, _l, date_created, app_version, latitude, longitude, &context).await
+        self.api().get_theme_descriptors(filter, sort_field, descending, start, limit, device_id, account_id, game_type, contest_type, owner_id, q, keyword, _i, _l, date_created, app_version, latitude, longitude, &context).await
     }
 
     /// Delete Theme
     async fn remove_theme_descriptor(
         &self,
-        version: f64,
         theme_descriptor_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -35280,13 +33374,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveThemeDescriptorResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_theme_descriptor(version, theme_descriptor_id, device_id, account_id, game_type, latitude, longitude, &context).await
+        self.api().remove_theme_descriptor(theme_descriptor_id, device_id, account_id, game_type, latitude, longitude, &context).await
     }
 
     /// Create Credential
     async fn create_credential(
         &self,
-        version: f64,
         third_party_id: String,
         third_party_token: String,
         network_uid: String,
@@ -35307,13 +33400,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateCredentialResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_credential(version, third_party_id, third_party_token, network_uid, app_key, account_id, device_id, session_id, third_party_name, email_address, signin_only_mode, response_filters, latitude, longitude, meta_data, third_party_refresh_token, audience_ids_to_add, audience_ids_to_remove, &context).await
+        self.api().create_credential(third_party_id, third_party_token, network_uid, app_key, account_id, device_id, session_id, third_party_name, email_address, signin_only_mode, response_filters, latitude, longitude, meta_data, third_party_refresh_token, audience_ids_to_add, audience_ids_to_remove, &context).await
     }
 
     /// Create Network
     async fn create_network(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         enable_introspection: bool,
@@ -35334,13 +33426,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateNetworkResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_network(version, account_id, name, enable_introspection, description, introspection_method, introspection_url, introspection_params, required_root_field, enable_mfa, size_mfa, shelf_life_mfa, oauth_token_url, oauth_private_key, oauth_public_key, oauth_client_id, oauth_secret_key, body, &context).await
+        self.api().create_network(account_id, name, enable_introspection, description, introspection_method, introspection_url, introspection_params, required_root_field, enable_mfa, size_mfa, shelf_life_mfa, oauth_token_url, oauth_private_key, oauth_public_key, oauth_client_id, oauth_secret_key, body, &context).await
     }
 
     /// Delete Credential
     async fn delete_credential(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         third_party_id: String,
@@ -35348,25 +33439,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteCredentialResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_credential(version, account_id, network_uid, third_party_id, app_key, &context).await
+        self.api().delete_credential(account_id, network_uid, third_party_id, app_key, &context).await
     }
 
     /// Delete Network
     async fn delete_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         ) -> Result<DeleteNetworkResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_network(version, account_id, network_uid, &context).await
+        self.api().delete_network(account_id, network_uid, &context).await
     }
 
     /// Get Credential
     async fn get_credential(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         account_id: Option<i64>,
@@ -35385,25 +33474,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCredentialResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_credential(version, network_uid, app_key, account_id, device_id, session_id, third_party_credential_id, third_party_token, third_party_secret, create_new_account, response_filters, latitude, longitude, audience_ids_to_add, audience_ids_to_remove, referral_account_id, &context).await
+        self.api().get_credential(network_uid, app_key, account_id, device_id, session_id, third_party_credential_id, third_party_token, third_party_secret, create_new_account, response_filters, latitude, longitude, audience_ids_to_add, audience_ids_to_remove, referral_account_id, &context).await
     }
 
     /// Get Network
     async fn get_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         ) -> Result<GetNetworkResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_network(version, account_id, network_uid, &context).await
+        self.api().get_network(account_id, network_uid, &context).await
     }
 
     /// Search Credentials
     async fn search_credentials(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         network_uid: Option<String>,
@@ -35413,13 +33500,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchCredentialsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_credentials(version, account_id, keyword, network_uid, descending, start, limit, &context).await
+        self.api().search_credentials(account_id, keyword, network_uid, descending, start, limit, &context).await
     }
 
     /// Search Networks
     async fn search_networks(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: models::SearchNetworksSortFieldParameter,
         descending: bool,
@@ -35431,13 +33517,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchNetworksResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_networks(version, account_id, sort_field, descending, start, limit, active_only, keyword, filter_billable, &context).await
+        self.api().search_networks(account_id, sort_field, descending, start, limit, active_only, keyword, filter_billable, &context).await
     }
 
     /// Send MFA Challenge
     async fn send_mfa_challenge(
         &self,
-        version: f64,
         network_uid: String,
         app_key: String,
         third_party_token: Option<String>,
@@ -35446,13 +33531,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SendMfaChallengeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().send_mfa_challenge(version, network_uid, app_key, third_party_token, third_party_credential_id, device_id, &context).await
+        self.api().send_mfa_challenge(network_uid, app_key, third_party_token, third_party_credential_id, device_id, &context).await
     }
 
     /// Update Credential
     async fn update_credential(
         &self,
-        version: f64,
         network_uid: String,
         third_party_id: String,
         app_key: String,
@@ -35465,13 +33549,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateCredentialResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_credential(version, network_uid, third_party_id, app_key, device_id, third_party_name, third_party_token, response_filters, meta_data, third_party_refresh_token, &context).await
+        self.api().update_credential(network_uid, third_party_id, app_key, device_id, third_party_name, third_party_token, response_filters, meta_data, third_party_refresh_token, &context).await
     }
 
     /// Update Network
     async fn update_network(
         &self,
-        version: f64,
         account_id: i64,
         network_uid: String,
         name: Option<String>,
@@ -35493,13 +33576,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateNetworkResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_network(version, account_id, network_uid, name, description, enable_introspection, introspection_method, introspection_url, introspection_params, required_root_field, enable_mfa, size_mfa, shelf_life_mfa, oauth_token_url, oauth_private_key, oauth_public_key, oauth_client_id, oauth_secret_key, body, &context).await
+        self.api().update_network(account_id, network_uid, name, description, enable_introspection, introspection_method, introspection_url, introspection_params, required_root_field, enable_mfa, size_mfa, shelf_life_mfa, oauth_token_url, oauth_private_key, oauth_public_key, oauth_client_id, oauth_secret_key, body, &context).await
     }
 
     /// Get Ticket Count
     async fn get_ticket_count(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         game_type: Option<String>,
@@ -35508,13 +33590,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTicketCountResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_ticket_count(version, device_id, account_id, game_type, app_key, ticket_type, &context).await
+        self.api().get_ticket_count(device_id, account_id, game_type, app_key, ticket_type, &context).await
     }
 
     /// Get Ticket List
     async fn get_ticket_list(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ticket_object_type: Option<String>,
@@ -35527,13 +33608,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTicketListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_ticket_list(version, device_id, account_id, ticket_object_type, action_type, ticket_ids, object_ids, receipt_tokens, game_type, app_key, &context).await
+        self.api().get_ticket_list(device_id, account_id, ticket_object_type, action_type, ticket_ids, object_ids, receipt_tokens, game_type, app_key, &context).await
     }
 
     /// Gift Tickets
     async fn gift_purchase(
         &self,
-        version: f64,
         receiver_account_id: i64,
         ticket_id: i64,
         device_id: Option<String>,
@@ -35545,13 +33625,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GiftPurchaseResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().gift_purchase(version, receiver_account_id, ticket_id, device_id, account_id, asset_id, custom_message, game_type, app_key, &context).await
+        self.api().gift_purchase(receiver_account_id, ticket_id, device_id, account_id, asset_id, custom_message, game_type, app_key, &context).await
     }
 
     /// Save Ticket
     async fn save_ticket(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         return_nulls: Option<bool>,
@@ -35573,13 +33652,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SaveTicketResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().save_ticket(version, action_type, ticket_object_type, return_nulls, device_id, account_id, game_type, app_key, object_id, purchase_code, receipt_token, receipt_data, count, ticket_type, purchase_provider, purchase_type, return_profile_response, include_profile_response, app_version, &context).await
+        self.api().save_ticket(action_type, ticket_object_type, return_nulls, device_id, account_id, game_type, app_key, object_id, purchase_code, receipt_token, receipt_data, count, ticket_type, purchase_provider, purchase_type, return_profile_response, include_profile_response, app_version, &context).await
     }
 
     /// Save Ticket with Reciept
     async fn save_ticket_via_file_upload(
         &self,
-        version: f64,
         action_type: String,
         ticket_object_type: String,
         receipt_data: swagger::ByteArray,
@@ -35601,23 +33679,21 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SaveTicketViaFileUploadResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().save_ticket_via_file_upload(version, action_type, ticket_object_type, receipt_data, return_nulls, device_id, account_id, game_type, app_key, object_id, purchase_code, receipt_token, count, ticket_type, purchase_provider, purchase_type, return_profile_response, include_profile_response, app_version, &context).await
+        self.api().save_ticket_via_file_upload(action_type, ticket_object_type, receipt_data, return_nulls, device_id, account_id, game_type, app_key, object_id, purchase_code, receipt_token, count, ticket_type, purchase_provider, purchase_type, return_profile_response, include_profile_response, app_version, &context).await
     }
 
     /// Get Ticket Offers
     async fn ticket_offers(
         &self,
-        version: f64,
         ) -> Result<TicketOffersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ticket_offers(version, &context).await
+        self.api().ticket_offers(&context).await
     }
 
     /// Create Tournament
     async fn create_tournament(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         title: String,
@@ -35656,25 +33732,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateTournamentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_tournament(version, account_id, app_key, title, cost_to_play, start_date, sub_type, image_asset_id, seconds_between_levels, seconds_for_tie_breaker, seconds_between_packs, maximum_level_length, cost_to_play_type, minimum_to_play, starting_limit, available_limit, description, meta_data, audience_ids, active, enable_buy_back, offer_ids, offer_asset_id, fixed_reward, split_reward, allocate_tickets, tournament_data, mission_type, visibility, preliminary_groups, preliminary_group_advancements, enable_multiple_entries, enable_multiple_votes, featured, winner_tag, tie_tag, &context).await
+        self.api().create_tournament(account_id, app_key, title, cost_to_play, start_date, sub_type, image_asset_id, seconds_between_levels, seconds_for_tie_breaker, seconds_between_packs, maximum_level_length, cost_to_play_type, minimum_to_play, starting_limit, available_limit, description, meta_data, audience_ids, active, enable_buy_back, offer_ids, offer_asset_id, fixed_reward, split_reward, allocate_tickets, tournament_data, mission_type, visibility, preliminary_groups, preliminary_group_advancements, enable_multiple_entries, enable_multiple_votes, featured, winner_tag, tie_tag, &context).await
     }
 
     /// Delete Tournament
     async fn delete_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         ) -> Result<DeleteTournamentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_tournament(version, account_id, mission_id, &context).await
+        self.api().delete_tournament(account_id, mission_id, &context).await
     }
 
     /// Get Tournament
     async fn get_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: Option<i64>,
         join_code: Option<String>,
@@ -35683,13 +33757,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTournamentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_tournament(version, account_id, mission_id, join_code, include_scores, object_preview_size, &context).await
+        self.api().get_tournament(account_id, mission_id, join_code, include_scores, object_preview_size, &context).await
     }
 
     /// Search Tournament Objects
     async fn search_objects(
         &self,
-        version: f64,
         account_id: i64,
         game_level_id: i64,
         sort_field: Option<models::SearchObjectsSortFieldParameter>,
@@ -35699,13 +33772,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchObjectsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_objects(version, account_id, game_level_id, sort_field, descending, start, limit, &context).await
+        self.api().search_objects(account_id, game_level_id, sort_field, descending, start, limit, &context).await
     }
 
     /// Search Tournament Rounds
     async fn search_rounds(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         status: Option<String>,
@@ -35717,13 +33789,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchRoundsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_rounds(version, account_id, app_key, status, mission_type, current_only, visibilities, start, limit, &context).await
+        self.api().search_rounds(account_id, app_key, status, mission_type, current_only, visibilities, start, limit, &context).await
     }
 
     /// Search Tournaments
     async fn search_tournaments(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         keyword: Option<String>,
@@ -35739,13 +33810,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTournamentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_tournaments(version, account_id, app_key, keyword, sub_type, include_inactive, mission_types, filter, sort_field, descending, visibility, start, limit, &context).await
+        self.api().search_tournaments(account_id, app_key, keyword, sub_type, include_inactive, mission_types, filter, sort_field, descending, visibility, start, limit, &context).await
     }
 
     /// Submit Tournament Score
     async fn submit_tournament_score(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -35756,13 +33826,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SubmitTournamentScoreResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().submit_tournament_score(version, account_id, app_key, mission_id, game_id, pack_id, scores, game_level_id, &context).await
+        self.api().submit_tournament_score(account_id, app_key, mission_id, game_id, pack_id, scores, game_level_id, &context).await
     }
 
     /// Submit a vote for a multi-stage album tournament.
     async fn submit_tournament_vote(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         mission_id: i64,
@@ -35772,13 +33841,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SubmitTournamentVoteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().submit_tournament_vote(version, account_id, app_key, mission_id, game_object_id, device_id, check_if_device_already_voted, &context).await
+        self.api().submit_tournament_vote(account_id, app_key, mission_id, game_object_id, device_id, check_if_device_already_voted, &context).await
     }
 
     /// Substitute Tournament Player
     async fn substitute_tournament_player(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         pack_id: i64,
@@ -35786,13 +33854,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SubstituteTournamentPlayerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().substitute_tournament_player(version, account_id, mission_id, pack_id, game_level_id, &context).await
+        self.api().substitute_tournament_player(account_id, mission_id, pack_id, game_level_id, &context).await
     }
 
     /// Update Tournament
     async fn update_tournament(
         &self,
-        version: f64,
         account_id: i64,
         mission_id: i64,
         title: Option<String>,
@@ -35830,13 +33897,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateTournamentResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_tournament(version, account_id, mission_id, title, sub_type, image_asset_id, seconds_between_levels, seconds_for_tie_breaker, seconds_between_packs, maximum_level_length, cost_to_play, cost_to_play_type, minimum_to_play, starting_limit, available_limit, description, meta_data, start_date, audience_ids, active, enable_buy_back, offer_ids, offer_asset_id, fixed_reward, split_reward, allocate_tickets, tournament_data, visibility, preliminary_groups, preliminary_group_advancements, enable_multiple_entries, enable_multiple_votes, featured, winner_tag, tie_tag, &context).await
+        self.api().update_tournament(account_id, mission_id, title, sub_type, image_asset_id, seconds_between_levels, seconds_for_tie_breaker, seconds_between_packs, maximum_level_length, cost_to_play, cost_to_play_type, minimum_to_play, starting_limit, available_limit, description, meta_data, start_date, audience_ids, active, enable_buy_back, offer_ids, offer_asset_id, fixed_reward, split_reward, allocate_tickets, tournament_data, visibility, preliminary_groups, preliminary_group_advancements, enable_multiple_entries, enable_multiple_votes, featured, winner_tag, tie_tag, &context).await
     }
 
     /// Create Batch Tracking
     async fn batch_save_tracking(
         &self,
-        version: f64,
         data: String,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -35847,13 +33913,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<BatchSaveTrackingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().batch_save_tracking(version, data, device_id, account_id, generate_accounts, update_account_locations, default_tag, slave_uid, &context).await
+        self.api().batch_save_tracking(data, device_id, account_id, generate_accounts, update_account_locations, default_tag, slave_uid, &context).await
     }
 
     /// Get Predicted Locations
     async fn get_predicted_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -35866,26 +33931,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetPredictedLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_predicted_locations(version, account_id, latitude, longitude, date_check, hour_check, threshold, distance_unit, search_range, sort_order, &context).await
+        self.api().get_predicted_locations(account_id, latitude, longitude, date_check, hour_check, threshold, distance_unit, search_range, sort_order, &context).await
     }
 
     /// Get Tracking Path
     async fn get_predicted_path(
         &self,
-        version: f64,
         account_id: i64,
         start_step_id: i64,
         end_step_id: i64,
         ) -> Result<GetPredictedPathResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_predicted_path(version, account_id, start_step_id, end_step_id, &context).await
+        self.api().get_predicted_path(account_id, start_step_id, end_step_id, &context).await
     }
 
     /// Search Preferred Locations
     async fn get_preferred_locations(
         &self,
-        version: f64,
         account_id: i64,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -35900,13 +33963,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetPreferredLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_preferred_locations(version, account_id, latitude, longitude, date_check, hour_check, sort_field, descending, start, limit, search_range, distance_unit, &context).await
+        self.api().get_preferred_locations(account_id, latitude, longitude, date_check, hour_check, sort_field, descending, start, limit, search_range, distance_unit, &context).await
     }
 
     /// Search Tracking
     async fn get_tracking_legs(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         owner_id: Option<i64>,
@@ -35918,13 +33980,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTrackingLegsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_tracking_legs(version, device_id, account_id, owner_id, tracking_device_id, start_date, end_date, tags, get_last_point, &context).await
+        self.api().get_tracking_legs(device_id, account_id, owner_id, tracking_device_id, start_date, end_date, tags, get_last_point, &context).await
     }
 
     /// Create Tracking Leg
     async fn save_tracking_leg(
         &self,
-        version: f64,
         start_lat: f64,
         start_lng: f64,
         start_date: i64,
@@ -35940,13 +34001,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SaveTrackingLegResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().save_tracking_leg(version, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id, account_id, distance, duration, steps, tags, &context).await
+        self.api().save_tracking_leg(start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id, account_id, distance, duration, steps, tags, &context).await
     }
 
     /// Create Tracking Step
     async fn save_tracking_step(
         &self,
-        version: f64,
         leg_id: i64,
         start_lat: f64,
         start_lng: f64,
@@ -35961,13 +34021,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SaveTrackingStepResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().save_tracking_step(version, leg_id, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id, account_id, distance, duration, &context).await
+        self.api().save_tracking_step(leg_id, start_lat, start_lng, start_date, end_lat, end_lng, end_date, device_id, account_id, distance, duration, &context).await
     }
 
     /// List Tracking
     async fn search_accounts_with_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         keyword: Option<String>,
         start_date: Option<i64>,
@@ -35985,13 +34044,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchAccountsWithTrackingLegsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_accounts_with_tracking_legs(version, account_id, keyword, start_date, end_date, tags, audience_ids, latitude, longitude, range, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_accounts_with_tracking_legs(account_id, keyword, start_date, end_date, tags, audience_ids, latitude, longitude, range, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Search Tracking (Billable)
     async fn search_tracking_legs(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         tracking_device_id: Option<String>,
@@ -36003,13 +34061,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTrackingLegsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_tracking_legs(version, account_id, app_key, tracking_device_id, start_date, end_date, tags, start, limit, &context).await
+        self.api().search_tracking_legs(account_id, app_key, tracking_device_id, start_date, end_date, tags, start, limit, &context).await
     }
 
     /// Create Trigger
     async fn create_trigger(
         &self,
-        version: f64,
         account_id: i64,
         name: String,
         app_key: Option<String>,
@@ -36026,37 +34083,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateTriggerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_trigger(version, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, conditional_input, visibility, active, &context).await
+        self.api().create_trigger(account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, conditional_input, visibility, active, &context).await
     }
 
     /// Delete Trigger
     async fn delete_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         ) -> Result<DeleteTriggerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_trigger(version, account_id, trigger_id, &context).await
+        self.api().delete_trigger(account_id, trigger_id, &context).await
     }
 
     /// Get Trigger
     async fn get_trigger(
         &self,
-        version: f64,
         account_id: i64,
         trigger_id: i64,
         ) -> Result<GetTriggerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_trigger(version, account_id, trigger_id, &context).await
+        self.api().get_trigger(account_id, trigger_id, &context).await
     }
 
     /// Search Triggers
     async fn search_triggers(
         &self,
-        version: f64,
         account_id: i64,
         grouping_id: Option<String>,
         filter: Option<String>,
@@ -36072,13 +34126,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTriggersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_triggers(version, account_id, grouping_id, filter, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, &context).await
+        self.api().search_triggers(account_id, grouping_id, filter, statuses, template_types, app_key, keyword, sort_field, descending, start, limit, active_only, &context).await
     }
 
     /// Update Trigger
     async fn update_trigger(
         &self,
-        version: f64,
         trigger_id: i64,
         account_id: i64,
         name: Option<String>,
@@ -36096,37 +34149,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateTriggerResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_trigger(version, trigger_id, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, conditional_input, visibility, active, &context).await
+        self.api().update_trigger(trigger_id, account_id, name, app_key, grouping_id, endpoint_url, payload, scheduled_date, start_date, end_date, cron_expression, conditional_input, visibility, active, &context).await
     }
 
     /// Create Trip
     async fn create_trip(
         &self,
-        version: f64,
         body: Option<models::Trip>,
         ) -> Result<CreateTripResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_trip(version, body, &context).await
+        self.api().create_trip(body, &context).await
     }
 
     /// Process Trip Matches
     async fn process_trip_matches(
         &self,
-        version: f64,
         start_date: Option<i64>,
         end_date: Option<i64>,
         trip_id: Option<i64>,
         ) -> Result<ProcessTripMatchesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().process_trip_matches(version, start_date, end_date, trip_id, &context).await
+        self.api().process_trip_matches(start_date, end_date, trip_id, &context).await
     }
 
     /// Search Trips
     async fn search(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -36139,13 +34189,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search(version, account_id, sort_field, descending, start, limit, active_only, start_date, end_date, has_notifications, &context).await
+        self.api().search(account_id, sort_field, descending, start, limit, active_only, start_date, end_date, has_notifications, &context).await
     }
 
     /// Search Trips
     async fn search_trips(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -36159,71 +34208,65 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchTripsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_trips(version, account_id, sort_field, descending, start, limit, active_only, start_date, end_date, matched_has_route, matched_has_driver, &context).await
+        self.api().search_trips(account_id, sort_field, descending, start, limit, active_only, start_date, end_date, matched_has_route, matched_has_driver, &context).await
     }
 
     /// Trip Notifications
     async fn update_trip_notifications(
         &self,
-        version: f64,
         id: i64,
         notifications: Option<String>,
         ) -> Result<UpdateTripNotificationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_trip_notifications(version, id, notifications, &context).await
+        self.api().update_trip_notifications(id, notifications, &context).await
     }
 
     /// Delete Trip
     async fn delete(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete(version, id, &context).await
+        self.api().delete(id, &context).await
     }
 
     /// Set Trip Preference Driver
     async fn drive_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<DriveTripResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().drive_trip(version, id, recurrence, &context).await
+        self.api().drive_trip(id, recurrence, &context).await
     }
 
     /// Set Trip Preference Flexible
     async fn flexible_trip(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<FlexibleTripResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().flexible_trip(version, id, recurrence, &context).await
+        self.api().flexible_trip(id, recurrence, &context).await
     }
 
     /// Get Trip
     async fn get_trip(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetTripResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_trip(version, id, &context).await
+        self.api().get_trip(id, &context).await
     }
 
     /// Get Trip Matches
     async fn get_trip_matches(
         &self,
-        version: f64,
         id: i64,
         sort_field: String,
         descending: bool,
@@ -36235,85 +34278,78 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetTripMatchesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_trip_matches(version, id, sort_field, descending, start, limit, active_only, matched_has_route, matched_has_driver, &context).await
+        self.api().get_trip_matches(id, sort_field, descending, start, limit, active_only, matched_has_route, matched_has_driver, &context).await
     }
 
     /// Set Trip Preference Rider
     async fn ride(
         &self,
-        version: f64,
         id: i64,
         recurrence: bool,
         ) -> Result<RideResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().ride(version, id, recurrence, &context).await
+        self.api().ride(id, recurrence, &context).await
     }
 
     /// Update Trip Locations
     async fn update_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_locations(version, id, body, &context).await
+        self.api().update_locations(id, body, &context).await
     }
 
     /// Update Recurrence Locations
     async fn update_recurrence_locations(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateRecurrenceLocationsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_recurrence_locations(version, id, body, &context).await
+        self.api().update_recurrence_locations(id, body, &context).await
     }
 
     /// Update Recurrence Shipments
     async fn update_recurrence_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateRecurrenceShipmentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_recurrence_shipments(version, id, body, &context).await
+        self.api().update_recurrence_shipments(id, body, &context).await
     }
 
     /// Update Trip Shipments
     async fn update_shipments(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateShipmentsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_shipments(version, id, body, &context).await
+        self.api().update_shipments(id, body, &context).await
     }
 
     /// Update Trip
     async fn update_trip(
         &self,
-        version: f64,
         id: i64,
         body: Option<models::Trip>,
         ) -> Result<UpdateTripResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_trip(version, id, body, &context).await
+        self.api().update_trip(id, body, &context).await
     }
 
     /// Buy Offer by SMS
     async fn sms_buy_offer(
         &self,
-        version: f64,
         app_key: String,
         body: String,
         from: String,
@@ -36321,24 +34357,22 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SmsBuyOfferResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().sms_buy_offer(version, app_key, body, from, currency_type, &context).await
+        self.api().sms_buy_offer(app_key, body, from, currency_type, &context).await
     }
 
     /// Authorize Twitter
     async fn authorize_twitter(
         &self,
-        version: f64,
         app_key: String,
         ) -> Result<AuthorizeTwitterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().authorize_twitter(version, app_key, &context).await
+        self.api().authorize_twitter(app_key, &context).await
     }
 
     /// Login Twitter
     async fn login_twitter(
         &self,
-        version: f64,
         access_token: String,
         access_token_secret: String,
         app_key: String,
@@ -36349,13 +34383,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LoginTwitterResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().login_twitter(version, access_token, access_token_secret, app_key, response_filters, device_id, latitude, longitude, &context).await
+        self.api().login_twitter(access_token, access_token_secret, app_key, response_filters, device_id, latitude, longitude, &context).await
     }
 
     /// Add User
     async fn add_users_to_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -36376,13 +34409,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<AddUsersToPermissionableResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().add_users_to_permissionable(version, permissionable_type, permissionable_id, device_id, account_id, read, write, delete, add, connection_ids, connection_account_ids, connection_group_ids, pending, admin, include_friend_group, latitude, longitude, audience_ids, &context).await
+        self.api().add_users_to_permissionable(permissionable_type, permissionable_id, device_id, account_id, read, write, delete, add, connection_ids, connection_account_ids, connection_group_ids, pending, admin, include_friend_group, latitude, longitude, audience_ids, &context).await
     }
 
     /// Approve Permissionable
     async fn approve_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -36391,13 +34423,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ApprovePermissionableResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().approve_permissionable(version, permissionable_type, permissionable_id, device_id, account_id, approval_status, &context).await
+        self.api().approve_permissionable(permissionable_type, permissionable_id, device_id, account_id, approval_status, &context).await
     }
 
     /// Leave
     async fn leave_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: String,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -36407,13 +34438,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<LeaveFromPermissionableResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().leave_from_permissionable(version, permissionable_type, permissionable_id, device_id, account_id, latitude, longitude, &context).await
+        self.api().leave_from_permissionable(permissionable_type, permissionable_id, device_id, account_id, latitude, longitude, &context).await
     }
 
     /// Remove User
     async fn remove_users_from_permissionable(
         &self,
-        version: f64,
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         permissionable_id: i64,
         device_id: Option<String>,
@@ -36428,13 +34458,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RemoveUsersFromPermissionableResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().remove_users_from_permissionable(version, permissionable_type, permissionable_id, device_id, account_id, connection_ids, connection_account_ids, connection_group_ids, remove_friend_group, latitude, longitude, audience_ids, &context).await
+        self.api().remove_users_from_permissionable(permissionable_type, permissionable_id, device_id, account_id, connection_ids, connection_account_ids, connection_group_ids, remove_friend_group, latitude, longitude, audience_ids, &context).await
     }
 
     /// Search Permissionables
     async fn search_permissionables(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         connection_account_id: Option<i64>,
@@ -36451,13 +34480,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchPermissionablesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_permissionables(version, device_id, account_id, connection_account_id, connection_account_ids, permissionable_type, permissionable_id, keyword, sort_field, descending, pending, admin, start, limit, &context).await
+        self.api().search_permissionables(device_id, account_id, connection_account_id, connection_account_ids, permissionable_type, permissionable_id, keyword, sort_field, descending, pending, admin, start, limit, &context).await
     }
 
     /// Search Permissionables by Distnace
     async fn search_permissionables_following_distance(
         &self,
-        version: f64,
         latitude: f64,
         longitude: f64,
         device_id: Option<String>,
@@ -36475,26 +34503,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchPermissionablesFollowingDistanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_permissionables_following_distance(version, latitude, longitude, device_id, account_id, connection_account_id, connection_account_ids, permissionable_type, permissionable_id, search_range, keyword, pending, admin, start, limit, &context).await
+        self.api().search_permissionables_following_distance(latitude, longitude, device_id, account_id, connection_account_id, connection_account_ids, permissionable_type, permissionable_id, search_range, keyword, pending, admin, start, limit, &context).await
     }
 
     /// Create following
     async fn create_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
         ) -> Result<CreateFollowingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_following(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().create_following(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Create Vatom Space
     async fn create_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -36502,13 +34528,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateSpaceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_space(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().create_space(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Create Vatom Event
     async fn create_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -36516,26 +34541,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateVatomEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_vatom_event(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().create_vatom_event(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Delete following
     async fn delete_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_rels_key: String,
         return_raw_response: Option<bool>,
         ) -> Result<DeleteFollowingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_following(version, account_id, vatom_rels_key, return_raw_response, &context).await
+        self.api().delete_following(account_id, vatom_rels_key, return_raw_response, &context).await
     }
 
     /// Reset All Points Balance
     async fn delete_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -36543,13 +34566,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeletePointsBalanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_points_balance(version, account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
+        self.api().delete_points_balance(account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Delete Vatom Space
     async fn delete_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -36557,13 +34579,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteSpaceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_space(version, account_id, app_key, vatom_space_id, return_raw_response, &context).await
+        self.api().delete_space(account_id, app_key, vatom_space_id, return_raw_response, &context).await
     }
 
     /// Delete Vatom Event
     async fn delete_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -36571,26 +34592,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<DeleteVatomEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_vatom_event(version, account_id, app_key, vatom_event_id, return_raw_response, &context).await
+        self.api().delete_vatom_event(account_id, app_key, vatom_event_id, return_raw_response, &context).await
     }
 
     /// Delete Vatom NFT
     async fn delete_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
         ) -> Result<DeleteVatomNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_vatom_nft(version, account_id, vatom_id, return_raw_response, &context).await
+        self.api().delete_vatom_nft(account_id, vatom_id, return_raw_response, &context).await
     }
 
     /// Execute Action on NFT
     async fn execute_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_parameters: String,
@@ -36598,64 +34617,59 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ExecuteActionOnNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().execute_action_on_nft(version, account_id, vatom_id, vatom_parameters, return_raw_response, &context).await
+        self.api().execute_action_on_nft(account_id, vatom_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Search Vatom Geo Map
     async fn geomap_search(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
         ) -> Result<GeomapSearchResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().geomap_search(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().geomap_search(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Get Vatom Business Behaviors
     async fn get_business_behaviors(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetBusinessBehaviorsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_business_behaviors(version, account_id, app_key, return_raw_response, &context).await
+        self.api().get_business_behaviors(account_id, app_key, return_raw_response, &context).await
     }
 
     /// Get the coins for a Business
     async fn get_business_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetBusinessCoinsBalanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_business_coins_balance(version, account_id, app_key, return_raw_response, &context).await
+        self.api().get_business_coins_balance(account_id, app_key, return_raw_response, &context).await
     }
 
     /// Get the user business ids
     async fn get_business_ids(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetBusinessIdsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_business_ids(version, account_id, return_raw_response, &context).await
+        self.api().get_business_ids(account_id, return_raw_response, &context).await
     }
 
     /// Get Vatom Business Info
     async fn get_business_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -36663,26 +34677,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetBusinessInfoResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_business_info(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().get_business_info(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Get Vatom Business Users
     async fn get_business_users(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetBusinessUsersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_business_users(version, account_id, app_key, return_raw_response, &context).await
+        self.api().get_business_users(account_id, app_key, return_raw_response, &context).await
     }
 
     /// Get Campaign Group Entities
     async fn get_campaign_group_entities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -36690,13 +34702,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCampaignGroupEntitiesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_campaign_group_entities(version, account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_campaign_group_entities(account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Campaign Group Rules
     async fn get_campaign_group_rules(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -36704,13 +34715,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCampaignGroupRulesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_campaign_group_rules(version, account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_campaign_group_rules(account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Campaign Group Stats
     async fn get_campaign_group_stats(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -36718,13 +34728,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCampaignGroupStatsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_campaign_group_stats(version, account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_campaign_group_stats(account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Campaign Info
     async fn get_campaign_info(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -36732,13 +34741,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetCampaignInfoResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_campaign_info(version, account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_campaign_info(account_id, app_key, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Vatom Event Guest List
     async fn get_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -36746,38 +34754,35 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetEventGuestListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_event_guest_list(version, account_id, app_key, vatom_event_id, return_raw_response, &context).await
+        self.api().get_event_guest_list(account_id, app_key, vatom_event_id, return_raw_response, &context).await
     }
 
     /// Get Vatom User's Inventory
     async fn get_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetInventoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_inventory(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().get_inventory(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Get following
     async fn get_my_following(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetMyFollowingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_my_following(version, account_id, return_raw_response, &context).await
+        self.api().get_my_following(account_id, return_raw_response, &context).await
     }
 
     /// Get Points Balance
     async fn get_points_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_campaign_id: String,
@@ -36785,13 +34790,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetPointsBalanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_points_balance(version, account_id, vatom_user_id, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_points_balance(account_id, vatom_user_id, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Points Balance as Business
     async fn get_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -36800,13 +34804,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetPointsBalanceAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_points_balance_as_business(version, account_id, app_key, vatom_user_id, vatom_campaign_id, return_raw_response, &context).await
+        self.api().get_points_balance_as_business(account_id, app_key, vatom_user_id, vatom_campaign_id, return_raw_response, &context).await
     }
 
     /// Get Vatom Space
     async fn get_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -36814,13 +34817,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetSpaceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_space(version, account_id, app_key, vatom_space_id, return_raw_response, &context).await
+        self.api().get_space(account_id, app_key, vatom_space_id, return_raw_response, &context).await
     }
 
     /// Get the coins for a user (as a Business)
     async fn get_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -36828,13 +34830,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetUserCoinsAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_coins_as_business(version, account_id, vatom_user_id, app_key, return_raw_response, &context).await
+        self.api().get_user_coins_as_business(account_id, vatom_user_id, app_key, return_raw_response, &context).await
     }
 
     /// Gets the coins balance for a Vatom User
     async fn get_user_coins_balance(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -36842,64 +34843,59 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetUserCoinsBalanceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_coins_balance(version, account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
+        self.api().get_user_coins_balance(account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Get user followers
     async fn get_user_followers(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetUserFollowersResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_followers(version, account_id, vatom_user_id, return_raw_response, &context).await
+        self.api().get_user_followers(account_id, vatom_user_id, return_raw_response, &context).await
     }
 
     /// Get user following
     async fn get_user_following(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetUserFollowingResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_following(version, account_id, vatom_user_id, return_raw_response, &context).await
+        self.api().get_user_following(account_id, vatom_user_id, return_raw_response, &context).await
     }
 
     /// Get User Info
     async fn get_user_info(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetUserInfoResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_info(version, account_id, vatom_user_id, return_raw_response, &context).await
+        self.api().get_user_info(account_id, vatom_user_id, return_raw_response, &context).await
     }
 
     /// Get Vatom User Profile
     async fn get_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<GetUserProfileResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_user_profile(version, account_id, return_raw_response, &context).await
+        self.api().get_user_profile(account_id, return_raw_response, &context).await
     }
 
     /// Get Vatom Event
     async fn get_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -36907,26 +34903,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetVatomEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_vatom_event(version, account_id, app_key, vatom_event_id, return_raw_response, &context).await
+        self.api().get_vatom_event(account_id, app_key, vatom_event_id, return_raw_response, &context).await
     }
 
     /// Get Vatom NFT Details
     async fn get_vatom_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         return_raw_response: Option<bool>,
         ) -> Result<GetVatomNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_vatom_nft(version, account_id, vatom_id, return_raw_response, &context).await
+        self.api().get_vatom_nft(account_id, vatom_id, return_raw_response, &context).await
     }
 
     /// List Vatom Communities
     async fn list_communities(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -36934,13 +34928,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListCommunitiesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_communities(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().list_communities(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// List Vatom Events
     async fn list_events(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -36948,13 +34941,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListEventsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_events(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().list_events(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// List Vatom Spaces
     async fn list_spaces(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: Option<String>,
@@ -36962,13 +34954,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListSpacesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_spaces(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().list_spaces(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// List Coin Transactions for a Vatom User
     async fn list_user_coin_transactions(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: Option<String>,
@@ -36976,13 +34967,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListUserCoinTransactionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_user_coin_transactions(version, account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
+        self.api().list_user_coin_transactions(account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// List coin transactions for a user (as a Business)
     async fn list_user_coin_transactions_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -36991,13 +34981,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<ListUserCoinTransactionsAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().list_user_coin_transactions_as_business(version, account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().list_user_coin_transactions_as_business(account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Perform Action on NFT
     async fn perform_action_on_nft(
         &self,
-        version: f64,
         account_id: i64,
         vatom_id: String,
         vatom_action: String,
@@ -37006,13 +34995,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<PerformActionOnNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().perform_action_on_nft(version, account_id, vatom_id, vatom_action, vatom_parameters, return_raw_response, &context).await
+        self.api().perform_action_on_nft(account_id, vatom_id, vatom_action, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Redeem NFT
     async fn redeem_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -37020,13 +35008,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RedeemNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().redeem_nft(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().redeem_nft(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Redeem the coins for a user (as a Business)
     async fn redeem_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -37035,64 +35022,59 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RedeemUserCoinsAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().redeem_user_coins_as_business(version, account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().redeem_user_coins_as_business(account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Search for Vatom Businesses
     async fn search_businesses(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
         ) -> Result<SearchBusinessesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_businesses(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().search_businesses(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Search Campaign Groups
     async fn search_campaign_groups(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         return_raw_response: Option<bool>,
         ) -> Result<SearchCampaignGroupsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_campaign_groups(version, account_id, app_key, return_raw_response, &context).await
+        self.api().search_campaign_groups(account_id, app_key, return_raw_response, &context).await
     }
 
     /// Search User Identities
     async fn search_identities(
         &self,
-        version: f64,
         account_id: i64,
         return_raw_response: Option<bool>,
         ) -> Result<SearchIdentitiesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_identities(version, account_id, return_raw_response, &context).await
+        self.api().search_identities(account_id, return_raw_response, &context).await
     }
 
     /// Search Vatom User's Inventory
     async fn search_inventory(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: Option<String>,
         return_raw_response: Option<bool>,
         ) -> Result<SearchInventoryResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_inventory(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().search_inventory(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Send NFT
     async fn send_nft(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_campaign_id: String,
@@ -37101,13 +35083,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SendNftResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().send_nft(version, account_id, app_key, vatom_campaign_id, vatom_parameters, return_raw_response, &context).await
+        self.api().send_nft(account_id, app_key, vatom_campaign_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Set Points Balance as Business
     async fn set_points_balance_as_business(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_user_id: String,
@@ -37117,13 +35098,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SetPointsBalanceAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().set_points_balance_as_business(version, account_id, app_key, vatom_user_id, vatom_campaign_id, vatom_parameters, return_raw_response, &context).await
+        self.api().set_points_balance_as_business(account_id, app_key, vatom_user_id, vatom_campaign_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Transfer coins from Vatom Users
     async fn transfer_user_coins(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         vatom_parameters: String,
@@ -37131,13 +35111,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<TransferUserCoinsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().transfer_user_coins(version, account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
+        self.api().transfer_user_coins(account_id, vatom_user_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Fund coins for a Business
     async fn update_business_coins(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_parameters: String,
@@ -37145,13 +35124,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateBusinessCoinsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_business_coins(version, account_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().update_business_coins(account_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Update Vatom Event Guest List
     async fn update_event_guest_list(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -37160,13 +35138,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateEventGuestListResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_event_guest_list(version, account_id, app_key, vatom_event_id, vatom_parameters, return_raw_response, &context).await
+        self.api().update_event_guest_list(account_id, app_key, vatom_event_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Update Vatom Space
     async fn update_space(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_space_id: String,
@@ -37175,13 +35152,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateSpaceResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_space(version, account_id, app_key, vatom_space_id, vatom_parameters, return_raw_response, &context).await
+        self.api().update_space(account_id, app_key, vatom_space_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Update the coins for a user (as a Business)
     async fn update_user_coins_as_business(
         &self,
-        version: f64,
         account_id: i64,
         vatom_user_id: String,
         app_key: String,
@@ -37190,26 +35166,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateUserCoinsAsBusinessResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_user_coins_as_business(version, account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
+        self.api().update_user_coins_as_business(account_id, vatom_user_id, app_key, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Update Vatom User Profile
     async fn update_user_profile(
         &self,
-        version: f64,
         account_id: i64,
         vatom_parameters: String,
         return_raw_response: Option<bool>,
         ) -> Result<UpdateUserProfileResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_user_profile(version, account_id, vatom_parameters, return_raw_response, &context).await
+        self.api().update_user_profile(account_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Update Vatom Event
     async fn update_vatom_event(
         &self,
-        version: f64,
         account_id: i64,
         app_key: String,
         vatom_event_id: String,
@@ -37218,25 +35192,23 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateVatomEventResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_vatom_event(version, account_id, app_key, vatom_event_id, vatom_parameters, return_raw_response, &context).await
+        self.api().update_vatom_event(account_id, app_key, vatom_event_id, vatom_parameters, return_raw_response, &context).await
     }
 
     /// Create Vehicle
     async fn create_vehicle(
         &self,
-        version: f64,
         vehicle: String,
         body: Option<models::Vehicle>,
         ) -> Result<CreateVehicleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_vehicle(version, vehicle, body, &context).await
+        self.api().create_vehicle(vehicle, body, &context).await
     }
 
     /// Search Vehicle
     async fn search_vehicle(
         &self,
-        version: f64,
         hub_id: i64,
         sort_field: String,
         descending: bool,
@@ -37247,60 +35219,55 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchVehicleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_vehicle(version, hub_id, sort_field, descending, start, limit, active_only, keyword, &context).await
+        self.api().search_vehicle(hub_id, sort_field, descending, start, limit, active_only, keyword, &context).await
     }
 
     /// Delete Vehicle
     async fn delete_vehicle(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<DeleteVehicleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_vehicle(version, id, &context).await
+        self.api().delete_vehicle(id, &context).await
     }
 
     /// Get Vehicle
     async fn get_vehicle(
         &self,
-        version: f64,
         id: i64,
         ) -> Result<GetVehicleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_vehicle(version, id, &context).await
+        self.api().get_vehicle(id, &context).await
     }
 
     /// Update Vehicle
     async fn update_vehicle(
         &self,
-        version: f64,
         id: i64,
         vehicle: String,
         body: Option<models::Vehicle>,
         ) -> Result<UpdateVehicleResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_vehicle(version, id, vehicle, body, &context).await
+        self.api().update_vehicle(id, vehicle, body, &context).await
     }
 
     /// Create Vehicle Type
     async fn create_vehicle_type(
         &self,
-        version: f64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
         ) -> Result<CreateVehicleTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_vehicle_type(version, vehicle_type, body, &context).await
+        self.api().create_vehicle_type(vehicle_type, body, &context).await
     }
 
     /// Search Vehicle Type
     async fn search_vehicle_types(
         &self,
-        version: f64,
         sort_field: String,
         descending: bool,
         start: i32,
@@ -37311,48 +35278,44 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchVehicleTypesResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_vehicle_types(version, sort_field, descending, start, limit, active_only, retailer_id, hub_id, &context).await
+        self.api().search_vehicle_types(sort_field, descending, start, limit, active_only, retailer_id, hub_id, &context).await
     }
 
     /// Delete Vehicle Type
     async fn delete_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         ) -> Result<DeleteVehicleTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_vehicle_type(version, vehicle_type_id, &context).await
+        self.api().delete_vehicle_type(vehicle_type_id, &context).await
     }
 
     /// Get Vehicle Type
     async fn get_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         ) -> Result<GetVehicleTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_vehicle_type(version, vehicle_type_id, &context).await
+        self.api().get_vehicle_type(vehicle_type_id, &context).await
     }
 
     /// Update Vehicle Type
     async fn update_vehicle_type(
         &self,
-        version: f64,
         vehicle_type_id: i64,
         vehicle_type: String,
         body: Option<models::VehicleType>,
         ) -> Result<UpdateVehicleTypeResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_vehicle_type(version, vehicle_type_id, vehicle_type, body, &context).await
+        self.api().update_vehicle_type(vehicle_type_id, vehicle_type, body, &context).await
     }
 
     /// Create Wallet Offers
     async fn create_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -37367,26 +35330,24 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_offer_transaction(version, device_id, account_id, offer_id, offer_location_id, offer_cart, promo_code, currency_type, use_points, meta_data, app_key, status, &context).await
+        self.api().create_offer_transaction(device_id, account_id, offer_id, offer_location_id, offer_cart, promo_code, currency_type, use_points, meta_data, app_key, status, &context).await
     }
 
     /// Delete Wallet Offer
     async fn delete_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
         ) -> Result<DeleteOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_offer_transaction(version, transaction_id, device_id, account_id, &context).await
+        self.api().delete_offer_transaction(transaction_id, device_id, account_id, &context).await
     }
 
     /// Get Wallet Offer
     async fn get_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         device_id: Option<String>,
         account_id: Option<i64>,
@@ -37397,13 +35358,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_offer_transaction(version, transaction_id, device_id, account_id, include_mission, latitude, longitude, return_full_response, &context).await
+        self.api().get_offer_transaction(transaction_id, device_id, account_id, include_mission, latitude, longitude, return_full_response, &context).await
     }
 
     /// Preview Wallet Offers
     async fn preview_offer_transaction(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         offer_id: Option<i64>,
@@ -37417,13 +35377,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<PreviewOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().preview_offer_transaction(version, device_id, account_id, offer_id, offer_location_id, offer_cart, promo_code, currency_type, use_points, meta_data, app_key, &context).await
+        self.api().preview_offer_transaction(device_id, account_id, offer_id, offer_location_id, offer_cart, promo_code, currency_type, use_points, meta_data, app_key, &context).await
     }
 
     /// Search Wallet Offers
     async fn search_offer_transactions(
         &self,
-        version: f64,
         device_id: Option<String>,
         account_id: Option<i64>,
         keyword: Option<String>,
@@ -37468,13 +35427,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchOfferTransactionsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_offer_transactions(version, device_id, account_id, keyword, retailer_id, retailer_ids, retailer_location_id, retailer_location_ids, exclude_retailer_location_ids, offer_id, offer_ids, offer_location_id, offer_location_ids, offer_type, offer_types, special_offer_type, special_offer_types, category_ids, filter_ids, offer_audience_ids, sort_field, descending, start, limit, latitude, longitude, redeemable_start_date, redeemable_end_date, filter_by_parent_offer, started_since, started_before, ended_since, ended_before, redeemed, statuses, reservations_only, active_only, return_full_response, recurring_started_since, recurring_started_before, recurring_expiration_since, recurring_expiration_before, &context).await
+        self.api().search_offer_transactions(device_id, account_id, keyword, retailer_id, retailer_ids, retailer_location_id, retailer_location_ids, exclude_retailer_location_ids, offer_id, offer_ids, offer_location_id, offer_location_ids, offer_type, offer_types, special_offer_type, special_offer_types, category_ids, filter_ids, offer_audience_ids, sort_field, descending, start, limit, latitude, longitude, redeemable_start_date, redeemable_end_date, filter_by_parent_offer, started_since, started_before, ended_since, ended_before, redeemed, statuses, reservations_only, active_only, return_full_response, recurring_started_since, recurring_started_before, recurring_expiration_since, recurring_expiration_before, &context).await
     }
 
     /// Update Wallet Offer
     async fn update_offer_transaction(
         &self,
-        version: f64,
         transaction_id: i64,
         status: i32,
         device_id: Option<String>,
@@ -37491,13 +35449,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateOfferTransactionResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_offer_transaction(version, transaction_id, status, device_id, account_id, offer_location_id, currency_type, use_points, app_key, latitude, longitude, meta_data, return_full_response, exception_membership_offer_ids, &context).await
+        self.api().update_offer_transaction(transaction_id, status, device_id, account_id, offer_location_id, currency_type, use_points, app_key, latitude, longitude, meta_data, return_full_response, exception_membership_offer_ids, &context).await
     }
 
     /// Search Weather
     async fn search_weather(
         &self,
-        version: f64,
         region_id: Option<i64>,
         latitude: Option<f64>,
         longitude: Option<f64>,
@@ -37505,13 +35462,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<SearchWeatherResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().search_weather(version, region_id, latitude, longitude, timezone_offset, &context).await
+        self.api().search_weather(region_id, latitude, longitude, timezone_offset, &context).await
     }
 
     /// Create Word
     async fn create_word(
         &self,
-        version: f64,
         account_id: i64,
         word: String,
         definition: String,
@@ -37524,37 +35480,34 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<CreateWordResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().create_word(version, account_id, word, definition, active, allocate_tickets, ticket_count, asset_id, ticket_type, points, &context).await
+        self.api().create_word(account_id, word, definition, active, allocate_tickets, ticket_count, asset_id, ticket_type, points, &context).await
     }
 
     /// Delete Word
     async fn delete_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ) -> Result<DeleteWordResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().delete_word(version, word_id, account_id, &context).await
+        self.api().delete_word(word_id, account_id, &context).await
     }
 
     /// Get Word
     async fn get_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ) -> Result<GetWordResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_word(version, word_id, account_id, &context).await
+        self.api().get_word(word_id, account_id, &context).await
     }
 
     /// Search Words
     async fn get_words(
         &self,
-        version: f64,
         account_id: i64,
         sort_field: String,
         descending: bool,
@@ -37565,13 +35518,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<GetWordsResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().get_words(version, account_id, sort_field, descending, active_only, start, limit, keyword, &context).await
+        self.api().get_words(account_id, sort_field, descending, active_only, start, limit, keyword, &context).await
     }
 
     /// Update Word
     async fn update_word(
         &self,
-        version: f64,
         word_id: i64,
         account_id: i64,
         ticket_count: i64,
@@ -37585,13 +35537,12 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<UpdateWordResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().update_word(version, word_id, account_id, ticket_count, word_text, definition, asset_id, active, allocate_tickets, ticket_type, points, &context).await
+        self.api().update_word(word_id, account_id, ticket_count, word_text, definition, asset_id, active, allocate_tickets, ticket_type, points, &context).await
     }
 
     /// Run Workflow
     async fn run_workflow(
         &self,
-        version: f64,
         account_id: i64,
         workflow_id: i64,
         sku_id: Option<i64>,
@@ -37600,7 +35551,7 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
         ) -> Result<RunWorkflowResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().run_workflow(version, account_id, workflow_id, sku_id, version_code, parameters, &context).await
+        self.api().run_workflow(account_id, workflow_id, sku_id, version_code, parameters, &context).await
     }
 
 }

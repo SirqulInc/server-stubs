@@ -40,7 +40,7 @@ use openapi_client::{Api, ApiNoContext, Claims, Client, ContextWrapperExt, model
                       UpdateSettingsResponse,
                       ValidateAccountSignupResponse,
                       ValidatePasswordResetResponse,
-                      ApiVersionAchievementTierSearchPostResponse,
+                      AchievementTierSearchPostResponse,
                       CreateAchievementResponse,
                       CreateAchievementTierResponse,
                       DeleteAchievementResponse,
@@ -751,7 +751,7 @@ fn main() {
                 "UpdateSettings",
                 "ValidateAccountSignup",
                 "ValidatePasswordReset",
-                "ApiVersionAchievementTierSearchPost",
+                "AchievementTierSearchPost",
                 "CreateAchievement",
                 "CreateAchievementTier",
                 "DeleteAchievement",
@@ -1407,7 +1407,7 @@ fn main() {
             .help("Whether to use HTTPS or not"))
         .arg(Arg::new("host")
             .long("host")
-            .default_value("localhost")
+            .default_value("dev.sirqul.com")
             .help("Hostname to contact"))
         .arg(Arg::new("port")
             .long("port")
@@ -1483,7 +1483,6 @@ fn main() {
     match matches.get_one::<String>("operation").map(String::as_str) {
         Some("ConsumerCreate") => {
             let result = rt.block_on(client.consumer_create(
-                  3.16,
                   "app_key_example".to_string(),
                   "name_example".to_string(),
                   "hostname_example".to_string(),
@@ -1503,7 +1502,6 @@ fn main() {
         },
         Some("ConsumerUpdate") => {
             let result = rt.block_on(client.consumer_update(
-                  3.16,
                   "app_key_example".to_string(),
                   789,
                   "data_mapping_example".to_string(),
@@ -1515,7 +1513,6 @@ fn main() {
         },
         Some("QueueCreate") => {
             let result = rt.block_on(client.queue_create(
-                  3.16,
                   "app_key_example".to_string(),
                   "name_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -1533,7 +1530,6 @@ fn main() {
         },
         Some("QueueDelete") => {
             let result = rt.block_on(client.queue_delete(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -1542,7 +1538,6 @@ fn main() {
         },
         Some("QueueGet") => {
             let result = rt.block_on(client.queue_get(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -1555,7 +1550,6 @@ fn main() {
         },
         Some("QueuePublish") => {
             let result = rt.block_on(client.queue_publish(
-                  3.16,
                   "message_example".to_string(),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -1567,7 +1561,6 @@ fn main() {
         },
         Some("QueueSearch") => {
             let result = rt.block_on(client.queue_search(
-                  3.16,
                   Some(789),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -1579,7 +1572,6 @@ fn main() {
         },
         Some("QueueUpdate") => {
             let result = rt.block_on(client.queue_update(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -1597,7 +1589,6 @@ fn main() {
         },
         Some("AccountLocationSearch") => {
             let result = rt.block_on(client.account_location_search(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("q_example".to_string()),
@@ -1637,7 +1628,6 @@ fn main() {
         },
         Some("BlockAccount") => {
             let result = rt.block_on(client.block_account(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -1650,7 +1640,6 @@ fn main() {
         },
         Some("CreateAccount") => {
             let result = rt.block_on(client.create_account(
-                  3.16,
                   "username_example".to_string(),
                   "password_example".to_string(),
                   Some("name_example".to_string()),
@@ -1728,7 +1717,6 @@ fn main() {
         },
         Some("EditAccount") => {
             let result = rt.block_on(client.edit_account(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -1816,7 +1804,6 @@ fn main() {
         },
         Some("EditUsername") => {
             let result = rt.block_on(client.edit_username(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("email_address_example".to_string()),
@@ -1826,7 +1813,6 @@ fn main() {
         },
         Some("GetAccount") => {
             let result = rt.block_on(client.get_account(
-                  3.16,
                   Some(true),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -1844,7 +1830,6 @@ fn main() {
         },
         Some("GetProfileAssets") => {
             let result = rt.block_on(client.get_profile_assets(
-                  3.16,
                   Some(true),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -1864,7 +1849,6 @@ fn main() {
         },
         Some("GetReferralList") => {
             let result = rt.block_on(client.get_referral_list(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string()),
                   Some("retrieve_type_example".to_string()),
@@ -1881,7 +1865,6 @@ fn main() {
         },
         Some("GetSettings") => {
             let result = rt.block_on(client.get_settings(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -1891,7 +1874,6 @@ fn main() {
         },
         Some("LoginDelegate") => {
             let result = rt.block_on(client.login_delegate(
-                  3.16,
                   "access_token_example".to_string(),
                   "app_key_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -1908,7 +1890,6 @@ fn main() {
         },
         Some("LoginGeneral") => {
             let result = rt.block_on(client.login_general(
-                  3.16,
                   "access_token_example".to_string(),
                   "network_uid_example".to_string(),
                   "app_key_example".to_string(),
@@ -1927,7 +1908,6 @@ fn main() {
         },
         Some("LoginUsername") => {
             let result = rt.block_on(client.login_username(
-                  3.16,
                   "username_example".to_string(),
                   "password_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -1943,7 +1923,6 @@ fn main() {
         },
         Some("Logout") => {
             let result = rt.block_on(client.logout(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some("device_id_type_example".to_string()),
                   Some(789),
@@ -1954,7 +1933,6 @@ fn main() {
         },
         Some("MergeAccount") => {
             let result = rt.block_on(client.merge_account(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -1964,7 +1942,6 @@ fn main() {
         },
         Some("PasswordChange") => {
             let result = rt.block_on(client.password_change(
-                  3.16,
                   789,
                   "old_password_example".to_string(),
                   "new_password_example".to_string(),
@@ -1974,7 +1951,6 @@ fn main() {
         },
         Some("PasswordReset") => {
             let result = rt.block_on(client.password_reset(
-                  3.16,
                   "token_example".to_string(),
                   "password_example".to_string(),
                   "confirm_example".to_string()
@@ -1983,7 +1959,6 @@ fn main() {
         },
         Some("RequestPasswordReset") => {
             let result = rt.block_on(client.request_password_reset(
-                  3.16,
                   "email_example".to_string(),
                   Some("from_example".to_string()),
                   Some("domain_example".to_string()),
@@ -1994,14 +1969,12 @@ fn main() {
         },
         Some("RequestValidateAccount") => {
             let result = rt.block_on(client.request_validate_account(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchAccounts") => {
             let result = rt.block_on(client.search_accounts(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("keyword_example".to_string()),
@@ -2025,7 +1998,6 @@ fn main() {
         },
         Some("SecureLogin") => {
             let result = rt.block_on(client.secure_login(
-                  3.16,
                   "username_example".to_string(),
                   "password_example".to_string(),
                   "game_type_example".to_string(),
@@ -2040,7 +2012,6 @@ fn main() {
         },
         Some("SecureSignup") => {
             let result = rt.block_on(client.secure_signup(
-                  3.16,
                   "device_id_example".to_string(),
                   "username_example".to_string(),
                   "password_example".to_string(),
@@ -2107,7 +2078,6 @@ fn main() {
         },
         Some("SetMatchToken") => {
             let result = rt.block_on(client.set_match_token(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("match_token_example".to_string()),
@@ -2120,7 +2090,6 @@ fn main() {
         },
         Some("UpdateActveStatus") => {
             let result = rt.block_on(client.update_actve_status(
-                  3.16,
                   789,
                   789,
                   true,
@@ -2131,7 +2100,6 @@ fn main() {
         },
         Some("UpdateLocation") => {
             let result = rt.block_on(client.update_location(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -2142,7 +2110,6 @@ fn main() {
         },
         Some("UpdateSettings") => {
             let result = rt.block_on(client.update_settings(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("blocked_notifications_example".to_string()),
@@ -2160,21 +2127,18 @@ fn main() {
         },
         Some("ValidateAccountSignup") => {
             let result = rt.block_on(client.validate_account_signup(
-                  3.16,
                   "token_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("ValidatePasswordReset") => {
             let result = rt.block_on(client.validate_password_reset(
-                  3.16,
                   "token_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
-        Some("ApiVersionAchievementTierSearchPost") => {
-            let result = rt.block_on(client.api_version_achievement_tier_search_post(
-                  3.16,
+        Some("AchievementTierSearchPost") => {
+            let result = rt.block_on(client.achievement_tier_search_post(
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -2191,7 +2155,6 @@ fn main() {
         },
         Some("CreateAchievement") => {
             let result = rt.block_on(client.create_achievement(
-                  3.16,
                   "app_key_example".to_string(),
                   "title_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -2210,7 +2173,6 @@ fn main() {
         },
         Some("CreateAchievementTier") => {
             let result = rt.block_on(client.create_achievement_tier(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -2230,7 +2192,6 @@ fn main() {
         },
         Some("DeleteAchievement") => {
             let result = rt.block_on(client.delete_achievement(
-                  3.16,
                   789,
                   Some(789)
             ));
@@ -2238,7 +2199,6 @@ fn main() {
         },
         Some("DeleteAchievementTier") => {
             let result = rt.block_on(client.delete_achievement_tier(
-                  3.16,
                   789,
                   Some(789)
             ));
@@ -2246,7 +2206,6 @@ fn main() {
         },
         Some("GetAchievement") => {
             let result = rt.block_on(client.get_achievement(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2256,7 +2215,6 @@ fn main() {
         },
         Some("GetAchievementTier") => {
             let result = rt.block_on(client.get_achievement_tier(
-                  3.16,
                   789,
                   789
             ));
@@ -2264,7 +2222,6 @@ fn main() {
         },
         Some("GetUserAchievements") => {
             let result = rt.block_on(client.get_user_achievements(
-                  3.16,
                   true,
                   "app_key_example".to_string(),
                   true,
@@ -2281,14 +2238,12 @@ fn main() {
         },
         Some("ListAchievementTags") => {
             let result = rt.block_on(client.list_achievement_tags(
-                  3.16,
                   Some("app_key_example".to_string())
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("ListAchievements") => {
             let result = rt.block_on(client.list_achievements(
-                  3.16,
                   models::ListAchievementsSortFieldParameter::Created,
                   true,
                   56,
@@ -2305,7 +2260,6 @@ fn main() {
         },
         Some("SearchAchievements") => {
             let result = rt.block_on(client.search_achievements(
-                  3.16,
                   "app_key_example".to_string(),
                   models::SearchAchievementsSortFieldParameter::Created,
                   true,
@@ -2323,7 +2277,6 @@ fn main() {
         },
         Some("UpdateAchievement") => {
             let result = rt.block_on(client.update_achievement(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -2344,7 +2297,6 @@ fn main() {
         },
         Some("UpdateAchievementTier") => {
             let result = rt.block_on(client.update_achievement_tier(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2364,7 +2316,6 @@ fn main() {
         },
         Some("UpdateUserAchievement") => {
             let result = rt.block_on(client.update_user_achievement(
-                  3.16,
                   789,
                   Some(789),
                   Some("tag_example".to_string()),
@@ -2379,7 +2330,6 @@ fn main() {
         /* Disabled because there's no example.
         Some("CreateEntityReference") => {
             let result = rt.block_on(client.create_entity_reference(
-                  3.16,
                   ???
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
@@ -2387,7 +2337,6 @@ fn main() {
         */
         Some("AddAlbumCollection") => {
             let result = rt.block_on(client.add_album_collection(
-                  3.16,
                   "title_example".to_string(),
                   true,
                   true,
@@ -2439,7 +2388,6 @@ fn main() {
         },
         Some("AddAlbumUsers") => {
             let result = rt.block_on(client.add_album_users(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -2455,7 +2403,6 @@ fn main() {
         },
         Some("ApproveAlbum") => {
             let result = rt.block_on(client.approve_album(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2466,7 +2413,6 @@ fn main() {
         },
         Some("GetAlbumCollection") => {
             let result = rt.block_on(client.get_album_collection(
-                  3.16,
                   true,
                   789,
                   Some("device_id_example".to_string()),
@@ -2481,7 +2427,6 @@ fn main() {
         },
         Some("LeaveAlbum") => {
             let result = rt.block_on(client.leave_album(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -2490,7 +2435,6 @@ fn main() {
         },
         Some("RemoveAlbum") => {
             let result = rt.block_on(client.remove_album(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -2499,7 +2443,6 @@ fn main() {
         },
         Some("RemoveAlbumUsers") => {
             let result = rt.block_on(client.remove_album_users(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -2511,7 +2454,6 @@ fn main() {
         },
         Some("SearchAlbums") => {
             let result = rt.block_on(client.search_albums(
-                  3.16,
                   "filter_example".to_string(),
                   789,
                   "sub_type_example".to_string(),
@@ -2577,7 +2519,6 @@ fn main() {
         },
         Some("UpdateAlbumCollection") => {
             let result = rt.block_on(client.update_album_collection(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2628,7 +2569,6 @@ fn main() {
         },
         Some("Activities") => {
             let result = rt.block_on(client.activities(
-                  3.16,
                   56,
                   56,
                   789
@@ -2637,7 +2577,6 @@ fn main() {
         },
         Some("AggregatedFilteredUsage") => {
             let result = rt.block_on(client.aggregated_filtered_usage(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -2674,7 +2613,6 @@ fn main() {
         },
         Some("FilteredUsage") => {
             let result = rt.block_on(client.filtered_usage(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -2719,7 +2657,6 @@ fn main() {
         },
         Some("Usage") => {
             let result = rt.block_on(client.usage(
-                  3.16,
                   "tag_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2756,7 +2693,6 @@ fn main() {
         },
         Some("UsageBatch") => {
             let result = rt.block_on(client.usage_batch(
-                  3.16,
                   "app_key_example".to_string(),
                   "device_example".to_string(),
                   "data_example".to_string(),
@@ -2773,7 +2709,6 @@ fn main() {
         },
         Some("GetAppData") => {
             let result = rt.block_on(client.get_app_data(
-                  3.16,
                   56,
                   56,
                   Some("device_id_example".to_string()),
@@ -2804,7 +2739,6 @@ fn main() {
         },
         Some("PostAppData") => {
             let result = rt.block_on(client.post_app_data(
-                  3.16,
                   "game_type_example".to_string(),
                   56,
                   56,
@@ -2836,7 +2770,6 @@ fn main() {
         },
         Some("RegenAppData") => {
             let result = rt.block_on(client.regen_app_data(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string()),
                   Some("build_version_example".to_string()),
@@ -2846,7 +2779,6 @@ fn main() {
         },
         Some("CreateApplication") => {
             let result = rt.block_on(client.create_application(
-                  3.16,
                   "app_name_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -2931,7 +2863,6 @@ fn main() {
         },
         Some("CreateApplicationPlacement") => {
             let result = rt.block_on(client.create_application_placement(
-                  3.16,
                   "app_key_example".to_string(),
                   models::CreateApplicationPlacementSizeParameter::Config,
                   Some("device_id_example".to_string()),
@@ -2948,7 +2879,6 @@ fn main() {
         },
         Some("DeleteApplication") => {
             let result = rt.block_on(client.delete_application(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string())
             ));
@@ -2956,7 +2886,6 @@ fn main() {
         },
         Some("DeleteApplicationPlacement") => {
             let result = rt.block_on(client.delete_application_placement(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -2965,7 +2894,6 @@ fn main() {
         },
         Some("GetApplication") => {
             let result = rt.block_on(client.get_application(
-                  3.16,
                   Some("app_key_example".to_string()),
                   Some(789)
             ));
@@ -2973,7 +2901,6 @@ fn main() {
         },
         Some("GetApplicationPlacement") => {
             let result = rt.block_on(client.get_application_placement(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -2982,13 +2909,11 @@ fn main() {
         },
         Some("GetApplicationVersions") => {
             let result = rt.block_on(client.get_application_versions(
-                  3.16
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetUniqueUsersByApp") => {
             let result = rt.block_on(client.get_unique_users_by_app(
-                  3.16,
                   "app_key_example".to_string(),
                   Some("q_example".to_string()),
                   Some("keyword_example".to_string()),
@@ -3002,7 +2927,6 @@ fn main() {
         },
         Some("ListApplications") => {
             let result = rt.block_on(client.list_applications(
-                  3.16,
                   Some(789),
                   Some("q_example".to_string()),
                   Some("keyword_example".to_string()),
@@ -3028,7 +2952,6 @@ fn main() {
         },
         Some("SearchApplicationPlacement") => {
             let result = rt.block_on(client.search_application_placement(
-                  3.16,
                   "app_key_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3039,7 +2962,6 @@ fn main() {
         },
         Some("SearchApplicationSettings") => {
             let result = rt.block_on(client.search_application_settings(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -3053,7 +2975,6 @@ fn main() {
         },
         Some("SearchApplications") => {
             let result = rt.block_on(client.search_applications(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -3075,7 +2996,6 @@ fn main() {
         },
         Some("UpdateApplication") => {
             let result = rt.block_on(client.update_application(
-                  3.16,
                   "app_key_example".to_string(),
                   "app_name_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -3161,7 +3081,6 @@ fn main() {
         },
         Some("UpdateApplicationActive") => {
             let result = rt.block_on(client.update_application_active(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   true
@@ -3170,7 +3089,6 @@ fn main() {
         },
         Some("UpdateApplicationPlacement") => {
             let result = rt.block_on(client.update_application_placement(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3187,7 +3105,6 @@ fn main() {
         },
         Some("UploadApplicationCertificate") => {
             let result = rt.block_on(client.upload_application_certificate(
-                  3.16,
                   "app_key_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3197,7 +3114,6 @@ fn main() {
         },
         Some("CreateApplicationConfig") => {
             let result = rt.block_on(client.create_application_config(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "config_version_example".to_string(),
@@ -3210,7 +3126,6 @@ fn main() {
         },
         Some("DeleteApplicationConfig") => {
             let result = rt.block_on(client.delete_application_config(
-                  3.16,
                   789,
                   789
             ));
@@ -3218,7 +3133,6 @@ fn main() {
         },
         Some("GetApplicationConfig") => {
             let result = rt.block_on(client.get_application_config(
-                  3.16,
                   789,
                   789
             ));
@@ -3226,7 +3140,6 @@ fn main() {
         },
         Some("GetApplicationConfigByConfigVersion") => {
             let result = rt.block_on(client.get_application_config_by_config_version(
-                  3.16,
                   "app_key_example".to_string(),
                   "config_version_example".to_string(),
                   Some(789),
@@ -3238,7 +3151,6 @@ fn main() {
         },
         Some("SearchApplicationConfig") => {
             let result = rt.block_on(client.search_application_config(
-                  3.16,
                   789,
                   Some("app_key_example".to_string()),
                   Some(789),
@@ -3254,7 +3166,6 @@ fn main() {
         },
         Some("UpdateApplicationConfig") => {
             let result = rt.block_on(client.update_application_config(
-                  3.16,
                   789,
                   789,
                   Some("app_key_example".to_string()),
@@ -3268,7 +3179,6 @@ fn main() {
         },
         Some("AssetMorph") => {
             let result = rt.block_on(client.asset_morph(
-                  3.16,
                   789,
                   models::CreateApplicationPlacementSizeParameter::Config,
                   Some(789),
@@ -3281,7 +3191,6 @@ fn main() {
         },
         Some("CreateAsset") => {
             let result = rt.block_on(client.create_asset(
-                  3.16,
                   Some(true),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3321,7 +3230,6 @@ fn main() {
         },
         Some("DeleteAsset") => {
             let result = rt.block_on(client.delete_asset(
-                  3.16,
                   "asset_id_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3332,7 +3240,6 @@ fn main() {
         },
         Some("GetAsset") => {
             let result = rt.block_on(client.get_asset(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3342,7 +3249,6 @@ fn main() {
         },
         Some("RemoveAsset") => {
             let result = rt.block_on(client.remove_asset(
-                  3.16,
                   "asset_id_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3356,7 +3262,6 @@ fn main() {
         },
         Some("SearchAssets") => {
             let result = rt.block_on(client.search_assets(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("album_ids_example".to_string()),
@@ -3386,7 +3291,6 @@ fn main() {
         },
         Some("UpdateAsset") => {
             let result = rt.block_on(client.update_asset(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3423,14 +3327,12 @@ fn main() {
         },
         Some("AssetDownload") => {
             let result = rt.block_on(client.asset_download(
-                  3.16,
                   "filename_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("AssigmentAssigneeAccountSearch") => {
             let result = rt.block_on(client.assigment_assignee_account_search(
-                  3.16,
                   789,
                   Some("keyword_example".to_string())
             ));
@@ -3438,7 +3340,6 @@ fn main() {
         },
         Some("AssignmentCreate") => {
             let result = rt.block_on(client.assignment_create(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   789,
@@ -3451,7 +3352,6 @@ fn main() {
         },
         Some("AssignmentDelete") => {
             let result = rt.block_on(client.assignment_delete(
-                  3.16,
                   789,
                   789
             ));
@@ -3459,7 +3359,6 @@ fn main() {
         },
         Some("AssignmentGet") => {
             let result = rt.block_on(client.assignment_get(
-                  3.16,
                   789,
                   789
             ));
@@ -3467,7 +3366,6 @@ fn main() {
         },
         Some("AssignmentSearch") => {
             let result = rt.block_on(client.assignment_search(
-                  3.16,
                   789,
                   models::AssignmentSearchSortFieldParameter::Id,
                   true,
@@ -3484,7 +3382,6 @@ fn main() {
         },
         Some("AssignmentStatusCreate") => {
             let result = rt.block_on(client.assignment_status_create(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -3501,7 +3398,6 @@ fn main() {
         },
         Some("AssignmentStatusDelete") => {
             let result = rt.block_on(client.assignment_status_delete(
-                  3.16,
                   789,
                   789
             ));
@@ -3509,7 +3405,6 @@ fn main() {
         },
         Some("AssignmentStatusGet") => {
             let result = rt.block_on(client.assignment_status_get(
-                  3.16,
                   789,
                   789
             ));
@@ -3517,7 +3412,6 @@ fn main() {
         },
         Some("AssignmentStatusSearch") => {
             let result = rt.block_on(client.assignment_status_search(
-                  3.16,
                   789,
                   models::AssignmentStatusSearchSortFieldParameter::Id,
                   true,
@@ -3535,7 +3429,6 @@ fn main() {
         },
         Some("AssignmentStatusUpdate") => {
             let result = rt.block_on(client.assignment_status_update(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -3552,7 +3445,6 @@ fn main() {
         },
         Some("AssignmentUpdate") => {
             let result = rt.block_on(client.assignment_update(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -3566,7 +3458,6 @@ fn main() {
         },
         Some("CreateAudience") => {
             let result = rt.block_on(client.create_audience(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("description_example".to_string()),
@@ -3601,7 +3492,6 @@ fn main() {
         },
         Some("DeleteAudience") => {
             let result = rt.block_on(client.delete_audience(
-                  3.16,
                   789,
                   789
             ));
@@ -3609,13 +3499,11 @@ fn main() {
         },
         Some("GetAgeGroups") => {
             let result = rt.block_on(client.get_age_groups(
-                  3.16
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetAudience") => {
             let result = rt.block_on(client.get_audience(
-                  3.16,
                   789,
                   789,
                   Some("app_key_example".to_string()),
@@ -3627,7 +3515,6 @@ fn main() {
         },
         Some("GetAudienceList") => {
             let result = rt.block_on(client.get_audience_list(
-                  3.16,
                   Some(789),
                   Some("album_ids_example".to_string()),
                   Some("keyword_example".to_string()),
@@ -3652,20 +3539,17 @@ fn main() {
         },
         Some("GetDevices") => {
             let result = rt.block_on(client.get_devices(
-                  3.16,
                   true
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetExperiences") => {
             let result = rt.block_on(client.get_experiences(
-                  3.16
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetGroupedAudiences") => {
             let result = rt.block_on(client.get_grouped_audiences(
-                  3.16,
                   789,
                   "audience_grouping_id_example".to_string()
             ));
@@ -3673,7 +3557,6 @@ fn main() {
         },
         Some("ListByAccount") => {
             let result = rt.block_on(client.list_by_account(
-                  3.16,
                   789,
                   56,
                   "suggestion_type_example".to_string()
@@ -3682,7 +3565,6 @@ fn main() {
         },
         Some("ListByAudience") => {
             let result = rt.block_on(client.list_by_audience(
-                  3.16,
                   56,
                   Some("gender_example".to_string()),
                   Some(56),
@@ -3694,7 +3576,6 @@ fn main() {
         },
         Some("ListLastestByAccount") => {
             let result = rt.block_on(client.list_lastest_by_account(
-                  3.16,
                   789,
                   56,
                   "suggestion_type_example".to_string()
@@ -3703,7 +3584,6 @@ fn main() {
         },
         Some("SendByAccount") => {
             let result = rt.block_on(client.send_by_account(
-                  3.16,
                   789,
                   1.2,
                   1.2
@@ -3712,7 +3592,6 @@ fn main() {
         },
         Some("UpdateAudience") => {
             let result = rt.block_on(client.update_audience(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -3749,7 +3628,6 @@ fn main() {
         },
         Some("CreateBid") => {
             let result = rt.block_on(client.create_bid(
-                  3.16,
                   "biddable_type_example".to_string(),
                   789,
                   1.2,
@@ -3763,7 +3641,6 @@ fn main() {
         },
         Some("DeleteBid") => {
             let result = rt.block_on(client.delete_bid(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -3772,7 +3649,6 @@ fn main() {
         },
         Some("GetBid") => {
             let result = rt.block_on(client.get_bid(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -3781,7 +3657,6 @@ fn main() {
         },
         Some("UpdateBid") => {
             let result = rt.block_on(client.update_bid(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -3794,7 +3669,6 @@ fn main() {
         },
         Some("CreateBillableEntity") => {
             let result = rt.block_on(client.create_billable_entity(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("name_example".to_string()),
@@ -3812,7 +3686,6 @@ fn main() {
         },
         Some("DeleteBillableEntity") => {
             let result = rt.block_on(client.delete_billable_entity(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789)
             ));
@@ -3820,7 +3693,6 @@ fn main() {
         },
         Some("GetBillableEntity") => {
             let result = rt.block_on(client.get_billable_entity(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(true),
@@ -3830,7 +3702,6 @@ fn main() {
         },
         Some("UpdateBillableEntity") => {
             let result = rt.block_on(client.update_billable_entity(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("name_example".to_string()),
@@ -3848,7 +3719,6 @@ fn main() {
         },
         Some("AddPaymentMethod") => {
             let result = rt.block_on(client.add_payment_method(
-                  3.16,
                   789,
                   Some(789),
                   Some("account_name_example".to_string()),
@@ -3877,7 +3747,6 @@ fn main() {
         },
         Some("CreatePaymentMethod") => {
             let result = rt.block_on(client.create_payment_method(
-                  3.16,
                   789,
                   Some("account_name_example".to_string()),
                   Some("first_name_example".to_string()),
@@ -3908,7 +3777,6 @@ fn main() {
         },
         Some("CreateSmartContract") => {
             let result = rt.block_on(client.create_smart_contract(
-                  3.16,
                   789,
                   "token_name_example".to_string(),
                   "token_symbol_example".to_string(),
@@ -3918,7 +3786,6 @@ fn main() {
         },
         Some("GetCryptoBalance") => {
             let result = rt.block_on(client.get_crypto_balance(
-                  3.16,
                   789,
                   Some(789),
                   Some(789)
@@ -3927,7 +3794,6 @@ fn main() {
         },
         Some("GetPaymentMethod") => {
             let result = rt.block_on(client.get_payment_method(
-                  3.16,
                   789,
                   Some(789),
                   Some(true)
@@ -3936,7 +3802,6 @@ fn main() {
         },
         Some("SearchPaymentMethod") => {
             let result = rt.block_on(client.search_payment_method(
-                  3.16,
                   789,
                   Some("provider_example".to_string()),
                   Some("param_type_example".to_string()),
@@ -3950,7 +3815,6 @@ fn main() {
         },
         Some("GetStatusCsv") => {
             let result = rt.block_on(client.get_status_csv(
-                  3.16,
                   789,
                   789,
                   models::GetStatusCsvResponseGroupParameter::Summary,
@@ -3961,7 +3825,6 @@ fn main() {
         },
         Some("ListStatusCsv") => {
             let result = rt.block_on(client.list_status_csv(
-                  3.16,
                   789,
                   56,
                   56
@@ -3970,7 +3833,6 @@ fn main() {
         },
         Some("StatusCsv") => {
             let result = rt.block_on(client.status_csv(
-                  3.16,
                   789,
                   789
             ));
@@ -3978,7 +3840,6 @@ fn main() {
         },
         Some("UploadCsv") => {
             let result = rt.block_on(client.upload_csv(
-                  3.16,
                   789,
                   models::UploadCsvUploadTypeParameter::Offers,
                   swagger::ByteArray(Vec::from("BINARY_DATA_HERE")),
@@ -3989,14 +3850,12 @@ fn main() {
         },
         Some("CreateCargoType") => {
             let result = rt.block_on(client.create_cargo_type(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchCargoTypes") => {
             let result = rt.block_on(client.search_cargo_types(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -4009,21 +3868,18 @@ fn main() {
         },
         Some("DeleteCargoType") => {
             let result = rt.block_on(client.delete_cargo_type(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetCargoType") => {
             let result = rt.block_on(client.get_cargo_type(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateCargoType") => {
             let result = rt.block_on(client.update_cargo_type(
-                  3.16,
                   789,
                   None
             ));
@@ -4031,7 +3887,6 @@ fn main() {
         },
         Some("SearchCarriers") => {
             let result = rt.block_on(client.search_carriers(
-                  3.16,
                   Some("keyword_example".to_string()),
                   Some(true),
                   Some(56),
@@ -4042,7 +3897,6 @@ fn main() {
         },
         Some("CategoryDistanceSearch") => {
             let result = rt.block_on(client.category_distance_search(
-                  3.16,
                   Some(789),
                   Some("keyword_example".to_string()),
                   Some("app_key_example".to_string()),
@@ -4068,7 +3922,6 @@ fn main() {
         },
         Some("CreateCategory") => {
             let result = rt.block_on(client.create_category(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("app_key_example".to_string()),
@@ -4088,7 +3941,6 @@ fn main() {
         },
         Some("DeleteCategory") => {
             let result = rt.block_on(client.delete_category(
-                  3.16,
                   789,
                   789
             ));
@@ -4096,7 +3948,6 @@ fn main() {
         },
         Some("DuplicateCategory") => {
             let result = rt.block_on(client.duplicate_category(
-                  3.16,
                   789,
                   789,
                   Some("app_key_example".to_string()),
@@ -4106,7 +3957,6 @@ fn main() {
         },
         Some("GetCategory") => {
             let result = rt.block_on(client.get_category(
-                  3.16,
                   789,
                   Some(true)
             ));
@@ -4114,7 +3964,6 @@ fn main() {
         },
         Some("SearchCategories") => {
             let result = rt.block_on(client.search_categories(
-                  3.16,
                   Some(789),
                   Some("keyword_example".to_string()),
                   Some("app_key_example".to_string()),
@@ -4141,7 +3990,6 @@ fn main() {
         },
         Some("UpdateCategory") => {
             let result = rt.block_on(client.update_category(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -4161,7 +4009,6 @@ fn main() {
         },
         Some("AddConnectionToGroup") => {
             let result = rt.block_on(client.add_connection_to_group(
-                  3.16,
                   true,
                   789,
                   Some("device_id_example".to_string()),
@@ -4176,7 +4023,6 @@ fn main() {
         },
         Some("AddConnectionsToGroup") => {
             let result = rt.block_on(client.add_connections_to_group(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4189,7 +4035,6 @@ fn main() {
         },
         Some("AddSubGroups") => {
             let result = rt.block_on(client.add_sub_groups(
-                  3.16,
                   true,
                   789,
                   "sub_group_ids_example".to_string(),
@@ -4202,7 +4047,6 @@ fn main() {
         },
         Some("CreateOrUpdateConnection") => {
             let result = rt.block_on(client.create_or_update_connection(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -4222,7 +4066,6 @@ fn main() {
         },
         Some("CreateOrUpdateGroup") => {
             let result = rt.block_on(client.create_or_update_group(
-                  3.16,
                   true,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4242,7 +4085,6 @@ fn main() {
         },
         Some("FollowAccept") => {
             let result = rt.block_on(client.follow_accept(
-                  3.16,
                   789,
                   789,
                   "app_key_example".to_string()
@@ -4251,7 +4093,6 @@ fn main() {
         },
         Some("FollowReject") => {
             let result = rt.block_on(client.follow_reject(
-                  3.16,
                   789,
                   789,
                   "app_key_example".to_string()
@@ -4260,7 +4101,6 @@ fn main() {
         },
         Some("FollowRemove") => {
             let result = rt.block_on(client.follow_remove(
-                  3.16,
                   789,
                   789,
                   "app_key_example".to_string()
@@ -4269,7 +4109,6 @@ fn main() {
         },
         Some("FollowRequest") => {
             let result = rt.block_on(client.follow_request(
-                  3.16,
                   789,
                   789,
                   "app_key_example".to_string(),
@@ -4279,7 +4118,6 @@ fn main() {
         },
         Some("FriendAccept") => {
             let result = rt.block_on(client.friend_accept(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -4292,7 +4130,6 @@ fn main() {
         },
         Some("FriendReject") => {
             let result = rt.block_on(client.friend_reject(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4305,7 +4142,6 @@ fn main() {
         },
         Some("FriendRemove") => {
             let result = rt.block_on(client.friend_remove(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4316,7 +4152,6 @@ fn main() {
         },
         Some("FriendRequest") => {
             let result = rt.block_on(client.friend_request(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4328,7 +4163,6 @@ fn main() {
         },
         Some("GetConnectionSentFriendRequests") => {
             let result = rt.block_on(client.get_connection_sent_friend_requests(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789)
             ));
@@ -4336,7 +4170,6 @@ fn main() {
         },
         Some("GetConnections") => {
             let result = rt.block_on(client.get_connections(
-                  3.16,
                   true,
                   "filter_example".to_string(),
                   "sort_field_example".to_string(),
@@ -4357,7 +4190,6 @@ fn main() {
         },
         Some("GetGroupDetails") => {
             let result = rt.block_on(client.get_group_details(
-                  3.16,
                   true,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4369,7 +4201,6 @@ fn main() {
         },
         Some("GroupSearch") => {
             let result = rt.block_on(client.group_search(
-                  3.16,
                   models::GroupSearchSortFieldParameter::Created,
                   true,
                   true,
@@ -4385,7 +4216,6 @@ fn main() {
         },
         Some("RemoveConnectionFromGroup") => {
             let result = rt.block_on(client.remove_connection_from_group(
-                  3.16,
                   true,
                   789,
                   Some("device_id_example".to_string()),
@@ -4400,7 +4230,6 @@ fn main() {
         },
         Some("RemoveConnectionsFromGroup") => {
             let result = rt.block_on(client.remove_connections_from_group(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4413,7 +4242,6 @@ fn main() {
         },
         Some("RemoveGroup") => {
             let result = rt.block_on(client.remove_group(
-                  3.16,
                   true,
                   789,
                   Some("device_id_example".to_string()),
@@ -4425,7 +4253,6 @@ fn main() {
         },
         Some("RemoveSubGroups") => {
             let result = rt.block_on(client.remove_sub_groups(
-                  3.16,
                   true,
                   789,
                   "sub_group_ids_example".to_string(),
@@ -4438,7 +4265,6 @@ fn main() {
         },
         Some("SearchConnections") => {
             let result = rt.block_on(client.search_connections(
-                  3.16,
                   true,
                   56,
                   56,
@@ -4459,7 +4285,6 @@ fn main() {
         },
         Some("AddOrUpdateAlbumContest") => {
             let result = rt.block_on(client.add_or_update_album_contest(
-                  3.16,
                   true,
                   true,
                   true,
@@ -4490,7 +4315,6 @@ fn main() {
         },
         Some("ApproveAlbumContest") => {
             let result = rt.block_on(client.approve_album_contest(
-                  3.16,
                   789,
                   models::ApproveAlbumApprovalStatusParameter::Pending,
                   Some("device_id_example".to_string()),
@@ -4500,7 +4324,6 @@ fn main() {
         },
         Some("DeleteContest") => {
             let result = rt.block_on(client.delete_contest(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4511,7 +4334,6 @@ fn main() {
         },
         Some("GetAlbumContest") => {
             let result = rt.block_on(client.get_album_contest(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -4522,7 +4344,6 @@ fn main() {
         },
         Some("GetAlbumContests") => {
             let result = rt.block_on(client.get_album_contests(
-                  3.16,
                   "filter_example".to_string(),
                   "sort_field_example".to_string(),
                   true,
@@ -4547,7 +4368,6 @@ fn main() {
         },
         Some("VoteOnAlbumContest") => {
             let result = rt.block_on(client.vote_on_album_contest(
-                  3.16,
                   789,
                   789,
                   Some("device_id_example".to_string()),
@@ -4560,7 +4380,6 @@ fn main() {
         },
         Some("AddPreview") => {
             let result = rt.block_on(client.add_preview(
-                  3.16,
                   789,
                   789
             ));
@@ -4568,7 +4387,6 @@ fn main() {
         },
         Some("AdsFind") => {
             let result = rt.block_on(client.ads_find(
-                  3.16,
                   "app_key_example".to_string(),
                   true,
                   true,
@@ -4590,7 +4408,6 @@ fn main() {
         },
         Some("CreateCreative") => {
             let result = rt.block_on(client.create_creative(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   true,
@@ -4611,7 +4428,6 @@ fn main() {
         },
         Some("DeleteCreative") => {
             let result = rt.block_on(client.delete_creative(
-                  3.16,
                   789,
                   789
             ));
@@ -4619,7 +4435,6 @@ fn main() {
         },
         Some("GetCreative") => {
             let result = rt.block_on(client.get_creative(
-                  3.16,
                   789,
                   789
             ));
@@ -4627,7 +4442,6 @@ fn main() {
         },
         Some("GetCreativesByApplication") => {
             let result = rt.block_on(client.get_creatives_by_application(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   56,
@@ -4639,7 +4453,6 @@ fn main() {
         },
         Some("RemovePreview") => {
             let result = rt.block_on(client.remove_preview(
-                  3.16,
                   789,
                   789
             ));
@@ -4647,7 +4460,6 @@ fn main() {
         },
         Some("UpdateCreative") => {
             let result = rt.block_on(client.update_creative(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -4667,7 +4479,6 @@ fn main() {
         },
         Some("Create") => {
             let result = rt.block_on(client.create(
-                  3.16,
                   789,
                   None
             ));
@@ -4675,14 +4486,12 @@ fn main() {
         },
         Some("GetDependents") => {
             let result = rt.block_on(client.get_dependents(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("RemoveDependent") => {
             let result = rt.block_on(client.remove_dependent(
-                  3.16,
                   789,
                   789
             ));
@@ -4690,14 +4499,12 @@ fn main() {
         },
         Some("CheckDisbursements") => {
             let result = rt.block_on(client.check_disbursements(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("CreateDisbursement") => {
             let result = rt.block_on(client.create_disbursement(
-                  3.16,
                   789,
                   789,
                   789,
@@ -4713,7 +4520,6 @@ fn main() {
         },
         Some("GetDisbursement") => {
             let result = rt.block_on(client.get_disbursement(
-                  3.16,
                   789,
                   789
             ));
@@ -4721,7 +4527,6 @@ fn main() {
         },
         Some("SearchDisbursements") => {
             let result = rt.block_on(client.search_disbursements(
-                  3.16,
                   789,
                   Some(789),
                   Some("statuses_example".to_string()),
@@ -4737,7 +4542,6 @@ fn main() {
         },
         Some("UpdateDisbursement") => {
             let result = rt.block_on(client.update_disbursement(
-                  3.16,
                   789,
                   789,
                   Some(8.14),
@@ -4753,7 +4557,6 @@ fn main() {
         },
         Some("AssignEmployee") => {
             let result = rt.block_on(client.assign_employee(
-                  3.16,
                   789,
                   789,
                   789,
@@ -4763,7 +4566,6 @@ fn main() {
         },
         Some("AssignToLocationEmployee") => {
             let result = rt.block_on(client.assign_to_location_employee(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -4773,7 +4575,6 @@ fn main() {
         },
         Some("CreateEmployee") => {
             let result = rt.block_on(client.create_employee(
-                  3.16,
                   789,
                   789,
                   "username_example".to_string(),
@@ -4809,7 +4610,6 @@ fn main() {
         },
         Some("DeleteEmployee") => {
             let result = rt.block_on(client.delete_employee(
-                  3.16,
                   789,
                   789
             ));
@@ -4817,7 +4617,6 @@ fn main() {
         },
         Some("GetEmployee") => {
             let result = rt.block_on(client.get_employee(
-                  3.16,
                   789,
                   789,
                   Some("settings_app_key_example".to_string())
@@ -4826,7 +4625,6 @@ fn main() {
         },
         Some("SearchEmployees") => {
             let result = rt.block_on(client.search_employees(
-                  3.16,
                   789,
                   Some("role_example".to_string()),
                   Some(789),
@@ -4849,7 +4647,6 @@ fn main() {
         },
         Some("UnassignEmployee") => {
             let result = rt.block_on(client.unassign_employee(
-                  3.16,
                   789,
                   789
             ));
@@ -4857,7 +4654,6 @@ fn main() {
         },
         Some("UpdateEmployee") => {
             let result = rt.block_on(client.update_employee(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -4893,7 +4689,6 @@ fn main() {
         },
         Some("AttendEvent") => {
             let result = rt.block_on(client.attend_event(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -4909,7 +4704,6 @@ fn main() {
         },
         Some("CreateEvent") => {
             let result = rt.block_on(client.create_event(
-                  3.16,
                   789,
                   "title_example".to_string(),
                   Some("retailer_location_ids_example".to_string()),
@@ -4927,7 +4721,6 @@ fn main() {
         },
         Some("DeleteEvent") => {
             let result = rt.block_on(client.delete_event(
-                  3.16,
                   789,
                   789
             ));
@@ -4935,7 +4728,6 @@ fn main() {
         },
         Some("GetEvent") => {
             let result = rt.block_on(client.get_event(
-                  3.16,
                   789,
                   789
             ));
@@ -4943,7 +4735,6 @@ fn main() {
         },
         Some("SearchEventTransactions") => {
             let result = rt.block_on(client.search_event_transactions(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -4968,7 +4759,6 @@ fn main() {
         },
         Some("SearchEvents") => {
             let result = rt.block_on(client.search_events(
-                  3.16,
                   789,
                   Some("keyword_example".to_string()),
                   Some(true),
@@ -4987,7 +4777,6 @@ fn main() {
         },
         Some("UpdateEvent") => {
             let result = rt.block_on(client.update_event(
-                  3.16,
                   789,
                   789,
                   Some("retailer_location_ids_example".to_string()),
@@ -5005,7 +4794,6 @@ fn main() {
         },
         Some("GetToken") => {
             let result = rt.block_on(client.get_token(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -5015,7 +4803,6 @@ fn main() {
         },
         Some("GraphInterface") => {
             let result = rt.block_on(client.graph_interface(
-                  3.16,
                   "event_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -5031,7 +4818,6 @@ fn main() {
         },
         Some("AddFavorite") => {
             let result = rt.block_on(client.add_favorite(
-                  3.16,
                   789,
                   "favoritable_type_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -5043,7 +4829,6 @@ fn main() {
         },
         Some("DeleteFavorite") => {
             let result = rt.block_on(client.delete_favorite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -5054,7 +4839,6 @@ fn main() {
         },
         Some("GetFavorite") => {
             let result = rt.block_on(client.get_favorite(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -5065,7 +4849,6 @@ fn main() {
         },
         Some("SearchFavorites") => {
             let result = rt.block_on(client.search_favorites(
-                  3.16,
                   "favoritable_type_example".to_string(),
                   models::SearchFavoritesSortFieldParameter::Id,
                   true,
@@ -5085,7 +4868,6 @@ fn main() {
         },
         Some("WhoHasFavorited") => {
             let result = rt.block_on(client.who_has_favorited(
-                  3.16,
                   789,
                   "favoritable_type_example".to_string(),
                   56,
@@ -5100,7 +4882,6 @@ fn main() {
         },
         Some("CreateFilter") => {
             let result = rt.block_on(client.create_filter(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("app_key_example".to_string()),
@@ -5115,7 +4896,6 @@ fn main() {
         },
         Some("DeleteFilter") => {
             let result = rt.block_on(client.delete_filter(
-                  3.16,
                   789,
                   789
             ));
@@ -5123,14 +4903,12 @@ fn main() {
         },
         Some("GetFilter") => {
             let result = rt.block_on(client.get_filter(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchFilters") => {
             let result = rt.block_on(client.search_filters(
-                  3.16,
                   Some(789),
                   Some("keyword_example".to_string()),
                   Some("app_key_example".to_string()),
@@ -5146,7 +4924,6 @@ fn main() {
         },
         Some("UpdateFilter") => {
             let result = rt.block_on(client.update_filter(
-                  3.16,
                   789,
                   789,
                   Some(789),
@@ -5161,7 +4938,6 @@ fn main() {
         },
         Some("CreateFlag") => {
             let result = rt.block_on(client.create_flag(
-                  3.16,
                   "flagable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -5174,7 +4950,6 @@ fn main() {
         },
         Some("DeleteFlag") => {
             let result = rt.block_on(client.delete_flag(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("item_being_flagged_type_example".to_string()),
@@ -5186,7 +4961,6 @@ fn main() {
         },
         Some("GetFlag") => {
             let result = rt.block_on(client.get_flag(
-                  3.16,
                   "flagable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -5198,7 +4972,6 @@ fn main() {
         },
         Some("GetFlagThreshold") => {
             let result = rt.block_on(client.get_flag_threshold(
-                  3.16,
                   "item_being_flagged_type_example".to_string(),
                   "app_key_example".to_string()
             ));
@@ -5206,7 +4979,6 @@ fn main() {
         },
         Some("UpdateFlagThreshold") => {
             let result = rt.block_on(client.update_flag_threshold(
-                  3.16,
                   "item_being_flagged_type_example".to_string(),
                   789,
                   "app_key_example".to_string(),
@@ -5217,7 +4989,6 @@ fn main() {
         },
         Some("CreateGame") => {
             let result = rt.block_on(client.create_game(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string()),
                   Some("title_example".to_string()),
@@ -5230,7 +5001,6 @@ fn main() {
         },
         Some("DeleteGame") => {
             let result = rt.block_on(client.delete_game(
-                  3.16,
                   789,
                   789
             ));
@@ -5238,7 +5008,6 @@ fn main() {
         },
         Some("GetGame") => {
             let result = rt.block_on(client.get_game(
-                  3.16,
                   789,
                   789,
                   Some(true)
@@ -5247,7 +5016,6 @@ fn main() {
         },
         Some("SearchGames") => {
             let result = rt.block_on(client.search_games(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   56,
@@ -5261,7 +5029,6 @@ fn main() {
         },
         Some("UpdateGame") => {
             let result = rt.block_on(client.update_game(
-                  3.16,
                   Some(789),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -5275,7 +5042,6 @@ fn main() {
         },
         Some("CreateGameLevel") => {
             let result = rt.block_on(client.create_game_level(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   "game_data_example".to_string(),
@@ -5307,7 +5073,6 @@ fn main() {
         },
         Some("DeleteGameLevel") => {
             let result = rt.block_on(client.delete_game_level(
-                  3.16,
                   789,
                   789
             ));
@@ -5315,7 +5080,6 @@ fn main() {
         },
         Some("GetGameLevel") => {
             let result = rt.block_on(client.get_game_level(
-                  3.16,
                   789,
                   789,
                   Some(true)
@@ -5324,7 +5088,6 @@ fn main() {
         },
         Some("GetGameLevelsByApplication") => {
             let result = rt.block_on(client.get_game_levels_by_application(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("keyword_example".to_string()),
@@ -5340,7 +5103,6 @@ fn main() {
         },
         Some("GetGameLevelsByBillableEntity") => {
             let result = rt.block_on(client.get_game_levels_by_billable_entity(
-                  3.16,
                   789,
                   Some("app_key_example".to_string()),
                   Some("keyword_example".to_string()),
@@ -5354,7 +5116,6 @@ fn main() {
         },
         Some("GetQuestionsInLevel") => {
             let result = rt.block_on(client.get_questions_in_level(
-                  3.16,
                   789,
                   789
             ));
@@ -5362,7 +5123,6 @@ fn main() {
         },
         Some("GetWordsInLevel") => {
             let result = rt.block_on(client.get_words_in_level(
-                  3.16,
                   789,
                   789
             ));
@@ -5370,7 +5130,6 @@ fn main() {
         },
         Some("UpdateGameLevel") => {
             let result = rt.block_on(client.update_game_level(
-                  3.16,
                   789,
                   789,
                   Some("app_key_example".to_string()),
@@ -5403,7 +5162,6 @@ fn main() {
         },
         Some("UpdateQuestionsInLevel") => {
             let result = rt.block_on(client.update_questions_in_level(
-                  3.16,
                   789,
                   789,
                   "question_ids_example".to_string()
@@ -5412,7 +5170,6 @@ fn main() {
         },
         Some("UpdateWordsInLevel") => {
             let result = rt.block_on(client.update_words_in_level(
-                  3.16,
                   789,
                   789,
                   "word_ids_example".to_string()
@@ -5421,7 +5178,6 @@ fn main() {
         },
         Some("AcceptInvite") => {
             let result = rt.block_on(client.accept_invite(
-                  3.16,
                   "token_example".to_string(),
                   789,
                   Some(789),
@@ -5441,7 +5197,6 @@ fn main() {
         },
         Some("AlbumContestInvite") => {
             let result = rt.block_on(client.album_contest_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -5454,7 +5209,6 @@ fn main() {
         },
         Some("AlbumInvite") => {
             let result = rt.block_on(client.album_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -5467,7 +5221,6 @@ fn main() {
         },
         Some("EventInvite") => {
             let result = rt.block_on(client.event_invite(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789,
@@ -5478,7 +5231,6 @@ fn main() {
         },
         Some("GameInvite") => {
             let result = rt.block_on(client.game_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -5491,7 +5243,6 @@ fn main() {
         },
         Some("GetInvite") => {
             let result = rt.block_on(client.get_invite(
-                  3.16,
                   Some(789),
                   Some("token_example".to_string()),
                   Some(789),
@@ -5506,7 +5257,6 @@ fn main() {
         },
         Some("MissionInvite") => {
             let result = rt.block_on(client.mission_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -5519,7 +5269,6 @@ fn main() {
         },
         Some("OfferInvite") => {
             let result = rt.block_on(client.offer_invite(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789
@@ -5528,7 +5277,6 @@ fn main() {
         },
         Some("OfferLocationInvite") => {
             let result = rt.block_on(client.offer_location_invite(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789
@@ -5537,7 +5285,6 @@ fn main() {
         },
         Some("RetailerLocationInvite") => {
             let result = rt.block_on(client.retailer_location_invite(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789,
@@ -5547,7 +5294,6 @@ fn main() {
         },
         Some("CreateLeaderboard") => {
             let result = rt.block_on(client.create_leaderboard(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string()),
                   Some("rank_type_example".to_string()),
@@ -5566,7 +5312,6 @@ fn main() {
         },
         Some("DeleteLeaderboard") => {
             let result = rt.block_on(client.delete_leaderboard(
-                  3.16,
                   789,
                   Some(789)
             ));
@@ -5574,7 +5319,6 @@ fn main() {
         },
         Some("GetLeaderboard") => {
             let result = rt.block_on(client.get_leaderboard(
-                  3.16,
                   789,
                   Some(789),
                   Some(true)
@@ -5583,7 +5327,6 @@ fn main() {
         },
         Some("SearchLeaderboards") => {
             let result = rt.block_on(client.search_leaderboards(
-                  3.16,
                   Some(789),
                   Some("app_key_example".to_string()),
                   Some(true),
@@ -5601,7 +5344,6 @@ fn main() {
         },
         Some("UpdateLeaderboard") => {
             let result = rt.block_on(client.update_leaderboard(
-                  3.16,
                   789,
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -5622,7 +5364,6 @@ fn main() {
         },
         Some("RegisterLike") => {
             let result = rt.block_on(client.register_like(
-                  3.16,
                   "likable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -5640,7 +5381,6 @@ fn main() {
         },
         Some("RemoveLike") => {
             let result = rt.block_on(client.remove_like(
-                  3.16,
                   "likable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -5652,7 +5392,6 @@ fn main() {
         },
         Some("SearchLikes") => {
             let result = rt.block_on(client.search_likes(
-                  3.16,
                   "likable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -5669,7 +5408,6 @@ fn main() {
         },
         Some("CreateListing") => {
             let result = rt.block_on(client.create_listing(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("filter_ids_example".to_string()),
@@ -5689,7 +5427,6 @@ fn main() {
         },
         Some("DeleteListing") => {
             let result = rt.block_on(client.delete_listing(
-                  3.16,
                   789,
                   789
             ));
@@ -5697,14 +5434,12 @@ fn main() {
         },
         Some("GetListing") => {
             let result = rt.block_on(client.get_listing(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchListing") => {
             let result = rt.block_on(client.search_listing(
-                  3.16,
                   Some(789),
                   Some("keyword_example".to_string()),
                   Some(56),
@@ -5725,7 +5460,6 @@ fn main() {
         },
         Some("SummaryListing") => {
             let result = rt.block_on(client.summary_listing(
-                  3.16,
                   Some(789),
                   Some(789),
                   Some("category_ids_example".to_string()),
@@ -5736,7 +5470,6 @@ fn main() {
         },
         Some("UpdateListing") => {
             let result = rt.block_on(client.update_listing(
-                  3.16,
                   789,
                   789,
                   Some("filter_ids_example".to_string()),
@@ -5757,7 +5490,6 @@ fn main() {
         },
         Some("CacheTrilaterationData") => {
             let result = rt.block_on(client.cache_trilateration_data(
-                  3.16,
                   "udid_example".to_string(),
                   Some(789),
                   Some(56),
@@ -5768,21 +5500,18 @@ fn main() {
         },
         Some("CacheTrilaterationDataGzip") => {
             let result = rt.block_on(client.cache_trilateration_data_gzip(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetLocationByIp") => {
             let result = rt.block_on(client.get_location_by_ip(
-                  3.16,
                   Some("ip_example".to_string())
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetLocationByTrilateration") => {
             let result = rt.block_on(client.get_location_by_trilateration(
-                  3.16,
                   Some(789),
                   Some(1.2),
                   Some(1.2),
@@ -5793,7 +5522,6 @@ fn main() {
         },
         Some("GetLocations") => {
             let result = rt.block_on(client.get_locations(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -5818,14 +5546,12 @@ fn main() {
         },
         Some("CreateLocationV2") => {
             let result = rt.block_on(client.create_location_v2(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateLocationV2") => {
             let result = rt.block_on(client.update_location_v2(
-                  3.16,
                   789,
                   None
             ));
@@ -5833,7 +5559,6 @@ fn main() {
         },
         Some("CreateMedia") => {
             let result = rt.block_on(client.create_media(
-                  3.16,
                   789,
                   "title_example".to_string(),
                   models::CreateMediaBarcodeTypeParameter::None,
@@ -5896,7 +5621,6 @@ fn main() {
         },
         Some("DeleteMedia") => {
             let result = rt.block_on(client.delete_media(
-                  3.16,
                   789,
                   789
             ));
@@ -5904,7 +5628,6 @@ fn main() {
         },
         Some("GetMedia") => {
             let result = rt.block_on(client.get_media(
-                  3.16,
                   789,
                   789
             ));
@@ -5912,7 +5635,6 @@ fn main() {
         },
         Some("SearchMedia") => {
             let result = rt.block_on(client.search_media(
-                  3.16,
                   789,
                   true,
                   models::SearchEventsSortFieldParameter::Id,
@@ -5927,7 +5649,6 @@ fn main() {
         },
         Some("UpdateMedia") => {
             let result = rt.block_on(client.update_media(
-                  3.16,
                   789,
                   789,
                   Some("retailer_location_ids_example".to_string()),
@@ -5992,7 +5713,6 @@ fn main() {
         },
         Some("CreateMission") => {
             let result = rt.block_on(client.create_mission(
-                  3.16,
                   789,
                   "title_example".to_string(),
                   Some("description_example".to_string()),
@@ -6024,7 +5744,6 @@ fn main() {
         },
         Some("DeleteMission") => {
             let result = rt.block_on(client.delete_mission(
-                  3.16,
                   789,
                   789
             ));
@@ -6032,7 +5751,6 @@ fn main() {
         },
         Some("FindMissions") => {
             let result = rt.block_on(client.find_missions(
-                  3.16,
                   "app_key_example".to_string(),
                   Some("suffix_example".to_string()),
                   Some("param_type_example".to_string()),
@@ -6057,7 +5775,6 @@ fn main() {
         },
         Some("GetMission") => {
             let result = rt.block_on(client.get_mission(
-                  3.16,
                   789,
                   789,
                   Some(true)
@@ -6066,7 +5783,6 @@ fn main() {
         },
         Some("ImportMission") => {
             let result = rt.block_on(client.import_mission(
-                  3.16,
                   789,
                   1.2,
                   1.2,
@@ -6080,7 +5796,6 @@ fn main() {
         },
         Some("SearchMissionFormats") => {
             let result = rt.block_on(client.search_mission_formats(
-                  3.16,
                   56,
                   56,
                   true
@@ -6089,7 +5804,6 @@ fn main() {
         },
         Some("SearchMissions") => {
             let result = rt.block_on(client.search_missions(
-                  3.16,
                   789,
                   Some("keyword_example".to_string()),
                   Some("sub_type_example".to_string()),
@@ -6106,7 +5820,6 @@ fn main() {
         },
         Some("SearchMissionsByBillableEntity") => {
             let result = rt.block_on(client.search_missions_by_billable_entity(
-                  3.16,
                   789,
                   Some("keyword_example".to_string()),
                   Some(56),
@@ -6122,7 +5835,6 @@ fn main() {
         },
         Some("UpdateMission") => {
             let result = rt.block_on(client.update_mission(
-                  3.16,
                   789,
                   789,
                   Some("title_example".to_string()),
@@ -6153,7 +5865,6 @@ fn main() {
         },
         Some("CreateMissionInvite") => {
             let result = rt.block_on(client.create_mission_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -6164,7 +5875,6 @@ fn main() {
         },
         Some("DeleteMissionInvite") => {
             let result = rt.block_on(client.delete_mission_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -6175,7 +5885,6 @@ fn main() {
         },
         Some("GetMissionInvite") => {
             let result = rt.block_on(client.get_mission_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -6187,7 +5896,6 @@ fn main() {
         },
         Some("SearchMissionInvites") => {
             let result = rt.block_on(client.search_mission_invites(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -6206,7 +5914,6 @@ fn main() {
         },
         Some("UpdateMissionInvite") => {
             let result = rt.block_on(client.update_mission_invite(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -6223,7 +5930,6 @@ fn main() {
         },
         Some("BatchOperation") => {
             let result = rt.block_on(client.batch_operation(
-                  3.16,
                   789,
                   "notable_type_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -6234,7 +5940,6 @@ fn main() {
         },
         Some("CreateNote") => {
             let result = rt.block_on(client.create_note(
-                  3.16,
                   "comment_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -6282,7 +5987,6 @@ fn main() {
         },
         Some("DeleteNote") => {
             let result = rt.block_on(client.delete_note(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -6294,7 +5998,6 @@ fn main() {
         },
         Some("GetNote") => {
             let result = rt.block_on(client.get_note(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -6304,7 +6007,6 @@ fn main() {
         },
         Some("SearchNotes") => {
             let result = rt.block_on(client.search_notes(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("notable_type_example".to_string()),
@@ -6327,7 +6029,6 @@ fn main() {
         },
         Some("UpdateNote") => {
             let result = rt.block_on(client.update_note(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -6374,7 +6075,6 @@ fn main() {
         },
         Some("CreateNotificationTemplate") => {
             let result = rt.block_on(client.create_notification_template(
-                  3.16,
                   789,
                   "conduit_example".to_string(),
                   "title_example".to_string(),
@@ -6387,7 +6087,6 @@ fn main() {
         },
         Some("CreateOrUpdateBlockedNotifications") => {
             let result = rt.block_on(client.create_or_update_blocked_notifications(
-                  3.16,
                   "app_key_example".to_string(),
                   "data_example".to_string(),
                   Some(789)
@@ -6396,7 +6095,6 @@ fn main() {
         },
         Some("DeleteNotificationTemplate") => {
             let result = rt.block_on(client.delete_notification_template(
-                  3.16,
                   789,
                   789
             ));
@@ -6404,7 +6102,6 @@ fn main() {
         },
         Some("GetNotificationTemplate") => {
             let result = rt.block_on(client.get_notification_template(
-                  3.16,
                   789,
                   789
             ));
@@ -6412,7 +6109,6 @@ fn main() {
         },
         Some("GetNotifications") => {
             let result = rt.block_on(client.get_notifications(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -6439,7 +6135,6 @@ fn main() {
         },
         Some("RegisterNotificationToken") => {
             let result = rt.block_on(client.register_notification_token(
-                  3.16,
                   "token_example".to_string(),
                   models::RegisterNotificationTokenPushTypeParameter::Apns,
                   Some("device_id_example".to_string()),
@@ -6455,7 +6150,6 @@ fn main() {
         },
         Some("SearchBlockedNotifications") => {
             let result = rt.block_on(client.search_blocked_notifications(
-                  3.16,
                   "app_key_example".to_string(),
                   Some(789),
                   Some("search_tags_example".to_string()),
@@ -6473,7 +6167,6 @@ fn main() {
         },
         Some("SearchNotificationTemplate") => {
             let result = rt.block_on(client.search_notification_template(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -6490,7 +6183,6 @@ fn main() {
         },
         Some("SearchRecipients") => {
             let result = rt.block_on(client.search_recipients(
-                  3.16,
                   models::SearchRecipientsSortFieldParameter::Id,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -6509,7 +6201,6 @@ fn main() {
         },
         Some("SearchRecipientsCount") => {
             let result = rt.block_on(client.search_recipients_count(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -6527,7 +6218,6 @@ fn main() {
         },
         Some("SendBatchNotifications") => {
             let result = rt.block_on(client.send_batch_notifications(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "custom_message_example".to_string(),
@@ -6542,7 +6232,6 @@ fn main() {
         },
         Some("SendCustomNotifications") => {
             let result = rt.block_on(client.send_custom_notifications(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("receiver_account_ids_example".to_string()),
@@ -6566,7 +6255,6 @@ fn main() {
         },
         Some("UpdateNotificationTemplate") => {
             let result = rt.block_on(client.update_notification_template(
-                  3.16,
                   789,
                   789,
                   Some("title_example".to_string()),
@@ -6577,7 +6265,6 @@ fn main() {
         },
         Some("AddField") => {
             let result = rt.block_on(client.add_field(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "object_name_example".to_string(),
@@ -6588,7 +6275,6 @@ fn main() {
         },
         Some("CreateObject") => {
             let result = rt.block_on(client.create_object(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "object_name_example".to_string()
@@ -6597,7 +6283,6 @@ fn main() {
         },
         Some("DeleteField") => {
             let result = rt.block_on(client.delete_field(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "object_name_example".to_string(),
@@ -6607,7 +6292,6 @@ fn main() {
         },
         Some("DeleteObject") => {
             let result = rt.block_on(client.delete_object(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "object_name_example".to_string()
@@ -6616,7 +6300,6 @@ fn main() {
         },
         Some("GetObject") => {
             let result = rt.block_on(client.get_object(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "object_name_example".to_string()
@@ -6625,7 +6308,6 @@ fn main() {
         },
         Some("SearchObject") => {
             let result = rt.block_on(client.search_object(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789,
@@ -6636,7 +6318,6 @@ fn main() {
         },
         Some("CreateData") => {
             let result = rt.block_on(client.create_data(
-                  3.16,
                   "object_name_example".to_string(),
                   Some(789),
                   Some("body_example".to_string())
@@ -6645,7 +6326,6 @@ fn main() {
         },
         Some("SearchData") => {
             let result = rt.block_on(client.search_data(
-                  3.16,
                   "object_name_example".to_string(),
                   true,
                   789,
@@ -6659,7 +6339,6 @@ fn main() {
         },
         Some("DeleteData") => {
             let result = rt.block_on(client.delete_data(
-                  3.16,
                   "object_name_example".to_string(),
                   "object_id_example".to_string(),
                   Some(789)
@@ -6668,7 +6347,6 @@ fn main() {
         },
         Some("GetData") => {
             let result = rt.block_on(client.get_data(
-                  3.16,
                   "object_name_example".to_string(),
                   "object_id_example".to_string(),
                   Some(789),
@@ -6678,7 +6356,6 @@ fn main() {
         },
         Some("UpdateData") => {
             let result = rt.block_on(client.update_data(
-                  3.16,
                   "object_name_example".to_string(),
                   "object_id_example".to_string(),
                   Some(789),
@@ -6688,7 +6365,6 @@ fn main() {
         },
         Some("BatchUpdateOfferLocations") => {
             let result = rt.block_on(client.batch_update_offer_locations(
-                  3.16,
                   "data_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -6697,7 +6373,6 @@ fn main() {
         },
         Some("CreateOffer") => {
             let result = rt.block_on(client.create_offer(
-                  3.16,
                   true,
                   "title_example".to_string(),
                   models::CreateMediaBarcodeTypeParameter::None,
@@ -6789,7 +6464,6 @@ fn main() {
         },
         Some("DeleteOffer") => {
             let result = rt.block_on(client.delete_offer(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -6798,7 +6472,6 @@ fn main() {
         },
         Some("DeleteOfferLocation") => {
             let result = rt.block_on(client.delete_offer_location(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -6807,7 +6480,6 @@ fn main() {
         },
         Some("GetOffer") => {
             let result = rt.block_on(client.get_offer(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -6817,7 +6489,6 @@ fn main() {
         },
         Some("GetOfferDetails") => {
             let result = rt.block_on(client.get_offer_details(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -6833,7 +6504,6 @@ fn main() {
         },
         Some("GetOfferListCounts") => {
             let result = rt.block_on(client.get_offer_list_counts(
-                  3.16,
                   1.2,
                   1.2,
                   Some(8.14),
@@ -6843,7 +6513,6 @@ fn main() {
         },
         Some("GetOfferLocation") => {
             let result = rt.block_on(client.get_offer_location(
-                  3.16,
                   Some(789),
                   Some("udid_example".to_string())
             ));
@@ -6851,7 +6520,6 @@ fn main() {
         },
         Some("GetOfferLocationsForRetailers") => {
             let result = rt.block_on(client.get_offer_locations_for_retailers(
-                  3.16,
                   models::SearchOffersForConsumerGroupByParameter::Id,
                   true,
                   56,
@@ -6877,7 +6545,6 @@ fn main() {
         },
         Some("GetOffersForRetailers") => {
             let result = rt.block_on(client.get_offers_for_retailers(
-                  3.16,
                   models::CreateMediaOfferVisibilityParameter::Public,
                   models::SearchEventsSortFieldParameter::Id,
                   true,
@@ -6914,7 +6581,6 @@ fn main() {
         },
         Some("RedeemOfferTransaction") => {
             let result = rt.block_on(client.redeem_offer_transaction(
-                  3.16,
                   789,
                   56,
                   Some("device_id_example".to_string()),
@@ -6925,7 +6591,6 @@ fn main() {
         },
         Some("SearchOfferTransactionsForRetailers") => {
             let result = rt.block_on(client.search_offer_transactions_for_retailers(
-                  3.16,
                   models::SearchEventTransactionsSortFieldParameter::Id,
                   true,
                   56,
@@ -6955,7 +6620,6 @@ fn main() {
         },
         Some("SearchOffersForConsumer") => {
             let result = rt.block_on(client.search_offers_for_consumer(
-                  3.16,
                   1.2,
                   1.2,
                   models::SearchOffersForConsumerRecommendationTypeParameter::Wallet,
@@ -6992,7 +6656,6 @@ fn main() {
         },
         Some("TopOfferTransactions") => {
             let result = rt.block_on(client.top_offer_transactions(
-                  3.16,
                   Some(56),
                   Some(56)
             ));
@@ -7000,7 +6663,6 @@ fn main() {
         },
         Some("UpdateOffer") => {
             let result = rt.block_on(client.update_offer(
-                  3.16,
                   789,
                   true,
                   Some("device_id_example".to_string()),
@@ -7093,7 +6755,6 @@ fn main() {
         },
         Some("UpdateOfferStatus") => {
             let result = rt.block_on(client.update_offer_status(
-                  3.16,
                   "offer_ids_example".to_string(),
                   true,
                   Some("device_id_example".to_string()),
@@ -7103,7 +6764,6 @@ fn main() {
         },
         Some("CreateOfferTransactionStatus") => {
             let result = rt.block_on(client.create_offer_transaction_status(
-                  3.16,
                   "name_example".to_string(),
                   56,
                   Some("device_id_example".to_string()),
@@ -7119,7 +6779,6 @@ fn main() {
         },
         Some("DeleteOfferTransactionStatus") => {
             let result = rt.block_on(client.delete_offer_transaction_status(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -7130,7 +6789,6 @@ fn main() {
         },
         Some("GetOfferTransactionStatus") => {
             let result = rt.block_on(client.get_offer_transaction_status(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -7141,7 +6799,6 @@ fn main() {
         },
         Some("SearchOfferTransactionStatuses") => {
             let result = rt.block_on(client.search_offer_transaction_statuses(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -7159,7 +6816,6 @@ fn main() {
         },
         Some("UpdateOfferTransactionStatus") => {
             let result = rt.block_on(client.update_offer_transaction_status(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(1.2),
@@ -7176,7 +6832,6 @@ fn main() {
         },
         Some("ImageGeneration") => {
             let result = rt.block_on(client.image_generation(
-                  3.16,
                   789,
                   "post_body_example".to_string(),
                   Some(true)
@@ -7185,14 +6840,12 @@ fn main() {
         },
         Some("RequestOptimization") => {
             let result = rt.block_on(client.request_optimization(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetOptimizationResult") => {
             let result = rt.block_on(client.get_optimization_result(
-                  3.16,
                   "batch_id_example".to_string(),
                   56,
                   56
@@ -7201,7 +6854,6 @@ fn main() {
         },
         Some("AddMovie") => {
             let result = rt.block_on(client.add_movie(
-                  3.16,
                   789,
                   "movie_name_example".to_string(),
                   Some("third_party_account_id_example".to_string()),
@@ -7214,7 +6866,6 @@ fn main() {
         },
         Some("AiDocs") => {
             let result = rt.block_on(client.ai_docs(
-                  3.16,
                   789,
                   "doc_example".to_string(),
                   Some(true),
@@ -7225,7 +6876,6 @@ fn main() {
         },
         Some("AiFindImages") => {
             let result = rt.block_on(client.ai_find_images(
-                  3.16,
                   789,
                   "text_example".to_string(),
                   Some("parse_flag_example".to_string()),
@@ -7236,7 +6886,6 @@ fn main() {
         },
         Some("AiTags") => {
             let result = rt.block_on(client.ai_tags(
-                  3.16,
                   789,
                   "tags_example".to_string(),
                   Some("conditional_example".to_string()),
@@ -7247,7 +6896,6 @@ fn main() {
         },
         Some("AiText") => {
             let result = rt.block_on(client.ai_text(
-                  3.16,
                   789,
                   "terms_example".to_string(),
                   Some("conditional_example".to_string()),
@@ -7258,7 +6906,6 @@ fn main() {
         },
         Some("Batch") => {
             let result = rt.block_on(client.batch(
-                  3.16,
                   789,
                   Some("third_party_account_id_example".to_string()),
                   Some(56),
@@ -7271,7 +6918,6 @@ fn main() {
         },
         Some("CreateInstantEpisode") => {
             let result = rt.block_on(client.create_instant_episode(
-                  3.16,
                   789,
                   "data_example".to_string()
             ));
@@ -7279,7 +6925,6 @@ fn main() {
         },
         Some("CreateVoiceCanvas") => {
             let result = rt.block_on(client.create_voice_canvas(
-                  3.16,
                   789,
                   "dimensions_example".to_string(),
                   Some("third_party_account_id_example".to_string()),
@@ -7294,7 +6939,6 @@ fn main() {
         },
         Some("Emotion") => {
             let result = rt.block_on(client.emotion(
-                  3.16,
                   789,
                   Some("third_party_account_id_example".to_string()),
                   Some(swagger::ByteArray(Vec::from("BINARY_DATA_HERE"))),
@@ -7305,7 +6949,6 @@ fn main() {
         },
         Some("StartVideoRender") => {
             let result = rt.block_on(client.start_video_render(
-                  3.16,
                   789,
                   "data_example".to_string()
             ));
@@ -7313,7 +6956,6 @@ fn main() {
         },
         Some("Stt") => {
             let result = rt.block_on(client.stt(
-                  3.16,
                   789,
                   Some("third_party_account_id_example".to_string()),
                   Some("source_language_example".to_string()),
@@ -7326,7 +6968,6 @@ fn main() {
         },
         Some("SummarizeTopics") => {
             let result = rt.block_on(client.summarize_topics(
-                  3.16,
                   789,
                   Some("third_party_account_id_example".to_string()),
                   Some("doc_example".to_string()),
@@ -7340,7 +6981,6 @@ fn main() {
         },
         Some("TechTune") => {
             let result = rt.block_on(client.tech_tune(
-                  3.16,
                   789,
                   56,
                   Some("third_party_account_id_example".to_string()),
@@ -7352,7 +6992,6 @@ fn main() {
         },
         Some("Tts") => {
             let result = rt.block_on(client.tts(
-                  3.16,
                   789,
                   "text_example".to_string(),
                   Some("third_party_account_id_example".to_string()),
@@ -7364,7 +7003,6 @@ fn main() {
         },
         Some("GetAddMovieResult") => {
             let result = rt.block_on(client.get_add_movie_result(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7372,7 +7010,6 @@ fn main() {
         },
         Some("GetBatch") => {
             let result = rt.block_on(client.get_batch(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7380,7 +7017,6 @@ fn main() {
         },
         Some("GetEmotion") => {
             let result = rt.block_on(client.get_emotion(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7388,7 +7024,6 @@ fn main() {
         },
         Some("GetEpisodeStatus") => {
             let result = rt.block_on(client.get_episode_status(
-                  3.16,
                   789,
                   789
             ));
@@ -7396,7 +7031,6 @@ fn main() {
         },
         Some("GetRenderStatus") => {
             let result = rt.block_on(client.get_render_status(
-                  3.16,
                   "render_id_example".to_string(),
                   789
             ));
@@ -7404,7 +7038,6 @@ fn main() {
         },
         Some("GetStt") => {
             let result = rt.block_on(client.get_stt(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7412,7 +7045,6 @@ fn main() {
         },
         Some("GetTechTune") => {
             let result = rt.block_on(client.get_tech_tune(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7420,7 +7052,6 @@ fn main() {
         },
         Some("GetTopics") => {
             let result = rt.block_on(client.get_topics(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7428,7 +7059,6 @@ fn main() {
         },
         Some("GetTts") => {
             let result = rt.block_on(client.get_tts(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7436,7 +7066,6 @@ fn main() {
         },
         Some("GetVoiceCanvas") => {
             let result = rt.block_on(client.get_voice_canvas(
-                  3.16,
                   "request_id_example".to_string(),
                   789
             ));
@@ -7444,7 +7073,6 @@ fn main() {
         },
         Some("CreatePack") => {
             let result = rt.block_on(client.create_pack(
-                  3.16,
                   789,
                   "title_example".to_string(),
                   789,
@@ -7474,7 +7102,6 @@ fn main() {
         },
         Some("DeletePack") => {
             let result = rt.block_on(client.delete_pack(
-                  3.16,
                   789,
                   789
             ));
@@ -7482,7 +7109,6 @@ fn main() {
         },
         Some("GetPack") => {
             let result = rt.block_on(client.get_pack(
-                  3.16,
                   789,
                   789,
                   true
@@ -7491,7 +7117,6 @@ fn main() {
         },
         Some("SearchPacks") => {
             let result = rt.block_on(client.search_packs(
-                  3.16,
                   789,
                   models::SearchPacksSortFieldParameter::Title,
                   true,
@@ -7507,7 +7132,6 @@ fn main() {
         },
         Some("UpdatePack") => {
             let result = rt.block_on(client.update_pack(
-                  3.16,
                   789,
                   789,
                   true,
@@ -7538,7 +7162,6 @@ fn main() {
         },
         Some("ProcessAllParticipants") => {
             let result = rt.block_on(client.process_all_participants(
-                  3.16,
                   789,
                   Some("app_key_example".to_string()),
                   Some(true)
@@ -7547,7 +7170,6 @@ fn main() {
         },
         Some("ProcessParticipants") => {
             let result = rt.block_on(client.process_participants(
-                  3.16,
                   789,
                   "league_example".to_string(),
                   Some("app_key_example".to_string()),
@@ -7558,7 +7180,6 @@ fn main() {
         },
         Some("ComputePath") => {
             let result = rt.block_on(client.compute_path(
-                  3.16,
                   "data_example".to_string(),
                   models::ComputePathUnitsParameter::Metric,
                   true,
@@ -7568,7 +7189,6 @@ fn main() {
         },
         Some("CreatePostalCode") => {
             let result = rt.block_on(client.create_postal_code(
-                  3.16,
                   789,
                   "code_example".to_string(),
                   1.2,
@@ -7581,7 +7201,6 @@ fn main() {
         },
         Some("DeletePostalCode") => {
             let result = rt.block_on(client.delete_postal_code(
-                  3.16,
                   789,
                   789
             ));
@@ -7589,14 +7208,12 @@ fn main() {
         },
         Some("GetPostalCode") => {
             let result = rt.block_on(client.get_postal_code(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetPostalCodes") => {
             let result = rt.block_on(client.get_postal_codes(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   Some(1.2),
@@ -7610,7 +7227,6 @@ fn main() {
         },
         Some("UpdatePostalCode") => {
             let result = rt.block_on(client.update_postal_code(
-                  3.16,
                   789,
                   789,
                   Some("code_example".to_string()),
@@ -7624,7 +7240,6 @@ fn main() {
         },
         Some("CreatePersona") => {
             let result = rt.block_on(client.create_persona(
-                  3.16,
                   789,
                   "title_example".to_string(),
                   Some("preview_accounts_example".to_string()),
@@ -7639,7 +7254,6 @@ fn main() {
         },
         Some("DeletePersona") => {
             let result = rt.block_on(client.delete_persona(
-                  3.16,
                   789,
                   789
             ));
@@ -7647,7 +7261,6 @@ fn main() {
         },
         Some("GetPersonaList") => {
             let result = rt.block_on(client.get_persona_list(
-                  3.16,
                   789,
                   789
             ));
@@ -7655,7 +7268,6 @@ fn main() {
         },
         Some("SearchPersona") => {
             let result = rt.block_on(client.search_persona(
-                  3.16,
                   789,
                   56,
                   56
@@ -7664,7 +7276,6 @@ fn main() {
         },
         Some("UpdatePersona") => {
             let result = rt.block_on(client.update_persona(
-                  3.16,
                   789,
                   789,
                   Some("title_example".to_string()),
@@ -7681,14 +7292,12 @@ fn main() {
         },
         Some("CreateProgram") => {
             let result = rt.block_on(client.create_program(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchPrograms") => {
             let result = rt.block_on(client.search_programs(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -7700,21 +7309,18 @@ fn main() {
         },
         Some("DeleteProgram") => {
             let result = rt.block_on(client.delete_program(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetProgram") => {
             let result = rt.block_on(client.get_program(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("PostProgram") => {
             let result = rt.block_on(client.post_program(
-                  3.16,
                   789,
                   None
             ));
@@ -7722,7 +7328,6 @@ fn main() {
         },
         Some("PutProgram") => {
             let result = rt.block_on(client.put_program(
-                  3.16,
                   789,
                   None
             ));
@@ -7730,7 +7335,6 @@ fn main() {
         },
         Some("CreatePurchaseItem") => {
             let result = rt.block_on(client.create_purchase_item(
-                  3.16,
                   "app_key_example".to_string(),
                   "name_example".to_string(),
                   models::CreatePurchaseItemPurchaseTypeParameter::Sirqul,
@@ -7756,7 +7360,6 @@ fn main() {
         },
         Some("DeletePurchaseItem") => {
             let result = rt.block_on(client.delete_purchase_item(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -7765,7 +7368,6 @@ fn main() {
         },
         Some("GetPurchaseItem") => {
             let result = rt.block_on(client.get_purchase_item(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -7774,7 +7376,6 @@ fn main() {
         },
         Some("SearchPurchaseItems") => {
             let result = rt.block_on(client.search_purchase_items(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -7792,7 +7393,6 @@ fn main() {
         },
         Some("UpdatePurchaseItem") => {
             let result = rt.block_on(client.update_purchase_item(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -7819,7 +7419,6 @@ fn main() {
         },
         Some("CreateOrder") => {
             let result = rt.block_on(client.create_order(
-                  3.16,
                   "app_key_example".to_string(),
                   "cart_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -7837,7 +7436,6 @@ fn main() {
         },
         Some("DeleteOrder") => {
             let result = rt.block_on(client.delete_order(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -7846,7 +7444,6 @@ fn main() {
         },
         Some("GetOrder") => {
             let result = rt.block_on(client.get_order(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -7856,7 +7453,6 @@ fn main() {
         },
         Some("PreviewOrder") => {
             let result = rt.block_on(client.preview_order(
-                  3.16,
                   "app_key_example".to_string(),
                   "cart_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -7874,7 +7470,6 @@ fn main() {
         },
         Some("SearchOrders") => {
             let result = rt.block_on(client.search_orders(
-                  3.16,
                   "app_key_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -7911,7 +7506,6 @@ fn main() {
         },
         Some("UpdateOrder") => {
             let result = rt.block_on(client.update_order(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "cart_example".to_string(),
@@ -7928,7 +7522,6 @@ fn main() {
         },
         Some("CreateQuestion") => {
             let result = rt.block_on(client.create_question(
-                  3.16,
                   789,
                   "question_example".to_string(),
                   "answers_example".to_string(),
@@ -7945,7 +7538,6 @@ fn main() {
         },
         Some("DeleteQuestion") => {
             let result = rt.block_on(client.delete_question(
-                  3.16,
                   789,
                   789
             ));
@@ -7953,7 +7545,6 @@ fn main() {
         },
         Some("GetQuestion") => {
             let result = rt.block_on(client.get_question(
-                  3.16,
                   789,
                   789
             ));
@@ -7961,7 +7552,6 @@ fn main() {
         },
         Some("SearchQuestions") => {
             let result = rt.block_on(client.search_questions(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -7974,7 +7564,6 @@ fn main() {
         },
         Some("UpdateQuestion") => {
             let result = rt.block_on(client.update_question(
-                  3.16,
                   789,
                   789,
                   789,
@@ -7992,7 +7581,6 @@ fn main() {
         },
         Some("GetHistoricalRankings") => {
             let result = rt.block_on(client.get_historical_rankings(
-                  3.16,
                   "app_key_example".to_string(),
                   "rank_type_example".to_string(),
                   789,
@@ -8008,7 +7596,6 @@ fn main() {
         },
         Some("GetRankings") => {
             let result = rt.block_on(client.get_rankings(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("game_type_example".to_string()),
@@ -8032,7 +7619,6 @@ fn main() {
         },
         Some("GetUserRank") => {
             let result = rt.block_on(client.get_user_rank(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("app_key_example".to_string()),
@@ -8049,7 +7635,6 @@ fn main() {
         },
         Some("OverrideUserRank") => {
             let result = rt.block_on(client.override_user_rank(
-                  3.16,
                   789,
                   789,
                   "app_key_example".to_string(),
@@ -8077,7 +7662,6 @@ fn main() {
         },
         Some("UpdateRankings") => {
             let result = rt.block_on(client.update_rankings(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "rank_type_example".to_string(),
@@ -8093,7 +7677,6 @@ fn main() {
         },
         Some("CreateRating") => {
             let result = rt.block_on(client.create_rating(
-                  3.16,
                   "ratable_type_example".to_string(),
                   789,
                   56,
@@ -8110,7 +7693,6 @@ fn main() {
         },
         Some("DeleteRating") => {
             let result = rt.block_on(client.delete_rating(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -8119,7 +7701,6 @@ fn main() {
         },
         Some("SearchLocationRatingIndexes") => {
             let result = rt.block_on(client.search_location_rating_indexes(
-                  3.16,
                   Some("category_ids_example".to_string()),
                   Some("keyword_example".to_string()),
                   Some("location_type_example".to_string()),
@@ -8142,7 +7723,6 @@ fn main() {
         },
         Some("SearchRatingIndexes") => {
             let result = rt.block_on(client.search_rating_indexes(
-                  3.16,
                   models::SearchRatingIndexesRatableTypeParameter::Locatable,
                   Some("ratable_ids_example".to_string()),
                   Some("category_ids_example".to_string()),
@@ -8161,7 +7741,6 @@ fn main() {
         },
         Some("SearchRatings") => {
             let result = rt.block_on(client.search_ratings(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -8178,7 +7757,6 @@ fn main() {
         },
         Some("UpdateRating") => {
             let result = rt.block_on(client.update_rating(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8194,7 +7772,6 @@ fn main() {
         },
         Some("CreateRegion") => {
             let result = rt.block_on(client.create_region(
-                  3.16,
                   789,
                   "region_class_example".to_string(),
                   "short_name_example".to_string(),
@@ -8221,7 +7798,6 @@ fn main() {
         },
         Some("DeleteRegion") => {
             let result = rt.block_on(client.delete_region(
-                  3.16,
                   789,
                   789
             ));
@@ -8229,7 +7805,6 @@ fn main() {
         },
         Some("GetRegion") => {
             let result = rt.block_on(client.get_region(
-                  3.16,
                   789,
                   Some(789)
             ));
@@ -8237,7 +7812,6 @@ fn main() {
         },
         Some("SearchRegions") => {
             let result = rt.block_on(client.search_regions(
-                  3.16,
                   Some(789),
                   Some("query_example".to_string()),
                   Some("keyword_example".to_string()),
@@ -8265,7 +7839,6 @@ fn main() {
         },
         Some("UpdateRegion") => {
             let result = rt.block_on(client.update_region(
-                  3.16,
                   789,
                   789,
                   Some("region_class_example".to_string()),
@@ -8294,7 +7867,6 @@ fn main() {
         },
         Some("CreateBatch") => {
             let result = rt.block_on(client.create_batch(
-                  3.16,
                   789,
                   models::CreateBatchStatusParameter::New,
                   56,
@@ -8311,14 +7883,12 @@ fn main() {
         },
         Some("CreateRegionLegSummaryBatch") => {
             let result = rt.block_on(client.create_region_leg_summary_batch(
-                  3.16,
                   Some(&Vec::new())
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("DeleteBatch") => {
             let result = rt.block_on(client.delete_batch(
-                  3.16,
                   789,
                   789
             ));
@@ -8326,7 +7896,6 @@ fn main() {
         },
         Some("GetReportBatch") => {
             let result = rt.block_on(client.get_report_batch(
-                  3.16,
                   789,
                   789,
                   true
@@ -8335,7 +7904,6 @@ fn main() {
         },
         Some("RunReport") => {
             let result = rt.block_on(client.run_report(
-                  3.16,
                   true,
                   Some(789),
                   Some("query_example".to_string()),
@@ -8349,7 +7917,6 @@ fn main() {
         },
         Some("SearchBatch") => {
             let result = rt.block_on(client.search_batch(
-                  3.16,
                   789,
                   56,
                   56,
@@ -8364,7 +7931,6 @@ fn main() {
         },
         Some("CreateReservation") => {
             let result = rt.block_on(client.create_reservation(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -8378,7 +7944,6 @@ fn main() {
         },
         Some("DeleteReservation") => {
             let result = rt.block_on(client.delete_reservation(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -8387,7 +7952,6 @@ fn main() {
         },
         Some("ReservableAvailability") => {
             let result = rt.block_on(client.reservable_availability(
-                  3.16,
                   789,
                   models::SearchRatingIndexesRatableTypeParameter::Locatable,
                   Some("device_id_example".to_string()),
@@ -8399,7 +7963,6 @@ fn main() {
         },
         Some("SearchAvailability") => {
             let result = rt.block_on(client.search_availability(
-                  3.16,
                   789,
                   models::SearchRatingIndexesRatableTypeParameter::Locatable,
                   Some("device_id_example".to_string()),
@@ -8413,7 +7976,6 @@ fn main() {
         },
         Some("SearchReservations") => {
             let result = rt.block_on(client.search_reservations(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some("app_key_example".to_string()),
                   Some(789),
@@ -8430,7 +7992,6 @@ fn main() {
         },
         Some("SearchSchedule") => {
             let result = rt.block_on(client.search_schedule(
-                  3.16,
                   789,
                   models::SearchRatingIndexesRatableTypeParameter::Locatable,
                   789,
@@ -8443,7 +8004,6 @@ fn main() {
         },
         Some("CreateRetailer") => {
             let result = rt.block_on(client.create_retailer(
-                  3.16,
                   "name_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8482,7 +8042,6 @@ fn main() {
         },
         Some("DeleteRetailer") => {
             let result = rt.block_on(client.delete_retailer(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789)
@@ -8491,7 +8050,6 @@ fn main() {
         },
         Some("GetRetailer") => {
             let result = rt.block_on(client.get_retailer(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8501,7 +8059,6 @@ fn main() {
         },
         Some("GetRetailers") => {
             let result = rt.block_on(client.get_retailers(
-                  3.16,
                   models::AddAlbumCollectionVisibilityParameter::Public,
                   models::GetRetailersSortFieldParameter::Id,
                   true,
@@ -8521,7 +8078,6 @@ fn main() {
         },
         Some("RetailerLoginCheck") => {
             let result = rt.block_on(client.retailer_login_check(
-                  3.16,
                   "username_example".to_string(),
                   "password_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -8533,7 +8089,6 @@ fn main() {
         },
         Some("UpdateRetailer") => {
             let result = rt.block_on(client.update_retailer(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8571,7 +8126,6 @@ fn main() {
         },
         Some("CreateRetailerLocationConsumer") => {
             let result = rt.block_on(client.create_retailer_location_consumer(
-                  3.16,
                   "app_key_example".to_string(),
                   "name_example".to_string(),
                   Some("device_id_example".to_string()),
@@ -8606,7 +8160,6 @@ fn main() {
         },
         Some("CreateRetailerLocations") => {
             let result = rt.block_on(client.create_retailer_locations(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   "street_address_example".to_string(),
@@ -8651,7 +8204,6 @@ fn main() {
         },
         Some("DeleteRetailerLocation") => {
             let result = rt.block_on(client.delete_retailer_location(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789)
@@ -8660,7 +8212,6 @@ fn main() {
         },
         Some("GetRetailerLocation") => {
             let result = rt.block_on(client.get_retailer_location(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8670,7 +8221,6 @@ fn main() {
         },
         Some("GetRetailerLocationConsumer") => {
             let result = rt.block_on(client.get_retailer_location_consumer(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -8679,7 +8229,6 @@ fn main() {
         },
         Some("IndexedRetailerLocationDistanceSearch") => {
             let result = rt.block_on(client.indexed_retailer_location_distance_search(
-                  3.16,
                   1.2,
                   1.2,
                   1.2,
@@ -8719,7 +8268,6 @@ fn main() {
         },
         Some("IndexedRetailerLocationSearch") => {
             let result = rt.block_on(client.indexed_retailer_location_search(
-                  3.16,
                   Some(789),
                   Some(56),
                   Some(56),
@@ -8753,7 +8301,6 @@ fn main() {
         },
         Some("SearchRetailerLocations") => {
             let result = rt.block_on(client.search_retailer_locations(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("q_example".to_string()),
@@ -8784,7 +8331,6 @@ fn main() {
         },
         Some("UpdateRetailerLocations") => {
             let result = rt.block_on(client.update_retailer_locations(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -8831,7 +8377,6 @@ fn main() {
         },
         Some("GetRetaokiler") => {
             let result = rt.block_on(client.get_retaokiler(
-                  3.16,
                   789,
                   true,
                   Some("keyword_example".to_string()),
@@ -8843,14 +8388,12 @@ fn main() {
         },
         Some("CreateRoute") => {
             let result = rt.block_on(client.create_route(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchRoutes") => {
             let result = rt.block_on(client.search_routes(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -8877,14 +8420,12 @@ fn main() {
         },
         Some("ApproveRoute") => {
             let result = rt.block_on(client.approve_route(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("CopyRoute") => {
             let result = rt.block_on(client.copy_route(
-                  3.16,
                   789,
                   None
             ));
@@ -8892,35 +8433,30 @@ fn main() {
         },
         Some("CreateRouteDirections") => {
             let result = rt.block_on(client.create_route_directions(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("CreateRoutePolyline") => {
             let result = rt.block_on(client.create_route_polyline(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("DeleteRoute") => {
             let result = rt.block_on(client.delete_route(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("DisapproveRoute") => {
             let result = rt.block_on(client.disapprove_route(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetRoute") => {
             let result = rt.block_on(client.get_route(
-                  3.16,
                   789,
                   true
             ));
@@ -8928,21 +8464,18 @@ fn main() {
         },
         Some("GetRouteDirections") => {
             let result = rt.block_on(client.get_route_directions(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetRouteShipments") => {
             let result = rt.block_on(client.get_route_shipments(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetRouteStops") => {
             let result = rt.block_on(client.get_route_stops(
-                  3.16,
                   789,
                   true
             ));
@@ -8950,14 +8483,12 @@ fn main() {
         },
         Some("OptimizeRoute") => {
             let result = rt.block_on(client.optimize_route(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("ReorderRouteStopsPatch") => {
             let result = rt.block_on(client.reorder_route_stops_patch(
-                  3.16,
                   789,
                   Some(&Vec::new())
             ));
@@ -8965,7 +8496,6 @@ fn main() {
         },
         Some("ReorderRouteStopsPost") => {
             let result = rt.block_on(client.reorder_route_stops_post(
-                  3.16,
                   789,
                   Some(&Vec::new())
             ));
@@ -8973,7 +8503,6 @@ fn main() {
         },
         Some("UpdateRoute") => {
             let result = rt.block_on(client.update_route(
-                  3.16,
                   789,
                   None
             ));
@@ -8981,7 +8510,6 @@ fn main() {
         },
         Some("GetRouteStop") => {
             let result = rt.block_on(client.get_route_stop(
-                  3.16,
                   789,
                   789
             ));
@@ -8989,7 +8517,6 @@ fn main() {
         },
         Some("GetShipmentsAtStop") => {
             let result = rt.block_on(client.get_shipments_at_stop(
-                  3.16,
                   789,
                   789
             ));
@@ -8997,7 +8524,6 @@ fn main() {
         },
         Some("RemoveStop") => {
             let result = rt.block_on(client.remove_stop(
-                  3.16,
                   789,
                   789
             ));
@@ -9005,7 +8531,6 @@ fn main() {
         },
         Some("SetDriver") => {
             let result = rt.block_on(client.set_driver(
-                  3.16,
                   789,
                   789
             ));
@@ -9013,7 +8538,6 @@ fn main() {
         },
         Some("UpdateRouteStop") => {
             let result = rt.block_on(client.update_route_stop(
-                  3.16,
                   789,
                   789,
                   None
@@ -9022,14 +8546,12 @@ fn main() {
         },
         Some("CreateRouteSettings") => {
             let result = rt.block_on(client.create_route_settings(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchRouteSettings") => {
             let result = rt.block_on(client.search_route_settings(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -9043,21 +8565,18 @@ fn main() {
         },
         Some("DeleteRouteSettings") => {
             let result = rt.block_on(client.delete_route_settings(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetRouteSettings") => {
             let result = rt.block_on(client.get_route_settings(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateRouteSettings") => {
             let result = rt.block_on(client.update_route_settings(
-                  3.16,
                   789,
                   None
             ));
@@ -9065,14 +8584,12 @@ fn main() {
         },
         Some("ComputeRouting") => {
             let result = rt.block_on(client.compute_routing(
-                  3.16,
                   "data_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("CreateScheduledNotification") => {
             let result = rt.block_on(client.create_scheduled_notification(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   "param_type_example".to_string(),
@@ -9112,7 +8629,6 @@ fn main() {
         },
         Some("DeleteScheduledNotification") => {
             let result = rt.block_on(client.delete_scheduled_notification(
-                  3.16,
                   789,
                   789,
                   Some(true)
@@ -9121,7 +8637,6 @@ fn main() {
         },
         Some("GetScheduledNotification") => {
             let result = rt.block_on(client.get_scheduled_notification(
-                  3.16,
                   789,
                   789
             ));
@@ -9129,7 +8644,6 @@ fn main() {
         },
         Some("ScheduleNotificationListings") => {
             let result = rt.block_on(client.schedule_notification_listings(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "report_name_example".to_string(),
@@ -9143,7 +8657,6 @@ fn main() {
         },
         Some("SearchScheduledNotifications") => {
             let result = rt.block_on(client.search_scheduled_notifications(
-                  3.16,
                   789,
                   Some("grouping_id_example".to_string()),
                   Some(789),
@@ -9169,7 +8682,6 @@ fn main() {
         },
         Some("UpdateScheduledNotification") => {
             let result = rt.block_on(client.update_scheduled_notification(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -9213,7 +8725,6 @@ fn main() {
         },
         Some("CreateScore") => {
             let result = rt.block_on(client.create_score(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   56,
@@ -9229,7 +8740,6 @@ fn main() {
         },
         Some("GetScore") => {
             let result = rt.block_on(client.get_score(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(789),
@@ -9244,7 +8754,6 @@ fn main() {
         },
         Some("SearchScores") => {
             let result = rt.block_on(client.search_scores(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(789),
@@ -9257,7 +8766,6 @@ fn main() {
         },
         Some("CreateSecureApplication") => {
             let result = rt.block_on(client.create_secure_application(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   swagger::ByteArray(Vec::from("BINARY_DATA_HERE")),
@@ -9273,7 +8781,6 @@ fn main() {
         },
         Some("DeleteSecureApplication") => {
             let result = rt.block_on(client.delete_secure_application(
-                  3.16,
                   789,
                   "app_key_example".to_string()
             ));
@@ -9281,7 +8788,6 @@ fn main() {
         },
         Some("LoginSecure") => {
             let result = rt.block_on(client.login_secure(
-                  3.16,
                   "app_key_example".to_string(),
                   swagger::ByteArray(Vec::from("BINARY_DATA_HERE")),
                   Some("device_id_example".to_string()),
@@ -9297,7 +8803,6 @@ fn main() {
         /* Disabled because there's no example.
         Some("PurchaseSecure") => {
             let result = rt.block_on(client.purchase_secure(
-                  3.16,
                   ???
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
@@ -9305,7 +8810,6 @@ fn main() {
         */
         Some("ResetSecure") => {
             let result = rt.block_on(client.reset_secure(
-                  3.16,
                   789,
                   "app_key_example".to_string()
             ));
@@ -9313,7 +8817,6 @@ fn main() {
         },
         Some("UpdateSecureApplication") => {
             let result = rt.block_on(client.update_secure_application(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(true),
@@ -9329,14 +8832,12 @@ fn main() {
         },
         Some("CreateServiceHub") => {
             let result = rt.block_on(client.create_service_hub(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchServiceHubs") => {
             let result = rt.block_on(client.search_service_hubs(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -9349,21 +8850,18 @@ fn main() {
         },
         Some("DeleteServiceHub") => {
             let result = rt.block_on(client.delete_service_hub(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetServiceHub") => {
             let result = rt.block_on(client.get_service_hub(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("PostServiceHub") => {
             let result = rt.block_on(client.post_service_hub(
-                  3.16,
                   789,
                   None
             ));
@@ -9371,7 +8869,6 @@ fn main() {
         },
         Some("PutServiceHub") => {
             let result = rt.block_on(client.put_service_hub(
-                  3.16,
                   789,
                   None
             ));
@@ -9379,14 +8876,12 @@ fn main() {
         },
         Some("CreateShipment") => {
             let result = rt.block_on(client.create_shipment(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchShipments") => {
             let result = rt.block_on(client.search_shipments(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -9400,28 +8895,24 @@ fn main() {
         },
         Some("CancelShipment") => {
             let result = rt.block_on(client.cancel_shipment(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("DeleteShipment") => {
             let result = rt.block_on(client.delete_shipment(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetShipment") => {
             let result = rt.block_on(client.get_shipment(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateShipment") => {
             let result = rt.block_on(client.update_shipment(
-                  3.16,
                   789,
                   None
             ));
@@ -9429,7 +8920,6 @@ fn main() {
         },
         Some("UpdateShipmentStatus") => {
             let result = rt.block_on(client.update_shipment_status(
-                  3.16,
                   789,
                   None
             ));
@@ -9437,14 +8927,12 @@ fn main() {
         },
         Some("CreateShipmentBatch") => {
             let result = rt.block_on(client.create_shipment_batch(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchShipmentBatch") => {
             let result = rt.block_on(client.search_shipment_batch(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -9455,21 +8943,18 @@ fn main() {
         },
         Some("DeleteShipmentBatch") => {
             let result = rt.block_on(client.delete_shipment_batch(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetShipmentBatch") => {
             let result = rt.block_on(client.get_shipment_batch(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetShipmentBatchStatus") => {
             let result = rt.block_on(client.get_shipment_batch_status(
-                  3.16,
                   789,
                   789,
                   "sort_field_example".to_string(),
@@ -9487,7 +8972,6 @@ fn main() {
         },
         Some("Simulation") => {
             let result = rt.block_on(client.simulation(
-                  3.16,
                   "data_example".to_string(),
                   true
             ));
@@ -9495,14 +8979,12 @@ fn main() {
         },
         Some("GetStop") => {
             let result = rt.block_on(client.get_stop(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateStop") => {
             let result = rt.block_on(client.update_stop(
-                  3.16,
                   789,
                   None
             ));
@@ -9510,7 +8992,6 @@ fn main() {
         },
         Some("CreateStripeCheckoutSession") => {
             let result = rt.block_on(client.create_stripe_checkout_session(
-                  3.16,
                   "app_key_example".to_string(),
                   "stripe_parameters_example".to_string()
             ));
@@ -9518,7 +8999,6 @@ fn main() {
         },
         Some("CreateSubscription") => {
             let result = rt.block_on(client.create_subscription(
-                  3.16,
                   789,
                   Some(789),
                   Some("promo_code_example".to_string())
@@ -9527,28 +9007,24 @@ fn main() {
         },
         Some("DeleteSubscription") => {
             let result = rt.block_on(client.delete_subscription(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetSubscription") => {
             let result = rt.block_on(client.get_subscription(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetSubscriptionPlan") => {
             let result = rt.block_on(client.get_subscription_plan(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetSubscriptionPlans") => {
             let result = rt.block_on(client.get_subscription_plans(
-                  3.16,
                   Some(true),
                   Some("role_example".to_string())
             ));
@@ -9556,7 +9032,6 @@ fn main() {
         },
         Some("GetSubscriptionUsage") => {
             let result = rt.block_on(client.get_subscription_usage(
-                  3.16,
                   789,
                   Some(789),
                   Some(789),
@@ -9566,7 +9041,6 @@ fn main() {
         },
         Some("UpdateSubscription") => {
             let result = rt.block_on(client.update_subscription(
-                  3.16,
                   789,
                   Some(789),
                   Some("promo_code_example".to_string()),
@@ -9576,7 +9050,6 @@ fn main() {
         },
         Some("CreateTask") => {
             let result = rt.block_on(client.create_task(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("app_key_example".to_string()),
@@ -9594,7 +9067,6 @@ fn main() {
         },
         Some("DeleteTask") => {
             let result = rt.block_on(client.delete_task(
-                  3.16,
                   789,
                   789
             ));
@@ -9602,7 +9074,6 @@ fn main() {
         },
         Some("GetTask") => {
             let result = rt.block_on(client.get_task(
-                  3.16,
                   789,
                   789
             ));
@@ -9610,7 +9081,6 @@ fn main() {
         },
         Some("SearchTasks") => {
             let result = rt.block_on(client.search_tasks(
-                  3.16,
                   789,
                   Some("grouping_id_example".to_string()),
                   Some("filter_example".to_string()),
@@ -9628,7 +9098,6 @@ fn main() {
         },
         Some("UpdateTask") => {
             let result = rt.block_on(client.update_task(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -9647,7 +9116,6 @@ fn main() {
         },
         Some("CreateTerritory") => {
             let result = rt.block_on(client.create_territory(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some(true)
@@ -9656,7 +9124,6 @@ fn main() {
         },
         Some("DeleteTerritory") => {
             let result = rt.block_on(client.delete_territory(
-                  3.16,
                   789,
                   789
             ));
@@ -9664,14 +9131,12 @@ fn main() {
         },
         Some("GetTerritory") => {
             let result = rt.block_on(client.get_territory(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("SearchTerritories") => {
             let result = rt.block_on(client.search_territories(
-                  3.16,
                   models::SearchTerritoriesSortFieldParameter::Id,
                   true,
                   Some("keyword_example".to_string()),
@@ -9682,7 +9147,6 @@ fn main() {
         },
         Some("UpdateTerritory") => {
             let result = rt.block_on(client.update_territory(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -9692,7 +9156,6 @@ fn main() {
         },
         Some("AddOrUpdateThemeDescriptor") => {
             let result = rt.block_on(client.add_or_update_theme_descriptor(
-                  3.16,
                   true,
                   true,
                   true,
@@ -9725,7 +9188,6 @@ fn main() {
         },
         Some("GetThemeDescriptor") => {
             let result = rt.block_on(client.get_theme_descriptor(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -9737,7 +9199,6 @@ fn main() {
         },
         Some("GetThemeDescriptors") => {
             let result = rt.block_on(client.get_theme_descriptors(
-                  3.16,
                   "filter_example".to_string(),
                   "sort_field_example".to_string(),
                   true,
@@ -9761,7 +9222,6 @@ fn main() {
         },
         Some("RemoveThemeDescriptor") => {
             let result = rt.block_on(client.remove_theme_descriptor(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -9773,7 +9233,6 @@ fn main() {
         },
         Some("CreateCredential") => {
             let result = rt.block_on(client.create_credential(
-                  3.16,
                   "third_party_id_example".to_string(),
                   "third_party_token_example".to_string(),
                   "network_uid_example".to_string(),
@@ -9796,7 +9255,6 @@ fn main() {
         },
         Some("CreateNetwork") => {
             let result = rt.block_on(client.create_network(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   true,
@@ -9819,7 +9277,6 @@ fn main() {
         },
         Some("DeleteCredential") => {
             let result = rt.block_on(client.delete_credential(
-                  3.16,
                   789,
                   "network_uid_example".to_string(),
                   "third_party_id_example".to_string(),
@@ -9829,7 +9286,6 @@ fn main() {
         },
         Some("DeleteNetwork") => {
             let result = rt.block_on(client.delete_network(
-                  3.16,
                   789,
                   "network_uid_example".to_string()
             ));
@@ -9837,7 +9293,6 @@ fn main() {
         },
         Some("GetCredential") => {
             let result = rt.block_on(client.get_credential(
-                  3.16,
                   "network_uid_example".to_string(),
                   "app_key_example".to_string(),
                   Some(789),
@@ -9858,7 +9313,6 @@ fn main() {
         },
         Some("GetNetwork") => {
             let result = rt.block_on(client.get_network(
-                  3.16,
                   789,
                   "network_uid_example".to_string()
             ));
@@ -9866,7 +9320,6 @@ fn main() {
         },
         Some("SearchCredentials") => {
             let result = rt.block_on(client.search_credentials(
-                  3.16,
                   789,
                   Some("keyword_example".to_string()),
                   Some("network_uid_example".to_string()),
@@ -9878,7 +9331,6 @@ fn main() {
         },
         Some("SearchNetworks") => {
             let result = rt.block_on(client.search_networks(
-                  3.16,
                   789,
                   models::SearchNetworksSortFieldParameter::Id,
                   true,
@@ -9892,7 +9344,6 @@ fn main() {
         },
         Some("SendMfaChallenge") => {
             let result = rt.block_on(client.send_mfa_challenge(
-                  3.16,
                   "network_uid_example".to_string(),
                   "app_key_example".to_string(),
                   Some("third_party_token_example".to_string()),
@@ -9903,7 +9354,6 @@ fn main() {
         },
         Some("UpdateCredential") => {
             let result = rt.block_on(client.update_credential(
-                  3.16,
                   "network_uid_example".to_string(),
                   "third_party_id_example".to_string(),
                   "app_key_example".to_string(),
@@ -9918,7 +9368,6 @@ fn main() {
         },
         Some("UpdateNetwork") => {
             let result = rt.block_on(client.update_network(
-                  3.16,
                   789,
                   "network_uid_example".to_string(),
                   Some("name_example".to_string()),
@@ -9942,7 +9391,6 @@ fn main() {
         },
         Some("GetTicketCount") => {
             let result = rt.block_on(client.get_ticket_count(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("game_type_example".to_string()),
@@ -9953,7 +9401,6 @@ fn main() {
         },
         Some("GetTicketList") => {
             let result = rt.block_on(client.get_ticket_list(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("ticket_object_type_example".to_string()),
@@ -9968,7 +9415,6 @@ fn main() {
         },
         Some("GiftPurchase") => {
             let result = rt.block_on(client.gift_purchase(
-                  3.16,
                   789,
                   789,
                   Some("device_id_example".to_string()),
@@ -9982,7 +9428,6 @@ fn main() {
         },
         Some("SaveTicket") => {
             let result = rt.block_on(client.save_ticket(
-                  3.16,
                   "action_type_example".to_string(),
                   "ticket_object_type_example".to_string(),
                   Some(true),
@@ -10006,7 +9451,6 @@ fn main() {
         },
         Some("SaveTicketViaFileUpload") => {
             let result = rt.block_on(client.save_ticket_via_file_upload(
-                  3.16,
                   "action_type_example".to_string(),
                   "ticket_object_type_example".to_string(),
                   swagger::ByteArray(Vec::from("BINARY_DATA_HERE")),
@@ -10030,13 +9474,11 @@ fn main() {
         },
         Some("TicketOffers") => {
             let result = rt.block_on(client.ticket_offers(
-                  3.16
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("CreateTournament") => {
             let result = rt.block_on(client.create_tournament(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "title_example".to_string(),
@@ -10077,7 +9519,6 @@ fn main() {
         },
         Some("DeleteTournament") => {
             let result = rt.block_on(client.delete_tournament(
-                  3.16,
                   789,
                   789
             ));
@@ -10085,7 +9526,6 @@ fn main() {
         },
         Some("GetTournament") => {
             let result = rt.block_on(client.get_tournament(
-                  3.16,
                   789,
                   Some(789),
                   Some("join_code_example".to_string()),
@@ -10096,7 +9536,6 @@ fn main() {
         },
         Some("SearchObjects") => {
             let result = rt.block_on(client.search_objects(
-                  3.16,
                   789,
                   789,
                   Some(models::SearchObjectsSortFieldParameter::Id),
@@ -10108,7 +9547,6 @@ fn main() {
         },
         Some("SearchRounds") => {
             let result = rt.block_on(client.search_rounds(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("status_example".to_string()),
@@ -10122,7 +9560,6 @@ fn main() {
         },
         Some("SearchTournaments") => {
             let result = rt.block_on(client.search_tournaments(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("keyword_example".to_string()),
@@ -10140,7 +9577,6 @@ fn main() {
         },
         Some("SubmitTournamentScore") => {
             let result = rt.block_on(client.submit_tournament_score(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789,
@@ -10153,7 +9589,6 @@ fn main() {
         },
         Some("SubmitTournamentVote") => {
             let result = rt.block_on(client.submit_tournament_vote(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   789,
@@ -10165,7 +9600,6 @@ fn main() {
         },
         Some("SubstituteTournamentPlayer") => {
             let result = rt.block_on(client.substitute_tournament_player(
-                  3.16,
                   789,
                   789,
                   789,
@@ -10175,7 +9609,6 @@ fn main() {
         },
         Some("UpdateTournament") => {
             let result = rt.block_on(client.update_tournament(
-                  3.16,
                   789,
                   789,
                   Some("title_example".to_string()),
@@ -10215,7 +9648,6 @@ fn main() {
         },
         Some("BatchSaveTracking") => {
             let result = rt.block_on(client.batch_save_tracking(
-                  3.16,
                   "data_example".to_string(),
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -10228,7 +9660,6 @@ fn main() {
         },
         Some("GetPredictedLocations") => {
             let result = rt.block_on(client.get_predicted_locations(
-                  3.16,
                   789,
                   Some(1.2),
                   Some(1.2),
@@ -10243,7 +9674,6 @@ fn main() {
         },
         Some("GetPredictedPath") => {
             let result = rt.block_on(client.get_predicted_path(
-                  3.16,
                   789,
                   789,
                   789
@@ -10252,7 +9682,6 @@ fn main() {
         },
         Some("GetPreferredLocations") => {
             let result = rt.block_on(client.get_preferred_locations(
-                  3.16,
                   789,
                   Some(1.2),
                   Some(1.2),
@@ -10269,7 +9698,6 @@ fn main() {
         },
         Some("GetTrackingLegs") => {
             let result = rt.block_on(client.get_tracking_legs(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -10283,7 +9711,6 @@ fn main() {
         },
         Some("SaveTrackingLeg") => {
             let result = rt.block_on(client.save_tracking_leg(
-                  3.16,
                   1.2,
                   1.2,
                   789,
@@ -10301,7 +9728,6 @@ fn main() {
         },
         Some("SaveTrackingStep") => {
             let result = rt.block_on(client.save_tracking_step(
-                  3.16,
                   789,
                   1.2,
                   1.2,
@@ -10318,7 +9744,6 @@ fn main() {
         },
         Some("SearchAccountsWithTrackingLegs") => {
             let result = rt.block_on(client.search_accounts_with_tracking_legs(
-                  3.16,
                   789,
                   Some("keyword_example".to_string()),
                   Some(789),
@@ -10338,7 +9763,6 @@ fn main() {
         },
         Some("SearchTrackingLegs") => {
             let result = rt.block_on(client.search_tracking_legs(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("tracking_device_id_example".to_string()),
@@ -10352,7 +9776,6 @@ fn main() {
         },
         Some("CreateTrigger") => {
             let result = rt.block_on(client.create_trigger(
-                  3.16,
                   789,
                   "name_example".to_string(),
                   Some("app_key_example".to_string()),
@@ -10371,7 +9794,6 @@ fn main() {
         },
         Some("DeleteTrigger") => {
             let result = rt.block_on(client.delete_trigger(
-                  3.16,
                   789,
                   789
             ));
@@ -10379,7 +9801,6 @@ fn main() {
         },
         Some("GetTrigger") => {
             let result = rt.block_on(client.get_trigger(
-                  3.16,
                   789,
                   789
             ));
@@ -10387,7 +9808,6 @@ fn main() {
         },
         Some("SearchTriggers") => {
             let result = rt.block_on(client.search_triggers(
-                  3.16,
                   789,
                   Some("grouping_id_example".to_string()),
                   Some("filter_example".to_string()),
@@ -10405,7 +9825,6 @@ fn main() {
         },
         Some("UpdateTrigger") => {
             let result = rt.block_on(client.update_trigger(
-                  3.16,
                   789,
                   789,
                   Some("name_example".to_string()),
@@ -10425,14 +9844,12 @@ fn main() {
         },
         Some("CreateTrip") => {
             let result = rt.block_on(client.create_trip(
-                  3.16,
                   None
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("ProcessTripMatches") => {
             let result = rt.block_on(client.process_trip_matches(
-                  3.16,
                   Some(789),
                   Some(789),
                   Some(789)
@@ -10441,7 +9858,6 @@ fn main() {
         },
         Some("Search") => {
             let result = rt.block_on(client.search(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -10456,7 +9872,6 @@ fn main() {
         },
         Some("SearchTrips") => {
             let result = rt.block_on(client.search_trips(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -10472,7 +9887,6 @@ fn main() {
         },
         Some("UpdateTripNotifications") => {
             let result = rt.block_on(client.update_trip_notifications(
-                  3.16,
                   789,
                   Some("notifications_example".to_string())
             ));
@@ -10480,14 +9894,12 @@ fn main() {
         },
         Some("Delete") => {
             let result = rt.block_on(client.delete(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("DriveTrip") => {
             let result = rt.block_on(client.drive_trip(
-                  3.16,
                   789,
                   true
             ));
@@ -10495,7 +9907,6 @@ fn main() {
         },
         Some("FlexibleTrip") => {
             let result = rt.block_on(client.flexible_trip(
-                  3.16,
                   789,
                   true
             ));
@@ -10503,14 +9914,12 @@ fn main() {
         },
         Some("GetTrip") => {
             let result = rt.block_on(client.get_trip(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetTripMatches") => {
             let result = rt.block_on(client.get_trip_matches(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -10524,7 +9933,6 @@ fn main() {
         },
         Some("Ride") => {
             let result = rt.block_on(client.ride(
-                  3.16,
                   789,
                   true
             ));
@@ -10532,7 +9940,6 @@ fn main() {
         },
         Some("UpdateLocations") => {
             let result = rt.block_on(client.update_locations(
-                  3.16,
                   789,
                   None
             ));
@@ -10540,7 +9947,6 @@ fn main() {
         },
         Some("UpdateRecurrenceLocations") => {
             let result = rt.block_on(client.update_recurrence_locations(
-                  3.16,
                   789,
                   None
             ));
@@ -10548,7 +9954,6 @@ fn main() {
         },
         Some("UpdateRecurrenceShipments") => {
             let result = rt.block_on(client.update_recurrence_shipments(
-                  3.16,
                   789,
                   None
             ));
@@ -10556,7 +9961,6 @@ fn main() {
         },
         Some("UpdateShipments") => {
             let result = rt.block_on(client.update_shipments(
-                  3.16,
                   789,
                   None
             ));
@@ -10564,7 +9968,6 @@ fn main() {
         },
         Some("UpdateTrip") => {
             let result = rt.block_on(client.update_trip(
-                  3.16,
                   789,
                   None
             ));
@@ -10572,7 +9975,6 @@ fn main() {
         },
         Some("SmsBuyOffer") => {
             let result = rt.block_on(client.sms_buy_offer(
-                  3.16,
                   "app_key_example".to_string(),
                   "body_example".to_string(),
                   "from_example".to_string(),
@@ -10582,14 +9984,12 @@ fn main() {
         },
         Some("AuthorizeTwitter") => {
             let result = rt.block_on(client.authorize_twitter(
-                  3.16,
                   "app_key_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("LoginTwitter") => {
             let result = rt.block_on(client.login_twitter(
-                  3.16,
                   "access_token_example".to_string(),
                   "access_token_secret_example".to_string(),
                   "app_key_example".to_string(),
@@ -10602,7 +10002,6 @@ fn main() {
         },
         Some("AddUsersToPermissionable") => {
             let result = rt.block_on(client.add_users_to_permissionable(
-                  3.16,
                   models::AddUsersToPermissionablePermissionableTypeParameter::Account,
                   789,
                   Some("device_id_example".to_string()),
@@ -10625,7 +10024,6 @@ fn main() {
         },
         Some("ApprovePermissionable") => {
             let result = rt.block_on(client.approve_permissionable(
-                  3.16,
                   models::AddUsersToPermissionablePermissionableTypeParameter::Account,
                   789,
                   Some("device_id_example".to_string()),
@@ -10636,7 +10034,6 @@ fn main() {
         },
         Some("LeaveFromPermissionable") => {
             let result = rt.block_on(client.leave_from_permissionable(
-                  3.16,
                   "permissionable_type_example".to_string(),
                   789,
                   Some("device_id_example".to_string()),
@@ -10648,7 +10045,6 @@ fn main() {
         },
         Some("RemoveUsersFromPermissionable") => {
             let result = rt.block_on(client.remove_users_from_permissionable(
-                  3.16,
                   models::AddUsersToPermissionablePermissionableTypeParameter::Account,
                   789,
                   Some("device_id_example".to_string()),
@@ -10665,7 +10061,6 @@ fn main() {
         },
         Some("SearchPermissionables") => {
             let result = rt.block_on(client.search_permissionables(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -10684,7 +10079,6 @@ fn main() {
         },
         Some("SearchPermissionablesFollowingDistance") => {
             let result = rt.block_on(client.search_permissionables_following_distance(
-                  3.16,
                   1.2,
                   1.2,
                   Some("device_id_example".to_string()),
@@ -10704,7 +10098,6 @@ fn main() {
         },
         Some("CreateFollowing") => {
             let result = rt.block_on(client.create_following(
-                  3.16,
                   789,
                   "vatom_parameters_example".to_string(),
                   Some(true)
@@ -10713,7 +10106,6 @@ fn main() {
         },
         Some("CreateSpace") => {
             let result = rt.block_on(client.create_space(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -10723,7 +10115,6 @@ fn main() {
         },
         Some("CreateVatomEvent") => {
             let result = rt.block_on(client.create_vatom_event(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -10733,7 +10124,6 @@ fn main() {
         },
         Some("DeleteFollowing") => {
             let result = rt.block_on(client.delete_following(
-                  3.16,
                   789,
                   "vatom_rels_key_example".to_string(),
                   Some(true)
@@ -10742,7 +10132,6 @@ fn main() {
         },
         Some("DeletePointsBalance") => {
             let result = rt.block_on(client.delete_points_balance(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10752,7 +10141,6 @@ fn main() {
         },
         Some("DeleteSpace") => {
             let result = rt.block_on(client.delete_space(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_space_id_example".to_string(),
@@ -10762,7 +10150,6 @@ fn main() {
         },
         Some("DeleteVatomEvent") => {
             let result = rt.block_on(client.delete_vatom_event(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_event_id_example".to_string(),
@@ -10772,7 +10159,6 @@ fn main() {
         },
         Some("DeleteVatomNft") => {
             let result = rt.block_on(client.delete_vatom_nft(
-                  3.16,
                   789,
                   "vatom_id_example".to_string(),
                   Some(true)
@@ -10781,7 +10167,6 @@ fn main() {
         },
         Some("ExecuteActionOnNft") => {
             let result = rt.block_on(client.execute_action_on_nft(
-                  3.16,
                   789,
                   "vatom_id_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -10791,7 +10176,6 @@ fn main() {
         },
         Some("GeomapSearch") => {
             let result = rt.block_on(client.geomap_search(
-                  3.16,
                   789,
                   "vatom_parameters_example".to_string(),
                   Some(true)
@@ -10800,7 +10184,6 @@ fn main() {
         },
         Some("GetBusinessBehaviors") => {
             let result = rt.block_on(client.get_business_behaviors(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(true)
@@ -10809,7 +10192,6 @@ fn main() {
         },
         Some("GetBusinessCoinsBalance") => {
             let result = rt.block_on(client.get_business_coins_balance(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(true)
@@ -10818,7 +10200,6 @@ fn main() {
         },
         Some("GetBusinessIds") => {
             let result = rt.block_on(client.get_business_ids(
-                  3.16,
                   789,
                   Some(true)
             ));
@@ -10826,7 +10207,6 @@ fn main() {
         },
         Some("GetBusinessInfo") => {
             let result = rt.block_on(client.get_business_info(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -10836,7 +10216,6 @@ fn main() {
         },
         Some("GetBusinessUsers") => {
             let result = rt.block_on(client.get_business_users(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(true)
@@ -10845,7 +10224,6 @@ fn main() {
         },
         Some("GetCampaignGroupEntities") => {
             let result = rt.block_on(client.get_campaign_group_entities(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10855,7 +10233,6 @@ fn main() {
         },
         Some("GetCampaignGroupRules") => {
             let result = rt.block_on(client.get_campaign_group_rules(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10865,7 +10242,6 @@ fn main() {
         },
         Some("GetCampaignGroupStats") => {
             let result = rt.block_on(client.get_campaign_group_stats(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10875,7 +10251,6 @@ fn main() {
         },
         Some("GetCampaignInfo") => {
             let result = rt.block_on(client.get_campaign_info(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10885,7 +10260,6 @@ fn main() {
         },
         Some("GetEventGuestList") => {
             let result = rt.block_on(client.get_event_guest_list(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_event_id_example".to_string(),
@@ -10895,7 +10269,6 @@ fn main() {
         },
         Some("GetInventory") => {
             let result = rt.block_on(client.get_inventory(
-                  3.16,
                   789,
                   "vatom_parameters_example".to_string(),
                   Some(true)
@@ -10904,7 +10277,6 @@ fn main() {
         },
         Some("GetMyFollowing") => {
             let result = rt.block_on(client.get_my_following(
-                  3.16,
                   789,
                   Some(true)
             ));
@@ -10912,7 +10284,6 @@ fn main() {
         },
         Some("GetPointsBalance") => {
             let result = rt.block_on(client.get_points_balance(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -10922,7 +10293,6 @@ fn main() {
         },
         Some("GetPointsBalanceAsBusiness") => {
             let result = rt.block_on(client.get_points_balance_as_business(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_user_id_example".to_string(),
@@ -10933,7 +10303,6 @@ fn main() {
         },
         Some("GetSpace") => {
             let result = rt.block_on(client.get_space(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_space_id_example".to_string(),
@@ -10943,7 +10312,6 @@ fn main() {
         },
         Some("GetUserCoinsAsBusiness") => {
             let result = rt.block_on(client.get_user_coins_as_business(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "app_key_example".to_string(),
@@ -10953,7 +10321,6 @@ fn main() {
         },
         Some("GetUserCoinsBalance") => {
             let result = rt.block_on(client.get_user_coins_balance(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -10963,7 +10330,6 @@ fn main() {
         },
         Some("GetUserFollowers") => {
             let result = rt.block_on(client.get_user_followers(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   Some(true)
@@ -10972,7 +10338,6 @@ fn main() {
         },
         Some("GetUserFollowing") => {
             let result = rt.block_on(client.get_user_following(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   Some(true)
@@ -10981,7 +10346,6 @@ fn main() {
         },
         Some("GetUserInfo") => {
             let result = rt.block_on(client.get_user_info(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   Some(true)
@@ -10990,7 +10354,6 @@ fn main() {
         },
         Some("GetUserProfile") => {
             let result = rt.block_on(client.get_user_profile(
-                  3.16,
                   789,
                   Some(true)
             ));
@@ -10998,7 +10361,6 @@ fn main() {
         },
         Some("GetVatomEvent") => {
             let result = rt.block_on(client.get_vatom_event(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_event_id_example".to_string(),
@@ -11008,7 +10370,6 @@ fn main() {
         },
         Some("GetVatomNft") => {
             let result = rt.block_on(client.get_vatom_nft(
-                  3.16,
                   789,
                   "vatom_id_example".to_string(),
                   Some(true)
@@ -11017,7 +10378,6 @@ fn main() {
         },
         Some("ListCommunities") => {
             let result = rt.block_on(client.list_communities(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -11027,7 +10387,6 @@ fn main() {
         },
         Some("ListEvents") => {
             let result = rt.block_on(client.list_events(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -11037,7 +10396,6 @@ fn main() {
         },
         Some("ListSpaces") => {
             let result = rt.block_on(client.list_spaces(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -11047,7 +10405,6 @@ fn main() {
         },
         Some("ListUserCoinTransactions") => {
             let result = rt.block_on(client.list_user_coin_transactions(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   Some("vatom_parameters_example".to_string()),
@@ -11057,7 +10414,6 @@ fn main() {
         },
         Some("ListUserCoinTransactionsAsBusiness") => {
             let result = rt.block_on(client.list_user_coin_transactions_as_business(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "app_key_example".to_string(),
@@ -11068,7 +10424,6 @@ fn main() {
         },
         Some("PerformActionOnNft") => {
             let result = rt.block_on(client.perform_action_on_nft(
-                  3.16,
                   789,
                   "vatom_id_example".to_string(),
                   "vatom_action_example".to_string(),
@@ -11079,7 +10434,6 @@ fn main() {
         },
         Some("RedeemNft") => {
             let result = rt.block_on(client.redeem_nft(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -11089,7 +10443,6 @@ fn main() {
         },
         Some("RedeemUserCoinsAsBusiness") => {
             let result = rt.block_on(client.redeem_user_coins_as_business(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "app_key_example".to_string(),
@@ -11100,7 +10453,6 @@ fn main() {
         },
         Some("SearchBusinesses") => {
             let result = rt.block_on(client.search_businesses(
-                  3.16,
                   789,
                   Some("vatom_parameters_example".to_string()),
                   Some(true)
@@ -11109,7 +10461,6 @@ fn main() {
         },
         Some("SearchCampaignGroups") => {
             let result = rt.block_on(client.search_campaign_groups(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   Some(true)
@@ -11118,7 +10469,6 @@ fn main() {
         },
         Some("SearchIdentities") => {
             let result = rt.block_on(client.search_identities(
-                  3.16,
                   789,
                   Some(true)
             ));
@@ -11126,7 +10476,6 @@ fn main() {
         },
         Some("SearchInventory") => {
             let result = rt.block_on(client.search_inventory(
-                  3.16,
                   789,
                   Some("vatom_parameters_example".to_string()),
                   Some(true)
@@ -11135,7 +10484,6 @@ fn main() {
         },
         Some("SendNft") => {
             let result = rt.block_on(client.send_nft(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_campaign_id_example".to_string(),
@@ -11146,7 +10494,6 @@ fn main() {
         },
         Some("SetPointsBalanceAsBusiness") => {
             let result = rt.block_on(client.set_points_balance_as_business(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_user_id_example".to_string(),
@@ -11158,7 +10505,6 @@ fn main() {
         },
         Some("TransferUserCoins") => {
             let result = rt.block_on(client.transfer_user_coins(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -11168,7 +10514,6 @@ fn main() {
         },
         Some("UpdateBusinessCoins") => {
             let result = rt.block_on(client.update_business_coins(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_parameters_example".to_string(),
@@ -11178,7 +10523,6 @@ fn main() {
         },
         Some("UpdateEventGuestList") => {
             let result = rt.block_on(client.update_event_guest_list(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_event_id_example".to_string(),
@@ -11189,7 +10533,6 @@ fn main() {
         },
         Some("UpdateSpace") => {
             let result = rt.block_on(client.update_space(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_space_id_example".to_string(),
@@ -11200,7 +10543,6 @@ fn main() {
         },
         Some("UpdateUserCoinsAsBusiness") => {
             let result = rt.block_on(client.update_user_coins_as_business(
-                  3.16,
                   789,
                   "vatom_user_id_example".to_string(),
                   "app_key_example".to_string(),
@@ -11211,7 +10553,6 @@ fn main() {
         },
         Some("UpdateUserProfile") => {
             let result = rt.block_on(client.update_user_profile(
-                  3.16,
                   789,
                   "vatom_parameters_example".to_string(),
                   Some(true)
@@ -11220,7 +10561,6 @@ fn main() {
         },
         Some("UpdateVatomEvent") => {
             let result = rt.block_on(client.update_vatom_event(
-                  3.16,
                   789,
                   "app_key_example".to_string(),
                   "vatom_event_id_example".to_string(),
@@ -11231,7 +10571,6 @@ fn main() {
         },
         Some("CreateVehicle") => {
             let result = rt.block_on(client.create_vehicle(
-                  3.16,
                   "vehicle_example".to_string(),
                   None
             ));
@@ -11239,7 +10578,6 @@ fn main() {
         },
         Some("SearchVehicle") => {
             let result = rt.block_on(client.search_vehicle(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -11252,21 +10590,18 @@ fn main() {
         },
         Some("DeleteVehicle") => {
             let result = rt.block_on(client.delete_vehicle(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetVehicle") => {
             let result = rt.block_on(client.get_vehicle(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateVehicle") => {
             let result = rt.block_on(client.update_vehicle(
-                  3.16,
                   789,
                   "vehicle_example".to_string(),
                   None
@@ -11275,7 +10610,6 @@ fn main() {
         },
         Some("CreateVehicleType") => {
             let result = rt.block_on(client.create_vehicle_type(
-                  3.16,
                   "vehicle_type_example".to_string(),
                   None
             ));
@@ -11283,7 +10617,6 @@ fn main() {
         },
         Some("SearchVehicleTypes") => {
             let result = rt.block_on(client.search_vehicle_types(
-                  3.16,
                   "sort_field_example".to_string(),
                   true,
                   56,
@@ -11296,21 +10629,18 @@ fn main() {
         },
         Some("DeleteVehicleType") => {
             let result = rt.block_on(client.delete_vehicle_type(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("GetVehicleType") => {
             let result = rt.block_on(client.get_vehicle_type(
-                  3.16,
                   789
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },
         Some("UpdateVehicleType") => {
             let result = rt.block_on(client.update_vehicle_type(
-                  3.16,
                   789,
                   "vehicle_type_example".to_string(),
                   None
@@ -11319,7 +10649,6 @@ fn main() {
         },
         Some("CreateOfferTransaction") => {
             let result = rt.block_on(client.create_offer_transaction(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -11336,7 +10665,6 @@ fn main() {
         },
         Some("DeleteOfferTransaction") => {
             let result = rt.block_on(client.delete_offer_transaction(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789)
@@ -11345,7 +10673,6 @@ fn main() {
         },
         Some("GetOfferTransaction") => {
             let result = rt.block_on(client.get_offer_transaction(
-                  3.16,
                   789,
                   Some("device_id_example".to_string()),
                   Some(789),
@@ -11358,7 +10685,6 @@ fn main() {
         },
         Some("PreviewOfferTransaction") => {
             let result = rt.block_on(client.preview_offer_transaction(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some(789),
@@ -11374,7 +10700,6 @@ fn main() {
         },
         Some("SearchOfferTransactions") => {
             let result = rt.block_on(client.search_offer_transactions(
-                  3.16,
                   Some("device_id_example".to_string()),
                   Some(789),
                   Some("keyword_example".to_string()),
@@ -11421,7 +10746,6 @@ fn main() {
         },
         Some("UpdateOfferTransaction") => {
             let result = rt.block_on(client.update_offer_transaction(
-                  3.16,
                   789,
                   56,
                   Some("device_id_example".to_string()),
@@ -11440,7 +10764,6 @@ fn main() {
         },
         Some("SearchWeather") => {
             let result = rt.block_on(client.search_weather(
-                  3.16,
                   Some(789),
                   Some(1.2),
                   Some(1.2),
@@ -11450,7 +10773,6 @@ fn main() {
         },
         Some("CreateWord") => {
             let result = rt.block_on(client.create_word(
-                  3.16,
                   789,
                   "word_example".to_string(),
                   "definition_example".to_string(),
@@ -11465,7 +10787,6 @@ fn main() {
         },
         Some("DeleteWord") => {
             let result = rt.block_on(client.delete_word(
-                  3.16,
                   789,
                   789
             ));
@@ -11473,7 +10794,6 @@ fn main() {
         },
         Some("GetWord") => {
             let result = rt.block_on(client.get_word(
-                  3.16,
                   789,
                   789
             ));
@@ -11481,7 +10801,6 @@ fn main() {
         },
         Some("GetWords") => {
             let result = rt.block_on(client.get_words(
-                  3.16,
                   789,
                   "sort_field_example".to_string(),
                   true,
@@ -11494,7 +10813,6 @@ fn main() {
         },
         Some("UpdateWord") => {
             let result = rt.block_on(client.update_word(
-                  3.16,
                   789,
                   789,
                   789,
@@ -11510,7 +10828,6 @@ fn main() {
         },
         Some("RunWorkflow") => {
             let result = rt.block_on(client.run_workflow(
-                  3.16,
                   789,
                   789,
                   Some(789),

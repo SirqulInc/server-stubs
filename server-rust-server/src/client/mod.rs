@@ -74,7 +74,7 @@ use crate::{Api,
      UpdateSettingsResponse,
      ValidateAccountSignupResponse,
      ValidatePasswordResetResponse,
-     ApiVersionAchievementTierSearchPostResponse,
+     AchievementTierSearchPostResponse,
      CreateAchievementResponse,
      CreateAchievementTierResponse,
      DeleteAchievementResponse,
@@ -1124,7 +1124,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn consumer_create(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_name: String,
         param_hostname: String,
@@ -1144,9 +1143,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/consumer/create",
+            "{}/api/3.18/queue/consumer/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1264,7 +1262,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn consumer_update(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_queue_id: i64,
         param_data_mapping: String,
@@ -1276,9 +1273,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/consumer/update",
+            "{}/api/3.18/queue/consumer/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1370,7 +1366,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_create(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_name: String,
         param_device_id: Option<String>,
@@ -1388,9 +1383,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/create",
+            "{}/api/3.18/queue/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1508,7 +1502,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_delete(
         &self,
-        param_version: f64,
         param_queue_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -1517,9 +1510,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/delete",
+            "{}/api/3.18/queue/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1603,7 +1595,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_get(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_queue_id: Option<i64>,
@@ -1616,9 +1607,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/get",
+            "{}/api/3.18/queue/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1720,7 +1710,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_publish(
         &self,
-        param_version: f64,
         param_message: String,
         param_queue_id: Option<i64>,
         param_app_key: Option<String>,
@@ -1732,9 +1721,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/publish",
+            "{}/api/3.18/queue/publish",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1830,7 +1818,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_search(
         &self,
-        param_version: f64,
         param_queue_id: Option<i64>,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -1842,9 +1829,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/search",
+            "{}/api/3.18/queue/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -1942,7 +1928,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn queue_update(
         &self,
-        param_version: f64,
         param_queue_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -1960,9 +1945,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/queue/update",
+            "{}/api/3.18/queue/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -2082,7 +2066,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn account_location_search(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_q: Option<String>,
@@ -2122,9 +2105,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/search",
+            "{}/api/3.18/account/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -2334,7 +2316,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn block_account(
         &self,
-        param_version: f64,
         param_account_id_being_blocked: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -2347,9 +2328,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/block",
+            "{}/api/3.18/account/block",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -2449,7 +2429,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_account(
         &self,
-        param_version: f64,
         param_username: String,
         param_password: String,
         param_name: Option<String>,
@@ -2527,9 +2506,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/create",
+            "{}/api/3.18/account/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -2887,7 +2865,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn edit_account(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_connection_account_id: Option<i64>,
@@ -2975,9 +2952,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/profile/update",
+            "{}/api/3.18/account/profile/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -3379,7 +3355,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn edit_username(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_email_address: Option<String>,
@@ -3389,9 +3364,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/username/update",
+            "{}/api/3.18/account/username/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -3481,7 +3455,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_account(
         &self,
-        param_version: f64,
         param_return_nulls: Option<bool>,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -3499,9 +3472,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/profile/get",
+            "{}/api/3.18/account/profile/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -3623,7 +3595,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_profile_assets(
         &self,
-        param_version: f64,
         param_return_nulls: Option<bool>,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -3643,9 +3614,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/profile/assets",
+            "{}/api/3.18/account/profile/assets",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -3775,7 +3745,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_referral_list(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         param_retrieve_type: Option<String>,
@@ -3792,9 +3761,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/referral/list",
+            "{}/api/3.18/account/referral/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -3900,7 +3868,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_settings(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -3910,9 +3877,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/settings/get",
+            "{}/api/3.18/account/settings/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4002,7 +3968,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn login_delegate(
         &self,
-        param_version: f64,
         param_access_token: String,
         param_app_key: String,
         param_device_id: Option<String>,
@@ -4019,9 +3984,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/login/delegate",
+            "{}/api/3.18/account/login/delegate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4135,7 +4099,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn login_general(
         &self,
-        param_version: f64,
         param_access_token: String,
         param_network_uid: String,
         param_app_key: String,
@@ -4154,9 +4117,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/login",
+            "{}/api/3.18/account/login",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4276,7 +4238,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn login_username(
         &self,
-        param_version: f64,
         param_username: String,
         param_password: String,
         param_device_id: Option<String>,
@@ -4292,9 +4253,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/get",
+            "{}/api/3.18/account/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4404,7 +4364,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn logout(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_device_id_type: Option<String>,
         param_account_id: Option<i64>,
@@ -4415,9 +4374,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/logout",
+            "{}/api/3.18/account/logout",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4511,7 +4469,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn merge_account(
         &self,
-        param_version: f64,
         param_merge_account_id: i64,
         param_app_key: String,
         param_device_id: Option<String>,
@@ -4521,9 +4478,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/merge",
+            "{}/api/3.18/account/merge",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4609,7 +4565,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn password_change(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_old_password: String,
         param_new_password: String,
@@ -4619,9 +4574,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/passwordchange",
+            "{}/api/3.18/account/passwordchange",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4703,7 +4657,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn password_reset(
         &self,
-        param_version: f64,
         param_token: String,
         param_password: String,
         param_confirm: String,
@@ -4712,9 +4665,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/passwordreset",
+            "{}/api/3.18/account/passwordreset",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4794,7 +4746,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn request_password_reset(
         &self,
-        param_version: f64,
         param_email: String,
         param_from: Option<String>,
         param_domain: Option<String>,
@@ -4805,9 +4756,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/requestpasswordreset",
+            "{}/api/3.18/account/requestpasswordreset",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4899,16 +4849,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn request_validate_account(
         &self,
-        param_version: f64,
         param_account_id: i64,
         context: &C) -> Result<RequestValidateAccountResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/requestValidateAccount",
+            "{}/api/3.18/account/requestValidateAccount",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -4984,7 +4932,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_accounts(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_keyword: Option<String>,
@@ -5008,9 +4955,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/profile/search",
+            "{}/api/3.18/account/profile/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5152,7 +5098,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn secure_login(
         &self,
-        param_version: f64,
         param_username: String,
         param_password: String,
         param_game_type: String,
@@ -5167,9 +5112,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/login/validate",
+            "{}/api/3.18/account/login/validate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5273,7 +5217,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn secure_signup(
         &self,
-        param_version: f64,
         param_device_id: String,
         param_username: String,
         param_password: String,
@@ -5340,9 +5283,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/create/validate",
+            "{}/api/3.18/account/create/validate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5654,7 +5596,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn set_match_token(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_match_token: Option<String>,
@@ -5667,9 +5608,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/profile/matchToken",
+            "{}/api/3.18/consumer/profile/matchToken",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5771,7 +5711,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_actve_status(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_connection_account_id: i64,
         param_active: bool,
@@ -5782,9 +5721,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/active/update",
+            "{}/api/3.18/account/active/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5872,7 +5810,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_location(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -5883,9 +5820,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/location/update",
+            "{}/api/3.18/account/location/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -5979,7 +5915,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_settings(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_blocked_notifications: Option<String>,
@@ -5997,9 +5932,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/settings/update",
+            "{}/api/3.18/account/settings/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6121,16 +6055,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn validate_account_signup(
         &self,
-        param_version: f64,
         param_token: String,
         context: &C) -> Result<ValidateAccountSignupResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/validateAccountSignup",
+            "{}/api/3.18/account/validateAccountSignup",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6206,16 +6138,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn validate_password_reset(
         &self,
-        param_version: f64,
         param_token: String,
         context: &C) -> Result<ValidatePasswordResetResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/validatepasswordreset",
+            "{}/api/3.18/account/validatepasswordreset",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6289,9 +6219,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
     }
 
     #[allow(clippy::vec_init_then_push)]
-    async fn api_version_achievement_tier_search_post(
+    async fn achievement_tier_search_post(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -6303,14 +6232,13 @@ impl<S, C, B> Api<C> for Client<S, C> where
         param_descending_goal: Option<bool>,
         param_start: Option<i64>,
         param_limit: Option<i64>,
-        context: &C) -> Result<ApiVersionAchievementTierSearchPostResponse, ApiError>
+        context: &C) -> Result<AchievementTierSearchPostResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tier/search",
+            "{}/api/3.18/achievement/tier/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6403,7 +6331,7 @@ impl<S, C, B> Api<C> for Client<S, C> where
                     .map_err(|e| ApiError(format!("Response body did not match the schema: {e}")))?;
 
 
-                Ok(ApiVersionAchievementTierSearchPostResponse::SuccessfulOperation
+                Ok(AchievementTierSearchPostResponse::SuccessfulOperation
                     (body)
                 )
             }
@@ -6428,7 +6356,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_achievement(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_title: String,
         param_device_id: Option<String>,
@@ -6447,9 +6374,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/create",
+            "{}/api/3.18/achievement/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6571,7 +6497,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_achievement_tier(
         &self,
-        param_version: f64,
         param_achievement_id: i64,
         param_score_all_instances: bool,
         param_device_id: Option<String>,
@@ -6591,9 +6516,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tier/create",
+            "{}/api/3.18/achievement/tier/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6719,7 +6643,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_achievement(
         &self,
-        param_version: f64,
         param_achievement_id: i64,
         param_account_id: Option<i64>,
         context: &C) -> Result<DeleteAchievementResponse, ApiError>
@@ -6727,9 +6650,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/delete",
+            "{}/api/3.18/achievement/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6809,7 +6731,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_achievement_tier(
         &self,
-        param_version: f64,
         param_achievement_tier_id: i64,
         param_account_id: Option<i64>,
         context: &C) -> Result<DeleteAchievementTierResponse, ApiError>
@@ -6817,9 +6738,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tier/delete",
+            "{}/api/3.18/achievement/tier/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6899,7 +6819,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_achievement(
         &self,
-        param_version: f64,
         param_achievement_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -6909,9 +6828,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/get",
+            "{}/api/3.18/achievement/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -6999,7 +6917,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_achievement_tier(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_achievement_tier_id: i64,
         context: &C) -> Result<GetAchievementTierResponse, ApiError>
@@ -7007,9 +6924,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tier/get",
+            "{}/api/3.18/achievement/tier/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7087,7 +7003,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_achievements(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_app_key: String,
         param_include_undiscovered: bool,
@@ -7104,9 +7019,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/progress/get",
+            "{}/api/3.18/achievement/progress/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7218,16 +7132,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_achievement_tags(
         &self,
-        param_version: f64,
         param_app_key: Option<String>,
         context: &C) -> Result<ListAchievementTagsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tag/list",
+            "{}/api/3.18/achievement/tag/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7305,7 +7217,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_achievements(
         &self,
-        param_version: f64,
         param_sort_field: models::ListAchievementsSortFieldParameter,
         param_descending: bool,
         param_start: i32,
@@ -7322,9 +7233,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/list",
+            "{}/api/3.18/achievement/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7432,7 +7342,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_achievements(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_sort_field: models::SearchAchievementsSortFieldParameter,
         param_descending: bool,
@@ -7450,9 +7359,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/search",
+            "{}/api/3.18/achievement/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7560,7 +7468,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_achievement(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_achievement_id: Option<i64>,
@@ -7581,9 +7488,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/update",
+            "{}/api/3.18/achievement/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7717,7 +7623,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_achievement_tier(
         &self,
-        param_version: f64,
         param_achievement_tier_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -7737,9 +7642,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/tier/update",
+            "{}/api/3.18/achievement/tier/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7867,7 +7771,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_user_achievement(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_achievement_id: Option<i64>,
         param_tag: Option<String>,
@@ -7881,9 +7784,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/achievement/progress/update",
+            "{}/api/3.18/achievement/progress/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -7987,16 +7889,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_entity_reference(
         &self,
-        param_version: f64,
         param_body: models::EntityReference,
         context: &C) -> Result<CreateEntityReferenceResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/entity/reference",
+            "{}/api/3.18/entity/reference",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8078,7 +7978,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_album_collection(
         &self,
-        param_version: f64,
         param_title: String,
         param_cover_asset_nullable: bool,
         param_include_cover_in_asset_list: bool,
@@ -8130,9 +8029,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/create",
+            "{}/api/3.18/album/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8374,7 +8272,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_album_users(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_include_friend_group: bool,
         param_device_id: Option<String>,
@@ -8390,9 +8287,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/user/add",
+            "{}/api/3.18/album/user/add",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8502,7 +8398,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn approve_album(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -8513,9 +8408,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/approve",
+            "{}/api/3.18/album/approve",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8607,7 +8501,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_album_collection(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_album_id: i64,
         param_device_id: Option<String>,
@@ -8622,9 +8515,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/get",
+            "{}/api/3.18/album/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8730,7 +8622,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn leave_album(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -8739,9 +8630,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/user/leave",
+            "{}/api/3.18/album/user/leave",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8825,7 +8715,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_album(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -8834,9 +8723,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/delete",
+            "{}/api/3.18/album/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -8920,7 +8808,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_album_users(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_remove_friend_group: bool,
         param_device_id: Option<String>,
@@ -8932,9 +8819,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/user/delete",
+            "{}/api/3.18/album/user/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -9028,7 +8914,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_albums(
         &self,
-        param_version: f64,
         param_filter: String,
         param_album_type_id: i64,
         param_sub_type: String,
@@ -9094,9 +8979,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/search",
+            "{}/api/3.18/album/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -9376,7 +9260,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_album_collection(
         &self,
-        param_version: f64,
         param_album_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -9427,9 +9310,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/album/update",
+            "{}/api/3.18/album/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -9681,7 +9563,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn activities(
         &self,
-        param_version: f64,
         param_start: i32,
         param_limit: i32,
         param_account_id: i64,
@@ -9690,9 +9571,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/analytics/useractivity",
+            "{}/api/3.18/analytics/useractivity",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -9772,7 +9652,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn aggregated_filtered_usage(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_application_id: Option<i64>,
@@ -9809,9 +9688,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/analytics/aggregatedFilteredUsage",
+            "{}/api/3.18/analytics/aggregatedFilteredUsage",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -10009,7 +9887,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn filtered_usage(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_application_id: Option<i64>,
@@ -10054,9 +9931,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/analytics/filteredUsage",
+            "{}/api/3.18/analytics/filteredUsage",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -10286,7 +10162,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn usage(
         &self,
-        param_version: f64,
         param_tag: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -10323,9 +10198,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/analytics/usage",
+            "{}/api/3.18/analytics/usage",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -10521,7 +10395,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn usage_batch(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_device: String,
         param_data: String,
@@ -10538,9 +10411,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/analytics/usage/batch",
+            "{}/api/3.18/analytics/usage/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -10652,7 +10524,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_app_data(
         &self,
-        param_version: f64,
         param_start: i32,
         param_limit: i32,
         param_device_id: Option<String>,
@@ -10683,9 +10554,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/app/get",
+            "{}/api/3.18/app/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -10855,7 +10725,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn post_app_data(
         &self,
-        param_version: f64,
         param_game_type: String,
         param_start: i32,
         param_limit: i32,
@@ -10887,9 +10756,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/app/post",
+            "{}/api/3.18/app/post",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11059,7 +10927,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn regen_app_data(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         param_build_version: Option<String>,
@@ -11069,9 +10936,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/app/regen",
+            "{}/api/3.18/app/regen",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11161,7 +11027,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_application(
         &self,
-        param_version: f64,
         param_app_name: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -11246,9 +11111,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/create",
+            "{}/api/3.18/application/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11636,7 +11500,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_application_placement(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_size: models::CreateApplicationPlacementSizeParameter,
         param_device_id: Option<String>,
@@ -11653,9 +11516,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/placement/create",
+            "{}/api/3.18/application/placement/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11769,7 +11631,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_application(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         context: &C) -> Result<DeleteApplicationResponse, ApiError>
@@ -11777,9 +11638,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/delete",
+            "{}/api/3.18/application/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11861,7 +11721,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_application_placement(
         &self,
-        param_version: f64,
         param_placement_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -11870,9 +11729,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/placement/delete",
+            "{}/api/3.18/application/placement/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -11956,7 +11814,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_application(
         &self,
-        param_version: f64,
         param_app_key: Option<String>,
         param_application_id: Option<i64>,
         context: &C) -> Result<GetApplicationResponse, ApiError>
@@ -11964,9 +11821,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/get",
+            "{}/api/3.18/application/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12048,7 +11904,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_application_placement(
         &self,
-        param_version: f64,
         param_placement_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -12057,9 +11912,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/placement/get",
+            "{}/api/3.18/application/placement/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12143,15 +11997,13 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_application_versions(
         &self,
-        param_version: f64,
         context: &C) -> Result<GetApplicationVersionsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/versions",
+            "{}/api/3.18/application/versions",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12225,7 +12077,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_unique_users_by_app(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_q: Option<String>,
         param_keyword: Option<String>,
@@ -12239,9 +12090,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/users",
+            "{}/api/3.18/application/users",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12345,7 +12195,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_applications(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_q: Option<String>,
         param_keyword: Option<String>,
@@ -12371,9 +12220,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/list",
+            "{}/api/3.18/application/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12527,7 +12375,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_application_placement(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -12538,9 +12385,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/placement/search",
+            "{}/api/3.18/application/placement/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12632,7 +12478,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_application_settings(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_connection_account_id: Option<i64>,
@@ -12646,9 +12491,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/settings/search",
+            "{}/api/3.18/application/settings/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12754,7 +12598,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_applications(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -12776,9 +12619,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/search",
+            "{}/api/3.18/application/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -12916,7 +12758,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_application(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_app_name: String,
         param_device_id: Option<String>,
@@ -13002,9 +12843,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/update",
+            "{}/api/3.18/application/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13394,7 +13234,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_application_active(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_active: bool,
@@ -13403,9 +13242,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/active",
+            "{}/api/3.18/application/active",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13485,7 +13323,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_application_placement(
         &self,
-        param_version: f64,
         param_placement_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -13502,9 +13339,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/placement/update",
+            "{}/api/3.18/application/placement/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13620,7 +13456,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn upload_application_certificate(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -13630,9 +13465,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/application/certificate/create",
+            "{}/api/3.18/application/certificate/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13720,7 +13554,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_application_config(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_config_version: String,
@@ -13733,9 +13566,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/create",
+            "{}/api/3.18/appconfig/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13829,7 +13661,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_application_config(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_config_id: i64,
         context: &C) -> Result<DeleteApplicationConfigResponse, ApiError>
@@ -13837,9 +13668,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/delete",
+            "{}/api/3.18/appconfig/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -13917,7 +13747,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_application_config(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_config_id: i64,
         context: &C) -> Result<GetApplicationConfigResponse, ApiError>
@@ -13925,9 +13754,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/get",
+            "{}/api/3.18/appconfig/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14005,7 +13833,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_application_config_by_config_version(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_config_version: String,
         param_retailer_id: Option<i64>,
@@ -14017,9 +13844,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/getbyversion",
+            "{}/api/3.18/appconfig/getbyversion",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14113,7 +13939,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_application_config(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: Option<String>,
         param_retailer_id: Option<i64>,
@@ -14129,9 +13954,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/search",
+            "{}/api/3.18/appconfig/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14243,7 +14067,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_application_config(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_config_id: i64,
         param_app_key: Option<String>,
@@ -14257,9 +14080,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/appconfig/update",
+            "{}/api/3.18/appconfig/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14361,7 +14183,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn asset_morph(
         &self,
-        param_version: f64,
         param_offer_id: i64,
         param_ad_size: models::CreateApplicationPlacementSizeParameter,
         param_creative_id: Option<i64>,
@@ -14374,9 +14195,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/morph",
+            "{}/api/3.18/asset/morph",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14474,7 +14294,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_asset(
         &self,
-        param_version: f64,
         param_return_nulls: Option<bool>,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -14514,9 +14333,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/create",
+            "{}/api/3.18/asset/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14726,7 +14544,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_asset(
         &self,
-        param_version: f64,
         param_asset_id: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -14737,9 +14554,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/delete",
+            "{}/api/3.18/asset/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14831,7 +14647,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_asset(
         &self,
-        param_version: f64,
         param_asset_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -14841,9 +14656,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/get",
+            "{}/api/3.18/asset/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -14931,7 +14745,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_asset(
         &self,
-        param_version: f64,
         param_asset_id: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -14945,9 +14758,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/remove",
+            "{}/api/3.18/asset/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15051,7 +14863,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_assets(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_album_ids: Option<String>,
@@ -15081,9 +14892,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/search",
+            "{}/api/3.18/asset/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15253,7 +15063,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_asset(
         &self,
-        param_version: f64,
         param_asset_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -15290,9 +15099,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/update",
+            "{}/api/3.18/asset/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15488,16 +15296,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn asset_download(
         &self,
-        param_version: f64,
         param_filename: String,
         context: &C) -> Result<AssetDownloadResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/asset/download/{filename}",
+            "{}/api/3.18/asset/download/{filename}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,filename=utf8_percent_encode(&param_filename.to_string(), ID_ENCODE_SET)
         );
 
@@ -15572,7 +15378,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assigment_assignee_account_search(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         context: &C) -> Result<AssigmentAssigneeAccountSearchResponse, ApiError>
@@ -15580,9 +15385,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/assignee/search",
+            "{}/api/3.18/assignment/assignee/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15662,7 +15466,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_create(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_assignee_account_id: i64,
@@ -15675,9 +15478,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/create",
+            "{}/api/3.18/assignment/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15773,7 +15575,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_delete(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_id: i64,
         context: &C) -> Result<AssignmentDeleteResponse, ApiError>
@@ -15781,9 +15582,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/delete",
+            "{}/api/3.18/assignment/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15861,7 +15661,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_get(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_id: i64,
         context: &C) -> Result<AssignmentGetResponse, ApiError>
@@ -15869,9 +15668,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/get",
+            "{}/api/3.18/assignment/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -15949,7 +15747,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_search(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: models::AssignmentSearchSortFieldParameter,
         param_descending: bool,
@@ -15966,9 +15763,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/search",
+            "{}/api/3.18/assignment/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16074,7 +15870,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_status_create(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_id: i64,
         param_scheduled_notification_id: Option<i64>,
@@ -16091,9 +15886,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/status/create",
+            "{}/api/3.18/assignment/status/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16207,7 +16001,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_status_delete(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_status_id: i64,
         context: &C) -> Result<AssignmentStatusDeleteResponse, ApiError>
@@ -16215,9 +16008,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/status/delete",
+            "{}/api/3.18/assignment/status/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16295,7 +16087,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_status_get(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_status_id: i64,
         context: &C) -> Result<AssignmentStatusGetResponse, ApiError>
@@ -16303,9 +16094,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/status/get",
+            "{}/api/3.18/assignment/status/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16383,7 +16173,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_status_search(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: models::AssignmentStatusSearchSortFieldParameter,
         param_descending: bool,
@@ -16401,9 +16190,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/status/search",
+            "{}/api/3.18/assignment/status/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16513,7 +16301,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_status_update(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_status_id: i64,
         param_scheduled_notification_id: Option<i64>,
@@ -16530,9 +16317,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/status/update",
+            "{}/api/3.18/assignment/status/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16646,7 +16432,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assignment_update(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_assignment_id: i64,
         param_name: Option<String>,
@@ -16660,9 +16445,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/assignment/update",
+            "{}/api/3.18/assignment/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16764,7 +16548,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_audience(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_description: Option<String>,
@@ -16799,9 +16582,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/create",
+            "{}/api/3.18/audience/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -16987,7 +16769,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_audience(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_audience_id: i64,
         context: &C) -> Result<DeleteAudienceResponse, ApiError>
@@ -16995,9 +16776,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/delete",
+            "{}/api/3.18/audience/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17075,15 +16855,13 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_age_groups(
         &self,
-        param_version: f64,
         context: &C) -> Result<GetAgeGroupsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/ageGroups",
+            "{}/api/3.18/audience/ageGroups",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17157,7 +16935,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_audience(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_audience_id: i64,
         param_app_key: Option<String>,
@@ -17169,9 +16946,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/get",
+            "{}/api/3.18/audience/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17265,7 +17041,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_audience_list(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_album_ids: Option<String>,
         param_keyword: Option<String>,
@@ -17290,9 +17065,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/search",
+            "{}/api/3.18/audience/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17442,16 +17216,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_devices(
         &self,
-        param_version: f64,
         param_include_inactive: bool,
         context: &C) -> Result<GetDevicesResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/devices",
+            "{}/api/3.18/audience/devices",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17527,15 +17299,13 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_experiences(
         &self,
-        param_version: f64,
         context: &C) -> Result<GetExperiencesResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/experiences",
+            "{}/api/3.18/audience/experiences",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17609,7 +17379,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_grouped_audiences(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_audience_grouping_id: String,
         context: &C) -> Result<GetGroupedAudiencesResponse, ApiError>
@@ -17617,9 +17386,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/grouped/get",
+            "{}/api/3.18/audience/grouped/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17697,7 +17465,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_by_account(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_limit: i32,
         param_suggestion_type: String,
@@ -17706,9 +17473,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/suggestion/list",
+            "{}/api/3.18/audience/suggestion/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17788,7 +17554,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_by_audience(
         &self,
-        param_version: f64,
         param_limit: i32,
         param_gender: Option<String>,
         param_age: Option<i32>,
@@ -17800,9 +17565,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/suggestion/offersByAudience",
+            "{}/api/3.18/audience/suggestion/offersByAudience",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17898,7 +17662,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_lastest_by_account(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_timeframe: i32,
         param_suggestion_type: String,
@@ -17907,9 +17670,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/suggestion/latest",
+            "{}/api/3.18/audience/suggestion/latest",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -17989,7 +17751,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn send_by_account(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_latitude: f64,
         param_longitude: f64,
@@ -17998,9 +17759,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/suggestion/send",
+            "{}/api/3.18/audience/suggestion/send",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18080,7 +17840,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_audience(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_audience_id: i64,
         param_name: Option<String>,
@@ -18117,9 +17876,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/audience/update",
+            "{}/api/3.18/audience/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18313,7 +18071,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_bid(
         &self,
-        param_version: f64,
         param_biddable_type: String,
         param_biddable_id: i64,
         param_amount_per_view: f64,
@@ -18327,9 +18084,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/bid/create",
+            "{}/api/3.18/bid/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18423,7 +18179,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_bid(
         &self,
-        param_version: f64,
         param_bid_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -18432,9 +18187,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/bid/delete",
+            "{}/api/3.18/bid/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18518,7 +18272,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_bid(
         &self,
-        param_version: f64,
         param_bid_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -18527,9 +18280,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/bid/get",
+            "{}/api/3.18/bid/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18613,7 +18365,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_bid(
         &self,
-        param_version: f64,
         param_bid_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -18626,9 +18377,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/bid/update",
+            "{}/api/3.18/bid/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18728,7 +18478,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_billable_entity(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_name: Option<String>,
@@ -18746,9 +18495,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billable/create",
+            "{}/api/3.18/billable/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18870,7 +18618,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_billable_entity(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         context: &C) -> Result<DeleteBillableEntityResponse, ApiError>
@@ -18878,9 +18625,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billable/delete",
+            "{}/api/3.18/billable/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -18962,7 +18708,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_billable_entity(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_include_counts: Option<bool>,
@@ -18972,9 +18717,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billable/get",
+            "{}/api/3.18/billable/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19064,7 +18808,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_billable_entity(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_name: Option<String>,
@@ -19082,9 +18825,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billable/update",
+            "{}/api/3.18/billable/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19206,7 +18948,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_payment_method(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_payment_method_id: Option<i64>,
         param_account_name: Option<String>,
@@ -19235,9 +18976,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/update",
+            "{}/api/3.18/billing/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19401,7 +19141,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_payment_method(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_account_name: Option<String>,
         param_first_name: Option<String>,
@@ -19432,9 +19171,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/create",
+            "{}/api/3.18/billing/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19606,7 +19344,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_smart_contract(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_token_name: String,
         param_token_symbol: String,
@@ -19616,9 +19353,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/crypto/transfer",
+            "{}/api/3.18/billing/crypto/transfer",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19702,7 +19438,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_crypto_balance(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_owner_account_id: Option<i64>,
         param_payment_method_id: Option<i64>,
@@ -19711,9 +19446,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/crypto/get",
+            "{}/api/3.18/billing/crypto/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19797,7 +19531,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_payment_method(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_payment_method_id: Option<i64>,
         param_get_current_balance: Option<bool>,
@@ -19806,9 +19539,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/get",
+            "{}/api/3.18/billing/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -19892,7 +19624,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_payment_method(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_provider: Option<String>,
         param_param_type: Option<String>,
@@ -19906,9 +19637,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/billing/search",
+            "{}/api/3.18/billing/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20012,7 +19742,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_status_csv(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_batch_id: i64,
         param_response_group: models::GetStatusCsvResponseGroupParameter,
@@ -20023,9 +19752,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/csvimport/batch/status/details",
+            "{}/api/3.18/csvimport/batch/status/details",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20109,7 +19837,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_status_csv(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_start: i32,
         param_limit: i32,
@@ -20118,9 +19845,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/csvimport/batch/list",
+            "{}/api/3.18/csvimport/batch/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20200,7 +19926,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn status_csv(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_batch_id: i64,
         context: &C) -> Result<StatusCsvResponse, ApiError>
@@ -20208,9 +19933,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/csvimport/batch/status",
+            "{}/api/3.18/csvimport/batch/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20288,7 +20012,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn upload_csv(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_upload_type: models::UploadCsvUploadTypeParameter,
         param_import_file: swagger::ByteArray,
@@ -20299,9 +20022,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/csvimport/upload",
+            "{}/api/3.18/csvimport/upload",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20387,16 +20109,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_cargo_type(
         &self,
-        param_version: f64,
         param_body: Option<models::CargoType>,
         context: &C) -> Result<CreateCargoTypeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/type",
+            "{}/api/3.18/cargo/type",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20480,7 +20200,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_cargo_types(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -20493,9 +20212,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/type",
+            "{}/api/3.18/cargo/type",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20587,16 +20305,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_cargo_type(
         &self,
-        param_version: f64,
         param_cargo_type_id: i64,
         context: &C) -> Result<DeleteCargoTypeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/type/{cargo_type_id}",
+            "{}/api/3.18/cargo/type/{cargo_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,cargo_type_id=utf8_percent_encode(&param_cargo_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -20659,16 +20375,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_cargo_type(
         &self,
-        param_version: f64,
         param_cargo_type_id: i64,
         context: &C) -> Result<GetCargoTypeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/type/{cargo_type_id}",
+            "{}/api/3.18/cargo/type/{cargo_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,cargo_type_id=utf8_percent_encode(&param_cargo_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -20743,7 +20457,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_cargo_type(
         &self,
-        param_version: f64,
         param_cargo_type_id: i64,
         param_body: Option<models::CargoType>,
         context: &C) -> Result<UpdateCargoTypeResponse, ApiError>
@@ -20751,9 +20464,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/type/{cargo_type_id}",
+            "{}/api/3.18/cargo/type/{cargo_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,cargo_type_id=utf8_percent_encode(&param_cargo_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -20838,7 +20550,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_carriers(
         &self,
-        param_version: f64,
         param_keyword: Option<String>,
         param_descending: Option<bool>,
         param_start: Option<i32>,
@@ -20849,9 +20560,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/carrier/search",
+            "{}/api/3.18/carrier/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -20945,7 +20655,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn category_distance_search(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_keyword: Option<String>,
         param_app_key: Option<String>,
@@ -20971,9 +20680,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/distancesearch",
+            "{}/api/3.18/category/distancesearch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21127,7 +20835,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_category(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_app_key: Option<String>,
@@ -21147,9 +20854,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/create",
+            "{}/api/3.18/category/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21275,7 +20981,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_category(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_category_id: i64,
         context: &C) -> Result<DeleteCategoryResponse, ApiError>
@@ -21283,9 +20988,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/delete",
+            "{}/api/3.18/category/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21363,7 +21067,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn duplicate_category(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_category_id: i64,
         param_app_key: Option<String>,
@@ -21373,9 +21076,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/duplicate",
+            "{}/api/3.18/category/duplicate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21461,7 +21163,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_category(
         &self,
-        param_version: f64,
         param_category_id: i64,
         param_return_external: Option<bool>,
         context: &C) -> Result<GetCategoryResponse, ApiError>
@@ -21469,9 +21170,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/get",
+            "{}/api/3.18/category/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21551,7 +21251,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_categories(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_keyword: Option<String>,
         param_app_key: Option<String>,
@@ -21578,9 +21277,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/search",
+            "{}/api/3.18/category/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21738,7 +21436,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_category(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_category_id: i64,
         param_parent_category_id: Option<i64>,
@@ -21758,9 +21455,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/category/update",
+            "{}/api/3.18/category/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -21886,7 +21582,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_connection_to_group(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_group_id: i64,
         param_device_id: Option<String>,
@@ -21901,9 +21596,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/addConnection",
+            "{}/api/3.18/consumer/connection/group/addConnection",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22009,7 +21703,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_connections_to_group(
         &self,
-        param_version: f64,
         param_connection_group_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -22022,9 +21715,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/connection/group/addConnections",
+            "{}/api/3.18/connection/group/addConnections",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22124,7 +21816,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_sub_groups(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_group_id: i64,
         param_sub_group_ids: String,
@@ -22137,9 +21828,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/addSubGroup",
+            "{}/api/3.18/consumer/connection/group/addSubGroup",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22235,7 +21925,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_or_update_connection(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_connection_id: Option<i64>,
@@ -22255,9 +21944,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/add",
+            "{}/api/3.18/consumer/connection/add",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22387,7 +22075,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_or_update_group(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -22407,9 +22094,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group",
+            "{}/api/3.18/consumer/connection/group",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22537,7 +22223,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn follow_accept(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_connection_account_id: i64,
         param_app_key: String,
@@ -22546,9 +22231,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/follow/accept",
+            "{}/api/3.18/consumer/follow/accept",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22628,7 +22312,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn follow_reject(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_connection_account_id: i64,
         param_app_key: String,
@@ -22637,9 +22320,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/follow/reject",
+            "{}/api/3.18/consumer/follow/reject",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22719,7 +22401,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn follow_remove(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_connection_account_id: i64,
         param_app_key: String,
@@ -22728,9 +22409,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/follow/remove",
+            "{}/api/3.18/consumer/follow/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22810,7 +22490,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn follow_request(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_connection_account_id: i64,
         param_app_key: String,
@@ -22820,9 +22499,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/follow/request",
+            "{}/api/3.18/consumer/follow/request",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -22906,7 +22584,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn friend_accept(
         &self,
-        param_version: f64,
         param_friend_account_id: i64,
         param_notify_friend: bool,
         param_device_id: Option<String>,
@@ -22919,9 +22596,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/friend/accept",
+            "{}/api/3.18/consumer/friend/accept",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23019,7 +22695,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn friend_reject(
         &self,
-        param_version: f64,
         param_friend_account_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -23032,9 +22707,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/friend/reject",
+            "{}/api/3.18/consumer/friend/reject",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23134,7 +22808,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn friend_remove(
         &self,
-        param_version: f64,
         param_friend_account_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -23145,9 +22818,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/friend/remove",
+            "{}/api/3.18/consumer/friend/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23239,7 +22911,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn friend_request(
         &self,
-        param_version: f64,
         param_friend_account_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -23251,9 +22922,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/friend/request",
+            "{}/api/3.18/consumer/friend/request",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23349,7 +23019,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_connection_sent_friend_requests(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         context: &C) -> Result<GetConnectionSentFriendRequestsResponse, ApiError>
@@ -23357,9 +23026,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/getRequested",
+            "{}/api/3.18/consumer/connection/getRequested",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23441,7 +23109,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_connections(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_filter: String,
         param_sort_field: String,
@@ -23462,9 +23129,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/get",
+            "{}/api/3.18/consumer/connection/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23586,7 +23252,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_group_details(
         &self,
-        param_version: f64,
         param_combine_connections: bool,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -23598,9 +23263,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/details/get",
+            "{}/api/3.18/consumer/connection/group/details/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23696,7 +23360,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn group_search(
         &self,
-        param_version: f64,
         param_sort_field: models::GroupSearchSortFieldParameter,
         param_descending: bool,
         param_active_only: bool,
@@ -23712,9 +23375,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/connection/group/search",
+            "{}/api/3.18/connection/group/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23818,7 +23480,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_connection_from_group(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_group_id: i64,
         param_device_id: Option<String>,
@@ -23833,9 +23494,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/removeConnection",
+            "{}/api/3.18/consumer/connection/group/removeConnection",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -23941,7 +23601,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_connections_from_group(
         &self,
-        param_version: f64,
         param_connection_group_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -23954,9 +23613,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/connection/group/removeConnections",
+            "{}/api/3.18/connection/group/removeConnections",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24056,7 +23714,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_group(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_group_id: i64,
         param_device_id: Option<String>,
@@ -24068,9 +23725,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/remove",
+            "{}/api/3.18/consumer/connection/group/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24164,7 +23820,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_sub_groups(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_group_id: i64,
         param_sub_group_ids: String,
@@ -24177,9 +23832,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/connection/group/removeSubGroup",
+            "{}/api/3.18/consumer/connection/group/removeSubGroup",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24275,7 +23929,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_connections(
         &self,
-        param_version: f64,
         param_return_nulls: bool,
         param_start: i32,
         param_limit: i32,
@@ -24296,9 +23949,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/connection/search",
+            "{}/api/3.18/connection/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24426,7 +24078,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_or_update_album_contest(
         &self,
-        param_version: f64,
         param_public_read: bool,
         param_public_write: bool,
         param_public_delete: bool,
@@ -24457,9 +24108,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest",
+            "{}/api/3.18/consumer/album/contest",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24621,7 +24271,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn approve_album_contest(
         &self,
-        param_version: f64,
         param_album_contest_id: i64,
         param_approval_status: models::ApproveAlbumApprovalStatusParameter,
         param_device_id: Option<String>,
@@ -24631,9 +24280,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest/approve",
+            "{}/api/3.18/consumer/album/contest/approve",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24719,7 +24367,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_contest(
         &self,
-        param_version: f64,
         param_album_contest_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -24730,9 +24377,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest/remove",
+            "{}/api/3.18/consumer/album/contest/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24824,7 +24470,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_album_contest(
         &self,
-        param_version: f64,
         param_album_contest_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -24835,9 +24480,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest/get",
+            "{}/api/3.18/consumer/album/contest/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -24929,7 +24573,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_album_contests(
         &self,
-        param_version: f64,
         param_filter: String,
         param_sort_field: String,
         param_descending: bool,
@@ -24954,9 +24597,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest/search",
+            "{}/api/3.18/consumer/album/contest/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25096,7 +24738,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn vote_on_album_contest(
         &self,
-        param_version: f64,
         param_album_contest_id: i64,
         param_album_id: i64,
         param_device_id: Option<String>,
@@ -25109,9 +24750,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/album/contest/vote",
+            "{}/api/3.18/consumer/album/contest/vote",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25209,7 +24849,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_preview(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_creative_id: i64,
         context: &C) -> Result<AddPreviewResponse, ApiError>
@@ -25217,9 +24856,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/addpreview",
+            "{}/api/3.18/creative/addpreview",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25297,7 +24935,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ads_find(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_randomize: bool,
         param_targeted_ads_only: bool,
@@ -25319,9 +24956,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ads/find",
+            "{}/api/3.18/ads/find",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25453,7 +25089,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_creative(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_active: bool,
@@ -25474,9 +25109,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/create",
+            "{}/api/3.18/creative/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25602,7 +25236,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_creative(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_creative_id: i64,
         context: &C) -> Result<DeleteCreativeResponse, ApiError>
@@ -25610,9 +25243,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/delete",
+            "{}/api/3.18/creative/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25690,7 +25322,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_creative(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_creative_id: i64,
         context: &C) -> Result<GetCreativeResponse, ApiError>
@@ -25698,9 +25329,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/get",
+            "{}/api/3.18/creative/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25778,7 +25408,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_creatives_by_application(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_start: i32,
@@ -25790,9 +25419,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/search",
+            "{}/api/3.18/creative/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25882,7 +25510,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_preview(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_creative_id: i64,
         context: &C) -> Result<RemovePreviewResponse, ApiError>
@@ -25890,9 +25517,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/removepreview",
+            "{}/api/3.18/creative/removepreview",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -25970,7 +25596,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_creative(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_creative_id: i64,
         param_name: Option<String>,
@@ -25990,9 +25615,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/creative/update",
+            "{}/api/3.18/creative/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26118,7 +25742,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_body: Option<models::Account>,
         context: &C) -> Result<CreateResponse, ApiError>
@@ -26126,9 +25749,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/dependent/{account_id}",
+            "{}/api/3.18/cargo/dependent/{account_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,account_id=utf8_percent_encode(&param_account_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -26213,16 +25835,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_dependents(
         &self,
-        param_version: f64,
         param_account_id: i64,
         context: &C) -> Result<GetDependentsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/dependent/{account_id}",
+            "{}/api/3.18/cargo/dependent/{account_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,account_id=utf8_percent_encode(&param_account_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -26297,7 +25917,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_dependent(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_dependent_id: i64,
         context: &C) -> Result<RemoveDependentResponse, ApiError>
@@ -26305,9 +25924,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/cargo/dependent/{account_id}",
+            "{}/api/3.18/cargo/dependent/{account_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,account_id=utf8_percent_encode(&param_account_id.to_string(), ID_ENCODE_SET)
             ,dependent_id=utf8_percent_encode(&param_dependent_id.to_string(), ID_ENCODE_SET)
         );
@@ -26371,16 +25989,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn check_disbursements(
         &self,
-        param_version: f64,
         param_disbursement_id: i64,
         context: &C) -> Result<CheckDisbursementsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/disbursement/check",
+            "{}/api/3.18/disbursement/check",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26456,7 +26072,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_disbursement(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_receiver_account_id: i64,
         param_original_sender_account_id: i64,
@@ -26472,9 +26087,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/disbursement/create",
+            "{}/api/3.18/disbursement/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26578,7 +26192,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_disbursement(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_disbursement_id: i64,
         context: &C) -> Result<GetDisbursementResponse, ApiError>
@@ -26586,9 +26199,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/disbursement/get",
+            "{}/api/3.18/disbursement/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26666,7 +26278,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_disbursements(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_receiver_account_id: Option<i64>,
         param_statuses: Option<String>,
@@ -26682,9 +26293,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/disbursement/search",
+            "{}/api/3.18/disbursement/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26796,7 +26406,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_disbursement(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_disbursement_id: i64,
         param_amount: Option<f64>,
@@ -26812,9 +26421,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/disbursement/update",
+            "{}/api/3.18/disbursement/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -26924,7 +26532,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assign_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_manager_account_id: i64,
         param_employee_account_id: i64,
@@ -26934,9 +26541,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/assign",
+            "{}/api/3.18/employee/assign",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27020,7 +26626,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn assign_to_location_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_retailer_location_id: i64,
         param_employee_account_id: Option<i64>,
@@ -27030,9 +26635,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/assignToLocation",
+            "{}/api/3.18/employee/assignToLocation",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27118,7 +26722,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_manager_account_id: i64,
         param_username: String,
@@ -27154,9 +26757,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/create",
+            "{}/api/3.18/employee/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27342,7 +26944,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_employee_account_id: i64,
         context: &C) -> Result<DeleteEmployeeResponse, ApiError>
@@ -27350,9 +26951,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/delete",
+            "{}/api/3.18/employee/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27430,7 +27030,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_employee_account_id: i64,
         param_settings_app_key: Option<String>,
@@ -27439,9 +27038,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/get",
+            "{}/api/3.18/employee/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27523,7 +27121,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_employees(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_role: Option<String>,
         param_retailer_id: Option<i64>,
@@ -27546,9 +27143,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/search",
+            "{}/api/3.18/employee/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27688,7 +27284,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn unassign_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_employee_account_id: i64,
         context: &C) -> Result<UnassignEmployeeResponse, ApiError>
@@ -27696,9 +27291,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/unassign",
+            "{}/api/3.18/employee/unassign",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -27776,7 +27370,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_employee(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_employee_account_id: i64,
         param_manager_account_id: Option<i64>,
@@ -27812,9 +27405,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/employee/update",
+            "{}/api/3.18/employee/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28004,7 +27596,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn attend_event(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -28020,9 +27611,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/attend",
+            "{}/api/3.18/event/attend",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28136,7 +27726,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_title: String,
         param_retailer_location_ids: Option<String>,
@@ -28154,9 +27743,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/create",
+            "{}/api/3.18/event/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28274,7 +27862,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_event_id: i64,
         context: &C) -> Result<DeleteEventResponse, ApiError>
@@ -28282,9 +27869,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/delete",
+            "{}/api/3.18/event/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28362,7 +27948,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_event_id: i64,
         context: &C) -> Result<GetEventResponse, ApiError>
@@ -28370,9 +27955,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/get",
+            "{}/api/3.18/event/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28450,7 +28034,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_event_transactions(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -28475,9 +28058,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/attendance/search",
+            "{}/api/3.18/event/attendance/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28627,7 +28209,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_events(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         param_active_only: Option<bool>,
@@ -28646,9 +28227,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/search",
+            "{}/api/3.18/event/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28772,7 +28352,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_event_id: i64,
         param_retailer_location_ids: Option<String>,
@@ -28790,9 +28369,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/event/update",
+            "{}/api/3.18/event/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -28910,7 +28488,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_token(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -28920,9 +28497,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/facebook/getfbtoken",
+            "{}/api/3.18/facebook/getfbtoken",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29012,7 +28588,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn graph_interface(
         &self,
-        param_version: f64,
         param_event: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -29028,9 +28603,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/facebook/graph",
+            "{}/api/3.18/facebook/graph",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29142,7 +28716,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_favorite(
         &self,
-        param_version: f64,
         param_favoritable_id: i64,
         param_favoritable_type: String,
         param_device_id: Option<String>,
@@ -29154,9 +28727,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/favorite/create",
+            "{}/api/3.18/favorite/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29250,7 +28822,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_favorite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_favorite_id: Option<i64>,
@@ -29261,9 +28832,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/favorite/delete",
+            "{}/api/3.18/favorite/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29357,7 +28927,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_favorite(
         &self,
-        param_version: f64,
         param_favorite_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -29368,9 +28937,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/favorite/get",
+            "{}/api/3.18/favorite/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29462,7 +29030,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_favorites(
         &self,
-        param_version: f64,
         param_favoritable_type: String,
         param_sort_field: models::SearchFavoritesSortFieldParameter,
         param_descending: bool,
@@ -29482,9 +29049,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/favorite/search",
+            "{}/api/3.18/favorite/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29600,7 +29166,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn who_has_favorited(
         &self,
-        param_version: f64,
         param_favoritable_id: i64,
         param_favoritable_type: String,
         param_start: i32,
@@ -29615,9 +29180,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/favorite/whois",
+            "{}/api/3.18/favorite/whois",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29719,7 +29283,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_filter(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_app_key: Option<String>,
@@ -29734,9 +29297,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/filter/create",
+            "{}/api/3.18/filter/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29842,7 +29404,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_filter(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_filter_id: i64,
         context: &C) -> Result<DeleteFilterResponse, ApiError>
@@ -29850,9 +29411,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/filter/delete",
+            "{}/api/3.18/filter/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -29930,16 +29490,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_filter(
         &self,
-        param_version: f64,
         param_filter_id: i64,
         context: &C) -> Result<GetFilterResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/filter/get",
+            "{}/api/3.18/filter/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30015,7 +29573,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_filters(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_keyword: Option<String>,
         param_app_key: Option<String>,
@@ -30031,9 +29588,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/filter/search",
+            "{}/api/3.18/filter/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30147,7 +29703,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_filter(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_filter_id: i64,
         param_parent_filter_id: Option<i64>,
@@ -30162,9 +29717,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/filter/update",
+            "{}/api/3.18/filter/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30270,7 +29824,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_flag(
         &self,
-        param_version: f64,
         param_flagable_type: String,
         param_flagable_id: i64,
         param_device_id: Option<String>,
@@ -30283,9 +29836,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/flag/create",
+            "{}/api/3.18/flag/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30383,7 +29935,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_flag(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_item_being_flagged_type: Option<String>,
@@ -30395,9 +29946,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/flag/delete",
+            "{}/api/3.18/flag/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30495,7 +30045,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_flag(
         &self,
-        param_version: f64,
         param_flagable_type: String,
         param_flagable_id: i64,
         param_device_id: Option<String>,
@@ -30507,9 +30056,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/flag/get",
+            "{}/api/3.18/flag/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30603,7 +30151,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_flag_threshold(
         &self,
-        param_version: f64,
         param_item_being_flagged_type: String,
         param_app_key: String,
         context: &C) -> Result<GetFlagThresholdResponse, ApiError>
@@ -30611,9 +30158,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/flag/threshold/get",
+            "{}/api/3.18/flag/threshold/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30691,7 +30237,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_flag_threshold(
         &self,
-        param_version: f64,
         param_item_being_flagged_type: String,
         param_threshold: i64,
         param_app_key: String,
@@ -30702,9 +30247,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/flag/threshold/update",
+            "{}/api/3.18/flag/threshold/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30792,7 +30336,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_game(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         param_title: Option<String>,
@@ -30805,9 +30348,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/create",
+            "{}/api/3.18/game/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30909,7 +30451,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_game(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_game_id: i64,
         context: &C) -> Result<DeleteGameResponse, ApiError>
@@ -30917,9 +30458,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/delete",
+            "{}/api/3.18/game/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -30997,7 +30537,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_game(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_game_id: i64,
         param_include_game_data: Option<bool>,
@@ -31006,9 +30545,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/get",
+            "{}/api/3.18/game/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31090,7 +30628,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_games(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_start: i32,
@@ -31104,9 +30641,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/search",
+            "{}/api/3.18/game/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31204,7 +30740,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_game(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_game_id: Option<i64>,
         param_app_key: Option<String>,
@@ -31218,9 +30753,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/update",
+            "{}/api/3.18/game/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31326,7 +30860,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_game_level(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_game_data: String,
@@ -31358,9 +30891,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/create",
+            "{}/api/3.18/level/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31530,7 +31062,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_game_level(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_level_id: i64,
         context: &C) -> Result<DeleteGameLevelResponse, ApiError>
@@ -31538,9 +31069,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/delete",
+            "{}/api/3.18/level/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31618,7 +31148,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_game_level(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_level_id: i64,
         param_include_game_data: Option<bool>,
@@ -31627,9 +31156,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/get",
+            "{}/api/3.18/level/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31711,7 +31239,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_game_levels_by_application(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_keyword: Option<String>,
@@ -31727,9 +31254,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/search",
+            "{}/api/3.18/level/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31839,7 +31365,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_game_levels_by_billable_entity(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: Option<String>,
         param_keyword: Option<String>,
@@ -31853,9 +31378,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/searchByBillableEntity",
+            "{}/api/3.18/level/searchByBillableEntity",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -31959,7 +31483,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_questions_in_level(
         &self,
-        param_version: f64,
         param_level_id: i64,
         param_account_id: i64,
         context: &C) -> Result<GetQuestionsInLevelResponse, ApiError>
@@ -31967,9 +31490,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/questions/get",
+            "{}/api/3.18/level/questions/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32047,7 +31569,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_words_in_level(
         &self,
-        param_version: f64,
         param_level_id: i64,
         param_account_id: i64,
         context: &C) -> Result<GetWordsInLevelResponse, ApiError>
@@ -32055,9 +31576,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/words/get",
+            "{}/api/3.18/level/words/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32135,7 +31655,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_game_level(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_level_id: i64,
         param_app_key: Option<String>,
@@ -32168,9 +31687,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/update",
+            "{}/api/3.18/level/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32348,7 +31866,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_questions_in_level(
         &self,
-        param_version: f64,
         param_level_id: i64,
         param_account_id: i64,
         param_question_ids: String,
@@ -32357,9 +31874,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/questions/update",
+            "{}/api/3.18/level/questions/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32439,7 +31955,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_words_in_level(
         &self,
-        param_version: f64,
         param_level_id: i64,
         param_account_id: i64,
         param_word_ids: String,
@@ -32448,9 +31963,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/level/words/update",
+            "{}/api/3.18/level/words/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32530,7 +32044,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn accept_invite(
         &self,
-        param_version: f64,
         param_token: String,
         param_account_id: i64,
         param_album_id: Option<i64>,
@@ -32550,9 +32063,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/accept",
+            "{}/api/3.18/invite/accept",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32678,7 +32190,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn album_contest_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_id: Option<i64>,
@@ -32691,9 +32202,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/albumContest",
+            "{}/api/3.18/invite/albumContest",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32795,7 +32305,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn album_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_id: Option<i64>,
@@ -32808,9 +32317,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/album",
+            "{}/api/3.18/invite/album",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -32912,7 +32420,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn event_invite(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_listing_id: i64,
@@ -32923,9 +32430,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/event",
+            "{}/api/3.18/invite/event",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33013,7 +32519,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn game_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_id: Option<i64>,
@@ -33026,9 +32531,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/gameLevel",
+            "{}/api/3.18/invite/gameLevel",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33130,7 +32634,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_invite(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_token: Option<String>,
         param_album_id: Option<i64>,
@@ -33145,9 +32648,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/get",
+            "{}/api/3.18/invite/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33257,7 +32759,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn mission_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_id: Option<i64>,
@@ -33270,9 +32771,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/mission",
+            "{}/api/3.18/invite/mission",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33374,7 +32874,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn offer_invite(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_offer_id: i64,
@@ -33383,9 +32882,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/offer",
+            "{}/api/3.18/invite/offer",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33465,7 +32963,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn offer_location_invite(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_offer_location_id: i64,
@@ -33474,9 +32971,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/offerLocation",
+            "{}/api/3.18/invite/offerLocation",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33556,7 +33052,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn retailer_location_invite(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_retailer_location_id: i64,
@@ -33566,9 +33061,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/invite/retailerLocation",
+            "{}/api/3.18/invite/retailerLocation",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33652,7 +33146,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_leaderboard(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         param_rank_type: Option<String>,
@@ -33671,9 +33164,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/leaderboard/create",
+            "{}/api/3.18/leaderboard/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33799,7 +33291,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_leaderboard(
         &self,
-        param_version: f64,
         param_leaderboard_id: i64,
         param_account_id: Option<i64>,
         context: &C) -> Result<DeleteLeaderboardResponse, ApiError>
@@ -33807,9 +33298,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/leaderboard/delete",
+            "{}/api/3.18/leaderboard/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33889,7 +33379,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_leaderboard(
         &self,
-        param_version: f64,
         param_leaderboard_id: i64,
         param_account_id: Option<i64>,
         param_include_full_ranking_list: Option<bool>,
@@ -33898,9 +33387,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/leaderboard/get",
+            "{}/api/3.18/leaderboard/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -33984,7 +33472,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_leaderboards(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
         param_global_only: Option<bool>,
@@ -34002,9 +33489,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/leaderboard/search",
+            "{}/api/3.18/leaderboard/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34126,7 +33612,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_leaderboard(
         &self,
-        param_version: f64,
         param_leaderboard_id: i64,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -34147,9 +33632,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/leaderboard/update",
+            "{}/api/3.18/leaderboard/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34281,7 +33765,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn register_like(
         &self,
-        param_version: f64,
         param_likable_type: String,
         param_likable_id: i64,
         param_device_id: Option<String>,
@@ -34299,9 +33782,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/like",
+            "{}/api/3.18/like",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34419,7 +33901,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_like(
         &self,
-        param_version: f64,
         param_likable_type: String,
         param_likable_id: i64,
         param_device_id: Option<String>,
@@ -34431,9 +33912,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/like/delete",
+            "{}/api/3.18/like/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34527,7 +34007,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_likes(
         &self,
-        param_version: f64,
         param_likable_type: String,
         param_likable_id: i64,
         param_device_id: Option<String>,
@@ -34544,9 +34023,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/like/search",
+            "{}/api/3.18/like/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34660,7 +34138,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_listing(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_filter_ids: Option<String>,
@@ -34680,9 +34157,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/create",
+            "{}/api/3.18/listing/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34808,7 +34284,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_listing(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_listing_id: i64,
         context: &C) -> Result<DeleteListingResponse, ApiError>
@@ -34816,9 +34291,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/delete",
+            "{}/api/3.18/listing/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34896,16 +34370,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_listing(
         &self,
-        param_version: f64,
         param_listing_id: i64,
         context: &C) -> Result<GetListingResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/get",
+            "{}/api/3.18/listing/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -34981,7 +34453,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_listing(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_keyword: Option<String>,
         param_start: Option<i32>,
@@ -35002,9 +34473,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/search",
+            "{}/api/3.18/listing/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35138,7 +34608,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn summary_listing(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_start_date: Option<i64>,
         param_category_ids: Option<String>,
@@ -35149,9 +34618,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/summary",
+            "{}/api/3.18/listing/summary",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35245,7 +34713,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_listing(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_listing_id: i64,
         param_filter_ids: Option<String>,
@@ -35266,9 +34733,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/listing/update",
+            "{}/api/3.18/listing/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35398,7 +34864,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn cache_trilateration_data(
         &self,
-        param_version: f64,
         param_udid: String,
         param_source_time: Option<i64>,
         param_minimum_sample_size: Option<i32>,
@@ -35409,9 +34874,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/trilaterate/cache",
+            "{}/api/3.18/location/trilaterate/cache",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35503,16 +34967,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn cache_trilateration_data_gzip(
         &self,
-        param_version: f64,
         param_body: Option<models::TrilatCacheRequest>,
         context: &C) -> Result<CacheTrilaterationDataGzipResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/trilaterate/cache/submit",
+            "{}/api/3.18/location/trilaterate/cache/submit",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35596,16 +35058,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_location_by_ip(
         &self,
-        param_version: f64,
         param_ip: Option<String>,
         context: &C) -> Result<GetLocationByIpResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/ip",
+            "{}/api/3.18/location/ip",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35683,7 +35143,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_location_by_trilateration(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
         param_longitude: Option<f64>,
@@ -35694,9 +35153,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/account/location/trilaterate",
+            "{}/api/3.18/account/location/trilaterate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35790,7 +35248,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_locations(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_currentlatitude: Option<f64>,
@@ -35815,9 +35272,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/search",
+            "{}/api/3.18/location/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -35967,16 +35423,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_location_v2(
         &self,
-        param_version: f64,
         param_body: Option<models::Location>,
         context: &C) -> Result<CreateLocationV2Response, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location",
+            "{}/api/3.18/location",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -36060,7 +35514,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_location_v2(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Location>,
         context: &C) -> Result<UpdateLocationV2Response, ApiError>
@@ -36068,9 +35521,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/{id}",
+            "{}/api/3.18/location/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -36155,7 +35607,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_media(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_title: String,
         param_barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -36218,9 +35669,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/media/create",
+            "{}/api/3.18/media/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -36492,7 +35942,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_media(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_media_id: i64,
         context: &C) -> Result<DeleteMediaResponse, ApiError>
@@ -36500,9 +35949,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/media/delete",
+            "{}/api/3.18/media/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -36580,7 +36028,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_media(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_media_id: i64,
         context: &C) -> Result<GetMediaResponse, ApiError>
@@ -36588,9 +36035,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/media/get",
+            "{}/api/3.18/media/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -36668,7 +36114,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_media(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_active_only: bool,
         param_sort_field: models::SearchEventsSortFieldParameter,
@@ -36683,9 +36128,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/media/search",
+            "{}/api/3.18/media/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -36787,7 +36231,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_media(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_media_id: i64,
         param_retailer_location_ids: Option<String>,
@@ -36852,9 +36295,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/media/update",
+            "{}/api/3.18/media/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37160,7 +36602,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_mission(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_title: String,
         param_description: Option<String>,
@@ -37192,9 +36633,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/create",
+            "{}/api/3.18/mission/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37368,7 +36808,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_mission(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         context: &C) -> Result<DeleteMissionResponse, ApiError>
@@ -37376,9 +36815,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/delete",
+            "{}/api/3.18/mission/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37456,7 +36894,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn find_missions(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_suffix: Option<String>,
         param_param_type: Option<String>,
@@ -37481,9 +36918,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/find",
+            "{}/api/3.18/mission/find",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37631,7 +37067,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_mission(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         param_return_creative: Option<bool>,
@@ -37640,9 +37075,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/get",
+            "{}/api/3.18/mission/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37724,7 +37158,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn import_mission(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_latitude: f64,
         param_longitude: f64,
@@ -37738,9 +37171,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/import",
+            "{}/api/3.18/mission/import",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37838,7 +37270,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_mission_formats(
         &self,
-        param_version: f64,
         param_start: i32,
         param_limit: i32,
         param_active_only: bool,
@@ -37847,9 +37278,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/format/search",
+            "{}/api/3.18/mission/format/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -37929,7 +37359,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_missions(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         param_sub_type: Option<String>,
@@ -37946,9 +37375,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/search",
+            "{}/api/3.18/mission/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38064,7 +37492,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_missions_by_billable_entity(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         param_start: Option<i32>,
@@ -38080,9 +37507,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/searchByBillableEntity",
+            "{}/api/3.18/mission/searchByBillableEntity",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38194,7 +37620,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_mission(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         param_title: Option<String>,
@@ -38225,9 +37650,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/update",
+            "{}/api/3.18/mission/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38397,7 +37821,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_mission_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_mission_id: Option<i64>,
@@ -38408,9 +37831,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/invite/create",
+            "{}/api/3.18/mission/invite/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38504,7 +37926,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_mission_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_mission_id: Option<i64>,
@@ -38515,9 +37936,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/invite/delete",
+            "{}/api/3.18/mission/invite/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38611,7 +38031,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_mission_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_mission_id: Option<i64>,
@@ -38623,9 +38042,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/invite/get",
+            "{}/api/3.18/mission/invite/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38723,7 +38141,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_mission_invites(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -38742,9 +38159,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/invite/search",
+            "{}/api/3.18/mission/invite/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -38870,7 +38286,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_mission_invite(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -38887,9 +38302,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/mission/invite/update",
+            "{}/api/3.18/mission/invite/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39007,7 +38421,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn batch_operation(
         &self,
-        param_version: f64,
         param_notable_id: i64,
         param_notable_type: String,
         param_device_id: Option<String>,
@@ -39018,9 +38431,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/batch",
+            "{}/api/3.18/note/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39110,7 +38522,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_note(
         &self,
-        param_version: f64,
         param_comment: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -39158,9 +38569,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/create",
+            "{}/api/3.18/note/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39400,7 +38810,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_note(
         &self,
-        param_version: f64,
         param_note_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -39412,9 +38821,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/delete",
+            "{}/api/3.18/note/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39510,7 +38918,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_note(
         &self,
-        param_version: f64,
         param_note_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -39520,9 +38927,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/get",
+            "{}/api/3.18/note/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39610,7 +39016,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_notes(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_notable_type: Option<String>,
@@ -39633,9 +39038,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/search",
+            "{}/api/3.18/note/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -39777,7 +39181,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_note(
         &self,
-        param_version: f64,
         param_note_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -39824,9 +39227,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/note/update",
+            "{}/api/3.18/note/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40062,7 +39464,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_notification_template(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_conduit: String,
         param_title: String,
@@ -40075,9 +39476,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/template/create",
+            "{}/api/3.18/notification/template/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40171,7 +39571,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_or_update_blocked_notifications(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_data: String,
         param_account_id: Option<i64>,
@@ -40180,9 +39579,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/blocked/batch",
+            "{}/api/3.18/notification/blocked/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40264,7 +39662,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_notification_template(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_notification_template_id: i64,
         context: &C) -> Result<DeleteNotificationTemplateResponse, ApiError>
@@ -40272,9 +39669,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/template/delete",
+            "{}/api/3.18/notification/template/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40352,7 +39748,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_notification_template(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_notification_template_id: i64,
         context: &C) -> Result<GetNotificationTemplateResponse, ApiError>
@@ -40360,9 +39755,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/template/get",
+            "{}/api/3.18/notification/template/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40440,7 +39834,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_notifications(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_connection_account_id: Option<i64>,
@@ -40467,9 +39860,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/search",
+            "{}/api/3.18/notification/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40627,7 +40019,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn register_notification_token(
         &self,
-        param_version: f64,
         param_token: String,
         param_push_type: models::RegisterNotificationTokenPushTypeParameter,
         param_device_id: Option<String>,
@@ -40643,9 +40034,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/token",
+            "{}/api/3.18/notification/token",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40755,7 +40145,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_blocked_notifications(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_account_id: Option<i64>,
         param_search_tags: Option<String>,
@@ -40773,9 +40162,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/blocked/search",
+            "{}/api/3.18/notification/blocked/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -40895,7 +40283,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_notification_template(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -40912,9 +40299,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/template/search",
+            "{}/api/3.18/notification/template/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41022,7 +40408,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_recipients(
         &self,
-        param_version: f64,
         param_sort_field: models::SearchRecipientsSortFieldParameter,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -41041,9 +40426,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/recipient/search",
+            "{}/api/3.18/notification/recipient/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41167,7 +40551,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_recipients_count(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -41185,9 +40568,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/recipient/search/count",
+            "{}/api/3.18/notification/recipient/search/count",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41309,7 +40691,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn send_batch_notifications(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_custom_message: String,
@@ -41324,9 +40705,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/batch",
+            "{}/api/3.18/notification/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41430,7 +40810,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn send_custom_notifications(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_receiver_account_ids: Option<String>,
@@ -41454,9 +40833,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/custom",
+            "{}/api/3.18/notification/custom",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41602,7 +40980,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_notification_template(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_notification_template_id: i64,
         param_title: Option<String>,
@@ -41613,9 +40990,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/template/update",
+            "{}/api/3.18/notification/template/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41705,7 +41081,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_field(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_object_name: String,
@@ -41716,9 +41091,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/field/add",
+            "{}/api/3.18/object/field/add",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41802,7 +41176,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_object(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_object_name: String,
@@ -41811,9 +41184,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/create",
+            "{}/api/3.18/object/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41893,7 +41265,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_field(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_object_name: String,
@@ -41903,9 +41274,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/field/delete",
+            "{}/api/3.18/object/field/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -41987,7 +41357,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_object(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_object_name: String,
@@ -41996,9 +41365,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/delete",
+            "{}/api/3.18/object/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -42078,7 +41446,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_object(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_object_name: String,
@@ -42087,9 +41454,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/get",
+            "{}/api/3.18/object/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -42169,7 +41535,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_object(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_start: i64,
@@ -42180,9 +41545,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/search",
+            "{}/api/3.18/object/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -42268,7 +41632,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_data(
         &self,
-        param_version: f64,
         param_object_name: String,
         param_account_id: Option<i64>,
         param_body: Option<String>,
@@ -42277,9 +41640,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/data/{object_name}",
+            "{}/api/3.18/object/data/{object_name}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,object_name=utf8_percent_encode(&param_object_name.to_string(), ID_ENCODE_SET)
         );
 
@@ -42368,7 +41730,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_data(
         &self,
-        param_version: f64,
         param_object_name: String,
         param_count: bool,
         param_start: i64,
@@ -42382,9 +41743,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/data/{object_name}",
+            "{}/api/3.18/object/data/{object_name}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,object_name=utf8_percent_encode(&param_object_name.to_string(), ID_ENCODE_SET)
         );
 
@@ -42481,7 +41841,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_data(
         &self,
-        param_version: f64,
         param_object_name: String,
         param_object_id: String,
         param_account_id: Option<i64>,
@@ -42490,9 +41849,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/data/{object_name}/{object_id}",
+            "{}/api/3.18/object/data/{object_name}/{object_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,object_name=utf8_percent_encode(&param_object_name.to_string(), ID_ENCODE_SET)
             ,object_id=utf8_percent_encode(&param_object_id.to_string(), ID_ENCODE_SET)
         );
@@ -42572,7 +41930,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_data(
         &self,
-        param_version: f64,
         param_object_name: String,
         param_object_id: String,
         param_account_id: Option<i64>,
@@ -42582,9 +41939,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/data/{object_name}/{object_id}",
+            "{}/api/3.18/object/data/{object_name}/{object_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,object_name=utf8_percent_encode(&param_object_name.to_string(), ID_ENCODE_SET)
             ,object_id=utf8_percent_encode(&param_object_id.to_string(), ID_ENCODE_SET)
         );
@@ -42668,7 +42024,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_data(
         &self,
-        param_version: f64,
         param_object_name: String,
         param_object_id: String,
         param_account_id: Option<i64>,
@@ -42678,9 +42033,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/object/data/{object_name}/{object_id}",
+            "{}/api/3.18/object/data/{object_name}/{object_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,object_name=utf8_percent_encode(&param_object_name.to_string(), ID_ENCODE_SET)
             ,object_id=utf8_percent_encode(&param_object_id.to_string(), ID_ENCODE_SET)
         );
@@ -42770,7 +42124,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn batch_update_offer_locations(
         &self,
-        param_version: f64,
         param_data: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -42779,9 +42132,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/location/batchUpdate",
+            "{}/api/3.18/retailer/offer/location/batchUpdate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -42865,7 +42217,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_offer(
         &self,
-        param_version: f64,
         param_include_offer_locations: bool,
         param_title: String,
         param_barcode_type: models::CreateMediaBarcodeTypeParameter,
@@ -42957,9 +42308,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/create",
+            "{}/api/3.18/retailer/offer/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43345,7 +42695,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_offer(
         &self,
-        param_version: f64,
         param_offer_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -43354,9 +42703,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/delete",
+            "{}/api/3.18/retailer/offer/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43440,7 +42788,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_offer_location(
         &self,
-        param_version: f64,
         param_offer_location_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -43449,9 +42796,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/location/delete",
+            "{}/api/3.18/retailer/offer/location/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43535,7 +42881,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer(
         &self,
-        param_version: f64,
         param_offer_id: i64,
         param_include_offer_locations: bool,
         param_device_id: Option<String>,
@@ -43545,9 +42890,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/get",
+            "{}/api/3.18/retailer/offer/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43633,7 +42977,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_details(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_offer_id: Option<i64>,
@@ -43649,9 +42992,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/get",
+            "{}/api/3.18/offer/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43765,7 +43107,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_list_counts(
         &self,
-        param_version: f64,
         param_latitude: f64,
         param_longitude: f64,
         param_search_range: Option<f64>,
@@ -43775,9 +43116,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/lists/count",
+            "{}/api/3.18/offer/lists/count",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43863,7 +43203,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_location(
         &self,
-        param_version: f64,
         param_offer_location_id: Option<i64>,
         param_udid: Option<String>,
         context: &C) -> Result<GetOfferLocationResponse, ApiError>
@@ -43871,9 +43210,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/location/get",
+            "{}/api/3.18/offer/location/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -43955,7 +43293,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_locations_for_retailers(
         &self,
-        param_version: f64,
         param_sort_field: models::SearchOffersForConsumerGroupByParameter,
         param_descending: bool,
         param_start: i32,
@@ -43981,9 +43318,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/location/search",
+            "{}/api/3.18/retailer/offer/location/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44125,7 +43461,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offers_for_retailers(
         &self,
-        param_version: f64,
         param_offer_visibility: models::CreateMediaOfferVisibilityParameter,
         param_sort_field: models::SearchEventsSortFieldParameter,
         param_descending: bool,
@@ -44162,9 +43497,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/search",
+            "{}/api/3.18/retailer/offer/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44342,7 +43676,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn redeem_offer_transaction(
         &self,
-        param_version: f64,
         param_offer_transaction_id: i64,
         param_status: i32,
         param_device_id: Option<String>,
@@ -44353,9 +43686,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/transaction/update",
+            "{}/api/3.18/retailer/offer/transaction/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44445,7 +43777,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_offer_transactions_for_retailers(
         &self,
-        param_version: f64,
         param_sort_field: models::SearchEventTransactionsSortFieldParameter,
         param_descending: bool,
         param_start: i32,
@@ -44475,9 +43806,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/transaction/search",
+            "{}/api/3.18/retailer/offer/transaction/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44637,7 +43967,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_offers_for_consumer(
         &self,
-        param_version: f64,
         param_latitude: f64,
         param_longitude: f64,
         param_recommendation_type: models::SearchOffersForConsumerRecommendationTypeParameter,
@@ -44674,9 +44003,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/lists",
+            "{}/api/3.18/offer/lists",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44858,7 +44186,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn top_offer_transactions(
         &self,
-        param_version: f64,
         param_start: Option<i32>,
         param_limit: Option<i32>,
         context: &C) -> Result<TopOfferTransactionsResponse, ApiError>
@@ -44866,9 +44193,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/top",
+            "{}/api/3.18/offer/top",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -44950,7 +44276,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_offer(
         &self,
-        param_version: f64,
         param_offer_id: i64,
         param_include_offer_locations: bool,
         param_device_id: Option<String>,
@@ -45043,9 +44368,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/update",
+            "{}/api/3.18/retailer/offer/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -45463,7 +44787,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_offer_status(
         &self,
-        param_version: f64,
         param_offer_ids: String,
         param_active: bool,
         param_device_id: Option<String>,
@@ -45473,9 +44796,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/offer/status",
+            "{}/api/3.18/retailer/offer/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -45561,7 +44883,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_offer_transaction_status(
         &self,
-        param_version: f64,
         param_name: String,
         param_code: i32,
         param_device_id: Option<String>,
@@ -45577,9 +44898,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/status/create",
+            "{}/api/3.18/offer/status/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -45689,7 +45009,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_offer_transaction_status(
         &self,
-        param_version: f64,
         param_status_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -45700,9 +45019,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/status/delete",
+            "{}/api/3.18/offer/status/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -45794,7 +45112,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_transaction_status(
         &self,
-        param_version: f64,
         param_status_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -45805,9 +45122,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/status/get",
+            "{}/api/3.18/offer/status/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -45899,7 +45215,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_offer_transaction_statuses(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -45917,9 +45232,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/status/search",
+            "{}/api/3.18/offer/status/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46041,7 +45355,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_offer_transaction_status(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_latitude: Option<f64>,
@@ -46058,9 +45371,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/offer/status/update",
+            "{}/api/3.18/offer/status/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46178,7 +45490,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn image_generation(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_post_body: String,
         param_return_raw_response: Option<bool>,
@@ -46187,9 +45498,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/openai/v1/images/generations",
+            "{}/api/3.18/openai/v1/images/generations",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46271,16 +45581,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn request_optimization(
         &self,
-        param_version: f64,
         param_body: Option<models::Orders>,
         context: &C) -> Result<RequestOptimizationResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/optimize/request",
+            "{}/api/3.18/optimize/request",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46364,7 +45672,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_optimization_result(
         &self,
-        param_version: f64,
         param_batch_id: String,
         param_start: i32,
         param_limit: i32,
@@ -46373,9 +45680,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/optimize/result/{batch_id}",
+            "{}/api/3.18/optimize/result/{batch_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,batch_id=utf8_percent_encode(&param_batch_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -46454,7 +45760,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_movie(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_movie_name: String,
         param_third_party_account_id: Option<String>,
@@ -46467,9 +45772,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/addMovie",
+            "{}/api/3.18/orson/ai/addMovie",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46567,7 +45871,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ai_docs(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_doc: String,
         param_return_topics: Option<bool>,
@@ -46578,9 +45881,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/docs",
+            "{}/api/3.18/orson/ai/docs",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46670,7 +45972,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ai_find_images(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_text: String,
         param_parse_flag: Option<String>,
@@ -46681,9 +45982,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/img",
+            "{}/api/3.18/orson/ai/img",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46773,7 +46073,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ai_tags(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_tags: String,
         param_conditional: Option<String>,
@@ -46784,9 +46083,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/tags",
+            "{}/api/3.18/orson/ai/tags",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46876,7 +46174,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ai_text(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_terms: String,
         param_conditional: Option<String>,
@@ -46887,9 +46184,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/text",
+            "{}/api/3.18/orson/ai/text",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -46979,7 +46275,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn batch(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_third_party_account_id: Option<String>,
         param_limit: Option<i32>,
@@ -46992,9 +46287,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/batch",
+            "{}/api/3.18/orson/ai/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47094,7 +46388,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_instant_episode(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_data: String,
         context: &C) -> Result<CreateInstantEpisodeResponse, ApiError>
@@ -47102,9 +46395,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/stories/episodes/instant",
+            "{}/api/3.18/orson/stories/episodes/instant",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47182,7 +46474,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_voice_canvas(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_dimensions: String,
         param_third_party_account_id: Option<String>,
@@ -47197,9 +46488,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/voiceCanvas",
+            "{}/api/3.18/orson/ai/voiceCanvas",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47305,7 +46595,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn emotion(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_third_party_account_id: Option<String>,
         param_file: Option<swagger::ByteArray>,
@@ -47316,9 +46605,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/emotion",
+            "{}/api/3.18/orson/ai/emotion",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47410,7 +46698,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn start_video_render(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_data: String,
         context: &C) -> Result<StartVideoRenderResponse, ApiError>
@@ -47418,9 +46705,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/stories/renders",
+            "{}/api/3.18/orson/stories/renders",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47498,7 +46784,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn stt(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_third_party_account_id: Option<String>,
         param_source_language: Option<String>,
@@ -47511,9 +46796,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/stt",
+            "{}/api/3.18/orson/ai/stt",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47613,7 +46897,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn summarize_topics(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_third_party_account_id: Option<String>,
         param_doc: Option<String>,
@@ -47627,9 +46910,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/topics",
+            "{}/api/3.18/orson/ai/topics",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47733,7 +47015,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn tech_tune(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_num_faces_expected: i32,
         param_third_party_account_id: Option<String>,
@@ -47745,9 +47026,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/techTune",
+            "{}/api/3.18/orson/ai/techTune",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47841,7 +47121,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn tts(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_text: String,
         param_third_party_account_id: Option<String>,
@@ -47853,9 +47132,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/tts",
+            "{}/api/3.18/orson/ai/tts",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -47949,7 +47227,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_add_movie_result(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetAddMovieResultResponse, ApiError>
@@ -47957,9 +47234,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/addMovie/{request_id}",
+            "{}/api/3.18/orson/ai/addMovie/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48036,7 +47312,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_batch(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetBatchResponse, ApiError>
@@ -48044,9 +47319,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/batch/{request_id}",
+            "{}/api/3.18/orson/ai/batch/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48123,7 +47397,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_emotion(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetEmotionResponse, ApiError>
@@ -48131,9 +47404,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/emotion/{request_id}",
+            "{}/api/3.18/orson/ai/emotion/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48210,7 +47482,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_episode_status(
         &self,
-        param_version: f64,
         param_episode_id: i64,
         param_account_id: i64,
         context: &C) -> Result<GetEpisodeStatusResponse, ApiError>
@@ -48218,9 +47489,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/stories/episodes/{episode_id}/status",
+            "{}/api/3.18/orson/stories/episodes/{episode_id}/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,episode_id=utf8_percent_encode(&param_episode_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48297,7 +47567,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_render_status(
         &self,
-        param_version: f64,
         param_render_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetRenderStatusResponse, ApiError>
@@ -48305,9 +47574,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/stories/renders/{render_id}/status",
+            "{}/api/3.18/orson/stories/renders/{render_id}/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,render_id=utf8_percent_encode(&param_render_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48384,7 +47652,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_stt(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetSttResponse, ApiError>
@@ -48392,9 +47659,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/stt/{request_id}",
+            "{}/api/3.18/orson/ai/stt/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48471,7 +47737,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_tech_tune(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetTechTuneResponse, ApiError>
@@ -48479,9 +47744,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/techTune/{request_id}",
+            "{}/api/3.18/orson/ai/techTune/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48558,7 +47822,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_topics(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetTopicsResponse, ApiError>
@@ -48566,9 +47829,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/topics/{request_id}",
+            "{}/api/3.18/orson/ai/topics/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48645,7 +47907,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_tts(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetTtsResponse, ApiError>
@@ -48653,9 +47914,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/tts/{request_id}",
+            "{}/api/3.18/orson/ai/tts/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48732,7 +47992,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_voice_canvas(
         &self,
-        param_version: f64,
         param_request_id: String,
         param_account_id: i64,
         context: &C) -> Result<GetVoiceCanvasResponse, ApiError>
@@ -48740,9 +47999,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/orson/ai/voiceCanvas/{request_id}",
+            "{}/api/3.18/orson/ai/voiceCanvas/{request_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,request_id=utf8_percent_encode(&param_request_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -48819,7 +48077,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_pack(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_title: String,
         param_pack_order: i64,
@@ -48849,9 +48106,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pack/create",
+            "{}/api/3.18/pack/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49007,7 +48263,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_pack(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_pack_id: i64,
         context: &C) -> Result<DeletePackResponse, ApiError>
@@ -49015,9 +48270,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pack/delete",
+            "{}/api/3.18/pack/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49095,7 +48349,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_pack(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_pack_id: i64,
         param_include_game_data: bool,
@@ -49104,9 +48357,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pack/get",
+            "{}/api/3.18/pack/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49186,7 +48438,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_packs(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: models::SearchPacksSortFieldParameter,
         param_descending: bool,
@@ -49202,9 +48453,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pack/search",
+            "{}/api/3.18/pack/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49312,7 +48562,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_pack(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_pack_id: i64,
         param_allocate_tickets: bool,
@@ -49343,9 +48592,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pack/update",
+            "{}/api/3.18/pack/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49511,7 +48759,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn process_all_participants(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: Option<String>,
         param_use_short_name_as_id: Option<bool>,
@@ -49520,9 +48767,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/participant/process/all",
+            "{}/api/3.18/participant/process/all",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49606,7 +48852,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn process_participants(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_league: String,
         param_app_key: Option<String>,
@@ -49617,9 +48862,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/participant/process",
+            "{}/api/3.18/participant/process",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49709,7 +48953,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn compute_path(
         &self,
-        param_version: f64,
         param_data: String,
         param_units: models::ComputePathUnitsParameter,
         param_reduce_path: bool,
@@ -49719,9 +48962,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/pathing/compute",
+            "{}/api/3.18/pathing/compute",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49803,7 +49045,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_postal_code(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_code: String,
         param_latitude: f64,
@@ -49816,9 +49057,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/postalCode/create",
+            "{}/api/3.18/postalCode/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -49912,7 +49152,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_postal_code(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_postal_code_id: i64,
         context: &C) -> Result<DeletePostalCodeResponse, ApiError>
@@ -49920,9 +49159,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/postalCode/delete",
+            "{}/api/3.18/postalCode/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50000,16 +49238,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_postal_code(
         &self,
-        param_version: f64,
         param_postal_code_id: i64,
         context: &C) -> Result<GetPostalCodeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/postalCode/get",
+            "{}/api/3.18/postalCode/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50085,7 +49321,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_postal_codes(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_latitude: Option<f64>,
@@ -50099,9 +49334,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/postalCode/search",
+            "{}/api/3.18/postalCode/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50203,7 +49437,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_postal_code(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_postal_code_id: i64,
         param_code: Option<String>,
@@ -50217,9 +49450,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/postalCode/update",
+            "{}/api/3.18/postalCode/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50321,7 +49553,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_persona(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_title: String,
         param_preview_accounts: Option<String>,
@@ -50336,9 +49567,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/persona/create",
+            "{}/api/3.18/persona/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50444,7 +49674,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_persona(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_persona_id: i64,
         context: &C) -> Result<DeletePersonaResponse, ApiError>
@@ -50452,9 +49681,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/persona/delete",
+            "{}/api/3.18/persona/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50532,7 +49760,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_persona_list(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_persona_id: i64,
         context: &C) -> Result<GetPersonaListResponse, ApiError>
@@ -50540,9 +49767,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/persona/get",
+            "{}/api/3.18/persona/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50620,7 +49846,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_persona(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_start: i32,
         param_limit: i32,
@@ -50629,9 +49854,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/persona/search",
+            "{}/api/3.18/persona/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50711,7 +49935,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_persona(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_persona_id: i64,
         param_title: Option<String>,
@@ -50728,9 +49951,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/persona/update",
+            "{}/api/3.18/persona/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50844,16 +50066,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_program(
         &self,
-        param_version: f64,
         param_body: Option<models::Program>,
         context: &C) -> Result<CreateProgramResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program",
+            "{}/api/3.18/program",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -50937,7 +50157,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_programs(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -50949,9 +50168,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program",
+            "{}/api/3.18/program",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -51039,16 +50257,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_program(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<DeleteProgramResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program/{id}",
+            "{}/api/3.18/program/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -51111,16 +50327,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_program(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetProgramResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program/{id}",
+            "{}/api/3.18/program/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -51195,7 +50409,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn post_program(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Program>,
         context: &C) -> Result<PostProgramResponse, ApiError>
@@ -51203,9 +50416,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program/{id}",
+            "{}/api/3.18/program/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -51290,7 +50502,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn put_program(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Program>,
         context: &C) -> Result<PutProgramResponse, ApiError>
@@ -51298,9 +50509,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/program/{id}",
+            "{}/api/3.18/program/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -51385,7 +50595,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_purchase_item(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_name: String,
         param_purchase_type: models::CreatePurchaseItemPurchaseTypeParameter,
@@ -51411,9 +50620,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/create",
+            "{}/api/3.18/purchase/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -51561,7 +50769,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_purchase_item(
         &self,
-        param_version: f64,
         param_purchase_item_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -51570,9 +50777,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/delete",
+            "{}/api/3.18/purchase/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -51656,7 +50862,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_purchase_item(
         &self,
-        param_version: f64,
         param_purchase_item_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -51665,9 +50870,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/get",
+            "{}/api/3.18/purchase/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -51751,7 +50955,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_purchase_items(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -51769,9 +50972,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/search",
+            "{}/api/3.18/purchase/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -51893,7 +51095,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_purchase_item(
         &self,
-        param_version: f64,
         param_purchase_item_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -51920,9 +51121,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/update",
+            "{}/api/3.18/purchase/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52078,7 +51278,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_order(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_cart: String,
         param_device_id: Option<String>,
@@ -52096,9 +51295,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/create",
+            "{}/api/3.18/order/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52216,7 +51414,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_order(
         &self,
-        param_version: f64,
         param_order_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -52225,9 +51422,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/delete",
+            "{}/api/3.18/order/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52311,7 +51507,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_order(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_order_id: Option<i64>,
@@ -52321,9 +51516,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/get",
+            "{}/api/3.18/order/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52413,7 +51607,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn preview_order(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_cart: String,
         param_device_id: Option<String>,
@@ -52431,9 +51624,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/preview",
+            "{}/api/3.18/order/preview",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52551,7 +51743,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_orders(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -52588,9 +51779,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/search",
+            "{}/api/3.18/order/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52786,7 +51976,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_order(
         &self,
-        param_version: f64,
         param_order_id: i64,
         param_app_key: String,
         param_cart: String,
@@ -52803,9 +51992,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/order/update",
+            "{}/api/3.18/order/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -52917,7 +52105,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_question(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_question: String,
         param_answers: String,
@@ -52934,9 +52121,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/question/create",
+            "{}/api/3.18/game/question/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53042,7 +52228,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_question(
         &self,
-        param_version: f64,
         param_question_id: i64,
         param_account_id: i64,
         context: &C) -> Result<DeleteQuestionResponse, ApiError>
@@ -53050,9 +52235,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/question/delete",
+            "{}/api/3.18/game/question/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53130,7 +52314,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_question(
         &self,
-        param_version: f64,
         param_question_id: i64,
         param_account_id: i64,
         context: &C) -> Result<GetQuestionResponse, ApiError>
@@ -53138,9 +52321,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/question/get",
+            "{}/api/3.18/game/question/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53218,7 +52400,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_questions(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -53231,9 +52412,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/question/search",
+            "{}/api/3.18/game/question/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53323,7 +52503,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_question(
         &self,
-        param_version: f64,
         param_question_id: i64,
         param_account_id: i64,
         param_ticket_count: i64,
@@ -53341,9 +52520,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/question/update",
+            "{}/api/3.18/game/question/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53459,7 +52637,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_historical_rankings(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_rank_type: String,
         param_start_date: i64,
@@ -53475,9 +52652,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ranking/historical/search",
+            "{}/api/3.18/ranking/historical/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53583,7 +52759,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_rankings(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_game_type: Option<String>,
@@ -53607,9 +52782,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ranking/search",
+            "{}/api/3.18/ranking/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53755,7 +52929,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_rank(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_app_key: Option<String>,
@@ -53772,9 +52945,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ranking/personal/ranks",
+            "{}/api/3.18/ranking/personal/ranks",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -53892,7 +53064,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn override_user_rank(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_owner_account_id: i64,
         param_app_key: String,
@@ -53920,9 +53091,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ranking/override",
+            "{}/api/3.18/ranking/override",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54076,7 +53246,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_rankings(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_rank_type: String,
@@ -54092,9 +53261,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ranking/update",
+            "{}/api/3.18/ranking/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54202,7 +53370,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_rating(
         &self,
-        param_version: f64,
         param_ratable_type: String,
         param_ratable_id: i64,
         param_rating_value: i32,
@@ -54219,9 +53386,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/rating/create",
+            "{}/api/3.18/rating/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54333,7 +53499,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_rating(
         &self,
-        param_version: f64,
         param_rating_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -54342,9 +53507,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/rating/delete",
+            "{}/api/3.18/rating/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54428,7 +53592,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_location_rating_indexes(
         &self,
-        param_version: f64,
         param_category_ids: Option<String>,
         param_keyword: Option<String>,
         param_location_type: Option<String>,
@@ -54451,9 +53614,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/rating/index/search",
+            "{}/api/3.18/location/rating/index/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54595,7 +53757,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_rating_indexes(
         &self,
-        param_version: f64,
         param_ratable_type: models::SearchRatingIndexesRatableTypeParameter,
         param_ratable_ids: Option<String>,
         param_category_ids: Option<String>,
@@ -54614,9 +53775,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/rating/index/search",
+            "{}/api/3.18/rating/index/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54740,7 +53900,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_ratings(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_filter_account_id: Option<i64>,
@@ -54757,9 +53916,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/rating/search",
+            "{}/api/3.18/rating/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -54877,7 +54035,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_rating(
         &self,
-        param_version: f64,
         param_rating_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -54893,9 +54050,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/rating/update",
+            "{}/api/3.18/rating/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55007,7 +54163,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_region(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_region_class: String,
         param_short_name: String,
@@ -55034,9 +54189,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/region/create",
+            "{}/api/3.18/region/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55188,7 +54342,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_region(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_region_id: i64,
         context: &C) -> Result<DeleteRegionResponse, ApiError>
@@ -55196,9 +54349,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/region/delete",
+            "{}/api/3.18/region/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55276,7 +54428,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_region(
         &self,
-        param_version: f64,
         param_region_id: i64,
         param_account_id: Option<i64>,
         context: &C) -> Result<GetRegionResponse, ApiError>
@@ -55284,9 +54435,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/region/get",
+            "{}/api/3.18/region/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55366,7 +54516,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_regions(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_query: Option<String>,
         param_keyword: Option<String>,
@@ -55394,9 +54543,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/region/search",
+            "{}/api/3.18/region/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55558,7 +54706,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_region(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_region_id: i64,
         param_region_class: Option<String>,
@@ -55587,9 +54734,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/region/update",
+            "{}/api/3.18/region/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55751,7 +54897,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_batch(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_status: models::CreateBatchStatusParameter,
         param_preview_limit: i32,
@@ -55768,9 +54913,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/batch/create",
+            "{}/api/3.18/report/batch/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55882,16 +55026,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_region_leg_summary_batch<'a>(
         &self,
-        param_version: f64,
         param_body: Option<&'a Vec<models::RegionLegSummary>>,
         context: &C) -> Result<CreateRegionLegSummaryBatchResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/region/summary/batch",
+            "{}/api/3.18/report/region/summary/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -55975,7 +55117,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_batch(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_batch_id: i64,
         context: &C) -> Result<DeleteBatchResponse, ApiError>
@@ -55983,9 +55124,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/batch/delete",
+            "{}/api/3.18/report/batch/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56063,7 +55203,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_report_batch(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_batch_id: i64,
         param_all_results: bool,
@@ -56072,9 +55211,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/batch/get",
+            "{}/api/3.18/report/batch/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56154,7 +55292,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn run_report(
         &self,
-        param_version: f64,
         param_desc: bool,
         param_account_id: Option<i64>,
         param_query: Option<String>,
@@ -56168,9 +55305,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/run",
+            "{}/api/3.18/report/run",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56274,7 +55410,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_batch(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_start: i32,
         param_limit: i32,
@@ -56289,9 +55424,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/report/batch/search",
+            "{}/api/3.18/report/batch/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56395,7 +55529,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_reservation(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_start_date: Option<i64>,
@@ -56409,9 +55542,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservation/create",
+            "{}/api/3.18/reservation/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56505,7 +55637,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_reservation(
         &self,
-        param_version: f64,
         param_reservation_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -56514,9 +55645,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservation/delete",
+            "{}/api/3.18/reservation/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56588,7 +55718,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn reservable_availability(
         &self,
-        param_version: f64,
         param_reservable_id: i64,
         param_reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         param_device_id: Option<String>,
@@ -56600,9 +55729,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservable/availability/update",
+            "{}/api/3.18/reservable/availability/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56696,7 +55824,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_availability(
         &self,
-        param_version: f64,
         param_reservable_id: i64,
         param_reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         param_device_id: Option<String>,
@@ -56710,9 +55837,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservable/availability/search",
+            "{}/api/3.18/reservable/availability/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56814,7 +55940,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_reservations(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_app_key: Option<String>,
         param_account_id: Option<i64>,
@@ -56831,9 +55956,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservation/search",
+            "{}/api/3.18/reservation/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -56951,7 +56075,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_schedule(
         &self,
-        param_version: f64,
         param_reservable_id: i64,
         param_reservable_type: models::SearchRatingIndexesRatableTypeParameter,
         param_start_date: i64,
@@ -56964,9 +56087,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/reservable/schedule/search",
+            "{}/api/3.18/reservable/schedule/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57060,7 +56182,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_retailer(
         &self,
-        param_version: f64,
         param_name: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -57099,9 +56220,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/create",
+            "{}/api/3.18/retailer/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57305,7 +56425,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_retailer(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_retailer_id: Option<i64>,
@@ -57314,9 +56433,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/delete",
+            "{}/api/3.18/retailer/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57402,7 +56520,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_retailer(
         &self,
-        param_version: f64,
         param_retailer_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -57412,9 +56529,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/get",
+            "{}/api/3.18/retailer/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57502,7 +56618,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_retailers(
         &self,
-        param_version: f64,
         param_visibility: models::AddAlbumCollectionVisibilityParameter,
         param_sort_field: models::GetRetailersSortFieldParameter,
         param_descending: bool,
@@ -57522,9 +56637,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/search",
+            "{}/api/3.18/retailer/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57642,7 +56756,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn retailer_login_check(
         &self,
-        param_version: f64,
         param_username: String,
         param_password: String,
         param_device_id: Option<String>,
@@ -57654,9 +56767,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/login",
+            "{}/api/3.18/retailer/login",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57750,7 +56862,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_retailer(
         &self,
-        param_version: f64,
         param_retailer_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -57788,9 +56899,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/update",
+            "{}/api/3.18/retailer/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -57990,7 +57100,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_retailer_location_consumer(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_name: String,
         param_device_id: Option<String>,
@@ -58025,9 +57134,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/create",
+            "{}/api/3.18/location/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -58213,7 +57321,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_retailer_locations(
         &self,
-        param_version: f64,
         param_retailer_id: i64,
         param_name: String,
         param_street_address: String,
@@ -58258,9 +57365,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/create",
+            "{}/api/3.18/retailer/location/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -58478,7 +57584,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_retailer_location(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_retailer_location_id: Option<i64>,
@@ -58487,9 +57592,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/delete",
+            "{}/api/3.18/retailer/location/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -58575,7 +57679,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_retailer_location(
         &self,
-        param_version: f64,
         param_retailer_location_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -58585,9 +57688,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/get",
+            "{}/api/3.18/retailer/location/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -58675,7 +57777,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_retailer_location_consumer(
         &self,
-        param_version: f64,
         param_retailer_location_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -58684,9 +57785,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/location/get",
+            "{}/api/3.18/location/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -58770,7 +57870,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn indexed_retailer_location_distance_search(
         &self,
-        param_version: f64,
         param_latitude: f64,
         param_longitude: f64,
         param_search_range: f64,
@@ -58810,9 +57909,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/idistancesearch",
+            "{}/api/3.18/retailer/location/idistancesearch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59012,7 +58110,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn indexed_retailer_location_search(
         &self,
-        param_version: f64,
         param_account_id: Option<i64>,
         param_start: Option<i32>,
         param_limit: Option<i32>,
@@ -59046,9 +58143,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/isearch",
+            "{}/api/3.18/retailer/location/isearch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59234,7 +58330,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_retailer_locations(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_q: Option<String>,
@@ -59265,9 +58360,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/search",
+            "{}/api/3.18/retailer/location/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59441,7 +58535,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_retailer_locations(
         &self,
-        param_version: f64,
         param_retailer_location_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -59488,9 +58581,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer/location/update",
+            "{}/api/3.18/retailer/location/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59726,7 +58818,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_retaokiler(
         &self,
-        param_version: f64,
         param_retailer_id: i64,
         param_active_only: bool,
         param_keyword: Option<String>,
@@ -59738,9 +58829,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/retailer",
+            "{}/api/3.18/retailer",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59834,16 +58924,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_route(
         &self,
-        param_version: f64,
         param_body: Option<models::Route>,
         context: &C) -> Result<CreateRouteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route",
+            "{}/api/3.18/route",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -59927,7 +59015,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_routes(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -59954,9 +59041,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route",
+            "{}/api/3.18/route",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -60098,16 +59184,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn approve_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<ApproveRouteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/approve",
+            "{}/api/3.18/route/{route_id}/approve",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60182,7 +59266,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn copy_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_body: Option<models::Route>,
         context: &C) -> Result<CopyRouteResponse, ApiError>
@@ -60190,9 +59273,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/copy",
+            "{}/api/3.18/route/{route_id}/copy",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60277,16 +59359,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_route_directions(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<CreateRouteDirectionsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/directions",
+            "{}/api/3.18/route/{route_id}/directions",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60361,16 +59441,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_route_polyline(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<CreateRoutePolylineResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/polyline",
+            "{}/api/3.18/route/{route_id}/polyline",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60445,16 +59523,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<DeleteRouteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}",
+            "{}/api/3.18/route/{route_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60517,16 +59593,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn disapprove_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<DisapproveRouteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/disapprove",
+            "{}/api/3.18/route/{route_id}/disapprove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60601,7 +59675,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_show_inherited_properties: bool,
         context: &C) -> Result<GetRouteResponse, ApiError>
@@ -60609,9 +59682,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}",
+            "{}/api/3.18/route/{route_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60688,16 +59760,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route_directions(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<GetRouteDirectionsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/directions",
+            "{}/api/3.18/route/{route_id}/directions",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60772,16 +59842,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route_shipments(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<GetRouteShipmentsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/shipments",
+            "{}/api/3.18/route/{route_id}/shipments",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60856,7 +59924,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route_stops(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_confirmed_only: bool,
         context: &C) -> Result<GetRouteStopsResponse, ApiError>
@@ -60864,9 +59931,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stops",
+            "{}/api/3.18/route/{route_id}/stops",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -60943,16 +60009,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn optimize_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         context: &C) -> Result<OptimizeRouteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/optimize",
+            "{}/api/3.18/route/{route_id}/optimize",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -61015,7 +60079,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn reorder_route_stops_patch<'a>(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_body: Option<&'a Vec<models::Stop>>,
         context: &C) -> Result<ReorderRouteStopsPatchResponse, ApiError>
@@ -61023,9 +60086,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stops/reorder",
+            "{}/api/3.18/route/{route_id}/stops/reorder",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -61110,7 +60172,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn reorder_route_stops_post<'a>(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_body: Option<&'a Vec<models::Stop>>,
         context: &C) -> Result<ReorderRouteStopsPostResponse, ApiError>
@@ -61118,9 +60179,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stops/reorder",
+            "{}/api/3.18/route/{route_id}/stops/reorder",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -61205,7 +60265,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_route(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_body: Option<models::Route>,
         context: &C) -> Result<UpdateRouteResponse, ApiError>
@@ -61213,9 +60272,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}",
+            "{}/api/3.18/route/{route_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -61300,7 +60358,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route_stop(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_stop_id: i64,
         context: &C) -> Result<GetRouteStopResponse, ApiError>
@@ -61308,9 +60365,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stop/{stop_id}",
+            "{}/api/3.18/route/{route_id}/stop/{stop_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
             ,stop_id=utf8_percent_encode(&param_stop_id.to_string(), ID_ENCODE_SET)
         );
@@ -61386,7 +60442,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_shipments_at_stop(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_stop_id: i64,
         context: &C) -> Result<GetShipmentsAtStopResponse, ApiError>
@@ -61394,9 +60449,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stop/{stop_id}/shipments",
+            "{}/api/3.18/route/{route_id}/stop/{stop_id}/shipments",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
             ,stop_id=utf8_percent_encode(&param_stop_id.to_string(), ID_ENCODE_SET)
         );
@@ -61472,7 +60526,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_stop(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_stop_id: i64,
         context: &C) -> Result<RemoveStopResponse, ApiError>
@@ -61480,9 +60533,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stop/{stop_id}",
+            "{}/api/3.18/route/{route_id}/stop/{stop_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
             ,stop_id=utf8_percent_encode(&param_stop_id.to_string(), ID_ENCODE_SET)
         );
@@ -61546,7 +60598,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn set_driver(
         &self,
-        param_version: f64,
         param_id: i64,
         param_driver_id: i64,
         context: &C) -> Result<SetDriverResponse, ApiError>
@@ -61554,9 +60605,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{id}/driver/{driver_id}",
+            "{}/api/3.18/route/{id}/driver/{driver_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
             ,driver_id=utf8_percent_encode(&param_driver_id.to_string(), ID_ENCODE_SET)
         );
@@ -61620,7 +60670,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_route_stop(
         &self,
-        param_version: f64,
         param_route_id: i64,
         param_stop_id: i64,
         param_body: Option<models::Stop>,
@@ -61629,9 +60678,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/{route_id}/stop/{stop_id}",
+            "{}/api/3.18/route/{route_id}/stop/{stop_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_id=utf8_percent_encode(&param_route_id.to_string(), ID_ENCODE_SET)
             ,stop_id=utf8_percent_encode(&param_stop_id.to_string(), ID_ENCODE_SET)
         );
@@ -61705,16 +60753,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_route_settings(
         &self,
-        param_version: f64,
         param_body: Option<models::RouteSettings>,
         context: &C) -> Result<CreateRouteSettingsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/setting",
+            "{}/api/3.18/route/setting",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -61798,7 +60844,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_route_settings(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -61812,9 +60857,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/setting",
+            "{}/api/3.18/route/setting",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -61910,16 +60954,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_route_settings(
         &self,
-        param_version: f64,
         param_route_settings_id: i64,
         context: &C) -> Result<DeleteRouteSettingsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/setting/{route_settings_id}",
+            "{}/api/3.18/route/setting/{route_settings_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_settings_id=utf8_percent_encode(&param_route_settings_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -61994,16 +61036,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_route_settings(
         &self,
-        param_version: f64,
         param_route_settings_id: i64,
         context: &C) -> Result<GetRouteSettingsResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/setting/{route_settings_id}",
+            "{}/api/3.18/route/setting/{route_settings_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_settings_id=utf8_percent_encode(&param_route_settings_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -62078,7 +61118,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_route_settings(
         &self,
-        param_version: f64,
         param_route_settings_id: i64,
         param_body: Option<models::RouteSettings>,
         context: &C) -> Result<UpdateRouteSettingsResponse, ApiError>
@@ -62086,9 +61125,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/route/setting/{route_settings_id}",
+            "{}/api/3.18/route/setting/{route_settings_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,route_settings_id=utf8_percent_encode(&param_route_settings_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -62173,16 +61211,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn compute_routing(
         &self,
-        param_version: f64,
         param_data: String,
         context: &C) -> Result<ComputeRoutingResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/routing/compute",
+            "{}/api/3.18/routing/compute",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62258,7 +61294,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_scheduled_notification(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_param_type: String,
@@ -62298,9 +61333,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/create",
+            "{}/api/3.18/notification/schedule/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62502,7 +61536,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_scheduled_notification(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_scheduled_notification_id: i64,
         param_delete_by_grouping_id: Option<bool>,
@@ -62511,9 +61544,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/delete",
+            "{}/api/3.18/notification/schedule/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62595,7 +61627,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_scheduled_notification(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_scheduled_notification_id: i64,
         context: &C) -> Result<GetScheduledNotificationResponse, ApiError>
@@ -62603,9 +61634,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/get",
+            "{}/api/3.18/notification/schedule/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62683,7 +61713,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn schedule_notification_listings(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_report_name: String,
@@ -62697,9 +61726,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/generate",
+            "{}/api/3.18/notification/schedule/generate",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62793,7 +61821,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_scheduled_notifications(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_grouping_id: Option<String>,
         param_audience_id: Option<i64>,
@@ -62819,9 +61846,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/search",
+            "{}/api/3.18/notification/schedule/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -62973,7 +61999,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_scheduled_notification(
         &self,
-        param_version: f64,
         param_scheduled_notification_id: i64,
         param_account_id: i64,
         param_name: Option<String>,
@@ -63017,9 +62042,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/notification/schedule/update",
+            "{}/api/3.18/notification/schedule/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63241,7 +62265,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_score(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_points: i32,
@@ -63257,9 +62280,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/score/create",
+            "{}/api/3.18/score/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63367,7 +62389,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_score(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_mission_id: Option<i64>,
@@ -63382,9 +62403,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/score/get",
+            "{}/api/3.18/score/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63490,7 +62510,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_scores(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_mission_id: Option<i64>,
@@ -63503,9 +62522,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/score/search",
+            "{}/api/3.18/score/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63603,7 +62621,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_secure_application(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_key_cert: swagger::ByteArray,
@@ -63619,9 +62636,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/application/create",
+            "{}/api/3.18/secure/application/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63723,7 +62739,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_secure_application(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         context: &C) -> Result<DeleteSecureApplicationResponse, ApiError>
@@ -63731,9 +62746,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/application/delete",
+            "{}/api/3.18/secure/application/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63811,7 +62825,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn login_secure(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_biometric_file: swagger::ByteArray,
         param_device_id: Option<String>,
@@ -63826,9 +62839,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/login",
+            "{}/api/3.18/secure/login",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -63934,16 +62946,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn purchase_secure(
         &self,
-        param_version: f64,
         param_body: models::PaymentRequest,
         context: &C) -> Result<PurchaseSecureResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/purchase",
+            "{}/api/3.18/secure/purchase",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64025,7 +63035,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn reset_secure(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         context: &C) -> Result<ResetSecureResponse, ApiError>
@@ -64033,9 +63042,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/application/reset",
+            "{}/api/3.18/secure/application/reset",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64113,7 +63121,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_secure_application(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_active: Option<bool>,
@@ -64129,9 +63136,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/secure/application/update",
+            "{}/api/3.18/secure/application/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64241,16 +63247,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_service_hub(
         &self,
-        param_version: f64,
         param_body: Option<models::ServiceHub>,
         context: &C) -> Result<CreateServiceHubResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub",
+            "{}/api/3.18/hub",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64334,7 +63338,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_service_hubs(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -64347,9 +63350,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub",
+            "{}/api/3.18/hub",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64441,16 +63443,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_service_hub(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<DeleteServiceHubResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub/{id}",
+            "{}/api/3.18/hub/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -64513,16 +63513,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_service_hub(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetServiceHubResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub/{id}",
+            "{}/api/3.18/hub/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -64597,7 +63595,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn post_service_hub(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::ServiceHub>,
         context: &C) -> Result<PostServiceHubResponse, ApiError>
@@ -64605,9 +63602,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub/{id}",
+            "{}/api/3.18/hub/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -64692,7 +63688,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn put_service_hub(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::ServiceHub>,
         context: &C) -> Result<PutServiceHubResponse, ApiError>
@@ -64700,9 +63695,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/hub/{id}",
+            "{}/api/3.18/hub/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -64787,16 +63781,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_shipment(
         &self,
-        param_version: f64,
         param_body: Option<models::Shipment>,
         context: &C) -> Result<CreateShipmentResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment",
+            "{}/api/3.18/shipment",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64880,7 +63872,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_shipments(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -64894,9 +63885,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment",
+            "{}/api/3.18/shipment",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -64992,16 +63982,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn cancel_shipment(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<CancelShipmentResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/{id}/cancel",
+            "{}/api/3.18/shipment/{id}/cancel",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65064,16 +64052,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_shipment(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<DeleteShipmentResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/{id}",
+            "{}/api/3.18/shipment/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65136,16 +64122,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_shipment(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetShipmentResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/{id}",
+            "{}/api/3.18/shipment/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65220,7 +64204,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_shipment(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Shipment>,
         context: &C) -> Result<UpdateShipmentResponse, ApiError>
@@ -65228,9 +64211,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/{id}",
+            "{}/api/3.18/shipment/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65315,7 +64297,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_shipment_status(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<std::collections::HashMap<String, bool>>,
         context: &C) -> Result<UpdateShipmentStatusResponse, ApiError>
@@ -65323,9 +64304,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/{id}/status",
+            "{}/api/3.18/shipment/{id}/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65398,16 +64378,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_shipment_batch(
         &self,
-        param_version: f64,
         param_body: Option<models::ShipmentBatch>,
         context: &C) -> Result<CreateShipmentBatchResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/batch",
+            "{}/api/3.18/shipment/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -65491,7 +64469,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_shipment_batch(
         &self,
-        param_version: f64,
         param_hub_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -65502,9 +64479,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/batch",
+            "{}/api/3.18/shipment/batch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -65588,16 +64564,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_shipment_batch(
         &self,
-        param_version: f64,
         param_batch_id: i64,
         context: &C) -> Result<DeleteShipmentBatchResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/batch/{batch_id}",
+            "{}/api/3.18/shipment/batch/{batch_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,batch_id=utf8_percent_encode(&param_batch_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65660,16 +64634,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_shipment_batch(
         &self,
-        param_version: f64,
         param_batch_id: i64,
         context: &C) -> Result<GetShipmentBatchResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/batch/{batch_id}",
+            "{}/api/3.18/shipment/batch/{batch_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,batch_id=utf8_percent_encode(&param_batch_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65744,7 +64716,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_shipment_batch_status(
         &self,
-        param_version: f64,
         param_batch_id: i64,
         param_account_id: i64,
         param_sort_field: String,
@@ -65762,9 +64733,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/shipment/batch/{batch_id}/status",
+            "{}/api/3.18/shipment/batch/{batch_id}/status",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,batch_id=utf8_percent_encode(&param_batch_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -65873,7 +64843,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn simulation(
         &self,
-        param_version: f64,
         param_data: String,
         param_real_time: bool,
         context: &C) -> Result<SimulationResponse, ApiError>
@@ -65881,9 +64850,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/simulation/routing",
+            "{}/api/3.18/simulation/routing",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -65961,16 +64929,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_stop(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetStopResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/stop/{id}",
+            "{}/api/3.18/stop/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -66045,7 +65011,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_stop(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Stop>,
         context: &C) -> Result<UpdateStopResponse, ApiError>
@@ -66053,9 +65018,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/stop/{id}",
+            "{}/api/3.18/stop/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -66140,7 +65104,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_stripe_checkout_session(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_stripe_parameters: String,
         context: &C) -> Result<CreateStripeCheckoutSessionResponse, ApiError>
@@ -66148,9 +65111,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/stripe/checkout/session/create",
+            "{}/api/3.18/stripe/checkout/session/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66228,7 +65190,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_subscription(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_plan_id: Option<i64>,
         param_promo_code: Option<String>,
@@ -66237,9 +65198,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/create",
+            "{}/api/3.18/subscription/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66323,16 +65283,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_subscription(
         &self,
-        param_version: f64,
         param_account_id: i64,
         context: &C) -> Result<DeleteSubscriptionResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/delete",
+            "{}/api/3.18/subscription/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66408,16 +65366,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_subscription(
         &self,
-        param_version: f64,
         param_account_id: i64,
         context: &C) -> Result<GetSubscriptionResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/get",
+            "{}/api/3.18/subscription/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66493,16 +65449,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_subscription_plan(
         &self,
-        param_version: f64,
         param_plan_id: i64,
         context: &C) -> Result<GetSubscriptionPlanResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/plan/get",
+            "{}/api/3.18/subscription/plan/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66578,7 +65532,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_subscription_plans(
         &self,
-        param_version: f64,
         param_visible: Option<bool>,
         param_role: Option<String>,
         context: &C) -> Result<GetSubscriptionPlansResponse, ApiError>
@@ -66586,9 +65539,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/plan/list",
+            "{}/api/3.18/subscription/plan/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66670,7 +65622,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_subscription_usage(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_application_id: Option<i64>,
         param_start: Option<i64>,
@@ -66680,9 +65631,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/usage/get",
+            "{}/api/3.18/subscription/usage/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66770,7 +65720,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_subscription(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_plan_id: Option<i64>,
         param_promo_code: Option<String>,
@@ -66780,9 +65729,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/subscription/update",
+            "{}/api/3.18/subscription/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -66870,7 +65818,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_task(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_app_key: Option<String>,
@@ -66888,9 +65835,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/task/create",
+            "{}/api/3.18/task/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67008,7 +65954,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_task(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_task_id: i64,
         context: &C) -> Result<DeleteTaskResponse, ApiError>
@@ -67016,9 +65961,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/task/delete",
+            "{}/api/3.18/task/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67096,7 +66040,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_task(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_task_id: i64,
         context: &C) -> Result<GetTaskResponse, ApiError>
@@ -67104,9 +66047,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/task/get",
+            "{}/api/3.18/task/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67184,7 +66126,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_tasks(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_grouping_id: Option<String>,
         param_filter: Option<String>,
@@ -67202,9 +66143,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/task/search",
+            "{}/api/3.18/task/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67324,7 +66264,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_task(
         &self,
-        param_version: f64,
         param_task_id: i64,
         param_account_id: i64,
         param_name: Option<String>,
@@ -67343,9 +66282,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/task/update",
+            "{}/api/3.18/task/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67467,7 +66405,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_territory(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_active: Option<bool>,
@@ -67476,9 +66413,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/territory/create",
+            "{}/api/3.18/territory/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67560,7 +66496,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_territory(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_territory_id: i64,
         context: &C) -> Result<DeleteTerritoryResponse, ApiError>
@@ -67568,9 +66503,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/territory/delete",
+            "{}/api/3.18/territory/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67648,16 +66582,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_territory(
         &self,
-        param_version: f64,
         param_territory_id: i64,
         context: &C) -> Result<GetTerritoryResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/territory/get",
+            "{}/api/3.18/territory/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67733,7 +66665,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_territories(
         &self,
-        param_version: f64,
         param_sort_field: models::SearchTerritoriesSortFieldParameter,
         param_descending: bool,
         param_keyword: Option<String>,
@@ -67744,9 +66675,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/territory/search",
+            "{}/api/3.18/territory/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67836,7 +66766,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_territory(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_territory_id: i64,
         param_name: Option<String>,
@@ -67846,9 +66775,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/territory/update",
+            "{}/api/3.18/territory/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -67934,7 +66862,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_or_update_theme_descriptor(
         &self,
-        param_version: f64,
         param_public_read: bool,
         param_public_write: bool,
         param_public_delete: bool,
@@ -67967,9 +66894,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/theme",
+            "{}/api/3.18/consumer/theme",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68137,7 +67063,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_theme_descriptor(
         &self,
-        param_version: f64,
         param_theme_descriptor_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -68149,9 +67074,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/theme/get",
+            "{}/api/3.18/consumer/theme/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68247,7 +67171,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_theme_descriptors(
         &self,
-        param_version: f64,
         param_filter: String,
         param_sort_field: String,
         param_descending: bool,
@@ -68271,9 +67194,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/theme/search",
+            "{}/api/3.18/consumer/theme/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68409,7 +67331,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_theme_descriptor(
         &self,
-        param_version: f64,
         param_theme_descriptor_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -68421,9 +67342,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/theme/remove",
+            "{}/api/3.18/consumer/theme/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68519,7 +67439,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_credential(
         &self,
-        param_version: f64,
         param_third_party_id: String,
         param_third_party_token: String,
         param_network_uid: String,
@@ -68542,9 +67461,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/create",
+            "{}/api/3.18/thirdparty/credential/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68678,7 +67596,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_network(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_enable_introspection: bool,
@@ -68701,9 +67618,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/network/create",
+            "{}/api/3.18/thirdparty/network/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68845,7 +67761,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_credential(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_network_uid: String,
         param_third_party_id: String,
@@ -68855,9 +67770,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/delete",
+            "{}/api/3.18/thirdparty/credential/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -68939,7 +67853,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_network(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_network_uid: String,
         context: &C) -> Result<DeleteNetworkResponse, ApiError>
@@ -68947,9 +67860,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/network/delete",
+            "{}/api/3.18/thirdparty/network/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69027,7 +67939,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_credential(
         &self,
-        param_version: f64,
         param_network_uid: String,
         param_app_key: String,
         param_account_id: Option<i64>,
@@ -69048,9 +67959,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/get",
+            "{}/api/3.18/thirdparty/credential/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69180,7 +68090,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_network(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_network_uid: String,
         context: &C) -> Result<GetNetworkResponse, ApiError>
@@ -69188,9 +68097,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/network/get",
+            "{}/api/3.18/thirdparty/network/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69268,7 +68176,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_credentials(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         param_network_uid: Option<String>,
@@ -69280,9 +68187,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/search",
+            "{}/api/3.18/thirdparty/credential/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69378,7 +68284,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_networks(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: models::SearchNetworksSortFieldParameter,
         param_descending: bool,
@@ -69392,9 +68297,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/network/search",
+            "{}/api/3.18/thirdparty/network/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69488,7 +68392,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn send_mfa_challenge(
         &self,
-        param_version: f64,
         param_network_uid: String,
         param_app_key: String,
         param_third_party_token: Option<String>,
@@ -69499,9 +68402,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/mfa/send",
+            "{}/api/3.18/thirdparty/credential/mfa/send",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69591,7 +68493,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_credential(
         &self,
-        param_version: f64,
         param_network_uid: String,
         param_third_party_id: String,
         param_app_key: String,
@@ -69606,9 +68507,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/credential/update",
+            "{}/api/3.18/thirdparty/credential/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69712,7 +68612,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_network(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_network_uid: String,
         param_name: Option<String>,
@@ -69736,9 +68635,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/thirdparty/network/update",
+            "{}/api/3.18/thirdparty/network/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69886,7 +68784,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_ticket_count(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_game_type: Option<String>,
@@ -69897,9 +68794,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ticket/count",
+            "{}/api/3.18/ticket/count",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -69993,7 +68889,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_ticket_list(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_ticket_object_type: Option<String>,
@@ -70008,9 +68903,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ticket/getList",
+            "{}/api/3.18/ticket/getList",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70120,7 +69014,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn gift_purchase(
         &self,
-        param_version: f64,
         param_receiver_account_id: i64,
         param_ticket_id: i64,
         param_device_id: Option<String>,
@@ -70134,9 +69027,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/purchase/gift",
+            "{}/api/3.18/purchase/gift",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70238,7 +69130,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn save_ticket(
         &self,
-        param_version: f64,
         param_action_type: String,
         param_ticket_object_type: String,
         param_return_nulls: Option<bool>,
@@ -70262,9 +69153,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ticket/save",
+            "{}/api/3.18/ticket/save",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70406,7 +69296,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn save_ticket_via_file_upload(
         &self,
-        param_version: f64,
         param_action_type: String,
         param_ticket_object_type: String,
         param_receipt_data: swagger::ByteArray,
@@ -70430,9 +69319,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ticket/save/fileUpload",
+            "{}/api/3.18/ticket/save/fileUpload",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70572,15 +69460,13 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ticket_offers(
         &self,
-        param_version: f64,
         context: &C) -> Result<TicketOffersResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/ticket/ticketoffers",
+            "{}/api/3.18/ticket/ticketoffers",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70654,7 +69540,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_tournament(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_title: String,
@@ -70695,9 +69580,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/create",
+            "{}/api/3.18/tournament/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70901,7 +69785,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_tournament(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         context: &C) -> Result<DeleteTournamentResponse, ApiError>
@@ -70909,9 +69792,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/delete",
+            "{}/api/3.18/tournament/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -70989,7 +69871,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_tournament(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: Option<i64>,
         param_join_code: Option<String>,
@@ -71000,9 +69881,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/get",
+            "{}/api/3.18/tournament/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71094,7 +69974,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_objects(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_game_level_id: i64,
         param_sort_field: Option<models::SearchObjectsSortFieldParameter>,
@@ -71106,9 +69985,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/object/search",
+            "{}/api/3.18/tournament/object/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71202,7 +70080,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_rounds(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_status: Option<String>,
@@ -71216,9 +70093,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/round/search",
+            "{}/api/3.18/tournament/round/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71320,7 +70196,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_tournaments(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_keyword: Option<String>,
@@ -71338,9 +70213,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/search",
+            "{}/api/3.18/tournament/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71458,7 +70332,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn submit_tournament_score(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_mission_id: i64,
@@ -71471,9 +70344,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/score",
+            "{}/api/3.18/tournament/score",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71563,7 +70435,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn submit_tournament_vote(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_mission_id: i64,
@@ -71575,9 +70446,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/vote",
+            "{}/api/3.18/tournament/vote",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71667,7 +70537,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn substitute_tournament_player(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         param_pack_id: i64,
@@ -71677,9 +70546,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/substitute",
+            "{}/api/3.18/tournament/substitute",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -71761,7 +70629,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_tournament(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_mission_id: i64,
         param_title: Option<String>,
@@ -71801,9 +70668,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tournament/update",
+            "{}/api/3.18/tournament/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72009,7 +70875,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn batch_save_tracking(
         &self,
-        param_version: f64,
         param_data: String,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -72022,9 +70887,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/batch/create",
+            "{}/api/3.18/tracking/batch/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72124,7 +70988,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_predicted_locations(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_latitude: Option<f64>,
         param_longitude: Option<f64>,
@@ -72139,9 +71002,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/predicted/get",
+            "{}/api/3.18/tracking/predicted/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72249,7 +71111,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_predicted_path(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_start_step_id: i64,
         param_end_step_id: i64,
@@ -72258,9 +71119,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/path/get",
+            "{}/api/3.18/tracking/path/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72340,7 +71200,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_preferred_locations(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_latitude: Option<f64>,
         param_longitude: Option<f64>,
@@ -72357,9 +71216,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/preferred/search",
+            "{}/api/3.18/tracking/preferred/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72475,7 +71333,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_tracking_legs(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_owner_id: Option<i64>,
@@ -72489,9 +71346,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/search",
+            "{}/api/3.18/tracking/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72597,7 +71453,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn save_tracking_leg(
         &self,
-        param_version: f64,
         param_start_lat: f64,
         param_start_lng: f64,
         param_start_date: i64,
@@ -72615,9 +71470,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/leg/create",
+            "{}/api/3.18/tracking/leg/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72727,7 +71581,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn save_tracking_step(
         &self,
-        param_version: f64,
         param_leg_id: i64,
         param_start_lat: f64,
         param_start_lng: f64,
@@ -72744,9 +71597,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/step/create",
+            "{}/api/3.18/tracking/step/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -72850,7 +71702,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_accounts_with_tracking_legs(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_keyword: Option<String>,
         param_start_date: Option<i64>,
@@ -72870,9 +71721,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/list",
+            "{}/api/3.18/tracking/list",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73000,7 +71850,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_tracking_legs(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_tracking_device_id: Option<String>,
@@ -73014,9 +71863,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/tracking/searchByBillable",
+            "{}/api/3.18/tracking/searchByBillable",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73118,7 +71966,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_trigger(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_name: String,
         param_app_key: Option<String>,
@@ -73137,9 +71984,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trigger/create",
+            "{}/api/3.18/trigger/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73261,7 +72107,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_trigger(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_trigger_id: i64,
         context: &C) -> Result<DeleteTriggerResponse, ApiError>
@@ -73269,9 +72114,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trigger/delete",
+            "{}/api/3.18/trigger/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73349,7 +72193,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_trigger(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_trigger_id: i64,
         context: &C) -> Result<GetTriggerResponse, ApiError>
@@ -73357,9 +72200,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trigger/get",
+            "{}/api/3.18/trigger/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73437,7 +72279,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_triggers(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_grouping_id: Option<String>,
         param_filter: Option<String>,
@@ -73455,9 +72296,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trigger/search",
+            "{}/api/3.18/trigger/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73577,7 +72417,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_trigger(
         &self,
-        param_version: f64,
         param_trigger_id: i64,
         param_account_id: i64,
         param_name: Option<String>,
@@ -73597,9 +72436,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trigger/update",
+            "{}/api/3.18/trigger/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73725,16 +72563,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_trip(
         &self,
-        param_version: f64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<CreateTripResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip",
+            "{}/api/3.18/trip",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73818,7 +72654,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn process_trip_matches(
         &self,
-        param_version: f64,
         param_start_date: Option<i64>,
         param_end_date: Option<i64>,
         param_trip_id: Option<i64>,
@@ -73827,9 +72662,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/match/process",
+            "{}/api/3.18/trip/match/process",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -73915,7 +72749,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -73930,9 +72763,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip",
+            "{}/api/3.18/trip",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -74030,7 +72862,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_trips(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -74046,9 +72877,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/match",
+            "{}/api/3.18/trip/match",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -74150,7 +72980,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_trip_notifications(
         &self,
-        param_version: f64,
         param_id: i64,
         param_notifications: Option<String>,
         context: &C) -> Result<UpdateTripNotificationsResponse, ApiError>
@@ -74158,9 +72987,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/notifications",
+            "{}/api/3.18/trip/notifications",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -74240,16 +73068,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<DeleteResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}",
+            "{}/api/3.18/trip/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74312,7 +73138,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn drive_trip(
         &self,
-        param_version: f64,
         param_id: i64,
         param_recurrence: bool,
         context: &C) -> Result<DriveTripResponse, ApiError>
@@ -74320,9 +73145,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/drive",
+            "{}/api/3.18/trip/{id}/drive",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74399,7 +73223,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn flexible_trip(
         &self,
-        param_version: f64,
         param_id: i64,
         param_recurrence: bool,
         context: &C) -> Result<FlexibleTripResponse, ApiError>
@@ -74407,9 +73230,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/flexible",
+            "{}/api/3.18/trip/{id}/flexible",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74486,16 +73308,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_trip(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetTripResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}",
+            "{}/api/3.18/trip/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74570,7 +73390,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_trip_matches(
         &self,
-        param_version: f64,
         param_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -74584,9 +73403,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/match",
+            "{}/api/3.18/trip/{id}/match",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74679,7 +73497,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn ride(
         &self,
-        param_version: f64,
         param_id: i64,
         param_recurrence: bool,
         context: &C) -> Result<RideResponse, ApiError>
@@ -74687,9 +73504,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/ride",
+            "{}/api/3.18/trip/{id}/ride",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74766,7 +73582,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_locations(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<UpdateLocationsResponse, ApiError>
@@ -74774,9 +73589,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/locations",
+            "{}/api/3.18/trip/{id}/locations",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74861,7 +73675,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_recurrence_locations(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<UpdateRecurrenceLocationsResponse, ApiError>
@@ -74869,9 +73682,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/locations/recurrence",
+            "{}/api/3.18/trip/{id}/locations/recurrence",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -74956,7 +73768,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_recurrence_shipments(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<UpdateRecurrenceShipmentsResponse, ApiError>
@@ -74964,9 +73775,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/shipments/recurrence",
+            "{}/api/3.18/trip/{id}/shipments/recurrence",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -75051,7 +73861,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_shipments(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<UpdateShipmentsResponse, ApiError>
@@ -75059,9 +73868,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}/shipments",
+            "{}/api/3.18/trip/{id}/shipments",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -75146,7 +73954,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_trip(
         &self,
-        param_version: f64,
         param_id: i64,
         param_body: Option<models::Trip>,
         context: &C) -> Result<UpdateTripResponse, ApiError>
@@ -75154,9 +73961,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/trip/{id}",
+            "{}/api/3.18/trip/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -75241,7 +74047,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn sms_buy_offer(
         &self,
-        param_version: f64,
         param_app_key: String,
         param_body: String,
         param_from: String,
@@ -75251,9 +74056,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/sms/buyoffer/{app_key}",
+            "{}/api/3.18/sms/buyoffer/{app_key}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,app_key=utf8_percent_encode(&param_app_key.to_string(), ID_ENCODE_SET)
         );
 
@@ -75336,16 +74140,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn authorize_twitter(
         &self,
-        param_version: f64,
         param_app_key: String,
         context: &C) -> Result<AuthorizeTwitterResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/twitter/authorize",
+            "{}/api/3.18/twitter/authorize",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -75421,7 +74223,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn login_twitter(
         &self,
-        param_version: f64,
         param_access_token: String,
         param_access_token_secret: String,
         param_app_key: String,
@@ -75434,9 +74235,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/twitter/login",
+            "{}/api/3.18/twitter/login",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -75530,7 +74330,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn add_users_to_permissionable(
         &self,
-        param_version: f64,
         param_permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         param_permissionable_id: i64,
         param_device_id: Option<String>,
@@ -75553,9 +74352,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/permissions/add",
+            "{}/api/3.18/consumer/permissions/add",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -75693,7 +74491,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn approve_permissionable(
         &self,
-        param_version: f64,
         param_permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         param_permissionable_id: i64,
         param_device_id: Option<String>,
@@ -75704,9 +74501,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/permissionable/approve",
+            "{}/api/3.18/permissionable/approve",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -75796,7 +74592,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn leave_from_permissionable(
         &self,
-        param_version: f64,
         param_permissionable_type: String,
         param_permissionable_id: i64,
         param_device_id: Option<String>,
@@ -75808,9 +74603,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/permissions/leave",
+            "{}/api/3.18/consumer/permissions/leave",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -75904,7 +74698,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn remove_users_from_permissionable(
         &self,
-        param_version: f64,
         param_permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
         param_permissionable_id: i64,
         param_device_id: Option<String>,
@@ -75921,9 +74714,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/consumer/permissions/remove",
+            "{}/api/3.18/consumer/permissions/remove",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76037,7 +74829,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_permissionables(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_connection_account_id: Option<i64>,
@@ -76056,9 +74847,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/permissions/search",
+            "{}/api/3.18/permissions/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76184,7 +74974,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_permissionables_following_distance(
         &self,
-        param_version: f64,
         param_latitude: f64,
         param_longitude: f64,
         param_device_id: Option<String>,
@@ -76204,9 +74993,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/permissions/distancesearch",
+            "{}/api/3.18/permissions/distancesearch",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76332,7 +75120,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_following(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: String,
         param_return_raw_response: Option<bool>,
@@ -76341,9 +75128,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/rels/following/create",
+            "{}/api/3.18/vatom/me/rels/following/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76413,7 +75199,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_space(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: String,
@@ -76423,9 +75208,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/spaces/create",
+            "{}/api/3.18/vatom/b/spaces/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76497,7 +75281,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_vatom_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: String,
@@ -76507,9 +75290,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/create",
+            "{}/api/3.18/vatom/b/events/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76581,7 +75363,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_following(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_rels_key: String,
         param_return_raw_response: Option<bool>,
@@ -76590,9 +75371,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/rels/following/delete",
+            "{}/api/3.18/vatom/me/rels/following/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76662,7 +75442,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_points_balance(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -76672,9 +75451,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign/points/delete",
+            "{}/api/3.18/vatom/b/campaign/points/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76746,7 +75524,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_space(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_space_id: String,
@@ -76756,9 +75533,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/spaces/delete",
+            "{}/api/3.18/vatom/b/spaces/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76830,7 +75606,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_vatom_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_event_id: String,
@@ -76840,9 +75615,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/delete",
+            "{}/api/3.18/vatom/b/events/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76914,7 +75688,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_vatom_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_id: String,
         param_return_raw_response: Option<bool>,
@@ -76923,9 +75696,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/vatoms/delete",
+            "{}/api/3.18/vatom/vatoms/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -76995,7 +75767,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn execute_action_on_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_id: String,
         param_vatom_parameters: String,
@@ -77005,9 +75776,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/vatoms/execute-action",
+            "{}/api/3.18/vatom/vatoms/execute-action",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77079,7 +75849,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn geomap_search(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: String,
         param_return_raw_response: Option<bool>,
@@ -77088,9 +75857,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/vatoms/geo-map/search",
+            "{}/api/3.18/vatom/vatoms/geo-map/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77160,7 +75928,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_business_behaviors(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_return_raw_response: Option<bool>,
@@ -77169,9 +75936,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/behaviors",
+            "{}/api/3.18/vatom/b/behaviors",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77241,7 +76007,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_business_coins_balance(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_return_raw_response: Option<bool>,
@@ -77250,9 +76015,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/coins/get",
+            "{}/api/3.18/vatom/b/coins/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77322,7 +76086,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_business_ids(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_return_raw_response: Option<bool>,
         context: &C) -> Result<GetBusinessIdsResponse, ApiError>
@@ -77330,9 +76093,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/businesses",
+            "{}/api/3.18/vatom/me/businesses",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77400,7 +76162,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_business_info(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: Option<String>,
@@ -77410,9 +76171,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/get",
+            "{}/api/3.18/vatom/b/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77486,7 +76246,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_business_users(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_return_raw_response: Option<bool>,
@@ -77495,9 +76254,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/users",
+            "{}/api/3.18/vatom/b/users",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77567,7 +76325,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_campaign_group_entities(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -77577,9 +76334,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign-groups/entities",
+            "{}/api/3.18/vatom/b/campaign-groups/entities",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77651,7 +76407,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_campaign_group_rules(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -77661,9 +76416,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign-groups/rules",
+            "{}/api/3.18/vatom/b/campaign-groups/rules",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77735,7 +76489,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_campaign_group_stats(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -77745,9 +76498,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign-groups/stats",
+            "{}/api/3.18/vatom/b/campaign-groups/stats",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77819,7 +76571,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_campaign_info(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -77829,9 +76580,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign-groups/get",
+            "{}/api/3.18/vatom/b/campaign-groups/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77903,7 +76653,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_event_guest_list(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_event_id: String,
@@ -77913,9 +76662,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/guests/get",
+            "{}/api/3.18/vatom/b/events/guests/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -77987,7 +76735,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_inventory(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: String,
         param_return_raw_response: Option<bool>,
@@ -77996,9 +76743,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/inventory",
+            "{}/api/3.18/vatom/me/inventory",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78068,7 +76814,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_my_following(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_return_raw_response: Option<bool>,
         context: &C) -> Result<GetMyFollowingResponse, ApiError>
@@ -78076,9 +76821,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/rels/following",
+            "{}/api/3.18/vatom/me/rels/following",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78146,7 +76890,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_points_balance(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_vatom_campaign_id: String,
@@ -78156,9 +76899,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/u/campaign/points/get",
+            "{}/api/3.18/vatom/u/campaign/points/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78230,7 +76972,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_points_balance_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_user_id: String,
@@ -78241,9 +76982,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign/u/points/get",
+            "{}/api/3.18/vatom/b/campaign/u/points/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78317,7 +77057,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_space(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_space_id: String,
@@ -78327,9 +77066,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/spaces/get",
+            "{}/api/3.18/vatom/b/spaces/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78401,7 +77139,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_coins_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_app_key: String,
@@ -78411,9 +77148,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/users/coins/get",
+            "{}/api/3.18/vatom/b/users/coins/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78485,7 +77221,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_coins_balance(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_vatom_parameters: Option<String>,
@@ -78495,9 +77230,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/u/coins/get",
+            "{}/api/3.18/vatom/u/coins/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78571,7 +77305,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_followers(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_return_raw_response: Option<bool>,
@@ -78580,9 +77313,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/users/rels/followers",
+            "{}/api/3.18/vatom/users/rels/followers",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78652,7 +77384,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_following(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_return_raw_response: Option<bool>,
@@ -78661,9 +77392,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/users/rels/following",
+            "{}/api/3.18/vatom/users/rels/following",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78733,7 +77463,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_info(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_return_raw_response: Option<bool>,
@@ -78742,9 +77471,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/user/get",
+            "{}/api/3.18/vatom/user/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78814,7 +77542,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_user_profile(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_return_raw_response: Option<bool>,
         context: &C) -> Result<GetUserProfileResponse, ApiError>
@@ -78822,9 +77549,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/get",
+            "{}/api/3.18/vatom/me/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78892,7 +77618,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_vatom_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_event_id: String,
@@ -78902,9 +77627,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/get",
+            "{}/api/3.18/vatom/b/events/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -78976,7 +77700,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_vatom_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_id: String,
         param_return_raw_response: Option<bool>,
@@ -78985,9 +77708,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/vatoms/get",
+            "{}/api/3.18/vatom/vatoms/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79057,7 +77779,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_communities(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: Option<String>,
@@ -79067,9 +77788,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/communities/search",
+            "{}/api/3.18/vatom/b/communities/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79143,7 +77863,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_events(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: Option<String>,
@@ -79153,9 +77872,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/search",
+            "{}/api/3.18/vatom/b/events/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79229,7 +77947,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_spaces(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: Option<String>,
@@ -79239,9 +77956,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/spaces/search",
+            "{}/api/3.18/vatom/b/spaces/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79315,7 +78031,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_user_coin_transactions(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_vatom_parameters: Option<String>,
@@ -79325,9 +78040,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/u/coins/txns/search",
+            "{}/api/3.18/vatom/u/coins/txns/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79401,7 +78115,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn list_user_coin_transactions_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_app_key: String,
@@ -79412,9 +78125,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/users/coins/txns/search",
+            "{}/api/3.18/vatom/b/users/coins/txns/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79490,7 +78202,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn perform_action_on_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_id: String,
         param_vatom_action: String,
@@ -79501,9 +78212,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/vatoms/actions",
+            "{}/api/3.18/vatom/me/vatoms/actions",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79577,7 +78287,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn redeem_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: String,
@@ -79587,9 +78296,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/redemptions",
+            "{}/api/3.18/vatom/b/redemptions",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79661,7 +78369,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn redeem_user_coins_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_app_key: String,
@@ -79672,9 +78379,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/users/coins/redeem",
+            "{}/api/3.18/vatom/b/users/coins/redeem",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79748,7 +78454,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_businesses(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: Option<String>,
         param_return_raw_response: Option<bool>,
@@ -79757,9 +78462,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/search",
+            "{}/api/3.18/vatom/b/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79831,7 +78535,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_campaign_groups(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_return_raw_response: Option<bool>,
@@ -79840,9 +78543,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign-groups/search",
+            "{}/api/3.18/vatom/b/campaign-groups/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79912,7 +78614,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_identities(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_return_raw_response: Option<bool>,
         context: &C) -> Result<SearchIdentitiesResponse, ApiError>
@@ -79920,9 +78621,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/identities/search",
+            "{}/api/3.18/vatom/me/identities/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -79990,7 +78690,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_inventory(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: Option<String>,
         param_return_raw_response: Option<bool>,
@@ -79999,9 +78698,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/user-inventory/search",
+            "{}/api/3.18/vatom/user-inventory/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80073,7 +78771,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn send_nft(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_campaign_id: String,
@@ -80084,9 +78781,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaigns/send",
+            "{}/api/3.18/vatom/b/campaigns/send",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80160,7 +78856,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn set_points_balance_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_user_id: String,
@@ -80172,9 +78867,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/campaign/u/points/update",
+            "{}/api/3.18/vatom/b/campaign/u/points/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80250,7 +78944,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn transfer_user_coins(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_vatom_parameters: String,
@@ -80260,9 +78953,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/u/coins/transfer",
+            "{}/api/3.18/vatom/u/coins/transfer",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80334,7 +79026,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_business_coins(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_parameters: String,
@@ -80344,9 +79035,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/coins/update",
+            "{}/api/3.18/vatom/b/coins/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80418,7 +79108,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_event_guest_list(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_event_id: String,
@@ -80429,9 +79118,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/guests/update",
+            "{}/api/3.18/vatom/b/events/guests/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80505,7 +79193,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_space(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_space_id: String,
@@ -80516,9 +79203,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/spaces/update",
+            "{}/api/3.18/vatom/b/spaces/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80592,7 +79278,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_user_coins_as_business(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_user_id: String,
         param_app_key: String,
@@ -80603,9 +79288,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/users/coins/update",
+            "{}/api/3.18/vatom/b/users/coins/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80679,7 +79363,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_user_profile(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_vatom_parameters: String,
         param_return_raw_response: Option<bool>,
@@ -80688,9 +79371,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/me/update",
+            "{}/api/3.18/vatom/me/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80760,7 +79442,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_vatom_event(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_app_key: String,
         param_vatom_event_id: String,
@@ -80771,9 +79452,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vatom/b/events/update",
+            "{}/api/3.18/vatom/b/events/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80847,7 +79527,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_vehicle(
         &self,
-        param_version: f64,
         param_vehicle: String,
         param_body: Option<models::Vehicle>,
         context: &C) -> Result<CreateVehicleResponse, ApiError>
@@ -80855,9 +79534,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle",
+            "{}/api/3.18/vehicle",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -80943,7 +79621,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_vehicle(
         &self,
-        param_version: f64,
         param_hub_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -80956,9 +79633,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle",
+            "{}/api/3.18/vehicle",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -81048,16 +79724,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_vehicle(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<DeleteVehicleResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/{id}",
+            "{}/api/3.18/vehicle/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81120,16 +79794,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_vehicle(
         &self,
-        param_version: f64,
         param_id: i64,
         context: &C) -> Result<GetVehicleResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/{id}",
+            "{}/api/3.18/vehicle/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81204,7 +79876,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_vehicle(
         &self,
-        param_version: f64,
         param_id: i64,
         param_vehicle: String,
         param_body: Option<models::Vehicle>,
@@ -81213,9 +79884,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/{id}",
+            "{}/api/3.18/vehicle/{id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,id=utf8_percent_encode(&param_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81302,7 +79972,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_vehicle_type(
         &self,
-        param_version: f64,
         param_vehicle_type: String,
         param_body: Option<models::VehicleType>,
         context: &C) -> Result<CreateVehicleTypeResponse, ApiError>
@@ -81310,9 +79979,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/type",
+            "{}/api/3.18/vehicle/type",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -81398,7 +80066,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_vehicle_types(
         &self,
-        param_version: f64,
         param_sort_field: String,
         param_descending: bool,
         param_start: i32,
@@ -81411,9 +80078,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/type",
+            "{}/api/3.18/vehicle/type",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -81505,16 +80171,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_vehicle_type(
         &self,
-        param_version: f64,
         param_vehicle_type_id: i64,
         context: &C) -> Result<DeleteVehicleTypeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/type/{vehicle_type_id}",
+            "{}/api/3.18/vehicle/type/{vehicle_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,vehicle_type_id=utf8_percent_encode(&param_vehicle_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81577,16 +80241,14 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_vehicle_type(
         &self,
-        param_version: f64,
         param_vehicle_type_id: i64,
         context: &C) -> Result<GetVehicleTypeResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/type/{vehicle_type_id}",
+            "{}/api/3.18/vehicle/type/{vehicle_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,vehicle_type_id=utf8_percent_encode(&param_vehicle_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81661,7 +80323,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_vehicle_type(
         &self,
-        param_version: f64,
         param_vehicle_type_id: i64,
         param_vehicle_type: String,
         param_body: Option<models::VehicleType>,
@@ -81670,9 +80331,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/vehicle/type/{vehicle_type_id}",
+            "{}/api/3.18/vehicle/type/{vehicle_type_id}",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
             ,vehicle_type_id=utf8_percent_encode(&param_vehicle_type_id.to_string(), ID_ENCODE_SET)
         );
 
@@ -81759,7 +80419,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_offer_transaction(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_offer_id: Option<i64>,
@@ -81776,9 +80435,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/create",
+            "{}/api/3.18/wallet/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -81896,7 +80554,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_offer_transaction(
         &self,
-        param_version: f64,
         param_transaction_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -81905,9 +80562,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/delete",
+            "{}/api/3.18/wallet/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -81991,7 +80647,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_offer_transaction(
         &self,
-        param_version: f64,
         param_transaction_id: i64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
@@ -82004,9 +80659,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/get",
+            "{}/api/3.18/wallet/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82106,7 +80760,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn preview_offer_transaction(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_offer_id: Option<i64>,
@@ -82122,9 +80775,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/preview",
+            "{}/api/3.18/wallet/preview",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82238,7 +80890,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_offer_transactions(
         &self,
-        param_version: f64,
         param_device_id: Option<String>,
         param_account_id: Option<i64>,
         param_keyword: Option<String>,
@@ -82285,9 +80936,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/search",
+            "{}/api/3.18/wallet/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82525,7 +81175,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_offer_transaction(
         &self,
-        param_version: f64,
         param_transaction_id: i64,
         param_status: i32,
         param_device_id: Option<String>,
@@ -82544,9 +81193,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/wallet/update",
+            "{}/api/3.18/wallet/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82668,7 +81316,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn search_weather(
         &self,
-        param_version: f64,
         param_region_id: Option<i64>,
         param_latitude: Option<f64>,
         param_longitude: Option<f64>,
@@ -82678,9 +81325,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/weather/search",
+            "{}/api/3.18/weather/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82770,7 +81416,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn create_word(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_word: String,
         param_definition: String,
@@ -82785,9 +81430,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/word/create",
+            "{}/api/3.18/game/word/create",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82885,7 +81529,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn delete_word(
         &self,
-        param_version: f64,
         param_word_id: i64,
         param_account_id: i64,
         context: &C) -> Result<DeleteWordResponse, ApiError>
@@ -82893,9 +81536,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/word/delete",
+            "{}/api/3.18/game/word/delete",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -82973,7 +81615,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_word(
         &self,
-        param_version: f64,
         param_word_id: i64,
         param_account_id: i64,
         context: &C) -> Result<GetWordResponse, ApiError>
@@ -82981,9 +81622,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/word/get",
+            "{}/api/3.18/game/word/get",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -83061,7 +81701,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn get_words(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_sort_field: String,
         param_descending: bool,
@@ -83074,9 +81713,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/word/search",
+            "{}/api/3.18/game/word/search",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -83166,7 +81804,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn update_word(
         &self,
-        param_version: f64,
         param_word_id: i64,
         param_account_id: i64,
         param_ticket_count: i64,
@@ -83182,9 +81819,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/game/word/update",
+            "{}/api/3.18/game/word/update",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters
@@ -83292,7 +81928,6 @@ impl<S, C, B> Api<C> for Client<S, C> where
     #[allow(clippy::vec_init_then_push)]
     async fn run_workflow(
         &self,
-        param_version: f64,
         param_account_id: i64,
         param_workflow_id: i64,
         param_sku_id: Option<i64>,
@@ -83303,9 +81938,8 @@ impl<S, C, B> Api<C> for Client<S, C> where
         let mut client_service = self.client_service.clone();
         #[allow(clippy::uninlined_format_args)]
         let mut uri = format!(
-            "{}/api/{version}/workflow/run",
+            "{}/api/3.18/workflow/run",
             self.base_path
-            ,version=utf8_percent_encode(&param_version.to_string(), ID_ENCODE_SET)
         );
 
         // Query parameters

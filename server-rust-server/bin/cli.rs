@@ -42,7 +42,7 @@ use openapi_client::{
     UpdateSettingsResponse,
     ValidateAccountSignupResponse,
     ValidatePasswordResetResponse,
-    ApiVersionAchievementTierSearchPostResponse,
+    AchievementTierSearchPostResponse,
     CreateAchievementResponse,
     CreateAchievementTierResponse,
     DeleteAchievementResponse,
@@ -747,7 +747,6 @@ struct Cli {
 enum Operation {
     /// Create Consumer
     ConsumerCreate {
-        version: f64,
         /// The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
         app_key: String,
         /// The name of the queue to connect to
@@ -780,7 +779,6 @@ enum Operation {
     },
     /// Update Consumer
     ConsumerUpdate {
-        version: f64,
         /// The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
         app_key: String,
         /// The queue to update
@@ -797,7 +795,6 @@ enum Operation {
     },
     /// Create Queue
     QueueCreate {
-        version: f64,
         /// The application key unique to each application.
         app_key: String,
         /// The name of the queue to create
@@ -826,7 +823,6 @@ enum Operation {
     },
     /// Delete Queue
     QueueDelete {
-        version: f64,
         /// The id of the queue to find
         queue_id: i64,
         /// The client device ID
@@ -836,7 +832,6 @@ enum Operation {
     },
     /// Get Queue
     QueueGet {
-        version: f64,
         /// The client device ID
         device_id: Option<String>,
         /// The logged in user ID
@@ -854,7 +849,6 @@ enum Operation {
     },
     /// Publish Queue
     QueuePublish {
-        version: f64,
         /// The payload to send to the queue
         message: String,
         /// The id of the queue to publish to
@@ -870,7 +864,6 @@ enum Operation {
     },
     /// Search Queue
     QueueSearch {
-        version: f64,
         /// The id of the queue to find
         queue_id: Option<i64>,
         /// The client device ID
@@ -886,7 +879,6 @@ enum Operation {
     },
     /// Update Queue
     QueueUpdate {
-        version: f64,
         /// The id of the queue to update
         queue_id: i64,
         /// The client deviceID
@@ -915,7 +907,6 @@ enum Operation {
     },
     /// Search Accounts by Location
     AccountLocationSearch {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -994,7 +985,6 @@ enum Operation {
     },
     /// Block Account
     BlockAccount {
-        version: f64,
         /// The id of the account to be blocked/unblocked
         account_id_being_blocked: i64,
         /// The device id (deviceId or accountId required)
@@ -1014,7 +1004,6 @@ enum Operation {
     },
     /// Create Account
     CreateAccount {
-        version: f64,
         /// The access token to authenticate with (ex: username)
         username: String,
         /// The secret to authenticate with (ex: password)
@@ -1167,7 +1156,6 @@ enum Operation {
     },
     /// Update Account
     EditAccount {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1346,7 +1334,6 @@ enum Operation {
     },
     /// Update Username and Email
     EditUsername {
-        version: f64,
         /// The device id
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1358,7 +1345,6 @@ enum Operation {
     },
     /// Get Account
     GetAccount {
-        version: f64,
         /// Return Nulls
         #[clap(short, long)]
         return_nulls: Option<bool>,
@@ -1388,7 +1374,6 @@ enum Operation {
     },
     /// Get Profile Assets
     GetProfileAssets {
-        version: f64,
         /// Determines whether to return null fields in the response
         #[clap(short, long)]
         return_nulls: Option<bool>,
@@ -1422,7 +1407,6 @@ enum Operation {
     },
     /// Search Accounts
     GetReferralList {
-        version: f64,
         /// The account id of the user (deviceId or accountId required)
         account_id: Option<i64>,
         /// The application key
@@ -1449,7 +1433,6 @@ enum Operation {
     },
     /// Get Account Settings
     GetSettings {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1461,7 +1444,6 @@ enum Operation {
     },
     /// Login as Account
     LoginDelegate {
-        version: f64,
         access_token: String,
         app_key: String,
         device_id: Option<String>,
@@ -1479,7 +1461,6 @@ enum Operation {
     },
     /// Login Account
     LoginGeneral {
-        version: f64,
         /// The access token to authenticate with (ex: username or fb token)
         access_token: String,
         /// The access provider to authenticate against. This can be custom  networks created using the ThirdPartyApi as well. Supported values by default  include: FACEBOOK, TWITTER, USERNAME, PHONE 
@@ -1510,7 +1491,6 @@ enum Operation {
     },
     /// Login Account (Username)
     LoginUsername {
-        version: f64,
         /// the user's email address they used to sign-up
         username: String,
         /// the password
@@ -1535,7 +1515,6 @@ enum Operation {
     },
     /// Logout Account
     Logout {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// Device Id Type
@@ -1549,7 +1528,6 @@ enum Operation {
     },
     /// Merge Account
     MergeAccount {
-        version: f64,
         /// The id of the account to being merged
         merge_account_id: i64,
         /// The application key
@@ -1561,7 +1539,6 @@ enum Operation {
     },
     /// Update Password
     PasswordChange {
-        version: f64,
         /// The account to update
         account_id: i64,
         /// The current password, used to validate access
@@ -1573,7 +1550,6 @@ enum Operation {
     },
     /// Reset Password
     PasswordReset {
-        version: f64,
         /// The token associated with the account to update, good for 24 hours
         token: String,
         /// The new password to set, cannot be empty
@@ -1583,7 +1559,6 @@ enum Operation {
     },
     /// Request Password Reset
     RequestPasswordReset {
-        version: f64,
         /// The email/username of the account
         email: String,
         /// this is the sender email
@@ -1597,13 +1572,11 @@ enum Operation {
     },
     /// Send Validation Request
     RequestValidateAccount {
-        version: f64,
         /// The account id of the user
         account_id: i64,
     },
     /// Search Accounts
     SearchAccounts {
-        version: f64,
         /// The id of the account requesting
         account_id: i64,
         /// The application key
@@ -1648,7 +1621,6 @@ enum Operation {
     },
     /// Login Account (Encrypted Username)
     SecureLogin {
-        version: f64,
         /// The user's encrypted email address they used to sign-up
         username: String,
         /// The encrypted password
@@ -1671,7 +1643,6 @@ enum Operation {
     },
     /// Create Account (Encrypted Username)
     SecureSignup {
-        version: f64,
         /// The device id
         device_id: String,
         /// The encrypted email of the user, this is what will be used when they login
@@ -1798,7 +1769,6 @@ enum Operation {
     },
     /// Save Match Token
     SetMatchToken {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1816,7 +1786,6 @@ enum Operation {
     },
     /// Update Account Active Status
     UpdateActveStatus {
-        version: f64,
         /// the account id of the user (deviceId or accountId required)
         account_id: i64,
         /// The account id of the user you want to modify (if this is not set, then the accountId parameter will be used instead)
@@ -1831,7 +1800,6 @@ enum Operation {
     },
     /// Update Location
     UpdateLocation {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1845,7 +1813,6 @@ enum Operation {
     },
     /// Update Account Settings
     UpdateSettings {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -1876,19 +1843,16 @@ enum Operation {
     },
     /// Save Validation Status
     ValidateAccountSignup {
-        version: f64,
         /// The token associated with the account to update, good for 24 hours
         token: String,
     },
     /// Validate Password Reset Token
     ValidatePasswordReset {
-        version: f64,
         /// The token associated with the account to update, good for 24 hours
         token: String,
     },
     /// Searches an Achievement Tier
-    ApiVersionAchievementTierSearchPost {
-        version: f64,
+    AchievementTierSearchPost {
         /// a unique id given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -1916,7 +1880,6 @@ enum Operation {
     },
     /// Create Achievement
     CreateAchievement {
-        version: f64,
         /// the application key the achievement is for
         app_key: String,
         /// the title of the achievement (255 character limit)
@@ -1948,7 +1911,6 @@ enum Operation {
     },
     /// Create Achievement Tier
     CreateAchievementTier {
-        version: f64,
         /// the achievement id for adding a new tier
         achievement_id: i64,
         /// score all instances
@@ -1982,7 +1944,6 @@ enum Operation {
     },
     /// Delete Achievement
     DeleteAchievement {
-        version: f64,
         /// The ID of the achievement
         achievement_id: i64,
         /// the account id of the user (deviceId or accountId required)
@@ -1990,7 +1951,6 @@ enum Operation {
     },
     /// Delete Achievement Tier
     DeleteAchievementTier {
-        version: f64,
         /// the achievement id for deletion
         achievement_tier_id: i64,
         /// the account id of the user (deviceId or accountId required).
@@ -1998,7 +1958,6 @@ enum Operation {
     },
     /// Get Achievement
     GetAchievement {
-        version: f64,
         /// The ID of the achievement
         achievement_id: i64,
         /// a unique id given by the device (deviceId or accountId required)
@@ -2010,7 +1969,6 @@ enum Operation {
     },
     /// Gets an achievement tier
     GetAchievementTier {
-        version: f64,
         /// the account id of the user (deviceId or accountId required)
         account_id: i64,
         /// the achievement tier id that is being retrieved
@@ -2018,7 +1976,6 @@ enum Operation {
     },
     /// Get Achievement Progress
     GetUserAchievements {
-        version: f64,
         /// determines whether to return null fields in the response
         #[clap(short, long)]
         return_nulls: bool,
@@ -2046,13 +2003,11 @@ enum Operation {
     },
     /// List Achievement Tags
     ListAchievementTags {
-        version: f64,
         /// filter results by application key
         app_key: Option<String>,
     },
     /// List Achievements
     ListAchievements {
-        version: f64,
         /// the field to sort by. See AchievementApiMap
         #[clap(value_parser = parse_json::<models::ListAchievementsSortFieldParameter>)]
         sort_field: models::ListAchievementsSortFieldParameter,
@@ -2081,7 +2036,6 @@ enum Operation {
     },
     /// Search Achievements
     SearchAchievements {
-        version: f64,
         /// the application key
         app_key: String,
         /// the field to sort by. See AchievementApiMap
@@ -2113,7 +2067,6 @@ enum Operation {
     },
     /// Update Achievement
     UpdateAchievement {
-        version: f64,
         /// a unique id given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -2151,7 +2104,6 @@ enum Operation {
     },
     /// Update Achievement Tier
     UpdateAchievementTier {
-        version: f64,
         /// the achievement tier id for updating
         achievement_tier_id: i64,
         /// a unique id given by the device (deviceId or accountId required)
@@ -2185,7 +2137,6 @@ enum Operation {
     },
     /// Update Achievement Progress
     UpdateUserAchievement {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the achievement id (achievementId or tag required)
@@ -2206,14 +2157,12 @@ enum Operation {
     },
     /// Create an entity reference.
     CreateEntityReference {
-        version: f64,
         /// The entity reference object
         #[clap(value_parser = parse_json::<models::EntityReference>)]
         body: models::EntityReference,
     },
     /// Create Album
     AddAlbumCollection {
-        version: f64,
         /// the title of the album
         title: String,
         /// determines whether the cover image of the album can be empty, else will use the user's profile picture as the cover image
@@ -2322,7 +2271,6 @@ enum Operation {
     },
     /// Add Album Users
     AddAlbumUsers {
-        version: f64,
         /// the album ID
         album_id: i64,
         /// determines whether to include all friends as participants
@@ -2351,7 +2299,6 @@ enum Operation {
     },
     /// Approve Album
     ApproveAlbum {
-        version: f64,
         /// The ID of the album
         album_id: i64,
         /// A unique ID given by the device (deviceId or accountId required)
@@ -2367,7 +2314,6 @@ enum Operation {
     },
     ///  Get Album
     GetAlbumCollection {
-        version: f64,
         /// This parameter is deprecated.
         #[clap(short, long)]
         return_nulls: bool,
@@ -2390,7 +2336,6 @@ enum Operation {
     },
     /// Leave Album
     LeaveAlbum {
-        version: f64,
         /// the album ID
         album_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -2400,7 +2345,6 @@ enum Operation {
     },
     /// Delete Album
     RemoveAlbum {
-        version: f64,
         /// the album ID to delete
         album_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -2410,7 +2354,6 @@ enum Operation {
     },
     /// Remove Album Users
     RemoveAlbumUsers {
-        version: f64,
         /// the album ID
         album_id: i64,
         /// remove friend group
@@ -2427,7 +2370,6 @@ enum Operation {
     },
     /// Search Albums
     SearchAlbums {
-        version: f64,
         /// a comma separated list of filters: * MINE - Return albums that the user has created. * SHARED - Return albums that have been shared to the user via addAlbumUsers, or addUsersToPermissionable . * FOLLOWER - Return albums that have been created by the user's followers (the content needs to have been APPROVED or FEATURED). * FOLLOWING - Return albums that have been created by people who the user is following (the content needs to have been APPROVED or FEATURED). * PUBLIC - Return all PUBLIC albums that have been APPROVED or FEATURED. * ALL_PUBLIC - Return all PUBLIC albums regardless of whether they are approved or not (ignores the approval status). * LIKED - Return all albums that the user has liked. * FEATURED - Return all albums that have been featured. * PENDING - Return all pending albums. 
         filter: String,
         /// id of custom albumType
@@ -2564,7 +2506,6 @@ enum Operation {
     },
     /// Update Album
     UpdateAlbumCollection {
-        version: f64,
         /// the ID of the album to update
         album_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -2669,7 +2610,6 @@ enum Operation {
     },
     /// Get User Activity
     Activities {
-        version: f64,
         /// The start of the pagination
         start: i32,
         /// The limit of the pagination
@@ -2679,7 +2619,6 @@ enum Operation {
     },
     /// Get Aggregated Filtered Usage
     AggregatedFilteredUsage {
-        version: f64,
         /// The unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -2752,7 +2691,6 @@ enum Operation {
     },
     /// Get Filtered Usage
     FilteredUsage {
-        version: f64,
         /// The unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -2841,7 +2779,6 @@ enum Operation {
     },
     /// Create Usage Record
     Usage {
-        version: f64,
         /// The tag to apply: the name of the action or thing being logged.
         tag: String,
         /// The client deviceID
@@ -2908,7 +2845,6 @@ enum Operation {
     },
     /// Create Multiple Usage Records
     UsageBatch {
-        version: f64,
         /// The application key unique to each application.
         app_key: String,
         /// The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)
@@ -2936,7 +2872,6 @@ enum Operation {
     },
     /// Get App Data
     GetAppData {
-        version: f64,
         /// start the search results at a record.
         start: i32,
         /// limit the search results to some number.
@@ -2995,7 +2930,6 @@ enum Operation {
     },
     /// Create App Data
     PostAppData {
-        version: f64,
         /// the game to retrieve the data for, use your application key.
         game_type: String,
         /// start the search results at a record.
@@ -3056,7 +2990,6 @@ enum Operation {
     },
     /// Regenerate App Data
     RegenAppData {
-        version: f64,
         /// the account id of the user
         account_id: Option<i64>,
         /// process a specific application, if null process all apps with caches
@@ -3068,7 +3001,6 @@ enum Operation {
     },
     /// Create Application
     CreateApplication {
-        version: f64,
         /// The name of the application
         app_name: String,
         /// The unique id of the device making the request (deviceId or accountId required)
@@ -3250,7 +3182,6 @@ enum Operation {
     },
     /// Create Ad Placement
     CreateApplicationPlacement {
-        version: f64,
         /// The appKey of the application the ad placement is for
         app_key: String,
         /// The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM
@@ -3278,7 +3209,6 @@ enum Operation {
     },
     /// Delete Application
     DeleteApplication {
-        version: f64,
         /// The account used to perform the delete, must have rights to edit the application.
         account_id: Option<i64>,
         /// The key of the application to be deleted
@@ -3286,7 +3216,6 @@ enum Operation {
     },
     /// Delete Ad Placement
     DeleteApplicationPlacement {
-        version: f64,
         /// The id of the placement to delete, the user must have rights to the application the ad placement is for
         placement_id: i64,
         /// The unique id of the device making the request (deviceId or accountId required)
@@ -3296,7 +3225,6 @@ enum Operation {
     },
     /// Get Application
     GetApplication {
-        version: f64,
         /// The key of the application
         app_key: Option<String>,
         /// Application Id
@@ -3304,7 +3232,6 @@ enum Operation {
     },
     /// Get Ad Placement
     GetApplicationPlacement {
-        version: f64,
         /// The id of the placement
         placement_id: i64,
         /// The unique id of the device making the request (deviceId or accountId required)
@@ -3314,11 +3241,9 @@ enum Operation {
     },
     /// Get API versions
     GetApplicationVersions {
-        version: f64,
     },
     /// Search Application Users
     GetUniqueUsersByApp {
-        version: f64,
         /// The application key
         app_key: String,
         /// Q
@@ -3338,7 +3263,6 @@ enum Operation {
     },
     /// List Applications
     ListApplications {
-        version: f64,
         /// The account id of the application owner/manager
         account_id: Option<i64>,
         /// Q
@@ -3390,7 +3314,6 @@ enum Operation {
     },
     /// Search for Ad Placements
     SearchApplicationPlacement {
-        version: f64,
         /// The key of the application
         app_key: String,
         /// The unique id of the device making the request (deviceId or accountId required)
@@ -3404,7 +3327,6 @@ enum Operation {
     },
     /// Search for Application Settings
     SearchApplicationSettings {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -3425,7 +3347,6 @@ enum Operation {
     },
     /// Search Applications
     SearchApplications {
-        version: f64,
         /// The unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -3466,7 +3387,6 @@ enum Operation {
     },
     /// Update Application
     UpdateApplication {
-        version: f64,
         /// The application key for updating an existing application
         app_key: String,
         /// The name of the application
@@ -3650,7 +3570,6 @@ enum Operation {
     },
     /// Change Appliation Status
     UpdateApplicationActive {
-        version: f64,
         /// The account used to perform the delete, must have rights to edit the application.
         account_id: i64,
         /// The key of the application to be deleted
@@ -3661,7 +3580,6 @@ enum Operation {
     },
     /// Update Ad Placement
     UpdateApplicationPlacement {
-        version: f64,
         /// The id of the placement to update, the user must have rights to the application the ad placement is for
         placement_id: i64,
         /// The unique id of the device making the request (deviceId or accountId required)
@@ -3689,7 +3607,6 @@ enum Operation {
     },
     /// Create Application Certificate
     UploadApplicationCertificate {
-        version: f64,
         /// The key of the application
         app_key: String,
         /// Device Id
@@ -3702,7 +3619,6 @@ enum Operation {
     },
     /// Create AppConfig
     CreateApplicationConfig {
-        version: f64,
         /// The account ID of the user
         account_id: i64,
         /// The application key that the newly created applicationConfig will be associated to
@@ -3720,7 +3636,6 @@ enum Operation {
     },
     /// Delete AppConfig
     DeleteApplicationConfig {
-        version: f64,
         /// The account ID of the user
         account_id: i64,
         /// The config ID of the application configuration to delete
@@ -3728,7 +3643,6 @@ enum Operation {
     },
     /// Get AppConfig
     GetApplicationConfig {
-        version: f64,
         /// The account ID of the user
         account_id: i64,
         /// The config ID of the application configuration
@@ -3736,7 +3650,6 @@ enum Operation {
     },
     /// Get AppConfig by Version
     GetApplicationConfigByConfigVersion {
-        version: f64,
         /// The application key
         app_key: String,
         /// The version of the application configuration
@@ -3753,7 +3666,6 @@ enum Operation {
     },
     /// Search AppConfigs
     SearchApplicationConfig {
-        version: f64,
         /// The account ID of the user
         account_id: i64,
         /// The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only)
@@ -3778,7 +3690,6 @@ enum Operation {
     },
     /// Update AppConfig
     UpdateApplicationConfig {
-        version: f64,
         /// The account ID of the user
         account_id: i64,
         /// The config ID of the application configuration to update
@@ -3798,7 +3709,6 @@ enum Operation {
     },
     /// Convert Offer to Creative
     AssetMorph {
-        version: f64,
         /// offer id used for inserting offer text/flavor
         offer_id: i64,
         /// the ad size used for selecting a format for the creative image
@@ -3817,7 +3727,6 @@ enum Operation {
     },
     /// Create Asset
     CreateAsset {
-        version: f64,
         /// to return nulls
         #[clap(short, long)]
         return_nulls: Option<bool>,
@@ -3893,7 +3802,6 @@ enum Operation {
     },
     /// Delete Asset
     DeleteAsset {
-        version: f64,
         /// the id of the asset to delete
         asset_id: String,
         /// the device id (deviceId or accountId required)
@@ -3907,7 +3815,6 @@ enum Operation {
     },
     /// Get Asset
     GetAsset {
-        version: f64,
         /// the asset ID
         asset_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -3920,7 +3827,6 @@ enum Operation {
     },
     /// Remove Asset from Collection
     RemoveAsset {
-        version: f64,
         /// the id of the asset to remove
         asset_id: String,
         /// the device id (deviceId or accountId required)
@@ -3941,7 +3847,6 @@ enum Operation {
     },
     /// Search Assets
     SearchAssets {
-        version: f64,
         /// a unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account ID of the user (deviceId or accountId required)
@@ -3998,7 +3903,6 @@ enum Operation {
     },
     /// Update Asset
     UpdateAsset {
-        version: f64,
         /// the ID of the asset to update
         asset_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -4066,13 +3970,11 @@ enum Operation {
     },
     /// Download Asset
     AssetDownload {
-        version: f64,
         /// the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}
         filename: String,
     },
     /// Search Assignment Assignees
     AssigmentAssigneeAccountSearch {
-        version: f64,
         /// The account id sending the request
         account_id: i64,
         /// The keyword to filter the returned results
@@ -4080,7 +3982,6 @@ enum Operation {
     },
     /// Create Assignment
     AssignmentCreate {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the name for the assignment
@@ -4099,7 +4000,6 @@ enum Operation {
     },
     /// Delete Assignment
     AssignmentDelete {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment id
@@ -4107,7 +4007,6 @@ enum Operation {
     },
     /// Get Assignment
     AssignmentGet {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment id
@@ -4115,7 +4014,6 @@ enum Operation {
     },
     /// Search Assignments
     AssignmentSearch {
-        version: f64,
         /// the account sending the request
         account_id: i64,
         /// sort by table field
@@ -4145,7 +4043,6 @@ enum Operation {
     },
     /// Create Assignment Status
     AssignmentStatusCreate {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment id
@@ -4177,7 +4074,6 @@ enum Operation {
     },
     /// Deletes Assignment Status
     AssignmentStatusDelete {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment status id
@@ -4185,7 +4081,6 @@ enum Operation {
     },
     /// Get Assignment Status
     AssignmentStatusGet {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment status id
@@ -4193,7 +4088,6 @@ enum Operation {
     },
     /// Search Assignment Statuses
     AssignmentStatusSearch {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP
@@ -4225,7 +4119,6 @@ enum Operation {
     },
     /// Update Assignment Status
     AssignmentStatusUpdate {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment status id
@@ -4257,7 +4150,6 @@ enum Operation {
     },
     /// Update Assignment
     AssignmentUpdate {
-        version: f64,
         /// the user account id
         account_id: i64,
         /// the assignment id
@@ -4278,7 +4170,6 @@ enum Operation {
     },
     /// Create Audience
     CreateAudience {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the audience
@@ -4343,7 +4234,6 @@ enum Operation {
     },
     /// Delete Audience
     DeleteAudience {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the audience to delete.
@@ -4351,11 +4241,9 @@ enum Operation {
     },
     /// Get Age Groups
     GetAgeGroups {
-        version: f64,
     },
     /// Get Audience
     GetAudience {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the audience to return.
@@ -4373,7 +4261,6 @@ enum Operation {
     },
     /// Search Audiences
     GetAudienceList {
-        version: f64,
         /// The logged in user.
         account_id: Option<i64>,
         /// Comma separated list of album IDs to filter results with
@@ -4424,18 +4311,15 @@ enum Operation {
     },
     /// Get Devices
     GetDevices {
-        version: f64,
         /// If true return inactive record as well. default is false.
         #[clap(short, long)]
         include_inactive: bool,
     },
     /// Get Experiences
     GetExperiences {
-        version: f64,
     },
     /// Get GroupedAudiences
     GetGroupedAudiences {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The audience grouping id to return.
@@ -4443,7 +4327,6 @@ enum Operation {
     },
     /// List Suggestions by Audience
     ListByAccount {
-        version: f64,
         /// The account to match offers for.
         account_id: i64,
         /// the limit of the index
@@ -4453,7 +4336,6 @@ enum Operation {
     },
     /// List Offers by Audience
     ListByAudience {
-        version: f64,
         /// this is the limit of the index
         limit: i32,
         /// this is the gender to list offers by
@@ -4469,7 +4351,6 @@ enum Operation {
     },
     /// List Sent Suggestions 
     ListLastestByAccount {
-        version: f64,
         /// The account to match offers for.
         account_id: i64,
         /// The timeframe in seconds of the latest suggestions
@@ -4479,7 +4360,6 @@ enum Operation {
     },
     /// Send Suggestions
     SendByAccount {
-        version: f64,
         /// The account to match offers for.
         account_id: i64,
         /// the latitude
@@ -4489,7 +4369,6 @@ enum Operation {
     },
     /// Update Audience
     UpdateAudience {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the audience to update.
@@ -4559,7 +4438,6 @@ enum Operation {
     },
     /// Create Bid
     CreateBid {
-        version: f64,
         /// A biddable object type. Possible values include: CREATIVE (ads).
         biddable_type: String,
         /// The id of the biddable object
@@ -4579,7 +4457,6 @@ enum Operation {
     },
     /// Delete Bid
     DeleteBid {
-        version: f64,
         /// The bid id
         bid_id: i64,
         /// The device id (deviceId or accountId required)
@@ -4589,7 +4466,6 @@ enum Operation {
     },
     /// Get Bid
     GetBid {
-        version: f64,
         /// The bid id
         bid_id: i64,
         /// The device id (deviceId or accountId required)
@@ -4599,7 +4475,6 @@ enum Operation {
     },
     /// Update Bid
     UpdateBid {
-        version: f64,
         /// The bid id
         bid_id: i64,
         /// The device id (deviceId or accountId required)
@@ -4617,7 +4492,6 @@ enum Operation {
     },
     /// Create Billable
     CreateBillableEntity {
-        version: f64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
         device_id: Option<String>,
         /// The unique accountId that made the request (either deviceId or accountId must be used)
@@ -4645,7 +4519,6 @@ enum Operation {
     },
     /// Delete Billable
     DeleteBillableEntity {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account used to perform the delete, must have rights to edit the billable entity.
@@ -4653,7 +4526,6 @@ enum Operation {
     },
     /// Get Billable
     GetBillableEntity {
-        version: f64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
         device_id: Option<String>,
         /// The unique accountId that made the request (either deviceId or accountId must be used)
@@ -4667,7 +4539,6 @@ enum Operation {
     },
     /// Update Billable
     UpdateBillableEntity {
-        version: f64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
         device_id: Option<String>,
         /// The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity.
@@ -4695,7 +4566,6 @@ enum Operation {
     },
     /// Update Payment Method
     AddPaymentMethod {
-        version: f64,
         /// The account used to perform the the request
         account_id: i64,
         /// Payment Method Id
@@ -4746,7 +4616,6 @@ enum Operation {
     },
     /// Create Payment Method
     CreatePaymentMethod {
-        version: f64,
         /// The account used to perform the the request
         account_id: i64,
         /// Account Name of the credit card user
@@ -4801,7 +4670,6 @@ enum Operation {
     },
     /// Create Smart Contract
     CreateSmartContract {
-        version: f64,
         /// The account used to perform the the request
         account_id: i64,
         /// The token name
@@ -4813,7 +4681,6 @@ enum Operation {
     },
     /// Get Crypto Balances
     GetCryptoBalance {
-        version: f64,
         /// The account used to perform the the request
         account_id: i64,
         /// The account to retreive balances for
@@ -4823,7 +4690,6 @@ enum Operation {
     },
     /// Get Payment Method
     GetPaymentMethod {
-        version: f64,
         /// The account used to perform the the request
         account_id: i64,
         /// The payment method to return details on. If this is not set, then the user's default payment method will be returned.
@@ -4834,7 +4700,6 @@ enum Operation {
     },
     /// Search Payment Methods
     SearchPaymentMethod {
-        version: f64,
         /// Account Id to search on
         account_id: i64,
         /// Provider to search on
@@ -4855,7 +4720,6 @@ enum Operation {
     },
     /// Detail Status
     GetStatusCsv {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the batch
@@ -4870,7 +4734,6 @@ enum Operation {
     },
     /// Search Status
     ListStatusCsv {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// the start of the pagination
@@ -4880,7 +4743,6 @@ enum Operation {
     },
     /// Batch Status
     StatusCsv {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// the id of the batch to get its status
@@ -4888,7 +4750,6 @@ enum Operation {
     },
     /// Upload CSV
     UploadCsv {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// the upload type: OFFERS, RETAILERS, RETAILERLOCATIONS, CATEGORIES, OR FILTERS
@@ -4905,13 +4766,11 @@ enum Operation {
     },
     /// Create Cargo Type
     CreateCargoType {
-        version: f64,
         #[clap(value_parser = parse_json::<models::CargoType>)]
         body: Option<models::CargoType>,
     },
     /// Search Cargo Type
     SearchCargoTypes {
-        version: f64,
         /// the sort field to use for the cargo type
         sort_field: String,
         /// if the cargo type should be should be in descending order
@@ -4931,19 +4790,16 @@ enum Operation {
     },
     /// Delete Cargo Type
     DeleteCargoType {
-        version: f64,
         /// the ID of the cargo type
         cargo_type_id: i64,
     },
     /// Get Cargo Type
     GetCargoType {
-        version: f64,
         /// the cargo type ID
         cargo_type_id: i64,
     },
     /// Update Cargo Type
     UpdateCargoType {
-        version: f64,
         /// the ID of the cargo type
         cargo_type_id: i64,
         #[clap(value_parser = parse_json::<models::CargoType>)]
@@ -4951,7 +4807,6 @@ enum Operation {
     },
     /// Search Carriers
     SearchCarriers {
-        version: f64,
         /// The keyword to search on
         keyword: Option<String>,
         /// Determines whether the sorted list is in descending or ascending order
@@ -4967,7 +4822,6 @@ enum Operation {
     },
     /// Search Categories by Distance
     CategoryDistanceSearch {
-        version: f64,
         /// The account id of the user
         account_id: Option<i64>,
         /// The keyword string to search on
@@ -5018,7 +4872,6 @@ enum Operation {
     },
     /// Create Category
     CreateCategory {
-        version: f64,
         /// The account id of the user (must have permissions to the target application)
         account_id: i64,
         /// The name of the category
@@ -5051,7 +4904,6 @@ enum Operation {
     },
     /// Delete Category
     DeleteCategory {
-        version: f64,
         /// the ID of the account
         account_id: i64,
         /// the ID of the category
@@ -5059,7 +4911,6 @@ enum Operation {
     },
     /// Duplicate Category
     DuplicateCategory {
-        version: f64,
         /// The account id of the user (must have permissions to the target application)
         account_id: i64,
         /// The category ID to duplicate (includes all children)
@@ -5071,7 +4922,6 @@ enum Operation {
     },
     /// Get Category
     GetCategory {
-        version: f64,
         /// the ID of the category
         category_id: i64,
         /// Determines whether to return extra info about the category's \"Participant\" reference
@@ -5080,7 +4930,6 @@ enum Operation {
     },
     /// Search Categories
     SearchCategories {
-        version: f64,
         /// The account id of the user
         account_id: Option<i64>,
         /// The string to search on
@@ -5134,7 +4983,6 @@ enum Operation {
     },
     /// Update Category
     UpdateCategory {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The ID of the category to edit
@@ -5167,7 +5015,6 @@ enum Operation {
     },
     /// Add Connection
     AddConnectionToGroup {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5190,7 +5037,6 @@ enum Operation {
     },
     /// Add Connections
     AddConnectionsToGroup {
-        version: f64,
         /// the connection group ID
         connection_group_id: i64,
         /// the device id (deviceId or accountId required)
@@ -5208,7 +5054,6 @@ enum Operation {
     },
     /// Add Connection Groups
     AddSubGroups {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5227,7 +5072,6 @@ enum Operation {
     },
     /// Create or Update Connection
     CreateOrUpdateConnection {
-        version: f64,
         /// the device id (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -5265,7 +5109,6 @@ enum Operation {
     },
     /// Create or Update Connection Group
     CreateOrUpdateGroup {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5302,7 +5145,6 @@ enum Operation {
     },
     /// Accept Follow Request
     FollowAccept {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the account ID of the user who initiated the follow
@@ -5312,7 +5154,6 @@ enum Operation {
     },
     /// Reject Follow Request
     FollowReject {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the account ID of the user who initiated the follow
@@ -5322,7 +5163,6 @@ enum Operation {
     },
     /// Remove Follower / Unfollow
     FollowRemove {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the account ID of the user who you want to unfollow
@@ -5332,7 +5172,6 @@ enum Operation {
     },
     /// Send Follow Request
     FollowRequest {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the account ID of the user who you want to follow
@@ -5345,7 +5184,6 @@ enum Operation {
     },
     /// Accept Friend
     FriendAccept {
-        version: f64,
         /// the friend's account id
         friend_account_id: i64,
         /// determines whether to send a notification to the afflicting party
@@ -5364,7 +5202,6 @@ enum Operation {
     },
     /// Decline Friend
     FriendReject {
-        version: f64,
         /// the friend's account id
         friend_account_id: i64,
         /// the device id (deviceId or accountId required)
@@ -5383,7 +5220,6 @@ enum Operation {
     },
     /// Delete Friend
     FriendRemove {
-        version: f64,
         /// the account ID of the friend to remove
         friend_account_id: i64,
         /// the device id (deviceId or accountId required)
@@ -5399,7 +5235,6 @@ enum Operation {
     },
     /// Request Friend
     FriendRequest {
-        version: f64,
         /// the friend's account id
         friend_account_id: i64,
         /// the device id (deviceId or accountId required)
@@ -5415,7 +5250,6 @@ enum Operation {
     },
     /// Get Sent Friend Requests
     GetConnectionSentFriendRequests {
-        version: f64,
         /// the ID of the device
         device_id: Option<String>,
         /// the id of the account
@@ -5423,7 +5257,6 @@ enum Operation {
     },
     /// Search Connections
     GetConnections {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5459,7 +5292,6 @@ enum Operation {
     },
     /// Get Connection Group
     GetGroupDetails {
-        version: f64,
         /// whether to combine connections or not
         #[clap(short, long)]
         combine_connections: bool,
@@ -5476,7 +5308,6 @@ enum Operation {
     },
     /// Search Connection Groups
     GroupSearch {
-        version: f64,
         /// the field to sort by
         #[clap(value_parser = parse_json::<models::GroupSearchSortFieldParameter>)]
         sort_field: models::GroupSearchSortFieldParameter,
@@ -5503,7 +5334,6 @@ enum Operation {
     },
     /// Delete Connection
     RemoveConnectionFromGroup {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5526,7 +5356,6 @@ enum Operation {
     },
     /// Remove Connections
     RemoveConnectionsFromGroup {
-        version: f64,
         /// connection group id
         connection_group_id: i64,
         /// the device id (deviceId or accountId required)
@@ -5544,7 +5373,6 @@ enum Operation {
     },
     /// Delete Connection Group
     RemoveGroup {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5561,7 +5389,6 @@ enum Operation {
     },
     /// Remove Connection Groups
     RemoveSubGroups {
-        version: f64,
         /// whether to return nulls or not
         #[clap(short, long)]
         return_nulls: bool,
@@ -5580,7 +5407,6 @@ enum Operation {
     },
     /// Search Possible Connections
     SearchConnections {
-        version: f64,
         /// return all json attributes if true. defualt is true.
         #[clap(short, long)]
         return_nulls: bool,
@@ -5616,7 +5442,6 @@ enum Operation {
     },
     /// Create or Update Contest
     AddOrUpdateAlbumContest {
-        version: f64,
         /// determines whether the contest's participants has read permissions
         #[clap(long)]
         public_read: bool,
@@ -5678,7 +5503,6 @@ enum Operation {
     },
     /// Approve Contest
     ApproveAlbumContest {
-        version: f64,
         /// The ID of the album contest
         album_contest_id: i64,
         /// The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
@@ -5691,7 +5515,6 @@ enum Operation {
     },
     /// Delete Contest
     DeleteContest {
-        version: f64,
         /// the album contest ID
         album_contest_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -5705,7 +5528,6 @@ enum Operation {
     },
     /// Get Contest
     GetAlbumContest {
-        version: f64,
         /// the album contest ID
         album_contest_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -5719,7 +5541,6 @@ enum Operation {
     },
     /// Search Contests
     GetAlbumContests {
-        version: f64,
         /// a comma separated list of Ownership
         filter: String,
         /// the field to sort by. See AlbumContestApiMap
@@ -5762,7 +5583,6 @@ enum Operation {
     },
     /// Vote on Contest
     VoteOnAlbumContest {
-        version: f64,
         /// the album contest ID
         album_contest_id: i64,
         /// the ID of the album to vote on
@@ -5780,7 +5600,6 @@ enum Operation {
     },
     /// Add Preview
     AddPreview {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
@@ -5788,7 +5607,6 @@ enum Operation {
     },
     /// Find Missions
     AdsFind {
-        version: f64,
         /// The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
         app_key: String,
         /// return a random set of results, default is true. If false returns in nature order.
@@ -5828,7 +5646,6 @@ enum Operation {
     },
     /// Create Creative
     CreateCreative {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the level.
@@ -5864,7 +5681,6 @@ enum Operation {
     },
     /// Delete Creative
     DeleteCreative {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the creative to delete
@@ -5872,7 +5688,6 @@ enum Operation {
     },
     /// Get Creative
     GetCreative {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the ID of the creative to get
@@ -5880,7 +5695,6 @@ enum Operation {
     },
     /// Search Creatives
     GetCreativesByApplication {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the application key
@@ -5896,7 +5710,6 @@ enum Operation {
     },
     /// Remove Preview
     RemovePreview {
-        version: f64,
         /// the ID of the logged in user
         account_id: i64,
         /// the ID of the creative to remove preview
@@ -5904,7 +5717,6 @@ enum Operation {
     },
     /// Update Creative
     UpdateCreative {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the creative Id to upate.
@@ -5937,7 +5749,6 @@ enum Operation {
     },
     /// Create Dependent
     Create {
-        version: f64,
         /// the id of the parent account to create a dependent for
         account_id: i64,
         #[clap(value_parser = parse_json::<models::Account>)]
@@ -5945,13 +5756,11 @@ enum Operation {
     },
     /// Get dependent list of an account
     GetDependents {
-        version: f64,
         /// the id of the parent account to get a list of dependents
         account_id: i64,
     },
     /// Delete Dependent
     RemoveDependent {
-        version: f64,
         /// the id of the parent account tied to the dependent
         account_id: i64,
         /// the id of the dependent to delete
@@ -5959,13 +5768,11 @@ enum Operation {
     },
     /// Check Disbursements
     CheckDisbursements {
-        version: f64,
         /// the ID of the disbursement being checked on
         disbursement_id: i64,
     },
     /// Create Disbursement
     CreateDisbursement {
-        version: f64,
         /// the ID of the logging in user (must be an EXECUTIVE account)
         account_id: i64,
         /// the ID of the account receiving the disbursement
@@ -5990,7 +5797,6 @@ enum Operation {
     },
     /// Get Disbursement
     GetDisbursement {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the id of the disbursement
@@ -5998,7 +5804,6 @@ enum Operation {
     },
     /// Search Disbursements
     SearchDisbursements {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// filter results by the id of the account receiving the disbursement
@@ -6023,7 +5828,6 @@ enum Operation {
     },
     /// Update Disbursement
     UpdateDisbursement {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the disbursement being updated
@@ -6049,7 +5853,6 @@ enum Operation {
     },
     /// Assign Employee
     AssignEmployee {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The account id of the manager to assign under
@@ -6061,7 +5864,6 @@ enum Operation {
     },
     /// Assign Employee to Location
     AssignToLocationEmployee {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The retailer location to apply the change to
@@ -6074,7 +5876,6 @@ enum Operation {
     },
     /// Create Employee
     CreateEmployee {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The account id of the manager to assign under
@@ -6139,7 +5940,6 @@ enum Operation {
     },
     /// Delete Employee
     DeleteEmployee {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the employee to delete
@@ -6147,7 +5947,6 @@ enum Operation {
     },
     /// Get Employee
     GetEmployee {
-        version: f64,
         /// the id of logged in user
         account_id: i64,
         /// the id of the employee account to get
@@ -6157,7 +5956,6 @@ enum Operation {
     },
     /// Search Employees
     SearchEmployees {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.
@@ -6199,7 +5997,6 @@ enum Operation {
     },
     /// Unassign Employee
     UnassignEmployee {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The account id of the user to be unassigned
@@ -6207,7 +6004,6 @@ enum Operation {
     },
     /// Update Employee
     UpdateEmployee {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// the id of the employee account
@@ -6273,7 +6069,6 @@ enum Operation {
     },
     /// Attend Event
     AttendEvent {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id (deviceId or accountId required)
@@ -6297,7 +6092,6 @@ enum Operation {
     },
     /// Create Event
     CreateEvent {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The event title
@@ -6326,7 +6120,6 @@ enum Operation {
     },
     /// Delete Event
     DeleteEvent {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the event to update
@@ -6334,7 +6127,6 @@ enum Operation {
     },
     /// Get Event
     GetEvent {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// The id of the event to return
@@ -6342,7 +6134,6 @@ enum Operation {
     },
     /// Search Event Attendance
     SearchEventTransactions {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -6386,7 +6177,6 @@ enum Operation {
     },
     /// Search Events
     SearchEvents {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The keyword used to search
@@ -6419,7 +6209,6 @@ enum Operation {
     },
     /// Update Event
     UpdateEvent {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the event to update
@@ -6448,7 +6237,6 @@ enum Operation {
     },
     /// Get Facebook Token
     GetToken {
-        version: f64,
         /// a unique id given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -6460,7 +6248,6 @@ enum Operation {
     },
     /// Post to Facebook
     GraphInterface {
-        version: f64,
         /// the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED}
         event: String,
         /// a unique id given by the device (deviceId or accountId required)
@@ -6484,7 +6271,6 @@ enum Operation {
     },
     /// Create Favorite
     AddFavorite {
-        version: f64,
         /// The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId}
         favoritable_id: i64,
         /// The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM}
@@ -6500,7 +6286,6 @@ enum Operation {
     },
     /// Delete Favorite
     DeleteFavorite {
-        version: f64,
         /// The unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// The account ID of the user (deviceId or accountId required)
@@ -6514,7 +6299,6 @@ enum Operation {
     },
     /// Get Favorite
     GetFavorite {
-        version: f64,
         /// The ID of the favorite reference record
         favorite_id: i64,
         /// The unique ID given by the device (deviceId or accountId required)
@@ -6528,7 +6312,6 @@ enum Operation {
     },
     /// Search Favorites
     SearchFavorites {
-        version: f64,
         /// The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}
         favoritable_type: String,
         /// Determines what to sort the results by {CREATED, UPDATED, DISPLAY}
@@ -6564,7 +6347,6 @@ enum Operation {
     },
     /// Who has Favorited
     WhoHasFavorited {
-        version: f64,
         /// The ID of the favoritableType to search on
         favoritable_id: i64,
         /// The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}
@@ -6586,7 +6368,6 @@ enum Operation {
     },
     /// Create Filter
     CreateFilter {
-        version: f64,
         /// The account id of the user (must have permissions to the target application)
         account_id: i64,
         /// The name of the filter
@@ -6609,7 +6390,6 @@ enum Operation {
     },
     /// Delete Filter
     DeleteFilter {
-        version: f64,
         /// The account id of the user (must have permissions to the filter's assigned application)
         account_id: i64,
         /// The ID of the filter to delete
@@ -6617,13 +6397,11 @@ enum Operation {
     },
     /// Get Filter
     GetFilter {
-        version: f64,
         /// the id of the filter to get
         filter_id: i64,
     },
     /// Search Filters
     SearchFilters {
-        version: f64,
         /// The account id of the user
         account_id: Option<i64>,
         /// The string to search on
@@ -6652,7 +6430,6 @@ enum Operation {
     },
     /// Update Filter
     UpdateFilter {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The ID of the filter to edit
@@ -6675,7 +6452,6 @@ enum Operation {
     },
     /// Create Flag
     CreateFlag {
-        version: f64,
         /// The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}
         flagable_type: String,
         /// The flagable object id
@@ -6693,7 +6469,6 @@ enum Operation {
     },
     /// Delete Flag
     DeleteFlag {
-        version: f64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
         device_id: Option<String>,
         /// The unique accountId that made the request (either deviceId or accountId must be used)
@@ -6709,7 +6484,6 @@ enum Operation {
     },
     /// Get Flag
     GetFlag {
-        version: f64,
         /// The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}
         flagable_type: String,
         /// The flagable object id
@@ -6725,7 +6499,6 @@ enum Operation {
     },
     /// Get Flag Threshold
     GetFlagThreshold {
-        version: f64,
         /// The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
         item_being_flagged_type: String,
         /// The application key
@@ -6733,7 +6506,6 @@ enum Operation {
     },
     /// Update Flag Threshold
     UpdateFlagThreshold {
-        version: f64,
         /// The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
         item_being_flagged_type: String,
         /// The threshold value
@@ -6747,7 +6519,6 @@ enum Operation {
     },
     /// Create a Game
     CreateGame {
-        version: f64,
         /// The logged in user.
         account_id: Option<i64>,
         /// The game application key to save the level for.
@@ -6766,7 +6537,6 @@ enum Operation {
     },
     /// Delete a Game
     DeleteGame {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the updating game's id.
@@ -6774,7 +6544,6 @@ enum Operation {
     },
     /// Get a Game by id
     GetGame {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the updating game's id.
@@ -6785,7 +6554,6 @@ enum Operation {
     },
     /// Search a Game
     SearchGames {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the application key
@@ -6807,7 +6575,6 @@ enum Operation {
     },
     /// Update a Game
     UpdateGame {
-        version: f64,
         /// The logged in user.
         account_id: Option<i64>,
         /// the updating game's id
@@ -6828,7 +6595,6 @@ enum Operation {
     },
     /// Create Game Level
     CreateGameLevel {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the level.
@@ -6887,7 +6653,6 @@ enum Operation {
     },
     /// Delete Game Level
     DeleteGameLevel {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the level to return.
@@ -6895,7 +6660,6 @@ enum Operation {
     },
     /// Get Game Level
     GetGameLevel {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the level to return.
@@ -6906,7 +6670,6 @@ enum Operation {
     },
     /// Search Game Levels
     GetGameLevelsByApplication {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the application key
@@ -6932,7 +6695,6 @@ enum Operation {
     },
     /// Search Game Level by Billable Entity
     GetGameLevelsByBillableEntity {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// the application key
@@ -6955,7 +6717,6 @@ enum Operation {
     },
     /// Get Level Questions
     GetQuestionsInLevel {
-        version: f64,
         /// the id of the level to get questions from
         level_id: i64,
         /// the id of the logged in user
@@ -6963,7 +6724,6 @@ enum Operation {
     },
     /// Get Level Words
     GetWordsInLevel {
-        version: f64,
         /// the id of the level to get words for
         level_id: i64,
         /// the id of the logged in user
@@ -6971,7 +6731,6 @@ enum Operation {
     },
     /// Update Game Level
     UpdateGameLevel {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// If update then include the level Id.
@@ -7032,7 +6791,6 @@ enum Operation {
     },
     /// Update Level Questions
     UpdateQuestionsInLevel {
-        version: f64,
         /// the id of the level to update questions on
         level_id: i64,
         /// the id of the logged in user
@@ -7042,7 +6800,6 @@ enum Operation {
     },
     /// Update Level Words
     UpdateWordsInLevel {
-        version: f64,
         /// the id of the level to update words for
         level_id: i64,
         /// the id of the logged in user
@@ -7052,7 +6809,6 @@ enum Operation {
     },
     /// Accept Invite
     AcceptInvite {
-        version: f64,
         /// the invite token
         token: String,
         /// the accountId of the user who is accepting the invite
@@ -7089,7 +6845,6 @@ enum Operation {
     },
     /// Invite to Contest
     AlbumContestInvite {
-        version: f64,
         /// a unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account ID of the user (deviceId or accountId required)
@@ -7107,7 +6862,6 @@ enum Operation {
     },
     /// Invite to Collection
     AlbumInvite {
-        version: f64,
         /// a unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account ID of the user (deviceId or accountId required)
@@ -7125,7 +6879,6 @@ enum Operation {
     },
     /// Invite to Event
     EventInvite {
-        version: f64,
         /// the account ID of the user making the share
         account_id: i64,
         /// the application key
@@ -7139,7 +6892,6 @@ enum Operation {
     },
     /// Invite to Game Level
     GameInvite {
-        version: f64,
         /// a unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account ID of the user (deviceId or accountId required)
@@ -7157,7 +6909,6 @@ enum Operation {
     },
     /// Get Invite
     GetInvite {
-        version: f64,
         /// Account ID of the user if they are logged in
         account_id: Option<i64>,
         /// the invite token
@@ -7179,7 +6930,6 @@ enum Operation {
     },
     /// Invite to Mission
     MissionInvite {
-        version: f64,
         /// a unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account ID of the user (deviceId or accountId required)
@@ -7197,7 +6947,6 @@ enum Operation {
     },
     /// Invite to Offer
     OfferInvite {
-        version: f64,
         /// the account ID of the user making the share
         account_id: i64,
         /// the application key
@@ -7207,7 +6956,6 @@ enum Operation {
     },
     /// Invite to Offer Location
     OfferLocationInvite {
-        version: f64,
         /// the account ID of the user making the share
         account_id: i64,
         /// the application key
@@ -7217,7 +6965,6 @@ enum Operation {
     },
     /// Invite to Retailer Location
     RetailerLocationInvite {
-        version: f64,
         /// the account ID of the user making the share
         account_id: i64,
         /// the application key
@@ -7229,7 +6976,6 @@ enum Operation {
     },
     /// Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     CreateLeaderboard {
-        version: f64,
         /// The account id of the user creating the leaderboard.
         account_id: Option<i64>,
         /// The application key
@@ -7261,7 +7007,6 @@ enum Operation {
     },
     /// Delete the Leader Board
     DeleteLeaderboard {
-        version: f64,
         /// The leaderboard id to delete.
         leaderboard_id: i64,
         /// The account id of the user making the request.
@@ -7269,7 +7014,6 @@ enum Operation {
     },
     /// Read a leaderboard by id and retrieve the matching ranking list
     GetLeaderboard {
-        version: f64,
         /// The leaderboard id.
         leaderboard_id: i64,
         /// A valid account.
@@ -7280,7 +7024,6 @@ enum Operation {
     },
     /// Search leaderboard and retrieve the matching ranking list
     SearchLeaderboards {
-        version: f64,
         /// The account id of the user requesting the search.
         account_id: Option<i64>,
         /// The application key.
@@ -7312,7 +7055,6 @@ enum Operation {
     },
     /// Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
     UpdateLeaderboard {
-        version: f64,
         /// The leaderboard id to update.
         leaderboard_id: i64,
         /// The account id of the user updating the leaderboard.
@@ -7349,7 +7091,6 @@ enum Operation {
     },
     /// Create Like
     RegisterLike {
-        version: f64,
         /// The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
         likable_type: String,
         /// The id of the likable object
@@ -7378,7 +7119,6 @@ enum Operation {
     },
     /// Delete Like
     RemoveLike {
-        version: f64,
         /// The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
         likable_type: String,
         /// The id of the likable object
@@ -7394,7 +7134,6 @@ enum Operation {
     },
     /// Search Likes
     SearchLikes {
-        version: f64,
         /// The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
         likable_type: String,
         /// The id of the likable object
@@ -7421,7 +7160,6 @@ enum Operation {
     },
     /// Create Listing
     CreateListing {
-        version: f64,
         /// the user's account ID
         account_id: i64,
         /// the name of the listing
@@ -7455,7 +7193,6 @@ enum Operation {
     },
     /// Delete Listing
     DeleteListing {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the listing to delete
@@ -7463,13 +7200,11 @@ enum Operation {
     },
     /// Get Listing
     GetListing {
-        version: f64,
         /// the id of the listing to get
         listing_id: i64,
     },
     /// Search Listings
     SearchListing {
-        version: f64,
         /// the account id of the user
         account_id: Option<i64>,
         /// search the event name and description for this keyword
@@ -7505,7 +7240,6 @@ enum Operation {
     },
     /// Summary Listing
     SummaryListing {
-        version: f64,
         /// the account id of the user
         account_id: Option<i64>,
         /// the start date to search from
@@ -7520,7 +7254,6 @@ enum Operation {
     },
     /// Update Listing
     UpdateListing {
-        version: f64,
         /// the user's account ID
         account_id: i64,
         /// the listing to update
@@ -7556,7 +7289,6 @@ enum Operation {
     },
     /// Create Trilateration Data with File
     CacheTrilaterationData {
-        version: f64,
         /// The unique identifier of the source device
         udid: String,
         /// The current timestamp of the source device
@@ -7571,19 +7303,16 @@ enum Operation {
     },
     /// Create Trilateration Data with Rest
     CacheTrilaterationDataGzip {
-        version: f64,
         #[clap(value_parser = parse_json::<models::TrilatCacheRequest>)]
         body: Option<models::TrilatCacheRequest>,
     },
     /// Get Location by IP
     GetLocationByIp {
-        version: f64,
         /// the ip address of the client device
         ip: Option<String>,
     },
     /// Get Location by Trilateration
     GetLocationByTrilateration {
-        version: f64,
         /// The account making the request, if provided the last know location will be updated
         account_id: Option<i64>,
         /// The known GPS latitude to compare to the calculated version
@@ -7597,7 +7326,6 @@ enum Operation {
     },
     /// Search Regions or Postal Codes
     GetLocations {
-        version: f64,
         /// the device id
         device_id: Option<String>,
         /// the account id
@@ -7640,13 +7368,11 @@ enum Operation {
     },
     /// Create new location
     CreateLocationV2 {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Location>)]
         body: Option<models::Location>,
     },
     /// Update an existing location
     UpdateLocationV2 {
-        version: f64,
         /// the id of the location to update
         id: i64,
         #[clap(value_parser = parse_json::<models::Location>)]
@@ -7654,7 +7380,6 @@ enum Operation {
     },
     /// Create Media
     CreateMedia {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The title (255 char limit)
@@ -7783,7 +7508,6 @@ enum Operation {
     },
     /// Delete Media
     DeleteMedia {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the ID of the media to delete
@@ -7791,7 +7515,6 @@ enum Operation {
     },
     /// Media Get
     GetMedia {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the media to get
@@ -7799,7 +7522,6 @@ enum Operation {
     },
     /// Search Media
     SearchMedia {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Return only active results
@@ -7824,7 +7546,6 @@ enum Operation {
     },
     /// Update Media
     UpdateMedia {
-        version: f64,
         /// The account used to perform the update, must have rights to edit the offer (deviceId or accountId required)
         account_id: i64,
         /// 
@@ -7957,7 +7678,6 @@ enum Operation {
     },
     /// Create Mission
     CreateMission {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The title of the mission
@@ -8016,7 +7736,6 @@ enum Operation {
     },
     /// Delete Mission
     DeleteMission {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the mission to delete
@@ -8024,7 +7743,6 @@ enum Operation {
     },
     /// Find Missions
     FindMissions {
-        version: f64,
         /// The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
         app_key: String,
         /// The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip
@@ -8071,7 +7789,6 @@ enum Operation {
     },
     /// Get Mission
     GetMission {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the mission to return.
@@ -8082,7 +7799,6 @@ enum Operation {
     },
     /// Import Mission
     ImportMission {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The current location of the requesting device
@@ -8103,7 +7819,6 @@ enum Operation {
     },
     /// Search Mission Formats
     SearchMissionFormats {
-        version: f64,
         /// The starting index in the result set to return. Default is 0.
         start: i32,
         /// The total number of records to return. Default is 20.
@@ -8114,7 +7829,6 @@ enum Operation {
     },
     /// Search Missions
     SearchMissions {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Filter by keyword
@@ -8144,7 +7858,6 @@ enum Operation {
     },
     /// Search Missions by Billable Entity
     SearchMissionsByBillableEntity {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Filter by keyword
@@ -8172,7 +7885,6 @@ enum Operation {
     },
     /// Update Mission
     UpdateMission {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the mission to update.
@@ -8229,7 +7941,6 @@ enum Operation {
     },
     /// Create Mission Invite
     CreateMissionInvite {
-        version: f64,
         /// the device id (deviceId or accountId required).
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required).
@@ -8244,7 +7955,6 @@ enum Operation {
     },
     /// Delete Mission Invite
     DeleteMissionInvite {
-        version: f64,
         /// the device id (deviceId or accountId required).
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required).
@@ -8259,7 +7969,6 @@ enum Operation {
     },
     /// Get Mission Invite
     GetMissionInvite {
-        version: f64,
         /// the device id (deviceId or accountId required).
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required).
@@ -8276,7 +7985,6 @@ enum Operation {
     },
     /// Search Mission Invites
     SearchMissionInvites {
-        version: f64,
         /// the device id (deviceId or accountId required).
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required).
@@ -8308,7 +8016,6 @@ enum Operation {
     },
     /// Update Mission Invite
     UpdateMissionInvite {
-        version: f64,
         /// the device id (deviceId or accountId required).
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required).
@@ -8335,7 +8042,6 @@ enum Operation {
     },
     /// Batch Note Operation
     BatchOperation {
-        version: f64,
         /// The id of the notable object the batch operation will affect
         notable_id: i64,
         /// The notable object type (for example ALBUM, ASSET, OFFER, etc.)
@@ -8349,7 +8055,6 @@ enum Operation {
     },
     /// Create Note
     CreateNote {
-        version: f64,
         /// The message the user wishes to leave a comment on
         comment: String,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -8443,7 +8148,6 @@ enum Operation {
     },
     /// Delete Note
     DeleteNote {
-        version: f64,
         /// The ID of the note to delete
         note_id: i64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -8459,7 +8163,6 @@ enum Operation {
     },
     /// Get Note
     GetNote {
-        version: f64,
         /// the id of the note to get
         note_id: i64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -8472,7 +8175,6 @@ enum Operation {
     },
     /// Search Notes
     SearchNotes {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -8515,7 +8217,6 @@ enum Operation {
     },
     /// Update Note
     UpdateNote {
-        version: f64,
         /// The id of the note, used when editing a comment
         note_id: i64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -8608,7 +8309,6 @@ enum Operation {
     },
     /// Create Notification Template
     CreateNotificationTemplate {
-        version: f64,
         /// The account ID of the user.
         account_id: i64,
         /// Filter results by notification type: EMAIL, SMS, PUSH, MOBILE_NOTIFICATION.
@@ -8626,7 +8326,6 @@ enum Operation {
     },
     /// Create or update blocked notification settings
     CreateOrUpdateBlockedNotifications {
-        version: f64,
         /// The application key
         app_key: String,
         /// batch data payload (application specific)
@@ -8636,7 +8335,6 @@ enum Operation {
     },
     /// Delete Notification Template
     DeleteNotificationTemplate {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the id of the notification template to delete
@@ -8644,7 +8342,6 @@ enum Operation {
     },
     /// Get Notification Template
     GetNotificationTemplate {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// the id of the notification template to get
@@ -8652,7 +8349,6 @@ enum Operation {
     },
     /// Get Notifications
     GetNotifications {
-        version: f64,
         /// the unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -8702,7 +8398,6 @@ enum Operation {
     },
     /// Register Notification Token
     RegisterNotificationToken {
-        version: f64,
         /// A token that is generated by the device to sign requests for the notification service providers
         token: String,
         /// The type of push notification. Possible values include: APNS, GCM
@@ -8728,7 +8423,6 @@ enum Operation {
     },
     /// Search on the user's blocked notification settings
     SearchBlockedNotifications {
-        version: f64,
         /// The application key
         app_key: String,
         /// the account id of the user
@@ -8757,7 +8451,6 @@ enum Operation {
     },
     /// Search Notification Templates
     SearchNotificationTemplate {
-        version: f64,
         /// The account ID of the user.
         account_id: i64,
         /// Specifies how results are ordered.ID - order results by the notificationTemplateId CREATED - order results by the created date UPDATED - order results by the updated date TITLE - order results by title EVENT - order results by event CONDUIT - order results by conduit APP_NAME - order results by the application name ('global' templates will not have an application and will be returned last if 'descending' is set to false.
@@ -8786,7 +8479,6 @@ enum Operation {
     },
     /// Search for Recipients
     SearchRecipients {
-        version: f64,
         /// The field to sort by. Possible values include: {ACCOUNT_DISPLAY, CREATED, UPDATED, ACTIVE, DELETED, LAST_LOGGED_IN, CONTACT_EMAIL, RETAILER_LOCATION_NAME, RETAILER_NAME, APPLICATION_NAME}
         #[clap(value_parser = parse_json::<models::SearchRecipientsSortFieldParameter>)]
         sort_field: models::SearchRecipientsSortFieldParameter,
@@ -8818,7 +8510,6 @@ enum Operation {
     },
     /// Search for Recipients (Counts/Grouped)
     SearchRecipientsCount {
-        version: f64,
         /// the unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -8847,7 +8538,6 @@ enum Operation {
     },
     /// Send Batch Notifications
     SendBatchNotifications {
-        version: f64,
         /// The account id of the application owner/manager
         account_id: i64,
         /// The application key for updating an existing application
@@ -8869,7 +8559,6 @@ enum Operation {
     },
     /// Send Custom Notifications
     SendCustomNotifications {
-        version: f64,
         /// the unique id of the device making the request (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -8911,7 +8600,6 @@ enum Operation {
     },
     /// Update Notification Template
     UpdateNotificationTemplate {
-        version: f64,
         /// The account ID of the user.
         account_id: i64,
         /// The notification template ID to update.
@@ -8925,7 +8613,6 @@ enum Operation {
     },
     /// Create Field
     AddField {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The application key for updating an existing application
@@ -8939,7 +8626,6 @@ enum Operation {
     },
     /// Create Object
     CreateObject {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The application key for updating an existing application
@@ -8949,7 +8635,6 @@ enum Operation {
     },
     /// Delete Field
     DeleteField {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The application key for updating an existing application
@@ -8961,7 +8646,6 @@ enum Operation {
     },
     /// Delete Object
     DeleteObject {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the application key
@@ -8971,7 +8655,6 @@ enum Operation {
     },
     /// Get Object
     GetObject {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The application key for updating an existing application
@@ -8981,7 +8664,6 @@ enum Operation {
     },
     /// Search Objects
     SearchObject {
-        version: f64,
         /// The account id of the logged in user
         account_id: i64,
         /// The application key for updating an existing application
@@ -8995,7 +8677,6 @@ enum Operation {
     },
     /// Create Data
     CreateData {
-        version: f64,
         /// the name of the object to create data for
         object_name: String,
         /// the account id
@@ -9004,7 +8685,6 @@ enum Operation {
     },
     /// Search Data
     SearchData {
-        version: f64,
         /// The name of the object to search upon
         object_name: String,
         /// If true just return the record count of the search. False (default) will return the actual records
@@ -9025,7 +8705,6 @@ enum Operation {
     },
     /// Delete Data
     DeleteData {
-        version: f64,
         /// The name of the object to search upon
         object_name: String,
         /// objectId The id of the record to return
@@ -9035,7 +8714,6 @@ enum Operation {
     },
     /// Get Data
     GetData {
-        version: f64,
         /// The name of the object to search upon
         object_name: String,
         /// objectId The id of the record to return
@@ -9047,7 +8725,6 @@ enum Operation {
     },
     /// Update Data
     UpdateData {
-        version: f64,
         /// The name of the object to search upon
         object_name: String,
         /// objectId The id of the record to return
@@ -9058,7 +8735,6 @@ enum Operation {
     },
     /// Update Offer Locations
     BatchUpdateOfferLocations {
-        version: f64,
         /// JSON string in the following format: ```json [{   \"offerLocationId\": 1705,   \"latitude\": 54.0,   \"longitude\": -122.0,   \"altitude\": 1.0,   \"locationDetail\": \"floor 1\",   \"locationDescription\": \"behind the Coke sign\" }, {   \"offerLocationId\": 1704,   \"latitude\": 54.1,   \"longitude\": -122.1 }] ``` 
         data: String,
         /// The device id (deviceId or accountId required)
@@ -9068,7 +8744,6 @@ enum Operation {
     },
     /// Create Offer
     CreateOffer {
-        version: f64,
         /// If true return all the offer locations associated with the offer
         #[clap(short, long)]
         include_offer_locations: bool,
@@ -9259,7 +8934,6 @@ enum Operation {
     },
     /// Delete Offer
     DeleteOffer {
-        version: f64,
         /// The ID of the offer to be deleted
         offer_id: i64,
         /// The device id (deviceId or accountId required)
@@ -9269,7 +8943,6 @@ enum Operation {
     },
     /// Delete Offer Location
     DeleteOfferLocation {
-        version: f64,
         /// The ID of the offer location to be deleted
         offer_location_id: i64,
         /// The device id (deviceId or accountId required)
@@ -9279,7 +8952,6 @@ enum Operation {
     },
     /// Get Offer
     GetOffer {
-        version: f64,
         /// The id of the offer
         offer_id: i64,
         /// 
@@ -9292,7 +8964,6 @@ enum Operation {
     },
     /// Get Offer
     GetOfferDetails {
-        version: f64,
         /// The device id for returning account information (i.e. favorites)
         device_id: Option<String>,
         /// The account id for returning account information (i.e. favorites)
@@ -9319,7 +8990,6 @@ enum Operation {
     },
     /// Get Offers (Counts)
     GetOfferListCounts {
-        version: f64,
         /// The latitude of where the search will center at
         latitude: f64,
         /// The longitude of where the search will center at
@@ -9332,7 +9002,6 @@ enum Operation {
     },
     /// Get Offer Location
     GetOfferLocation {
-        version: f64,
         /// the id of the offer location to get
         offer_location_id: Option<i64>,
         /// the UDID of the device
@@ -9340,7 +9009,6 @@ enum Operation {
     },
     /// Search Offer Locations
     GetOfferLocationsForRetailers {
-        version: f64,
         /// The column to sort the results on. Default is \"TITLE\", which will sort the results by the offer title. Possible input values: {CREATED, UPDATED, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, DETAILS, OFFER_TYPE, RETAILER_ID,RETAILER_LOCATION_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}
         #[clap(value_parser = parse_json::<models::SearchOffersForConsumerGroupByParameter>)]
         sort_field: models::SearchOffersForConsumerGroupByParameter,
@@ -9392,7 +9060,6 @@ enum Operation {
     },
     /// Search Offers
     GetOffersForRetailers {
-        version: f64,
         /// 
         #[clap(value_parser = parse_json::<models::CreateMediaOfferVisibilityParameter>)]
         offer_visibility: models::CreateMediaOfferVisibilityParameter,
@@ -9471,7 +9138,6 @@ enum Operation {
     },
     /// Update Offer Transaction
     RedeemOfferTransaction {
-        version: f64,
         /// the OfferTransaction ID of the transaction being redeemed
         offer_transaction_id: i64,
         /// the status to set the offer transaction to - 1 sets it to redeemable and 2 sets it to redeemed
@@ -9485,7 +9151,6 @@ enum Operation {
     },
     /// Search Offer Transactions
     SearchOfferTransactionsForRetailers {
-        version: f64,
         /// Determines what to sort the results by {CREATED, UPDATED, SEARCH_TAGS, ACTIVE, ACTIVATED, EXPIRES, TITLE, SUBTITLE, OFFER_TYPE, SPECIAL_OFFER_TYPE, OFFER_VISIBILITY, CUSTOMER_ID, CUSTOMER_DISPLAY, RETAILER_ID, RETAILER_NAME, RETAILER_LOCATION_ID, RETAILER_LOCATION_NAME, BILLABLE_ENTITY_ID, BILLABLE_ENTITY_NAME, RESPONSIBLE_DISPLAY}
         #[clap(value_parser = parse_json::<models::SearchEventTransactionsSortFieldParameter>)]
         sort_field: models::SearchEventTransactionsSortFieldParameter,
@@ -9545,7 +9210,6 @@ enum Operation {
     },
     /// Search Offers
     SearchOffersForConsumer {
-        version: f64,
         /// The latitude of where the search will center at
         latitude: f64,
         /// The longitude of where the search will center at
@@ -9620,7 +9284,6 @@ enum Operation {
     },
     /// Get Offers (Top)
     TopOfferTransactions {
-        version: f64,
         /// The index into the record set to start with. Default is 0.
         start: Option<i32>,
         /// The total number of record to return. Default id 20.
@@ -9628,7 +9291,6 @@ enum Operation {
     },
     /// Update Offer
     UpdateOffer {
-        version: f64,
         /// The offer to update
         offer_id: i64,
         /// If true return all the offer locations associated with the offer
@@ -9821,7 +9483,6 @@ enum Operation {
     },
     /// Activate Offer
     UpdateOfferStatus {
-        version: f64,
         /// Comma separated list of offer ids
         offer_ids: String,
         /// Determines whether to make the offer active as well
@@ -9834,7 +9495,6 @@ enum Operation {
     },
     /// Create Offer Status
     CreateOfferTransactionStatus {
-        version: f64,
         /// The name of the status
         name: String,
         /// The status code, must be unique 
@@ -9859,7 +9519,6 @@ enum Operation {
     },
     /// Delete Offer Status
     DeleteOfferTransactionStatus {
-        version: f64,
         /// The id of the record to delete
         status_id: i64,
         /// The device id (deviceId or accountId required)
@@ -9873,7 +9532,6 @@ enum Operation {
     },
     /// Get Offer Status
     GetOfferTransactionStatus {
-        version: f64,
         /// The id of the record to get 
         status_id: i64,
         /// The device id (deviceId or accountId required)
@@ -9887,7 +9545,6 @@ enum Operation {
     },
     /// Search Offer Status
     SearchOfferTransactionStatuses {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -9918,7 +9575,6 @@ enum Operation {
     },
     /// Update Offer Status
     UpdateOfferTransactionStatus {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -9945,7 +9601,6 @@ enum Operation {
     },
     /// Generate images with OpenAI
     ImageGeneration {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Post Body Parameters
@@ -9956,13 +9611,11 @@ enum Operation {
     },
     /// Request Optimization
     RequestOptimization {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Orders>)]
         body: Option<models::Orders>,
     },
     /// Get Optimization Result
     GetOptimizationResult {
-        version: f64,
         /// The batchID for getting the import status of.
         batch_id: String,
         /// The start index for pagination
@@ -9972,7 +9625,6 @@ enum Operation {
     },
     /// Add Movie
     AddMovie {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Movie Name
@@ -9991,7 +9643,6 @@ enum Operation {
     },
     /// Search Docs
     AiDocs {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Doc
@@ -10006,7 +9657,6 @@ enum Operation {
     },
     /// Find images
     AiFindImages {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Text
@@ -10020,7 +9670,6 @@ enum Operation {
     },
     /// Search Tags
     AiTags {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Tags
@@ -10034,7 +9683,6 @@ enum Operation {
     },
     /// Search Text
     AiText {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Terms
@@ -10048,7 +9696,6 @@ enum Operation {
     },
     /// Batch Analysis
     Batch {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// A third-party account id that is meaningful to your systems
@@ -10067,7 +9714,6 @@ enum Operation {
     },
     /// Creates an instant episode
     CreateInstantEpisode {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Request Data String
@@ -10075,7 +9721,6 @@ enum Operation {
     },
     /// Create VoiceCanvas images
     CreateVoiceCanvas {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Enum: \"256x256\" \"512x512\" \"1024x1024\"
@@ -10100,7 +9745,6 @@ enum Operation {
     },
     /// Detect emotions
     Emotion {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// A third-party account id that is meaningful to your systems
@@ -10115,7 +9759,6 @@ enum Operation {
     },
     /// Starts a StoryStitch video render
     StartVideoRender {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Request Data String
@@ -10123,7 +9766,6 @@ enum Operation {
     },
     /// Speach to Text
     Stt {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// A third-party account id that is meaningful to your systems
@@ -10142,7 +9784,6 @@ enum Operation {
     },
     /// Summarize Topics
     SummarizeTopics {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// A third-party account id that is meaningful to your systems
@@ -10163,7 +9804,6 @@ enum Operation {
     },
     /// Detect Technical Issues
     TechTune {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Number of expected faces
@@ -10180,7 +9820,6 @@ enum Operation {
     },
     /// Text to Speach
     Tts {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Text
@@ -10196,7 +9835,6 @@ enum Operation {
     },
     /// Get Add Movie Result
     GetAddMovieResult {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10204,7 +9842,6 @@ enum Operation {
     },
     /// Get Batch Analysis Results
     GetBatch {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10212,7 +9849,6 @@ enum Operation {
     },
     /// Get Emotion Results
     GetEmotion {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10220,7 +9856,6 @@ enum Operation {
     },
     /// Check episode status
     GetEpisodeStatus {
-        version: f64,
         /// Episode ID
         episode_id: i64,
         /// Sirqul Account Id
@@ -10228,7 +9863,6 @@ enum Operation {
     },
     /// Check episode status
     GetRenderStatus {
-        version: f64,
         /// Render ID
         render_id: String,
         /// Sirqul Account Id
@@ -10236,7 +9870,6 @@ enum Operation {
     },
     /// Get Speach to Text Result
     GetStt {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10244,7 +9877,6 @@ enum Operation {
     },
     /// Get TechTune Results
     GetTechTune {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10252,7 +9884,6 @@ enum Operation {
     },
     /// Get Topics
     GetTopics {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10260,7 +9891,6 @@ enum Operation {
     },
     /// Get Text to Speach Result
     GetTts {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10268,7 +9898,6 @@ enum Operation {
     },
     /// Get VoiceCanvas images
     GetVoiceCanvas {
-        version: f64,
         /// Orson Request Id
         request_id: String,
         /// Sirqul Account Id
@@ -10276,7 +9905,6 @@ enum Operation {
     },
     /// Create Pack
     CreatePack {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The title of the pack
@@ -10334,7 +9962,6 @@ enum Operation {
     },
     /// Delete Pack
     DeletePack {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the pack to delete
@@ -10342,7 +9969,6 @@ enum Operation {
     },
     /// Get Pack
     GetPack {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the pack to return.
@@ -10353,7 +9979,6 @@ enum Operation {
     },
     /// Search Packs
     SearchPacks {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED
@@ -10382,7 +10007,6 @@ enum Operation {
     },
     /// Update Pack
     UpdatePack {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the pack to update.
@@ -10442,7 +10066,6 @@ enum Operation {
     },
     /// Process All Participant Feeds
     ProcessAllParticipants {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The application key used to identify the application
@@ -10453,7 +10076,6 @@ enum Operation {
     },
     /// Process Participants Feed
     ProcessParticipants {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The league identifier to process
@@ -10469,7 +10091,6 @@ enum Operation {
     },
     /// Calculate Path
     ComputePath {
-        version: f64,
         /// the data to with start, end point and exclusion points
         data: String,
         /// the system of measurement for directions: {METRIC, IMPERIAL}
@@ -10484,7 +10105,6 @@ enum Operation {
     },
     /// Create Postal Code
     CreatePostalCode {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the postal code
@@ -10503,7 +10123,6 @@ enum Operation {
     },
     /// Delete Postal Code
     DeletePostalCode {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the postal code to delete
@@ -10511,13 +10130,11 @@ enum Operation {
     },
     /// Get Postal Code
     GetPostalCode {
-        version: f64,
         /// the id of the postal code to get
         postal_code_id: i64,
     },
     /// Search Postal Codes
     GetPostalCodes {
-        version: f64,
         /// the field to sort the results on
         sort_field: String,
         /// whether to order results in ascending or descending order
@@ -10538,7 +10155,6 @@ enum Operation {
     },
     /// Update Postal Code
     UpdatePostalCode {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the postal code to update
@@ -10559,7 +10175,6 @@ enum Operation {
     },
     /// Create Persona
     CreatePersona {
-        version: f64,
         /// the account ID of the user
         account_id: i64,
         /// the title of the persona
@@ -10581,7 +10196,6 @@ enum Operation {
     },
     /// Delete Persona
     DeletePersona {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the id of the persona to delete
@@ -10589,7 +10203,6 @@ enum Operation {
     },
     /// Get Persona
     GetPersonaList {
-        version: f64,
         /// the account ID of the user
         account_id: i64,
         /// the persona ID of the persona
@@ -10597,7 +10210,6 @@ enum Operation {
     },
     /// Search Personas
     SearchPersona {
-        version: f64,
         /// the account ID of the user
         account_id: i64,
         /// the start index for pagination
@@ -10607,7 +10219,6 @@ enum Operation {
     },
     /// Update Persona
     UpdatePersona {
-        version: f64,
         /// the account ID of the user
         account_id: i64,
         /// the persona ID of the persona to update
@@ -10634,13 +10245,11 @@ enum Operation {
     },
     /// Create Program
     CreateProgram {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Program>)]
         body: Option<models::Program>,
     },
     /// Search Programs
     SearchPrograms {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -10658,19 +10267,16 @@ enum Operation {
     },
     /// Delete Program
     DeleteProgram {
-        version: f64,
         /// the id of the program
         id: i64,
     },
     /// Get Program
     GetProgram {
-        version: f64,
         /// the id of the program
         id: i64,
     },
     /// Update Program
     PostProgram {
-        version: f64,
         /// the id of the program
         id: i64,
         #[clap(value_parser = parse_json::<models::Program>)]
@@ -10678,7 +10284,6 @@ enum Operation {
     },
     /// Update Program
     PutProgram {
-        version: f64,
         /// the id of the program
         id: i64,
         #[clap(value_parser = parse_json::<models::Program>)]
@@ -10686,7 +10291,6 @@ enum Operation {
     },
     /// Create Purchase
     CreatePurchaseItem {
-        version: f64,
         /// The application key that the purchase can be used in
         app_key: String,
         /// The name of the purchase item
@@ -10735,7 +10339,6 @@ enum Operation {
     },
     /// Delete Purchase
     DeletePurchaseItem {
-        version: f64,
         /// The purchase item id
         purchase_item_id: i64,
         /// The device id (deviceId or accountId required)
@@ -10745,7 +10348,6 @@ enum Operation {
     },
     /// Get Purchase
     GetPurchaseItem {
-        version: f64,
         /// The purchase item id
         purchase_item_id: i64,
         /// The device id (deviceId or accountId required)
@@ -10755,7 +10357,6 @@ enum Operation {
     },
     /// Search Purchases
     SearchPurchaseItems {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -10787,7 +10388,6 @@ enum Operation {
     },
     /// Update Purchase
     UpdatePurchaseItem {
-        version: f64,
         /// The purchase item id
         purchase_item_id: i64,
         /// The device id (deviceId or accountId required)
@@ -10839,7 +10439,6 @@ enum Operation {
     },
     /// Create Order
     CreateOrder {
-        version: f64,
         /// The application requesting the purchase
         app_key: String,
         /// ```json [   { \"orderItemType\": \"OFFER\", \"orderItemId\": 234, \"orderCustomType\": \"OfferLocation\", \"orderCustomId\": 123, \"retailerLocationId\": 1234, \"quantity\": 2 },   { \"orderItemType\": \"OFFER\", \"orderItemId\": 235, \"quantity\": 2 },   { \"orderItemType\": \"CUSTOM\", \"amount\": 10.50, \"orderCustomType\": \"ServiceFee\" },   { \"orderItemType\": \"CUSTOM\", \"amount\": 25.10, \"quantity\": 2, \"orderCustomType\": \"Hat\", \"orderCustomId\": 123 } ] ``` 
@@ -10868,7 +10467,6 @@ enum Operation {
     },
     /// Delete Order
     DeleteOrder {
-        version: f64,
         /// Order Id
         order_id: i64,
         /// The device id (deviceId or accountId required)
@@ -10878,7 +10476,6 @@ enum Operation {
     },
     /// Get Order
     GetOrder {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -10890,7 +10487,6 @@ enum Operation {
     },
     /// Preview Order
     PreviewOrder {
-        version: f64,
         /// The application requesting the purchase
         app_key: String,
         /// A JSON list of items to purchase
@@ -10919,7 +10515,6 @@ enum Operation {
     },
     /// Search Orders
     SearchOrders {
-        version: f64,
         /// The application requesting the purchase
         app_key: String,
         /// The device id (deviceId or accountId required)
@@ -10988,7 +10583,6 @@ enum Operation {
     },
     /// Update Order
     UpdateOrder {
-        version: f64,
         /// The order to add the purchase to, leave null for new order.
         order_id: i64,
         /// The application requesting the purchase
@@ -11015,7 +10609,6 @@ enum Operation {
     },
     /// Create Question
     CreateQuestion {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the text of the question
@@ -11043,7 +10636,6 @@ enum Operation {
     },
     /// Delete Question
     DeleteQuestion {
-        version: f64,
         /// the id of the question to delete
         question_id: i64,
         /// the id of the account that can execute this request
@@ -11051,7 +10643,6 @@ enum Operation {
     },
     /// Get Question
     GetQuestion {
-        version: f64,
         /// the id of the question to get
         question_id: i64,
         /// the id of the account that can make this request
@@ -11059,7 +10650,6 @@ enum Operation {
     },
     /// Search Questions
     SearchQuestions {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The column to sort the search on
@@ -11079,7 +10669,6 @@ enum Operation {
     },
     /// Update Question
     UpdateQuestion {
-        version: f64,
         /// The id of the question to update.
         question_id: i64,
         /// The logged in user.
@@ -11109,7 +10698,6 @@ enum Operation {
     },
     /// Search Historical Rankings
     GetHistoricalRankings {
-        version: f64,
         /// the application key for filtering results by application
         app_key: String,
         /// the rank type to return
@@ -11134,7 +10722,6 @@ enum Operation {
     },
     /// Search Rankings
     GetRankings {
-        version: f64,
         /// a unique id given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -11176,7 +10763,6 @@ enum Operation {
     },
     /// Get Personal Rankings
     GetUserRank {
-        version: f64,
         /// a unique id given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user
@@ -11204,7 +10790,6 @@ enum Operation {
     },
     /// Override User Rank
     OverrideUserRank {
-        version: f64,
         /// the logged in user's account id (must have permissions to manage data for the application)
         account_id: i64,
         /// the end user's account id to override
@@ -11252,7 +10837,6 @@ enum Operation {
     },
     /// Update Ranking
     UpdateRankings {
-        version: f64,
         /// the account id of the user
         account_id: i64,
         /// the application key for filtering results by application
@@ -11278,7 +10862,6 @@ enum Operation {
     },
     /// Create Rating
     CreateRating {
-        version: f64,
         /// The ratable object type {RETAILER_LOCATION}
         ratable_type: String,
         /// The id of the ratable object
@@ -11304,7 +10887,6 @@ enum Operation {
     },
     /// Delete Rating
     DeleteRating {
-        version: f64,
         /// The ID of the rating to delete
         rating_id: i64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -11314,7 +10896,6 @@ enum Operation {
     },
     /// Search Location Rating Indexes
     SearchLocationRatingIndexes {
-        version: f64,
         /// Comma separated list of category ids to filter the results by
         category_ids: Option<String>,
         /// The keyword used to search
@@ -11361,7 +10942,6 @@ enum Operation {
     },
     /// Search Rating Indexes
     SearchRatingIndexes {
-        version: f64,
         /// Filter results by a ratable type {RETAILER_LOCATION}
         #[clap(value_parser = parse_json::<models::SearchRatingIndexesRatableTypeParameter>)]
         ratable_type: models::SearchRatingIndexesRatableTypeParameter,
@@ -11396,7 +10976,6 @@ enum Operation {
     },
     /// Search Ratings
     SearchRatings {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -11424,7 +11003,6 @@ enum Operation {
     },
     /// Update Rating
     UpdateRating {
-        version: f64,
         /// The id of the rating (Note: this is not the ratable object id)
         rating_id: i64,
         /// The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -11448,7 +11026,6 @@ enum Operation {
     },
     /// Create Region
     CreateRegion {
-        version: f64,
         /// The id of the account sending the request
         account_id: i64,
         /// RegionClass of this region
@@ -11497,7 +11074,6 @@ enum Operation {
     },
     /// Delete Region
     DeleteRegion {
-        version: f64,
         /// the id of the account logged in
         account_id: i64,
         /// the id of the region
@@ -11505,7 +11081,6 @@ enum Operation {
     },
     /// Get Region
     GetRegion {
-        version: f64,
         /// the id of the region to get
         region_id: i64,
         /// the id of the logged in user
@@ -11513,7 +11088,6 @@ enum Operation {
     },
     /// Search Regions
     SearchRegions {
-        version: f64,
         /// the owner account id of the region to be created
         account_id: Option<i64>,
         /// This parameter is deprecated. deprecated - use \"keyword\"
@@ -11571,7 +11145,6 @@ enum Operation {
     },
     /// Update Region
     UpdateRegion {
-        version: f64,
         /// The id of the account sending the request
         account_id: i64,
         /// The id of the region to be updated
@@ -11625,7 +11198,6 @@ enum Operation {
     },
     /// Create Offline Report
     CreateBatch {
-        version: f64,
         /// The account id of the user for passing account related params
         account_id: i64,
         /// the status of the report
@@ -11652,13 +11224,11 @@ enum Operation {
     },
     /// Create Offline Report
     CreateRegionLegSummaryBatch {
-        version: f64,
         #[clap(value_parser = parse_json::<Vec<models::RegionLegSummary>>, long)]
         body: Option<Vec<models::RegionLegSummary>>,
     },
     /// Delete Offline Report
     DeleteBatch {
-        version: f64,
         /// the id of the account
         account_id: i64,
         /// the id of the batch to delete
@@ -11666,7 +11236,6 @@ enum Operation {
     },
     /// Get Offline Report
     GetReportBatch {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// returned by /report/batch/create
@@ -11677,7 +11246,6 @@ enum Operation {
     },
     /// Run Report
     RunReport {
-        version: f64,
         /// If true then descending order, false is ascending
         #[clap(short, long)]
         desc: bool,
@@ -11699,7 +11267,6 @@ enum Operation {
     },
     /// Search Offline Reports
     SearchBatch {
-        version: f64,
         /// the id of the account logged in
         account_id: i64,
         /// the start of the index and/or pagination
@@ -11723,7 +11290,6 @@ enum Operation {
     },
     /// Create Reservation
     CreateReservation {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -11743,7 +11309,6 @@ enum Operation {
     },
     /// Delete Reservation
     DeleteReservation {
-        version: f64,
         /// The reservation id
         reservation_id: i64,
         /// The device id (deviceId or accountId required)
@@ -11753,7 +11318,6 @@ enum Operation {
     },
     /// Update Availability
     ReservableAvailability {
-        version: f64,
         /// the id of the reservation
         reservable_id: i64,
         /// the type of reservation
@@ -11770,7 +11334,6 @@ enum Operation {
     },
     /// Search Availability
     SearchAvailability {
-        version: f64,
         /// the id of the reservation
         reservable_id: i64,
         /// the reservable type
@@ -11791,7 +11354,6 @@ enum Operation {
     },
     /// Search Reservations
     SearchReservations {
-        version: f64,
         /// Device Id
         device_id: Option<String>,
         /// Appilcation Key
@@ -11818,7 +11380,6 @@ enum Operation {
     },
     /// Search Schedule
     SearchSchedule {
-        version: f64,
         /// the id of the reservation
         reservable_id: i64,
         /// the reservation type
@@ -11837,7 +11398,6 @@ enum Operation {
     },
     /// Create Retailer
     CreateRetailer {
-        version: f64,
         /// The name of the retailer
         name: String,
         /// The device id (deviceId or accountId required)
@@ -11913,7 +11473,6 @@ enum Operation {
     },
     /// Delete Retailer
     DeleteRetailer {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account used to perform the delete, must have rights to edit the retailer.
@@ -11923,7 +11482,6 @@ enum Operation {
     },
     /// Get Retailer
     GetRetailer {
-        version: f64,
         /// the ID of the retailer
         retailer_id: i64,
         /// the device id (deviceId or accountId required)
@@ -11936,7 +11494,6 @@ enum Operation {
     },
     /// Search Retailers
     GetRetailers {
-        version: f64,
         /// 
         #[clap(value_parser = parse_json::<models::AddAlbumCollectionVisibilityParameter>)]
         visibility: models::AddAlbumCollectionVisibilityParameter,
@@ -11972,7 +11529,6 @@ enum Operation {
     },
     /// Login Retailer
     RetailerLoginCheck {
-        version: f64,
         /// the user's email address they used to sign-up
         username: String,
         /// the password
@@ -11988,7 +11544,6 @@ enum Operation {
     },
     /// Update Retailer
     UpdateRetailer {
-        version: f64,
         /// The ID of the retailer to update
         retailer_id: i64,
         /// The device id (deviceId or accountId required)
@@ -12062,7 +11617,6 @@ enum Operation {
     },
     /// Create Retailer Location (Consumer)
     CreateRetailerLocationConsumer {
-        version: f64,
         /// the application key
         app_key: String,
         /// The name of the retailer location
@@ -12126,7 +11680,6 @@ enum Operation {
     },
     /// Create Retailer Location
     CreateRetailerLocations {
-        version: f64,
         /// The ID of the retailer
         retailer_id: i64,
         /// The name of the retailer location
@@ -12214,7 +11767,6 @@ enum Operation {
     },
     /// Delete Retailer Location
     DeleteRetailerLocation {
-        version: f64,
         /// the device id
         device_id: Option<String>,
         /// the id of the logged in user
@@ -12224,7 +11776,6 @@ enum Operation {
     },
     /// Get Retailer Location
     GetRetailerLocation {
-        version: f64,
         /// The ID of the retailer location
         retailer_location_id: i64,
         /// The device id (deviceId or accountId required)
@@ -12236,7 +11787,6 @@ enum Operation {
     },
     /// Get Retailer Location (Consumer)
     GetRetailerLocationConsumer {
-        version: f64,
         /// The retailer location id
         retailer_location_id: i64,
         /// The device id for returning account information (i.e. favorites)
@@ -12246,7 +11796,6 @@ enum Operation {
     },
     /// Distance Search Retailer Locations (Indexed)
     IndexedRetailerLocationDistanceSearch {
-        version: f64,
         /// The latitude to center the search on
         latitude: f64,
         /// The longitude to center the search on
@@ -12333,7 +11882,6 @@ enum Operation {
     },
     /// Keyword Search Retailer Locations (Indexed)
     IndexedRetailerLocationSearch {
-        version: f64,
         /// The account id of the user
         account_id: Option<i64>,
         /// The start index for pagination
@@ -12406,7 +11954,6 @@ enum Operation {
     },
     /// Search Retailer Locations (Owned)
     SearchRetailerLocations {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -12474,7 +12021,6 @@ enum Operation {
     },
     /// Update Retailer Location
     UpdateRetailerLocations {
-        version: f64,
         /// The ID of the retailer location
         retailer_location_id: i64,
         /// The device id (deviceId or accountId required)
@@ -12566,7 +12112,6 @@ enum Operation {
     },
     /// Get Retailer
     GetRetaokiler {
-        version: f64,
         /// the id of the retailer
         retailer_id: i64,
         /// whether to return results that are active only or all
@@ -12583,13 +12128,11 @@ enum Operation {
     },
     /// Create Route
     CreateRoute {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Route>)]
         body: Option<models::Route>,
     },
     /// Search Routes
     SearchRoutes {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -12645,13 +12188,11 @@ enum Operation {
     },
     /// Approve Route
     ApproveRoute {
-        version: f64,
         /// the id of the route to approve
         route_id: i64,
     },
     /// Copy Route
     CopyRoute {
-        version: f64,
         /// the id of the route to duplicate
         route_id: i64,
         #[clap(value_parser = parse_json::<models::Route>)]
@@ -12659,31 +12200,26 @@ enum Operation {
     },
     /// Update Route Directions
     CreateRouteDirections {
-        version: f64,
         /// the id of the route to update directions for
         route_id: i64,
     },
     /// Create Route Polyline
     CreateRoutePolyline {
-        version: f64,
         /// the id of the route to create a polyline for
         route_id: i64,
     },
     /// Delete Route
     DeleteRoute {
-        version: f64,
         /// the id of the route
         route_id: i64,
     },
     /// Disapprove Route
     DisapproveRoute {
-        version: f64,
         /// the id of the route to reject
         route_id: i64,
     },
     /// Get Route
     GetRoute {
-        version: f64,
         /// the id of the route to get
         route_id: i64,
         /// return inherited properties from parent or not
@@ -12692,19 +12228,16 @@ enum Operation {
     },
     /// Get Route Directions
     GetRouteDirections {
-        version: f64,
         /// the id of the route to get directions for
         route_id: i64,
     },
     /// Get Route Shipments
     GetRouteShipments {
-        version: f64,
         /// the id of the route to get shipments for
         route_id: i64,
     },
     /// Get Route Stops
     GetRouteStops {
-        version: f64,
         /// the id of the route
         route_id: i64,
         /// only get stops that have been confirmed or not
@@ -12713,13 +12246,11 @@ enum Operation {
     },
     /// Optimize Route
     OptimizeRoute {
-        version: f64,
         /// the id of the route to optimize
         route_id: i64,
     },
     /// Reorder Route Stops
     ReorderRouteStopsPatch {
-        version: f64,
         /// the id of the route
         route_id: i64,
         #[clap(value_parser = parse_json::<Vec<models::Stop>>, long)]
@@ -12727,7 +12258,6 @@ enum Operation {
     },
     /// Reorder Route Stops
     ReorderRouteStopsPost {
-        version: f64,
         /// the id of the route
         route_id: i64,
         #[clap(value_parser = parse_json::<Vec<models::Stop>>, long)]
@@ -12735,7 +12265,6 @@ enum Operation {
     },
     /// Update Route
     UpdateRoute {
-        version: f64,
         /// the id of the route
         route_id: i64,
         #[clap(value_parser = parse_json::<models::Route>)]
@@ -12743,7 +12272,6 @@ enum Operation {
     },
     /// Get Route Stop
     GetRouteStop {
-        version: f64,
         /// the id of the route to get stops for
         route_id: i64,
         /// the id of the specific stop on the route
@@ -12751,7 +12279,6 @@ enum Operation {
     },
     /// Get Shipments At Stop
     GetShipmentsAtStop {
-        version: f64,
         /// the id of the route
         route_id: i64,
         /// the id of the stop to get shipments on
@@ -12759,7 +12286,6 @@ enum Operation {
     },
     /// Delete Stop
     RemoveStop {
-        version: f64,
         /// the id of the route
         route_id: i64,
         /// the id of the specific stop to delete on the route
@@ -12767,7 +12293,6 @@ enum Operation {
     },
     /// Set Driver
     SetDriver {
-        version: f64,
         /// the id of the route
         id: i64,
         /// the id of the driver
@@ -12775,7 +12300,6 @@ enum Operation {
     },
     /// Update Route Stop
     UpdateRouteStop {
-        version: f64,
         /// the id of the route to update stops for
         route_id: i64,
         /// the id of the specific stop to update on the route
@@ -12785,13 +12309,11 @@ enum Operation {
     },
     /// Create Route Setting
     CreateRouteSettings {
-        version: f64,
         #[clap(value_parser = parse_json::<models::RouteSettings>)]
         body: Option<models::RouteSettings>,
     },
     /// Search Route Settings
     SearchRouteSettings {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -12813,19 +12335,16 @@ enum Operation {
     },
     /// Delete Route Setting
     DeleteRouteSettings {
-        version: f64,
         /// the id of the route setting to delete
         route_settings_id: i64,
     },
     /// Get Route Setting
     GetRouteSettings {
-        version: f64,
         /// the id of the route settings to get
         route_settings_id: i64,
     },
     /// Update Route Setting
     UpdateRouteSettings {
-        version: f64,
         /// the id of the route settings to update
         route_settings_id: i64,
         #[clap(value_parser = parse_json::<models::RouteSettings>)]
@@ -12833,13 +12352,11 @@ enum Operation {
     },
     /// Compute Route
     ComputeRouting {
-        version: f64,
         /// Json object containing inputs for generating the routes. See description for more info. Also see RoutingRequest
         data: String,
     },
     /// Create Scheduled Notification
     CreateScheduledNotification {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the scheduled notification
@@ -12915,7 +12432,6 @@ enum Operation {
     },
     /// Delete Scheduled Notification
     DeleteScheduledNotification {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the scheduled notification to delete
@@ -12926,7 +12442,6 @@ enum Operation {
     },
     /// Get Scheduled Notification
     GetScheduledNotification {
-        version: f64,
         /// the id of the account logged in
         account_id: i64,
         /// the id of the scheduled notification to get
@@ -12934,7 +12449,6 @@ enum Operation {
     },
     /// Generate Schedule Notifications
     ScheduleNotificationListings {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The application to target
@@ -12954,7 +12468,6 @@ enum Operation {
     },
     /// Search Scheduled Notifications
     SearchScheduledNotifications {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Filter results by a grouping identifier defined by the client
@@ -13002,7 +12515,6 @@ enum Operation {
     },
     /// Update Scheduled Notification
     UpdateScheduledNotification {
-        version: f64,
         /// The id of scheduled notification to update
         scheduled_notification_id: i64,
         /// The logged in user.
@@ -13087,7 +12599,6 @@ enum Operation {
     },
     /// Create Score
     CreateScore {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The game application key to save the score for.
@@ -13112,7 +12623,6 @@ enum Operation {
     },
     /// Get Score
     GetScore {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The game application key to get the level for.
@@ -13134,7 +12644,6 @@ enum Operation {
     },
     /// Search Score
     SearchScores {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The game application key to get the level for.
@@ -13152,7 +12661,6 @@ enum Operation {
     },
     /// Create Secure Application
     CreateSecureApplication {
-        version: f64,
         /// The unique id of the user making the request
         account_id: i64,
         /// The application to secure
@@ -13182,7 +12690,6 @@ enum Operation {
     },
     /// Delete Secure Application
     DeleteSecureApplication {
-        version: f64,
         /// The unique id of the user making the request
         account_id: i64,
         /// The application to secure
@@ -13190,7 +12697,6 @@ enum Operation {
     },
     /// Login Clear
     LoginSecure {
-        version: f64,
         /// The application making the request, defines what type and position is required to make a secure login the request.
         app_key: String,
         /// The data file used to perform authentication
@@ -13215,14 +12721,12 @@ enum Operation {
     },
     /// Purchase Clear
     PurchaseSecure {
-        version: f64,
         /// The payment request object
         #[clap(value_parser = parse_json::<models::PaymentRequest>)]
         body: models::PaymentRequest,
     },
     /// Rest Secure Application
     ResetSecure {
-        version: f64,
         /// The unique id of the user making the request
         account_id: i64,
         /// The application to secure
@@ -13230,7 +12734,6 @@ enum Operation {
     },
     /// Update Secure Application
     UpdateSecureApplication {
-        version: f64,
         /// The unique id of the user making the request
         account_id: i64,
         /// The application to secure
@@ -13260,13 +12763,11 @@ enum Operation {
     },
     /// Create Service Hub
     CreateServiceHub {
-        version: f64,
         #[clap(value_parser = parse_json::<models::ServiceHub>)]
         body: Option<models::ServiceHub>,
     },
     /// Search Service Hubs
     SearchServiceHubs {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -13286,19 +12787,16 @@ enum Operation {
     },
     /// Delete Service Hub
     DeleteServiceHub {
-        version: f64,
         /// the id of the service hub to delete
         id: i64,
     },
     /// Get Service Hub
     GetServiceHub {
-        version: f64,
         /// the id of the service hub to get
         id: i64,
     },
     /// Update Service Hub
     PostServiceHub {
-        version: f64,
         /// the id of the service hub
         id: i64,
         #[clap(value_parser = parse_json::<models::ServiceHub>)]
@@ -13306,7 +12804,6 @@ enum Operation {
     },
     /// Update Service Hub
     PutServiceHub {
-        version: f64,
         /// the id of the service hub
         id: i64,
         #[clap(value_parser = parse_json::<models::ServiceHub>)]
@@ -13314,13 +12811,11 @@ enum Operation {
     },
     /// Create Shipment
     CreateShipment {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Shipment>)]
         body: Option<models::Shipment>,
     },
     /// Search Shipments
     SearchShipments {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -13342,25 +12837,21 @@ enum Operation {
     },
     /// Cancel Shipment
     CancelShipment {
-        version: f64,
         /// the id of the shipment to cancel
         id: i64,
     },
     /// Delete Shipment
     DeleteShipment {
-        version: f64,
         /// the id of the shipment to delete
         id: i64,
     },
     /// Get Shipment
     GetShipment {
-        version: f64,
         /// the id of the shipment to get
         id: i64,
     },
     /// Update Shipment
     UpdateShipment {
-        version: f64,
         /// the id of the shipment to update
         id: i64,
         #[clap(value_parser = parse_json::<models::Shipment>)]
@@ -13368,7 +12859,6 @@ enum Operation {
     },
     /// Uupdate Shipment Status
     UpdateShipmentStatus {
-        version: f64,
         /// the id of the shipment to update status
         id: i64,
         #[clap(value_parser = parse_json::<std::collections::HashMap<String, bool>>)]
@@ -13376,13 +12866,11 @@ enum Operation {
     },
     /// Create Shipment Batch
     CreateShipmentBatch {
-        version: f64,
         #[clap(value_parser = parse_json::<models::ShipmentBatch>)]
         body: Option<models::ShipmentBatch>,
     },
     /// Search Shipment Batch
     SearchShipmentBatch {
-        version: f64,
         /// The associated service hub
         hub_id: i64,
         /// The field to sort by
@@ -13397,19 +12885,16 @@ enum Operation {
     },
     /// Delete Shipment Batch
     DeleteShipmentBatch {
-        version: f64,
         /// the id of the shipment batch to delete
         batch_id: i64,
     },
     /// Get Shipment Batch
     GetShipmentBatch {
-        version: f64,
         /// the id of the shipment batch to get
         batch_id: i64,
     },
     /// Get Shipment Batch Status
     GetShipmentBatchStatus {
-        version: f64,
         /// The id of the requested shipment batch
         batch_id: i64,
         /// the id of the logged in user
@@ -13443,7 +12928,6 @@ enum Operation {
     },
     /// Routing Simulation
     Simulation {
-        version: f64,
         /// JSON string in the following format: ```json {   \"startDate\": 1474268400000,   \"endDate\": 1474268700000,   \"checkoutStops\": [     {       \"latitude\": 25.060453943481615,       \"longitude\": 121.57487118216957     }   ],   \"requests\": [     {       \"vehicles\": [         {           \"id\": \"customer1\",           \"name\": \"Customer 1\",           \"depot\": {             \"latitude\": 25.060453943481615,             \"longitude\": 121.57487118216957           },           \"startWindow\": 1474268464537         }       ],       \"items\": [         {           \"id\": 152712,           \"name\": \"Appliance Product\",           \"pickup\": {             \"latitude\": 25.060306635544144,             \"longitude\": 121.5750770690688           }         },         {           \"id\": 152711,           \"name\": \"TV product\",           \"pickup\": {             \"latitude\": 25.060126352576326,             \"longitude\": 121.57505023621624           }         }       ]     }   ],   \"featuredItems\": [],   \"floorPlan\": {     \"metersPerX\": 0.81493109028875,     \"metersPerY\": 1.8525267552262,     \"width\": 75,     \"height\": 50,     \"exclusions\": [       { \"x\": 14, \"y\": 49 }     ],     \"southwest\": {       \"x\": 0,       \"y\": 0,       \"latitude\": 25.05961539530497,       \"longitude\": 121.57487591737885     }   } } ``` 
         data: String,
         /// determines whether to run the simulation and return the results in the same request
@@ -13452,13 +12936,11 @@ enum Operation {
     },
     /// Get Stop
     GetStop {
-        version: f64,
         /// the id of the stop to get
         id: i64,
     },
     /// Update Stop
     UpdateStop {
-        version: f64,
         /// the id of the stop to update
         id: i64,
         #[clap(value_parser = parse_json::<models::Stop>)]
@@ -13466,7 +12948,6 @@ enum Operation {
     },
     /// Create Stripe Checkout Session
     CreateStripeCheckoutSession {
-        version: f64,
         /// Sirqul Application Key
         app_key: String,
         /// Stripe Parameters
@@ -13474,7 +12955,6 @@ enum Operation {
     },
     /// Create Subscription
     CreateSubscription {
-        version: f64,
         /// The account used to perform the create, must be the responsible manager
         account_id: i64,
         /// The plan to subscribe to, if null use default plan
@@ -13484,25 +12964,21 @@ enum Operation {
     },
     /// Delete Subscription
     DeleteSubscription {
-        version: f64,
         /// The account used to perform the delete, must be the responsible manager
         account_id: i64,
     },
     /// Get Subscription
     GetSubscription {
-        version: f64,
         /// The account used to perform the lookup
         account_id: i64,
     },
     /// Get Subscription Plan
     GetSubscriptionPlan {
-        version: f64,
         /// The ID of the plan to get
         plan_id: i64,
     },
     /// List Subscription Plans
     GetSubscriptionPlans {
-        version: f64,
         /// Include visible only (true), hidden only (false), or all (null)
         #[clap(short, long)]
         visible: Option<bool>,
@@ -13511,7 +12987,6 @@ enum Operation {
     },
     /// Get Subscription Usage
     GetSubscriptionUsage {
-        version: f64,
         /// The account used to perform the lookup
         account_id: i64,
         /// Get for just 1 application instead of the BillableEntity
@@ -13523,7 +12998,6 @@ enum Operation {
     },
     /// Update Subscription
     UpdateSubscription {
-        version: f64,
         /// The account used to perform the update, must be the responsible manager
         account_id: i64,
         /// The plan to subscribe to
@@ -13536,7 +13010,6 @@ enum Operation {
     },
     /// Create Task
     CreateTask {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the task
@@ -13566,7 +13039,6 @@ enum Operation {
     },
     /// Delete Task
     DeleteTask {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the Task to delete.
@@ -13574,7 +13046,6 @@ enum Operation {
     },
     /// Get Task
     GetTask {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the Task to return.
@@ -13582,7 +13053,6 @@ enum Operation {
     },
     /// Search Tasks
     SearchTasks {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Filter results by a grouping identifier defined by the client
@@ -13612,7 +13082,6 @@ enum Operation {
     },
     /// Update Task
     UpdateTask {
-        version: f64,
         /// Task Id
         task_id: i64,
         /// The logged in user.
@@ -13644,7 +13113,6 @@ enum Operation {
     },
     /// Create Territory
     CreateTerritory {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The name of the territory
@@ -13655,7 +13123,6 @@ enum Operation {
     },
     /// Delete Territory
     DeleteTerritory {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the territory to delete
@@ -13663,13 +13130,11 @@ enum Operation {
     },
     /// Get Territory
     GetTerritory {
-        version: f64,
         /// the id of the territory to get
         territory_id: i64,
     },
     /// Search Territories
     SearchTerritories {
-        version: f64,
         /// the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME
         #[clap(value_parser = parse_json::<models::SearchTerritoriesSortFieldParameter>)]
         sort_field: models::SearchTerritoriesSortFieldParameter,
@@ -13685,7 +13150,6 @@ enum Operation {
     },
     /// Update Territory
     UpdateTerritory {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// the id of the territory to update
@@ -13698,7 +13162,6 @@ enum Operation {
     },
     /// Create/Update Theme
     AddOrUpdateThemeDescriptor {
-        version: f64,
         /// determines whether the theme's participants have read permissions
         #[clap(long)]
         public_read: bool,
@@ -13767,7 +13230,6 @@ enum Operation {
     },
     /// Get Theme
     GetThemeDescriptor {
-        version: f64,
         /// the theme id
         theme_descriptor_id: i64,
         /// a unique ID given by the device (deviceId or accountId required)
@@ -13783,7 +13245,6 @@ enum Operation {
     },
     /// Search Themes
     GetThemeDescriptors {
-        version: f64,
         /// a comma separated list of Ownership
         filter: String,
         /// the field to sort by. See ThemeDescriptorApiMap
@@ -13824,7 +13285,6 @@ enum Operation {
     },
     /// Delete Theme
     RemoveThemeDescriptor {
-        version: f64,
         /// the theme id to remove
         theme_descriptor_id: i64,
         /// a unique id given by the device (deviceId or accountId required)
@@ -13840,7 +13300,6 @@ enum Operation {
     },
     /// Create Credential
     CreateCredential {
-        version: f64,
         /// the third party user account id
         third_party_id: String,
         /// the access token to authenticate with (ex: username or fb token or phone number)
@@ -13879,7 +13338,6 @@ enum Operation {
     },
     /// Create Network
     CreateNetwork {
-        version: f64,
         /// The account id making the request
         account_id: i64,
         /// The name of the network
@@ -13920,7 +13378,6 @@ enum Operation {
     },
     /// Delete Credential
     DeleteCredential {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The third party network identifier
@@ -13932,7 +13389,6 @@ enum Operation {
     },
     /// Delete Network
     DeleteNetwork {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// The unique identifier for the third party network defined by Sirqul
@@ -13940,7 +13396,6 @@ enum Operation {
     },
     /// Get Credential
     GetCredential {
-        version: f64,
         /// the access provider to authenticate against
         network_uid: String,
         /// the application key
@@ -13975,7 +13430,6 @@ enum Operation {
     },
     /// Get Network
     GetNetwork {
-        version: f64,
         /// The account id making the request
         account_id: i64,
         /// The unique identifier for the third party network defined by Sirqul
@@ -13983,7 +13437,6 @@ enum Operation {
     },
     /// Search Credentials
     SearchCredentials {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// The keyword used to search on the third party name and network string
@@ -14000,7 +13453,6 @@ enum Operation {
     },
     /// Search Networks
     SearchNetworks {
-        version: f64,
         /// The account id making the request
         account_id: i64,
         /// The column to sort the search on, possible values include: UPDATED (default), CREATED, NAME
@@ -14024,7 +13476,6 @@ enum Operation {
     },
     /// Send MFA Challenge
     SendMfaChallenge {
-        version: f64,
         /// the third party network provider that has MFA enabled
         network_uid: String,
         /// the application key
@@ -14038,7 +13489,6 @@ enum Operation {
     },
     /// Update Credential
     UpdateCredential {
-        version: f64,
         /// the access provider to authenticate against
         network_uid: String,
         /// the third party user account id
@@ -14060,7 +13510,6 @@ enum Operation {
     },
     /// Update Network
     UpdateNetwork {
-        version: f64,
         /// The account id making the request
         account_id: i64,
         /// The unique identifier for the third party network defined by Sirqul
@@ -14103,7 +13552,6 @@ enum Operation {
     },
     /// Get Ticket Count
     GetTicketCount {
-        version: f64,
         /// the id of the device that owns the tickets
         device_id: Option<String>,
         /// the id of the account that owns the tickets
@@ -14117,7 +13565,6 @@ enum Operation {
     },
     /// Get Ticket List
     GetTicketList {
-        version: f64,
         /// the id of the device that owns the tickets
         device_id: Option<String>,
         /// the id of the account that owns the tickets
@@ -14139,7 +13586,6 @@ enum Operation {
     },
     /// Gift Tickets
     GiftPurchase {
-        version: f64,
         /// the id of the account receiving the tickets
         receiver_account_id: i64,
         /// the id of the tickets
@@ -14159,7 +13605,6 @@ enum Operation {
     },
     /// Save Ticket
     SaveTicket {
-        version: f64,
         /// the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER
         action_type: String,
         /// the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM
@@ -14202,7 +13647,6 @@ enum Operation {
     },
     /// Save Ticket with Reciept
     SaveTicketViaFileUpload {
-        version: f64,
         /// the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }
         action_type: String,
         /// the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}
@@ -14246,11 +13690,9 @@ enum Operation {
     },
     /// Get Ticket Offers
     TicketOffers {
-        version: f64,
     },
     /// Create Tournament
     CreateTournament {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The appKey the tournament is created for.
@@ -14334,7 +13776,6 @@ enum Operation {
     },
     /// Delete Tournament
     DeleteTournament {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the mission to delete
@@ -14342,7 +13783,6 @@ enum Operation {
     },
     /// Get Tournament
     GetTournament {
-        version: f64,
         /// The id of the logged in user
         account_id: i64,
         /// The id of the mission to return (either missionId or joinCode is required)
@@ -14357,7 +13797,6 @@ enum Operation {
     },
     /// Search Tournament Objects
     SearchObjects {
-        version: f64,
         /// the account ID
         account_id: i64,
         /// the game level id to filter results by
@@ -14375,7 +13814,6 @@ enum Operation {
     },
     /// Search Tournament Rounds
     SearchRounds {
-        version: f64,
         /// the account ID
         account_id: i64,
         /// the application key
@@ -14397,7 +13835,6 @@ enum Operation {
     },
     /// Search Tournaments
     SearchTournaments {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The application key
@@ -14429,7 +13866,6 @@ enum Operation {
     },
     /// Submit Tournament Score
     SubmitTournamentScore {
-        version: f64,
         /// The logged in user account ID.
         account_id: i64,
         /// The application key.
@@ -14447,7 +13883,6 @@ enum Operation {
     },
     /// Submit a vote for a multi-stage album tournament.
     SubmitTournamentVote {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The application to target
@@ -14464,7 +13899,6 @@ enum Operation {
     },
     /// Substitute Tournament Player
     SubstituteTournamentPlayer {
-        version: f64,
         /// the id of the logged in user
         account_id: i64,
         /// the id of the mission
@@ -14476,7 +13910,6 @@ enum Operation {
     },
     /// Update Tournament
     UpdateTournament {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The mission/tournament to update
@@ -14557,7 +13990,6 @@ enum Operation {
     },
     /// Create Batch Tracking
     BatchSaveTracking {
-        version: f64,
         /// JSON array of tracking legs ```json [   \"distance\": \"0.08\",   \"duration\": \"10000\",   \"startLatitude\": \"47.614603\",   \"startLongitude\": \"-122.350518\",   \"endLatitude\": \"47.614384\",   \"endLongitude\": \"-122.349161\",   \"startDate\": \"1361924010000\",   \"endDate\": \"1361924020000\",   \"steps\": [     {       \"distance\": \"0.03\",       \"duration\": \"5000\",       \"startLat\": \"47.614603\",       \"startLng\": \"-122.350518\",       \"startDate\": \"1361924010000\",       \"endLat\": \"47.614941\",       \"endLng\": \"-122.350062\",       \"endDate\": \"1361924015000\"     },{       \"distance\": \"0.05\",       \"duration\": \"5000\",       \"startLat\": \"47.614941\",       \"startLng\": \"-122.350062\",       \"startDate\": \"1361924015000\",       \"endLat\": \"47.614384\",       \"endLng\": \"-122.349161\",       \"endDate\": \"1361924020000\"     }   ] ] ``` 
         data: String,
         /// the device id (deviceId or accountId required)
@@ -14577,7 +14009,6 @@ enum Operation {
     },
     /// Get Predicted Locations
     GetPredictedLocations {
-        version: f64,
         /// The account id of the customer
         account_id: i64,
         /// latitude to return a more likely result set based on the user's current location
@@ -14601,7 +14032,6 @@ enum Operation {
     },
     /// Get Tracking Path
     GetPredictedPath {
-        version: f64,
         /// The account id of the customer
         account_id: i64,
         /// The stepId to begin from
@@ -14611,7 +14041,6 @@ enum Operation {
     },
     /// Search Preferred Locations
     GetPreferredLocations {
-        version: f64,
         /// The account id of the customer
         account_id: i64,
         /// latitude to return a more likely result set based on the user's current location
@@ -14639,7 +14068,6 @@ enum Operation {
     },
     /// Search Tracking
     GetTrackingLegs {
-        version: f64,
         /// the device id (deviceId or accountId required)
         device_id: Option<String>,
         /// the account id of the user (deviceId or accountId required)
@@ -14660,7 +14088,6 @@ enum Operation {
     },
     /// Create Tracking Leg
     SaveTrackingLeg {
-        version: f64,
         /// the latitude of the first point
         start_lat: f64,
         /// the longitude of the first point
@@ -14688,7 +14115,6 @@ enum Operation {
     },
     /// Create Tracking Step
     SaveTrackingStep {
-        version: f64,
         /// the leg to add the step to
         leg_id: i64,
         /// the latitude of the first point
@@ -14714,7 +14140,6 @@ enum Operation {
     },
     /// List Tracking
     SearchAccountsWithTrackingLegs {
-        version: f64,
         /// The account id of the user
         account_id: i64,
         /// Used for LIKE search of first or last name on the acocunt
@@ -14748,7 +14173,6 @@ enum Operation {
     },
     /// Search Tracking (Billable)
     SearchTrackingLegs {
-        version: f64,
         /// The account id to search tracking for
         account_id: i64,
         /// The application key
@@ -14768,7 +14192,6 @@ enum Operation {
     },
     /// Create Trigger
     CreateTrigger {
-        version: f64,
         /// The logged in user
         account_id: i64,
         /// The name of the trigger
@@ -14800,7 +14223,6 @@ enum Operation {
     },
     /// Delete Trigger
     DeleteTrigger {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the trigger to delete.
@@ -14808,7 +14230,6 @@ enum Operation {
     },
     /// Get Trigger
     GetTrigger {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The id of the Trigger to return.
@@ -14816,7 +14237,6 @@ enum Operation {
     },
     /// Search Triggers
     SearchTriggers {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// Filter results by a grouping identifier defined by the client
@@ -14846,7 +14266,6 @@ enum Operation {
     },
     /// Update Trigger
     UpdateTrigger {
-        version: f64,
         /// The trigger to update
         trigger_id: i64,
         /// The logged in user
@@ -14880,13 +14299,11 @@ enum Operation {
     },
     /// Create Trip
     CreateTrip {
-        version: f64,
         #[clap(value_parser = parse_json::<models::Trip>)]
         body: Option<models::Trip>,
     },
     /// Process Trip Matches
     ProcessTripMatches {
-        version: f64,
         /// The lower bound date to process matchings
         start_date: Option<i64>,
         /// The upper bound date to process matchings
@@ -14896,7 +14313,6 @@ enum Operation {
     },
     /// Search Trips
     Search {
-        version: f64,
         /// The owner of the trips
         account_id: i64,
         /// The field to sort by
@@ -14921,7 +14337,6 @@ enum Operation {
     },
     /// Search Trips
     SearchTrips {
-        version: f64,
         /// The owner of the trips
         account_id: i64,
         /// The field to sort by
@@ -14949,7 +14364,6 @@ enum Operation {
     },
     /// Trip Notifications
     UpdateTripNotifications {
-        version: f64,
         /// the id of the trip
         id: i64,
         /// the notifications to update on the trip
@@ -14957,13 +14371,11 @@ enum Operation {
     },
     /// Delete Trip
     Delete {
-        version: f64,
         /// the id of the trip to delete
         id: i64,
     },
     /// Set Trip Preference Driver
     DriveTrip {
-        version: f64,
         /// the id of the trip
         id: i64,
         /// the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -14972,7 +14384,6 @@ enum Operation {
     },
     /// Set Trip Preference Flexible
     FlexibleTrip {
-        version: f64,
         /// the id of the trip
         id: i64,
         /// the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -14981,13 +14392,11 @@ enum Operation {
     },
     /// Get Trip
     GetTrip {
-        version: f64,
         /// the id of the trip to get
         id: i64,
     },
     /// Get Trip Matches
     GetTripMatches {
-        version: f64,
         /// The id The id of the trip to search for matches for
         id: i64,
         /// The field to sort by
@@ -15011,7 +14420,6 @@ enum Operation {
     },
     /// Set Trip Preference Rider
     Ride {
-        version: f64,
         /// the id of the trip
         id: i64,
         /// the frequency of the trip (e.g. weekly, until 2018-08-09)
@@ -15020,7 +14428,6 @@ enum Operation {
     },
     /// Update Trip Locations
     UpdateLocations {
-        version: f64,
         /// the id of the trip to update locations for
         id: i64,
         #[clap(value_parser = parse_json::<models::Trip>)]
@@ -15028,7 +14435,6 @@ enum Operation {
     },
     /// Update Recurrence Locations
     UpdateRecurrenceLocations {
-        version: f64,
         /// the id of the trip
         id: i64,
         #[clap(value_parser = parse_json::<models::Trip>)]
@@ -15036,7 +14442,6 @@ enum Operation {
     },
     /// Update Recurrence Shipments
     UpdateRecurrenceShipments {
-        version: f64,
         /// the id of the trip
         id: i64,
         #[clap(value_parser = parse_json::<models::Trip>)]
@@ -15044,7 +14449,6 @@ enum Operation {
     },
     /// Update Trip Shipments
     UpdateShipments {
-        version: f64,
         /// the id of the trip shipments to update
         id: i64,
         #[clap(value_parser = parse_json::<models::Trip>)]
@@ -15052,7 +14456,6 @@ enum Operation {
     },
     /// Update Trip
     UpdateTrip {
-        version: f64,
         /// the id of the trip to update
         id: i64,
         #[clap(value_parser = parse_json::<models::Trip>)]
@@ -15060,7 +14463,6 @@ enum Operation {
     },
     /// Buy Offer by SMS
     SmsBuyOffer {
-        version: f64,
         /// the application key
         app_key: String,
         /// the message of the text
@@ -15072,13 +14474,11 @@ enum Operation {
     },
     /// Authorize Twitter
     AuthorizeTwitter {
-        version: f64,
         /// the application key
         app_key: String,
     },
     /// Login Twitter
     LoginTwitter {
-        version: f64,
         /// The access token
         access_token: String,
         /// The secret access token
@@ -15096,7 +14496,6 @@ enum Operation {
     },
     /// Add User
     AddUsersToPermissionable {
-        version: f64,
         /// the permissionable type of the object
         #[clap(value_parser = parse_json::<models::AddUsersToPermissionablePermissionableTypeParameter>)]
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
@@ -15142,7 +14541,6 @@ enum Operation {
     },
     /// Approve Permissionable
     ApprovePermissionable {
-        version: f64,
         /// The permissionable type of the object
         #[clap(value_parser = parse_json::<models::AddUsersToPermissionablePermissionableTypeParameter>)]
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
@@ -15158,7 +14556,6 @@ enum Operation {
     },
     /// Leave
     LeaveFromPermissionable {
-        version: f64,
         /// the permissionable type PermissionableType
         permissionable_type: String,
         /// the id of the permissionable object
@@ -15174,7 +14571,6 @@ enum Operation {
     },
     /// Remove User
     RemoveUsersFromPermissionable {
-        version: f64,
         /// the permissionable type of the object
         #[clap(value_parser = parse_json::<models::AddUsersToPermissionablePermissionableTypeParameter>)]
         permissionable_type: models::AddUsersToPermissionablePermissionableTypeParameter,
@@ -15202,7 +14598,6 @@ enum Operation {
     },
     /// Search Permissionables
     SearchPermissionables {
-        version: f64,
         /// A unique ID given by the device (deviceId or accountId required)
         device_id: Option<String>,
         /// The account ID of the user (deviceId or accountId required)
@@ -15236,7 +14631,6 @@ enum Operation {
     },
     /// Search Permissionables by Distnace
     SearchPermissionablesFollowingDistance {
-        version: f64,
         /// The latitude of the current account
         latitude: f64,
         /// The longitude of the current account
@@ -15271,7 +14665,6 @@ enum Operation {
     },
     /// Create following
     CreateFollowing {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15282,7 +14675,6 @@ enum Operation {
     },
     /// Create Vatom Space
     CreateSpace {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15295,7 +14687,6 @@ enum Operation {
     },
     /// Create Vatom Event
     CreateVatomEvent {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15308,7 +14699,6 @@ enum Operation {
     },
     /// Delete following
     DeleteFollowing {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Rels Key
@@ -15319,7 +14709,6 @@ enum Operation {
     },
     /// Reset All Points Balance
     DeletePointsBalance {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15332,7 +14721,6 @@ enum Operation {
     },
     /// Delete Vatom Space
     DeleteSpace {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15345,7 +14733,6 @@ enum Operation {
     },
     /// Delete Vatom Event
     DeleteVatomEvent {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15358,7 +14745,6 @@ enum Operation {
     },
     /// Delete Vatom NFT
     DeleteVatomNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom NFT Id
@@ -15369,7 +14755,6 @@ enum Operation {
     },
     /// Execute Action on NFT
     ExecuteActionOnNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom NFT Id
@@ -15382,7 +14767,6 @@ enum Operation {
     },
     /// Search Vatom Geo Map
     GeomapSearch {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15393,7 +14777,6 @@ enum Operation {
     },
     /// Get Vatom Business Behaviors
     GetBusinessBehaviors {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15404,7 +14787,6 @@ enum Operation {
     },
     /// Get the coins for a Business
     GetBusinessCoinsBalance {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15415,7 +14797,6 @@ enum Operation {
     },
     /// Get the user business ids
     GetBusinessIds {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Return raw response
@@ -15424,7 +14805,6 @@ enum Operation {
     },
     /// Get Vatom Business Info
     GetBusinessInfo {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15437,7 +14817,6 @@ enum Operation {
     },
     /// Get Vatom Business Users
     GetBusinessUsers {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15448,7 +14827,6 @@ enum Operation {
     },
     /// Get Campaign Group Entities
     GetCampaignGroupEntities {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15461,7 +14839,6 @@ enum Operation {
     },
     /// Get Campaign Group Rules
     GetCampaignGroupRules {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15474,7 +14851,6 @@ enum Operation {
     },
     /// Get Campaign Group Stats
     GetCampaignGroupStats {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15487,7 +14863,6 @@ enum Operation {
     },
     /// Get Campaign Info
     GetCampaignInfo {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15500,7 +14875,6 @@ enum Operation {
     },
     /// Get Vatom Event Guest List
     GetEventGuestList {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15513,7 +14887,6 @@ enum Operation {
     },
     /// Get Vatom User's Inventory
     GetInventory {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15524,7 +14897,6 @@ enum Operation {
     },
     /// Get following
     GetMyFollowing {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Return raw response
@@ -15533,7 +14905,6 @@ enum Operation {
     },
     /// Get Points Balance
     GetPointsBalance {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15546,7 +14917,6 @@ enum Operation {
     },
     /// Get Points Balance as Business
     GetPointsBalanceAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15561,7 +14931,6 @@ enum Operation {
     },
     /// Get Vatom Space
     GetSpace {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15574,7 +14943,6 @@ enum Operation {
     },
     /// Get the coins for a user (as a Business)
     GetUserCoinsAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15587,7 +14955,6 @@ enum Operation {
     },
     /// Gets the coins balance for a Vatom User
     GetUserCoinsBalance {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15600,7 +14967,6 @@ enum Operation {
     },
     /// Get user followers
     GetUserFollowers {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15611,7 +14977,6 @@ enum Operation {
     },
     /// Get user following
     GetUserFollowing {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15622,7 +14987,6 @@ enum Operation {
     },
     /// Get User Info
     GetUserInfo {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15633,7 +14997,6 @@ enum Operation {
     },
     /// Get Vatom User Profile
     GetUserProfile {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Return raw response
@@ -15642,7 +15005,6 @@ enum Operation {
     },
     /// Get Vatom Event
     GetVatomEvent {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15655,7 +15017,6 @@ enum Operation {
     },
     /// Get Vatom NFT Details
     GetVatomNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom NFT Id
@@ -15666,7 +15027,6 @@ enum Operation {
     },
     /// List Vatom Communities
     ListCommunities {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15679,7 +15039,6 @@ enum Operation {
     },
     /// List Vatom Events
     ListEvents {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15692,7 +15051,6 @@ enum Operation {
     },
     /// List Vatom Spaces
     ListSpaces {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15705,7 +15063,6 @@ enum Operation {
     },
     /// List Coin Transactions for a Vatom User
     ListUserCoinTransactions {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15718,7 +15075,6 @@ enum Operation {
     },
     /// List coin transactions for a user (as a Business)
     ListUserCoinTransactionsAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15733,7 +15089,6 @@ enum Operation {
     },
     /// Perform Action on NFT
     PerformActionOnNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom NFT Id
@@ -15748,7 +15103,6 @@ enum Operation {
     },
     /// Redeem NFT
     RedeemNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15761,7 +15115,6 @@ enum Operation {
     },
     /// Redeem the coins for a user (as a Business)
     RedeemUserCoinsAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15776,7 +15129,6 @@ enum Operation {
     },
     /// Search for Vatom Businesses
     SearchBusinesses {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15787,7 +15139,6 @@ enum Operation {
     },
     /// Search Campaign Groups
     SearchCampaignGroups {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15798,7 +15149,6 @@ enum Operation {
     },
     /// Search User Identities
     SearchIdentities {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Return raw response
@@ -15807,7 +15157,6 @@ enum Operation {
     },
     /// Search Vatom User's Inventory
     SearchInventory {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15818,7 +15167,6 @@ enum Operation {
     },
     /// Send NFT
     SendNft {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15833,7 +15181,6 @@ enum Operation {
     },
     /// Set Points Balance as Business
     SetPointsBalanceAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15850,7 +15197,6 @@ enum Operation {
     },
     /// Transfer coins from Vatom Users
     TransferUserCoins {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15863,7 +15209,6 @@ enum Operation {
     },
     /// Fund coins for a Business
     UpdateBusinessCoins {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15876,7 +15221,6 @@ enum Operation {
     },
     /// Update Vatom Event Guest List
     UpdateEventGuestList {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15891,7 +15235,6 @@ enum Operation {
     },
     /// Update Vatom Space
     UpdateSpace {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15906,7 +15249,6 @@ enum Operation {
     },
     /// Update the coins for a user (as a Business)
     UpdateUserCoinsAsBusiness {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom User Id
@@ -15921,7 +15263,6 @@ enum Operation {
     },
     /// Update Vatom User Profile
     UpdateUserProfile {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Vatom Parameters
@@ -15932,7 +15273,6 @@ enum Operation {
     },
     /// Update Vatom Event
     UpdateVatomEvent {
-        version: f64,
         /// Sirqul Account Id
         account_id: i64,
         /// Sirqul Application Key
@@ -15947,7 +15287,6 @@ enum Operation {
     },
     /// Create Vehicle
     CreateVehicle {
-        version: f64,
         /// A JSON representation of cargo type. ```json {   \"name\": \"Truck\",   \"vehicleType\": { \"id\": 1 },   \"hub\": { \"id\": 1 } } ``` 
         vehicle: String,
         #[clap(value_parser = parse_json::<models::Vehicle>)]
@@ -15955,7 +15294,6 @@ enum Operation {
     },
     /// Search Vehicle
     SearchVehicle {
-        version: f64,
         /// Filter by service hub
         hub_id: i64,
         /// The field to sort by
@@ -15975,19 +15313,16 @@ enum Operation {
     },
     /// Delete Vehicle
     DeleteVehicle {
-        version: f64,
         /// The id of the vehicle to delete
         id: i64,
     },
     /// Get Vehicle
     GetVehicle {
-        version: f64,
         /// The id of the vehicle requested
         id: i64,
     },
     /// Update Vehicle
     UpdateVehicle {
-        version: f64,
         /// The id of the vehicle to update
         id: i64,
         /// A JSON representation of cargo type, for example: ```json {   \"name\": \"Truck\",   \"vehicleType\": { \"id\": 1 },   \"hub\": { \"id\": 1 } } ``` 
@@ -15997,7 +15332,6 @@ enum Operation {
     },
     /// Create Vehicle Type
     CreateVehicleType {
-        version: f64,
         /// A JSON representation of cargo type. ```json {   \"name\": \"Truck\",   \"width\": 100,   \"height\": 200,   \"depth\": 200,   \"maxWeight\": 5000,   \"hub\": { \"id\": 1 } } ``` 
         vehicle_type: String,
         #[clap(value_parser = parse_json::<models::VehicleType>)]
@@ -16005,7 +15339,6 @@ enum Operation {
     },
     /// Search Vehicle Type
     SearchVehicleTypes {
-        version: f64,
         /// The field to sort by
         sort_field: String,
         /// Determines whether the sorted list is in descending or ascending order
@@ -16025,19 +15358,16 @@ enum Operation {
     },
     /// Delete Vehicle Type
     DeleteVehicleType {
-        version: f64,
         /// The id of the requested vehicle type
         vehicle_type_id: i64,
     },
     /// Get Vehicle Type
     GetVehicleType {
-        version: f64,
         /// The id of the requested vehicle type
         vehicle_type_id: i64,
     },
     /// Update Vehicle Type
     UpdateVehicleType {
-        version: f64,
         /// The id of the vehicle type to update
         vehicle_type_id: i64,
         /// The new data for the vehicle type to update to. A JSON representation of cargo type, for example: ```json {   \"name\": \"Truck\",   \"width\": 100,   \"height\": 200,   \"depth\": 200,   \"maxWeight\": 5000,   \"hub\": { \"id\": 1 } } ``` 
@@ -16047,7 +15377,6 @@ enum Operation {
     },
     /// Create Wallet Offers
     CreateOfferTransaction {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -16074,7 +15403,6 @@ enum Operation {
     },
     /// Delete Wallet Offer
     DeleteOfferTransaction {
-        version: f64,
         /// The offer transaction id to remove
         transaction_id: i64,
         /// The device id (deviceId or accountId required)
@@ -16084,7 +15412,6 @@ enum Operation {
     },
     /// Get Wallet Offer
     GetOfferTransaction {
-        version: f64,
         /// The offer transaction id to get details of
         transaction_id: i64,
         /// The device id (deviceId or accountId required)
@@ -16104,7 +15431,6 @@ enum Operation {
     },
     /// Preview Wallet Offers
     PreviewOfferTransaction {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -16129,7 +15455,6 @@ enum Operation {
     },
     /// Search Wallet Offers
     SearchOfferTransactions {
-        version: f64,
         /// The device id (deviceId or accountId required)
         device_id: Option<String>,
         /// The account id of the user (deviceId or accountId required)
@@ -16223,7 +15548,6 @@ enum Operation {
     },
     /// Update Wallet Offer
     UpdateOfferTransaction {
-        version: f64,
         /// The offer transaction id to remove
         transaction_id: i64,
         /// The status value to change to (0 or 1)
@@ -16255,7 +15579,6 @@ enum Operation {
     },
     /// Search Weather
     SearchWeather {
-        version: f64,
         /// Region Id
         region_id: Option<i64>,
         /// Latitude
@@ -16267,7 +15590,6 @@ enum Operation {
     },
     /// Create Word
     CreateWord {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The text of the word.
@@ -16291,7 +15613,6 @@ enum Operation {
     },
     /// Delete Word
     DeleteWord {
-        version: f64,
         /// The id of the word to delete.
         word_id: i64,
         /// The account vor validating permission
@@ -16299,7 +15620,6 @@ enum Operation {
     },
     /// Get Word
     GetWord {
-        version: f64,
         /// The id of the word to get.
         word_id: i64,
         /// The logged in user.
@@ -16307,7 +15627,6 @@ enum Operation {
     },
     /// Search Words
     GetWords {
-        version: f64,
         /// The logged in user.
         account_id: i64,
         /// The column to sort the search on
@@ -16327,7 +15646,6 @@ enum Operation {
     },
     /// Update Word
     UpdateWord {
-        version: f64,
         /// The id of the word to update.
         word_id: i64,
         /// The logged in user.
@@ -16353,7 +15671,6 @@ enum Operation {
     },
     /// Run Workflow
     RunWorkflow {
-        version: f64,
         /// the account ID of the user
         account_id: i64,
         /// the workflow to run
@@ -16431,7 +15748,6 @@ async fn main() -> Result<()> {
 
     let result = match args.operation {
         Operation::ConsumerCreate {
-            version,
             app_key,
             name,
             hostname,
@@ -16447,12 +15763,9 @@ async fn main() -> Result<()> {
             workers,
             use_ssl,
         } => {
-            info!("Performing a ConsumerCreate request on {:?}", (
-                &version
-            ));
+            info!("Performing a ConsumerCreate request");
 
             let result = client.consumer_create(
-                version,
                 app_key,
                 name,
                 hostname,
@@ -16479,7 +15792,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ConsumerUpdate {
-            version,
             app_key,
             queue_id,
             data_mapping,
@@ -16487,12 +15799,9 @@ async fn main() -> Result<()> {
             account_id,
             use_ssl,
         } => {
-            info!("Performing a ConsumerUpdate request on {:?}", (
-                &version
-            ));
+            info!("Performing a ConsumerUpdate request");
 
             let result = client.consumer_update(
-                version,
                 app_key,
                 queue_id,
                 data_mapping,
@@ -16511,7 +15820,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueueCreate {
-            version,
             app_key,
             name,
             device_id,
@@ -16525,12 +15833,9 @@ async fn main() -> Result<()> {
             virtual_host,
             use_ssl,
         } => {
-            info!("Performing a QueueCreate request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueueCreate request");
 
             let result = client.queue_create(
-                version,
                 app_key,
                 name,
                 device_id,
@@ -16555,17 +15860,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueueDelete {
-            version,
             queue_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a QueueDelete request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueueDelete request");
 
             let result = client.queue_delete(
-                version,
                 queue_id,
                 device_id,
                 account_id,
@@ -16581,7 +15882,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueueGet {
-            version,
             device_id,
             account_id,
             queue_id,
@@ -16590,12 +15890,9 @@ async fn main() -> Result<()> {
             hostname,
             virtual_host,
         } => {
-            info!("Performing a QueueGet request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueueGet request");
 
             let result = client.queue_get(
-                version,
                 device_id,
                 account_id,
                 queue_id,
@@ -16615,7 +15912,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueuePublish {
-            version,
             message,
             queue_id,
             app_key,
@@ -16623,12 +15919,9 @@ async fn main() -> Result<()> {
             hostname,
             virtual_host,
         } => {
-            info!("Performing a QueuePublish request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueuePublish request");
 
             let result = client.queue_publish(
-                version,
                 message,
                 queue_id,
                 app_key,
@@ -16647,7 +15940,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueueSearch {
-            version,
             queue_id,
             device_id,
             account_id,
@@ -16655,12 +15947,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a QueueSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueueSearch request");
 
             let result = client.queue_search(
-                version,
                 queue_id,
                 device_id,
                 account_id,
@@ -16679,7 +15968,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::QueueUpdate {
-            version,
             queue_id,
             device_id,
             account_id,
@@ -16693,12 +15981,9 @@ async fn main() -> Result<()> {
             virtual_host,
             use_ssl,
         } => {
-            info!("Performing a QueueUpdate request on {:?}", (
-                &version
-            ));
+            info!("Performing a QueueUpdate request");
 
             let result = client.queue_update(
-                version,
                 queue_id,
                 device_id,
                 account_id,
@@ -16723,7 +16008,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AccountLocationSearch {
-            version,
             device_id,
             account_id,
             q,
@@ -16759,12 +16043,9 @@ async fn main() -> Result<()> {
             verified_user_only,
             content_admin_only,
         } => {
-            info!("Performing a AccountLocationSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a AccountLocationSearch request");
 
             let result = client.account_location_search(
-                version,
                 device_id,
                 account_id,
                 q,
@@ -16811,7 +16092,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::BlockAccount {
-            version,
             account_id_being_blocked,
             device_id,
             account_id,
@@ -16820,12 +16100,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a BlockAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a BlockAccount request");
 
             let result = client.block_account(
-                version,
                 account_id_being_blocked,
                 device_id,
                 account_id,
@@ -16845,7 +16122,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateAccount {
-            version,
             username,
             password,
             name,
@@ -16919,12 +16195,9 @@ async fn main() -> Result<()> {
             app_nickname,
             personal_audience_id,
         } => {
-            info!("Performing a CreateAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateAccount request");
 
             let result = client.create_account(
-                version,
                 username,
                 password,
                 name,
@@ -17009,7 +16282,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::EditAccount {
-            version,
             device_id,
             account_id,
             connection_account_id,
@@ -17093,12 +16365,9 @@ async fn main() -> Result<()> {
             personal_audience_id,
             non_guest_username,
         } => {
-            info!("Performing a EditAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a EditAccount request");
 
             let result = client.edit_account(
-                version,
                 device_id,
                 account_id,
                 connection_account_id,
@@ -17193,18 +16462,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::EditUsername {
-            version,
             device_id,
             account_id,
             email_address,
             username,
         } => {
-            info!("Performing a EditUsername request on {:?}", (
-                &version
-            ));
+            info!("Performing a EditUsername request");
 
             let result = client.edit_username(
-                version,
                 device_id,
                 account_id,
                 email_address,
@@ -17221,7 +16486,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAccount {
-            version,
             return_nulls,
             device_id,
             account_id,
@@ -17235,12 +16499,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAccount request");
 
             let result = client.get_account(
-                version,
                 return_nulls,
                 device_id,
                 account_id,
@@ -17265,7 +16526,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetProfileAssets {
-            version,
             return_nulls,
             device_id,
             account_id,
@@ -17281,12 +16541,9 @@ async fn main() -> Result<()> {
             _l,
             limit,
         } => {
-            info!("Performing a GetProfileAssets request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetProfileAssets request");
 
             let result = client.get_profile_assets(
-                version,
                 return_nulls,
                 device_id,
                 account_id,
@@ -17313,7 +16570,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetReferralList {
-            version,
             account_id,
             app_key,
             retrieve_type,
@@ -17326,12 +16582,9 @@ async fn main() -> Result<()> {
             children_list_limit,
             children_children,
         } => {
-            info!("Performing a GetReferralList request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetReferralList request");
 
             let result = client.get_referral_list(
-                version,
                 account_id,
                 app_key,
                 retrieve_type,
@@ -17353,18 +16606,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSettings {
-            version,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a GetSettings request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSettings request");
 
             let result = client.get_settings(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -17381,7 +16630,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LoginDelegate {
-            version,
             access_token,
             app_key,
             device_id,
@@ -17394,12 +16642,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a LoginDelegate request on {:?}", (
-                &version
-            ));
+            info!("Performing a LoginDelegate request");
 
             let result = client.login_delegate(
-                version,
                 access_token,
                 app_key,
                 device_id,
@@ -17423,7 +16668,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LoginGeneral {
-            version,
             access_token,
             network_uid,
             app_key,
@@ -17438,12 +16682,9 @@ async fn main() -> Result<()> {
             chosen_account_id,
             third_party_credential_id,
         } => {
-            info!("Performing a LoginGeneral request on {:?}", (
-                &version
-            ));
+            info!("Performing a LoginGeneral request");
 
             let result = client.login_general(
-                version,
                 access_token,
                 network_uid,
                 app_key,
@@ -17469,7 +16710,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LoginUsername {
-            version,
             username,
             password,
             device_id,
@@ -17481,12 +16721,9 @@ async fn main() -> Result<()> {
             return_profile,
             response_filters,
         } => {
-            info!("Performing a LoginUsername request on {:?}", (
-                &version
-            ));
+            info!("Performing a LoginUsername request");
 
             let result = client.login_username(
-                version,
                 username,
                 password,
                 device_id,
@@ -17509,19 +16746,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Logout {
-            version,
             device_id,
             device_id_type,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a Logout request on {:?}", (
-                &version
-            ));
+            info!("Performing a Logout request");
 
             let result = client.logout(
-                version,
                 device_id,
                 device_id_type,
                 account_id,
@@ -17539,18 +16772,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::MergeAccount {
-            version,
             merge_account_id,
             app_key,
             device_id,
             account_id,
         } => {
-            info!("Performing a MergeAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a MergeAccount request");
 
             let result = client.merge_account(
-                version,
                 merge_account_id,
                 app_key,
                 device_id,
@@ -17567,18 +16796,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PasswordChange {
-            version,
             account_id,
             old_password,
             new_password,
             confirm_password,
         } => {
-            info!("Performing a PasswordChange request on {:?}", (
-                &version
-            ));
+            info!("Performing a PasswordChange request");
 
             let result = client.password_change(
-                version,
                 account_id,
                 old_password,
                 new_password,
@@ -17595,17 +16820,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PasswordReset {
-            version,
             token,
             password,
             confirm,
         } => {
-            info!("Performing a PasswordReset request on {:?}", (
-                &version
-            ));
+            info!("Performing a PasswordReset request");
 
             let result = client.password_reset(
-                version,
                 token,
                 password,
                 confirm,
@@ -17621,19 +16842,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RequestPasswordReset {
-            version,
             email,
             from,
             domain,
             sub_url,
             referer,
         } => {
-            info!("Performing a RequestPasswordReset request on {:?}", (
-                &version
-            ));
+            info!("Performing a RequestPasswordReset request");
 
             let result = client.request_password_reset(
-                version,
                 email,
                 from,
                 domain,
@@ -17651,15 +16868,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RequestValidateAccount {
-            version,
             account_id,
         } => {
-            info!("Performing a RequestValidateAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a RequestValidateAccount request");
 
             let result = client.request_validate_account(
-                version,
                 account_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -17673,7 +16886,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAccounts {
-            version,
             account_id,
             app_key,
             keyword,
@@ -17693,12 +16905,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchAccounts request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAccounts request");
 
             let result = client.search_accounts(
-                version,
                 account_id,
                 app_key,
                 keyword,
@@ -17729,7 +16938,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SecureLogin {
-            version,
             username,
             password,
             game_type,
@@ -17740,12 +16948,9 @@ async fn main() -> Result<()> {
             return_profile,
             response_filters,
         } => {
-            info!("Performing a SecureLogin request on {:?}", (
-                &version
-            ));
+            info!("Performing a SecureLogin request");
 
             let result = client.secure_login(
-                version,
                 username,
                 password,
                 game_type,
@@ -17767,7 +16972,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SecureSignup {
-            version,
             device_id,
             username,
             password,
@@ -17830,12 +17034,9 @@ async fn main() -> Result<()> {
             app_version,
             response_type,
         } => {
-            info!("Performing a SecureSignup request on {:?}", (
-                &version
-            ));
+            info!("Performing a SecureSignup request");
 
             let result = client.secure_signup(
-                version,
                 device_id,
                 username,
                 password,
@@ -17909,7 +17110,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SetMatchToken {
-            version,
             device_id,
             account_id,
             match_token,
@@ -17918,12 +17118,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a SetMatchToken request on {:?}", (
-                &version
-            ));
+            info!("Performing a SetMatchToken request");
 
             let result = client.set_match_token(
-                version,
                 device_id,
                 account_id,
                 match_token,
@@ -17943,19 +17140,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateActveStatus {
-            version,
             account_id,
             connection_account_id,
             active,
             device_id,
             app_key,
         } => {
-            info!("Performing a UpdateActveStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateActveStatus request");
 
             let result = client.update_actve_status(
-                version,
                 account_id,
                 connection_account_id,
                 active,
@@ -17973,19 +17166,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateLocation {
-            version,
             device_id,
             account_id,
             latitude,
             longitude,
             client_time,
         } => {
-            info!("Performing a UpdateLocation request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateLocation request");
 
             let result = client.update_location(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -18003,7 +17192,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateSettings {
-            version,
             device_id,
             account_id,
             blocked_notifications,
@@ -18017,12 +17205,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a UpdateSettings request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateSettings request");
 
             let result = client.update_settings(
-                version,
                 device_id,
                 account_id,
                 blocked_notifications,
@@ -18047,15 +17232,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ValidateAccountSignup {
-            version,
             token,
         } => {
-            info!("Performing a ValidateAccountSignup request on {:?}", (
-                &version
-            ));
+            info!("Performing a ValidateAccountSignup request");
 
             let result = client.validate_account_signup(
-                version,
                 token,
             ).await?;
             debug!("Result: {:?}", result);
@@ -18069,15 +17250,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ValidatePasswordReset {
-            version,
             token,
         } => {
-            info!("Performing a ValidatePasswordReset request on {:?}", (
-                &version
-            ));
+            info!("Performing a ValidatePasswordReset request");
 
             let result = client.validate_password_reset(
-                version,
                 token,
             ).await?;
             debug!("Result: {:?}", result);
@@ -18090,8 +17267,7 @@ async fn main() -> Result<()> {
                     &serde_json::to_string_pretty(&body)?,
             }
         }
-        Operation::ApiVersionAchievementTierSearchPost {
-            version,
+        Operation::AchievementTierSearchPost {
             device_id,
             account_id,
             app_key,
@@ -18104,12 +17280,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a ApiVersionAchievementTierSearchPost request on {:?}", (
-                &version
-            ));
+            info!("Performing a AchievementTierSearchPost request");
 
-            let result = client.api_version_achievement_tier_search_post(
-                version,
+            let result = client.achievement_tier_search_post(
                 device_id,
                 account_id,
                 app_key,
@@ -18125,7 +17298,7 @@ async fn main() -> Result<()> {
             debug!("Result: {:?}", result);
 
             match result {
-                ApiVersionAchievementTierSearchPostResponse::SuccessfulOperation
+                AchievementTierSearchPostResponse::SuccessfulOperation
                 (body)
                 => "SuccessfulOperation\n".to_string()
                    +
@@ -18133,7 +17306,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateAchievement {
-            version,
             app_key,
             title,
             device_id,
@@ -18148,12 +17320,9 @@ async fn main() -> Result<()> {
             active,
             trigger_definition,
         } => {
-            info!("Performing a CreateAchievement request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateAchievement request");
 
             let result = client.create_achievement(
-                version,
                 app_key,
                 title,
                 device_id,
@@ -18179,7 +17348,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateAchievementTier {
-            version,
             achievement_id,
             score_all_instances,
             device_id,
@@ -18195,12 +17363,9 @@ async fn main() -> Result<()> {
             game_level_id,
             game_object_id,
         } => {
-            info!("Performing a CreateAchievementTier request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateAchievementTier request");
 
             let result = client.create_achievement_tier(
-                version,
                 achievement_id,
                 score_all_instances,
                 device_id,
@@ -18227,16 +17392,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteAchievement {
-            version,
             achievement_id,
             account_id,
         } => {
-            info!("Performing a DeleteAchievement request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteAchievement request");
 
             let result = client.delete_achievement(
-                version,
                 achievement_id,
                 account_id,
             ).await?;
@@ -18251,16 +17412,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteAchievementTier {
-            version,
             achievement_tier_id,
             account_id,
         } => {
-            info!("Performing a DeleteAchievementTier request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteAchievementTier request");
 
             let result = client.delete_achievement_tier(
-                version,
                 achievement_tier_id,
                 account_id,
             ).await?;
@@ -18275,18 +17432,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAchievement {
-            version,
             achievement_id,
             device_id,
             account_id,
             achievement_type,
         } => {
-            info!("Performing a GetAchievement request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAchievement request");
 
             let result = client.get_achievement(
-                version,
                 achievement_id,
                 device_id,
                 account_id,
@@ -18303,16 +17456,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAchievementTier {
-            version,
             account_id,
             achievement_tier_id,
         } => {
-            info!("Performing a GetAchievementTier request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAchievementTier request");
 
             let result = client.get_achievement_tier(
-                version,
                 account_id,
                 achievement_tier_id,
             ).await?;
@@ -18327,7 +17476,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserAchievements {
-            version,
             return_nulls,
             app_key,
             include_undiscovered,
@@ -18340,12 +17488,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetUserAchievements request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserAchievements request");
 
             let result = client.get_user_achievements(
-                version,
                 return_nulls,
                 app_key,
                 include_undiscovered,
@@ -18369,15 +17514,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListAchievementTags {
-            version,
             app_key,
         } => {
-            info!("Performing a ListAchievementTags request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListAchievementTags request");
 
             let result = client.list_achievement_tags(
-                version,
                 app_key,
             ).await?;
             debug!("Result: {:?}", result);
@@ -18391,7 +17532,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListAchievements {
-            version,
             sort_field,
             descending,
             start,
@@ -18404,12 +17544,9 @@ async fn main() -> Result<()> {
             achievement_type,
             rank_type,
         } => {
-            info!("Performing a ListAchievements request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListAchievements request");
 
             let result = client.list_achievements(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -18433,7 +17570,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAchievements {
-            version,
             app_key,
             sort_field,
             descending,
@@ -18447,12 +17583,9 @@ async fn main() -> Result<()> {
             achievement_type,
             rank_type,
         } => {
-            info!("Performing a SearchAchievements request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAchievements request");
 
             let result = client.search_achievements(
-                version,
                 app_key,
                 sort_field,
                 descending,
@@ -18477,7 +17610,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateAchievement {
-            version,
             device_id,
             account_id,
             achievement_id,
@@ -18494,12 +17626,9 @@ async fn main() -> Result<()> {
             active,
             trigger_definition,
         } => {
-            info!("Performing a UpdateAchievement request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateAchievement request");
 
             let result = client.update_achievement(
-                version,
                 device_id,
                 account_id,
                 achievement_id,
@@ -18527,7 +17656,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateAchievementTier {
-            version,
             achievement_tier_id,
             device_id,
             account_id,
@@ -18543,12 +17671,9 @@ async fn main() -> Result<()> {
             game_object_id,
             score_all_instances,
         } => {
-            info!("Performing a UpdateAchievementTier request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateAchievementTier request");
 
             let result = client.update_achievement_tier(
-                version,
                 achievement_tier_id,
                 device_id,
                 account_id,
@@ -18575,7 +17700,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateUserAchievement {
-            version,
             account_id,
             achievement_id,
             tag,
@@ -18585,12 +17709,9 @@ async fn main() -> Result<()> {
             end_date,
             return_progress,
         } => {
-            info!("Performing a UpdateUserAchievement request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateUserAchievement request");
 
             let result = client.update_user_achievement(
-                version,
                 account_id,
                 achievement_id,
                 tag,
@@ -18611,15 +17732,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateEntityReference {
-            version,
             body,
         } => {
-            info!("Performing a CreateEntityReference request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateEntityReference request");
 
             let result = client.create_entity_reference(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -18633,7 +17750,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddAlbumCollection {
-            version,
             title,
             cover_asset_nullable,
             include_cover_in_asset_list,
@@ -18681,12 +17797,9 @@ async fn main() -> Result<()> {
             linked_object_type,
             linked_object_id,
         } => {
-            info!("Performing a AddAlbumCollection request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddAlbumCollection request");
 
             let result = client.add_album_collection(
-                version,
                 title,
                 cover_asset_nullable,
                 include_cover_in_asset_list,
@@ -18745,7 +17858,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddAlbumUsers {
-            version,
             album_id,
             include_friend_group,
             device_id,
@@ -18757,12 +17869,9 @@ async fn main() -> Result<()> {
             connections,
             connection_groups,
         } => {
-            info!("Performing a AddAlbumUsers request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddAlbumUsers request");
 
             let result = client.add_album_users(
-                version,
                 album_id,
                 include_friend_group,
                 device_id,
@@ -18785,19 +17894,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ApproveAlbum {
-            version,
             album_id,
             device_id,
             account_id,
             approval_status,
             verified,
         } => {
-            info!("Performing a ApproveAlbum request on {:?}", (
-                &version
-            ));
+            info!("Performing a ApproveAlbum request");
 
             let result = client.approve_album(
-                version,
                 album_id,
                 device_id,
                 account_id,
@@ -18815,7 +17920,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAlbumCollection {
-            version,
             return_nulls,
             album_id,
             device_id,
@@ -18826,12 +17930,9 @@ async fn main() -> Result<()> {
             connection_preview_size,
             audience_preview_size,
         } => {
-            info!("Performing a GetAlbumCollection request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAlbumCollection request");
 
             let result = client.get_album_collection(
-                version,
                 return_nulls,
                 album_id,
                 device_id,
@@ -18853,17 +17954,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LeaveAlbum {
-            version,
             album_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a LeaveAlbum request on {:?}", (
-                &version
-            ));
+            info!("Performing a LeaveAlbum request");
 
             let result = client.leave_album(
-                version,
                 album_id,
                 device_id,
                 account_id,
@@ -18879,17 +17976,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveAlbum {
-            version,
             album_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a RemoveAlbum request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveAlbum request");
 
             let result = client.remove_album(
-                version,
                 album_id,
                 device_id,
                 account_id,
@@ -18905,7 +17998,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveAlbumUsers {
-            version,
             album_id,
             remove_friend_group,
             device_id,
@@ -18913,12 +18005,9 @@ async fn main() -> Result<()> {
             connections,
             connection_groups,
         } => {
-            info!("Performing a RemoveAlbumUsers request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveAlbumUsers request");
 
             let result = client.remove_album_users(
-                version,
                 album_id,
                 remove_friend_group,
                 device_id,
@@ -18937,7 +18026,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAlbums {
-            version,
             filter,
             album_type_id,
             sub_type,
@@ -18999,12 +18087,9 @@ async fn main() -> Result<()> {
             search_expression,
             generate_albums,
         } => {
-            info!("Performing a SearchAlbums request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAlbums request");
 
             let result = client.search_albums(
-                version,
                 filter,
                 album_type_id,
                 sub_type,
@@ -19077,7 +18162,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateAlbumCollection {
-            version,
             album_id,
             device_id,
             account_id,
@@ -19124,12 +18208,9 @@ async fn main() -> Result<()> {
             linked_object_id,
             index_now,
         } => {
-            info!("Performing a UpdateAlbumCollection request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateAlbumCollection request");
 
             let result = client.update_album_collection(
-                version,
                 album_id,
                 device_id,
                 account_id,
@@ -19187,17 +18268,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Activities {
-            version,
             start,
             limit,
             account_id,
         } => {
-            info!("Performing a Activities request on {:?}", (
-                &version
-            ));
+            info!("Performing a Activities request");
 
             let result = client.activities(
-                version,
                 start,
                 limit,
                 account_id,
@@ -19213,7 +18290,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AggregatedFilteredUsage {
-            version,
             device_id,
             account_id,
             application_id,
@@ -19246,12 +18322,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AggregatedFilteredUsage request on {:?}", (
-                &version
-            ));
+            info!("Performing a AggregatedFilteredUsage request");
 
             let result = client.aggregated_filtered_usage(
-                version,
                 device_id,
                 account_id,
                 application_id,
@@ -19295,7 +18368,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FilteredUsage {
-            version,
             device_id,
             account_id,
             application_id,
@@ -19336,12 +18408,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a FilteredUsage request on {:?}", (
-                &version
-            ));
+            info!("Performing a FilteredUsage request");
 
             let result = client.filtered_usage(
-                version,
                 device_id,
                 account_id,
                 application_id,
@@ -19393,7 +18462,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Usage {
-            version,
             tag,
             device_id,
             account_id,
@@ -19426,12 +18494,9 @@ async fn main() -> Result<()> {
             custom_long,
             custom_long2,
         } => {
-            info!("Performing a Usage request on {:?}", (
-                &version
-            ));
+            info!("Performing a Usage request");
 
             let result = client.usage(
-                version,
                 tag,
                 device_id,
                 account_id,
@@ -19475,7 +18540,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UsageBatch {
-            version,
             app_key,
             device,
             data,
@@ -19488,12 +18552,9 @@ async fn main() -> Result<()> {
             update_ranking,
             return_summary_response,
         } => {
-            info!("Performing a UsageBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a UsageBatch request");
 
             let result = client.usage_batch(
-                version,
                 app_key,
                 device,
                 data,
@@ -19517,7 +18578,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAppData {
-            version,
             start,
             limit,
             device_id,
@@ -19544,12 +18604,9 @@ async fn main() -> Result<()> {
             response_groups,
             purchase_type,
         } => {
-            info!("Performing a GetAppData request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAppData request");
 
             let result = client.get_app_data(
-                version,
                 start,
                 limit,
                 device_id,
@@ -19587,7 +18644,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PostAppData {
-            version,
             game_type,
             start,
             limit,
@@ -19615,12 +18671,9 @@ async fn main() -> Result<()> {
             response_groups,
             purchase_type,
         } => {
-            info!("Performing a PostAppData request on {:?}", (
-                &version
-            ));
+            info!("Performing a PostAppData request");
 
             let result = client.post_app_data(
-                version,
                 game_type,
                 start,
                 limit,
@@ -19659,18 +18712,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RegenAppData {
-            version,
             account_id,
             app_key,
             build_version,
             api_version,
         } => {
-            info!("Performing a RegenAppData request on {:?}", (
-                &version
-            ));
+            info!("Performing a RegenAppData request");
 
             let result = client.regen_app_data(
-                version,
                 account_id,
                 app_key,
                 build_version,
@@ -19687,7 +18736,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateApplication {
-            version,
             app_name,
             device_id,
             account_id,
@@ -19768,12 +18816,9 @@ async fn main() -> Result<()> {
             twilio_sender_phone_number,
             open_ai_secret_key,
         } => {
-            info!("Performing a CreateApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateApplication request");
 
             let result = client.create_application(
-                version,
                 app_name,
                 device_id,
                 account_id,
@@ -19865,7 +18910,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateApplicationPlacement {
-            version,
             app_key,
             size,
             device_id,
@@ -19878,12 +18922,9 @@ async fn main() -> Result<()> {
             default_image_id,
             active,
         } => {
-            info!("Performing a CreateApplicationPlacement request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateApplicationPlacement request");
 
             let result = client.create_application_placement(
-                version,
                 app_key,
                 size,
                 device_id,
@@ -19907,16 +18948,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteApplication {
-            version,
             account_id,
             app_key,
         } => {
-            info!("Performing a DeleteApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteApplication request");
 
             let result = client.delete_application(
-                version,
                 account_id,
                 app_key,
             ).await?;
@@ -19931,17 +18968,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteApplicationPlacement {
-            version,
             placement_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteApplicationPlacement request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteApplicationPlacement request");
 
             let result = client.delete_application_placement(
-                version,
                 placement_id,
                 device_id,
                 account_id,
@@ -19957,16 +18990,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetApplication {
-            version,
             app_key,
             application_id,
         } => {
-            info!("Performing a GetApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetApplication request");
 
             let result = client.get_application(
-                version,
                 app_key,
                 application_id,
             ).await?;
@@ -19981,17 +19010,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetApplicationPlacement {
-            version,
             placement_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetApplicationPlacement request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetApplicationPlacement request");
 
             let result = client.get_application_placement(
-                version,
                 placement_id,
                 device_id,
                 account_id,
@@ -20007,14 +19032,10 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetApplicationVersions {
-            version,
         } => {
-            info!("Performing a GetApplicationVersions request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetApplicationVersions request");
 
             let result = client.get_application_versions(
-                version,
             ).await?;
             debug!("Result: {:?}", result);
 
@@ -20027,7 +19048,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUniqueUsersByApp {
-            version,
             app_key,
             q,
             keyword,
@@ -20037,12 +19057,9 @@ async fn main() -> Result<()> {
             _l,
             limit,
         } => {
-            info!("Performing a GetUniqueUsersByApp request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUniqueUsersByApp request");
 
             let result = client.get_unique_users_by_app(
-                version,
                 app_key,
                 q,
                 keyword,
@@ -20063,7 +19080,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListApplications {
-            version,
             account_id,
             q,
             keyword,
@@ -20085,12 +19101,9 @@ async fn main() -> Result<()> {
             has_object_store,
             active_only,
         } => {
-            info!("Performing a ListApplications request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListApplications request");
 
             let result = client.list_applications(
-                version,
                 account_id,
                 q,
                 keyword,
@@ -20123,19 +19136,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchApplicationPlacement {
-            version,
             app_key,
             device_id,
             account_id,
             start,
             limit,
         } => {
-            info!("Performing a SearchApplicationPlacement request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchApplicationPlacement request");
 
             let result = client.search_application_placement(
-                version,
                 app_key,
                 device_id,
                 account_id,
@@ -20153,7 +19162,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchApplicationSettings {
-            version,
             device_id,
             account_id,
             connection_account_id,
@@ -20163,12 +19171,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchApplicationSettings request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchApplicationSettings request");
 
             let result = client.search_application_settings(
-                version,
                 device_id,
                 account_id,
                 connection_account_id,
@@ -20189,7 +19194,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchApplications {
-            version,
             device_id,
             account_id,
             latitude,
@@ -20207,12 +19211,9 @@ async fn main() -> Result<()> {
             public_notifications,
             active_only,
         } => {
-            info!("Performing a SearchApplications request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchApplications request");
 
             let result = client.search_applications(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -20241,7 +19242,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateApplication {
-            version,
             app_key,
             app_name,
             device_id,
@@ -20323,12 +19323,9 @@ async fn main() -> Result<()> {
             twilio_sender_phone_number,
             open_ai_secret_key,
         } => {
-            info!("Performing a UpdateApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateApplication request");
 
             let result = client.update_application(
-                version,
                 app_key,
                 app_name,
                 device_id,
@@ -20421,17 +19418,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateApplicationActive {
-            version,
             account_id,
             app_key,
             active,
         } => {
-            info!("Performing a UpdateApplicationActive request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateApplicationActive request");
 
             let result = client.update_application_active(
-                version,
                 account_id,
                 app_key,
                 active,
@@ -20447,7 +19440,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateApplicationPlacement {
-            version,
             placement_id,
             device_id,
             account_id,
@@ -20460,12 +19452,9 @@ async fn main() -> Result<()> {
             default_image_id,
             active,
         } => {
-            info!("Performing a UpdateApplicationPlacement request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateApplicationPlacement request");
 
             let result = client.update_application_placement(
-                version,
                 placement_id,
                 device_id,
                 account_id,
@@ -20489,18 +19478,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UploadApplicationCertificate {
-            version,
             app_key,
             device_id,
             account_id,
             certificate,
         } => {
-            info!("Performing a UploadApplicationCertificate request on {:?}", (
-                &version
-            ));
+            info!("Performing a UploadApplicationCertificate request");
 
             let result = client.upload_application_certificate(
-                version,
                 app_key,
                 device_id,
                 account_id,
@@ -20517,7 +19502,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateApplicationConfig {
-            version,
             account_id,
             app_key,
             config_version,
@@ -20526,12 +19510,9 @@ async fn main() -> Result<()> {
             retailer_location_id,
             udid,
         } => {
-            info!("Performing a CreateApplicationConfig request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateApplicationConfig request");
 
             let result = client.create_application_config(
-                version,
                 account_id,
                 app_key,
                 config_version,
@@ -20551,16 +19532,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteApplicationConfig {
-            version,
             account_id,
             config_id,
         } => {
-            info!("Performing a DeleteApplicationConfig request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteApplicationConfig request");
 
             let result = client.delete_application_config(
-                version,
                 account_id,
                 config_id,
             ).await?;
@@ -20575,16 +19552,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetApplicationConfig {
-            version,
             account_id,
             config_id,
         } => {
-            info!("Performing a GetApplicationConfig request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetApplicationConfig request");
 
             let result = client.get_application_config(
-                version,
                 account_id,
                 config_id,
             ).await?;
@@ -20599,7 +19572,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetApplicationConfigByConfigVersion {
-            version,
             app_key,
             config_version,
             retailer_id,
@@ -20607,12 +19579,9 @@ async fn main() -> Result<()> {
             udid,
             allow_older_versions,
         } => {
-            info!("Performing a GetApplicationConfigByConfigVersion request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetApplicationConfigByConfigVersion request");
 
             let result = client.get_application_config_by_config_version(
-                version,
                 app_key,
                 config_version,
                 retailer_id,
@@ -20631,7 +19600,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchApplicationConfig {
-            version,
             account_id,
             app_key,
             retailer_id,
@@ -20643,12 +19611,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchApplicationConfig request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchApplicationConfig request");
 
             let result = client.search_application_config(
-                version,
                 account_id,
                 app_key,
                 retailer_id,
@@ -20671,7 +19636,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateApplicationConfig {
-            version,
             account_id,
             config_id,
             app_key,
@@ -20681,12 +19645,9 @@ async fn main() -> Result<()> {
             retailer_location_id,
             udid,
         } => {
-            info!("Performing a UpdateApplicationConfig request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateApplicationConfig request");
 
             let result = client.update_application_config(
-                version,
                 account_id,
                 config_id,
                 app_key,
@@ -20707,7 +19668,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssetMorph {
-            version,
             offer_id,
             ad_size,
             creative_id,
@@ -20716,12 +19676,9 @@ async fn main() -> Result<()> {
             background_size,
             template,
         } => {
-            info!("Performing a AssetMorph request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssetMorph request");
 
             let result = client.asset_morph(
-                version,
                 offer_id,
                 ad_size,
                 creative_id,
@@ -20741,7 +19698,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateAsset {
-            version,
             return_nulls,
             device_id,
             account_id,
@@ -20777,12 +19733,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreateAsset request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateAsset request");
 
             let result = client.create_asset(
-                version,
                 return_nulls,
                 device_id,
                 account_id,
@@ -20829,19 +19782,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteAsset {
-            version,
             asset_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a DeleteAsset request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteAsset request");
 
             let result = client.delete_asset(
-                version,
                 asset_id,
                 device_id,
                 account_id,
@@ -20859,18 +19808,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAsset {
-            version,
             asset_id,
             device_id,
             account_id,
             note_descending,
         } => {
-            info!("Performing a GetAsset request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAsset request");
 
             let result = client.get_asset(
-                version,
                 asset_id,
                 device_id,
                 account_id,
@@ -20887,7 +19832,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveAsset {
-            version,
             asset_id,
             device_id,
             account_id,
@@ -20897,12 +19841,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveAsset request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveAsset request");
 
             let result = client.remove_asset(
-                version,
                 asset_id,
                 device_id,
                 account_id,
@@ -20923,7 +19864,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAssets {
-            version,
             device_id,
             account_id,
             album_ids,
@@ -20949,12 +19889,9 @@ async fn main() -> Result<()> {
             approval_status,
             assigned_account_id,
         } => {
-            info!("Performing a SearchAssets request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAssets request");
 
             let result = client.search_assets(
-                version,
                 device_id,
                 account_id,
                 album_ids,
@@ -20991,7 +19928,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateAsset {
-            version,
             asset_id,
             device_id,
             account_id,
@@ -21024,12 +19960,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a UpdateAsset request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateAsset request");
 
             let result = client.update_asset(
-                version,
                 asset_id,
                 device_id,
                 account_id,
@@ -21073,16 +20006,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssetDownload {
-            version,
             filename,
         } => {
             info!("Performing a AssetDownload request on {:?}", (
-                &version,
                 &filename
             ));
 
             let result = client.asset_download(
-                version,
                 filename,
             ).await?;
             debug!("Result: {:?}", result);
@@ -21096,16 +20026,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssigmentAssigneeAccountSearch {
-            version,
             account_id,
             keyword,
         } => {
-            info!("Performing a AssigmentAssigneeAccountSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssigmentAssigneeAccountSearch request");
 
             let result = client.assigment_assignee_account_search(
-                version,
                 account_id,
                 keyword,
             ).await?;
@@ -21120,7 +20046,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentCreate {
-            version,
             account_id,
             name,
             assignee_account_id,
@@ -21129,12 +20054,9 @@ async fn main() -> Result<()> {
             tags,
             active,
         } => {
-            info!("Performing a AssignmentCreate request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentCreate request");
 
             let result = client.assignment_create(
-                version,
                 account_id,
                 name,
                 assignee_account_id,
@@ -21154,16 +20076,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentDelete {
-            version,
             account_id,
             assignment_id,
         } => {
-            info!("Performing a AssignmentDelete request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentDelete request");
 
             let result = client.assignment_delete(
-                version,
                 account_id,
                 assignment_id,
             ).await?;
@@ -21178,16 +20096,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentGet {
-            version,
             account_id,
             assignment_id,
         } => {
-            info!("Performing a AssignmentGet request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentGet request");
 
             let result = client.assignment_get(
-                version,
                 account_id,
                 assignment_id,
             ).await?;
@@ -21202,7 +20116,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentSearch {
-            version,
             account_id,
             sort_field,
             descending,
@@ -21215,12 +20128,9 @@ async fn main() -> Result<()> {
             current_status_type,
             keyword,
         } => {
-            info!("Performing a AssignmentSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentSearch request");
 
             let result = client.assignment_search(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -21244,7 +20154,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentStatusCreate {
-            version,
             account_id,
             assignment_id,
             scheduled_notification_id,
@@ -21257,12 +20166,9 @@ async fn main() -> Result<()> {
             follow_up,
             active,
         } => {
-            info!("Performing a AssignmentStatusCreate request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentStatusCreate request");
 
             let result = client.assignment_status_create(
-                version,
                 account_id,
                 assignment_id,
                 scheduled_notification_id,
@@ -21286,16 +20192,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentStatusDelete {
-            version,
             account_id,
             assignment_status_id,
         } => {
-            info!("Performing a AssignmentStatusDelete request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentStatusDelete request");
 
             let result = client.assignment_status_delete(
-                version,
                 account_id,
                 assignment_status_id,
             ).await?;
@@ -21310,16 +20212,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentStatusGet {
-            version,
             account_id,
             assignment_status_id,
         } => {
-            info!("Performing a AssignmentStatusGet request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentStatusGet request");
 
             let result = client.assignment_status_get(
-                version,
                 account_id,
                 assignment_status_id,
             ).await?;
@@ -21334,7 +20232,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentStatusSearch {
-            version,
             account_id,
             sort_field,
             descending,
@@ -21348,12 +20245,9 @@ async fn main() -> Result<()> {
             status_type,
             keyword,
         } => {
-            info!("Performing a AssignmentStatusSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentStatusSearch request");
 
             let result = client.assignment_status_search(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -21378,7 +20272,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentStatusUpdate {
-            version,
             account_id,
             assignment_status_id,
             scheduled_notification_id,
@@ -21391,12 +20284,9 @@ async fn main() -> Result<()> {
             follow_up,
             active,
         } => {
-            info!("Performing a AssignmentStatusUpdate request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentStatusUpdate request");
 
             let result = client.assignment_status_update(
-                version,
                 account_id,
                 assignment_status_id,
                 scheduled_notification_id,
@@ -21420,7 +20310,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignmentUpdate {
-            version,
             account_id,
             assignment_id,
             name,
@@ -21430,12 +20319,9 @@ async fn main() -> Result<()> {
             tags,
             active,
         } => {
-            info!("Performing a AssignmentUpdate request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignmentUpdate request");
 
             let result = client.assignment_update(
-                version,
                 account_id,
                 assignment_id,
                 name,
@@ -21456,7 +20342,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateAudience {
-            version,
             account_id,
             name,
             description,
@@ -21487,12 +20372,9 @@ async fn main() -> Result<()> {
             trilateration_types,
             unique_name,
         } => {
-            info!("Performing a CreateAudience request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateAudience request");
 
             let result = client.create_audience(
-                version,
                 account_id,
                 name,
                 description,
@@ -21534,16 +20416,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteAudience {
-            version,
             account_id,
             audience_id,
         } => {
-            info!("Performing a DeleteAudience request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteAudience request");
 
             let result = client.delete_audience(
-                version,
                 account_id,
                 audience_id,
             ).await?;
@@ -21558,14 +20436,10 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAgeGroups {
-            version,
         } => {
-            info!("Performing a GetAgeGroups request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAgeGroups request");
 
             let result = client.get_age_groups(
-                version,
             ).await?;
             debug!("Result: {:?}", result);
 
@@ -21578,7 +20452,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAudience {
-            version,
             account_id,
             audience_id,
             app_key,
@@ -21586,12 +20459,9 @@ async fn main() -> Result<()> {
             return_album_count,
             album_types_for_count,
         } => {
-            info!("Performing a GetAudience request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAudience request");
 
             let result = client.get_audience(
-                version,
                 account_id,
                 audience_id,
                 app_key,
@@ -21610,7 +20480,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAudienceList {
-            version,
             account_id,
             album_ids,
             keyword,
@@ -21631,12 +20500,9 @@ async fn main() -> Result<()> {
             return_album_count,
             album_types_for_count,
         } => {
-            info!("Performing a GetAudienceList request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAudienceList request");
 
             let result = client.get_audience_list(
-                version,
                 account_id,
                 album_ids,
                 keyword,
@@ -21668,15 +20534,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetDevices {
-            version,
             include_inactive,
         } => {
-            info!("Performing a GetDevices request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetDevices request");
 
             let result = client.get_devices(
-                version,
                 include_inactive,
             ).await?;
             debug!("Result: {:?}", result);
@@ -21690,14 +20552,10 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetExperiences {
-            version,
         } => {
-            info!("Performing a GetExperiences request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetExperiences request");
 
             let result = client.get_experiences(
-                version,
             ).await?;
             debug!("Result: {:?}", result);
 
@@ -21710,16 +20568,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGroupedAudiences {
-            version,
             account_id,
             audience_grouping_id,
         } => {
-            info!("Performing a GetGroupedAudiences request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGroupedAudiences request");
 
             let result = client.get_grouped_audiences(
-                version,
                 account_id,
                 audience_grouping_id,
             ).await?;
@@ -21734,17 +20588,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListByAccount {
-            version,
             account_id,
             limit,
             suggestion_type,
         } => {
-            info!("Performing a ListByAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListByAccount request");
 
             let result = client.list_by_account(
-                version,
                 account_id,
                 limit,
                 suggestion_type,
@@ -21760,7 +20610,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListByAudience {
-            version,
             limit,
             gender,
             age,
@@ -21768,12 +20617,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a ListByAudience request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListByAudience request");
 
             let result = client.list_by_audience(
-                version,
                 limit,
                 gender,
                 age,
@@ -21792,17 +20638,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListLastestByAccount {
-            version,
             account_id,
             timeframe,
             suggestion_type,
         } => {
-            info!("Performing a ListLastestByAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListLastestByAccount request");
 
             let result = client.list_lastest_by_account(
-                version,
                 account_id,
                 timeframe,
                 suggestion_type,
@@ -21818,17 +20660,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SendByAccount {
-            version,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a SendByAccount request on {:?}", (
-                &version
-            ));
+            info!("Performing a SendByAccount request");
 
             let result = client.send_by_account(
-                version,
                 account_id,
                 latitude,
                 longitude,
@@ -21844,7 +20682,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateAudience {
-            version,
             account_id,
             audience_id,
             name,
@@ -21877,12 +20714,9 @@ async fn main() -> Result<()> {
             trilateration_types,
             unique_name,
         } => {
-            info!("Performing a UpdateAudience request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateAudience request");
 
             let result = client.update_audience(
-                version,
                 account_id,
                 audience_id,
                 name,
@@ -21926,7 +20760,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateBid {
-            version,
             biddable_type,
             biddable_id,
             amount_per_view,
@@ -21936,12 +20769,9 @@ async fn main() -> Result<()> {
             device_id,
             account_id,
         } => {
-            info!("Performing a CreateBid request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateBid request");
 
             let result = client.create_bid(
-                version,
                 biddable_type,
                 biddable_id,
                 amount_per_view,
@@ -21962,17 +20792,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteBid {
-            version,
             bid_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteBid request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteBid request");
 
             let result = client.delete_bid(
-                version,
                 bid_id,
                 device_id,
                 account_id,
@@ -21988,17 +20814,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBid {
-            version,
             bid_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetBid request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBid request");
 
             let result = client.get_bid(
-                version,
                 bid_id,
                 device_id,
                 account_id,
@@ -22014,7 +20836,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateBid {
-            version,
             bid_id,
             device_id,
             account_id,
@@ -22023,12 +20844,9 @@ async fn main() -> Result<()> {
             budget_amount,
             budget_schedule,
         } => {
-            info!("Performing a UpdateBid request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateBid request");
 
             let result = client.update_bid(
-                version,
                 bid_id,
                 device_id,
                 account_id,
@@ -22048,7 +20866,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateBillableEntity {
-            version,
             device_id,
             account_id,
             name,
@@ -22062,12 +20879,9 @@ async fn main() -> Result<()> {
             authorize_net_api_key,
             authorize_net_transaction_key,
         } => {
-            info!("Performing a CreateBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateBillableEntity request");
 
             let result = client.create_billable_entity(
-                version,
                 device_id,
                 account_id,
                 name,
@@ -22092,16 +20906,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteBillableEntity {
-            version,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteBillableEntity request");
 
             let result = client.delete_billable_entity(
-                version,
                 device_id,
                 account_id,
             ).await?;
@@ -22116,18 +20926,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBillableEntity {
-            version,
             device_id,
             account_id,
             include_counts,
             include_payments,
         } => {
-            info!("Performing a GetBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBillableEntity request");
 
             let result = client.get_billable_entity(
-                version,
                 device_id,
                 account_id,
                 include_counts,
@@ -22144,7 +20950,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateBillableEntity {
-            version,
             device_id,
             account_id,
             name,
@@ -22158,12 +20963,9 @@ async fn main() -> Result<()> {
             authorize_net_api_key,
             authorize_net_transaction_key,
         } => {
-            info!("Performing a UpdateBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateBillableEntity request");
 
             let result = client.update_billable_entity(
-                version,
                 device_id,
                 account_id,
                 name,
@@ -22188,7 +20990,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddPaymentMethod {
-            version,
             account_id,
             payment_method_id,
             account_name,
@@ -22213,12 +21014,9 @@ async fn main() -> Result<()> {
             provider_payment_profile_id,
             meta_data,
         } => {
-            info!("Performing a AddPaymentMethod request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddPaymentMethod request");
 
             let result = client.add_payment_method(
-                version,
                 account_id,
                 payment_method_id,
                 account_name,
@@ -22254,7 +21052,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreatePaymentMethod {
-            version,
             account_id,
             account_name,
             first_name,
@@ -22281,12 +21078,9 @@ async fn main() -> Result<()> {
             meta_data,
             app_key,
         } => {
-            info!("Performing a CreatePaymentMethod request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreatePaymentMethod request");
 
             let result = client.create_payment_method(
-                version,
                 account_id,
                 account_name,
                 first_name,
@@ -22324,18 +21118,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateSmartContract {
-            version,
             account_id,
             token_name,
             token_symbol,
             payment_method_id,
         } => {
-            info!("Performing a CreateSmartContract request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateSmartContract request");
 
             let result = client.create_smart_contract(
-                version,
                 account_id,
                 token_name,
                 token_symbol,
@@ -22352,17 +21142,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCryptoBalance {
-            version,
             account_id,
             owner_account_id,
             payment_method_id,
         } => {
-            info!("Performing a GetCryptoBalance request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCryptoBalance request");
 
             let result = client.get_crypto_balance(
-                version,
                 account_id,
                 owner_account_id,
                 payment_method_id,
@@ -22378,17 +21164,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPaymentMethod {
-            version,
             account_id,
             payment_method_id,
             get_current_balance,
         } => {
-            info!("Performing a GetPaymentMethod request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPaymentMethod request");
 
             let result = client.get_payment_method(
-                version,
                 account_id,
                 payment_method_id,
                 get_current_balance,
@@ -22404,7 +21186,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPaymentMethod {
-            version,
             account_id,
             provider,
             param_type,
@@ -22414,12 +21195,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchPaymentMethod request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPaymentMethod request");
 
             let result = client.search_payment_method(
-                version,
                 account_id,
                 provider,
                 param_type,
@@ -22440,19 +21218,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetStatusCsv {
-            version,
             account_id,
             batch_id,
             response_group,
             start,
             limit,
         } => {
-            info!("Performing a GetStatusCsv request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetStatusCsv request");
 
             let result = client.get_status_csv(
-                version,
                 account_id,
                 batch_id,
                 response_group,
@@ -22470,17 +21244,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListStatusCsv {
-            version,
             account_id,
             start,
             limit,
         } => {
-            info!("Performing a ListStatusCsv request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListStatusCsv request");
 
             let result = client.list_status_csv(
-                version,
                 account_id,
                 start,
                 limit,
@@ -22496,16 +21266,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::StatusCsv {
-            version,
             account_id,
             batch_id,
         } => {
-            info!("Performing a StatusCsv request on {:?}", (
-                &version
-            ));
+            info!("Performing a StatusCsv request");
 
             let result = client.status_csv(
-                version,
                 account_id,
                 batch_id,
             ).await?;
@@ -22520,19 +21286,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UploadCsv {
-            version,
             account_id,
             upload_type,
             import_file,
             file_format,
             app_key,
         } => {
-            info!("Performing a UploadCsv request on {:?}", (
-                &version
-            ));
+            info!("Performing a UploadCsv request");
 
             let result = client.upload_csv(
-                version,
                 account_id,
                 upload_type,
                 import_file,
@@ -22550,15 +21312,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateCargoType {
-            version,
             body,
         } => {
-            info!("Performing a CreateCargoType request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateCargoType request");
 
             let result = client.create_cargo_type(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -22572,7 +21330,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchCargoTypes {
-            version,
             sort_field,
             descending,
             start,
@@ -22581,12 +21338,9 @@ async fn main() -> Result<()> {
             retailer_id,
             hub_id,
         } => {
-            info!("Performing a SearchCargoTypes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchCargoTypes request");
 
             let result = client.search_cargo_types(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -22606,17 +21360,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteCargoType {
-            version,
             cargo_type_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteCargoType request on {:?}", (
-                &version,
                 &cargo_type_id
             ));
 
             let result = client.delete_cargo_type(
-                version,
                 cargo_type_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -22628,16 +21379,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCargoType {
-            version,
             cargo_type_id,
         } => {
             info!("Performing a GetCargoType request on {:?}", (
-                &version,
                 &cargo_type_id
             ));
 
             let result = client.get_cargo_type(
-                version,
                 cargo_type_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -22651,17 +21399,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateCargoType {
-            version,
             cargo_type_id,
             body,
         } => {
             info!("Performing a UpdateCargoType request on {:?}", (
-                &version,
                 &cargo_type_id
             ));
 
             let result = client.update_cargo_type(
-                version,
                 cargo_type_id,
                 body,
             ).await?;
@@ -22676,19 +21421,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchCarriers {
-            version,
             keyword,
             descending,
             start,
             limit,
             active_only,
         } => {
-            info!("Performing a SearchCarriers request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchCarriers request");
 
             let result = client.search_carriers(
-                version,
                 keyword,
                 descending,
                 start,
@@ -22706,7 +21447,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CategoryDistanceSearch {
-            version,
             account_id,
             keyword,
             app_key,
@@ -22728,12 +21468,9 @@ async fn main() -> Result<()> {
             longitude,
             range,
         } => {
-            info!("Performing a CategoryDistanceSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a CategoryDistanceSearch request");
 
             let result = client.category_distance_search(
-                version,
                 account_id,
                 keyword,
                 app_key,
@@ -22766,7 +21503,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateCategory {
-            version,
             account_id,
             name,
             app_key,
@@ -22782,12 +21518,9 @@ async fn main() -> Result<()> {
             meta_data,
             search_tags,
         } => {
-            info!("Performing a CreateCategory request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateCategory request");
 
             let result = client.create_category(
-                version,
                 account_id,
                 name,
                 app_key,
@@ -22814,16 +21547,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteCategory {
-            version,
             account_id,
             category_id,
         } => {
-            info!("Performing a DeleteCategory request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteCategory request");
 
             let result = client.delete_category(
-                version,
                 account_id,
                 category_id,
             ).await?;
@@ -22838,18 +21567,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DuplicateCategory {
-            version,
             account_id,
             category_id,
             app_key,
             parent_category_id,
         } => {
-            info!("Performing a DuplicateCategory request on {:?}", (
-                &version
-            ));
+            info!("Performing a DuplicateCategory request");
 
             let result = client.duplicate_category(
-                version,
                 account_id,
                 category_id,
                 app_key,
@@ -22866,16 +21591,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCategory {
-            version,
             category_id,
             return_external,
         } => {
-            info!("Performing a GetCategory request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCategory request");
 
             let result = client.get_category(
-                version,
                 category_id,
                 return_external,
             ).await?;
@@ -22890,7 +21611,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchCategories {
-            version,
             account_id,
             keyword,
             app_key,
@@ -22913,12 +21633,9 @@ async fn main() -> Result<()> {
             search_depth,
             search_mode,
         } => {
-            info!("Performing a SearchCategories request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchCategories request");
 
             let result = client.search_categories(
-                version,
                 account_id,
                 keyword,
                 app_key,
@@ -22952,7 +21669,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateCategory {
-            version,
             account_id,
             category_id,
             parent_category_id,
@@ -22968,12 +21684,9 @@ async fn main() -> Result<()> {
             meta_data,
             search_tags,
         } => {
-            info!("Performing a UpdateCategory request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateCategory request");
 
             let result = client.update_category(
-                version,
                 account_id,
                 category_id,
                 parent_category_id,
@@ -23000,7 +21713,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddConnectionToGroup {
-            version,
             return_nulls,
             group_id,
             device_id,
@@ -23011,12 +21723,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddConnectionToGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddConnectionToGroup request");
 
             let result = client.add_connection_to_group(
-                version,
                 return_nulls,
                 group_id,
                 device_id,
@@ -23038,7 +21747,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddConnectionsToGroup {
-            version,
             connection_group_id,
             device_id,
             account_id,
@@ -23047,12 +21755,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddConnectionsToGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddConnectionsToGroup request");
 
             let result = client.add_connections_to_group(
-                version,
                 connection_group_id,
                 device_id,
                 account_id,
@@ -23072,7 +21777,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddSubGroups {
-            version,
             return_nulls,
             group_id,
             sub_group_ids,
@@ -23081,12 +21785,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddSubGroups request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddSubGroups request");
 
             let result = client.add_sub_groups(
-                version,
                 return_nulls,
                 group_id,
                 sub_group_ids,
@@ -23106,7 +21807,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOrUpdateConnection {
-            version,
             device_id,
             account_id,
             connection_id,
@@ -23122,12 +21822,9 @@ async fn main() -> Result<()> {
             is_following,
             connection_response,
         } => {
-            info!("Performing a CreateOrUpdateConnection request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOrUpdateConnection request");
 
             let result = client.create_or_update_connection(
-                version,
                 device_id,
                 account_id,
                 connection_id,
@@ -23154,7 +21851,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOrUpdateGroup {
-            version,
             return_nulls,
             device_id,
             account_id,
@@ -23170,12 +21866,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreateOrUpdateGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOrUpdateGroup request");
 
             let result = client.create_or_update_group(
-                version,
                 return_nulls,
                 device_id,
                 account_id,
@@ -23202,17 +21895,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FollowAccept {
-            version,
             account_id,
             connection_account_id,
             app_key,
         } => {
-            info!("Performing a FollowAccept request on {:?}", (
-                &version
-            ));
+            info!("Performing a FollowAccept request");
 
             let result = client.follow_accept(
-                version,
                 account_id,
                 connection_account_id,
                 app_key,
@@ -23228,17 +21917,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FollowReject {
-            version,
             account_id,
             connection_account_id,
             app_key,
         } => {
-            info!("Performing a FollowReject request on {:?}", (
-                &version
-            ));
+            info!("Performing a FollowReject request");
 
             let result = client.follow_reject(
-                version,
                 account_id,
                 connection_account_id,
                 app_key,
@@ -23254,17 +21939,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FollowRemove {
-            version,
             account_id,
             connection_account_id,
             app_key,
         } => {
-            info!("Performing a FollowRemove request on {:?}", (
-                &version
-            ));
+            info!("Performing a FollowRemove request");
 
             let result = client.follow_remove(
-                version,
                 account_id,
                 connection_account_id,
                 app_key,
@@ -23280,18 +21961,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FollowRequest {
-            version,
             account_id,
             connection_account_id,
             app_key,
             approval_needed,
         } => {
-            info!("Performing a FollowRequest request on {:?}", (
-                &version
-            ));
+            info!("Performing a FollowRequest request");
 
             let result = client.follow_request(
-                version,
                 account_id,
                 connection_account_id,
                 app_key,
@@ -23308,7 +21985,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FriendAccept {
-            version,
             friend_account_id,
             notify_friend,
             device_id,
@@ -23317,12 +21993,9 @@ async fn main() -> Result<()> {
             app_key,
             notification_message,
         } => {
-            info!("Performing a FriendAccept request on {:?}", (
-                &version
-            ));
+            info!("Performing a FriendAccept request");
 
             let result = client.friend_accept(
-                version,
                 friend_account_id,
                 notify_friend,
                 device_id,
@@ -23342,7 +22015,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FriendReject {
-            version,
             friend_account_id,
             device_id,
             account_id,
@@ -23351,12 +22023,9 @@ async fn main() -> Result<()> {
             notify_friend,
             notification_message,
         } => {
-            info!("Performing a FriendReject request on {:?}", (
-                &version
-            ));
+            info!("Performing a FriendReject request");
 
             let result = client.friend_reject(
-                version,
                 friend_account_id,
                 device_id,
                 account_id,
@@ -23376,19 +22045,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FriendRemove {
-            version,
             friend_account_id,
             device_id,
             account_id,
             notify_friend,
             remove_from_groups,
         } => {
-            info!("Performing a FriendRemove request on {:?}", (
-                &version
-            ));
+            info!("Performing a FriendRemove request");
 
             let result = client.friend_remove(
-                version,
                 friend_account_id,
                 device_id,
                 account_id,
@@ -23406,7 +22071,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FriendRequest {
-            version,
             friend_account_id,
             device_id,
             account_id,
@@ -23414,12 +22078,9 @@ async fn main() -> Result<()> {
             app_key,
             notification_message,
         } => {
-            info!("Performing a FriendRequest request on {:?}", (
-                &version
-            ));
+            info!("Performing a FriendRequest request");
 
             let result = client.friend_request(
-                version,
                 friend_account_id,
                 device_id,
                 account_id,
@@ -23438,16 +22099,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetConnectionSentFriendRequests {
-            version,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetConnectionSentFriendRequests request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetConnectionSentFriendRequests request");
 
             let result = client.get_connection_sent_friend_requests(
-                version,
                 device_id,
                 account_id,
             ).await?;
@@ -23462,7 +22119,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetConnections {
-            version,
             return_nulls,
             filter,
             sort_field,
@@ -23479,12 +22135,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetConnections request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetConnections request");
 
             let result = client.get_connections(
-                version,
                 return_nulls,
                 filter,
                 sort_field,
@@ -23512,7 +22165,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGroupDetails {
-            version,
             combine_connections,
             device_id,
             account_id,
@@ -23520,12 +22172,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetGroupDetails request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGroupDetails request");
 
             let result = client.get_group_details(
-                version,
                 combine_connections,
                 device_id,
                 account_id,
@@ -23544,7 +22193,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GroupSearch {
-            version,
             sort_field,
             descending,
             active_only,
@@ -23556,12 +22204,9 @@ async fn main() -> Result<()> {
             longitude,
             keyword,
         } => {
-            info!("Performing a GroupSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a GroupSearch request");
 
             let result = client.group_search(
-                version,
                 sort_field,
                 descending,
                 active_only,
@@ -23584,7 +22229,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveConnectionFromGroup {
-            version,
             return_nulls,
             group_id,
             device_id,
@@ -23595,12 +22239,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveConnectionFromGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveConnectionFromGroup request");
 
             let result = client.remove_connection_from_group(
-                version,
                 return_nulls,
                 group_id,
                 device_id,
@@ -23622,7 +22263,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveConnectionsFromGroup {
-            version,
             connection_group_id,
             device_id,
             account_id,
@@ -23631,12 +22271,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveConnectionsFromGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveConnectionsFromGroup request");
 
             let result = client.remove_connections_from_group(
-                version,
                 connection_group_id,
                 device_id,
                 account_id,
@@ -23656,7 +22293,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveGroup {
-            version,
             return_nulls,
             group_id,
             device_id,
@@ -23664,12 +22300,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveGroup request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveGroup request");
 
             let result = client.remove_group(
-                version,
                 return_nulls,
                 group_id,
                 device_id,
@@ -23688,7 +22321,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveSubGroups {
-            version,
             return_nulls,
             group_id,
             sub_group_ids,
@@ -23697,12 +22329,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveSubGroups request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveSubGroups request");
 
             let result = client.remove_sub_groups(
-                version,
                 return_nulls,
                 group_id,
                 sub_group_ids,
@@ -23722,7 +22351,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchConnections {
-            version,
             return_nulls,
             start,
             limit,
@@ -23739,12 +22367,9 @@ async fn main() -> Result<()> {
             sort_field,
             has_location,
         } => {
-            info!("Performing a SearchConnections request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchConnections request");
 
             let result = client.search_connections(
-                version,
                 return_nulls,
                 start,
                 limit,
@@ -23772,7 +22397,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddOrUpdateAlbumContest {
-            version,
             public_read,
             public_write,
             public_delete,
@@ -23799,12 +22423,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddOrUpdateAlbumContest request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddOrUpdateAlbumContest request");
 
             let result = client.add_or_update_album_contest(
-                version,
                 public_read,
                 public_write,
                 public_delete,
@@ -23842,18 +22463,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ApproveAlbumContest {
-            version,
             album_contest_id,
             approval_status,
             device_id,
             account_id,
         } => {
-            info!("Performing a ApproveAlbumContest request on {:?}", (
-                &version
-            ));
+            info!("Performing a ApproveAlbumContest request");
 
             let result = client.approve_album_contest(
-                version,
                 album_contest_id,
                 approval_status,
                 device_id,
@@ -23870,19 +22487,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteContest {
-            version,
             album_contest_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a DeleteContest request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteContest request");
 
             let result = client.delete_contest(
-                version,
                 album_contest_id,
                 device_id,
                 account_id,
@@ -23900,19 +22513,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAlbumContest {
-            version,
             album_contest_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a GetAlbumContest request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAlbumContest request");
 
             let result = client.get_album_contest(
-                version,
                 album_contest_id,
                 device_id,
                 account_id,
@@ -23930,7 +22539,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAlbumContests {
-            version,
             filter,
             sort_field,
             descending,
@@ -23951,12 +22559,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetAlbumContests request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetAlbumContests request");
 
             let result = client.get_album_contests(
-                version,
                 filter,
                 sort_field,
                 descending,
@@ -23988,7 +22593,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::VoteOnAlbumContest {
-            version,
             album_contest_id,
             album_id,
             device_id,
@@ -23997,12 +22601,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a VoteOnAlbumContest request on {:?}", (
-                &version
-            ));
+            info!("Performing a VoteOnAlbumContest request");
 
             let result = client.vote_on_album_contest(
-                version,
                 album_contest_id,
                 album_id,
                 device_id,
@@ -24022,16 +22623,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddPreview {
-            version,
             account_id,
             creative_id,
         } => {
-            info!("Performing a AddPreview request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddPreview request");
 
             let result = client.add_preview(
-                version,
                 account_id,
                 creative_id,
             ).await?;
@@ -24046,7 +22643,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AdsFind {
-            version,
             app_key,
             randomize,
             targeted_ads_only,
@@ -24064,12 +22660,9 @@ async fn main() -> Result<()> {
             allocates_tickets,
             mission_ids,
         } => {
-            info!("Performing a AdsFind request on {:?}", (
-                &version
-            ));
+            info!("Performing a AdsFind request");
 
             let result = client.ads_find(
-                version,
                 app_key,
                 randomize,
                 targeted_ads_only,
@@ -24098,7 +22691,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateCreative {
-            version,
             account_id,
             name,
             active,
@@ -24115,12 +22707,9 @@ async fn main() -> Result<()> {
             mission_id,
             offer_id,
         } => {
-            info!("Performing a CreateCreative request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateCreative request");
 
             let result = client.create_creative(
-                version,
                 account_id,
                 name,
                 active,
@@ -24148,16 +22737,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteCreative {
-            version,
             account_id,
             creative_id,
         } => {
-            info!("Performing a DeleteCreative request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteCreative request");
 
             let result = client.delete_creative(
-                version,
                 account_id,
                 creative_id,
             ).await?;
@@ -24172,16 +22757,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCreative {
-            version,
             account_id,
             creative_id,
         } => {
-            info!("Performing a GetCreative request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCreative request");
 
             let result = client.get_creative(
-                version,
                 account_id,
                 creative_id,
             ).await?;
@@ -24196,7 +22777,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCreativesByApplication {
-            version,
             account_id,
             app_key,
             start,
@@ -24204,12 +22784,9 @@ async fn main() -> Result<()> {
             mission_id,
             keyword,
         } => {
-            info!("Performing a GetCreativesByApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCreativesByApplication request");
 
             let result = client.get_creatives_by_application(
-                version,
                 account_id,
                 app_key,
                 start,
@@ -24228,16 +22805,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemovePreview {
-            version,
             account_id,
             creative_id,
         } => {
-            info!("Performing a RemovePreview request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemovePreview request");
 
             let result = client.remove_preview(
-                version,
                 account_id,
                 creative_id,
             ).await?;
@@ -24252,7 +22825,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateCreative {
-            version,
             account_id,
             creative_id,
             name,
@@ -24268,12 +22840,9 @@ async fn main() -> Result<()> {
             app_version,
             mission_id,
         } => {
-            info!("Performing a UpdateCreative request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateCreative request");
 
             let result = client.update_creative(
-                version,
                 account_id,
                 creative_id,
                 name,
@@ -24300,17 +22869,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Create {
-            version,
             account_id,
             body,
         } => {
             info!("Performing a Create request on {:?}", (
-                &version,
                 &account_id
             ));
 
             let result = client.create(
-                version,
                 account_id,
                 body,
             ).await?;
@@ -24325,16 +22891,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetDependents {
-            version,
             account_id,
         } => {
             info!("Performing a GetDependents request on {:?}", (
-                &version,
                 &account_id
             ));
 
             let result = client.get_dependents(
-                version,
                 account_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -24348,19 +22911,16 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveDependent {
-            version,
             account_id,
             dependent_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a RemoveDependent request on {:?}", (
-                &version,
                 &account_id,
                 &dependent_id
             ));
 
             let result = client.remove_dependent(
-                version,
                 account_id,
                 dependent_id,
             ).await?;
@@ -24373,15 +22933,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CheckDisbursements {
-            version,
             disbursement_id,
         } => {
-            info!("Performing a CheckDisbursements request on {:?}", (
-                &version
-            ));
+            info!("Performing a CheckDisbursements request");
 
             let result = client.check_disbursements(
-                version,
                 disbursement_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -24395,7 +22951,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateDisbursement {
-            version,
             account_id,
             receiver_account_id,
             original_sender_account_id,
@@ -24407,12 +22962,9 @@ async fn main() -> Result<()> {
             external_id,
             introspection_params,
         } => {
-            info!("Performing a CreateDisbursement request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateDisbursement request");
 
             let result = client.create_disbursement(
-                version,
                 account_id,
                 receiver_account_id,
                 original_sender_account_id,
@@ -24435,16 +22987,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetDisbursement {
-            version,
             account_id,
             disbursement_id,
         } => {
-            info!("Performing a GetDisbursement request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetDisbursement request");
 
             let result = client.get_disbursement(
-                version,
                 account_id,
                 disbursement_id,
             ).await?;
@@ -24459,7 +23007,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchDisbursements {
-            version,
             account_id,
             receiver_account_id,
             statuses,
@@ -24471,12 +23018,9 @@ async fn main() -> Result<()> {
             active_only,
             external_id,
         } => {
-            info!("Performing a SearchDisbursements request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchDisbursements request");
 
             let result = client.search_disbursements(
-                version,
                 account_id,
                 receiver_account_id,
                 statuses,
@@ -24499,7 +23043,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateDisbursement {
-            version,
             account_id,
             disbursement_id,
             amount,
@@ -24511,12 +23054,9 @@ async fn main() -> Result<()> {
             retry,
             introspection_params,
         } => {
-            info!("Performing a UpdateDisbursement request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateDisbursement request");
 
             let result = client.update_disbursement(
-                version,
                 account_id,
                 disbursement_id,
                 amount,
@@ -24539,18 +23079,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignEmployee {
-            version,
             account_id,
             manager_account_id,
             employee_account_id,
             role,
         } => {
-            info!("Performing a AssignEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignEmployee request");
 
             let result = client.assign_employee(
-                version,
                 account_id,
                 manager_account_id,
                 employee_account_id,
@@ -24567,18 +23103,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AssignToLocationEmployee {
-            version,
             account_id,
             retailer_location_id,
             employee_account_id,
             assign,
         } => {
-            info!("Performing a AssignToLocationEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a AssignToLocationEmployee request");
 
             let result = client.assign_to_location_employee(
-                version,
                 account_id,
                 retailer_location_id,
                 employee_account_id,
@@ -24595,7 +23127,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateEmployee {
-            version,
             account_id,
             manager_account_id,
             username,
@@ -24627,12 +23158,9 @@ async fn main() -> Result<()> {
             app_blob,
             assigned_device_id,
         } => {
-            info!("Performing a CreateEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateEmployee request");
 
             let result = client.create_employee(
-                version,
                 account_id,
                 manager_account_id,
                 username,
@@ -24675,16 +23203,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteEmployee {
-            version,
             account_id,
             employee_account_id,
         } => {
-            info!("Performing a DeleteEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteEmployee request");
 
             let result = client.delete_employee(
-                version,
                 account_id,
                 employee_account_id,
             ).await?;
@@ -24699,17 +23223,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetEmployee {
-            version,
             account_id,
             employee_account_id,
             settings_app_key,
         } => {
-            info!("Performing a GetEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetEmployee request");
 
             let result = client.get_employee(
-                version,
                 account_id,
                 employee_account_id,
                 settings_app_key,
@@ -24725,7 +23245,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchEmployees {
-            version,
             account_id,
             role,
             retailer_id,
@@ -24744,12 +23263,9 @@ async fn main() -> Result<()> {
             category_ids,
             query,
         } => {
-            info!("Performing a SearchEmployees request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchEmployees request");
 
             let result = client.search_employees(
-                version,
                 account_id,
                 role,
                 retailer_id,
@@ -24779,16 +23295,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UnassignEmployee {
-            version,
             account_id,
             employee_account_id,
         } => {
-            info!("Performing a UnassignEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a UnassignEmployee request");
 
             let result = client.unassign_employee(
-                version,
                 account_id,
                 employee_account_id,
             ).await?;
@@ -24803,7 +23315,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateEmployee {
-            version,
             account_id,
             employee_account_id,
             manager_account_id,
@@ -24835,12 +23346,9 @@ async fn main() -> Result<()> {
             app_blob,
             assigned_device_id,
         } => {
-            info!("Performing a UpdateEmployee request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateEmployee request");
 
             let result = client.update_employee(
-                version,
                 account_id,
                 employee_account_id,
                 manager_account_id,
@@ -24883,7 +23391,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AttendEvent {
-            version,
             device_id,
             account_id,
             app_key,
@@ -24895,12 +23402,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AttendEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a AttendEvent request");
 
             let result = client.attend_event(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -24923,7 +23427,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateEvent {
-            version,
             account_id,
             title,
             retailer_location_ids,
@@ -24937,12 +23440,9 @@ async fn main() -> Result<()> {
             redeemable_end,
             meta_data,
         } => {
-            info!("Performing a CreateEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateEvent request");
 
             let result = client.create_event(
-                version,
                 account_id,
                 title,
                 retailer_location_ids,
@@ -24967,16 +23467,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteEvent {
-            version,
             account_id,
             event_id,
         } => {
-            info!("Performing a DeleteEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteEvent request");
 
             let result = client.delete_event(
-                version,
                 account_id,
                 event_id,
             ).await?;
@@ -24991,16 +23487,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetEvent {
-            version,
             account_id,
             event_id,
         } => {
-            info!("Performing a GetEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetEvent request");
 
             let result = client.get_event(
-                version,
                 account_id,
                 event_id,
             ).await?;
@@ -25015,7 +23507,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchEventTransactions {
-            version,
             device_id,
             account_id,
             app_key,
@@ -25036,12 +23527,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchEventTransactions request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchEventTransactions request");
 
             let result = client.search_event_transactions(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -25073,7 +23561,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchEvents {
-            version,
             account_id,
             keyword,
             active_only,
@@ -25088,12 +23575,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchEvents request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchEvents request");
 
             let result = client.search_events(
-                version,
                 account_id,
                 keyword,
                 active_only,
@@ -25119,7 +23603,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateEvent {
-            version,
             account_id,
             event_id,
             retailer_location_ids,
@@ -25133,12 +23616,9 @@ async fn main() -> Result<()> {
             redeemable_start,
             redeemable_end,
         } => {
-            info!("Performing a UpdateEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateEvent request");
 
             let result = client.update_event(
-                version,
                 account_id,
                 event_id,
                 retailer_location_ids,
@@ -25163,18 +23643,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetToken {
-            version,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a GetToken request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetToken request");
 
             let result = client.get_token(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -25191,7 +23667,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GraphInterface {
-            version,
             event,
             device_id,
             account_id,
@@ -25203,12 +23678,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GraphInterface request on {:?}", (
-                &version
-            ));
+            info!("Performing a GraphInterface request");
 
             let result = client.graph_interface(
-                version,
                 event,
                 device_id,
                 account_id,
@@ -25231,7 +23703,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddFavorite {
-            version,
             favoritable_id,
             favoritable_type,
             device_id,
@@ -25239,12 +23710,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddFavorite request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddFavorite request");
 
             let result = client.add_favorite(
-                version,
                 favoritable_id,
                 favoritable_type,
                 device_id,
@@ -25263,19 +23731,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteFavorite {
-            version,
             device_id,
             account_id,
             favorite_id,
             favoritable_id,
             favoritable_type,
         } => {
-            info!("Performing a DeleteFavorite request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteFavorite request");
 
             let result = client.delete_favorite(
-                version,
                 device_id,
                 account_id,
                 favorite_id,
@@ -25293,19 +23757,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetFavorite {
-            version,
             favorite_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a GetFavorite request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetFavorite request");
 
             let result = client.get_favorite(
-                version,
                 favorite_id,
                 device_id,
                 account_id,
@@ -25323,7 +23783,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchFavorites {
-            version,
             favoritable_type,
             sort_field,
             descending,
@@ -25339,12 +23798,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a SearchFavorites request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchFavorites request");
 
             let result = client.search_favorites(
-                version,
                 favoritable_type,
                 sort_field,
                 descending,
@@ -25371,7 +23827,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::WhoHasFavorited {
-            version,
             favoritable_id,
             favoritable_type,
             start,
@@ -25382,12 +23837,9 @@ async fn main() -> Result<()> {
             longitude,
             keyword,
         } => {
-            info!("Performing a WhoHasFavorited request on {:?}", (
-                &version
-            ));
+            info!("Performing a WhoHasFavorited request");
 
             let result = client.who_has_favorited(
-                version,
                 favoritable_id,
                 favoritable_type,
                 start,
@@ -25409,7 +23861,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateFilter {
-            version,
             account_id,
             name,
             app_key,
@@ -25420,12 +23871,9 @@ async fn main() -> Result<()> {
             active,
             meta_data,
         } => {
-            info!("Performing a CreateFilter request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateFilter request");
 
             let result = client.create_filter(
-                version,
                 account_id,
                 name,
                 app_key,
@@ -25447,16 +23895,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteFilter {
-            version,
             account_id,
             filter_id,
         } => {
-            info!("Performing a DeleteFilter request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteFilter request");
 
             let result = client.delete_filter(
-                version,
                 account_id,
                 filter_id,
             ).await?;
@@ -25471,15 +23915,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetFilter {
-            version,
             filter_id,
         } => {
-            info!("Performing a GetFilter request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetFilter request");
 
             let result = client.get_filter(
-                version,
                 filter_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -25493,7 +23933,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchFilters {
-            version,
             account_id,
             keyword,
             app_key,
@@ -25505,12 +23944,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchFilters request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchFilters request");
 
             let result = client.search_filters(
-                version,
                 account_id,
                 keyword,
                 app_key,
@@ -25533,7 +23969,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateFilter {
-            version,
             account_id,
             filter_id,
             parent_filter_id,
@@ -25544,12 +23979,9 @@ async fn main() -> Result<()> {
             active,
             meta_data,
         } => {
-            info!("Performing a UpdateFilter request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateFilter request");
 
             let result = client.update_filter(
-                version,
                 account_id,
                 filter_id,
                 parent_filter_id,
@@ -25571,7 +24003,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateFlag {
-            version,
             flagable_type,
             flagable_id,
             device_id,
@@ -25580,12 +24011,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreateFlag request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateFlag request");
 
             let result = client.create_flag(
-                version,
                 flagable_type,
                 flagable_id,
                 device_id,
@@ -25605,7 +24033,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteFlag {
-            version,
             device_id,
             account_id,
             item_being_flagged_type,
@@ -25613,12 +24040,9 @@ async fn main() -> Result<()> {
             flagable_type,
             flagable_id,
         } => {
-            info!("Performing a DeleteFlag request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteFlag request");
 
             let result = client.delete_flag(
-                version,
                 device_id,
                 account_id,
                 item_being_flagged_type,
@@ -25637,7 +24061,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetFlag {
-            version,
             flagable_type,
             flagable_id,
             device_id,
@@ -25645,12 +24068,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetFlag request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetFlag request");
 
             let result = client.get_flag(
-                version,
                 flagable_type,
                 flagable_id,
                 device_id,
@@ -25669,16 +24089,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetFlagThreshold {
-            version,
             item_being_flagged_type,
             app_key,
         } => {
-            info!("Performing a GetFlagThreshold request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetFlagThreshold request");
 
             let result = client.get_flag_threshold(
-                version,
                 item_being_flagged_type,
                 app_key,
             ).await?;
@@ -25693,19 +24109,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateFlagThreshold {
-            version,
             item_being_flagged_type,
             threshold,
             app_key,
             device_id,
             account_id,
         } => {
-            info!("Performing a UpdateFlagThreshold request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateFlagThreshold request");
 
             let result = client.update_flag_threshold(
-                version,
                 item_being_flagged_type,
                 threshold,
                 app_key,
@@ -25723,7 +24135,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateGame {
-            version,
             account_id,
             app_key,
             title,
@@ -25732,12 +24143,9 @@ async fn main() -> Result<()> {
             pack_ids,
             include_game_data,
         } => {
-            info!("Performing a CreateGame request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateGame request");
 
             let result = client.create_game(
-                version,
                 account_id,
                 app_key,
                 title,
@@ -25757,16 +24165,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteGame {
-            version,
             account_id,
             game_id,
         } => {
-            info!("Performing a DeleteGame request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteGame request");
 
             let result = client.delete_game(
-                version,
                 account_id,
                 game_id,
             ).await?;
@@ -25781,17 +24185,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGame {
-            version,
             account_id,
             game_id,
             include_game_data,
         } => {
-            info!("Performing a GetGame request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGame request");
 
             let result = client.get_game(
-                version,
                 account_id,
                 game_id,
                 include_game_data,
@@ -25807,7 +24207,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchGames {
-            version,
             account_id,
             app_key,
             start,
@@ -25817,12 +24216,9 @@ async fn main() -> Result<()> {
             include_game_data,
             include_inactive,
         } => {
-            info!("Performing a SearchGames request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchGames request");
 
             let result = client.search_games(
-                version,
                 account_id,
                 app_key,
                 start,
@@ -25843,7 +24239,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateGame {
-            version,
             account_id,
             game_id,
             app_key,
@@ -25853,12 +24248,9 @@ async fn main() -> Result<()> {
             pack_ids,
             include_game_data,
         } => {
-            info!("Performing a UpdateGame request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateGame request");
 
             let result = client.update_game(
-                version,
                 account_id,
                 game_id,
                 app_key,
@@ -25879,7 +24271,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateGameLevel {
-            version,
             account_id,
             name,
             game_data,
@@ -25907,12 +24298,9 @@ async fn main() -> Result<()> {
             offer_id,
             meta_data,
         } => {
-            info!("Performing a CreateGameLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateGameLevel request");
 
             let result = client.create_game_level(
-                version,
                 account_id,
                 name,
                 game_data,
@@ -25951,16 +24339,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteGameLevel {
-            version,
             account_id,
             level_id,
         } => {
-            info!("Performing a DeleteGameLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteGameLevel request");
 
             let result = client.delete_game_level(
-                version,
                 account_id,
                 level_id,
             ).await?;
@@ -25975,17 +24359,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGameLevel {
-            version,
             account_id,
             level_id,
             include_game_data,
         } => {
-            info!("Performing a GetGameLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGameLevel request");
 
             let result = client.get_game_level(
-                version,
                 account_id,
                 level_id,
                 include_game_data,
@@ -26001,7 +24381,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGameLevelsByApplication {
-            version,
             account_id,
             app_key,
             keyword,
@@ -26013,12 +24392,9 @@ async fn main() -> Result<()> {
             include_game_data,
             filters,
         } => {
-            info!("Performing a GetGameLevelsByApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGameLevelsByApplication request");
 
             let result = client.get_game_levels_by_application(
-                version,
                 account_id,
                 app_key,
                 keyword,
@@ -26041,7 +24417,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetGameLevelsByBillableEntity {
-            version,
             account_id,
             app_key,
             keyword,
@@ -26051,12 +24426,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetGameLevelsByBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetGameLevelsByBillableEntity request");
 
             let result = client.get_game_levels_by_billable_entity(
-                version,
                 account_id,
                 app_key,
                 keyword,
@@ -26077,16 +24449,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetQuestionsInLevel {
-            version,
             level_id,
             account_id,
         } => {
-            info!("Performing a GetQuestionsInLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetQuestionsInLevel request");
 
             let result = client.get_questions_in_level(
-                version,
                 level_id,
                 account_id,
             ).await?;
@@ -26101,16 +24469,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetWordsInLevel {
-            version,
             level_id,
             account_id,
         } => {
-            info!("Performing a GetWordsInLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetWordsInLevel request");
 
             let result = client.get_words_in_level(
-                version,
                 level_id,
                 account_id,
             ).await?;
@@ -26125,7 +24489,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateGameLevel {
-            version,
             account_id,
             level_id,
             app_key,
@@ -26154,12 +24517,9 @@ async fn main() -> Result<()> {
             offer_id,
             meta_data,
         } => {
-            info!("Performing a UpdateGameLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateGameLevel request");
 
             let result = client.update_game_level(
-                version,
                 account_id,
                 level_id,
                 app_key,
@@ -26199,17 +24559,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateQuestionsInLevel {
-            version,
             level_id,
             account_id,
             question_ids,
         } => {
-            info!("Performing a UpdateQuestionsInLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateQuestionsInLevel request");
 
             let result = client.update_questions_in_level(
-                version,
                 level_id,
                 account_id,
                 question_ids,
@@ -26225,17 +24581,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateWordsInLevel {
-            version,
             level_id,
             account_id,
             word_ids,
         } => {
-            info!("Performing a UpdateWordsInLevel request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateWordsInLevel request");
 
             let result = client.update_words_in_level(
-                version,
                 level_id,
                 account_id,
                 word_ids,
@@ -26251,7 +24603,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AcceptInvite {
-            version,
             token,
             account_id,
             album_id,
@@ -26267,12 +24618,9 @@ async fn main() -> Result<()> {
             auto_favorite_offer_location,
             auto_favorite_retailer_location,
         } => {
-            info!("Performing a AcceptInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a AcceptInvite request");
 
             let result = client.accept_invite(
-                version,
                 token,
                 account_id,
                 album_id,
@@ -26299,7 +24647,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AlbumContestInvite {
-            version,
             device_id,
             account_id,
             app_id,
@@ -26308,12 +24655,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AlbumContestInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a AlbumContestInvite request");
 
             let result = client.album_contest_invite(
-                version,
                 device_id,
                 account_id,
                 app_id,
@@ -26333,7 +24677,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AlbumInvite {
-            version,
             device_id,
             account_id,
             app_id,
@@ -26342,12 +24685,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AlbumInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a AlbumInvite request");
 
             let result = client.album_invite(
-                version,
                 device_id,
                 account_id,
                 app_id,
@@ -26367,19 +24707,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::EventInvite {
-            version,
             account_id,
             app_key,
             listing_id,
             receiver_account_ids,
             retailer_location_id,
         } => {
-            info!("Performing a EventInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a EventInvite request");
 
             let result = client.event_invite(
-                version,
                 account_id,
                 app_key,
                 listing_id,
@@ -26397,7 +24733,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GameInvite {
-            version,
             device_id,
             account_id,
             app_id,
@@ -26406,12 +24741,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GameInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a GameInvite request");
 
             let result = client.game_invite(
-                version,
                 device_id,
                 account_id,
                 app_id,
@@ -26431,7 +24763,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetInvite {
-            version,
             account_id,
             token,
             album_id,
@@ -26442,12 +24773,9 @@ async fn main() -> Result<()> {
             retailer_location_id,
             app_key,
         } => {
-            info!("Performing a GetInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetInvite request");
 
             let result = client.get_invite(
-                version,
                 account_id,
                 token,
                 album_id,
@@ -26469,7 +24797,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::MissionInvite {
-            version,
             device_id,
             account_id,
             app_id,
@@ -26478,12 +24805,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a MissionInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a MissionInvite request");
 
             let result = client.mission_invite(
-                version,
                 device_id,
                 account_id,
                 app_id,
@@ -26503,17 +24827,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::OfferInvite {
-            version,
             account_id,
             app_key,
             offer_id,
         } => {
-            info!("Performing a OfferInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a OfferInvite request");
 
             let result = client.offer_invite(
-                version,
                 account_id,
                 app_key,
                 offer_id,
@@ -26529,17 +24849,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::OfferLocationInvite {
-            version,
             account_id,
             app_key,
             offer_location_id,
         } => {
-            info!("Performing a OfferLocationInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a OfferLocationInvite request");
 
             let result = client.offer_location_invite(
-                version,
                 account_id,
                 app_key,
                 offer_location_id,
@@ -26555,18 +24871,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RetailerLocationInvite {
-            version,
             account_id,
             app_key,
             retailer_location_id,
             album_id,
         } => {
-            info!("Performing a RetailerLocationInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a RetailerLocationInvite request");
 
             let result = client.retailer_location_invite(
-                version,
                 account_id,
                 app_key,
                 retailer_location_id,
@@ -26583,7 +24895,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateLeaderboard {
-            version,
             account_id,
             app_key,
             rank_type,
@@ -26598,12 +24909,9 @@ async fn main() -> Result<()> {
             description,
             meta_data,
         } => {
-            info!("Performing a CreateLeaderboard request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateLeaderboard request");
 
             let result = client.create_leaderboard(
-                version,
                 account_id,
                 app_key,
                 rank_type,
@@ -26629,16 +24937,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteLeaderboard {
-            version,
             leaderboard_id,
             account_id,
         } => {
-            info!("Performing a DeleteLeaderboard request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteLeaderboard request");
 
             let result = client.delete_leaderboard(
-                version,
                 leaderboard_id,
                 account_id,
             ).await?;
@@ -26653,17 +24957,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetLeaderboard {
-            version,
             leaderboard_id,
             account_id,
             include_full_ranking_list,
         } => {
-            info!("Performing a GetLeaderboard request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetLeaderboard request");
 
             let result = client.get_leaderboard(
-                version,
                 leaderboard_id,
                 account_id,
                 include_full_ranking_list,
@@ -26679,7 +24979,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchLeaderboards {
-            version,
             account_id,
             app_key,
             global_only,
@@ -26693,12 +24992,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchLeaderboards request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchLeaderboards request");
 
             let result = client.search_leaderboards(
-                version,
                 account_id,
                 app_key,
                 global_only,
@@ -26723,7 +25019,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateLeaderboard {
-            version,
             leaderboard_id,
             account_id,
             app_key,
@@ -26740,12 +25035,9 @@ async fn main() -> Result<()> {
             description,
             meta_data,
         } => {
-            info!("Performing a UpdateLeaderboard request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateLeaderboard request");
 
             let result = client.update_leaderboard(
-                version,
                 leaderboard_id,
                 account_id,
                 app_key,
@@ -26773,7 +25065,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RegisterLike {
-            version,
             likable_type,
             likable_id,
             device_id,
@@ -26787,12 +25078,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RegisterLike request on {:?}", (
-                &version
-            ));
+            info!("Performing a RegisterLike request");
 
             let result = client.register_like(
-                version,
                 likable_type,
                 likable_id,
                 device_id,
@@ -26817,7 +25105,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveLike {
-            version,
             likable_type,
             likable_id,
             device_id,
@@ -26825,12 +25112,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveLike request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveLike request");
 
             let result = client.remove_like(
-                version,
                 likable_type,
                 likable_id,
                 device_id,
@@ -26849,7 +25133,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchLikes {
-            version,
             likable_type,
             likable_id,
             device_id,
@@ -26862,12 +25145,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchLikes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchLikes request");
 
             let result = client.search_likes(
-                version,
                 likable_type,
                 likable_id,
                 device_id,
@@ -26891,7 +25171,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateListing {
-            version,
             account_id,
             name,
             filter_ids,
@@ -26907,12 +25186,9 @@ async fn main() -> Result<()> {
             active,
             meta_data,
         } => {
-            info!("Performing a CreateListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateListing request");
 
             let result = client.create_listing(
-                version,
                 account_id,
                 name,
                 filter_ids,
@@ -26939,16 +25215,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteListing {
-            version,
             account_id,
             listing_id,
         } => {
-            info!("Performing a DeleteListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteListing request");
 
             let result = client.delete_listing(
-                version,
                 account_id,
                 listing_id,
             ).await?;
@@ -26963,15 +25235,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetListing {
-            version,
             listing_id,
         } => {
-            info!("Performing a GetListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetListing request");
 
             let result = client.get_listing(
-                version,
                 listing_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -26985,7 +25253,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchListing {
-            version,
             account_id,
             keyword,
             start,
@@ -27002,12 +25269,9 @@ async fn main() -> Result<()> {
             external_id2,
             external_group_id,
         } => {
-            info!("Performing a SearchListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchListing request");
 
             let result = client.search_listing(
-                version,
                 account_id,
                 keyword,
                 start,
@@ -27035,19 +25299,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SummaryListing {
-            version,
             account_id,
             start_date,
             category_ids,
             days_to_include,
             use_listing_order_ids,
         } => {
-            info!("Performing a SummaryListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a SummaryListing request");
 
             let result = client.summary_listing(
-                version,
                 account_id,
                 start_date,
                 category_ids,
@@ -27065,7 +25325,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateListing {
-            version,
             account_id,
             listing_id,
             filter_ids,
@@ -27082,12 +25341,9 @@ async fn main() -> Result<()> {
             active,
             meta_data,
         } => {
-            info!("Performing a UpdateListing request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateListing request");
 
             let result = client.update_listing(
-                version,
                 account_id,
                 listing_id,
                 filter_ids,
@@ -27115,19 +25371,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CacheTrilaterationData {
-            version,
             udid,
             source_time,
             minimum_sample_size,
             data,
             data_file,
         } => {
-            info!("Performing a CacheTrilaterationData request on {:?}", (
-                &version
-            ));
+            info!("Performing a CacheTrilaterationData request");
 
             let result = client.cache_trilateration_data(
-                version,
                 udid,
                 source_time,
                 minimum_sample_size,
@@ -27145,15 +25397,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CacheTrilaterationDataGzip {
-            version,
             body,
         } => {
-            info!("Performing a CacheTrilaterationDataGzip request on {:?}", (
-                &version
-            ));
+            info!("Performing a CacheTrilaterationDataGzip request");
 
             let result = client.cache_trilateration_data_gzip(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -27167,15 +25415,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetLocationByIp {
-            version,
             ip,
         } => {
-            info!("Performing a GetLocationByIp request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetLocationByIp request");
 
             let result = client.get_location_by_ip(
-                version,
                 ip,
             ).await?;
             debug!("Result: {:?}", result);
@@ -27189,19 +25433,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetLocationByTrilateration {
-            version,
             account_id,
             latitude,
             longitude,
             data,
             response_filters,
         } => {
-            info!("Performing a GetLocationByTrilateration request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetLocationByTrilateration request");
 
             let result = client.get_location_by_trilateration(
-                version,
                 account_id,
                 latitude,
                 longitude,
@@ -27219,7 +25459,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetLocations {
-            version,
             device_id,
             account_id,
             currentlatitude,
@@ -27240,12 +25479,9 @@ async fn main() -> Result<()> {
             _l,
             limit,
         } => {
-            info!("Performing a GetLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetLocations request");
 
             let result = client.get_locations(
-                version,
                 device_id,
                 account_id,
                 currentlatitude,
@@ -27277,15 +25513,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateLocationV2 {
-            version,
             body,
         } => {
-            info!("Performing a CreateLocationV2 request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateLocationV2 request");
 
             let result = client.create_location_v2(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -27299,17 +25531,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateLocationV2 {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateLocationV2 request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_location_v2(
-                version,
                 id,
                 body,
             ).await?;
@@ -27324,7 +25553,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateMedia {
-            version,
             account_id,
             title,
             barcode_type,
@@ -27383,12 +25611,9 @@ async fn main() -> Result<()> {
             availability,
             availability_summary,
         } => {
-            info!("Performing a CreateMedia request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateMedia request");
 
             let result = client.create_media(
-                version,
                 account_id,
                 title,
                 barcode_type,
@@ -27458,16 +25683,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteMedia {
-            version,
             account_id,
             media_id,
         } => {
-            info!("Performing a DeleteMedia request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteMedia request");
 
             let result = client.delete_media(
-                version,
                 account_id,
                 media_id,
             ).await?;
@@ -27482,16 +25703,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetMedia {
-            version,
             account_id,
             media_id,
         } => {
-            info!("Performing a GetMedia request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetMedia request");
 
             let result = client.get_media(
-                version,
                 account_id,
                 media_id,
             ).await?;
@@ -27506,7 +25723,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchMedia {
-            version,
             account_id,
             active_only,
             sort_field,
@@ -27517,12 +25733,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchMedia request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchMedia request");
 
             let result = client.search_media(
-                version,
                 account_id,
                 active_only,
                 sort_field,
@@ -27544,7 +25757,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateMedia {
-            version,
             account_id,
             media_id,
             retailer_location_ids,
@@ -27605,12 +25817,9 @@ async fn main() -> Result<()> {
             availability,
             availability_summary,
         } => {
-            info!("Performing a UpdateMedia request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateMedia request");
 
             let result = client.update_media(
-                version,
                 account_id,
                 media_id,
                 retailer_location_ids,
@@ -27682,7 +25891,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateMission {
-            version,
             account_id,
             title,
             description,
@@ -27710,12 +25918,9 @@ async fn main() -> Result<()> {
             locations,
             radius,
         } => {
-            info!("Performing a CreateMission request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateMission request");
 
             let result = client.create_mission(
-                version,
                 account_id,
                 title,
                 description,
@@ -27754,16 +25959,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteMission {
-            version,
             account_id,
             mission_id,
         } => {
-            info!("Performing a DeleteMission request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteMission request");
 
             let result = client.delete_mission(
-                version,
                 account_id,
                 mission_id,
             ).await?;
@@ -27778,7 +25979,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FindMissions {
-            version,
             app_key,
             suffix,
             param_type,
@@ -27799,12 +25999,9 @@ async fn main() -> Result<()> {
             mission_ids,
             audience_operator,
         } => {
-            info!("Performing a FindMissions request on {:?}", (
-                &version
-            ));
+            info!("Performing a FindMissions request");
 
             let result = client.find_missions(
-                version,
                 app_key,
                 suffix,
                 param_type,
@@ -27836,17 +26033,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetMission {
-            version,
             account_id,
             mission_id,
             return_creative,
         } => {
-            info!("Performing a GetMission request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetMission request");
 
             let result = client.get_mission(
-                version,
                 account_id,
                 mission_id,
                 return_creative,
@@ -27862,7 +26055,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ImportMission {
-            version,
             account_id,
             latitude,
             longitude,
@@ -27872,12 +26064,9 @@ async fn main() -> Result<()> {
             limit,
             ad_size,
         } => {
-            info!("Performing a ImportMission request on {:?}", (
-                &version
-            ));
+            info!("Performing a ImportMission request");
 
             let result = client.import_mission(
-                version,
                 account_id,
                 latitude,
                 longitude,
@@ -27898,17 +26087,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchMissionFormats {
-            version,
             start,
             limit,
             active_only,
         } => {
-            info!("Performing a SearchMissionFormats request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchMissionFormats request");
 
             let result = client.search_mission_formats(
-                version,
                 start,
                 limit,
                 active_only,
@@ -27924,7 +26109,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchMissions {
-            version,
             account_id,
             keyword,
             sub_type,
@@ -27937,12 +26121,9 @@ async fn main() -> Result<()> {
             sort_field,
             descending,
         } => {
-            info!("Performing a SearchMissions request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchMissions request");
 
             let result = client.search_missions(
-                version,
                 account_id,
                 keyword,
                 sub_type,
@@ -27966,7 +26147,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchMissionsByBillableEntity {
-            version,
             account_id,
             keyword,
             start,
@@ -27978,12 +26158,9 @@ async fn main() -> Result<()> {
             sort_field,
             descending,
         } => {
-            info!("Performing a SearchMissionsByBillableEntity request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchMissionsByBillableEntity request");
 
             let result = client.search_missions_by_billable_entity(
-                version,
                 account_id,
                 keyword,
                 start,
@@ -28006,7 +26183,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateMission {
-            version,
             account_id,
             mission_id,
             title,
@@ -28033,12 +26209,9 @@ async fn main() -> Result<()> {
             locations,
             radius,
         } => {
-            info!("Performing a UpdateMission request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateMission request");
 
             let result = client.update_mission(
-                version,
                 account_id,
                 mission_id,
                 title,
@@ -28076,19 +26249,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateMissionInvite {
-            version,
             device_id,
             account_id,
             mission_id,
             join_code,
             include_game_data,
         } => {
-            info!("Performing a CreateMissionInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateMissionInvite request");
 
             let result = client.create_mission_invite(
-                version,
                 device_id,
                 account_id,
                 mission_id,
@@ -28106,19 +26275,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteMissionInvite {
-            version,
             device_id,
             account_id,
             mission_id,
             mission_invite_id,
             include_game_data,
         } => {
-            info!("Performing a DeleteMissionInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteMissionInvite request");
 
             let result = client.delete_mission_invite(
-                version,
                 device_id,
                 account_id,
                 mission_id,
@@ -28136,7 +26301,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetMissionInvite {
-            version,
             device_id,
             account_id,
             mission_id,
@@ -28144,12 +26308,9 @@ async fn main() -> Result<()> {
             include_game_data,
             include_scores,
         } => {
-            info!("Performing a GetMissionInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetMissionInvite request");
 
             let result = client.get_mission_invite(
-                version,
                 device_id,
                 account_id,
                 mission_id,
@@ -28168,7 +26329,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchMissionInvites {
-            version,
             device_id,
             account_id,
             app_key,
@@ -28183,12 +26343,9 @@ async fn main() -> Result<()> {
             filter_by_billable,
             include_game_data,
         } => {
-            info!("Performing a SearchMissionInvites request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchMissionInvites request");
 
             let result = client.search_mission_invites(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -28214,7 +26371,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateMissionInvite {
-            version,
             device_id,
             account_id,
             app_key,
@@ -28227,12 +26383,9 @@ async fn main() -> Result<()> {
             permissionable_id,
             include_game_data,
         } => {
-            info!("Performing a UpdateMissionInvite request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateMissionInvite request");
 
             let result = client.update_mission_invite(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -28256,19 +26409,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::BatchOperation {
-            version,
             notable_id,
             notable_type,
             device_id,
             account_id,
             batch_operation,
         } => {
-            info!("Performing a BatchOperation request on {:?}", (
-                &version
-            ));
+            info!("Performing a BatchOperation request");
 
             let result = client.batch_operation(
-                version,
                 notable_id,
                 notable_type,
                 device_id,
@@ -28286,7 +26435,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateNote {
-            version,
             comment,
             device_id,
             account_id,
@@ -28330,12 +26478,9 @@ async fn main() -> Result<()> {
             asset_latitude,
             asset_longitude,
         } => {
-            info!("Performing a CreateNote request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateNote request");
 
             let result = client.create_note(
-                version,
                 comment,
                 device_id,
                 account_id,
@@ -28390,7 +26535,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteNote {
-            version,
             note_id,
             device_id,
             account_id,
@@ -28398,12 +26542,9 @@ async fn main() -> Result<()> {
             longitude,
             app_key,
         } => {
-            info!("Performing a DeleteNote request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteNote request");
 
             let result = client.delete_note(
-                version,
                 note_id,
                 device_id,
                 account_id,
@@ -28422,18 +26563,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetNote {
-            version,
             note_id,
             device_id,
             account_id,
             return_full_response,
         } => {
-            info!("Performing a GetNote request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetNote request");
 
             let result = client.get_note(
-                version,
                 note_id,
                 device_id,
                 account_id,
@@ -28450,7 +26587,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchNotes {
-            version,
             device_id,
             account_id,
             notable_type,
@@ -28469,12 +26605,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchNotes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchNotes request");
 
             let result = client.search_notes(
-                version,
                 device_id,
                 account_id,
                 notable_type,
@@ -28504,7 +26637,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateNote {
-            version,
             note_id,
             device_id,
             account_id,
@@ -28547,12 +26679,9 @@ async fn main() -> Result<()> {
             asset_latitude,
             asset_longitude,
         } => {
-            info!("Performing a UpdateNote request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateNote request");
 
             let result = client.update_note(
-                version,
                 note_id,
                 device_id,
                 account_id,
@@ -28606,7 +26735,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateNotificationTemplate {
-            version,
             account_id,
             conduit,
             title,
@@ -28615,12 +26743,9 @@ async fn main() -> Result<()> {
             event,
             tags,
         } => {
-            info!("Performing a CreateNotificationTemplate request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateNotificationTemplate request");
 
             let result = client.create_notification_template(
-                version,
                 account_id,
                 conduit,
                 title,
@@ -28640,17 +26765,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOrUpdateBlockedNotifications {
-            version,
             app_key,
             data,
             account_id,
         } => {
-            info!("Performing a CreateOrUpdateBlockedNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOrUpdateBlockedNotifications request");
 
             let result = client.create_or_update_blocked_notifications(
-                version,
                 app_key,
                 data,
                 account_id,
@@ -28666,16 +26787,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteNotificationTemplate {
-            version,
             account_id,
             notification_template_id,
         } => {
-            info!("Performing a DeleteNotificationTemplate request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteNotificationTemplate request");
 
             let result = client.delete_notification_template(
-                version,
                 account_id,
                 notification_template_id,
             ).await?;
@@ -28690,16 +26807,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetNotificationTemplate {
-            version,
             account_id,
             notification_template_id,
         } => {
-            info!("Performing a GetNotificationTemplate request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetNotificationTemplate request");
 
             let result = client.get_notification_template(
-                version,
                 account_id,
                 notification_template_id,
             ).await?;
@@ -28714,7 +26827,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetNotifications {
-            version,
             device_id,
             account_id,
             connection_account_id,
@@ -28737,12 +26849,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetNotifications request");
 
             let result = client.get_notifications(
-                version,
                 device_id,
                 account_id,
                 connection_account_id,
@@ -28776,7 +26885,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RegisterNotificationToken {
-            version,
             token,
             push_type,
             device_id,
@@ -28788,12 +26896,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RegisterNotificationToken request on {:?}", (
-                &version
-            ));
+            info!("Performing a RegisterNotificationToken request");
 
             let result = client.register_notification_token(
-                version,
                 token,
                 push_type,
                 device_id,
@@ -28816,7 +26921,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchBlockedNotifications {
-            version,
             app_key,
             account_id,
             search_tags,
@@ -28830,12 +26934,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchBlockedNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchBlockedNotifications request");
 
             let result = client.search_blocked_notifications(
-                version,
                 app_key,
                 account_id,
                 search_tags,
@@ -28860,7 +26961,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchNotificationTemplate {
-            version,
             account_id,
             sort_field,
             descending,
@@ -28873,12 +26973,9 @@ async fn main() -> Result<()> {
             reserved_only,
             keyword,
         } => {
-            info!("Performing a SearchNotificationTemplate request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchNotificationTemplate request");
 
             let result = client.search_notification_template(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -28902,7 +26999,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRecipients {
-            version,
             sort_field,
             device_id,
             account_id,
@@ -28917,12 +27013,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchRecipients request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRecipients request");
 
             let result = client.search_recipients(
-                version,
                 sort_field,
                 device_id,
                 account_id,
@@ -28948,7 +27041,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRecipientsCount {
-            version,
             device_id,
             account_id,
             app_key,
@@ -28962,12 +27054,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchRecipientsCount request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRecipientsCount request");
 
             let result = client.search_recipients_count(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -28992,7 +27081,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SendBatchNotifications {
-            version,
             account_id,
             app_key,
             custom_message,
@@ -29003,12 +27091,9 @@ async fn main() -> Result<()> {
             parent_id,
             parent_type,
         } => {
-            info!("Performing a SendBatchNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a SendBatchNotifications request");
 
             let result = client.send_batch_notifications(
-                version,
                 account_id,
                 app_key,
                 custom_message,
@@ -29030,7 +27115,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SendCustomNotifications {
-            version,
             device_id,
             account_id,
             receiver_account_ids,
@@ -29050,12 +27134,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a SendCustomNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a SendCustomNotifications request");
 
             let result = client.send_custom_notifications(
-                version,
                 device_id,
                 account_id,
                 receiver_account_ids,
@@ -29086,19 +27167,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateNotificationTemplate {
-            version,
             account_id,
             notification_template_id,
             title,
             body,
             tags,
         } => {
-            info!("Performing a UpdateNotificationTemplate request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateNotificationTemplate request");
 
             let result = client.update_notification_template(
-                version,
                 account_id,
                 notification_template_id,
                 title,
@@ -29116,19 +27193,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddField {
-            version,
             account_id,
             app_key,
             object_name,
             field_name,
             field_type,
         } => {
-            info!("Performing a AddField request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddField request");
 
             let result = client.add_field(
-                version,
                 account_id,
                 app_key,
                 object_name,
@@ -29146,17 +27219,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateObject {
-            version,
             account_id,
             app_key,
             object_name,
         } => {
-            info!("Performing a CreateObject request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateObject request");
 
             let result = client.create_object(
-                version,
                 account_id,
                 app_key,
                 object_name,
@@ -29172,18 +27241,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteField {
-            version,
             account_id,
             app_key,
             object_name,
             field_name,
         } => {
-            info!("Performing a DeleteField request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteField request");
 
             let result = client.delete_field(
-                version,
                 account_id,
                 app_key,
                 object_name,
@@ -29200,17 +27265,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteObject {
-            version,
             account_id,
             app_key,
             object_name,
         } => {
-            info!("Performing a DeleteObject request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteObject request");
 
             let result = client.delete_object(
-                version,
                 account_id,
                 app_key,
                 object_name,
@@ -29226,17 +27287,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetObject {
-            version,
             account_id,
             app_key,
             object_name,
         } => {
-            info!("Performing a GetObject request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetObject request");
 
             let result = client.get_object(
-                version,
                 account_id,
                 app_key,
                 object_name,
@@ -29252,19 +27309,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchObject {
-            version,
             account_id,
             app_key,
             start,
             limit,
             keyword,
         } => {
-            info!("Performing a SearchObject request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchObject request");
 
             let result = client.search_object(
-                version,
                 account_id,
                 app_key,
                 start,
@@ -29282,18 +27335,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateData {
-            version,
             object_name,
             account_id,
             body,
         } => {
             info!("Performing a CreateData request on {:?}", (
-                &version,
                 &object_name
             ));
 
             let result = client.create_data(
-                version,
                 object_name,
                 account_id,
                 body,
@@ -29309,7 +27359,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchData {
-            version,
             object_name,
             count,
             start,
@@ -29320,12 +27369,10 @@ async fn main() -> Result<()> {
             include,
         } => {
             info!("Performing a SearchData request on {:?}", (
-                &version,
                 &object_name
             ));
 
             let result = client.search_data(
-                version,
                 object_name,
                 count,
                 start,
@@ -29346,20 +27393,17 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteData {
-            version,
             object_name,
             object_id,
             account_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteData request on {:?}", (
-                &version,
                 &object_name,
                 &object_id
             ));
 
             let result = client.delete_data(
-                version,
                 object_name,
                 object_id,
                 account_id,
@@ -29375,20 +27419,17 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetData {
-            version,
             object_name,
             object_id,
             account_id,
             include,
         } => {
             info!("Performing a GetData request on {:?}", (
-                &version,
                 &object_name,
                 &object_id
             ));
 
             let result = client.get_data(
-                version,
                 object_name,
                 object_id,
                 account_id,
@@ -29405,20 +27446,17 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateData {
-            version,
             object_name,
             object_id,
             account_id,
             body,
         } => {
             info!("Performing a UpdateData request on {:?}", (
-                &version,
                 &object_name,
                 &object_id
             ));
 
             let result = client.update_data(
-                version,
                 object_name,
                 object_id,
                 account_id,
@@ -29435,17 +27473,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::BatchUpdateOfferLocations {
-            version,
             data,
             device_id,
             account_id,
         } => {
-            info!("Performing a BatchUpdateOfferLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a BatchUpdateOfferLocations request");
 
             let result = client.batch_update_offer_locations(
-                version,
                 data,
                 device_id,
                 account_id,
@@ -29461,7 +27495,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOffer {
-            version,
             include_offer_locations,
             title,
             barcode_type,
@@ -29549,12 +27582,9 @@ async fn main() -> Result<()> {
             availability,
             availability_summary,
         } => {
-            info!("Performing a CreateOffer request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOffer request");
 
             let result = client.create_offer(
-                version,
                 include_offer_locations,
                 title,
                 barcode_type,
@@ -29653,17 +27683,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteOffer {
-            version,
             offer_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteOffer request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteOffer request");
 
             let result = client.delete_offer(
-                version,
                 offer_id,
                 device_id,
                 account_id,
@@ -29679,17 +27705,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteOfferLocation {
-            version,
             offer_location_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteOfferLocation request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteOfferLocation request");
 
             let result = client.delete_offer_location(
-                version,
                 offer_location_id,
                 device_id,
                 account_id,
@@ -29705,18 +27727,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOffer {
-            version,
             offer_id,
             include_offer_locations,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetOffer request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOffer request");
 
             let result = client.get_offer(
-                version,
                 offer_id,
                 include_offer_locations,
                 device_id,
@@ -29733,7 +27751,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferDetails {
-            version,
             device_id,
             account_id,
             offer_id,
@@ -29745,12 +27762,9 @@ async fn main() -> Result<()> {
             include_retailer_locations,
             include_child_offers,
         } => {
-            info!("Performing a GetOfferDetails request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferDetails request");
 
             let result = client.get_offer_details(
-                version,
                 device_id,
                 account_id,
                 offer_id,
@@ -29773,18 +27787,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferListCounts {
-            version,
             latitude,
             longitude,
             search_range,
             distance_unit,
         } => {
-            info!("Performing a GetOfferListCounts request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferListCounts request");
 
             let result = client.get_offer_list_counts(
-                version,
                 latitude,
                 longitude,
                 search_range,
@@ -29801,16 +27811,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferLocation {
-            version,
             offer_location_id,
             udid,
         } => {
-            info!("Performing a GetOfferLocation request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferLocation request");
 
             let result = client.get_offer_location(
-                version,
                 offer_location_id,
                 udid,
             ).await?;
@@ -29825,7 +27831,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferLocationsForRetailers {
-            version,
             sort_field,
             descending,
             start,
@@ -29847,12 +27852,9 @@ async fn main() -> Result<()> {
             needs_notification_sent,
             last_notification_sent,
         } => {
-            info!("Performing a GetOfferLocationsForRetailers request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferLocationsForRetailers request");
 
             let result = client.get_offer_locations_for_retailers(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -29885,7 +27887,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOffersForRetailers {
-            version,
             offer_visibility,
             sort_field,
             descending,
@@ -29918,12 +27919,9 @@ async fn main() -> Result<()> {
             needs_notification_sent,
             last_notification_sent,
         } => {
-            info!("Performing a GetOffersForRetailers request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOffersForRetailers request");
 
             let result = client.get_offers_for_retailers(
-                version,
                 offer_visibility,
                 sort_field,
                 descending,
@@ -29967,19 +27965,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RedeemOfferTransaction {
-            version,
             offer_transaction_id,
             status,
             device_id,
             account_id,
             offer_location_id,
         } => {
-            info!("Performing a RedeemOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a RedeemOfferTransaction request");
 
             let result = client.redeem_offer_transaction(
-                version,
                 offer_transaction_id,
                 status,
                 device_id,
@@ -29997,7 +27991,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchOfferTransactionsForRetailers {
-            version,
             sort_field,
             descending,
             start,
@@ -30023,12 +28016,9 @@ async fn main() -> Result<()> {
             _i,
             _l,
         } => {
-            info!("Performing a SearchOfferTransactionsForRetailers request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchOfferTransactionsForRetailers request");
 
             let result = client.search_offer_transactions_for_retailers(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -30065,7 +28055,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchOffersForConsumer {
-            version,
             latitude,
             longitude,
             recommendation_type,
@@ -30098,12 +28087,9 @@ async fn main() -> Result<()> {
             search_expression,
             group_by,
         } => {
-            info!("Performing a SearchOffersForConsumer request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchOffersForConsumer request");
 
             let result = client.search_offers_for_consumer(
-                version,
                 latitude,
                 longitude,
                 recommendation_type,
@@ -30147,16 +28133,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::TopOfferTransactions {
-            version,
             start,
             limit,
         } => {
-            info!("Performing a TopOfferTransactions request on {:?}", (
-                &version
-            ));
+            info!("Performing a TopOfferTransactions request");
 
             let result = client.top_offer_transactions(
-                version,
                 start,
                 limit,
             ).await?;
@@ -30171,7 +28153,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateOffer {
-            version,
             offer_id,
             include_offer_locations,
             device_id,
@@ -30260,12 +28241,9 @@ async fn main() -> Result<()> {
             availability,
             availability_summary,
         } => {
-            info!("Performing a UpdateOffer request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateOffer request");
 
             let result = client.update_offer(
-                version,
                 offer_id,
                 include_offer_locations,
                 device_id,
@@ -30365,18 +28343,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateOfferStatus {
-            version,
             offer_ids,
             active,
             device_id,
             account_id,
         } => {
-            info!("Performing a UpdateOfferStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateOfferStatus request");
 
             let result = client.update_offer_status(
-                version,
                 offer_ids,
                 active,
                 device_id,
@@ -30393,7 +28367,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOfferTransactionStatus {
-            version,
             name,
             code,
             device_id,
@@ -30405,12 +28378,9 @@ async fn main() -> Result<()> {
             active,
             application_ids,
         } => {
-            info!("Performing a CreateOfferTransactionStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOfferTransactionStatus request");
 
             let result = client.create_offer_transaction_status(
-                version,
                 name,
                 code,
                 device_id,
@@ -30433,19 +28403,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteOfferTransactionStatus {
-            version,
             status_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a DeleteOfferTransactionStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteOfferTransactionStatus request");
 
             let result = client.delete_offer_transaction_status(
-                version,
                 status_id,
                 device_id,
                 account_id,
@@ -30463,19 +28429,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferTransactionStatus {
-            version,
             status_id,
             device_id,
             account_id,
             latitude,
             longitude,
         } => {
-            info!("Performing a GetOfferTransactionStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferTransactionStatus request");
 
             let result = client.get_offer_transaction_status(
-                version,
                 status_id,
                 device_id,
                 account_id,
@@ -30493,7 +28455,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchOfferTransactionStatuses {
-            version,
             device_id,
             account_id,
             latitude,
@@ -30507,12 +28468,9 @@ async fn main() -> Result<()> {
             limit,
             include_inactive,
         } => {
-            info!("Performing a SearchOfferTransactionStatuses request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchOfferTransactionStatuses request");
 
             let result = client.search_offer_transaction_statuses(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -30537,7 +28495,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateOfferTransactionStatus {
-            version,
             device_id,
             account_id,
             latitude,
@@ -30550,12 +28507,9 @@ async fn main() -> Result<()> {
             active,
             application_ids,
         } => {
-            info!("Performing a UpdateOfferTransactionStatus request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateOfferTransactionStatus request");
 
             let result = client.update_offer_transaction_status(
-                version,
                 device_id,
                 account_id,
                 latitude,
@@ -30579,17 +28533,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ImageGeneration {
-            version,
             account_id,
             post_body,
             return_raw_response,
         } => {
-            info!("Performing a ImageGeneration request on {:?}", (
-                &version
-            ));
+            info!("Performing a ImageGeneration request");
 
             let result = client.image_generation(
-                version,
                 account_id,
                 post_body,
                 return_raw_response,
@@ -30605,15 +28555,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RequestOptimization {
-            version,
             body,
         } => {
-            info!("Performing a RequestOptimization request on {:?}", (
-                &version
-            ));
+            info!("Performing a RequestOptimization request");
 
             let result = client.request_optimization(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -30627,18 +28573,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOptimizationResult {
-            version,
             batch_id,
             start,
             limit,
         } => {
             info!("Performing a GetOptimizationResult request on {:?}", (
-                &version,
                 &batch_id
             ));
 
             let result = client.get_optimization_result(
-                version,
                 batch_id,
                 start,
                 limit,
@@ -30654,7 +28597,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddMovie {
-            version,
             account_id,
             movie_name,
             third_party_account_id,
@@ -30663,12 +28605,9 @@ async fn main() -> Result<()> {
             url,
             callback,
         } => {
-            info!("Performing a AddMovie request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddMovie request");
 
             let result = client.add_movie(
-                version,
                 account_id,
                 movie_name,
                 third_party_account_id,
@@ -30688,19 +28627,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AiDocs {
-            version,
             account_id,
             doc,
             return_topics,
             limit,
             offset,
         } => {
-            info!("Performing a AiDocs request on {:?}", (
-                &version
-            ));
+            info!("Performing a AiDocs request");
 
             let result = client.ai_docs(
-                version,
                 account_id,
                 doc,
                 return_topics,
@@ -30718,19 +28653,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AiFindImages {
-            version,
             account_id,
             text,
             parse_flag,
             fetch_flag,
             size,
         } => {
-            info!("Performing a AiFindImages request on {:?}", (
-                &version
-            ));
+            info!("Performing a AiFindImages request");
 
             let result = client.ai_find_images(
-                version,
                 account_id,
                 text,
                 parse_flag,
@@ -30748,19 +28679,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AiTags {
-            version,
             account_id,
             tags,
             conditional,
             limit,
             offset,
         } => {
-            info!("Performing a AiTags request on {:?}", (
-                &version
-            ));
+            info!("Performing a AiTags request");
 
             let result = client.ai_tags(
-                version,
                 account_id,
                 tags,
                 conditional,
@@ -30778,19 +28705,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AiText {
-            version,
             account_id,
             terms,
             conditional,
             limit,
             offset,
         } => {
-            info!("Performing a AiText request on {:?}", (
-                &version
-            ));
+            info!("Performing a AiText request");
 
             let result = client.ai_text(
-                version,
                 account_id,
                 terms,
                 conditional,
@@ -30808,7 +28731,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Batch {
-            version,
             account_id,
             third_party_account_id,
             limit,
@@ -30817,12 +28739,9 @@ async fn main() -> Result<()> {
             url,
             callback,
         } => {
-            info!("Performing a Batch request on {:?}", (
-                &version
-            ));
+            info!("Performing a Batch request");
 
             let result = client.batch(
-                version,
                 account_id,
                 third_party_account_id,
                 limit,
@@ -30842,16 +28761,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateInstantEpisode {
-            version,
             account_id,
             data,
         } => {
-            info!("Performing a CreateInstantEpisode request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateInstantEpisode request");
 
             let result = client.create_instant_episode(
-                version,
                 account_id,
                 data,
             ).await?;
@@ -30866,7 +28781,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateVoiceCanvas {
-            version,
             account_id,
             dimensions,
             third_party_account_id,
@@ -30877,12 +28791,9 @@ async fn main() -> Result<()> {
             fetch_flag,
             callback,
         } => {
-            info!("Performing a CreateVoiceCanvas request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateVoiceCanvas request");
 
             let result = client.create_voice_canvas(
-                version,
                 account_id,
                 dimensions,
                 third_party_account_id,
@@ -30904,19 +28815,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Emotion {
-            version,
             account_id,
             third_party_account_id,
             file,
             url,
             callback,
         } => {
-            info!("Performing a Emotion request on {:?}", (
-                &version
-            ));
+            info!("Performing a Emotion request");
 
             let result = client.emotion(
-                version,
                 account_id,
                 third_party_account_id,
                 file,
@@ -30934,16 +28841,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::StartVideoRender {
-            version,
             account_id,
             data,
         } => {
-            info!("Performing a StartVideoRender request on {:?}", (
-                &version
-            ));
+            info!("Performing a StartVideoRender request");
 
             let result = client.start_video_render(
-                version,
                 account_id,
                 data,
             ).await?;
@@ -30958,7 +28861,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Stt {
-            version,
             account_id,
             third_party_account_id,
             source_language,
@@ -30967,12 +28869,9 @@ async fn main() -> Result<()> {
             url,
             callback,
         } => {
-            info!("Performing a Stt request on {:?}", (
-                &version
-            ));
+            info!("Performing a Stt request");
 
             let result = client.stt(
-                version,
                 account_id,
                 third_party_account_id,
                 source_language,
@@ -30992,7 +28891,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SummarizeTopics {
-            version,
             account_id,
             third_party_account_id,
             doc,
@@ -31002,12 +28900,9 @@ async fn main() -> Result<()> {
             offset,
             callback,
         } => {
-            info!("Performing a SummarizeTopics request on {:?}", (
-                &version
-            ));
+            info!("Performing a SummarizeTopics request");
 
             let result = client.summarize_topics(
-                version,
                 account_id,
                 third_party_account_id,
                 doc,
@@ -31028,7 +28923,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::TechTune {
-            version,
             account_id,
             num_faces_expected,
             third_party_account_id,
@@ -31036,12 +28930,9 @@ async fn main() -> Result<()> {
             url,
             callback,
         } => {
-            info!("Performing a TechTune request on {:?}", (
-                &version
-            ));
+            info!("Performing a TechTune request");
 
             let result = client.tech_tune(
-                version,
                 account_id,
                 num_faces_expected,
                 third_party_account_id,
@@ -31060,7 +28951,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Tts {
-            version,
             account_id,
             text,
             third_party_account_id,
@@ -31068,12 +28958,9 @@ async fn main() -> Result<()> {
             voice,
             callback,
         } => {
-            info!("Performing a Tts request on {:?}", (
-                &version
-            ));
+            info!("Performing a Tts request");
 
             let result = client.tts(
-                version,
                 account_id,
                 text,
                 third_party_account_id,
@@ -31092,17 +28979,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetAddMovieResult {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetAddMovieResult request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_add_movie_result(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31117,17 +29001,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBatch {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetBatch request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_batch(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31142,17 +29023,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetEmotion {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetEmotion request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_emotion(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31167,17 +29045,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetEpisodeStatus {
-            version,
             episode_id,
             account_id,
         } => {
             info!("Performing a GetEpisodeStatus request on {:?}", (
-                &version,
                 &episode_id
             ));
 
             let result = client.get_episode_status(
-                version,
                 episode_id,
                 account_id,
             ).await?;
@@ -31192,17 +29067,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRenderStatus {
-            version,
             render_id,
             account_id,
         } => {
             info!("Performing a GetRenderStatus request on {:?}", (
-                &version,
                 &render_id
             ));
 
             let result = client.get_render_status(
-                version,
                 render_id,
                 account_id,
             ).await?;
@@ -31217,17 +29089,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetStt {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetStt request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_stt(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31242,17 +29111,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTechTune {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetTechTune request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_tech_tune(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31267,17 +29133,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTopics {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetTopics request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_topics(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31292,17 +29155,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTts {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetTts request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_tts(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31317,17 +29177,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetVoiceCanvas {
-            version,
             request_id,
             account_id,
         } => {
             info!("Performing a GetVoiceCanvas request on {:?}", (
-                &version,
                 &request_id
             ));
 
             let result = client.get_voice_canvas(
-                version,
                 request_id,
                 account_id,
             ).await?;
@@ -31342,7 +29199,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreatePack {
-            version,
             account_id,
             title,
             pack_order,
@@ -31368,12 +29224,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a CreatePack request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreatePack request");
 
             let result = client.create_pack(
-                version,
                 account_id,
                 title,
                 pack_order,
@@ -31410,16 +29263,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeletePack {
-            version,
             account_id,
             pack_id,
         } => {
-            info!("Performing a DeletePack request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeletePack request");
 
             let result = client.delete_pack(
-                version,
                 account_id,
                 pack_id,
             ).await?;
@@ -31434,17 +29283,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPack {
-            version,
             account_id,
             pack_id,
             include_game_data,
         } => {
-            info!("Performing a GetPack request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPack request");
 
             let result = client.get_pack(
-                version,
                 account_id,
                 pack_id,
                 include_game_data,
@@ -31460,7 +29305,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPacks {
-            version,
             account_id,
             sort_field,
             descending,
@@ -31472,12 +29316,9 @@ async fn main() -> Result<()> {
             include_inactive,
             app_key,
         } => {
-            info!("Performing a SearchPacks request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPacks request");
 
             let result = client.search_packs(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -31500,7 +29341,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdatePack {
-            version,
             account_id,
             pack_id,
             allocate_tickets,
@@ -31527,12 +29367,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a UpdatePack request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdatePack request");
 
             let result = client.update_pack(
-                version,
                 account_id,
                 pack_id,
                 allocate_tickets,
@@ -31570,17 +29407,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ProcessAllParticipants {
-            version,
             account_id,
             app_key,
             use_short_name_as_id,
         } => {
-            info!("Performing a ProcessAllParticipants request on {:?}", (
-                &version
-            ));
+            info!("Performing a ProcessAllParticipants request");
 
             let result = client.process_all_participants(
-                version,
                 account_id,
                 app_key,
                 use_short_name_as_id,
@@ -31596,19 +29429,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ProcessParticipants {
-            version,
             account_id,
             league,
             app_key,
             use_short_name_as_id,
             file,
         } => {
-            info!("Performing a ProcessParticipants request on {:?}", (
-                &version
-            ));
+            info!("Performing a ProcessParticipants request");
 
             let result = client.process_participants(
-                version,
                 account_id,
                 league,
                 app_key,
@@ -31626,18 +29455,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ComputePath {
-            version,
             data,
             units,
             reduce_path,
             directions,
         } => {
-            info!("Performing a ComputePath request on {:?}", (
-                &version
-            ));
+            info!("Performing a ComputePath request");
 
             let result = client.compute_path(
-                version,
                 data,
                 units,
                 reduce_path,
@@ -31654,7 +29479,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreatePostalCode {
-            version,
             account_id,
             code,
             latitude,
@@ -31663,12 +29487,9 @@ async fn main() -> Result<()> {
             city,
             active,
         } => {
-            info!("Performing a CreatePostalCode request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreatePostalCode request");
 
             let result = client.create_postal_code(
-                version,
                 account_id,
                 code,
                 latitude,
@@ -31688,16 +29509,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeletePostalCode {
-            version,
             account_id,
             postal_code_id,
         } => {
-            info!("Performing a DeletePostalCode request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeletePostalCode request");
 
             let result = client.delete_postal_code(
-                version,
                 account_id,
                 postal_code_id,
             ).await?;
@@ -31712,15 +29529,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPostalCode {
-            version,
             postal_code_id,
         } => {
-            info!("Performing a GetPostalCode request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPostalCode request");
 
             let result = client.get_postal_code(
-                version,
                 postal_code_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -31734,7 +29547,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPostalCodes {
-            version,
             sort_field,
             descending,
             latitude,
@@ -31744,12 +29556,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetPostalCodes request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPostalCodes request");
 
             let result = client.get_postal_codes(
-                version,
                 sort_field,
                 descending,
                 latitude,
@@ -31770,7 +29579,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdatePostalCode {
-            version,
             account_id,
             postal_code_id,
             code,
@@ -31780,12 +29588,9 @@ async fn main() -> Result<()> {
             city,
             active,
         } => {
-            info!("Performing a UpdatePostalCode request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdatePostalCode request");
 
             let result = client.update_postal_code(
-                version,
                 account_id,
                 postal_code_id,
                 code,
@@ -31806,7 +29611,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreatePersona {
-            version,
             account_id,
             title,
             preview_accounts,
@@ -31817,12 +29621,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreatePersona request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreatePersona request");
 
             let result = client.create_persona(
-                version,
                 account_id,
                 title,
                 preview_accounts,
@@ -31844,16 +29645,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeletePersona {
-            version,
             account_id,
             persona_id,
         } => {
-            info!("Performing a DeletePersona request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeletePersona request");
 
             let result = client.delete_persona(
-                version,
                 account_id,
                 persona_id,
             ).await?;
@@ -31868,16 +29665,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPersonaList {
-            version,
             account_id,
             persona_id,
         } => {
-            info!("Performing a GetPersonaList request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPersonaList request");
 
             let result = client.get_persona_list(
-                version,
                 account_id,
                 persona_id,
             ).await?;
@@ -31892,17 +29685,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPersona {
-            version,
             account_id,
             start,
             limit,
         } => {
-            info!("Performing a SearchPersona request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPersona request");
 
             let result = client.search_persona(
-                version,
                 account_id,
                 start,
                 limit,
@@ -31918,7 +29707,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdatePersona {
-            version,
             account_id,
             persona_id,
             title,
@@ -31931,12 +29719,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a UpdatePersona request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdatePersona request");
 
             let result = client.update_persona(
-                version,
                 account_id,
                 persona_id,
                 title,
@@ -31960,15 +29745,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateProgram {
-            version,
             body,
         } => {
-            info!("Performing a CreateProgram request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateProgram request");
 
             let result = client.create_program(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -31982,7 +29763,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPrograms {
-            version,
             sort_field,
             descending,
             start,
@@ -31990,12 +29770,9 @@ async fn main() -> Result<()> {
             active_only,
             keyword,
         } => {
-            info!("Performing a SearchPrograms request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPrograms request");
 
             let result = client.search_programs(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -32014,17 +29791,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteProgram {
-            version,
             id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteProgram request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.delete_program(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -32036,16 +29810,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetProgram {
-            version,
             id,
         } => {
             info!("Performing a GetProgram request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_program(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -32059,17 +29830,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PostProgram {
-            version,
             id,
             body,
         } => {
             info!("Performing a PostProgram request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.post_program(
-                version,
                 id,
                 body,
             ).await?;
@@ -32084,17 +29852,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PutProgram {
-            version,
             id,
             body,
         } => {
             info!("Performing a PutProgram request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.put_program(
-                version,
                 id,
                 body,
             ).await?;
@@ -32109,7 +29874,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreatePurchaseItem {
-            version,
             app_key,
             name,
             purchase_type,
@@ -32131,12 +29895,9 @@ async fn main() -> Result<()> {
             points,
             offer_location_id,
         } => {
-            info!("Performing a CreatePurchaseItem request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreatePurchaseItem request");
 
             let result = client.create_purchase_item(
-                version,
                 app_key,
                 name,
                 purchase_type,
@@ -32169,17 +29930,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeletePurchaseItem {
-            version,
             purchase_item_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeletePurchaseItem request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeletePurchaseItem request");
 
             let result = client.delete_purchase_item(
-                version,
                 purchase_item_id,
                 device_id,
                 account_id,
@@ -32195,17 +29952,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPurchaseItem {
-            version,
             purchase_item_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetPurchaseItem request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPurchaseItem request");
 
             let result = client.get_purchase_item(
-                version,
                 purchase_item_id,
                 device_id,
                 account_id,
@@ -32221,7 +29974,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPurchaseItems {
-            version,
             device_id,
             account_id,
             app_key,
@@ -32235,12 +29987,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchPurchaseItems request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPurchaseItems request");
 
             let result = client.search_purchase_items(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -32265,7 +30014,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdatePurchaseItem {
-            version,
             purchase_item_id,
             device_id,
             account_id,
@@ -32288,12 +30036,9 @@ async fn main() -> Result<()> {
             points,
             offer_location_id,
         } => {
-            info!("Performing a UpdatePurchaseItem request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdatePurchaseItem request");
 
             let result = client.update_purchase_item(
-                version,
                 purchase_item_id,
                 device_id,
                 account_id,
@@ -32327,7 +30072,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOrder {
-            version,
             app_key,
             cart,
             device_id,
@@ -32341,12 +30085,9 @@ async fn main() -> Result<()> {
             external_date,
             promo_code,
         } => {
-            info!("Performing a CreateOrder request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOrder request");
 
             let result = client.create_order(
-                version,
                 app_key,
                 cart,
                 device_id,
@@ -32371,17 +30112,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteOrder {
-            version,
             order_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteOrder request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteOrder request");
 
             let result = client.delete_order(
-                version,
                 order_id,
                 device_id,
                 account_id,
@@ -32397,18 +30134,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOrder {
-            version,
             device_id,
             account_id,
             order_id,
             external_order_id,
         } => {
-            info!("Performing a GetOrder request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOrder request");
 
             let result = client.get_order(
-                version,
                 device_id,
                 account_id,
                 order_id,
@@ -32425,7 +30158,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PreviewOrder {
-            version,
             app_key,
             cart,
             device_id,
@@ -32439,12 +30171,9 @@ async fn main() -> Result<()> {
             external_date,
             promo_code,
         } => {
-            info!("Performing a PreviewOrder request on {:?}", (
-                &version
-            ));
+            info!("Performing a PreviewOrder request");
 
             let result = client.preview_order(
-                version,
                 app_key,
                 cart,
                 device_id,
@@ -32469,7 +30198,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchOrders {
-            version,
             app_key,
             device_id,
             account_id,
@@ -32502,12 +30230,9 @@ async fn main() -> Result<()> {
             ended_since,
             ended_before,
         } => {
-            info!("Performing a SearchOrders request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchOrders request");
 
             let result = client.search_orders(
-                version,
                 app_key,
                 device_id,
                 account_id,
@@ -32551,7 +30276,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateOrder {
-            version,
             order_id,
             app_key,
             cart,
@@ -32564,12 +30288,9 @@ async fn main() -> Result<()> {
             external_payment_id,
             external_date,
         } => {
-            info!("Performing a UpdateOrder request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateOrder request");
 
             let result = client.update_order(
-                version,
                 order_id,
                 app_key,
                 cart,
@@ -32593,7 +30314,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateQuestion {
-            version,
             account_id,
             question,
             answers,
@@ -32606,12 +30326,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a CreateQuestion request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateQuestion request");
 
             let result = client.create_question(
-                version,
                 account_id,
                 question,
                 answers,
@@ -32635,16 +30352,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteQuestion {
-            version,
             question_id,
             account_id,
         } => {
-            info!("Performing a DeleteQuestion request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteQuestion request");
 
             let result = client.delete_question(
-                version,
                 question_id,
                 account_id,
             ).await?;
@@ -32659,16 +30372,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetQuestion {
-            version,
             question_id,
             account_id,
         } => {
-            info!("Performing a GetQuestion request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetQuestion request");
 
             let result = client.get_question(
-                version,
                 question_id,
                 account_id,
             ).await?;
@@ -32683,7 +30392,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchQuestions {
-            version,
             account_id,
             sort_field,
             descending,
@@ -32692,12 +30400,9 @@ async fn main() -> Result<()> {
             limit,
             keyword,
         } => {
-            info!("Performing a SearchQuestions request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchQuestions request");
 
             let result = client.search_questions(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -32717,7 +30422,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateQuestion {
-            version,
             question_id,
             account_id,
             ticket_count,
@@ -32731,12 +30435,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a UpdateQuestion request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateQuestion request");
 
             let result = client.update_question(
-                version,
                 question_id,
                 account_id,
                 ticket_count,
@@ -32761,7 +30462,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetHistoricalRankings {
-            version,
             app_key,
             rank_type,
             start_date,
@@ -32773,12 +30473,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetHistoricalRankings request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetHistoricalRankings request");
 
             let result = client.get_historical_rankings(
-                version,
                 app_key,
                 rank_type,
                 start_date,
@@ -32801,7 +30498,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRankings {
-            version,
             device_id,
             account_id,
             game_type,
@@ -32821,12 +30517,9 @@ async fn main() -> Result<()> {
             _l,
             limit,
         } => {
-            info!("Performing a GetRankings request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRankings request");
 
             let result = client.get_rankings(
-                version,
                 device_id,
                 account_id,
                 game_type,
@@ -32857,7 +30550,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserRank {
-            version,
             device_id,
             account_id,
             app_key,
@@ -32870,12 +30562,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetUserRank request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserRank request");
 
             let result = client.get_user_rank(
-                version,
                 device_id,
                 account_id,
                 app_key,
@@ -32899,7 +30588,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::OverrideUserRank {
-            version,
             account_id,
             owner_account_id,
             app_key,
@@ -32923,12 +30611,9 @@ async fn main() -> Result<()> {
             start_date,
             end_date,
         } => {
-            info!("Performing a OverrideUserRank request on {:?}", (
-                &version
-            ));
+            info!("Performing a OverrideUserRank request");
 
             let result = client.override_user_rank(
-                version,
                 account_id,
                 owner_account_id,
                 app_key,
@@ -32963,7 +30648,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRankings {
-            version,
             account_id,
             app_key,
             rank_type,
@@ -32975,12 +30659,9 @@ async fn main() -> Result<()> {
             update_global,
             create_leaderboard,
         } => {
-            info!("Performing a UpdateRankings request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateRankings request");
 
             let result = client.update_rankings(
-                version,
                 account_id,
                 app_key,
                 rank_type,
@@ -33003,7 +30684,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRating {
-            version,
             ratable_type,
             ratable_id,
             rating_value,
@@ -33016,12 +30696,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreateRating request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRating request");
 
             let result = client.create_rating(
-                version,
                 ratable_type,
                 ratable_id,
                 rating_value,
@@ -33045,17 +30722,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRating {
-            version,
             rating_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteRating request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteRating request");
 
             let result = client.delete_rating(
-                version,
                 rating_id,
                 device_id,
                 account_id,
@@ -33071,7 +30744,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchLocationRatingIndexes {
-            version,
             category_ids,
             keyword,
             location_type,
@@ -33090,12 +30762,9 @@ async fn main() -> Result<()> {
             return_categories,
             return_filters,
         } => {
-            info!("Performing a SearchLocationRatingIndexes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchLocationRatingIndexes request");
 
             let result = client.search_location_rating_indexes(
-                version,
                 category_ids,
                 keyword,
                 location_type,
@@ -33125,7 +30794,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRatingIndexes {
-            version,
             ratable_type,
             ratable_ids,
             category_ids,
@@ -33140,12 +30808,9 @@ async fn main() -> Result<()> {
             return_ratable,
             return_overall_rating,
         } => {
-            info!("Performing a SearchRatingIndexes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRatingIndexes request");
 
             let result = client.search_rating_indexes(
-                version,
                 ratable_type,
                 ratable_ids,
                 category_ids,
@@ -33171,7 +30836,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRatings {
-            version,
             device_id,
             account_id,
             filter_account_id,
@@ -33184,12 +30848,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchRatings request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRatings request");
 
             let result = client.search_ratings(
-                version,
                 device_id,
                 account_id,
                 filter_account_id,
@@ -33213,7 +30874,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRating {
-            version,
             rating_id,
             device_id,
             account_id,
@@ -33225,12 +30885,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a UpdateRating request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateRating request");
 
             let result = client.update_rating(
-                version,
                 rating_id,
                 device_id,
                 account_id,
@@ -33253,7 +30910,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRegion {
-            version,
             account_id,
             region_class,
             short_name,
@@ -33276,12 +30932,9 @@ async fn main() -> Result<()> {
             root,
             active,
         } => {
-            info!("Performing a CreateRegion request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRegion request");
 
             let result = client.create_region(
-                version,
                 account_id,
                 region_class,
                 short_name,
@@ -33315,16 +30968,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRegion {
-            version,
             account_id,
             region_id,
         } => {
-            info!("Performing a DeleteRegion request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteRegion request");
 
             let result = client.delete_region(
-                version,
                 account_id,
                 region_id,
             ).await?;
@@ -33339,16 +30988,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRegion {
-            version,
             region_id,
             account_id,
         } => {
-            info!("Performing a GetRegion request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRegion request");
 
             let result = client.get_region(
-                version,
                 region_id,
                 account_id,
             ).await?;
@@ -33363,7 +31008,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRegions {
-            version,
             account_id,
             query,
             keyword,
@@ -33387,12 +31031,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchRegions request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRegions request");
 
             let result = client.search_regions(
-                version,
                 account_id,
                 query,
                 keyword,
@@ -33427,7 +31068,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRegion {
-            version,
             account_id,
             region_id,
             region_class,
@@ -33452,12 +31092,9 @@ async fn main() -> Result<()> {
             active,
             clear_lists,
         } => {
-            info!("Performing a UpdateRegion request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateRegion request");
 
             let result = client.update_region(
-                version,
                 account_id,
                 region_id,
                 region_class,
@@ -33493,7 +31130,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateBatch {
-            version,
             account_id,
             status,
             preview_limit,
@@ -33506,12 +31142,9 @@ async fn main() -> Result<()> {
             description,
             page_url,
         } => {
-            info!("Performing a CreateBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateBatch request");
 
             let result = client.create_batch(
-                version,
                 account_id,
                 status,
                 preview_limit,
@@ -33535,15 +31168,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRegionLegSummaryBatch {
-            version,
             body,
         } => {
-            info!("Performing a CreateRegionLegSummaryBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRegionLegSummaryBatch request");
 
             let result = client.create_region_leg_summary_batch(
-                version,
                 body.as_ref(),
             ).await?;
             debug!("Result: {:?}", result);
@@ -33557,16 +31186,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteBatch {
-            version,
             account_id,
             batch_id,
         } => {
-            info!("Performing a DeleteBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteBatch request");
 
             let result = client.delete_batch(
-                version,
                 account_id,
                 batch_id,
             ).await?;
@@ -33581,17 +31206,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetReportBatch {
-            version,
             account_id,
             batch_id,
             all_results,
         } => {
-            info!("Performing a GetReportBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetReportBatch request");
 
             let result = client.get_report_batch(
-                version,
                 account_id,
                 batch_id,
                 all_results,
@@ -33607,7 +31228,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RunReport {
-            version,
             desc,
             account_id,
             query,
@@ -33617,12 +31237,9 @@ async fn main() -> Result<()> {
             limit,
             response_format,
         } => {
-            info!("Performing a RunReport request on {:?}", (
-                &version
-            ));
+            info!("Performing a RunReport request");
 
             let result = client.run_report(
-                version,
                 desc,
                 account_id,
                 query,
@@ -33643,7 +31260,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchBatch {
-            version,
             account_id,
             start,
             limit,
@@ -33654,12 +31270,9 @@ async fn main() -> Result<()> {
             start_date,
             end_date,
         } => {
-            info!("Performing a SearchBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchBatch request");
 
             let result = client.search_batch(
-                version,
                 account_id,
                 start,
                 limit,
@@ -33681,7 +31294,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateReservation {
-            version,
             device_id,
             account_id,
             start_date,
@@ -33691,12 +31303,9 @@ async fn main() -> Result<()> {
             app_key,
             meta_data,
         } => {
-            info!("Performing a CreateReservation request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateReservation request");
 
             let result = client.create_reservation(
-                version,
                 device_id,
                 account_id,
                 start_date,
@@ -33715,17 +31324,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteReservation {
-            version,
             reservation_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteReservation request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteReservation request");
 
             let result = client.delete_reservation(
-                version,
                 reservation_id,
                 device_id,
                 account_id,
@@ -33739,7 +31344,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ReservableAvailability {
-            version,
             reservable_id,
             reservable_type,
             device_id,
@@ -33747,12 +31351,9 @@ async fn main() -> Result<()> {
             availability,
             availability_summary,
         } => {
-            info!("Performing a ReservableAvailability request on {:?}", (
-                &version
-            ));
+            info!("Performing a ReservableAvailability request");
 
             let result = client.reservable_availability(
-                version,
                 reservable_id,
                 reservable_type,
                 device_id,
@@ -33771,7 +31372,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAvailability {
-            version,
             reservable_id,
             reservable_type,
             device_id,
@@ -33781,12 +31381,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchAvailability request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAvailability request");
 
             let result = client.search_availability(
-                version,
                 reservable_id,
                 reservable_type,
                 device_id,
@@ -33807,7 +31404,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchReservations {
-            version,
             device_id,
             app_key,
             account_id,
@@ -33820,12 +31416,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchReservations request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchReservations request");
 
             let result = client.search_reservations(
-                version,
                 device_id,
                 app_key,
                 account_id,
@@ -33849,7 +31442,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchSchedule {
-            version,
             reservable_id,
             reservable_type,
             start_date,
@@ -33858,12 +31450,9 @@ async fn main() -> Result<()> {
             account_id,
             time_bucket_mins,
         } => {
-            info!("Performing a SearchSchedule request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchSchedule request");
 
             let result = client.search_schedule(
-                version,
                 reservable_id,
                 reservable_type,
                 start_date,
@@ -33883,7 +31472,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRetailer {
-            version,
             name,
             device_id,
             account_id,
@@ -33918,12 +31506,9 @@ async fn main() -> Result<()> {
             create_default_location,
             response_format,
         } => {
-            info!("Performing a CreateRetailer request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRetailer request");
 
             let result = client.create_retailer(
-                version,
                 name,
                 device_id,
                 account_id,
@@ -33969,17 +31554,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRetailer {
-            version,
             device_id,
             account_id,
             retailer_id,
         } => {
-            info!("Performing a DeleteRetailer request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteRetailer request");
 
             let result = client.delete_retailer(
-                version,
                 device_id,
                 account_id,
                 retailer_id,
@@ -33995,18 +31576,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRetailer {
-            version,
             retailer_id,
             device_id,
             account_id,
             include_counts,
         } => {
-            info!("Performing a GetRetailer request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRetailer request");
 
             let result = client.get_retailer(
-                version,
                 retailer_id,
                 device_id,
                 account_id,
@@ -34023,7 +31600,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRetailers {
-            version,
             visibility,
             sort_field,
             descending,
@@ -34039,12 +31615,9 @@ async fn main() -> Result<()> {
             _i,
             _l,
         } => {
-            info!("Performing a GetRetailers request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRetailers request");
 
             let result = client.get_retailers(
-                version,
                 visibility,
                 sort_field,
                 descending,
@@ -34071,7 +31644,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RetailerLoginCheck {
-            version,
             username,
             password,
             device_id,
@@ -34079,12 +31651,9 @@ async fn main() -> Result<()> {
             longitude,
             app_key,
         } => {
-            info!("Performing a RetailerLoginCheck request on {:?}", (
-                &version
-            ));
+            info!("Performing a RetailerLoginCheck request");
 
             let result = client.retailer_login_check(
-                version,
                 username,
                 password,
                 device_id,
@@ -34103,7 +31672,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRetailer {
-            version,
             retailer_id,
             device_id,
             account_id,
@@ -34137,12 +31705,9 @@ async fn main() -> Result<()> {
             active,
             response_format,
         } => {
-            info!("Performing a UpdateRetailer request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateRetailer request");
 
             let result = client.update_retailer(
-                version,
                 retailer_id,
                 device_id,
                 account_id,
@@ -34187,7 +31752,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRetailerLocationConsumer {
-            version,
             app_key,
             name,
             device_id,
@@ -34218,12 +31782,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a CreateRetailerLocationConsumer request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRetailerLocationConsumer request");
 
             let result = client.create_retailer_location_consumer(
-                version,
                 app_key,
                 name,
                 device_id,
@@ -34265,7 +31826,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRetailerLocations {
-            version,
             retailer_id,
             name,
             street_address,
@@ -34306,12 +31866,9 @@ async fn main() -> Result<()> {
             response_format,
             response_includes,
         } => {
-            info!("Performing a CreateRetailerLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRetailerLocations request");
 
             let result = client.create_retailer_locations(
-                version,
                 retailer_id,
                 name,
                 street_address,
@@ -34363,17 +31920,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRetailerLocation {
-            version,
             device_id,
             account_id,
             retailer_location_id,
         } => {
-            info!("Performing a DeleteRetailerLocation request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteRetailerLocation request");
 
             let result = client.delete_retailer_location(
-                version,
                 device_id,
                 account_id,
                 retailer_location_id,
@@ -34389,18 +31942,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRetailerLocation {
-            version,
             retailer_location_id,
             device_id,
             account_id,
             retailer_location_token,
         } => {
-            info!("Performing a GetRetailerLocation request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRetailerLocation request");
 
             let result = client.get_retailer_location(
-                version,
                 retailer_location_id,
                 device_id,
                 account_id,
@@ -34417,17 +31966,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRetailerLocationConsumer {
-            version,
             retailer_location_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a GetRetailerLocationConsumer request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRetailerLocationConsumer request");
 
             let result = client.get_retailer_location_consumer(
-                version,
                 retailer_location_id,
                 device_id,
                 account_id,
@@ -34443,7 +31988,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::IndexedRetailerLocationDistanceSearch {
-            version,
             latitude,
             longitude,
             search_range,
@@ -34479,12 +32023,9 @@ async fn main() -> Result<()> {
             include_liked,
             include_rating,
         } => {
-            info!("Performing a IndexedRetailerLocationDistanceSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a IndexedRetailerLocationDistanceSearch request");
 
             let result = client.indexed_retailer_location_distance_search(
-                version,
                 latitude,
                 longitude,
                 search_range,
@@ -34531,7 +32072,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::IndexedRetailerLocationSearch {
-            version,
             account_id,
             start,
             limit,
@@ -34561,12 +32101,9 @@ async fn main() -> Result<()> {
             include_liked,
             include_rating,
         } => {
-            info!("Performing a IndexedRetailerLocationSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a IndexedRetailerLocationSearch request");
 
             let result = client.indexed_retailer_location_search(
-                version,
                 account_id,
                 start,
                 limit,
@@ -34607,7 +32144,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRetailerLocations {
-            version,
             device_id,
             account_id,
             q,
@@ -34634,12 +32170,9 @@ async fn main() -> Result<()> {
             include_liked,
             include_rating,
         } => {
-            info!("Performing a SearchRetailerLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRetailerLocations request");
 
             let result = client.search_retailer_locations(
-                version,
                 device_id,
                 account_id,
                 q,
@@ -34677,7 +32210,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRetailerLocations {
-            version,
             retailer_location_id,
             device_id,
             account_id,
@@ -34720,12 +32252,9 @@ async fn main() -> Result<()> {
             response_format,
             tags,
         } => {
-            info!("Performing a UpdateRetailerLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateRetailerLocations request");
 
             let result = client.update_retailer_locations(
-                version,
                 retailer_location_id,
                 device_id,
                 account_id,
@@ -34779,7 +32308,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRetaokiler {
-            version,
             retailer_id,
             active_only,
             keyword,
@@ -34787,12 +32315,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a GetRetaokiler request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetRetaokiler request");
 
             let result = client.get_retaokiler(
-                version,
                 retailer_id,
                 active_only,
                 keyword,
@@ -34811,15 +32336,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRoute {
-            version,
             body,
         } => {
-            info!("Performing a CreateRoute request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRoute request");
 
             let result = client.create_route(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -34833,7 +32354,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRoutes {
-            version,
             sort_field,
             descending,
             start,
@@ -34856,12 +32376,9 @@ async fn main() -> Result<()> {
             valid,
             parent_id,
         } => {
-            info!("Performing a SearchRoutes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRoutes request");
 
             let result = client.search_routes(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -34895,16 +32412,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ApproveRoute {
-            version,
             route_id,
         } => {
             info!("Performing a ApproveRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.approve_route(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -34918,17 +32432,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CopyRoute {
-            version,
             route_id,
             body,
         } => {
             info!("Performing a CopyRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.copy_route(
-                version,
                 route_id,
                 body,
             ).await?;
@@ -34943,16 +32454,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRouteDirections {
-            version,
             route_id,
         } => {
             info!("Performing a CreateRouteDirections request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.create_route_directions(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -34966,16 +32474,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRoutePolyline {
-            version,
             route_id,
         } => {
             info!("Performing a CreateRoutePolyline request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.create_route_polyline(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -34989,17 +32494,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRoute {
-            version,
             route_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.delete_route(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35011,16 +32513,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DisapproveRoute {
-            version,
             route_id,
         } => {
             info!("Performing a DisapproveRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.disapprove_route(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35034,17 +32533,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRoute {
-            version,
             route_id,
             show_inherited_properties,
         } => {
             info!("Performing a GetRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.get_route(
-                version,
                 route_id,
                 show_inherited_properties,
             ).await?;
@@ -35059,16 +32555,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRouteDirections {
-            version,
             route_id,
         } => {
             info!("Performing a GetRouteDirections request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.get_route_directions(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35082,16 +32575,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRouteShipments {
-            version,
             route_id,
         } => {
             info!("Performing a GetRouteShipments request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.get_route_shipments(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35105,17 +32595,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRouteStops {
-            version,
             route_id,
             confirmed_only,
         } => {
             info!("Performing a GetRouteStops request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.get_route_stops(
-                version,
                 route_id,
                 confirmed_only,
             ).await?;
@@ -35130,16 +32617,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::OptimizeRoute {
-            version,
             route_id,
         } => {
             info!("Performing a OptimizeRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.optimize_route(
-                version,
                 route_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35151,17 +32635,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ReorderRouteStopsPatch {
-            version,
             route_id,
             body,
         } => {
             info!("Performing a ReorderRouteStopsPatch request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.reorder_route_stops_patch(
-                version,
                 route_id,
                 body.as_ref(),
             ).await?;
@@ -35176,17 +32657,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ReorderRouteStopsPost {
-            version,
             route_id,
             body,
         } => {
             info!("Performing a ReorderRouteStopsPost request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.reorder_route_stops_post(
-                version,
                 route_id,
                 body.as_ref(),
             ).await?;
@@ -35201,17 +32679,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRoute {
-            version,
             route_id,
             body,
         } => {
             info!("Performing a UpdateRoute request on {:?}", (
-                &version,
                 &route_id
             ));
 
             let result = client.update_route(
-                version,
                 route_id,
                 body,
             ).await?;
@@ -35226,18 +32701,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRouteStop {
-            version,
             route_id,
             stop_id,
         } => {
             info!("Performing a GetRouteStop request on {:?}", (
-                &version,
                 &route_id,
                 &stop_id
             ));
 
             let result = client.get_route_stop(
-                version,
                 route_id,
                 stop_id,
             ).await?;
@@ -35252,18 +32724,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetShipmentsAtStop {
-            version,
             route_id,
             stop_id,
         } => {
             info!("Performing a GetShipmentsAtStop request on {:?}", (
-                &version,
                 &route_id,
                 &stop_id
             ));
 
             let result = client.get_shipments_at_stop(
-                version,
                 route_id,
                 stop_id,
             ).await?;
@@ -35278,19 +32747,16 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveStop {
-            version,
             route_id,
             stop_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a RemoveStop request on {:?}", (
-                &version,
                 &route_id,
                 &stop_id
             ));
 
             let result = client.remove_stop(
-                version,
                 route_id,
                 stop_id,
             ).await?;
@@ -35303,18 +32769,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SetDriver {
-            version,
             id,
             driver_id,
         } => {
             info!("Performing a SetDriver request on {:?}", (
-                &version,
                 &id,
                 &driver_id
             ));
 
             let result = client.set_driver(
-                version,
                 id,
                 driver_id,
             ).await?;
@@ -35327,19 +32790,16 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRouteStop {
-            version,
             route_id,
             stop_id,
             body,
         } => {
             info!("Performing a UpdateRouteStop request on {:?}", (
-                &version,
                 &route_id,
                 &stop_id
             ));
 
             let result = client.update_route_stop(
-                version,
                 route_id,
                 stop_id,
                 body,
@@ -35353,15 +32813,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateRouteSettings {
-            version,
             body,
         } => {
-            info!("Performing a CreateRouteSettings request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateRouteSettings request");
 
             let result = client.create_route_settings(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35375,7 +32831,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRouteSettings {
-            version,
             sort_field,
             descending,
             start,
@@ -35385,12 +32840,9 @@ async fn main() -> Result<()> {
             program_id,
             keyword,
         } => {
-            info!("Performing a SearchRouteSettings request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRouteSettings request");
 
             let result = client.search_route_settings(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -35411,17 +32863,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteRouteSettings {
-            version,
             route_settings_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteRouteSettings request on {:?}", (
-                &version,
                 &route_settings_id
             ));
 
             let result = client.delete_route_settings(
-                version,
                 route_settings_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35435,16 +32884,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetRouteSettings {
-            version,
             route_settings_id,
         } => {
             info!("Performing a GetRouteSettings request on {:?}", (
-                &version,
                 &route_settings_id
             ));
 
             let result = client.get_route_settings(
-                version,
                 route_settings_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35458,17 +32904,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRouteSettings {
-            version,
             route_settings_id,
             body,
         } => {
             info!("Performing a UpdateRouteSettings request on {:?}", (
-                &version,
                 &route_settings_id
             ));
 
             let result = client.update_route_settings(
-                version,
                 route_settings_id,
                 body,
             ).await?;
@@ -35483,15 +32926,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ComputeRouting {
-            version,
             data,
         } => {
-            info!("Performing a ComputeRouting request on {:?}", (
-                &version
-            ));
+            info!("Performing a ComputeRouting request");
 
             let result = client.compute_routing(
-                version,
                 data,
             ).await?;
             debug!("Result: {:?}", result);
@@ -35505,7 +32944,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateScheduledNotification {
-            version,
             account_id,
             name,
             param_type,
@@ -35541,12 +32979,9 @@ async fn main() -> Result<()> {
             deep_link_uri,
             send_to_all,
         } => {
-            info!("Performing a CreateScheduledNotification request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateScheduledNotification request");
 
             let result = client.create_scheduled_notification(
-                version,
                 account_id,
                 name,
                 param_type,
@@ -35593,17 +33028,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteScheduledNotification {
-            version,
             account_id,
             scheduled_notification_id,
             delete_by_grouping_id,
         } => {
-            info!("Performing a DeleteScheduledNotification request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteScheduledNotification request");
 
             let result = client.delete_scheduled_notification(
-                version,
                 account_id,
                 scheduled_notification_id,
                 delete_by_grouping_id,
@@ -35619,16 +33050,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetScheduledNotification {
-            version,
             account_id,
             scheduled_notification_id,
         } => {
-            info!("Performing a GetScheduledNotification request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetScheduledNotification request");
 
             let result = client.get_scheduled_notification(
-                version,
                 account_id,
                 scheduled_notification_id,
             ).await?;
@@ -35643,7 +33070,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ScheduleNotificationListings {
-            version,
             account_id,
             app_key,
             report_name,
@@ -35653,12 +33079,9 @@ async fn main() -> Result<()> {
             report_params,
             param_type,
         } => {
-            info!("Performing a ScheduleNotificationListings request on {:?}", (
-                &version
-            ));
+            info!("Performing a ScheduleNotificationListings request");
 
             let result = client.schedule_notification_listings(
-                version,
                 account_id,
                 app_key,
                 report_name,
@@ -35679,7 +33102,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchScheduledNotifications {
-            version,
             account_id,
             grouping_id,
             audience_id,
@@ -35701,12 +33123,9 @@ async fn main() -> Result<()> {
             group_by_grouping_id,
             return_audience_account_count,
         } => {
-            info!("Performing a SearchScheduledNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchScheduledNotifications request");
 
             let result = client.search_scheduled_notifications(
-                version,
                 account_id,
                 grouping_id,
                 audience_id,
@@ -35739,7 +33158,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateScheduledNotification {
-            version,
             scheduled_notification_id,
             account_id,
             name,
@@ -35779,12 +33197,9 @@ async fn main() -> Result<()> {
             deep_link_uri,
             send_to_all,
         } => {
-            info!("Performing a UpdateScheduledNotification request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateScheduledNotification request");
 
             let result = client.update_scheduled_notification(
-                version,
                 scheduled_notification_id,
                 account_id,
                 name,
@@ -35835,7 +33250,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateScore {
-            version,
             account_id,
             app_key,
             points,
@@ -35847,12 +33261,9 @@ async fn main() -> Result<()> {
             time_taken,
             highest,
         } => {
-            info!("Performing a CreateScore request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateScore request");
 
             let result = client.create_score(
-                version,
                 account_id,
                 app_key,
                 points,
@@ -35875,7 +33286,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetScore {
-            version,
             account_id,
             app_key,
             mission_id,
@@ -35886,12 +33296,9 @@ async fn main() -> Result<()> {
             score_object_type,
             score_status,
         } => {
-            info!("Performing a GetScore request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetScore request");
 
             let result = client.get_score(
-                version,
                 account_id,
                 app_key,
                 mission_id,
@@ -35913,7 +33320,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchScores {
-            version,
             account_id,
             app_key,
             mission_id,
@@ -35922,12 +33328,9 @@ async fn main() -> Result<()> {
             game_level_id,
             game_object_id,
         } => {
-            info!("Performing a SearchScores request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchScores request");
 
             let result = client.search_scores(
-                version,
                 account_id,
                 app_key,
                 mission_id,
@@ -35947,7 +33350,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateSecureApplication {
-            version,
             account_id,
             app_key,
             key_cert,
@@ -35959,12 +33361,9 @@ async fn main() -> Result<()> {
             biometric_position,
             biometric_position2,
         } => {
-            info!("Performing a CreateSecureApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateSecureApplication request");
 
             let result = client.create_secure_application(
-                version,
                 account_id,
                 app_key,
                 key_cert,
@@ -35987,16 +33386,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteSecureApplication {
-            version,
             account_id,
             app_key,
         } => {
-            info!("Performing a DeleteSecureApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteSecureApplication request");
 
             let result = client.delete_secure_application(
-                version,
                 account_id,
                 app_key,
             ).await?;
@@ -36011,7 +33406,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LoginSecure {
-            version,
             app_key,
             biometric_file,
             device_id,
@@ -36022,12 +33416,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a LoginSecure request on {:?}", (
-                &version
-            ));
+            info!("Performing a LoginSecure request");
 
             let result = client.login_secure(
-                version,
                 app_key,
                 biometric_file,
                 device_id,
@@ -36049,15 +33440,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PurchaseSecure {
-            version,
             body,
         } => {
-            info!("Performing a PurchaseSecure request on {:?}", (
-                &version
-            ));
+            info!("Performing a PurchaseSecure request");
 
             let result = client.purchase_secure(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36071,16 +33458,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ResetSecure {
-            version,
             account_id,
             app_key,
         } => {
-            info!("Performing a ResetSecure request on {:?}", (
-                &version
-            ));
+            info!("Performing a ResetSecure request");
 
             let result = client.reset_secure(
-                version,
                 account_id,
                 app_key,
             ).await?;
@@ -36095,7 +33478,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateSecureApplication {
-            version,
             account_id,
             app_key,
             active,
@@ -36107,12 +33489,9 @@ async fn main() -> Result<()> {
             biometric_position,
             biometric_position2,
         } => {
-            info!("Performing a UpdateSecureApplication request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateSecureApplication request");
 
             let result = client.update_secure_application(
-                version,
                 account_id,
                 app_key,
                 active,
@@ -36135,15 +33514,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateServiceHub {
-            version,
             body,
         } => {
-            info!("Performing a CreateServiceHub request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateServiceHub request");
 
             let result = client.create_service_hub(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36157,7 +33532,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchServiceHubs {
-            version,
             sort_field,
             descending,
             start,
@@ -36166,12 +33540,9 @@ async fn main() -> Result<()> {
             keyword,
             retailer_id,
         } => {
-            info!("Performing a SearchServiceHubs request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchServiceHubs request");
 
             let result = client.search_service_hubs(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -36191,17 +33562,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteServiceHub {
-            version,
             id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteServiceHub request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.delete_service_hub(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36213,16 +33581,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetServiceHub {
-            version,
             id,
         } => {
             info!("Performing a GetServiceHub request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_service_hub(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36236,17 +33601,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PostServiceHub {
-            version,
             id,
             body,
         } => {
             info!("Performing a PostServiceHub request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.post_service_hub(
-                version,
                 id,
                 body,
             ).await?;
@@ -36261,17 +33623,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PutServiceHub {
-            version,
             id,
             body,
         } => {
             info!("Performing a PutServiceHub request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.put_service_hub(
-                version,
                 id,
                 body,
             ).await?;
@@ -36286,15 +33645,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateShipment {
-            version,
             body,
         } => {
-            info!("Performing a CreateShipment request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateShipment request");
 
             let result = client.create_shipment(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36308,7 +33663,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchShipments {
-            version,
             sort_field,
             descending,
             start,
@@ -36318,12 +33672,9 @@ async fn main() -> Result<()> {
             rider_id,
             route_id,
         } => {
-            info!("Performing a SearchShipments request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchShipments request");
 
             let result = client.search_shipments(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -36344,16 +33695,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CancelShipment {
-            version,
             id,
         } => {
             info!("Performing a CancelShipment request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.cancel_shipment(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36365,17 +33713,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteShipment {
-            version,
             id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteShipment request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.delete_shipment(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36387,16 +33732,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetShipment {
-            version,
             id,
         } => {
             info!("Performing a GetShipment request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_shipment(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36410,17 +33752,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateShipment {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateShipment request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_shipment(
-                version,
                 id,
                 body,
             ).await?;
@@ -36435,17 +33774,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateShipmentStatus {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateShipmentStatus request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_shipment_status(
-                version,
                 id,
                 body,
             ).await?;
@@ -36458,15 +33794,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateShipmentBatch {
-            version,
             body,
         } => {
-            info!("Performing a CreateShipmentBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateShipmentBatch request");
 
             let result = client.create_shipment_batch(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36480,19 +33812,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchShipmentBatch {
-            version,
             hub_id,
             sort_field,
             descending,
             start,
             limit,
         } => {
-            info!("Performing a SearchShipmentBatch request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchShipmentBatch request");
 
             let result = client.search_shipment_batch(
-                version,
                 hub_id,
                 sort_field,
                 descending,
@@ -36510,17 +33838,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteShipmentBatch {
-            version,
             batch_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteShipmentBatch request on {:?}", (
-                &version,
                 &batch_id
             ));
 
             let result = client.delete_shipment_batch(
-                version,
                 batch_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36532,16 +33857,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetShipmentBatch {
-            version,
             batch_id,
         } => {
             info!("Performing a GetShipmentBatch request on {:?}", (
-                &version,
                 &batch_id
             ));
 
             let result = client.get_shipment_batch(
-                version,
                 batch_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36555,7 +33877,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetShipmentBatchStatus {
-            version,
             batch_id,
             account_id,
             sort_field,
@@ -36570,12 +33891,10 @@ async fn main() -> Result<()> {
             keyword,
         } => {
             info!("Performing a GetShipmentBatchStatus request on {:?}", (
-                &version,
                 &batch_id
             ));
 
             let result = client.get_shipment_batch_status(
-                version,
                 batch_id,
                 account_id,
                 sort_field,
@@ -36600,16 +33919,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Simulation {
-            version,
             data,
             real_time,
         } => {
-            info!("Performing a Simulation request on {:?}", (
-                &version
-            ));
+            info!("Performing a Simulation request");
 
             let result = client.simulation(
-                version,
                 data,
                 real_time,
             ).await?;
@@ -36624,16 +33939,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetStop {
-            version,
             id,
         } => {
             info!("Performing a GetStop request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_stop(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36647,17 +33959,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateStop {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateStop request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_stop(
-                version,
                 id,
                 body,
             ).await?;
@@ -36672,16 +33981,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateStripeCheckoutSession {
-            version,
             app_key,
             stripe_parameters,
         } => {
-            info!("Performing a CreateStripeCheckoutSession request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateStripeCheckoutSession request");
 
             let result = client.create_stripe_checkout_session(
-                version,
                 app_key,
                 stripe_parameters,
             ).await?;
@@ -36696,17 +34001,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateSubscription {
-            version,
             account_id,
             plan_id,
             promo_code,
         } => {
-            info!("Performing a CreateSubscription request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateSubscription request");
 
             let result = client.create_subscription(
-                version,
                 account_id,
                 plan_id,
                 promo_code,
@@ -36722,15 +34023,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteSubscription {
-            version,
             account_id,
         } => {
-            info!("Performing a DeleteSubscription request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteSubscription request");
 
             let result = client.delete_subscription(
-                version,
                 account_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36744,15 +34041,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSubscription {
-            version,
             account_id,
         } => {
-            info!("Performing a GetSubscription request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSubscription request");
 
             let result = client.get_subscription(
-                version,
                 account_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36766,15 +34059,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSubscriptionPlan {
-            version,
             plan_id,
         } => {
-            info!("Performing a GetSubscriptionPlan request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSubscriptionPlan request");
 
             let result = client.get_subscription_plan(
-                version,
                 plan_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -36788,16 +34077,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSubscriptionPlans {
-            version,
             visible,
             role,
         } => {
-            info!("Performing a GetSubscriptionPlans request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSubscriptionPlans request");
 
             let result = client.get_subscription_plans(
-                version,
                 visible,
                 role,
             ).await?;
@@ -36812,18 +34097,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSubscriptionUsage {
-            version,
             account_id,
             application_id,
             start,
             end,
         } => {
-            info!("Performing a GetSubscriptionUsage request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSubscriptionUsage request");
 
             let result = client.get_subscription_usage(
-                version,
                 account_id,
                 application_id,
                 start,
@@ -36840,18 +34121,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateSubscription {
-            version,
             account_id,
             plan_id,
             promo_code,
             active,
         } => {
-            info!("Performing a UpdateSubscription request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateSubscription request");
 
             let result = client.update_subscription(
-                version,
                 account_id,
                 plan_id,
                 promo_code,
@@ -36868,7 +34145,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateTask {
-            version,
             account_id,
             name,
             app_key,
@@ -36882,12 +34158,9 @@ async fn main() -> Result<()> {
             visibility,
             active,
         } => {
-            info!("Performing a CreateTask request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateTask request");
 
             let result = client.create_task(
-                version,
                 account_id,
                 name,
                 app_key,
@@ -36912,16 +34185,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteTask {
-            version,
             account_id,
             task_id,
         } => {
-            info!("Performing a DeleteTask request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteTask request");
 
             let result = client.delete_task(
-                version,
                 account_id,
                 task_id,
             ).await?;
@@ -36936,16 +34205,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTask {
-            version,
             account_id,
             task_id,
         } => {
-            info!("Performing a GetTask request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTask request");
 
             let result = client.get_task(
-                version,
                 account_id,
                 task_id,
             ).await?;
@@ -36960,7 +34225,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTasks {
-            version,
             account_id,
             grouping_id,
             filter,
@@ -36974,12 +34238,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchTasks request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTasks request");
 
             let result = client.search_tasks(
-                version,
                 account_id,
                 grouping_id,
                 filter,
@@ -37004,7 +34265,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTask {
-            version,
             task_id,
             account_id,
             name,
@@ -37019,12 +34279,9 @@ async fn main() -> Result<()> {
             visibility,
             active,
         } => {
-            info!("Performing a UpdateTask request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateTask request");
 
             let result = client.update_task(
-                version,
                 task_id,
                 account_id,
                 name,
@@ -37050,17 +34307,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateTerritory {
-            version,
             account_id,
             name,
             active,
         } => {
-            info!("Performing a CreateTerritory request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateTerritory request");
 
             let result = client.create_territory(
-                version,
                 account_id,
                 name,
                 active,
@@ -37076,16 +34329,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteTerritory {
-            version,
             account_id,
             territory_id,
         } => {
-            info!("Performing a DeleteTerritory request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteTerritory request");
 
             let result = client.delete_territory(
-                version,
                 account_id,
                 territory_id,
             ).await?;
@@ -37100,15 +34349,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTerritory {
-            version,
             territory_id,
         } => {
-            info!("Performing a GetTerritory request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTerritory request");
 
             let result = client.get_territory(
-                version,
                 territory_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -37122,19 +34367,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTerritories {
-            version,
             sort_field,
             descending,
             keyword,
             start,
             limit,
         } => {
-            info!("Performing a SearchTerritories request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTerritories request");
 
             let result = client.search_territories(
-                version,
                 sort_field,
                 descending,
                 keyword,
@@ -37152,18 +34393,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTerritory {
-            version,
             account_id,
             territory_id,
             name,
             active,
         } => {
-            info!("Performing a UpdateTerritory request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateTerritory request");
 
             let result = client.update_territory(
-                version,
                 account_id,
                 territory_id,
                 name,
@@ -37180,7 +34417,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddOrUpdateThemeDescriptor {
-            version,
             public_read,
             public_write,
             public_delete,
@@ -37209,12 +34445,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a AddOrUpdateThemeDescriptor request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddOrUpdateThemeDescriptor request");
 
             let result = client.add_or_update_theme_descriptor(
-                version,
                 public_read,
                 public_write,
                 public_delete,
@@ -37254,7 +34487,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetThemeDescriptor {
-            version,
             theme_descriptor_id,
             device_id,
             account_id,
@@ -37262,12 +34494,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetThemeDescriptor request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetThemeDescriptor request");
 
             let result = client.get_theme_descriptor(
-                version,
                 theme_descriptor_id,
                 device_id,
                 account_id,
@@ -37286,7 +34515,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetThemeDescriptors {
-            version,
             filter,
             sort_field,
             descending,
@@ -37306,12 +34534,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a GetThemeDescriptors request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetThemeDescriptors request");
 
             let result = client.get_theme_descriptors(
-                version,
                 filter,
                 sort_field,
                 descending,
@@ -37342,7 +34567,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveThemeDescriptor {
-            version,
             theme_descriptor_id,
             device_id,
             account_id,
@@ -37350,12 +34574,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a RemoveThemeDescriptor request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveThemeDescriptor request");
 
             let result = client.remove_theme_descriptor(
-                version,
                 theme_descriptor_id,
                 device_id,
                 account_id,
@@ -37374,7 +34595,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateCredential {
-            version,
             third_party_id,
             third_party_token,
             network_uid,
@@ -37393,12 +34613,9 @@ async fn main() -> Result<()> {
             audience_ids_to_add,
             audience_ids_to_remove,
         } => {
-            info!("Performing a CreateCredential request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateCredential request");
 
             let result = client.create_credential(
-                version,
                 third_party_id,
                 third_party_token,
                 network_uid,
@@ -37428,7 +34645,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateNetwork {
-            version,
             account_id,
             name,
             enable_introspection,
@@ -37447,12 +34663,9 @@ async fn main() -> Result<()> {
             oauth_secret_key,
             body,
         } => {
-            info!("Performing a CreateNetwork request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateNetwork request");
 
             let result = client.create_network(
-                version,
                 account_id,
                 name,
                 enable_introspection,
@@ -37482,18 +34695,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteCredential {
-            version,
             account_id,
             network_uid,
             third_party_id,
             app_key,
         } => {
-            info!("Performing a DeleteCredential request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteCredential request");
 
             let result = client.delete_credential(
-                version,
                 account_id,
                 network_uid,
                 third_party_id,
@@ -37510,16 +34719,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteNetwork {
-            version,
             account_id,
             network_uid,
         } => {
-            info!("Performing a DeleteNetwork request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteNetwork request");
 
             let result = client.delete_network(
-                version,
                 account_id,
                 network_uid,
             ).await?;
@@ -37534,7 +34739,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCredential {
-            version,
             network_uid,
             app_key,
             account_id,
@@ -37551,12 +34755,9 @@ async fn main() -> Result<()> {
             audience_ids_to_remove,
             referral_account_id,
         } => {
-            info!("Performing a GetCredential request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCredential request");
 
             let result = client.get_credential(
-                version,
                 network_uid,
                 app_key,
                 account_id,
@@ -37584,16 +34785,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetNetwork {
-            version,
             account_id,
             network_uid,
         } => {
-            info!("Performing a GetNetwork request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetNetwork request");
 
             let result = client.get_network(
-                version,
                 account_id,
                 network_uid,
             ).await?;
@@ -37608,7 +34805,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchCredentials {
-            version,
             account_id,
             keyword,
             network_uid,
@@ -37616,12 +34812,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchCredentials request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchCredentials request");
 
             let result = client.search_credentials(
-                version,
                 account_id,
                 keyword,
                 network_uid,
@@ -37640,7 +34833,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchNetworks {
-            version,
             account_id,
             sort_field,
             descending,
@@ -37650,12 +34842,9 @@ async fn main() -> Result<()> {
             keyword,
             filter_billable,
         } => {
-            info!("Performing a SearchNetworks request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchNetworks request");
 
             let result = client.search_networks(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -37676,19 +34865,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SendMfaChallenge {
-            version,
             network_uid,
             app_key,
             third_party_token,
             third_party_credential_id,
             device_id,
         } => {
-            info!("Performing a SendMfaChallenge request on {:?}", (
-                &version
-            ));
+            info!("Performing a SendMfaChallenge request");
 
             let result = client.send_mfa_challenge(
-                version,
                 network_uid,
                 app_key,
                 third_party_token,
@@ -37706,7 +34891,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateCredential {
-            version,
             network_uid,
             third_party_id,
             app_key,
@@ -37717,12 +34901,9 @@ async fn main() -> Result<()> {
             meta_data,
             third_party_refresh_token,
         } => {
-            info!("Performing a UpdateCredential request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateCredential request");
 
             let result = client.update_credential(
-                version,
                 network_uid,
                 third_party_id,
                 app_key,
@@ -37744,7 +34925,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateNetwork {
-            version,
             account_id,
             network_uid,
             name,
@@ -37764,12 +34944,9 @@ async fn main() -> Result<()> {
             oauth_secret_key,
             body,
         } => {
-            info!("Performing a UpdateNetwork request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateNetwork request");
 
             let result = client.update_network(
-                version,
                 account_id,
                 network_uid,
                 name,
@@ -37800,19 +34977,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTicketCount {
-            version,
             device_id,
             account_id,
             game_type,
             app_key,
             ticket_type,
         } => {
-            info!("Performing a GetTicketCount request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTicketCount request");
 
             let result = client.get_ticket_count(
-                version,
                 device_id,
                 account_id,
                 game_type,
@@ -37830,7 +35003,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTicketList {
-            version,
             device_id,
             account_id,
             ticket_object_type,
@@ -37841,12 +35013,9 @@ async fn main() -> Result<()> {
             game_type,
             app_key,
         } => {
-            info!("Performing a GetTicketList request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTicketList request");
 
             let result = client.get_ticket_list(
-                version,
                 device_id,
                 account_id,
                 ticket_object_type,
@@ -37868,7 +35037,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GiftPurchase {
-            version,
             receiver_account_id,
             ticket_id,
             device_id,
@@ -37878,12 +35046,9 @@ async fn main() -> Result<()> {
             game_type,
             app_key,
         } => {
-            info!("Performing a GiftPurchase request on {:?}", (
-                &version
-            ));
+            info!("Performing a GiftPurchase request");
 
             let result = client.gift_purchase(
-                version,
                 receiver_account_id,
                 ticket_id,
                 device_id,
@@ -37904,7 +35069,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SaveTicket {
-            version,
             action_type,
             ticket_object_type,
             return_nulls,
@@ -37924,12 +35088,9 @@ async fn main() -> Result<()> {
             include_profile_response,
             app_version,
         } => {
-            info!("Performing a SaveTicket request on {:?}", (
-                &version
-            ));
+            info!("Performing a SaveTicket request");
 
             let result = client.save_ticket(
-                version,
                 action_type,
                 ticket_object_type,
                 return_nulls,
@@ -37960,7 +35121,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SaveTicketViaFileUpload {
-            version,
             action_type,
             ticket_object_type,
             receipt_data,
@@ -37980,12 +35140,9 @@ async fn main() -> Result<()> {
             include_profile_response,
             app_version,
         } => {
-            info!("Performing a SaveTicketViaFileUpload request on {:?}", (
-                &version
-            ));
+            info!("Performing a SaveTicketViaFileUpload request");
 
             let result = client.save_ticket_via_file_upload(
-                version,
                 action_type,
                 ticket_object_type,
                 receipt_data,
@@ -38016,14 +35173,10 @@ async fn main() -> Result<()> {
             }
         }
         Operation::TicketOffers {
-            version,
         } => {
-            info!("Performing a TicketOffers request on {:?}", (
-                &version
-            ));
+            info!("Performing a TicketOffers request");
 
             let result = client.ticket_offers(
-                version,
             ).await?;
             debug!("Result: {:?}", result);
 
@@ -38036,7 +35189,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateTournament {
-            version,
             account_id,
             app_key,
             title,
@@ -38073,12 +35225,9 @@ async fn main() -> Result<()> {
             winner_tag,
             tie_tag,
         } => {
-            info!("Performing a CreateTournament request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateTournament request");
 
             let result = client.create_tournament(
-                version,
                 account_id,
                 app_key,
                 title,
@@ -38126,16 +35275,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteTournament {
-            version,
             account_id,
             mission_id,
         } => {
-            info!("Performing a DeleteTournament request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteTournament request");
 
             let result = client.delete_tournament(
-                version,
                 account_id,
                 mission_id,
             ).await?;
@@ -38150,19 +35295,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTournament {
-            version,
             account_id,
             mission_id,
             join_code,
             include_scores,
             object_preview_size,
         } => {
-            info!("Performing a GetTournament request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTournament request");
 
             let result = client.get_tournament(
-                version,
                 account_id,
                 mission_id,
                 join_code,
@@ -38180,7 +35321,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchObjects {
-            version,
             account_id,
             game_level_id,
             sort_field,
@@ -38188,12 +35328,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchObjects request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchObjects request");
 
             let result = client.search_objects(
-                version,
                 account_id,
                 game_level_id,
                 sort_field,
@@ -38212,7 +35349,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchRounds {
-            version,
             account_id,
             app_key,
             status,
@@ -38222,12 +35358,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchRounds request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchRounds request");
 
             let result = client.search_rounds(
-                version,
                 account_id,
                 app_key,
                 status,
@@ -38248,7 +35381,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTournaments {
-            version,
             account_id,
             app_key,
             keyword,
@@ -38262,12 +35394,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchTournaments request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTournaments request");
 
             let result = client.search_tournaments(
-                version,
                 account_id,
                 app_key,
                 keyword,
@@ -38292,7 +35421,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SubmitTournamentScore {
-            version,
             account_id,
             app_key,
             mission_id,
@@ -38301,12 +35429,9 @@ async fn main() -> Result<()> {
             scores,
             game_level_id,
         } => {
-            info!("Performing a SubmitTournamentScore request on {:?}", (
-                &version
-            ));
+            info!("Performing a SubmitTournamentScore request");
 
             let result = client.submit_tournament_score(
-                version,
                 account_id,
                 app_key,
                 mission_id,
@@ -38326,7 +35451,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SubmitTournamentVote {
-            version,
             account_id,
             app_key,
             mission_id,
@@ -38334,12 +35458,9 @@ async fn main() -> Result<()> {
             device_id,
             check_if_device_already_voted,
         } => {
-            info!("Performing a SubmitTournamentVote request on {:?}", (
-                &version
-            ));
+            info!("Performing a SubmitTournamentVote request");
 
             let result = client.submit_tournament_vote(
-                version,
                 account_id,
                 app_key,
                 mission_id,
@@ -38358,18 +35479,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SubstituteTournamentPlayer {
-            version,
             account_id,
             mission_id,
             pack_id,
             game_level_id,
         } => {
-            info!("Performing a SubstituteTournamentPlayer request on {:?}", (
-                &version
-            ));
+            info!("Performing a SubstituteTournamentPlayer request");
 
             let result = client.substitute_tournament_player(
-                version,
                 account_id,
                 mission_id,
                 pack_id,
@@ -38386,7 +35503,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTournament {
-            version,
             account_id,
             mission_id,
             title,
@@ -38422,12 +35538,9 @@ async fn main() -> Result<()> {
             winner_tag,
             tie_tag,
         } => {
-            info!("Performing a UpdateTournament request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateTournament request");
 
             let result = client.update_tournament(
-                version,
                 account_id,
                 mission_id,
                 title,
@@ -38474,7 +35587,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::BatchSaveTracking {
-            version,
             data,
             device_id,
             account_id,
@@ -38483,12 +35595,9 @@ async fn main() -> Result<()> {
             default_tag,
             slave_uid,
         } => {
-            info!("Performing a BatchSaveTracking request on {:?}", (
-                &version
-            ));
+            info!("Performing a BatchSaveTracking request");
 
             let result = client.batch_save_tracking(
-                version,
                 data,
                 device_id,
                 account_id,
@@ -38508,7 +35617,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPredictedLocations {
-            version,
             account_id,
             latitude,
             longitude,
@@ -38519,12 +35627,9 @@ async fn main() -> Result<()> {
             search_range,
             sort_order,
         } => {
-            info!("Performing a GetPredictedLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPredictedLocations request");
 
             let result = client.get_predicted_locations(
-                version,
                 account_id,
                 latitude,
                 longitude,
@@ -38546,17 +35651,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPredictedPath {
-            version,
             account_id,
             start_step_id,
             end_step_id,
         } => {
-            info!("Performing a GetPredictedPath request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPredictedPath request");
 
             let result = client.get_predicted_path(
-                version,
                 account_id,
                 start_step_id,
                 end_step_id,
@@ -38572,7 +35673,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPreferredLocations {
-            version,
             account_id,
             latitude,
             longitude,
@@ -38585,12 +35685,9 @@ async fn main() -> Result<()> {
             search_range,
             distance_unit,
         } => {
-            info!("Performing a GetPreferredLocations request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPreferredLocations request");
 
             let result = client.get_preferred_locations(
-                version,
                 account_id,
                 latitude,
                 longitude,
@@ -38614,7 +35711,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTrackingLegs {
-            version,
             device_id,
             account_id,
             owner_id,
@@ -38624,12 +35720,9 @@ async fn main() -> Result<()> {
             tags,
             get_last_point,
         } => {
-            info!("Performing a GetTrackingLegs request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTrackingLegs request");
 
             let result = client.get_tracking_legs(
-                version,
                 device_id,
                 account_id,
                 owner_id,
@@ -38650,7 +35743,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SaveTrackingLeg {
-            version,
             start_lat,
             start_lng,
             start_date,
@@ -38664,12 +35756,9 @@ async fn main() -> Result<()> {
             steps,
             tags,
         } => {
-            info!("Performing a SaveTrackingLeg request on {:?}", (
-                &version
-            ));
+            info!("Performing a SaveTrackingLeg request");
 
             let result = client.save_tracking_leg(
-                version,
                 start_lat,
                 start_lng,
                 start_date,
@@ -38694,7 +35783,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SaveTrackingStep {
-            version,
             leg_id,
             start_lat,
             start_lng,
@@ -38707,12 +35795,9 @@ async fn main() -> Result<()> {
             distance,
             duration,
         } => {
-            info!("Performing a SaveTrackingStep request on {:?}", (
-                &version
-            ));
+            info!("Performing a SaveTrackingStep request");
 
             let result = client.save_tracking_step(
-                version,
                 leg_id,
                 start_lat,
                 start_lng,
@@ -38736,7 +35821,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchAccountsWithTrackingLegs {
-            version,
             account_id,
             keyword,
             start_date,
@@ -38752,12 +35836,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchAccountsWithTrackingLegs request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchAccountsWithTrackingLegs request");
 
             let result = client.search_accounts_with_tracking_legs(
-                version,
                 account_id,
                 keyword,
                 start_date,
@@ -38784,7 +35865,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTrackingLegs {
-            version,
             account_id,
             app_key,
             tracking_device_id,
@@ -38794,12 +35874,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchTrackingLegs request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTrackingLegs request");
 
             let result = client.search_tracking_legs(
-                version,
                 account_id,
                 app_key,
                 tracking_device_id,
@@ -38820,7 +35897,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateTrigger {
-            version,
             account_id,
             name,
             app_key,
@@ -38835,12 +35911,9 @@ async fn main() -> Result<()> {
             visibility,
             active,
         } => {
-            info!("Performing a CreateTrigger request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateTrigger request");
 
             let result = client.create_trigger(
-                version,
                 account_id,
                 name,
                 app_key,
@@ -38866,16 +35939,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteTrigger {
-            version,
             account_id,
             trigger_id,
         } => {
-            info!("Performing a DeleteTrigger request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteTrigger request");
 
             let result = client.delete_trigger(
-                version,
                 account_id,
                 trigger_id,
             ).await?;
@@ -38890,16 +35959,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTrigger {
-            version,
             account_id,
             trigger_id,
         } => {
-            info!("Performing a GetTrigger request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetTrigger request");
 
             let result = client.get_trigger(
-                version,
                 account_id,
                 trigger_id,
             ).await?;
@@ -38914,7 +35979,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTriggers {
-            version,
             account_id,
             grouping_id,
             filter,
@@ -38928,12 +35992,9 @@ async fn main() -> Result<()> {
             limit,
             active_only,
         } => {
-            info!("Performing a SearchTriggers request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTriggers request");
 
             let result = client.search_triggers(
-                version,
                 account_id,
                 grouping_id,
                 filter,
@@ -38958,7 +36019,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTrigger {
-            version,
             trigger_id,
             account_id,
             name,
@@ -38974,12 +36034,9 @@ async fn main() -> Result<()> {
             visibility,
             active,
         } => {
-            info!("Performing a UpdateTrigger request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateTrigger request");
 
             let result = client.update_trigger(
-                version,
                 trigger_id,
                 account_id,
                 name,
@@ -39006,15 +36063,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateTrip {
-            version,
             body,
         } => {
-            info!("Performing a CreateTrip request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateTrip request");
 
             let result = client.create_trip(
-                version,
                 body,
             ).await?;
             debug!("Result: {:?}", result);
@@ -39028,17 +36081,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ProcessTripMatches {
-            version,
             start_date,
             end_date,
             trip_id,
         } => {
-            info!("Performing a ProcessTripMatches request on {:?}", (
-                &version
-            ));
+            info!("Performing a ProcessTripMatches request");
 
             let result = client.process_trip_matches(
-                version,
                 start_date,
                 end_date,
                 trip_id,
@@ -39054,7 +36103,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Search {
-            version,
             account_id,
             sort_field,
             descending,
@@ -39065,12 +36113,9 @@ async fn main() -> Result<()> {
             end_date,
             has_notifications,
         } => {
-            info!("Performing a Search request on {:?}", (
-                &version
-            ));
+            info!("Performing a Search request");
 
             let result = client.search(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -39092,7 +36137,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchTrips {
-            version,
             account_id,
             sort_field,
             descending,
@@ -39104,12 +36148,9 @@ async fn main() -> Result<()> {
             matched_has_route,
             matched_has_driver,
         } => {
-            info!("Performing a SearchTrips request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchTrips request");
 
             let result = client.search_trips(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -39132,16 +36173,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTripNotifications {
-            version,
             id,
             notifications,
         } => {
-            info!("Performing a UpdateTripNotifications request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateTripNotifications request");
 
             let result = client.update_trip_notifications(
-                version,
                 id,
                 notifications,
             ).await?;
@@ -39156,17 +36193,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Delete {
-            version,
             id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a Delete request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.delete(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -39178,17 +36212,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DriveTrip {
-            version,
             id,
             recurrence,
         } => {
             info!("Performing a DriveTrip request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.drive_trip(
-                version,
                 id,
                 recurrence,
             ).await?;
@@ -39203,17 +36234,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::FlexibleTrip {
-            version,
             id,
             recurrence,
         } => {
             info!("Performing a FlexibleTrip request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.flexible_trip(
-                version,
                 id,
                 recurrence,
             ).await?;
@@ -39228,16 +36256,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTrip {
-            version,
             id,
         } => {
             info!("Performing a GetTrip request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_trip(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -39251,7 +36276,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetTripMatches {
-            version,
             id,
             sort_field,
             descending,
@@ -39262,12 +36286,10 @@ async fn main() -> Result<()> {
             matched_has_driver,
         } => {
             info!("Performing a GetTripMatches request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_trip_matches(
-                version,
                 id,
                 sort_field,
                 descending,
@@ -39288,17 +36310,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::Ride {
-            version,
             id,
             recurrence,
         } => {
             info!("Performing a Ride request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.ride(
-                version,
                 id,
                 recurrence,
             ).await?;
@@ -39313,17 +36332,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateLocations {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateLocations request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_locations(
-                version,
                 id,
                 body,
             ).await?;
@@ -39338,17 +36354,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRecurrenceLocations {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateRecurrenceLocations request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_recurrence_locations(
-                version,
                 id,
                 body,
             ).await?;
@@ -39363,17 +36376,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateRecurrenceShipments {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateRecurrenceShipments request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_recurrence_shipments(
-                version,
                 id,
                 body,
             ).await?;
@@ -39388,17 +36398,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateShipments {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateShipments request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_shipments(
-                version,
                 id,
                 body,
             ).await?;
@@ -39413,17 +36420,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateTrip {
-            version,
             id,
             body,
         } => {
             info!("Performing a UpdateTrip request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_trip(
-                version,
                 id,
                 body,
             ).await?;
@@ -39438,19 +36442,16 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SmsBuyOffer {
-            version,
             app_key,
             body,
             from,
             currency_type,
         } => {
             info!("Performing a SmsBuyOffer request on {:?}", (
-                &version,
                 &app_key
             ));
 
             let result = client.sms_buy_offer(
-                version,
                 app_key,
                 body,
                 from,
@@ -39467,15 +36468,11 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AuthorizeTwitter {
-            version,
             app_key,
         } => {
-            info!("Performing a AuthorizeTwitter request on {:?}", (
-                &version
-            ));
+            info!("Performing a AuthorizeTwitter request");
 
             let result = client.authorize_twitter(
-                version,
                 app_key,
             ).await?;
             debug!("Result: {:?}", result);
@@ -39489,7 +36486,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LoginTwitter {
-            version,
             access_token,
             access_token_secret,
             app_key,
@@ -39498,12 +36494,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a LoginTwitter request on {:?}", (
-                &version
-            ));
+            info!("Performing a LoginTwitter request");
 
             let result = client.login_twitter(
-                version,
                 access_token,
                 access_token_secret,
                 app_key,
@@ -39523,7 +36516,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::AddUsersToPermissionable {
-            version,
             permissionable_type,
             permissionable_id,
             device_id,
@@ -39542,12 +36534,9 @@ async fn main() -> Result<()> {
             longitude,
             audience_ids,
         } => {
-            info!("Performing a AddUsersToPermissionable request on {:?}", (
-                &version
-            ));
+            info!("Performing a AddUsersToPermissionable request");
 
             let result = client.add_users_to_permissionable(
-                version,
                 permissionable_type,
                 permissionable_id,
                 device_id,
@@ -39577,19 +36566,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ApprovePermissionable {
-            version,
             permissionable_type,
             permissionable_id,
             device_id,
             account_id,
             approval_status,
         } => {
-            info!("Performing a ApprovePermissionable request on {:?}", (
-                &version
-            ));
+            info!("Performing a ApprovePermissionable request");
 
             let result = client.approve_permissionable(
-                version,
                 permissionable_type,
                 permissionable_id,
                 device_id,
@@ -39607,7 +36592,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::LeaveFromPermissionable {
-            version,
             permissionable_type,
             permissionable_id,
             device_id,
@@ -39615,12 +36599,9 @@ async fn main() -> Result<()> {
             latitude,
             longitude,
         } => {
-            info!("Performing a LeaveFromPermissionable request on {:?}", (
-                &version
-            ));
+            info!("Performing a LeaveFromPermissionable request");
 
             let result = client.leave_from_permissionable(
-                version,
                 permissionable_type,
                 permissionable_id,
                 device_id,
@@ -39639,7 +36620,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RemoveUsersFromPermissionable {
-            version,
             permissionable_type,
             permissionable_id,
             device_id,
@@ -39652,12 +36632,9 @@ async fn main() -> Result<()> {
             longitude,
             audience_ids,
         } => {
-            info!("Performing a RemoveUsersFromPermissionable request on {:?}", (
-                &version
-            ));
+            info!("Performing a RemoveUsersFromPermissionable request");
 
             let result = client.remove_users_from_permissionable(
-                version,
                 permissionable_type,
                 permissionable_id,
                 device_id,
@@ -39681,7 +36658,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPermissionables {
-            version,
             device_id,
             account_id,
             connection_account_id,
@@ -39696,12 +36672,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchPermissionables request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPermissionables request");
 
             let result = client.search_permissionables(
-                version,
                 device_id,
                 account_id,
                 connection_account_id,
@@ -39727,7 +36700,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchPermissionablesFollowingDistance {
-            version,
             latitude,
             longitude,
             device_id,
@@ -39743,12 +36715,9 @@ async fn main() -> Result<()> {
             start,
             limit,
         } => {
-            info!("Performing a SearchPermissionablesFollowingDistance request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchPermissionablesFollowingDistance request");
 
             let result = client.search_permissionables_following_distance(
-                version,
                 latitude,
                 longitude,
                 device_id,
@@ -39775,17 +36744,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateFollowing {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a CreateFollowing request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateFollowing request");
 
             let result = client.create_following(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -39799,18 +36764,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateSpace {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a CreateSpace request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateSpace request");
 
             let result = client.create_space(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -39825,18 +36786,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateVatomEvent {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a CreateVatomEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateVatomEvent request");
 
             let result = client.create_vatom_event(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -39851,17 +36808,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteFollowing {
-            version,
             account_id,
             vatom_rels_key,
             return_raw_response,
         } => {
-            info!("Performing a DeleteFollowing request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteFollowing request");
 
             let result = client.delete_following(
-                version,
                 account_id,
                 vatom_rels_key,
                 return_raw_response,
@@ -39875,18 +36828,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeletePointsBalance {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a DeletePointsBalance request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeletePointsBalance request");
 
             let result = client.delete_points_balance(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -39901,18 +36850,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteSpace {
-            version,
             account_id,
             app_key,
             vatom_space_id,
             return_raw_response,
         } => {
-            info!("Performing a DeleteSpace request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteSpace request");
 
             let result = client.delete_space(
-                version,
                 account_id,
                 app_key,
                 vatom_space_id,
@@ -39927,18 +36872,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteVatomEvent {
-            version,
             account_id,
             app_key,
             vatom_event_id,
             return_raw_response,
         } => {
-            info!("Performing a DeleteVatomEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteVatomEvent request");
 
             let result = client.delete_vatom_event(
-                version,
                 account_id,
                 app_key,
                 vatom_event_id,
@@ -39953,17 +36894,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteVatomNft {
-            version,
             account_id,
             vatom_id,
             return_raw_response,
         } => {
-            info!("Performing a DeleteVatomNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteVatomNft request");
 
             let result = client.delete_vatom_nft(
-                version,
                 account_id,
                 vatom_id,
                 return_raw_response,
@@ -39977,18 +36914,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ExecuteActionOnNft {
-            version,
             account_id,
             vatom_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ExecuteActionOnNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a ExecuteActionOnNft request");
 
             let result = client.execute_action_on_nft(
-                version,
                 account_id,
                 vatom_id,
                 vatom_parameters,
@@ -40003,17 +36936,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GeomapSearch {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a GeomapSearch request on {:?}", (
-                &version
-            ));
+            info!("Performing a GeomapSearch request");
 
             let result = client.geomap_search(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -40027,17 +36956,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBusinessBehaviors {
-            version,
             account_id,
             app_key,
             return_raw_response,
         } => {
-            info!("Performing a GetBusinessBehaviors request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBusinessBehaviors request");
 
             let result = client.get_business_behaviors(
-                version,
                 account_id,
                 app_key,
                 return_raw_response,
@@ -40051,17 +36976,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBusinessCoinsBalance {
-            version,
             account_id,
             app_key,
             return_raw_response,
         } => {
-            info!("Performing a GetBusinessCoinsBalance request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBusinessCoinsBalance request");
 
             let result = client.get_business_coins_balance(
-                version,
                 account_id,
                 app_key,
                 return_raw_response,
@@ -40075,16 +36996,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBusinessIds {
-            version,
             account_id,
             return_raw_response,
         } => {
-            info!("Performing a GetBusinessIds request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBusinessIds request");
 
             let result = client.get_business_ids(
-                version,
                 account_id,
                 return_raw_response,
             ).await?;
@@ -40097,18 +37014,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBusinessInfo {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a GetBusinessInfo request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBusinessInfo request");
 
             let result = client.get_business_info(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -40123,17 +37036,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetBusinessUsers {
-            version,
             account_id,
             app_key,
             return_raw_response,
         } => {
-            info!("Performing a GetBusinessUsers request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetBusinessUsers request");
 
             let result = client.get_business_users(
-                version,
                 account_id,
                 app_key,
                 return_raw_response,
@@ -40147,18 +37056,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCampaignGroupEntities {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetCampaignGroupEntities request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCampaignGroupEntities request");
 
             let result = client.get_campaign_group_entities(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -40173,18 +37078,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCampaignGroupRules {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetCampaignGroupRules request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCampaignGroupRules request");
 
             let result = client.get_campaign_group_rules(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -40199,18 +37100,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCampaignGroupStats {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetCampaignGroupStats request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCampaignGroupStats request");
 
             let result = client.get_campaign_group_stats(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -40225,18 +37122,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetCampaignInfo {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetCampaignInfo request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetCampaignInfo request");
 
             let result = client.get_campaign_info(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -40251,18 +37144,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetEventGuestList {
-            version,
             account_id,
             app_key,
             vatom_event_id,
             return_raw_response,
         } => {
-            info!("Performing a GetEventGuestList request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetEventGuestList request");
 
             let result = client.get_event_guest_list(
-                version,
                 account_id,
                 app_key,
                 vatom_event_id,
@@ -40277,17 +37166,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetInventory {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a GetInventory request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetInventory request");
 
             let result = client.get_inventory(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -40301,16 +37186,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetMyFollowing {
-            version,
             account_id,
             return_raw_response,
         } => {
-            info!("Performing a GetMyFollowing request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetMyFollowing request");
 
             let result = client.get_my_following(
-                version,
                 account_id,
                 return_raw_response,
             ).await?;
@@ -40323,18 +37204,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPointsBalance {
-            version,
             account_id,
             vatom_user_id,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetPointsBalance request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPointsBalance request");
 
             let result = client.get_points_balance(
-                version,
                 account_id,
                 vatom_user_id,
                 vatom_campaign_id,
@@ -40349,19 +37226,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetPointsBalanceAsBusiness {
-            version,
             account_id,
             app_key,
             vatom_user_id,
             vatom_campaign_id,
             return_raw_response,
         } => {
-            info!("Performing a GetPointsBalanceAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetPointsBalanceAsBusiness request");
 
             let result = client.get_points_balance_as_business(
-                version,
                 account_id,
                 app_key,
                 vatom_user_id,
@@ -40377,18 +37250,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetSpace {
-            version,
             account_id,
             app_key,
             vatom_space_id,
             return_raw_response,
         } => {
-            info!("Performing a GetSpace request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetSpace request");
 
             let result = client.get_space(
-                version,
                 account_id,
                 app_key,
                 vatom_space_id,
@@ -40403,18 +37272,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserCoinsAsBusiness {
-            version,
             account_id,
             vatom_user_id,
             app_key,
             return_raw_response,
         } => {
-            info!("Performing a GetUserCoinsAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserCoinsAsBusiness request");
 
             let result = client.get_user_coins_as_business(
-                version,
                 account_id,
                 vatom_user_id,
                 app_key,
@@ -40429,18 +37294,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserCoinsBalance {
-            version,
             account_id,
             vatom_user_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a GetUserCoinsBalance request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserCoinsBalance request");
 
             let result = client.get_user_coins_balance(
-                version,
                 account_id,
                 vatom_user_id,
                 vatom_parameters,
@@ -40455,17 +37316,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserFollowers {
-            version,
             account_id,
             vatom_user_id,
             return_raw_response,
         } => {
-            info!("Performing a GetUserFollowers request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserFollowers request");
 
             let result = client.get_user_followers(
-                version,
                 account_id,
                 vatom_user_id,
                 return_raw_response,
@@ -40479,17 +37336,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserFollowing {
-            version,
             account_id,
             vatom_user_id,
             return_raw_response,
         } => {
-            info!("Performing a GetUserFollowing request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserFollowing request");
 
             let result = client.get_user_following(
-                version,
                 account_id,
                 vatom_user_id,
                 return_raw_response,
@@ -40503,17 +37356,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserInfo {
-            version,
             account_id,
             vatom_user_id,
             return_raw_response,
         } => {
-            info!("Performing a GetUserInfo request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserInfo request");
 
             let result = client.get_user_info(
-                version,
                 account_id,
                 vatom_user_id,
                 return_raw_response,
@@ -40527,16 +37376,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetUserProfile {
-            version,
             account_id,
             return_raw_response,
         } => {
-            info!("Performing a GetUserProfile request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetUserProfile request");
 
             let result = client.get_user_profile(
-                version,
                 account_id,
                 return_raw_response,
             ).await?;
@@ -40549,18 +37394,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetVatomEvent {
-            version,
             account_id,
             app_key,
             vatom_event_id,
             return_raw_response,
         } => {
-            info!("Performing a GetVatomEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetVatomEvent request");
 
             let result = client.get_vatom_event(
-                version,
                 account_id,
                 app_key,
                 vatom_event_id,
@@ -40575,17 +37416,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetVatomNft {
-            version,
             account_id,
             vatom_id,
             return_raw_response,
         } => {
-            info!("Performing a GetVatomNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetVatomNft request");
 
             let result = client.get_vatom_nft(
-                version,
                 account_id,
                 vatom_id,
                 return_raw_response,
@@ -40599,18 +37436,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListCommunities {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ListCommunities request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListCommunities request");
 
             let result = client.list_communities(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -40625,18 +37458,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListEvents {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ListEvents request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListEvents request");
 
             let result = client.list_events(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -40651,18 +37480,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListSpaces {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ListSpaces request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListSpaces request");
 
             let result = client.list_spaces(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -40677,18 +37502,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListUserCoinTransactions {
-            version,
             account_id,
             vatom_user_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ListUserCoinTransactions request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListUserCoinTransactions request");
 
             let result = client.list_user_coin_transactions(
-                version,
                 account_id,
                 vatom_user_id,
                 vatom_parameters,
@@ -40703,19 +37524,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::ListUserCoinTransactionsAsBusiness {
-            version,
             account_id,
             vatom_user_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a ListUserCoinTransactionsAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a ListUserCoinTransactionsAsBusiness request");
 
             let result = client.list_user_coin_transactions_as_business(
-                version,
                 account_id,
                 vatom_user_id,
                 app_key,
@@ -40731,19 +37548,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PerformActionOnNft {
-            version,
             account_id,
             vatom_id,
             vatom_action,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a PerformActionOnNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a PerformActionOnNft request");
 
             let result = client.perform_action_on_nft(
-                version,
                 account_id,
                 vatom_id,
                 vatom_action,
@@ -40759,18 +37572,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RedeemNft {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a RedeemNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a RedeemNft request");
 
             let result = client.redeem_nft(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -40785,19 +37594,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RedeemUserCoinsAsBusiness {
-            version,
             account_id,
             vatom_user_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a RedeemUserCoinsAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a RedeemUserCoinsAsBusiness request");
 
             let result = client.redeem_user_coins_as_business(
-                version,
                 account_id,
                 vatom_user_id,
                 app_key,
@@ -40813,17 +37618,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchBusinesses {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a SearchBusinesses request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchBusinesses request");
 
             let result = client.search_businesses(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -40837,17 +37638,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchCampaignGroups {
-            version,
             account_id,
             app_key,
             return_raw_response,
         } => {
-            info!("Performing a SearchCampaignGroups request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchCampaignGroups request");
 
             let result = client.search_campaign_groups(
-                version,
                 account_id,
                 app_key,
                 return_raw_response,
@@ -40861,16 +37658,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchIdentities {
-            version,
             account_id,
             return_raw_response,
         } => {
-            info!("Performing a SearchIdentities request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchIdentities request");
 
             let result = client.search_identities(
-                version,
                 account_id,
                 return_raw_response,
             ).await?;
@@ -40883,17 +37676,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchInventory {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a SearchInventory request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchInventory request");
 
             let result = client.search_inventory(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -40907,19 +37696,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SendNft {
-            version,
             account_id,
             app_key,
             vatom_campaign_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a SendNft request on {:?}", (
-                &version
-            ));
+            info!("Performing a SendNft request");
 
             let result = client.send_nft(
-                version,
                 account_id,
                 app_key,
                 vatom_campaign_id,
@@ -40935,7 +37720,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SetPointsBalanceAsBusiness {
-            version,
             account_id,
             app_key,
             vatom_user_id,
@@ -40943,12 +37727,9 @@ async fn main() -> Result<()> {
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a SetPointsBalanceAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a SetPointsBalanceAsBusiness request");
 
             let result = client.set_points_balance_as_business(
-                version,
                 account_id,
                 app_key,
                 vatom_user_id,
@@ -40965,18 +37746,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::TransferUserCoins {
-            version,
             account_id,
             vatom_user_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a TransferUserCoins request on {:?}", (
-                &version
-            ));
+            info!("Performing a TransferUserCoins request");
 
             let result = client.transfer_user_coins(
-                version,
                 account_id,
                 vatom_user_id,
                 vatom_parameters,
@@ -40991,18 +37768,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateBusinessCoins {
-            version,
             account_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateBusinessCoins request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateBusinessCoins request");
 
             let result = client.update_business_coins(
-                version,
                 account_id,
                 app_key,
                 vatom_parameters,
@@ -41017,19 +37790,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateEventGuestList {
-            version,
             account_id,
             app_key,
             vatom_event_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateEventGuestList request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateEventGuestList request");
 
             let result = client.update_event_guest_list(
-                version,
                 account_id,
                 app_key,
                 vatom_event_id,
@@ -41045,19 +37814,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateSpace {
-            version,
             account_id,
             app_key,
             vatom_space_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateSpace request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateSpace request");
 
             let result = client.update_space(
-                version,
                 account_id,
                 app_key,
                 vatom_space_id,
@@ -41073,19 +37838,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateUserCoinsAsBusiness {
-            version,
             account_id,
             vatom_user_id,
             app_key,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateUserCoinsAsBusiness request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateUserCoinsAsBusiness request");
 
             let result = client.update_user_coins_as_business(
-                version,
                 account_id,
                 vatom_user_id,
                 app_key,
@@ -41101,17 +37862,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateUserProfile {
-            version,
             account_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateUserProfile request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateUserProfile request");
 
             let result = client.update_user_profile(
-                version,
                 account_id,
                 vatom_parameters,
                 return_raw_response,
@@ -41125,19 +37882,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateVatomEvent {
-            version,
             account_id,
             app_key,
             vatom_event_id,
             vatom_parameters,
             return_raw_response,
         } => {
-            info!("Performing a UpdateVatomEvent request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateVatomEvent request");
 
             let result = client.update_vatom_event(
-                version,
                 account_id,
                 app_key,
                 vatom_event_id,
@@ -41153,16 +37906,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateVehicle {
-            version,
             vehicle,
             body,
         } => {
-            info!("Performing a CreateVehicle request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateVehicle request");
 
             let result = client.create_vehicle(
-                version,
                 vehicle,
                 body,
             ).await?;
@@ -41177,7 +37926,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchVehicle {
-            version,
             hub_id,
             sort_field,
             descending,
@@ -41186,12 +37934,9 @@ async fn main() -> Result<()> {
             active_only,
             keyword,
         } => {
-            info!("Performing a SearchVehicle request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchVehicle request");
 
             let result = client.search_vehicle(
-                version,
                 hub_id,
                 sort_field,
                 descending,
@@ -41211,17 +37956,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteVehicle {
-            version,
             id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteVehicle request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.delete_vehicle(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -41233,16 +37975,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetVehicle {
-            version,
             id,
         } => {
             info!("Performing a GetVehicle request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.get_vehicle(
-                version,
                 id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -41256,18 +37995,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateVehicle {
-            version,
             id,
             vehicle,
             body,
         } => {
             info!("Performing a UpdateVehicle request on {:?}", (
-                &version,
                 &id
             ));
 
             let result = client.update_vehicle(
-                version,
                 id,
                 vehicle,
                 body,
@@ -41283,16 +38019,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateVehicleType {
-            version,
             vehicle_type,
             body,
         } => {
-            info!("Performing a CreateVehicleType request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateVehicleType request");
 
             let result = client.create_vehicle_type(
-                version,
                 vehicle_type,
                 body,
             ).await?;
@@ -41307,7 +38039,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchVehicleTypes {
-            version,
             sort_field,
             descending,
             start,
@@ -41316,12 +38047,9 @@ async fn main() -> Result<()> {
             retailer_id,
             hub_id,
         } => {
-            info!("Performing a SearchVehicleTypes request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchVehicleTypes request");
 
             let result = client.search_vehicle_types(
-                version,
                 sort_field,
                 descending,
                 start,
@@ -41341,17 +38069,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteVehicleType {
-            version,
             vehicle_type_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
             info!("Performing a DeleteVehicleType request on {:?}", (
-                &version,
                 &vehicle_type_id
             ));
 
             let result = client.delete_vehicle_type(
-                version,
                 vehicle_type_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -41363,16 +38088,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetVehicleType {
-            version,
             vehicle_type_id,
         } => {
             info!("Performing a GetVehicleType request on {:?}", (
-                &version,
                 &vehicle_type_id
             ));
 
             let result = client.get_vehicle_type(
-                version,
                 vehicle_type_id,
             ).await?;
             debug!("Result: {:?}", result);
@@ -41386,18 +38108,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateVehicleType {
-            version,
             vehicle_type_id,
             vehicle_type,
             body,
         } => {
             info!("Performing a UpdateVehicleType request on {:?}", (
-                &version,
                 &vehicle_type_id
             ));
 
             let result = client.update_vehicle_type(
-                version,
                 vehicle_type_id,
                 vehicle_type,
                 body,
@@ -41413,7 +38132,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateOfferTransaction {
-            version,
             device_id,
             account_id,
             offer_id,
@@ -41426,12 +38144,9 @@ async fn main() -> Result<()> {
             app_key,
             status,
         } => {
-            info!("Performing a CreateOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateOfferTransaction request");
 
             let result = client.create_offer_transaction(
-                version,
                 device_id,
                 account_id,
                 offer_id,
@@ -41455,17 +38170,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteOfferTransaction {
-            version,
             transaction_id,
             device_id,
             account_id,
         } => {
-            info!("Performing a DeleteOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteOfferTransaction request");
 
             let result = client.delete_offer_transaction(
-                version,
                 transaction_id,
                 device_id,
                 account_id,
@@ -41481,7 +38192,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetOfferTransaction {
-            version,
             transaction_id,
             device_id,
             account_id,
@@ -41490,12 +38200,9 @@ async fn main() -> Result<()> {
             longitude,
             return_full_response,
         } => {
-            info!("Performing a GetOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetOfferTransaction request");
 
             let result = client.get_offer_transaction(
-                version,
                 transaction_id,
                 device_id,
                 account_id,
@@ -41515,7 +38222,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::PreviewOfferTransaction {
-            version,
             device_id,
             account_id,
             offer_id,
@@ -41527,12 +38233,9 @@ async fn main() -> Result<()> {
             meta_data,
             app_key,
         } => {
-            info!("Performing a PreviewOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a PreviewOfferTransaction request");
 
             let result = client.preview_offer_transaction(
-                version,
                 device_id,
                 account_id,
                 offer_id,
@@ -41555,7 +38258,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchOfferTransactions {
-            version,
             device_id,
             account_id,
             keyword,
@@ -41598,12 +38300,9 @@ async fn main() -> Result<()> {
             recurring_expiration_since,
             recurring_expiration_before,
         } => {
-            info!("Performing a SearchOfferTransactions request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchOfferTransactions request");
 
             let result = client.search_offer_transactions(
-                version,
                 device_id,
                 account_id,
                 keyword,
@@ -41657,7 +38356,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateOfferTransaction {
-            version,
             transaction_id,
             status,
             device_id,
@@ -41672,12 +38370,9 @@ async fn main() -> Result<()> {
             return_full_response,
             exception_membership_offer_ids,
         } => {
-            info!("Performing a UpdateOfferTransaction request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateOfferTransaction request");
 
             let result = client.update_offer_transaction(
-                version,
                 transaction_id,
                 status,
                 device_id,
@@ -41703,18 +38398,14 @@ async fn main() -> Result<()> {
             }
         }
         Operation::SearchWeather {
-            version,
             region_id,
             latitude,
             longitude,
             timezone_offset,
         } => {
-            info!("Performing a SearchWeather request on {:?}", (
-                &version
-            ));
+            info!("Performing a SearchWeather request");
 
             let result = client.search_weather(
-                version,
                 region_id,
                 latitude,
                 longitude,
@@ -41731,7 +38422,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::CreateWord {
-            version,
             account_id,
             word,
             definition,
@@ -41742,12 +38432,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a CreateWord request on {:?}", (
-                &version
-            ));
+            info!("Performing a CreateWord request");
 
             let result = client.create_word(
-                version,
                 account_id,
                 word,
                 definition,
@@ -41769,17 +38456,13 @@ async fn main() -> Result<()> {
             }
         }
         Operation::DeleteWord {
-            version,
             word_id,
             account_id,
         } => {
             prompt(args.force, "This will delete the given entry, are you sure?")?;
-            info!("Performing a DeleteWord request on {:?}", (
-                &version
-            ));
+            info!("Performing a DeleteWord request");
 
             let result = client.delete_word(
-                version,
                 word_id,
                 account_id,
             ).await?;
@@ -41794,16 +38477,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetWord {
-            version,
             word_id,
             account_id,
         } => {
-            info!("Performing a GetWord request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetWord request");
 
             let result = client.get_word(
-                version,
                 word_id,
                 account_id,
             ).await?;
@@ -41818,7 +38497,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::GetWords {
-            version,
             account_id,
             sort_field,
             descending,
@@ -41827,12 +38505,9 @@ async fn main() -> Result<()> {
             limit,
             keyword,
         } => {
-            info!("Performing a GetWords request on {:?}", (
-                &version
-            ));
+            info!("Performing a GetWords request");
 
             let result = client.get_words(
-                version,
                 account_id,
                 sort_field,
                 descending,
@@ -41852,7 +38527,6 @@ async fn main() -> Result<()> {
             }
         }
         Operation::UpdateWord {
-            version,
             word_id,
             account_id,
             ticket_count,
@@ -41864,12 +38538,9 @@ async fn main() -> Result<()> {
             ticket_type,
             points,
         } => {
-            info!("Performing a UpdateWord request on {:?}", (
-                &version
-            ));
+            info!("Performing a UpdateWord request");
 
             let result = client.update_word(
-                version,
                 word_id,
                 account_id,
                 ticket_count,
@@ -41892,19 +38563,15 @@ async fn main() -> Result<()> {
             }
         }
         Operation::RunWorkflow {
-            version,
             account_id,
             workflow_id,
             sku_id,
             version_code,
             parameters,
         } => {
-            info!("Performing a RunWorkflow request on {:?}", (
-                &version
-            ));
+            info!("Performing a RunWorkflow request");
 
             let result = client.run_workflow(
-                version,
                 account_id,
                 workflow_id,
                 sku_id,
