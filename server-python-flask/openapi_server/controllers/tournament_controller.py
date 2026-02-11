@@ -9,13 +9,11 @@ from openapi_server.models.tournament_response import TournamentResponse  # noqa
 from openapi_server import util
 
 
-def create_tournament(version, account_id, app_key, title, cost_to_play, start_date, sub_type=None, image_asset_id=None, seconds_between_levels=None, seconds_for_tie_breaker=None, seconds_between_packs=None, maximum_level_length=None, cost_to_play_type=None, minimum_to_play=None, starting_limit=None, available_limit=None, description=None, meta_data=None, audience_ids=None, active=None, enable_buy_back=None, offer_ids=None, offer_asset_id=None, fixed_reward=None, split_reward=None, allocate_tickets=None, tournament_data=None, mission_type=None, visibility=None, preliminary_groups=None, preliminary_group_advancements=None, enable_multiple_entries=None, enable_multiple_votes=None, featured=None, winner_tag=None, tie_tag=None):  # noqa: E501
+def create_tournament(account_id, app_key, title, cost_to_play, start_date, sub_type=None, image_asset_id=None, seconds_between_levels=None, seconds_for_tie_breaker=None, seconds_between_packs=None, maximum_level_length=None, cost_to_play_type=None, minimum_to_play=None, starting_limit=None, available_limit=None, description=None, meta_data=None, audience_ids=None, active=None, enable_buy_back=None, offer_ids=None, offer_asset_id=None, fixed_reward=None, split_reward=None, allocate_tickets=None, tournament_data=None, mission_type=None, visibility=None, preliminary_groups=None, preliminary_group_advancements=None, enable_multiple_entries=None, enable_multiple_votes=None, featured=None, winner_tag=None, tie_tag=None):  # noqa: E501
     """Create Tournament
 
     Create a tournament. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The appKey the tournament is created for.
@@ -92,13 +90,11 @@ def create_tournament(version, account_id, app_key, title, cost_to_play, start_d
     return 'do some magic!'
 
 
-def delete_tournament(version, account_id, mission_id):  # noqa: E501
+def delete_tournament(account_id, mission_id):  # noqa: E501
     """Delete Tournament
 
     Delete a tournament. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param mission_id: the id of the mission to delete
@@ -109,13 +105,11 @@ def delete_tournament(version, account_id, mission_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_tournament(version, account_id, mission_id=None, join_code=None, include_scores=None, object_preview_size=None):  # noqa: E501
+def get_tournament(account_id, mission_id=None, join_code=None, include_scores=None, object_preview_size=None):  # noqa: E501
     """Get Tournament
 
     Get a tournament. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the logged in user
     :type account_id: int
     :param mission_id: The id of the mission to return (either missionId or joinCode is required)
@@ -132,13 +126,11 @@ def get_tournament(version, account_id, mission_id=None, join_code=None, include
     return 'do some magic!'
 
 
-def search_objects(version, account_id, game_level_id, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def search_objects(account_id, game_level_id, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search Tournament Objects
 
     Search on game objects of tournaments # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID
     :type account_id: int
     :param game_level_id: the game level id to filter results by
@@ -157,13 +149,11 @@ def search_objects(version, account_id, game_level_id, sort_field=None, descendi
     return 'do some magic!'
 
 
-def search_rounds(version, account_id, app_key, status=None, mission_type=None, current_only=None, visibilities=None, start=None, limit=None):  # noqa: E501
+def search_rounds(account_id, app_key, status=None, mission_type=None, current_only=None, visibilities=None, start=None, limit=None):  # noqa: E501
     """Search Tournament Rounds
 
     Search for the user&#39;s tournament games. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID
     :type account_id: int
     :param app_key: the application key
@@ -186,13 +176,11 @@ def search_rounds(version, account_id, app_key, status=None, mission_type=None, 
     return 'do some magic!'
 
 
-def search_tournaments(version, account_id, app_key, keyword=None, sub_type=None, include_inactive=None, mission_types=None, filter=None, sort_field=None, descending=None, visibility=None, start=None, limit=None):  # noqa: E501
+def search_tournaments(account_id, app_key, keyword=None, sub_type=None, include_inactive=None, mission_types=None, filter=None, sort_field=None, descending=None, visibility=None, start=None, limit=None):  # noqa: E501
     """Search Tournaments
 
     Search for tournaments # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The application key
@@ -223,13 +211,11 @@ def search_tournaments(version, account_id, app_key, keyword=None, sub_type=None
     return 'do some magic!'
 
 
-def submit_tournament_score(version, account_id, app_key, mission_id, game_id, pack_id, scores, game_level_id=None):  # noqa: E501
+def submit_tournament_score(account_id, app_key, mission_id, game_id, pack_id, scores, game_level_id=None):  # noqa: E501
     """Submit Tournament Score
 
     Submit an array of scores for a tournament match.  # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user account ID.
     :type account_id: int
     :param app_key: The application key.
@@ -250,13 +236,11 @@ def submit_tournament_score(version, account_id, app_key, mission_id, game_id, p
     return 'do some magic!'
 
 
-def submit_tournament_vote(version, account_id, app_key, mission_id, game_object_id, device_id=None, check_if_device_already_voted=None):  # noqa: E501
+def submit_tournament_vote(account_id, app_key, mission_id, game_object_id, device_id=None, check_if_device_already_voted=None):  # noqa: E501
     """Submit a vote for a multi-stage album tournament.
 
     Submit a vote for a multi-stage album tournament. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The application to target
@@ -275,13 +259,11 @@ def submit_tournament_vote(version, account_id, app_key, mission_id, game_object
     return 'do some magic!'
 
 
-def substitute_tournament_player(version, account_id, mission_id, pack_id, game_level_id):  # noqa: E501
+def substitute_tournament_player(account_id, mission_id, pack_id, game_level_id):  # noqa: E501
     """Substitute Tournament Player
 
     Service to replace the user&#39;s opponent in the current level - pack - mission with an AI account. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param mission_id: the id of the mission
@@ -296,13 +278,11 @@ def substitute_tournament_player(version, account_id, mission_id, pack_id, game_
     return 'do some magic!'
 
 
-def update_tournament(version, account_id, mission_id, title=None, sub_type=None, image_asset_id=None, seconds_between_levels=None, seconds_for_tie_breaker=None, seconds_between_packs=None, maximum_level_length=None, cost_to_play=None, cost_to_play_type=None, minimum_to_play=None, starting_limit=None, available_limit=None, description=None, meta_data=None, start_date=None, audience_ids=None, active=None, enable_buy_back=None, offer_ids=None, offer_asset_id=None, fixed_reward=None, split_reward=None, allocate_tickets=None, tournament_data=None, visibility=None, preliminary_groups=None, preliminary_group_advancements=None, enable_multiple_entries=None, enable_multiple_votes=None, featured=None, winner_tag=None, tie_tag=None):  # noqa: E501
+def update_tournament(account_id, mission_id, title=None, sub_type=None, image_asset_id=None, seconds_between_levels=None, seconds_for_tie_breaker=None, seconds_between_packs=None, maximum_level_length=None, cost_to_play=None, cost_to_play_type=None, minimum_to_play=None, starting_limit=None, available_limit=None, description=None, meta_data=None, start_date=None, audience_ids=None, active=None, enable_buy_back=None, offer_ids=None, offer_asset_id=None, fixed_reward=None, split_reward=None, allocate_tickets=None, tournament_data=None, visibility=None, preliminary_groups=None, preliminary_group_advancements=None, enable_multiple_entries=None, enable_multiple_votes=None, featured=None, winner_tag=None, tie_tag=None):  # noqa: E501
     """Update Tournament
 
     Update a tournament. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param mission_id: The mission/tournament to update

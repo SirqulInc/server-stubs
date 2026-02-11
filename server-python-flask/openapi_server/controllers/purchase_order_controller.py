@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_order(version, app_key, cart, device_id=None, account_id=None, description=None, currency_type=None, payment_method_id=None, external_order_id=None, external_payment_id=None, remote_ref_type=None, external_date=None, promo_code=None):  # noqa: E501
+def create_order(app_key, cart, device_id=None, account_id=None, description=None, currency_type=None, payment_method_id=None, external_order_id=None, external_payment_id=None, remote_ref_type=None, external_date=None, promo_code=None):  # noqa: E501
     """Create Order
 
     Creates a new purchase with some number of items associated with it. The purchase is added to the order that was created # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application requesting the purchase
     :type app_key: str
     :param cart: &#x60;&#x60;&#x60;json [   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 234, \&quot;orderCustomType\&quot;: \&quot;OfferLocation\&quot;, \&quot;orderCustomId\&quot;: 123, \&quot;retailerLocationId\&quot;: 1234, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;OFFER\&quot;, \&quot;orderItemId\&quot;: 235, \&quot;quantity\&quot;: 2 },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 10.50, \&quot;orderCustomType\&quot;: \&quot;ServiceFee\&quot; },   { \&quot;orderItemType\&quot;: \&quot;CUSTOM\&quot;, \&quot;amount\&quot;: 25.10, \&quot;quantity\&quot;: 2, \&quot;orderCustomType\&quot;: \&quot;Hat\&quot;, \&quot;orderCustomId\&quot;: 123 } ] &#x60;&#x60;&#x60; 
@@ -45,13 +43,11 @@ def create_order(version, app_key, cart, device_id=None, account_id=None, descri
     return 'do some magic!'
 
 
-def delete_order(version, order_id, device_id=None, account_id=None):  # noqa: E501
+def delete_order(order_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Order
 
     Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param order_id: Order Id
     :type order_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -64,13 +60,11 @@ def delete_order(version, order_id, device_id=None, account_id=None):  # noqa: E
     return 'do some magic!'
 
 
-def get_order(version, device_id=None, account_id=None, order_id=None, external_order_id=None):  # noqa: E501
+def get_order(device_id=None, account_id=None, order_id=None, external_order_id=None):  # noqa: E501
     """Get Order
 
     Get an order record # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -85,13 +79,11 @@ def get_order(version, device_id=None, account_id=None, order_id=None, external_
     return 'do some magic!'
 
 
-def preview_order(version, app_key, cart, device_id=None, account_id=None, description=None, currency_type=None, payment_method_id=None, external_order_id=None, external_payment_id=None, remote_ref_type=None, external_date=None, promo_code=None):  # noqa: E501
+def preview_order(app_key, cart, device_id=None, account_id=None, description=None, currency_type=None, payment_method_id=None, external_order_id=None, external_payment_id=None, remote_ref_type=None, external_date=None, promo_code=None):  # noqa: E501
     """Preview Order
 
     Previews a purchase to see the total cost before making it. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application requesting the purchase
     :type app_key: str
     :param cart: A JSON list of items to purchase
@@ -122,13 +114,11 @@ def preview_order(version, app_key, cart, device_id=None, account_id=None, descr
     return 'do some magic!'
 
 
-def search_orders(version, app_key, device_id=None, account_id=None, start=None, limit=None, descending=None, active_only=None, ignore_customer_filter=None, order_item_types=None, order_item_ids=None, order_custom_types=None, order_custom_ids=None, sort_field=None, offer_types=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, offer_ids=None, offer_location_ids=None, retailer_ids=None, retailer_location_ids=None, statuses=None, keyword=None, redeemable_start_date=None, redeemable_end_date=None, started_since=None, started_before=None, ended_since=None, ended_before=None):  # noqa: E501
+def search_orders(app_key, device_id=None, account_id=None, start=None, limit=None, descending=None, active_only=None, ignore_customer_filter=None, order_item_types=None, order_item_ids=None, order_custom_types=None, order_custom_ids=None, sort_field=None, offer_types=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, offer_ids=None, offer_location_ids=None, retailer_ids=None, retailer_location_ids=None, statuses=None, keyword=None, redeemable_start_date=None, redeemable_end_date=None, started_since=None, started_before=None, ended_since=None, ended_before=None):  # noqa: E501
     """Search Orders
 
     Search on active orders by customer # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application requesting the purchase
     :type app_key: str
     :param device_id: The device id (deviceId or accountId required)
@@ -197,13 +187,11 @@ def search_orders(version, app_key, device_id=None, account_id=None, start=None,
     return 'do some magic!'
 
 
-def update_order(version, order_id, app_key, cart, device_id=None, account_id=None, payment_transaction_id=None, description=None, currency_type=None, payment_method_id=None, external_payment_id=None, external_date=None):  # noqa: E501
+def update_order(order_id, app_key, cart, device_id=None, account_id=None, payment_transaction_id=None, description=None, currency_type=None, payment_method_id=None, external_payment_id=None, external_date=None):  # noqa: E501
     """Update Order
 
     Updates new purchase with some number of items associated with it. The orderId provided is used to retrieve the record and the payment is added to it. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param order_id: The order to add the purchase to, leave null for new order.
     :type order_id: int
     :param app_key: The application requesting the purchase

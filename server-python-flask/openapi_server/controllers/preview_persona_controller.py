@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_persona(version, account_id, title, preview_accounts=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None):  # noqa: E501
+def create_persona(account_id, title, preview_accounts=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None):  # noqa: E501
     """Create Persona
 
     Creates a new persona. If the given params are null those attributes will be override by null. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param title: the title of the persona
@@ -39,13 +37,11 @@ def create_persona(version, account_id, title, preview_accounts=None, _date=None
     return 'do some magic!'
 
 
-def delete_persona(version, account_id, persona_id):  # noqa: E501
+def delete_persona(account_id, persona_id):  # noqa: E501
     """Delete Persona
 
     Mark the persona for deletion. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param persona_id: the id of the persona to delete
@@ -56,13 +52,11 @@ def delete_persona(version, account_id, persona_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_persona_list(version, account_id, persona_id):  # noqa: E501
+def get_persona_list(account_id, persona_id):  # noqa: E501
     """Get Persona
 
     Get the persona by the given persona ID. If the persona cannot be found, a invalid response is returned. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param persona_id: the persona ID of the persona
@@ -73,13 +67,11 @@ def get_persona_list(version, account_id, persona_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_persona(version, account_id, start, limit):  # noqa: E501
+def search_persona(account_id, start, limit):  # noqa: E501
     """Search Personas
 
     Search for persona that the account owns by the given account ID. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param start: the start index for pagination
@@ -92,13 +84,11 @@ def search_persona(version, account_id, start, limit):  # noqa: E501
     return 'do some magic!'
 
 
-def update_persona(version, account_id, persona_id, title=None, preview_accounts=None, active=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None):  # noqa: E501
+def update_persona(account_id, persona_id, title=None, preview_accounts=None, active=None, _date=None, age=None, gender=None, game_experience_level=None, latitude=None, longitude=None):  # noqa: E501
     """Update Persona
 
     Update the persona by the given personaId. If the given params are null those attributes will be override by null. If active is assigned, all other params will be ignored. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param persona_id: the persona ID of the persona to update

@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_game(version, account_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None):  # noqa: E501
+def create_game(account_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None):  # noqa: E501
     """Create a Game
 
     Create a Game. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The game application key to save the level for.
@@ -35,13 +33,11 @@ def create_game(version, account_id=None, app_key=None, title=None, description=
     return 'do some magic!'
 
 
-def delete_game(version, account_id, game_id):  # noqa: E501
+def delete_game(account_id, game_id):  # noqa: E501
     """Delete a Game
 
     Delete a game. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id.
@@ -52,13 +48,11 @@ def delete_game(version, account_id, game_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_game(version, account_id, game_id, include_game_data=None):  # noqa: E501
+def get_game(account_id, game_id, include_game_data=None):  # noqa: E501
     """Get a Game by id
 
     Get a Game by id. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id.
@@ -71,13 +65,11 @@ def get_game(version, account_id, game_id, include_game_data=None):  # noqa: E50
     return 'do some magic!'
 
 
-def search_games(version, account_id, app_key, start, limit, keyword=None, app_version=None, include_game_data=None, include_inactive=None):  # noqa: E501
+def search_games(account_id, app_key, start, limit, keyword=None, app_version=None, include_game_data=None, include_inactive=None):  # noqa: E501
     """Search a Game
 
     Get a list of games for an application, just those the account has permissions to view. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: the application key
@@ -100,13 +92,11 @@ def search_games(version, account_id, app_key, start, limit, keyword=None, app_v
     return 'do some magic!'
 
 
-def update_game(version, account_id=None, game_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None):  # noqa: E501
+def update_game(account_id=None, game_id=None, app_key=None, title=None, description=None, meta_data=None, pack_ids=None, include_game_data=None):  # noqa: E501
     """Update a Game
 
     Update a Game # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param game_id: the updating game&#39;s id

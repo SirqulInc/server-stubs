@@ -8,13 +8,11 @@ from openapi_server.models.search_response import SearchResponse  # noqa: E501
 from openapi_server import util
 
 
-def register_like(version, likable_type, likable_id, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, like=None, app=None, game_type=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
+def register_like(likable_type, likable_id, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, like=None, app=None, game_type=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
     """Create Like
 
     Allows a user to like or dislike accounts, albums, album contests, assets, game levels, notes, and theme descriptors. Multiple likes\\dislikes on the same object will replace the previous one. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object
@@ -45,13 +43,11 @@ def register_like(version, likable_type, likable_id, device_id=None, account_id=
     return 'do some magic!'
 
 
-def remove_like(version, likable_type, likable_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def remove_like(likable_type, likable_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Like
 
     Removes a like. This will make the user \&quot;neutral\&quot;. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object
@@ -70,13 +66,11 @@ def remove_like(version, likable_type, likable_id, device_id=None, account_id=No
     return 'do some magic!'
 
 
-def search_likes(version, likable_type, likable_id, device_id=None, account_id=None, connection_account_ids=None, sort_field=None, descending=None, updated_since=None, updated_before=None, start=None, limit=None):  # noqa: E501
+def search_likes(likable_type, likable_id, device_id=None, account_id=None, connection_account_ids=None, sort_field=None, descending=None, updated_since=None, updated_before=None, start=None, limit=None):  # noqa: E501
     """Search Likes
 
     Search for likes on a likable object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param likable_type: The type of the likable object {ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, NOTE, THEME_DESCRIPTOR}
     :type likable_type: str
     :param likable_id: The id of the likable object

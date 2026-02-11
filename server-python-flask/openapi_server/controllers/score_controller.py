@@ -7,13 +7,11 @@ from openapi_server.models.score_response import ScoreResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_score(version, account_id, app_key, points, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, time_taken=None, highest=None):  # noqa: E501
+def create_score(account_id, app_key, points, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, time_taken=None, highest=None):  # noqa: E501
     """Create Score
 
     Create a score.  The response object will contain a series of   coded messages detailing what items were completed, the score registered,   and any tickets allocated.  Scoring a  level could complete the pack it   is in, completing that pack could complete the game, which  in turn could   complete the mission.  This completion chain is indicated to the client   via  a list of {@link MessageResponse}. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The game application key to save the score for.
@@ -40,13 +38,11 @@ def create_score(version, account_id, app_key, points, mission_id=None, game_id=
     return 'do some magic!'
 
 
-def get_score(version, account_id, app_key, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_object_type=None, score_status=None):  # noqa: E501
+def get_score(account_id, app_key, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_object_type=None, score_status=None):  # noqa: E501
     """Get Score
 
     Get the high score for an item.  Pass in the full path IDs for the score. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The game application key to get the level for.
@@ -71,13 +67,11 @@ def get_score(version, account_id, app_key, mission_id=None, game_id=None, pack_
     return 'do some magic!'
 
 
-def search_scores(version, account_id, app_key, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None):  # noqa: E501
+def search_scores(account_id, app_key, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None):  # noqa: E501
     """Search Score
 
     Search the scores for an item.  Pass in the full path IDs for the scores. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The game application key to get the level for.

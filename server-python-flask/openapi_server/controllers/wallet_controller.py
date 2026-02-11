@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_offer_transaction(version, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None, status=None):  # noqa: E501
+def create_offer_transaction(device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None, status=None):  # noqa: E501
     """Create Wallet Offers
 
     Adds offers to the wallet # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -43,13 +41,11 @@ def create_offer_transaction(version, device_id=None, account_id=None, offer_id=
     return 'do some magic!'
 
 
-def delete_offer_transaction(version, transaction_id, device_id=None, account_id=None):  # noqa: E501
+def delete_offer_transaction(transaction_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Wallet Offer
 
     Removes the transaction from the wallet by setting the deleted date to the current date/time.  Requires a valid account and transactionId. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to remove
     :type transaction_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -62,13 +58,11 @@ def delete_offer_transaction(version, transaction_id, device_id=None, account_id
     return 'do some magic!'
 
 
-def get_offer_transaction(version, transaction_id, device_id=None, account_id=None, include_mission=None, latitude=None, longitude=None, return_full_response=None):  # noqa: E501
+def get_offer_transaction(transaction_id, device_id=None, account_id=None, include_mission=None, latitude=None, longitude=None, return_full_response=None):  # noqa: E501
     """Get Wallet Offer
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to get details of
     :type transaction_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -89,13 +83,11 @@ def get_offer_transaction(version, transaction_id, device_id=None, account_id=No
     return 'do some magic!'
 
 
-def preview_offer_transaction(version, device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None):  # noqa: E501
+def preview_offer_transaction(device_id=None, account_id=None, offer_id=None, offer_location_id=None, offer_cart=None, promo_code=None, currency_type=None, use_points=None, meta_data=None, app_key=None):  # noqa: E501
     """Preview Wallet Offers
 
     Preview the final cost of a transaction without charging the user # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -122,13 +114,11 @@ def preview_offer_transaction(version, device_id=None, account_id=None, offer_id
     return 'do some magic!'
 
 
-def search_offer_transactions(version, device_id=None, account_id=None, keyword=None, retailer_id=None, retailer_ids=None, retailer_location_id=None, retailer_location_ids=None, exclude_retailer_location_ids=None, offer_id=None, offer_ids=None, offer_location_id=None, offer_location_ids=None, offer_type=None, offer_types=None, special_offer_type=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, redeemable_start_date=None, redeemable_end_date=None, filter_by_parent_offer=None, started_since=None, started_before=None, ended_since=None, ended_before=None, redeemed=None, statuses=None, reservations_only=None, active_only=None, return_full_response=None, recurring_started_since=None, recurring_started_before=None, recurring_expiration_since=None, recurring_expiration_before=None):  # noqa: E501
+def search_offer_transactions(device_id=None, account_id=None, keyword=None, retailer_id=None, retailer_ids=None, retailer_location_id=None, retailer_location_ids=None, exclude_retailer_location_ids=None, offer_id=None, offer_ids=None, offer_location_id=None, offer_location_ids=None, offer_type=None, offer_types=None, special_offer_type=None, special_offer_types=None, category_ids=None, filter_ids=None, offer_audience_ids=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, redeemable_start_date=None, redeemable_end_date=None, filter_by_parent_offer=None, started_since=None, started_before=None, ended_since=None, ended_before=None, redeemed=None, statuses=None, reservations_only=None, active_only=None, return_full_response=None, recurring_started_since=None, recurring_started_before=None, recurring_expiration_since=None, recurring_expiration_before=None):  # noqa: E501
     """Search Wallet Offers
 
     Search on active offers currently in the user&#39;s wallet, or past offers the user has already redeemed. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -217,13 +207,11 @@ def search_offer_transactions(version, device_id=None, account_id=None, keyword=
     return 'do some magic!'
 
 
-def update_offer_transaction(version, transaction_id, status, device_id=None, account_id=None, offer_location_id=None, currency_type=None, use_points=None, app_key=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, exception_membership_offer_ids=None):  # noqa: E501
+def update_offer_transaction(transaction_id, status, device_id=None, account_id=None, offer_location_id=None, currency_type=None, use_points=None, app_key=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, exception_membership_offer_ids=None):  # noqa: E501
     """Update Wallet Offer
 
     Update offer status. The status values are: 0 - not redeemable, 1 - redeemable.  Not redeemable means the customer has received the offer but has not decided to use (or print) it yet.  Until they choose to do this the merchant cannot redeem the offer (has not been given permission yet).   Redeemable means the customer has chosen to use the offer and wishes to redeem it.  Redeemed means the merchant has accepted the offer and the given the customer its value, then marked it a used in the system.  This status change is handled by a merchant end point. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param transaction_id: The offer transaction id to remove
     :type transaction_id: int
     :param status: The status value to change to (0 or 1)

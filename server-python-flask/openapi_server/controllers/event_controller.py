@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def attend_event(version, device_id=None, account_id=None, app_key=None, listing_id=None, retailer_location_id=None, offer_location_id=None, transaction_id=None, status=None, latitude=None, longitude=None):  # noqa: E501
+def attend_event(device_id=None, account_id=None, app_key=None, listing_id=None, retailer_location_id=None, offer_location_id=None, transaction_id=None, status=None, latitude=None, longitude=None):  # noqa: E501
     """Attend Event
 
      Specify whether the user is attending an event at a particular location. This can also be used as a \&quot;check-in\&quot; action. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id (deviceId or accountId required)
@@ -43,13 +41,11 @@ def attend_event(version, device_id=None, account_id=None, app_key=None, listing
     return 'do some magic!'
 
 
-def create_event(version, account_id, title, retailer_location_ids=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None, meta_data=None):  # noqa: E501
+def create_event(account_id, title, retailer_location_ids=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None, meta_data=None):  # noqa: E501
     """Create Event
 
     Create a private event to share with associates. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The event title
@@ -80,13 +76,11 @@ def create_event(version, account_id, title, retailer_location_ids=None, sub_tit
     return 'do some magic!'
 
 
-def delete_event(version, account_id, event_id):  # noqa: E501
+def delete_event(account_id, event_id):  # noqa: E501
     """Delete Event
 
     Delete an event that the user has permissions to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param event_id: the id of the event to update
@@ -97,13 +91,11 @@ def delete_event(version, account_id, event_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_event(version, account_id, event_id):  # noqa: E501
+def get_event(account_id, event_id):  # noqa: E501
     """Get Event
 
     Get an event. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param event_id: The id of the event to return
@@ -114,13 +106,11 @@ def get_event(version, account_id, event_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_event_transactions(version, device_id=None, account_id=None, app_key=None, keyword=None, retailer_id=None, retailer_location_id=None, exclude_retailer_location_id=None, listing_id=None, offer_id=None, offer_location_id=None, customer_account_ids=None, affiliated_category_ids=None, start_date=None, end_date=None, statuses=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def search_event_transactions(device_id=None, account_id=None, app_key=None, keyword=None, retailer_id=None, retailer_location_id=None, exclude_retailer_location_id=None, listing_id=None, offer_id=None, offer_location_id=None, customer_account_ids=None, affiliated_category_ids=None, start_date=None, end_date=None, statuses=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search Event Attendance
 
     Searches on event type transactions. This can be used to see who is attending an event. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -165,13 +155,11 @@ def search_event_transactions(version, device_id=None, account_id=None, app_key=
     return 'do some magic!'
 
 
-def search_events(version, account_id, keyword=None, active_only=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, sort_field=None, descending=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
+def search_events(account_id, keyword=None, active_only=None, category_ids=None, filter_ids=None, offer_audience_ids=None, transaction_audience_ids=None, sort_field=None, descending=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
     """Search Events
 
     Searches on events that the account has access to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: The keyword used to search
@@ -204,13 +192,11 @@ def search_events(version, account_id, keyword=None, active_only=None, category_
     return 'do some magic!'
 
 
-def update_event(version, account_id, event_id, retailer_location_ids=None, title=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None):  # noqa: E501
+def update_event(account_id, event_id, retailer_location_ids=None, title=None, sub_title=None, details=None, category_ids=None, filter_ids=None, active=None, image_asset_id=None, redeemable_start=None, redeemable_end=None):  # noqa: E501
     """Update Event
 
     Update a private event to share with associates. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param event_id: The id of the event to update

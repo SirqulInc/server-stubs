@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_postal_code(version, account_id, code, latitude, longitude, state_code=None, city=None, active=None):  # noqa: E501
+def create_postal_code(account_id, code, latitude, longitude, state_code=None, city=None, active=None):  # noqa: E501
     """Create Postal Code
 
     Create a Postal Code # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param code: the postal code
@@ -35,13 +33,11 @@ def create_postal_code(version, account_id, code, latitude, longitude, state_cod
     return 'do some magic!'
 
 
-def delete_postal_code(version, account_id, postal_code_id):  # noqa: E501
+def delete_postal_code(account_id, postal_code_id):  # noqa: E501
     """Delete Postal Code
 
     Delete a Postal Code # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param postal_code_id: the id of the postal code to delete
@@ -52,13 +48,11 @@ def delete_postal_code(version, account_id, postal_code_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_postal_code(version, postal_code_id):  # noqa: E501
+def get_postal_code(postal_code_id):  # noqa: E501
     """Get Postal Code
 
     Get a Postal Code # noqa: E501
 
-    :param version: 
-    :type version: 
     :param postal_code_id: the id of the postal code to get
     :type postal_code_id: int
 
@@ -67,13 +61,11 @@ def get_postal_code(version, postal_code_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_postal_codes(version, sort_field, descending, latitude=None, longitude=None, keyword=None, miles=None, start=None, limit=None):  # noqa: E501
+def get_postal_codes(sort_field, descending, latitude=None, longitude=None, keyword=None, miles=None, start=None, limit=None):  # noqa: E501
     """Search Postal Codes
 
     Get the list of regions. If latitude or longitude is null, will return all postal codes in the system with paginated response. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort the results on
     :type sort_field: str
     :param descending: whether to order results in ascending or descending order
@@ -96,13 +88,11 @@ def get_postal_codes(version, sort_field, descending, latitude=None, longitude=N
     return 'do some magic!'
 
 
-def update_postal_code(version, account_id, postal_code_id, code=None, latitude=None, longitude=None, state_code=None, city=None, active=None):  # noqa: E501
+def update_postal_code(account_id, postal_code_id, code=None, latitude=None, longitude=None, state_code=None, city=None, active=None):  # noqa: E501
     """Update Postal Code
 
     Update a Postal Code # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param postal_code_id: the id of the postal code to update

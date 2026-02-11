@@ -7,13 +7,11 @@ from openapi_server.models.cell_carrier_response import CellCarrierResponse  # n
 from openapi_server import util
 
 
-def search_carriers(version, keyword=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
+def search_carriers(keyword=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
     """Search Carriers
 
     Search on supported mobile telephone carriers that can be used to send SMS notifications via email. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param keyword: The keyword to search on
     :type keyword: str
     :param descending: Determines whether the sorted list is in descending or ascending order

@@ -8,13 +8,11 @@ from openapi_server.models.entity_reference import EntityReference  # noqa: E501
 from openapi_server import util
 
 
-def create_entity_reference(version, body):  # noqa: E501
+def create_entity_reference(body):  # noqa: E501
     """Create an entity reference.
 
     Creates a reference for an entity for syncing data between servers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: The entity reference object
     :type body: dict | bytes
 

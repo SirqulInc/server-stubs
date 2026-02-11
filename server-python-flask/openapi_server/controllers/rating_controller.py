@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_rating(version, ratable_type, ratable_id, rating_value, device_id=None, account_id=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
+def create_rating(ratable_type, ratable_id, rating_value, device_id=None, account_id=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
     """Create Rating
 
     This is used to leave rating on a ratable object (i.e. retailer locations). Each user can only rate on a ratable object once per category. If a user rates on the same object and category, the previous rating will be overwritten. Leaving a rating on a ratable object will be visible to everyone who has access to view the object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param ratable_type: The ratable object type {RETAILER_LOCATION}
     :type ratable_type: str
     :param ratable_id: The id of the ratable object
@@ -44,13 +42,11 @@ def create_rating(version, ratable_type, ratable_id, rating_value, device_id=Non
     return 'do some magic!'
 
 
-def delete_rating(version, rating_id, device_id=None, account_id=None):  # noqa: E501
+def delete_rating(rating_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Rating
 
     Sets a rating as deleted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param rating_id: The ID of the rating to delete
     :type rating_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -63,13 +59,11 @@ def delete_rating(version, rating_id, device_id=None, account_id=None):  # noqa:
     return 'do some magic!'
 
 
-def search_location_rating_indexes(version, category_ids=None, keyword=None, location_type=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, latitude=None, longitude=None, return_overall_rating=None, distance_unit=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None):  # noqa: E501
+def search_location_rating_indexes(category_ids=None, keyword=None, location_type=None, sort_field=None, descending=None, start=None, limit=None, search_range=None, latitude=None, longitude=None, return_overall_rating=None, distance_unit=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None):  # noqa: E501
     """Search Location Rating Indexes
 
     Search for retailer locations by averages near you. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param category_ids: Comma separated list of category ids to filter the results by
     :type category_ids: str
     :param keyword: The keyword used to search
@@ -110,13 +104,11 @@ def search_location_rating_indexes(version, category_ids=None, keyword=None, loc
     return 'do some magic!'
 
 
-def search_rating_indexes(version, ratable_type, ratable_ids=None, category_ids=None, secondary_type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, return_ratable=None, return_overall_rating=None):  # noqa: E501
+def search_rating_indexes(ratable_type, ratable_ids=None, category_ids=None, secondary_type=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, latitude=None, longitude=None, return_ratable=None, return_overall_rating=None):  # noqa: E501
     """Search Rating Indexes
 
     Search for ratable items by averages. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param ratable_type: Filter results by a ratable type {RETAILER_LOCATION}
     :type ratable_type: str
     :param ratable_ids: Comma separated list of ratable ids to filter the resuts by
@@ -149,13 +141,11 @@ def search_rating_indexes(version, ratable_type, ratable_ids=None, category_ids=
     return 'do some magic!'
 
 
-def search_ratings(version, device_id=None, account_id=None, filter_account_id=None, ratable_type=None, ratable_id=None, category_ids=None, keyword=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def search_ratings(device_id=None, account_id=None, filter_account_id=None, ratable_type=None, ratable_id=None, category_ids=None, keyword=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search Ratings
 
     Search for ratings on a ratable object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -184,13 +174,11 @@ def search_ratings(version, device_id=None, account_id=None, filter_account_id=N
     return 'do some magic!'
 
 
-def update_rating(version, rating_id, device_id=None, account_id=None, rating_value=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
+def update_rating(rating_id, device_id=None, account_id=None, rating_value=None, category_id=None, display=None, description=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
     """Update Rating
 
     Update an existing rating. Only the creator of the rating have permission to update. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param rating_id: The id of the rating (Note: this is not the ratable object id)
     :type rating_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)

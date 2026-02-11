@@ -8,13 +8,11 @@ from openapi_server.models.shipment_import_status import ShipmentImportStatus  #
 from openapi_server import util
 
 
-def create_shipment_batch(version, body=None):  # noqa: E501
+def create_shipment_batch(body=None):  # noqa: E501
     """Create Shipment Batch
 
     Create a new shipment batch # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -26,13 +24,11 @@ def create_shipment_batch(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_shipment_batch(version, batch_id):  # noqa: E501
+def delete_shipment_batch(batch_id):  # noqa: E501
     """Delete Shipment Batch
 
     Search for shipment batches # noqa: E501
 
-    :param version: 
-    :type version: 
     :param batch_id: the id of the shipment batch to delete
     :type batch_id: int
 
@@ -41,13 +37,11 @@ def delete_shipment_batch(version, batch_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_shipment_batch(version, batch_id):  # noqa: E501
+def get_shipment_batch(batch_id):  # noqa: E501
     """Get Shipment Batch
 
     Get an existing shipment batch # noqa: E501
 
-    :param version: 
-    :type version: 
     :param batch_id: the id of the shipment batch to get
     :type batch_id: int
 
@@ -56,13 +50,11 @@ def get_shipment_batch(version, batch_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_shipment_batch_status(version, batch_id, account_id, sort_field, descending, start, limit, valid=None, started=None, completed=None, has_shipment=None, has_route=None, keyword=None):  # noqa: E501
+def get_shipment_batch_status(batch_id, account_id, sort_field, descending, start, limit, valid=None, started=None, completed=None, has_shipment=None, has_route=None, keyword=None):  # noqa: E501
     """Get Shipment Batch Status
 
     Get the import status list of the import shipment batch # noqa: E501
 
-    :param version: 
-    :type version: 
     :param batch_id: The id of the requested shipment batch
     :type batch_id: int
     :param account_id: the id of the logged in user
@@ -93,13 +85,11 @@ def get_shipment_batch_status(version, batch_id, account_id, sort_field, descend
     return 'do some magic!'
 
 
-def search_shipment_batch(version, hub_id, sort_field, descending, start, limit):  # noqa: E501
+def search_shipment_batch(hub_id, sort_field, descending, start, limit):  # noqa: E501
     """Search Shipment Batch
 
     Search for shipment batches # noqa: E501
 
-    :param version: 
-    :type version: 
     :param hub_id: The associated service hub
     :type hub_id: int
     :param sort_field: The field to sort by

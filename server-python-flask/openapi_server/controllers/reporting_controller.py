@@ -11,13 +11,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_batch(version, account_id, status, preview_limit, app_key=None, endpoint=None, parameters=None, name=None, start_date=None, end_date=None, description=None, page_url=None):  # noqa: E501
+def create_batch(account_id, status, preview_limit, app_key=None, endpoint=None, parameters=None, name=None, start_date=None, end_date=None, description=None, page_url=None):  # noqa: E501
     """Create Offline Report
 
     Create an entry for the batch for offline report # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user for passing account related params
     :type account_id: int
     :param status: the status of the report
@@ -46,13 +44,11 @@ def create_batch(version, account_id, status, preview_limit, app_key=None, endpo
     return 'do some magic!'
 
 
-def create_region_leg_summary_batch(version, body=None):  # noqa: E501
+def create_region_leg_summary_batch(body=None):  # noqa: E501
     """Create Offline Report
 
     Create an entry for the batch for offline report # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: list | bytes
 
@@ -64,13 +60,11 @@ def create_region_leg_summary_batch(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_batch(version, account_id, batch_id):  # noqa: E501
+def delete_batch(account_id, batch_id):  # noqa: E501
     """Delete Offline Report
 
     Deletes a batch report. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param batch_id: the id of the batch to delete
@@ -81,13 +75,11 @@ def delete_batch(version, account_id, batch_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_report_batch(version, account_id, batch_id, all_results):  # noqa: E501
+def get_report_batch(account_id, batch_id, all_results):  # noqa: E501
     """Get Offline Report
 
     Checks status of batch report. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param batch_id: returned by /report/batch/create
@@ -100,13 +92,11 @@ def get_report_batch(version, account_id, batch_id, all_results):  # noqa: E501
     return 'do some magic!'
 
 
-def run_report(version, desc, account_id=None, query=None, parameters=None, order=None, start=None, limit=None, response_format=None):  # noqa: E501
+def run_report(desc, account_id=None, query=None, parameters=None, order=None, start=None, limit=None, response_format=None):  # noqa: E501
     """Run Report
 
      This endpoint allows you to run a set of predefined reports that can be used to understand your users&#39; behavior as well as trends within your application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param desc: If true then descending order, false is ascending
     :type desc: bool
     :param account_id: The account id of the user for passing account related params
@@ -129,13 +119,11 @@ def run_report(version, desc, account_id=None, query=None, parameters=None, orde
     return 'do some magic!'
 
 
-def search_batch(version, account_id, start, limit, names=None, app_key=None, status=None, global_app_search=None, start_date=None, end_date=None):  # noqa: E501
+def search_batch(account_id, start, limit, names=None, app_key=None, status=None, global_app_search=None, start_date=None, end_date=None):  # noqa: E501
     """Search Offline Reports
 
     Retrieves batches for a user.. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param start: the start of the index and/or pagination

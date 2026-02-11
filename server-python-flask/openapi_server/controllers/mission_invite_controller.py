@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_mission_invite(version, device_id=None, account_id=None, mission_id=None, join_code=None, include_game_data=None):  # noqa: E501
+def create_mission_invite(device_id=None, account_id=None, mission_id=None, join_code=None, include_game_data=None):  # noqa: E501
     """Create Mission Invite
 
     Create the mission invite. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -31,13 +29,11 @@ def create_mission_invite(version, device_id=None, account_id=None, mission_id=N
     return 'do some magic!'
 
 
-def delete_mission_invite(version, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None):  # noqa: E501
+def delete_mission_invite(device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None):  # noqa: E501
     """Delete Mission Invite
 
     Update the mission invite status to quit. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -54,13 +50,11 @@ def delete_mission_invite(version, device_id=None, account_id=None, mission_id=N
     return 'do some magic!'
 
 
-def get_mission_invite(version, device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None, include_scores=None):  # noqa: E501
+def get_mission_invite(device_id=None, account_id=None, mission_id=None, mission_invite_id=None, include_game_data=None, include_scores=None):  # noqa: E501
     """Get Mission Invite
 
     Get the mission invite. An account can only be invited to a mission one time. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -79,13 +73,11 @@ def get_mission_invite(version, device_id=None, account_id=None, mission_id=None
     return 'do some magic!'
 
 
-def search_mission_invites(version, device_id=None, account_id=None, app_key=None, app_version=None, mission_id=None, status=None, last_updated=None, start=None, limit=None, keyword=None, mission_types=None, filter_by_billable=None, include_game_data=None):  # noqa: E501
+def search_mission_invites(device_id=None, account_id=None, app_key=None, app_version=None, mission_id=None, status=None, last_updated=None, start=None, limit=None, keyword=None, mission_types=None, filter_by_billable=None, include_game_data=None):  # noqa: E501
     """Search Mission Invites
 
     Get a list of mission invites that the account has. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -118,13 +110,11 @@ def search_mission_invites(version, device_id=None, account_id=None, app_key=Non
     return 'do some magic!'
 
 
-def update_mission_invite(version, device_id=None, account_id=None, app_key=None, mission_id=None, mission_invite_id=None, pack_id=None, game_level_id=None, status=None, permissionable_type=None, permissionable_id=None, include_game_data=None):  # noqa: E501
+def update_mission_invite(device_id=None, account_id=None, app_key=None, mission_id=None, mission_invite_id=None, pack_id=None, game_level_id=None, status=None, permissionable_type=None, permissionable_id=None, include_game_data=None):  # noqa: E501
     """Update Mission Invite
 
     Update the mission invite status. An account can only be invited to a mission one time. For missions that require user submission and reviewing the permissionableType and permissionableId need to be provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required).
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required).

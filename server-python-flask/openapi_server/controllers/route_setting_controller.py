@@ -7,13 +7,11 @@ from openapi_server.models.route_settings import RouteSettings  # noqa: E501
 from openapi_server import util
 
 
-def create_route_settings(version, body=None):  # noqa: E501
+def create_route_settings(body=None):  # noqa: E501
     """Create Route Setting
 
     Create a new route setting # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -25,13 +23,11 @@ def create_route_settings(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_route_settings(version, route_settings_id):  # noqa: E501
+def delete_route_settings(route_settings_id):  # noqa: E501
     """Delete Route Setting
 
     Delete an existing route setting # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_settings_id: the id of the route setting to delete
     :type route_settings_id: int
 
@@ -40,13 +36,11 @@ def delete_route_settings(version, route_settings_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route_settings(version, route_settings_id):  # noqa: E501
+def get_route_settings(route_settings_id):  # noqa: E501
     """Get Route Setting
 
     Get an existing route settings # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_settings_id: the id of the route settings to get
     :type route_settings_id: int
 
@@ -55,13 +49,11 @@ def get_route_settings(version, route_settings_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_route_settings(version, sort_field, descending, start, limit, active_only, hub_id=None, program_id=None, keyword=None):  # noqa: E501
+def search_route_settings(sort_field, descending, start, limit, active_only, hub_id=None, program_id=None, keyword=None):  # noqa: E501
     """Search Route Settings
 
     Search for route settings # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order
@@ -84,13 +76,11 @@ def search_route_settings(version, sort_field, descending, start, limit, active_
     return 'do some magic!'
 
 
-def update_route_settings(version, route_settings_id, body=None):  # noqa: E501
+def update_route_settings(route_settings_id, body=None):  # noqa: E501
     """Update Route Setting
 
     Update an existing route setting # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_settings_id: the id of the route settings to update
     :type route_settings_id: int
     :param body: 

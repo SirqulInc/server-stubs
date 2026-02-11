@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def get_historical_rankings(version, app_key, rank_type, start_date, end_date, device_id=None, account_id=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def get_historical_rankings(app_key, rank_type, start_date, end_date, device_id=None, account_id=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search Historical Rankings
 
     Get historical leaderboard rankings by time-frame. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: the application key for filtering results by application
     :type app_key: str
     :param rank_type: the rank type to return
@@ -41,13 +39,11 @@ def get_historical_rankings(version, app_key, rank_type, start_date, end_date, d
     return 'do some magic!'
 
 
-def get_rankings(version, device_id=None, account_id=None, game_type=None, app_key=None, q=None, keyword=None, rank_type=None, leaderboard_mode=None, within_account_ids=None, return_user_rank=None, album_id=None, audience_id=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None):  # noqa: E501
+def get_rankings(device_id=None, account_id=None, game_type=None, app_key=None, q=None, keyword=None, rank_type=None, leaderboard_mode=None, within_account_ids=None, return_user_rank=None, album_id=None, audience_id=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None):  # noqa: E501
     """Search Rankings
 
     Get leader board rankings. This is an all in one endpoint that can return multiple ranking types and also the current user rank. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -90,13 +86,11 @@ def get_rankings(version, device_id=None, account_id=None, game_type=None, app_k
     return 'do some magic!'
 
 
-def get_user_rank(version, device_id=None, account_id=None, app_key=None, rank_type=None, return_user_rank=None, leaderboard_mode=None, sort_field=None, keyword=None, descending=None, start=None, limit=None):  # noqa: E501
+def get_user_rank(device_id=None, account_id=None, app_key=None, rank_type=None, return_user_rank=None, leaderboard_mode=None, sort_field=None, keyword=None, descending=None, start=None, limit=None):  # noqa: E501
     """Get Personal Rankings
 
     Returns the user&#39;s ranks for one or more rank types and modes. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user
@@ -125,13 +119,11 @@ def get_user_rank(version, device_id=None, account_id=None, app_key=None, rank_t
     return 'do some magic!'
 
 
-def override_user_rank(version, account_id, owner_account_id, app_key, rank_type, total_score=None, total_count=None, total_time=None, daily_score=None, daily_count=None, daily_time=None, weekly_score=None, weekly_count=None, weekly_time=None, monthly_score=None, monthly_count=None, monthly_time=None, top_score=None, lowest_score=None, streak_count=None, streak_best_count=None, start_date=None, end_date=None):  # noqa: E501
+def override_user_rank(account_id, owner_account_id, app_key, rank_type, total_score=None, total_count=None, total_time=None, daily_score=None, daily_count=None, daily_time=None, weekly_score=None, weekly_count=None, weekly_time=None, monthly_score=None, monthly_count=None, monthly_time=None, top_score=None, lowest_score=None, streak_count=None, streak_best_count=None, start_date=None, end_date=None):  # noqa: E501
     """Override User Rank
 
     Allows an admin of an application to override a user&#39;s scores for a leaderboard. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the logged in user&#39;s account id (must have permissions to manage data for the application)
     :type account_id: int
     :param owner_account_id: the end user&#39;s account id to override
@@ -182,13 +174,11 @@ def override_user_rank(version, account_id, owner_account_id, app_key, rank_type
     return 'do some magic!'
 
 
-def update_rankings(version, account_id, app_key, rank_type, increment=None, time_increment=None, tag=None, start_date=None, end_date=None, update_global=None, create_leaderboard=None):  # noqa: E501
+def update_rankings(account_id, app_key, rank_type, increment=None, time_increment=None, tag=None, start_date=None, end_date=None, update_global=None, create_leaderboard=None):  # noqa: E501
     """Update Ranking
 
     Update the rank value  # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param app_key: the application key for filtering results by application

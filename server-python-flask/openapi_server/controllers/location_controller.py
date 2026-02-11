@@ -11,13 +11,11 @@ from openapi_server.models.trilat_cache_request import TrilatCacheRequest  # noq
 from openapi_server import util
 
 
-def cache_trilateration_data(version, udid, source_time=None, minimum_sample_size=None, data=None, data_file=None):  # noqa: E501
+def cache_trilateration_data(udid, source_time=None, minimum_sample_size=None, data=None, data_file=None):  # noqa: E501
     """Create Trilateration Data with File
 
     Creates trilateration samples for a source device (i.e. a router). # noqa: E501
 
-    :param version: 
-    :type version: 
     :param udid: The unique identifier of the source device
     :type udid: str
     :param source_time: The current timestamp of the source device
@@ -34,13 +32,11 @@ def cache_trilateration_data(version, udid, source_time=None, minimum_sample_siz
     return 'do some magic!'
 
 
-def cache_trilateration_data_gzip(version, body=None):  # noqa: E501
+def cache_trilateration_data_gzip(body=None):  # noqa: E501
     """Create Trilateration Data with Rest
 
     Creates trilateration samples for a source device (i.e. a router). # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -52,13 +48,11 @@ def cache_trilateration_data_gzip(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def get_location_by_ip(version, ip=None):  # noqa: E501
+def get_location_by_ip(ip=None):  # noqa: E501
     """Get Location by IP
 
     Get location information based on an IP address. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param ip: the ip address of the client device
     :type ip: str
 
@@ -67,13 +61,11 @@ def get_location_by_ip(version, ip=None):  # noqa: E501
     return 'do some magic!'
 
 
-def get_location_by_trilateration(version, account_id=None, latitude=None, longitude=None, data=None, response_filters=None):  # noqa: E501
+def get_location_by_trilateration(account_id=None, latitude=None, longitude=None, data=None, response_filters=None):  # noqa: E501
     """Get Location by Trilateration
 
     Send in device data and calculate a position based on signal strengths. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account making the request, if provided the last know location will be updated
     :type account_id: int
     :param latitude: The known GPS latitude to compare to the calculated version
@@ -90,13 +82,11 @@ def get_location_by_trilateration(version, account_id=None, latitude=None, longi
     return 'do some magic!'
 
 
-def get_locations(version, device_id=None, account_id=None, currentlatitude=None, currentlongitude=None, current_latitude=None, current_longitude=None, query=None, zipcode=None, zip_code=None, selected_maplatitude=None, selected_maplongitude=None, selected_map_latitude=None, selected_map_longitude=None, search_range=None, use_geocode=None, i=None, start=None, l=None, limit=None):  # noqa: E501
+def get_locations(device_id=None, account_id=None, currentlatitude=None, currentlongitude=None, current_latitude=None, current_longitude=None, query=None, zipcode=None, zip_code=None, selected_maplatitude=None, selected_maplongitude=None, selected_map_latitude=None, selected_map_longitude=None, search_range=None, use_geocode=None, i=None, start=None, l=None, limit=None):  # noqa: E501
     """Search Regions or Postal Codes
 
     Searches geographic locations by proximity via address or keyword. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id
     :type device_id: str
     :param account_id: the account id

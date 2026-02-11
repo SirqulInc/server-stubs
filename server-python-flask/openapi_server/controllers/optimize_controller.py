@@ -9,13 +9,11 @@ from openapi_server.models.shipment_order import ShipmentOrder  # noqa: E501
 from openapi_server import util
 
 
-def get_optimization_result(version, batch_id, start, limit):  # noqa: E501
+def get_optimization_result(batch_id, start, limit):  # noqa: E501
     """Get Optimization Result
 
     Get the results of the import batch. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param batch_id: The batchID for getting the import status of.
     :type batch_id: str
     :param start: The start index for pagination
@@ -28,13 +26,11 @@ def get_optimization_result(version, batch_id, start, limit):  # noqa: E501
     return 'do some magic!'
 
 
-def request_optimization(version, body=None):  # noqa: E501
+def request_optimization(body=None):  # noqa: E501
     """Request Optimization
 
     Request and upload of shipment orders and create ShipmentImportBatch for optimization. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 

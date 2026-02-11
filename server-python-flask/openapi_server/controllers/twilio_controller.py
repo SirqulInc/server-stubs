@@ -7,13 +7,11 @@ from openapi_server.models.twi_ml_response import TwiMLResponse  # noqa: E501
 from openapi_server import util
 
 
-def sms_buy_offer(version, app_key, body, _from, currency_type):  # noqa: E501
+def sms_buy_offer(app_key, body, _from, currency_type):  # noqa: E501
     """Buy Offer by SMS
 
     Recieve an SMS payload from Twillio to purchase an offer. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param body: the message of the text

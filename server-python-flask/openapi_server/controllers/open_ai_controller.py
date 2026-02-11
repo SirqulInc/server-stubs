@@ -7,13 +7,11 @@ from openapi_server.models.wrapped_proxy_item_response import WrappedProxyItemRe
 from openapi_server import util
 
 
-def image_generation(version, account_id, post_body, return_raw_response=None):  # noqa: E501
+def image_generation(account_id, post_body, return_raw_response=None):  # noqa: E501
     """Generate images with OpenAI
 
     Generate images with OpenAI. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: Sirqul Account Id
     :type account_id: int
     :param post_body: Post Body Parameters

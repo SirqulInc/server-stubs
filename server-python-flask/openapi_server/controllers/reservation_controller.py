@@ -9,13 +9,11 @@ from openapi_server.models.time_slot_response import TimeSlotResponse  # noqa: E
 from openapi_server import util
 
 
-def create_reservation(version, device_id=None, account_id=None, start_date=None, end_date=None, offer_id=None, offer_location_id=None, app_key=None, meta_data=None):  # noqa: E501
+def create_reservation(device_id=None, account_id=None, start_date=None, end_date=None, offer_id=None, offer_location_id=None, app_key=None, meta_data=None):  # noqa: E501
     """Create Reservation
 
     Creates a reservation on an offer object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -38,13 +36,11 @@ def create_reservation(version, device_id=None, account_id=None, start_date=None
     return 'do some magic!'
 
 
-def delete_reservation(version, reservation_id, device_id=None, account_id=None):  # noqa: E501
+def delete_reservation(reservation_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Reservation
 
     Deleted a reservation on a reservation object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param reservation_id: The reservation id
     :type reservation_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -57,13 +53,11 @@ def delete_reservation(version, reservation_id, device_id=None, account_id=None)
     return 'do some magic!'
 
 
-def reservable_availability(version, reservable_id, reservable_type, device_id=None, account_id=None, availability=None, availability_summary=None):  # noqa: E501
+def reservable_availability(reservable_id, reservable_type, device_id=None, account_id=None, availability=None, availability_summary=None):  # noqa: E501
     """Update Availability
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param reservable_id: the id of the reservation
     :type reservable_id: int
     :param reservable_type: the type of reservation
@@ -82,13 +76,11 @@ def reservable_availability(version, reservable_id, reservable_type, device_id=N
     return 'do some magic!'
 
 
-def search_availability(version, reservable_id, reservable_type, device_id=None, account_id=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
+def search_availability(reservable_id, reservable_type, device_id=None, account_id=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
     """Search Availability
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param reservable_id: the id of the reservation
     :type reservable_id: int
     :param reservable_type: the reservable type
@@ -111,13 +103,11 @@ def search_availability(version, reservable_id, reservable_type, device_id=None,
     return 'do some magic!'
 
 
-def search_reservations(version, device_id=None, app_key=None, account_id=None, filter_account_id=None, reservable_id=None, reservable_type=None, keyword=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
+def search_reservations(device_id=None, app_key=None, account_id=None, filter_account_id=None, reservable_id=None, reservable_type=None, keyword=None, start_date=None, end_date=None, start=None, limit=None):  # noqa: E501
     """Search Reservations
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: Device Id
     :type device_id: str
     :param app_key: Appilcation Key
@@ -146,13 +136,11 @@ def search_reservations(version, device_id=None, app_key=None, account_id=None, 
     return 'do some magic!'
 
 
-def search_schedule(version, reservable_id, reservable_type, start_date, end_date, device_id=None, account_id=None, time_bucket_mins=None):  # noqa: E501
+def search_schedule(reservable_id, reservable_type, start_date, end_date, device_id=None, account_id=None, time_bucket_mins=None):  # noqa: E501
     """Search Schedule
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param reservable_id: the id of the reservation
     :type reservable_id: int
     :param reservable_type: the reservation type

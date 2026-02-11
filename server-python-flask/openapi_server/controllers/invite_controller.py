@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def accept_invite(version, token, account_id, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None, auto_friend=None, auto_attend_event=None, auto_favorite_offer=None, auto_favorite_offer_location=None, auto_favorite_retailer_location=None):  # noqa: E501
+def accept_invite(token, account_id, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None, auto_friend=None, auto_attend_event=None, auto_favorite_offer=None, auto_favorite_offer_location=None, auto_favorite_retailer_location=None):  # noqa: E501
     """Accept Invite
 
     Allows a user to accept an invite. The user could also become the inviter&#39;s friend. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param token: the invite token
     :type token: str
     :param account_id: the accountId of the user who is accepting the invite
@@ -50,13 +48,11 @@ def accept_invite(version, token, account_id, album_id=None, mission_id=None, al
     return 'do some magic!'
 
 
-def album_contest_invite(version, device_id=None, account_id=None, app_id=None, app_key=None, album_contest_id=None, latitude=None, longitude=None):  # noqa: E501
+def album_contest_invite(device_id=None, account_id=None, app_id=None, app_key=None, album_contest_id=None, latitude=None, longitude=None):  # noqa: E501
     """Invite to Contest
 
     Allows a user to invite people to gain access to a contest. This will generate an invite token, which when used, will give the invitee access to a contest (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -77,13 +73,11 @@ def album_contest_invite(version, device_id=None, account_id=None, app_id=None, 
     return 'do some magic!'
 
 
-def album_invite(version, device_id=None, account_id=None, app_id=None, app_key=None, album_id=None, latitude=None, longitude=None):  # noqa: E501
+def album_invite(device_id=None, account_id=None, app_id=None, app_key=None, album_id=None, latitude=None, longitude=None):  # noqa: E501
     """Invite to Collection
 
     Allows a user to invite people to gain access to a collection. This will generate an invite token, which when used, will give the invitee access to a collection (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -104,13 +98,11 @@ def album_invite(version, device_id=None, account_id=None, app_id=None, app_key=
     return 'do some magic!'
 
 
-def event_invite(version, account_id, app_key, listing_id, receiver_account_ids=None, retailer_location_id=None):  # noqa: E501
+def event_invite(account_id, app_key, listing_id, receiver_account_ids=None, retailer_location_id=None):  # noqa: E501
     """Invite to Event
 
     Allows a user to invite people to attend an event. This will generate an invite token, which when used, will allow the invitee to add the offer to their wallet. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -127,13 +119,11 @@ def event_invite(version, account_id, app_key, listing_id, receiver_account_ids=
     return 'do some magic!'
 
 
-def game_invite(version, device_id=None, account_id=None, app_id=None, app_key=None, game_level_id=None, latitude=None, longitude=None):  # noqa: E501
+def game_invite(device_id=None, account_id=None, app_id=None, app_key=None, game_level_id=None, latitude=None, longitude=None):  # noqa: E501
     """Invite to Game Level
 
     Allows a user to invite people to gain access to an album. This will generate an invite token, which when used, will give the invitee access to an album (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -154,13 +144,11 @@ def game_invite(version, device_id=None, account_id=None, app_id=None, app_key=N
     return 'do some magic!'
 
 
-def get_invite(version, account_id=None, token=None, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None):  # noqa: E501
+def get_invite(account_id=None, token=None, album_id=None, mission_id=None, album_contest_id=None, offer_id=None, offer_location_id=None, retailer_location_id=None, app_key=None):  # noqa: E501
     """Get Invite
 
     This is used to determine whether an invite token is valid. If the token is valid, this will also return information about who invited the user, and what they are invited to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: Account ID of the user if they are logged in
     :type account_id: int
     :param token: the invite token
@@ -185,13 +173,11 @@ def get_invite(version, account_id=None, token=None, album_id=None, mission_id=N
     return 'do some magic!'
 
 
-def mission_invite(version, device_id=None, account_id=None, app_id=None, app_key=None, mission_id=None, latitude=None, longitude=None):  # noqa: E501
+def mission_invite(device_id=None, account_id=None, app_id=None, app_key=None, mission_id=None, latitude=None, longitude=None):  # noqa: E501
     """Invite to Mission
 
     Allows a user to invite people to gain access to a mission. This will generate an invite token, which when used, will give the invitee access to a mission (whether it is private or not). The invitee will also become the user&#39;s friend when the invitation is accepted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -212,13 +198,11 @@ def mission_invite(version, device_id=None, account_id=None, app_id=None, app_ke
     return 'do some magic!'
 
 
-def offer_invite(version, account_id, app_key, offer_id):  # noqa: E501
+def offer_invite(account_id, app_key, offer_id):  # noqa: E501
     """Invite to Offer
 
     Allows a user to invite people to favorite an offer. This will generate an invite token, which when used, will give the invitee the offer in their favorite&#39;s list. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -231,13 +215,11 @@ def offer_invite(version, account_id, app_key, offer_id):  # noqa: E501
     return 'do some magic!'
 
 
-def offer_location_invite(version, account_id, app_key, offer_location_id):  # noqa: E501
+def offer_location_invite(account_id, app_key, offer_location_id):  # noqa: E501
     """Invite to Offer Location
 
     Allows a user to invite people to favorite an offer location. This will generate an invite token, which when used, will give the invitee the offer location in their favorite&#39;s list. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key
@@ -250,13 +232,11 @@ def offer_location_invite(version, account_id, app_key, offer_location_id):  # n
     return 'do some magic!'
 
 
-def retailer_location_invite(version, account_id, app_key, retailer_location_id, album_id=None):  # noqa: E501
+def retailer_location_invite(account_id, app_key, retailer_location_id, album_id=None):  # noqa: E501
     """Invite to Retailer Location
 
     Allows a user to invite people to favorite a retailer location. This will generate an invite token, which when used, will give the invitee the retailer location in their favorite&#39;s list. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user making the share
     :type account_id: int
     :param app_key: the application key

@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_scheduled_notification(version, account_id, name, type, message, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None):  # noqa: E501
+def create_scheduled_notification(account_id, name, type, message, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None):  # noqa: E501
     """Create Scheduled Notification
 
     This endpoint creates a Scheduled Notification message that can be configured to process and send periodically at set time periods # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the scheduled notification
@@ -89,13 +87,11 @@ def create_scheduled_notification(version, account_id, name, type, message, cont
     return 'do some magic!'
 
 
-def delete_scheduled_notification(version, account_id, scheduled_notification_id, delete_by_grouping_id=None):  # noqa: E501
+def delete_scheduled_notification(account_id, scheduled_notification_id, delete_by_grouping_id=None):  # noqa: E501
     """Delete Scheduled Notification
 
     This endpoint deletes a Scheduled Notification. Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using the UserPermissionsApi. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param scheduled_notification_id: the id of the scheduled notification to delete
@@ -108,13 +104,11 @@ def delete_scheduled_notification(version, account_id, scheduled_notification_id
     return 'do some magic!'
 
 
-def get_scheduled_notification(version, account_id, scheduled_notification_id):  # noqa: E501
+def get_scheduled_notification(account_id, scheduled_notification_id):  # noqa: E501
     """Get Scheduled Notification
 
     Get a ScheduledNotification # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param scheduled_notification_id: the id of the scheduled notification to get
@@ -125,13 +119,11 @@ def get_scheduled_notification(version, account_id, scheduled_notification_id): 
     return 'do some magic!'
 
 
-def schedule_notification_listings(version, account_id, app_key, report_name, message, offset, recipient_report_id, report_params=None, type=None):  # noqa: E501
+def schedule_notification_listings(account_id, app_key, report_name, message, offset, recipient_report_id, report_params=None, type=None):  # noqa: E501
     """Generate Schedule Notifications
 
     Use a report to identify events that are starting soon and then create a scheduled notification to push a message to matching users. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: The application to target
@@ -154,13 +146,11 @@ def schedule_notification_listings(version, account_id, app_key, report_name, me
     return 'do some magic!'
 
 
-def search_scheduled_notifications(version, account_id, grouping_id=None, audience_id=None, filter=None, types=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None, group_by_grouping_id=None, return_audience_account_count=None):  # noqa: E501
+def search_scheduled_notifications(account_id, grouping_id=None, audience_id=None, filter=None, types=None, content_ids=None, content_types=None, parent_ids=None, parent_types=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None, group_by_grouping_id=None, return_audience_account_count=None):  # noqa: E501
     """Search Scheduled Notifications
 
     This endpoint searches on Scheduled Notifications. If a scheduled notification was created with the visibility parameter set to PUBLIC, then anyone can search on it if the filter parameter includes the PUBLIC value. PRIVATE visibility means that it can only be searched on by the owner or if it has been shared to the user using the UserPermissionsApi.  In addition, if a PUBLIC Scheduled Notification was created for an application that requires content approval (using the publicContentApproval parameter), then an administrator of the application needs to approve it before it can be search on by other users. Before this happens, it is in a PENDING state, and only the original creator or the owner of the application can search and see it. Also, only the owner of the application can use the UserPermissionsApi to approve or reject it. Scheduled notifications that have been rejected are only visible to the original creators. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param grouping_id: Filter results by a grouping identifier defined by the client
@@ -207,13 +197,11 @@ def search_scheduled_notifications(version, account_id, grouping_id=None, audien
     return 'do some magic!'
 
 
-def update_scheduled_notification(version, scheduled_notification_id, account_id, name=None, type=None, message=None, payload=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, error_message=None, status=None, update_by_grouping_id=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None):  # noqa: E501
+def update_scheduled_notification(scheduled_notification_id, account_id, name=None, type=None, message=None, payload=None, content_id=None, content_name=None, content_type=None, parent_id=None, parent_type=None, app_key=None, grouping_id=None, connection_group_ids=None, connection_account_ids=None, audience_id=None, audience_ids=None, album_ids=None, report_id=None, report_params=None, endpoint_url=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, cron_type=None, meta_data=None, conditional_input=None, template_type=None, visibility=None, active=None, error_message=None, status=None, update_by_grouping_id=None, send_now=None, event_type=None, deep_link_uri=None, send_to_all=None):  # noqa: E501
     """Update Scheduled Notification
 
     This endpoint updates a Scheduled Notification message that can be configured to process and send periodically at set time periods. Please see createScheduledNotification for more details.  Only the original owner of the Scheduled Notification or someone with write permissions can use this endpoint. Permissions can be granted to other users by using theUserPermissionsApi. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param scheduled_notification_id: The id of scheduled notification to update
     :type scheduled_notification_id: int
     :param account_id: The logged in user.

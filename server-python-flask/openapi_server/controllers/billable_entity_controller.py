@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_billable_entity(version, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, business_phone=None, business_phone_ext=None, authorize_net_api_key=None, authorize_net_transaction_key=None):  # noqa: E501
+def create_billable_entity(device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, business_phone=None, business_phone_ext=None, authorize_net_api_key=None, authorize_net_transaction_key=None):  # noqa: E501
     """Create Billable
 
     reate a billable entity for an account. The creator is assumed to be the responsible account. An account can only have one billable entity # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
     :type device_id: str
     :param account_id: The unique accountId that made the request (either deviceId or accountId must be used)
@@ -45,13 +43,11 @@ def create_billable_entity(version, device_id=None, account_id=None, name=None, 
     return 'do some magic!'
 
 
-def delete_billable_entity(version, device_id=None, account_id=None):  # noqa: E501
+def delete_billable_entity(device_id=None, account_id=None):  # noqa: E501
     """Delete Billable
 
     Mark the billable as deleted # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account used to perform the delete, must have rights to edit the billable entity.
@@ -62,13 +58,11 @@ def delete_billable_entity(version, device_id=None, account_id=None):  # noqa: E
     return 'do some magic!'
 
 
-def get_billable_entity(version, device_id=None, account_id=None, include_counts=None, include_payments=None):  # noqa: E501
+def get_billable_entity(device_id=None, account_id=None, include_counts=None, include_payments=None):  # noqa: E501
     """Get Billable
 
     Used to determine the associated BillableEntity of an account # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
     :type device_id: str
     :param account_id: The unique accountId that made the request (either deviceId or accountId must be used)
@@ -83,13 +77,11 @@ def get_billable_entity(version, device_id=None, account_id=None, include_counts
     return 'do some magic!'
 
 
-def update_billable_entity(version, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, business_phone=None, business_phone_ext=None, authorize_net_api_key=None, authorize_net_transaction_key=None):  # noqa: E501
+def update_billable_entity(device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, business_phone=None, business_phone_ext=None, authorize_net_api_key=None, authorize_net_transaction_key=None):  # noqa: E501
     """Update Billable
 
     Updates the billable record for an account # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
     :type device_id: str
     :param account_id: The unique accountId that made the request (either deviceId or accountId must be used). The account must have rights to edit the billable entity.

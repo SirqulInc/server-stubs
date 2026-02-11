@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_bid(version, biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id=None, account_id=None):  # noqa: E501
+def create_bid(biddable_type, biddable_id, amount_per_view, amount_per_action, budget_amount, budget_schedule, device_id=None, account_id=None):  # noqa: E501
     """Create Bid
 
     Creates a bid on a biddable object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param biddable_type: A biddable object type. Possible values include: CREATIVE (ads).
     :type biddable_type: str
     :param biddable_id: The id of the biddable object
@@ -37,13 +35,11 @@ def create_bid(version, biddable_type, biddable_id, amount_per_view, amount_per_
     return 'do some magic!'
 
 
-def delete_bid(version, bid_id, device_id=None, account_id=None):  # noqa: E501
+def delete_bid(bid_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Bid
 
     Deleted a bid on a biddable object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -56,13 +52,11 @@ def delete_bid(version, bid_id, device_id=None, account_id=None):  # noqa: E501
     return 'do some magic!'
 
 
-def get_bid(version, bid_id, device_id=None, account_id=None):  # noqa: E501
+def get_bid(bid_id, device_id=None, account_id=None):  # noqa: E501
     """Get Bid
 
     Get the bid details of a biddable object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -75,13 +69,11 @@ def get_bid(version, bid_id, device_id=None, account_id=None):  # noqa: E501
     return 'do some magic!'
 
 
-def update_bid(version, bid_id, device_id=None, account_id=None, amount_per_view=None, amount_per_action=None, budget_amount=None, budget_schedule=None):  # noqa: E501
+def update_bid(bid_id, device_id=None, account_id=None, amount_per_view=None, amount_per_action=None, budget_amount=None, budget_schedule=None):  # noqa: E501
     """Update Bid
 
     Updates a bid on a biddable object # noqa: E501
 
-    :param version: 
-    :type version: 
     :param bid_id: The bid id
     :type bid_id: int
     :param device_id: The device id (deviceId or accountId required)

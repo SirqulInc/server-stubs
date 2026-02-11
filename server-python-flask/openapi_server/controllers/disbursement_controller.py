@@ -7,13 +7,11 @@ from openapi_server.models.disbursement_response import DisbursementResponse  # 
 from openapi_server import util
 
 
-def check_disbursements(version, disbursement_id):  # noqa: E501
+def check_disbursements(disbursement_id):  # noqa: E501
     """Check Disbursements
 
     Checks the status of a captured disbrusement to see if it has been settled. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param disbursement_id: the ID of the disbursement being checked on
     :type disbursement_id: int
 
@@ -22,13 +20,11 @@ def check_disbursements(version, disbursement_id):  # noqa: E501
     return 'do some magic!'
 
 
-def create_disbursement(version, account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date=None, title=None, comment=None, external_id=None, introspection_params=None):  # noqa: E501
+def create_disbursement(account_id, receiver_account_id, original_sender_account_id, amount, provider, scheduled_date=None, title=None, comment=None, external_id=None, introspection_params=None):  # noqa: E501
     """Create Disbursement
 
     Creates a Disbursement for sending money to a retailer # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the logging in user (must be an EXECUTIVE account)
     :type account_id: int
     :param receiver_account_id: the ID of the account receiving the disbursement
@@ -55,13 +51,11 @@ def create_disbursement(version, account_id, receiver_account_id, original_sende
     return 'do some magic!'
 
 
-def get_disbursement(version, account_id, disbursement_id):  # noqa: E501
+def get_disbursement(account_id, disbursement_id):  # noqa: E501
     """Get Disbursement
 
     Get Disbursement details # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param disbursement_id: the id of the disbursement
@@ -72,13 +66,11 @@ def get_disbursement(version, account_id, disbursement_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_disbursements(version, account_id, receiver_account_id=None, statuses=None, providers=None, before_date=None, after_date=None, start=None, limit=None, active_only=None, external_id=None):  # noqa: E501
+def search_disbursements(account_id, receiver_account_id=None, statuses=None, providers=None, before_date=None, after_date=None, start=None, limit=None, active_only=None, external_id=None):  # noqa: E501
     """Search Disbursements
 
     Search Disbursements # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param receiver_account_id: filter results by the id of the account receiving the disbursement
@@ -105,13 +97,11 @@ def search_disbursements(version, account_id, receiver_account_id=None, statuses
     return 'do some magic!'
 
 
-def update_disbursement(version, account_id, disbursement_id, amount=None, provider=None, scheduled_date=None, title=None, comment=None, external_id=None, retry=None, introspection_params=None):  # noqa: E501
+def update_disbursement(account_id, disbursement_id, amount=None, provider=None, scheduled_date=None, title=None, comment=None, external_id=None, retry=None, introspection_params=None):  # noqa: E501
     """Update Disbursement
 
     Update Disbursement # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param disbursement_id: the id of the disbursement being updated

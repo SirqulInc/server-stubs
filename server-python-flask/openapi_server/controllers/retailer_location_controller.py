@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_retailer_location_consumer(version, app_key, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, details_header=None, details_body=None, hours=None, tags=None, logo_asset_id=None, picture1_asset_id=None, picture2_asset_id=None, category_ids=None, filter_ids=None, meta_data=None, public_location=None, active=None, location_type=None, latitude=None, longitude=None):  # noqa: E501
+def create_retailer_location_consumer(app_key, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, details_header=None, details_body=None, hours=None, tags=None, logo_asset_id=None, picture1_asset_id=None, picture2_asset_id=None, category_ids=None, filter_ids=None, meta_data=None, public_location=None, active=None, location_type=None, latitude=None, longitude=None):  # noqa: E501
     """Create Retailer Location (Consumer)
 
     Creates a location record for an application that can support crowd sourced locations. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param name: The name of the retailer location
@@ -79,13 +77,11 @@ def create_retailer_location_consumer(version, app_key, name, device_id=None, ac
     return 'do some magic!'
 
 
-def create_retailer_locations(version, retailer_id, name, street_address, city, state, postal_code, device_id=None, account_id=None, street_address2=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, response_includes=None):  # noqa: E501
+def create_retailer_locations(retailer_id, name, street_address, city, state, postal_code, device_id=None, account_id=None, street_address2=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, response_includes=None):  # noqa: E501
     """Create Retailer Location
 
     Creates a location record for a retailer. Only the owner and the employees of the retailer have access to do this. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_id: The ID of the retailer
     :type retailer_id: int
     :param name: The name of the retailer location
@@ -170,13 +166,11 @@ def create_retailer_locations(version, retailer_id, name, street_address, city, 
     return 'do some magic!'
 
 
-def delete_retailer_location(version, device_id=None, account_id=None, retailer_location_id=None):  # noqa: E501
+def delete_retailer_location(device_id=None, account_id=None, retailer_location_id=None):  # noqa: E501
     """Delete Retailer Location
 
     Set the deleted timestamp to current time. This effectively deletes the retailer location since all queries should ignore any records with a deleted time stamp. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id
     :type device_id: str
     :param account_id: the id of the logged in user
@@ -189,13 +183,11 @@ def delete_retailer_location(version, device_id=None, account_id=None, retailer_
     return 'do some magic!'
 
 
-def get_retailer_location(version, retailer_location_id, device_id=None, account_id=None, retailer_location_token=None):  # noqa: E501
+def get_retailer_location(retailer_location_id, device_id=None, account_id=None, retailer_location_token=None):  # noqa: E501
     """Get Retailer Location
 
     Gets a retailer location. Only the owner and the employees of the retailer have access to view its information. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The ID of the retailer location
     :type retailer_location_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -210,13 +202,11 @@ def get_retailer_location(version, retailer_location_id, device_id=None, account
     return 'do some magic!'
 
 
-def get_retailer_location_consumer(version, retailer_location_id, device_id=None, account_id=None):  # noqa: E501
+def get_retailer_location_consumer(retailer_location_id, device_id=None, account_id=None):  # noqa: E501
     """Get Retailer Location (Consumer)
 
     Gets the details of a retailer location as a consumer. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The retailer location id
     :type retailer_location_id: int
     :param device_id: The device id for returning account information (i.e. favorites)
@@ -229,13 +219,11 @@ def get_retailer_location_consumer(version, retailer_location_id, device_id=None
     return 'do some magic!'
 
 
-def indexed_retailer_location_distance_search(version, latitude, longitude, search_range, start, limit, account_id=None, address=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, distance_unit=None, return_favorited=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
+def indexed_retailer_location_distance_search(latitude, longitude, search_range, start, limit, account_id=None, address=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, distance_unit=None, return_favorited=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
     """Distance Search Retailer Locations (Indexed)
 
     Retailer location indexed search by distance. This searches on any retailer location with location data and returns the results sorted by distance. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param latitude: The latitude to center the search on
     :type latitude: float
     :param longitude: The longitude to center the search on
@@ -310,13 +298,11 @@ def indexed_retailer_location_distance_search(version, latitude, longitude, sear
     return 'do some magic!'
 
 
-def indexed_retailer_location_search(version, account_id=None, start=None, limit=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
+def indexed_retailer_location_search(account_id=None, start=None, limit=None, has_offers=None, categories=None, filters=None, audiences=None, retailer_ids=None, retailer_location_ids=None, tags=None, location_type=None, sort_field=None, descending=None, q=None, keyword=None, keyword_operator=None, search_expression=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, return_external_category_data=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
     """Keyword Search Retailer Locations (Indexed)
 
     Retailer location (faster) indexed search. This searches all retailer locations. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param start: The start index for pagination
@@ -379,13 +365,11 @@ def indexed_retailer_location_search(version, account_id=None, start=None, limit
     return 'do some magic!'
 
 
-def search_retailer_locations(version, device_id=None, account_id=None, q=None, keyword=None, retailer_ids=None, retailer_location_ids=None, location_type=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, show_public_locations=None, active_only=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
+def search_retailer_locations(device_id=None, account_id=None, q=None, keyword=None, retailer_ids=None, retailer_location_ids=None, location_type=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, show_public_locations=None, active_only=None, return_retailer=None, return_assets=None, return_offers=None, return_categories=None, return_filters=None, return_audiences=None, return_qr_code=None, include_favorite=None, include_liked=None, include_rating=None):  # noqa: E501
     """Search Retailer Locations (Owned)
 
     Searches on retailer locations that the account has access to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -442,13 +426,11 @@ def search_retailer_locations(version, device_id=None, account_id=None, q=None, 
     return 'do some magic!'
 
 
-def update_retailer_locations(version, retailer_location_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, meta_data=None, payment_provider=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, tags=None):  # noqa: E501
+def update_retailer_locations(retailer_location_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, internal_id=None, details_header=None, details_body=None, hours=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, building=None, google_place_id=None, yelp_id=None, meta_data=None, payment_provider=None, active=None, public_location=None, location_type=None, audience_ids=None, audience_ids_to_add=None, audience_ids_to_remove=None, response_format=None, tags=None):  # noqa: E501
     """Update Retailer Location
 
     Updates a location record for a retailer. Only the owner and the employees of the retailer have access to do this. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_location_id: The ID of the retailer location
     :type retailer_location_id: int
     :param device_id: The device id (deviceId or accountId required)

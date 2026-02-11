@@ -7,13 +7,11 @@ from openapi_server.models.region_response import RegionResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_region(version, account_id, region_class, short_name, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None):  # noqa: E501
+def create_region(account_id, region_class, short_name, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None):  # noqa: E501
     """Create Region
 
     Create a region. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the account sending the request
     :type account_id: int
     :param region_class: RegionClass of this region
@@ -62,13 +60,11 @@ def create_region(version, account_id, region_class, short_name, full_name=None,
     return 'do some magic!'
 
 
-def delete_region(version, account_id, region_id):  # noqa: E501
+def delete_region(account_id, region_id):  # noqa: E501
     """Delete Region
 
     Delete a region. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account logged in
     :type account_id: int
     :param region_id: the id of the region
@@ -79,13 +75,11 @@ def delete_region(version, account_id, region_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_region(version, region_id, account_id=None):  # noqa: E501
+def get_region(region_id, account_id=None):  # noqa: E501
     """Get Region
 
     Get a region. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param region_id: the id of the region to get
     :type region_id: int
     :param account_id: the id of the logged in user
@@ -96,13 +90,11 @@ def get_region(version, region_id, account_id=None):  # noqa: E501
     return 'do some magic!'
 
 
-def search_regions(version, account_id=None, query=None, keyword=None, latitude=None, longitude=None, range=None, region_class=None, visibility=None, search_mode=None, sort_field=None, descending=None, include_parent=None, include_children=None, include_postal_codes=None, category_ids=None, filter_ids=None, version_code=None, active_only=None, show_deleted=None, last_updated_since=None, start=None, limit=None):  # noqa: E501
+def search_regions(account_id=None, query=None, keyword=None, latitude=None, longitude=None, range=None, region_class=None, visibility=None, search_mode=None, sort_field=None, descending=None, include_parent=None, include_children=None, include_postal_codes=None, category_ids=None, filter_ids=None, version_code=None, active_only=None, show_deleted=None, last_updated_since=None, start=None, limit=None):  # noqa: E501
     """Search Regions
 
     Get the list of regions. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the owner account id of the region to be created
     :type account_id: int
     :param query: This parameter is deprecated. deprecated - use \&quot;keyword\&quot;
@@ -153,13 +145,11 @@ def search_regions(version, account_id=None, query=None, keyword=None, latitude=
     return 'do some magic!'
 
 
-def update_region(version, account_id, region_id, region_class=None, short_name=None, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None, clear_lists=None):  # noqa: E501
+def update_region(account_id, region_id, region_class=None, short_name=None, full_name=None, parent_ids=None, children_ids=None, postal_code_ids=None, locations=None, retailer_location_id=None, visibility=None, category_ids=None, filter_ids=None, start=None, end=None, polygon=None, meta_data=None, latitude=None, longitude=None, version_code=None, root=None, active=None, clear_lists=None):  # noqa: E501
     """Update Region
 
     Update a region. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The id of the account sending the request
     :type account_id: int
     :param region_id: The id of the region to be updated

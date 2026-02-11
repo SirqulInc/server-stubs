@@ -12,13 +12,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_application(version, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None):  # noqa: E501
+def create_application(app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None):  # noqa: E501
     """Create Application
 
     Create an application record and one placement record for that application. You can create more placements for this application by using {@link createApplicationPlacement}. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_name: The name of the application
     :type app_name: str
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -183,13 +181,11 @@ def create_application(version, app_name, device_id=None, account_id=None, about
     return 'do some magic!'
 
 
-def create_application_placement(version, app_key, size, device_id=None, account_id=None, name=None, description=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None):  # noqa: E501
+def create_application_placement(app_key, size, device_id=None, account_id=None, name=None, description=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None):  # noqa: E501
     """Create Ad Placement
 
     Creates a new ad placement for an application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The appKey of the application the ad placement is for
     :type app_key: str
     :param size: The ad placement size {BANNER, LEADERBOARD, SKYSCRAPER, INTERSTITIAL, CUSTOM
@@ -218,13 +214,11 @@ def create_application_placement(version, app_key, size, device_id=None, account
     return 'do some magic!'
 
 
-def delete_application(version, account_id=None, app_key=None):  # noqa: E501
+def delete_application(account_id=None, app_key=None):  # noqa: E501
     """Delete Application
 
     Set the deleted timestamp to current time. This effectively deletes the application since all queries should ignore any records with a deleted timestamp # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the delete, must have rights to edit the application.
     :type account_id: int
     :param app_key: The key of the application to be deleted
@@ -235,13 +229,11 @@ def delete_application(version, account_id=None, app_key=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_application_placement(version, placement_id, device_id=None, account_id=None):  # noqa: E501
+def delete_application_placement(placement_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Ad Placement
 
     Deletes an ad placement for an application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement to delete, the user must have rights to the application the ad placement is for
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -254,13 +246,11 @@ def delete_application_placement(version, placement_id, device_id=None, account_
     return 'do some magic!'
 
 
-def get_application(version, app_key=None, application_id=None):  # noqa: E501
+def get_application(app_key=None, application_id=None):  # noqa: E501
     """Get Application
 
     Get a specific application by appKey # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param application_id: Application Id
@@ -271,13 +261,11 @@ def get_application(version, app_key=None, application_id=None):  # noqa: E501
     return 'do some magic!'
 
 
-def get_application_placement(version, placement_id, device_id=None, account_id=None):  # noqa: E501
+def get_application_placement(placement_id, device_id=None, account_id=None):  # noqa: E501
     """Get Ad Placement
 
     Get details of an ad placement # noqa: E501
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -290,26 +278,22 @@ def get_application_placement(version, placement_id, device_id=None, account_id=
     return 'do some magic!'
 
 
-def get_application_versions(version):  # noqa: E501
+def get_application_versions():  # noqa: E501
     """Get API versions
 
     Will return a comma separated list of numbers, newest first. For example: 3.0, 2.2, 2.1, 1.8 # noqa: E501
 
-    :param version: 
-    :type version: 
 
     :rtype: Union[SirqulResponse, Tuple[SirqulResponse, int], Tuple[SirqulResponse, int, Dict[str, str]]
     """
     return 'do some magic!'
 
 
-def get_unique_users_by_app(version, app_key, q=None, keyword=None, since=None, i=None, start=None, l=None, limit=None):  # noqa: E501
+def get_unique_users_by_app(app_key, q=None, keyword=None, since=None, i=None, start=None, l=None, limit=None):  # noqa: E501
     """Search Application Users
 
     Get a list of users per application # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param q: Q
@@ -332,13 +316,11 @@ def get_unique_users_by_app(version, app_key, q=None, keyword=None, since=None, 
     return 'do some magic!'
 
 
-def list_applications(version, account_id=None, q=None, keyword=None, platforms=None, device_ids=None, device_versions=None, category_ids=None, sort_field=None, has_ads=None, public_notifications=None, filter_billable=None, filter_content_admin=None, descending=None, i=None, start=None, l=None, limit=None, application_ids=None, has_object_store=None, active_only=None):  # noqa: E501
+def list_applications(account_id=None, q=None, keyword=None, platforms=None, device_ids=None, device_versions=None, category_ids=None, sort_field=None, has_ads=None, public_notifications=None, filter_billable=None, filter_content_admin=None, descending=None, i=None, start=None, l=None, limit=None, application_ids=None, has_object_store=None, active_only=None):  # noqa: E501
     """List Applications
 
     List active applications matching the criteria (as a consumer) # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the application owner/manager
     :type account_id: int
     :param q: Q
@@ -385,13 +367,11 @@ def list_applications(version, account_id=None, q=None, keyword=None, platforms=
     return 'do some magic!'
 
 
-def search_application_placement(version, app_key, device_id=None, account_id=None, start=None, limit=None):  # noqa: E501
+def search_application_placement(app_key, device_id=None, account_id=None, start=None, limit=None):  # noqa: E501
     """Search for Ad Placements
 
     Searches placements for an application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -408,13 +388,11 @@ def search_application_placement(version, app_key, device_id=None, account_id=No
     return 'do some magic!'
 
 
-def search_application_settings(version, device_id=None, account_id=None, connection_account_id=None, keyword=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def search_application_settings(device_id=None, account_id=None, connection_account_id=None, keyword=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search for Application Settings
 
     Returns a list of applications that the user has logged into before, and returns specific settings for that application and user # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -437,13 +415,11 @@ def search_application_settings(version, device_id=None, account_id=None, connec
     return 'do some magic!'
 
 
-def search_applications(version, device_id=None, account_id=None, latitude=None, longitude=None, q=None, keyword=None, q_search_fields=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, has_ads=None, public_notifications=None, active_only=None):  # noqa: E501
+def search_applications(device_id=None, account_id=None, latitude=None, longitude=None, q=None, keyword=None, q_search_fields=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, has_ads=None, public_notifications=None, active_only=None):  # noqa: E501
     """Search Applications
 
     Search for applications matching the criteria that the logged in user has access to # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -482,13 +458,11 @@ def search_applications(version, device_id=None, account_id=None, latitude=None,
     return 'do some magic!'
 
 
-def update_application(version, app_key, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None):  # noqa: E501
+def update_application(app_key, app_name, device_id=None, account_id=None, about=None, bundle_id=None, app_icon_asset_id=None, app_logo_asset_id=None, facebook_app_id=None, facebook_app_secret=None, google_api_key=None, update_eula_date=None, eula_version=None, landing_page_url=None, show_in_activities=None, activity_description=None, invite_welcome_text=None, invite_page_url=None, url_scheme=None, platforms=None, download_urls=None, category_ids=None, scoring_type=None, hint_cost=None, max_score=None, tickets_per_point=None, has_game_data=None, public_notifications=None, use_matching_algorithm=None, global_tickets=None, build_version=None, api_version=None, placement_name=None, placement_description=None, placement_size=None, placement_height=None, placement_width=None, placement_refresh_interval=None, create_object_store=None, public_content_approval=None, production_mode=None, minimum_session_length=None, session_gap_length=None, local_ads_enabled=None, sqoot_api_key=None, trilat_processing_type=None, max_sample_size=None, min_rssi=None, modules=None, authorized_count=None, authorized_servers=None, default_timezone=None, smtp_pass=None, meta_data=None, placement_meta_data=None, ips_floor=None, enable_apns_badge=None, include_in_report=None, default_app_filter_id=None, enable_welcome_email=None, apple_app_id=None, apple_team_id=None, apple_auth_key_id=None, apple_auth_key=None, apple_issuer_id=None, app_store_key_id=None, app_store_key=None, google_private_key_file=None, authorize_net_api_key=None, authorize_net_transaction_key=None, email_sender=None, smtp_user=None, smtp_host=None, vatom_business_id=None, vatom_rest_client_id=None, vatom_rest_secret_key=None, twilio_account_sid=None, twilio_auth_token=None, twilio_sender_phone_number=None, open_ai_secret_key=None):  # noqa: E501
     """Update Application
 
     Update an application record # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key for updating an existing application
     :type app_key: str
     :param app_name: The name of the application
@@ -655,13 +629,11 @@ def update_application(version, app_key, app_name, device_id=None, account_id=No
     return 'do some magic!'
 
 
-def update_application_active(version, account_id, app_key, active):  # noqa: E501
+def update_application_active(account_id, app_key, active):  # noqa: E501
     """Change Appliation Status
 
     Set the application&#39;s active flag to true/false. This effectively activates or deactivates the application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the delete, must have rights to edit the application.
     :type account_id: int
     :param app_key: The key of the application to be deleted
@@ -674,13 +646,11 @@ def update_application_active(version, account_id, app_key, active):  # noqa: E5
     return 'do some magic!'
 
 
-def update_application_placement(version, placement_id, device_id=None, account_id=None, name=None, description=None, size=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None):  # noqa: E501
+def update_application_placement(placement_id, device_id=None, account_id=None, name=None, description=None, size=None, height=None, width=None, refresh_interval=None, default_image_id=None, active=None):  # noqa: E501
     """Update Ad Placement
 
     Updates an ad placement for an application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param placement_id: The id of the placement to update, the user must have rights to the application the ad placement is for
     :type placement_id: int
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
@@ -709,13 +679,11 @@ def update_application_placement(version, placement_id, device_id=None, account_
     return 'do some magic!'
 
 
-def upload_application_certificate(version, app_key, device_id=None, account_id=None, certificate=None):  # noqa: E501
+def upload_application_certificate(app_key, device_id=None, account_id=None, certificate=None):  # noqa: E501
     """Create Application Certificate
 
     Uploads a certificate for an application that the user has access to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The key of the application
     :type app_key: str
     :param device_id: Device Id

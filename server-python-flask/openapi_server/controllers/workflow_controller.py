@@ -7,13 +7,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def run_workflow(version, account_id, workflow_id, sku_id=None, version_code=None, parameters=None):  # noqa: E501
+def run_workflow(account_id, workflow_id, sku_id=None, version_code=None, parameters=None):  # noqa: E501
     """Run Workflow
 
     Runs a published executable workflow # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account ID of the user
     :type account_id: int
     :param workflow_id: the workflow to run

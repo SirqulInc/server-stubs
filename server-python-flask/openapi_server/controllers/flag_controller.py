@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_flag(version, flagable_type, flagable_id, device_id=None, account_id=None, flag_description=None, latitude=None, longitude=None):  # noqa: E501
+def create_flag(flagable_type, flagable_id, device_id=None, account_id=None, flag_description=None, latitude=None, longitude=None):  # noqa: E501
     """Create Flag
 
     Allows a user to flag an object that the user deems inappropriate or offensive. Flagable objects include accounts, albums, album contests, assets, game levels, and theme descriptors # noqa: E501
 
-    :param version: 
-    :type version: 
     :param flagable_type: The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}
     :type flagable_type: str
     :param flagable_id: The flagable object id
@@ -36,13 +34,11 @@ def create_flag(version, flagable_type, flagable_id, device_id=None, account_id=
     return 'do some magic!'
 
 
-def delete_flag(version, device_id=None, account_id=None, item_being_flagged_type=None, item_being_flagged_id=None, flagable_type=None, flagable_id=None):  # noqa: E501
+def delete_flag(device_id=None, account_id=None, item_being_flagged_type=None, item_being_flagged_id=None, flagable_type=None, flagable_id=None):  # noqa: E501
     """Delete Flag
 
     Deletes a flag. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
     :type device_id: str
     :param account_id: The unique accountId that made the request (either deviceId or accountId must be used)
@@ -61,13 +57,11 @@ def delete_flag(version, device_id=None, account_id=None, item_being_flagged_typ
     return 'do some magic!'
 
 
-def get_flag(version, flagable_type, flagable_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_flag(flagable_type, flagable_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Flag
 
     Gets the details on whether the user has flagged a particular flagable object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param flagable_type: The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, NOTE, OFFER}
     :type flagable_type: str
     :param flagable_id: The flagable object id
@@ -86,13 +80,11 @@ def get_flag(version, flagable_type, flagable_id, device_id=None, account_id=Non
     return 'do some magic!'
 
 
-def get_flag_threshold(version, item_being_flagged_type, app_key):  # noqa: E501
+def get_flag_threshold(item_being_flagged_type, app_key):  # noqa: E501
     """Get Flag Threshold
 
     Get the flag threshold value on an object type for a particular application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param item_being_flagged_type: The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
     :type item_being_flagged_type: str
     :param app_key: The application key
@@ -103,13 +95,11 @@ def get_flag_threshold(version, item_being_flagged_type, app_key):  # noqa: E501
     return 'do some magic!'
 
 
-def update_flag_threshold(version, item_being_flagged_type, threshold, app_key, device_id=None, account_id=None):  # noqa: E501
+def update_flag_threshold(item_being_flagged_type, threshold, app_key, device_id=None, account_id=None):  # noqa: E501
     """Update Flag Threshold
 
     Update the flag threshold on an object type for a particular application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param item_being_flagged_type: The flagable object type {ACCOUNT, ALBUM, ALBUM_CONTEST, ASSET, GAME_LEVEL, THEME_DESCRIPTOR, OFFER, NOTE}
     :type item_being_flagged_type: str
     :param threshold: The threshold value

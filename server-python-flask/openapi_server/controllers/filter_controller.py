@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_filter(version, account_id, name, app_key=None, parent_filter_id=None, description=None, external_id=None, external_type=None, active=None, meta_data=None):  # noqa: E501
+def create_filter(account_id, name, app_key=None, parent_filter_id=None, description=None, external_id=None, external_type=None, active=None, meta_data=None):  # noqa: E501
     """Create Filter
 
     Create a filter # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param name: The name of the filter
@@ -40,13 +38,11 @@ def create_filter(version, account_id, name, app_key=None, parent_filter_id=None
     return 'do some magic!'
 
 
-def delete_filter(version, account_id, filter_id):  # noqa: E501
+def delete_filter(account_id, filter_id):  # noqa: E501
     """Delete Filter
 
     Delete a filter. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the filter&#39;s assigned application)
     :type account_id: int
     :param filter_id: The ID of the filter to delete
@@ -57,13 +53,11 @@ def delete_filter(version, account_id, filter_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_filter(version, filter_id):  # noqa: E501
+def get_filter(filter_id):  # noqa: E501
     """Get Filter
 
     Get the details of a specific filter. Recursively include all child filters and their children. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param filter_id: the id of the filter to get
     :type filter_id: int
 
@@ -72,13 +66,11 @@ def get_filter(version, filter_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_filters(version, account_id=None, keyword=None, app_key=None, response_group=None, root_only=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
+def search_filters(account_id=None, keyword=None, app_key=None, response_group=None, root_only=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
     """Search Filters
 
     Search for filters. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The string to search on
@@ -105,13 +97,11 @@ def search_filters(version, account_id=None, keyword=None, app_key=None, respons
     return 'do some magic!'
 
 
-def update_filter(version, account_id, filter_id, parent_filter_id=None, name=None, description=None, external_id=None, external_type=None, active=None, meta_data=None):  # noqa: E501
+def update_filter(account_id, filter_id, parent_filter_id=None, name=None, description=None, external_id=None, external_type=None, active=None, meta_data=None):  # noqa: E501
     """Update Filter
 
     Update a filter. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param filter_id: The ID of the filter to edit

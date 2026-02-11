@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def batch_operation(version, notable_id, notable_type, device_id=None, account_id=None, batch_operation=None):  # noqa: E501
+def batch_operation(notable_id, notable_type, device_id=None, account_id=None, batch_operation=None):  # noqa: E501
     """Batch Note Operation
 
     Perform a batch operation on notes for a notable object (for example: DELETE_ALL_NOTES_IN_NOTABLE).  # noqa: E501
 
-    :param version: 
-    :type version: 
     :param notable_id: The id of the notable object the batch operation will affect
     :type notable_id: int
     :param notable_type: The notable object type (for example ALBUM, ASSET, OFFER, etc.)
@@ -31,13 +29,11 @@ def batch_operation(version, notable_id, notable_type, device_id=None, account_i
     return 'do some magic!'
 
 
-def create_note(version, comment, device_id=None, account_id=None, notable_type=None, notable_id=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, receiver_account_ids=None, return_full_response=None, initialize_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None):  # noqa: E501
+def create_note(comment, device_id=None, account_id=None, notable_type=None, notable_id=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, receiver_account_ids=None, return_full_response=None, initialize_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None):  # noqa: E501
     """Create Note
 
     This is used to leave a comment (note) on a notable object (i.e. albums, album contests, assets, game levels, offers, offer locations, retailers, retailer locations, and theme descriptors). Leaving a comment on a notable object will be visiable to everyone who has access to view the object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param comment: The message the user wishes to leave a comment on
     :type comment: str
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -128,13 +124,11 @@ def create_note(version, comment, device_id=None, account_id=None, notable_type=
     return 'do some magic!'
 
 
-def delete_note(version, note_id, device_id=None, account_id=None, latitude=None, longitude=None, app_key=None):  # noqa: E501
+def delete_note(note_id, device_id=None, account_id=None, latitude=None, longitude=None, app_key=None):  # noqa: E501
     """Delete Note
 
     Sets a comment (note) as deleted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param note_id: The ID of the note to delete
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -153,13 +147,11 @@ def delete_note(version, note_id, device_id=None, account_id=None, latitude=None
     return 'do some magic!'
 
 
-def get_note(version, note_id, device_id=None, account_id=None, return_full_response=None):  # noqa: E501
+def get_note(note_id, device_id=None, account_id=None, return_full_response=None):  # noqa: E501
     """Get Note
 
     Get for a note based on its Id. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param note_id: the id of the note to get
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)
@@ -174,13 +166,11 @@ def get_note(version, note_id, device_id=None, account_id=None, return_full_resp
     return 'do some magic!'
 
 
-def search_notes(version, device_id=None, account_id=None, notable_type=None, notable_id=None, note_types=None, app_key=None, keyword=None, flag_count_minimum=None, flags_exceed_threshold=None, include_inactive=None, sort_field=None, descending=None, return_full_response=None, updated_since=None, updated_before=None, start=None, limit=None):  # noqa: E501
+def search_notes(device_id=None, account_id=None, notable_type=None, notable_id=None, note_types=None, app_key=None, keyword=None, flag_count_minimum=None, flags_exceed_threshold=None, include_inactive=None, sort_field=None, descending=None, return_full_response=None, updated_since=None, updated_before=None, start=None, limit=None):  # noqa: E501
     """Search Notes
 
     Search for notes on a notable object. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -221,13 +211,11 @@ def search_notes(version, device_id=None, account_id=None, notable_type=None, no
     return 'do some magic!'
 
 
-def update_note(version, note_id, device_id=None, account_id=None, comment=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, active=None, update_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None):  # noqa: E501
+def update_note(note_id, device_id=None, account_id=None, comment=None, note_type=None, asset_ids=None, tags=None, permissionable_type=None, permissionable_id=None, app_key=None, location_description=None, latitude=None, longitude=None, meta_data=None, return_full_response=None, active=None, update_asset=None, asset_return_nulls=None, asset_album_id=None, asset_collection_id=None, asset_add_to_default_album=None, asset_add_to_media_library=None, asset_version_code=None, asset_version_name=None, asset_meta_data=None, asset_caption=None, asset_media=None, asset_media_url=None, asset_media_string=None, asset_media_string_file_name=None, asset_media_string_content_type=None, asset_attached_media=None, asset_attached_media_url=None, asset_attached_media_string=None, asset_attached_media_string_file_name=None, asset_attached_media_string_content_type=None, asset_location_description=None, asset_app=None, asset_search_tags=None, asset_latitude=None, asset_longitude=None):  # noqa: E501
     """Update Note
 
     Update an existing comment (note). Only the creator of the note have permission to update. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param note_id: The id of the note, used when editing a comment
     :type note_id: int
     :param device_id: The unique device identifier that made the request (either deviceId or accountId must be used)

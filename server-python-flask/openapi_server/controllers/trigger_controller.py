@@ -8,13 +8,11 @@ from openapi_server.models.trigger_response import TriggerResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_trigger(version, account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None):  # noqa: E501
+def create_trigger(account_id, name, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None):  # noqa: E501
     """Create Trigger
 
     Create a trigger # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user
     :type account_id: int
     :param name: The name of the trigger
@@ -47,13 +45,11 @@ def create_trigger(version, account_id, name, app_key=None, grouping_id=None, en
     return 'do some magic!'
 
 
-def delete_trigger(version, account_id, trigger_id):  # noqa: E501
+def delete_trigger(account_id, trigger_id):  # noqa: E501
     """Delete Trigger
 
     Mark a trigger as deleted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param trigger_id: The id of the trigger to delete.
@@ -64,13 +60,11 @@ def delete_trigger(version, account_id, trigger_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_trigger(version, account_id, trigger_id):  # noqa: E501
+def get_trigger(account_id, trigger_id):  # noqa: E501
     """Get Trigger
 
     Get a trigger # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param trigger_id: The id of the Trigger to return.
@@ -81,13 +75,11 @@ def get_trigger(version, account_id, trigger_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_triggers(version, account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
+def search_triggers(account_id, grouping_id=None, filter=None, statuses=None, template_types=None, app_key=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
     """Search Triggers
 
     Search for triggers # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param grouping_id: Filter results by a grouping identifier defined by the client
@@ -118,13 +110,11 @@ def search_triggers(version, account_id, grouping_id=None, filter=None, statuses
     return 'do some magic!'
 
 
-def update_trigger(version, trigger_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None):  # noqa: E501
+def update_trigger(trigger_id, account_id, name=None, app_key=None, grouping_id=None, endpoint_url=None, payload=None, scheduled_date=None, start_date=None, end_date=None, cron_expression=None, conditional_input=None, visibility=None, active=None):  # noqa: E501
     """Update Trigger
 
     Update a trigger # noqa: E501
 
-    :param version: 
-    :type version: 
     :param trigger_id: The trigger to update
     :type trigger_id: int
     :param account_id: The logged in user

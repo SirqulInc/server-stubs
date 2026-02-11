@@ -12,13 +12,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_audience(version, account_id, name, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, start_time_offset=None, end_time_offset=None, send_suggestion=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None):  # noqa: E501
+def create_audience(account_id, name, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, start_time_offset=None, end_time_offset=None, send_suggestion=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None):  # noqa: E501
     """Create Audience
 
     Create a user defined audience. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the audience
@@ -83,13 +81,11 @@ def create_audience(version, account_id, name, description=None, search_tags=Non
     return 'do some magic!'
 
 
-def delete_audience(version, account_id, audience_id):  # noqa: E501
+def delete_audience(account_id, audience_id):  # noqa: E501
     """Delete Audience
 
     Delete an audience. The audience and account must be valid and have the appropirate permissions to view the content. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to delete.
@@ -100,26 +96,22 @@ def delete_audience(version, account_id, audience_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_age_groups(version):  # noqa: E501
+def get_age_groups():  # noqa: E501
     """Get Age Groups
 
     Gets the list of available age groups that can be selected by consumers and retailers targeting offers. # noqa: E501
 
-    :param version: 
-    :type version: 
 
     :rtype: Union[List[AgeGroupResponse], Tuple[List[AgeGroupResponse], int], Tuple[List[AgeGroupResponse], int, Dict[str, str]]
     """
     return 'do some magic!'
 
 
-def get_audience(version, account_id, audience_id, app_key=None, return_account_count=None, return_album_count=None, album_types_for_count=None):  # noqa: E501
+def get_audience(account_id, audience_id, app_key=None, return_account_count=None, return_album_count=None, album_types_for_count=None):  # noqa: E501
     """Get Audience
 
     Get an audience. The audience and account must be valid and have the appropriate permissions to view the content. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to return.
@@ -138,13 +130,11 @@ def get_audience(version, account_id, audience_id, app_key=None, return_account_
     return 'do some magic!'
 
 
-def get_audience_list(version, account_id=None, album_ids=None, keyword=None, keyword_fields=None, sort_field=None, descending=None, start=None, limit=None, send_suggestion=None, active_only=None, group_by_grouping_id=None, app_key=None, return_global=None, exact_keyword=None, audience_type=None, audience_types=None, return_account_count=None, return_album_count=None, album_types_for_count=None):  # noqa: E501
+def get_audience_list(account_id=None, album_ids=None, keyword=None, keyword_fields=None, sort_field=None, descending=None, start=None, limit=None, send_suggestion=None, active_only=None, group_by_grouping_id=None, app_key=None, return_global=None, exact_keyword=None, audience_type=None, audience_types=None, return_account_count=None, return_album_count=None, album_types_for_count=None):  # noqa: E501
     """Search Audiences
 
     Get the list audiences owned by the account # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param album_ids: Comma separated list of album IDs to filter results with
@@ -189,13 +179,11 @@ def get_audience_list(version, account_id=None, album_ids=None, keyword=None, ke
     return 'do some magic!'
 
 
-def get_devices(version, include_inactive):  # noqa: E501
+def get_devices(include_inactive):  # noqa: E501
     """Get Devices
 
     Gets the list of available devices that can be selected by consumers and retailers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param include_inactive: If true return inactive record as well. default is false.
     :type include_inactive: bool
 
@@ -204,26 +192,22 @@ def get_devices(version, include_inactive):  # noqa: E501
     return 'do some magic!'
 
 
-def get_experiences(version):  # noqa: E501
+def get_experiences():  # noqa: E501
     """Get Experiences
 
     Gets the list of available experiences that can be selected by consumers and retailers. # noqa: E501
 
-    :param version: 
-    :type version: 
 
     :rtype: Union[SirqulResponse, Tuple[SirqulResponse, int], Tuple[SirqulResponse, int, Dict[str, str]]
     """
     return 'do some magic!'
 
 
-def get_grouped_audiences(version, account_id, audience_grouping_id):  # noqa: E501
+def get_grouped_audiences(account_id, audience_grouping_id):  # noqa: E501
     """Get GroupedAudiences
 
     Get a group of audiences. The audience and account must be valid and have the appropriate permissions to view the content. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_grouping_id: The audience grouping id to return.
@@ -234,13 +218,11 @@ def get_grouped_audiences(version, account_id, audience_grouping_id):  # noqa: E
     return 'do some magic!'
 
 
-def list_by_account(version, account_id, limit, suggestion_type):  # noqa: E501
+def list_by_account(account_id, limit, suggestion_type):  # noqa: E501
     """List Suggestions by Audience
 
     List either Missions or Offers that the user matches the assigned audience. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param limit: the limit of the index
@@ -253,13 +235,11 @@ def list_by_account(version, account_id, limit, suggestion_type):  # noqa: E501
     return 'do some magic!'
 
 
-def list_by_audience(version, limit, gender=None, age=None, category_ids=None, latitude=None, longitude=None):  # noqa: E501
+def list_by_audience(limit, gender=None, age=None, category_ids=None, latitude=None, longitude=None):  # noqa: E501
     """List Offers by Audience
 
     Get a list of offer locations based on audience information provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param limit: this is the limit of the index
     :type limit: int
     :param gender: this is the gender to list offers by
@@ -278,13 +258,11 @@ def list_by_audience(version, limit, gender=None, age=None, category_ids=None, l
     return 'do some magic!'
 
 
-def list_lastest_by_account(version, account_id, timeframe, suggestion_type):  # noqa: E501
+def list_lastest_by_account(account_id, timeframe, suggestion_type):  # noqa: E501
     """List Sent Suggestions 
 
     Return list of recent trigger suggestions that have been sent to the user. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param timeframe: The timeframe in seconds of the latest suggestions
@@ -297,13 +275,11 @@ def list_lastest_by_account(version, account_id, timeframe, suggestion_type):  #
     return 'do some magic!'
 
 
-def send_by_account(version, account_id, latitude, longitude):  # noqa: E501
+def send_by_account(account_id, latitude, longitude):  # noqa: E501
     """Send Suggestions
 
     Use the accountId to determine the associated BillableEntity. From there get a list of all triggers associated with the BillableEntity. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account to match offers for.
     :type account_id: int
     :param latitude: the latitude
@@ -316,13 +292,11 @@ def send_by_account(version, account_id, latitude, longitude):  # noqa: E501
     return 'do some magic!'
 
 
-def update_audience(version, account_id, audience_id, name=None, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, active=None, send_suggestion=None, start_time_offset=None, end_time_offset=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None):  # noqa: E501
+def update_audience(account_id, audience_id, name=None, description=None, search_tags=None, gender=None, age_groups=None, category_ids=None, application_ids=None, game_experience_level=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None, active=None, send_suggestion=None, start_time_offset=None, end_time_offset=None, associate_description=None, associate_type=None, associate_id=None, grouping_id=None, meta_data=None, visibility=None, audience_type=None, use_order=None, cohort_regions_data=None, app_key=None, trilateration_types=None, unique_name=None):  # noqa: E501
     """Update Audience
 
     Update a user defined audience. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param audience_id: The id of the audience to update.

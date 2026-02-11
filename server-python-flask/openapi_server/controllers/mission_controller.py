@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_mission(version, account_id, title, description=None, sub_type=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, mission_task=None, format_type=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, meta_data=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None):  # noqa: E501
+def create_mission(account_id, title, description=None, sub_type=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, mission_task=None, format_type=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, meta_data=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None):  # noqa: E501
     """Create Mission
 
     Create a user defined mission. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The title of the mission
@@ -74,13 +72,11 @@ def create_mission(version, account_id, title, description=None, sub_type=None, 
     return 'do some magic!'
 
 
-def delete_mission(version, account_id, mission_id):  # noqa: E501
+def delete_mission(account_id, mission_id):  # noqa: E501
     """Delete Mission
 
     Delete a mission. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param mission_id: the id of the mission to delete
@@ -91,13 +87,11 @@ def delete_mission(version, account_id, mission_id):  # noqa: E501
     return 'do some magic!'
 
 
-def find_missions(version, app_key, suffix=None, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_game_data=None, include_audiences=None, allocates_tickets=None, randomize=None, targeted_ads_only=None, mission_ids=None, audience_operator=None):  # noqa: E501
+def find_missions(app_key, suffix=None, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_game_data=None, include_audiences=None, allocates_tickets=None, randomize=None, targeted_ads_only=None, mission_ids=None, audience_operator=None):  # noqa: E501
     """Find Missions
 
     Get a set of ad filtered by the parameters provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     :type app_key: str
     :param suffix: The type of mission to get, possible values are: click_banner, click_leaderboard, click_skyscraper, click_full, click_video, or click_zip
@@ -142,13 +136,11 @@ def find_missions(version, app_key, suffix=None, type=None, account_id=None, app
     return 'do some magic!'
 
 
-def get_mission(version, account_id, mission_id, return_creative=None):  # noqa: E501
+def get_mission(account_id, mission_id, return_creative=None):  # noqa: E501
     """Get Mission
 
     Get a mission. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param mission_id: The id of the mission to return.
@@ -161,13 +153,11 @@ def get_mission(version, account_id, mission_id, return_creative=None):  # noqa:
     return 'do some magic!'
 
 
-def import_mission(version, account_id, latitude, longitude, app_key, keyword=None, start=None, limit=None, ad_size=None):  # noqa: E501
+def import_mission(account_id, latitude, longitude, app_key, keyword=None, start=None, limit=None, ad_size=None):  # noqa: E501
     """Import Mission
 
     Create a mission using a source item such as an offer location. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param latitude: The current location of the requesting device
@@ -190,13 +180,11 @@ def import_mission(version, account_id, latitude, longitude, app_key, keyword=No
     return 'do some magic!'
 
 
-def search_mission_formats(version, start, limit, active_only):  # noqa: E501
+def search_mission_formats(start, limit, active_only):  # noqa: E501
     """Search Mission Formats
 
     Searches on pre-defined mission formats # noqa: E501
 
-    :param version: 
-    :type version: 
     :param start: The starting index in the result set to return. Default is 0.
     :type start: int
     :param limit: The total number of records to return. Default is 20.
@@ -209,13 +197,11 @@ def search_mission_formats(version, start, limit, active_only):  # noqa: E501
     return 'do some magic!'
 
 
-def search_missions(version, account_id, keyword=None, sub_type=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None):  # noqa: E501
+def search_missions(account_id, keyword=None, sub_type=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None):  # noqa: E501
     """Search Missions
 
     Get the list missions available to the account.   # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: Filter by keyword
@@ -244,13 +230,11 @@ def search_missions(version, account_id, keyword=None, sub_type=None, start=None
     return 'do some magic!'
 
 
-def search_missions_by_billable_entity(version, account_id, keyword=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None):  # noqa: E501
+def search_missions_by_billable_entity(account_id, keyword=None, start=None, limit=None, include_game_data=None, include_audiences=None, include_inactive=None, suffix=None, sort_field=None, descending=None):  # noqa: E501
     """Search Missions by Billable Entity
 
     Use the accountId to determine the associated BillableEntity.  From there get a list of all accounts associated as managers.  Get the list missions owned by all associated managers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param keyword: Filter by keyword
@@ -277,13 +261,11 @@ def search_missions_by_billable_entity(version, account_id, keyword=None, start=
     return 'do some magic!'
 
 
-def update_mission(version, account_id, mission_id, title=None, description=None, sub_type=None, meta_data=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None):  # noqa: E501
+def update_mission(account_id, mission_id, title=None, description=None, sub_type=None, meta_data=None, start_date=None, end_date=None, active=None, game_level_ids=None, creative_ids=None, audience_ids=None, offer_id=None, balance=None, advanced_reporting=None, allocate_tickets=None, ticket_count=None, ticket_type=None, points=None, application_ids=None, devices=None, device_ids=None, device_versions=None, locations=None, radius=None):  # noqa: E501
     """Update Mission
 
     Update a mission. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param mission_id: The id of the mission to update.

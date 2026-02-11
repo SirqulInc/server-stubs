@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def add_or_update_album_contest(version, public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id=None, account_id=None, game_type=None, app_key=None, contest_type=None, album_contest_id=None, title=None, description=None, album_id1=None, remove_album1=None, album_id2=None, remove_album2=None, start_date=None, end_date=None, location_description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, latitude=None, longitude=None):  # noqa: E501
+def add_or_update_album_contest(public_read, public_write, public_delete, public_add, visibility, include_friend_group, device_id=None, account_id=None, game_type=None, app_key=None, contest_type=None, album_contest_id=None, title=None, description=None, album_id1=None, remove_album1=None, album_id2=None, remove_album2=None, start_date=None, end_date=None, location_description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, latitude=None, longitude=None):  # noqa: E501
     """Create or Update Contest
 
     Creates or updates a contest. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param public_read: determines whether the contest&#39;s participants has read permissions
     :type public_read: bool
     :param public_write: determines whether the contest&#39;s participants has write permissions
@@ -72,13 +70,11 @@ def add_or_update_album_contest(version, public_read, public_write, public_delet
     return 'do some magic!'
 
 
-def approve_album_contest(version, album_contest_id, approval_status, device_id=None, account_id=None):  # noqa: E501
+def approve_album_contest(album_contest_id, approval_status, device_id=None, account_id=None):  # noqa: E501
     """Approve Contest
 
     Sets the approval status of a contest. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param album_contest_id: The ID of the album contest
     :type album_contest_id: int
     :param approval_status: The approval status to set {PENDING, REJECTED, APPROVED, FEATURED}
@@ -93,13 +89,11 @@ def approve_album_contest(version, album_contest_id, approval_status, device_id=
     return 'do some magic!'
 
 
-def delete_contest(version, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def delete_contest(album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Contest
 
     Deletes a contest. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -116,13 +110,11 @@ def delete_contest(version, album_contest_id, device_id=None, account_id=None, l
     return 'do some magic!'
 
 
-def get_album_contest(version, album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_album_contest(album_contest_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Contest
 
     Gets the contest object including the likes and notes # noqa: E501
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -139,13 +131,11 @@ def get_album_contest(version, album_contest_id, device_id=None, account_id=None
     return 'do some magic!'
 
 
-def get_album_contests(version, filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, app_key=None, app_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, latitude=None, longitude=None):  # noqa: E501
+def get_album_contests(filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, app_key=None, app_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, latitude=None, longitude=None):  # noqa: E501
     """Search Contests
 
     Searches on contests. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param filter: a comma separated list of Ownership
     :type filter: str
     :param sort_field: the field to sort by. See AlbumContestApiMap
@@ -190,13 +180,11 @@ def get_album_contests(version, filter, sort_field, descending, start, limit, de
     return 'do some magic!'
 
 
-def vote_on_album_contest(version, album_contest_id, album_id, device_id=None, account_id=None, contest_type=None, latitude=None, longitude=None):  # noqa: E501
+def vote_on_album_contest(album_contest_id, album_id, device_id=None, account_id=None, contest_type=None, latitude=None, longitude=None):  # noqa: E501
     """Vote on Contest
 
     Vote on a collection in a contest. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param album_contest_id: the album contest ID
     :type album_contest_id: int
     :param album_id: the ID of the album to vote on

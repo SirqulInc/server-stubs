@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_pack(version, account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price_type=None, game_level_ids=None, in_game=None, ticket_type=None, points=None):  # noqa: E501
+def create_pack(account_id, title, pack_order, price, highest, allocate_tickets, ticket_count, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price_type=None, game_level_ids=None, in_game=None, ticket_type=None, points=None):  # noqa: E501
     """Create Pack
 
     Create a pack. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param title: The title of the pack
@@ -69,13 +67,11 @@ def create_pack(version, account_id, title, pack_order, price, highest, allocate
     return 'do some magic!'
 
 
-def delete_pack(version, account_id, pack_id):  # noqa: E501
+def delete_pack(account_id, pack_id):  # noqa: E501
     """Delete Pack
 
     Delete a pack. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param pack_id: the id of the pack to delete
@@ -86,13 +82,11 @@ def delete_pack(version, account_id, pack_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_pack(version, account_id, pack_id, include_game_data):  # noqa: E501
+def get_pack(account_id, pack_id, include_game_data):  # noqa: E501
     """Get Pack
 
     Get a pack. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param pack_id: The id of the pack to return.
@@ -105,13 +99,11 @@ def get_pack(version, account_id, pack_id, include_game_data):  # noqa: E501
     return 'do some magic!'
 
 
-def search_packs(version, account_id, sort_field, descending, keyword=None, pack_type=None, start=None, limit=None, include_game_data=None, include_inactive=None, app_key=None):  # noqa: E501
+def search_packs(account_id, sort_field, descending, keyword=None, pack_type=None, start=None, limit=None, include_game_data=None, include_inactive=None, app_key=None):  # noqa: E501
     """Search Packs
 
     Search on packs. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The field to sort by. Possible values include: TITLE, DESCRIPTION, CREATED, UPDATED
@@ -138,13 +130,11 @@ def search_packs(version, account_id, sort_field, descending, keyword=None, pack
     return 'do some magic!'
 
 
-def update_pack(version, account_id, pack_id, allocate_tickets, ticket_count, title=None, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, pack_order=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price=None, price_type=None, game_level_ids=None, in_game=None, highest=None, ticket_type=None, points=None):  # noqa: E501
+def update_pack(account_id, pack_id, allocate_tickets, ticket_count, title=None, description=None, search_tags=None, active=None, game_type=None, app_key=None, pack_type=None, pack_order=None, sequence_type=None, background_id=None, image_id=None, start_date=None, end_date=None, author_override=None, price=None, price_type=None, game_level_ids=None, in_game=None, highest=None, ticket_type=None, points=None):  # noqa: E501
     """Update Pack
 
     Update a pack. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param pack_id: The id of the pack to update.

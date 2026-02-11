@@ -8,13 +8,11 @@ from openapi_server.models.territory_response import TerritoryResponse  # noqa: 
 from openapi_server import util
 
 
-def create_territory(version, account_id, name, active=None):  # noqa: E501
+def create_territory(account_id, name, active=None):  # noqa: E501
     """Create Territory
 
     Creates a territory. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the territory
@@ -27,13 +25,11 @@ def create_territory(version, account_id, name, active=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_territory(version, account_id, territory_id):  # noqa: E501
+def delete_territory(account_id, territory_id):  # noqa: E501
     """Delete Territory
 
     Deletes a territory. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param territory_id: the id of the territory to delete
@@ -44,13 +40,11 @@ def delete_territory(version, account_id, territory_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_territory(version, territory_id):  # noqa: E501
+def get_territory(territory_id):  # noqa: E501
     """Get Territory
 
     Get a territory. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param territory_id: the id of the territory to get
     :type territory_id: int
 
@@ -59,13 +53,11 @@ def get_territory(version, territory_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_territories(version, sort_field, descending, keyword=None, start=None, limit=None):  # noqa: E501
+def search_territories(sort_field, descending, keyword=None, start=None, limit=None):  # noqa: E501
     """Search Territories
 
     Searches on territories. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort by. Supported values include: ID, CREATED, UPDATED, NAME
     :type sort_field: str
     :param descending: determines whether the sorted list is in descending or ascending order
@@ -82,13 +74,11 @@ def search_territories(version, sort_field, descending, keyword=None, start=None
     return 'do some magic!'
 
 
-def update_territory(version, account_id, territory_id, name=None, active=None):  # noqa: E501
+def update_territory(account_id, territory_id, name=None, active=None):  # noqa: E501
     """Update Territory
 
     Updates a territory. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param territory_id: the id of the territory to update

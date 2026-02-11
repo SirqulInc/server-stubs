@@ -10,13 +10,11 @@ from openapi_server.models.wrapped_response import WrappedResponse  # noqa: E501
 from openapi_server import util
 
 
-def add_favorite(version, favoritable_id, favoritable_type, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def add_favorite(favoritable_id, favoritable_type, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Create Favorite
 
     Adds an offer, offer location, retailer location, or category to your favorites. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param favoritable_id: The ID of the object to favorite {offerId, offerLocationId, retailerLocationId, categoryId}
     :type favoritable_id: int
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY, ALBUM}
@@ -35,13 +33,11 @@ def add_favorite(version, favoritable_id, favoritable_type, device_id=None, acco
     return 'do some magic!'
 
 
-def delete_favorite(version, device_id=None, account_id=None, favorite_id=None, favoritable_id=None, favoritable_type=None):  # noqa: E501
+def delete_favorite(device_id=None, account_id=None, favorite_id=None, favoritable_id=None, favoritable_type=None):  # noqa: E501
     """Delete Favorite
 
     Removes a favorited item from the user&#39;s favorites list. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account ID of the user (deviceId or accountId required)
@@ -58,13 +54,11 @@ def delete_favorite(version, device_id=None, account_id=None, favorite_id=None, 
     return 'do some magic!'
 
 
-def get_favorite(version, favorite_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_favorite(favorite_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Favorite
 
     Retrieves a single favorited item. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param favorite_id: The ID of the favorite reference record
     :type favorite_id: int
     :param device_id: The unique ID given by the device (deviceId or accountId required)
@@ -81,13 +75,11 @@ def get_favorite(version, favorite_id, device_id=None, account_id=None, latitude
     return 'do some magic!'
 
 
-def search_favorites(version, favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id=None, account_id=None, connection_account_id=None, secondary_type=None, keyword=None, latitude=None, longitude=None):  # noqa: E501
+def search_favorites(favoritable_type, sort_field, descending, start, limit, active_only, return_full_response, device_id=None, account_id=None, connection_account_id=None, secondary_type=None, keyword=None, latitude=None, longitude=None):  # noqa: E501
     """Search Favorites
 
     Searches on the user&#39;s favorites. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}
     :type favoritable_type: str
     :param sort_field: Determines what to sort the results by {CREATED, UPDATED, DISPLAY}
@@ -122,13 +114,11 @@ def search_favorites(version, favoritable_type, sort_field, descending, start, l
     return 'do some magic!'
 
 
-def who_has_favorited(version, favoritable_id, favoritable_type, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None):  # noqa: E501
+def who_has_favorited(favoritable_id, favoritable_type, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None):  # noqa: E501
     """Who has Favorited
 
     Searches for everyone that has favorited an item # noqa: E501
 
-    :param version: 
-    :type version: 
     :param favoritable_id: The ID of the favoritableType to search on
     :type favoritable_id: int
     :param favoritable_type: The type of the object to favorite {OFFER, OFFER_LOCATION, RETAILER_LOCATION, CATEGORY}

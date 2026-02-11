@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_application_config(version, account_id, app_key, config_version, asset_id, retailer_id=None, retailer_location_id=None, udid=None):  # noqa: E501
+def create_application_config(account_id, app_key, config_version, asset_id, retailer_id=None, retailer_location_id=None, udid=None):  # noqa: E501
     """Create AppConfig
 
     Creates a new application configuration. If the configVersion provided already exists for the given app, an invalid response is returned and the application configuration won&#39;t be created. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param app_key: The application key that the newly created applicationConfig will be associated to
@@ -35,13 +33,11 @@ def create_application_config(version, account_id, app_key, config_version, asse
     return 'do some magic!'
 
 
-def delete_application_config(version, account_id, config_id):  # noqa: E501
+def delete_application_config(account_id, config_id):  # noqa: E501
     """Delete AppConfig
 
     Mark the application configuration for deletion. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration to delete
@@ -52,13 +48,11 @@ def delete_application_config(version, account_id, config_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_application_config(version, account_id, config_id):  # noqa: E501
+def get_application_config(account_id, config_id):  # noqa: E501
     """Get AppConfig
 
     Gets the appConfig data by the given configId. If appConfig cannot be found, it returns an invalid response. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration
@@ -69,13 +63,11 @@ def get_application_config(version, account_id, config_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_application_config_by_config_version(version, app_key, config_version, retailer_id=None, retailer_location_id=None, udid=None, allow_older_versions=None):  # noqa: E501
+def get_application_config_by_config_version(app_key, config_version, retailer_id=None, retailer_location_id=None, udid=None, allow_older_versions=None):  # noqa: E501
     """Get AppConfig by Version
 
     Gets the appConfig data by the given appKey and app configVersion number.If the appKey is is invalid or appConfig is not found, it returns an invalid response.  # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key
     :type app_key: str
     :param config_version: The version of the application configuration
@@ -94,13 +86,11 @@ def get_application_config_by_config_version(version, app_key, config_version, r
     return 'do some magic!'
 
 
-def search_application_config(version, account_id, app_key=None, retailer_id=None, retailer_location_id=None, udid=None, config_version=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
+def search_application_config(account_id, app_key=None, retailer_id=None, retailer_location_id=None, udid=None, config_version=None, sort_field=None, descending=None, start=None, limit=None):  # noqa: E501
     """Search AppConfigs
 
     Gets all versions of application configurations in a particular app by the given appKey. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param app_key: The application key to filter results by application Leaving this empty will return all application configurations for all applications (executive user only)
@@ -127,13 +117,11 @@ def search_application_config(version, account_id, app_key=None, retailer_id=Non
     return 'do some magic!'
 
 
-def update_application_config(version, account_id, config_id, app_key=None, config_version=None, asset_id=None, retailer_id=None, retailer_location_id=None, udid=None):  # noqa: E501
+def update_application_config(account_id, config_id, app_key=None, config_version=None, asset_id=None, retailer_id=None, retailer_location_id=None, udid=None):  # noqa: E501
     """Update AppConfig
 
     pdates an existing application configuration. If the configVersion provided already exists for the given app the application configuration won&#39;t be updated. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account ID of the user
     :type account_id: int
     :param config_id: The config ID of the application configuration to update

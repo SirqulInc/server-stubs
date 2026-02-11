@@ -7,13 +7,11 @@ from openapi_server.models.program import Program  # noqa: E501
 from openapi_server import util
 
 
-def create_program(version, body=None):  # noqa: E501
+def create_program(body=None):  # noqa: E501
     """Create Program
 
     Create a new program # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -25,13 +23,11 @@ def create_program(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_program(version, id):  # noqa: E501
+def delete_program(id):  # noqa: E501
     """Delete Program
 
     Delete an existing program # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
 
@@ -40,13 +36,11 @@ def delete_program(version, id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_program(version, id):  # noqa: E501
+def get_program(id):  # noqa: E501
     """Get Program
 
     Get an existing program # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
 
@@ -55,13 +49,11 @@ def get_program(version, id):  # noqa: E501
     return 'do some magic!'
 
 
-def post_program(version, id, body=None):  # noqa: E501
+def post_program(id, body=None):  # noqa: E501
     """Update Program
 
     Update an existing program # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
     :param body: 
@@ -75,13 +67,11 @@ def post_program(version, id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def put_program(version, id, body=None):  # noqa: E501
+def put_program(id, body=None):  # noqa: E501
     """Update Program
 
     Update an existing program # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the program
     :type id: int
     :param body: 
@@ -95,13 +85,11 @@ def put_program(version, id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def search_programs(version, sort_field, descending, start, limit, active_only, keyword=None):  # noqa: E501
+def search_programs(sort_field, descending, start, limit, active_only, keyword=None):  # noqa: E501
     """Search Programs
 
     Search for programs # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order

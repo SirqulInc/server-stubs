@@ -8,13 +8,11 @@ from openapi_server.models.token_response import TokenResponse  # noqa: E501
 from openapi_server import util
 
 
-def get_token(version, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_token(device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Facebook Token
 
     Gets a user&#39;s Facebook token. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -29,13 +27,11 @@ def get_token(version, device_id=None, account_id=None, latitude=None, longitude
     return 'do some magic!'
 
 
-def graph_interface(version, event, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, asset_id=None, game_type=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
+def graph_interface(event, device_id=None, account_id=None, permissionable_type=None, permissionable_id=None, asset_id=None, game_type=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
     """Post to Facebook
 
     Make Facebook posts on behalf of the user. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param event: the type of Sirqul event {DOWNLOADED_APP, CHALLENGE, LEVEL_COMPLETED, LEVEL_CREATED}
     :type event: str
     :param device_id: a unique id given by the device (deviceId or accountId required)

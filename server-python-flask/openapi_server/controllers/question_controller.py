@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_question(version, account_id, question, answers, active, allocate_tickets, ticket_count, tags=None, video_url=None, asset_id=None, ticket_type=None, points=None):  # noqa: E501
+def create_question(account_id, question, answers, active, allocate_tickets, ticket_count, tags=None, video_url=None, asset_id=None, ticket_type=None, points=None):  # noqa: E501
     """Create Question
 
     Create a question and related answers by the given params. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param question: the text of the question
@@ -43,13 +41,11 @@ def create_question(version, account_id, question, answers, active, allocate_tic
     return 'do some magic!'
 
 
-def delete_question(version, question_id, account_id):  # noqa: E501
+def delete_question(question_id, account_id):  # noqa: E501
     """Delete Question
 
     Delete a question by the given questionId. The accountId given needs to be the owner or executive to delete. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param question_id: the id of the question to delete
     :type question_id: int
     :param account_id: the id of the account that can execute this request
@@ -60,13 +56,11 @@ def delete_question(version, question_id, account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_question(version, question_id, account_id):  # noqa: E501
+def get_question(question_id, account_id):  # noqa: E501
     """Get Question
 
     Get a question by the given id. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param question_id: the id of the question to get
     :type question_id: int
     :param account_id: the id of the account that can make this request
@@ -77,13 +71,11 @@ def get_question(version, question_id, account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_questions(version, account_id, sort_field, descending, active_only, start, limit, keyword=None):  # noqa: E501
+def search_questions(account_id, sort_field, descending, active_only, start, limit, keyword=None):  # noqa: E501
     """Search Questions
 
     Search for questions by the given params. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The column to sort the search on
@@ -104,13 +96,11 @@ def search_questions(version, account_id, sort_field, descending, active_only, s
     return 'do some magic!'
 
 
-def update_question(version, question_id, account_id, ticket_count, question=None, answers=None, tags=None, video_url=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None):  # noqa: E501
+def update_question(question_id, account_id, ticket_count, question=None, answers=None, tags=None, video_url=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None):  # noqa: E501
     """Update Question
 
     Update a question and related answers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param question_id: The id of the question to update.
     :type question_id: int
     :param account_id: The logged in user.

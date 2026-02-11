@@ -7,13 +7,11 @@ from openapi_server.models.weather_response import WeatherResponse  # noqa: E501
 from openapi_server import util
 
 
-def search_weather(version, region_id=None, latitude=None, longitude=None, timezone_offset=None):  # noqa: E501
+def search_weather(region_id=None, latitude=None, longitude=None, timezone_offset=None):  # noqa: E501
     """Search Weather
 
     Search the weather forcast for the next 5 days # noqa: E501
 
-    :param version: 
-    :type version: 
     :param region_id: Region Id
     :type region_id: int
     :param latitude: Latitude

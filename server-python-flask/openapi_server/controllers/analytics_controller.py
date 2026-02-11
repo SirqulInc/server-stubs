@@ -9,13 +9,11 @@ from openapi_server.models.user_activity_response import UserActivityResponse  #
 from openapi_server import util
 
 
-def activities(version, start, limit, account_id):  # noqa: E501
+def activities(start, limit, account_id):  # noqa: E501
     """Get User Activity
 
     Get an activity feed by user. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param start: The start of the pagination
     :type start: int
     :param limit: The limit of the pagination
@@ -28,13 +26,11 @@ def activities(version, start, limit, account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def aggregated_filtered_usage(version, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, group_by_root=None, group_by=None, distinct_count=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None):  # noqa: E501
+def aggregated_filtered_usage(device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, group_by_root=None, group_by=None, distinct_count=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None):  # noqa: E501
     """Get Aggregated Filtered Usage
 
     Query analytics to get data used for nested graphs and charts # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -103,13 +99,11 @@ def aggregated_filtered_usage(version, device_id=None, account_id=None, applicat
     return 'do some magic!'
 
 
-def filtered_usage(version, device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, custom_id=None, custom_type=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None, custom_message=None, custom_message2=None, group_by=None, distinct_count=None, sum_column=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None):  # noqa: E501
+def filtered_usage(device_id=None, account_id=None, application_id=None, app_key=None, start_date=None, end_date=None, device_type=None, device=None, device_os=None, gender=None, age_group=None, country=None, state=None, city=None, zip=None, model=None, tag=None, user_account_id=None, user_account_display=None, user_account_username=None, custom_id=None, custom_type=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None, custom_message=None, custom_message2=None, group_by=None, distinct_count=None, sum_column=None, sort_field=None, descending=None, hide_unknown=None, response_format=None, l=None, limit=None, latitude=None, longitude=None):  # noqa: E501
     """Get Filtered Usage
 
     Query analytics to get data used for graphs and charts # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The unique id of the device making the request (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -194,13 +188,11 @@ def filtered_usage(version, device_id=None, account_id=None, application_id=None
     return 'do some magic!'
 
 
-def usage(version, tag, device_id=None, account_id=None, application_id=None, app_key=None, app_version=None, device=None, device_type=None, device_os=None, model=None, latitude=None, longitude=None, custom_id=None, custom_type=None, achievement_increment=None, city=None, state=None, country=None, zip=None, location_description=None, client_time=None, error_message=None, ip=None, user_agent=None, background_event=None, custom_message=None, custom_message2=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None):  # noqa: E501
+def usage(tag, device_id=None, account_id=None, application_id=None, app_key=None, app_version=None, device=None, device_type=None, device_os=None, model=None, latitude=None, longitude=None, custom_id=None, custom_type=None, achievement_increment=None, city=None, state=None, country=None, zip=None, location_description=None, client_time=None, error_message=None, ip=None, user_agent=None, background_event=None, custom_message=None, custom_message2=None, custom_value=None, custom_value2=None, custom_long=None, custom_long2=None):  # noqa: E501
     """Create Usage Record
 
     Record an analytic record for a known state within the application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param tag: The tag to apply: the name of the action or thing being logged.
     :type tag: str
     :param device_id: The client deviceID
@@ -269,13 +261,11 @@ def usage(version, tag, device_id=None, account_id=None, application_id=None, ap
     return 'do some magic!'
 
 
-def usage_batch(version, app_key, device, data, device_id=None, account_id=None, app_version=None, device_type=None, device_os=None, model=None, update_ranking=None, return_summary_response=None):  # noqa: E501
+def usage_batch(app_key, device, data, device_id=None, account_id=None, app_version=None, device_type=None, device_os=None, model=None, update_ranking=None, return_summary_response=None):  # noqa: E501
     """Create Multiple Usage Records
 
     Sends multiple analytics. Can be used to send in the user&#39;s stored usage when they did not have internet access. Should not include more than 100 items per batch. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key unique to each application.
     :type app_key: str
     :param device: The name of the device being used (iPhone5,1 , HTC Nexus One, x86_64, etc.)

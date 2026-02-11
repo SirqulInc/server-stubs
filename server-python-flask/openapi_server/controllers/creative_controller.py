@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def add_preview(version, account_id, creative_id):  # noqa: E501
+def add_preview(account_id, creative_id):  # noqa: E501
     """Add Preview
 
     Enable this ad for preview for this account. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the account
     :type account_id: int
     :param creative_id: The id of the creative that want to enable preview. The type of the creative should be CONFIG, otherwise no action will be applied.
@@ -26,13 +24,11 @@ def add_preview(version, account_id, creative_id):  # noqa: E501
     return 'do some magic!'
 
 
-def ads_find(version, app_key, randomize, targeted_ads_only, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_audiences=None, allocates_tickets=None, mission_ids=None):  # noqa: E501
+def ads_find(app_key, randomize, targeted_ads_only, type=None, account_id=None, app_version=None, latitude=None, longitude=None, device=None, device_identifier=None, device_version=None, start=None, limit=None, include_audiences=None, allocates_tickets=None, mission_ids=None):  # noqa: E501
     """Find Missions
 
     Get a set of ad filtered by the parameters provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key, if provided return missions specific for the app. Will always return mission levels that are app agnostic.
     :type app_key: str
     :param randomize: return a random set of results, default is true. If false returns in nature order.
@@ -71,13 +67,11 @@ def ads_find(version, app_key, randomize, targeted_ads_only, type=None, account_
     return 'do some magic!'
 
 
-def create_creative(version, account_id, name, active, wait_for_asset, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, reference_id=None, app_version=None, mission_id=None, offer_id=None):  # noqa: E501
+def create_creative(account_id, name, active, wait_for_asset, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, reference_id=None, app_version=None, mission_id=None, offer_id=None):  # noqa: E501
     """Create Creative
 
     Create a creative # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param name: The name of the level.
@@ -114,13 +108,11 @@ def create_creative(version, account_id, name, active, wait_for_asset, descripti
     return 'do some magic!'
 
 
-def delete_creative(version, account_id, creative_id):  # noqa: E501
+def delete_creative(account_id, creative_id):  # noqa: E501
     """Delete Creative
 
     Delete a creative # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param creative_id: the id of the creative to delete
@@ -131,13 +123,11 @@ def delete_creative(version, account_id, creative_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_creative(version, account_id, creative_id):  # noqa: E501
+def get_creative(account_id, creative_id):  # noqa: E501
     """Get Creative
 
     Get a creative # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param creative_id: the ID of the creative to get
@@ -148,13 +138,11 @@ def get_creative(version, account_id, creative_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_creatives_by_application(version, account_id, app_key, start, limit, mission_id=None, keyword=None):  # noqa: E501
+def get_creatives_by_application(account_id, app_key, start, limit, mission_id=None, keyword=None):  # noqa: E501
     """Search Creatives
 
     Get a list of levels for an application, just those the account has permissions to view. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param app_key: the application key
@@ -173,13 +161,11 @@ def get_creatives_by_application(version, account_id, app_key, start, limit, mis
     return 'do some magic!'
 
 
-def remove_preview(version, account_id, creative_id):  # noqa: E501
+def remove_preview(account_id, creative_id):  # noqa: E501
     """Remove Preview
 
     Remove this ad for preview for this account. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the logged in user
     :type account_id: int
     :param creative_id: the ID of the creative to remove preview
@@ -190,13 +176,11 @@ def remove_preview(version, account_id, creative_id):  # noqa: E501
     return 'do some magic!'
 
 
-def update_creative(version, account_id, creative_id, name=None, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, active=None, reference_id=None, app_version=None, mission_id=None):  # noqa: E501
+def update_creative(account_id, creative_id, name=None, description=None, asset_image_id=None, action=None, data=None, suffix=None, type=None, balance=None, active=None, reference_id=None, app_version=None, mission_id=None):  # noqa: E501
     """Update Creative
 
     Update a creative # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param creative_id: the creative Id to upate.

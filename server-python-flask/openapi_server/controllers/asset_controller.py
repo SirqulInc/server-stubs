@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def asset_download(version, filename):  # noqa: E501
+def asset_download(filename):  # noqa: E501
     """Download Asset
 
     Downloads an asset from the server for assets that have been uploaded to the server. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param filename: the filename in the following formats: {assetId}-{suffix}.{extension} | {assetId}.{extension} | {assetId}
     :type filename: str
 
@@ -25,13 +23,11 @@ def asset_download(version, filename):  # noqa: E501
     return 'do some magic!'
 
 
-def asset_morph(version, offer_id, ad_size, creative_id=None, width=None, height=None, background_size=None, template=None):  # noqa: E501
+def asset_morph(offer_id, ad_size, creative_id=None, width=None, height=None, background_size=None, template=None):  # noqa: E501
     """Convert Offer to Creative
 
     Converts an offer image + text into a creative image. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param offer_id: offer id used for inserting offer text/flavor
     :type offer_id: int
     :param ad_size: the ad size used for selecting a format for the creative image
@@ -52,13 +48,11 @@ def asset_morph(version, offer_id, ad_size, creative_id=None, width=None, height
     return 'do some magic!'
 
 
-def create_asset(version, return_nulls=None, device_id=None, account_id=None, album_id=None, collection_id=None, add_to_default_album=None, add_to_media_library=None, version_code=None, version_name=None, meta_data=None, caption=None, asset_type=None, approval_status=None, assigned_account_id=None, media=None, media_url=None, media_string=None, media_string_file_name=None, media_string_content_type=None, media_height=None, media_width=None, attached_media=None, attached_media_url=None, attached_media_string=None, attached_media_string_file_name=None, attached_media_string_content_type=None, attached_media_height=None, attached_media_width=None, location_description=None, app=None, app_key=None, search_tags=None, latitude=None, longitude=None):  # noqa: E501
+def create_asset(return_nulls=None, device_id=None, account_id=None, album_id=None, collection_id=None, add_to_default_album=None, add_to_media_library=None, version_code=None, version_name=None, meta_data=None, caption=None, asset_type=None, approval_status=None, assigned_account_id=None, media=None, media_url=None, media_string=None, media_string_file_name=None, media_string_content_type=None, media_height=None, media_width=None, attached_media=None, attached_media_url=None, attached_media_string=None, attached_media_string_file_name=None, attached_media_string_content_type=None, attached_media_height=None, attached_media_width=None, location_description=None, app=None, app_key=None, search_tags=None, latitude=None, longitude=None):  # noqa: E501
     """Create Asset
 
     Uploads an asset to server and returns an asset id which can be used to assign to various objects. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: to return nulls
     :type return_nulls: bool
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -133,13 +127,11 @@ def create_asset(version, return_nulls=None, device_id=None, account_id=None, al
     return 'do some magic!'
 
 
-def delete_asset(version, asset_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def delete_asset(asset_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Asset
 
     Delete an asset. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param asset_id: the id of the asset to delete
     :type asset_id: str
     :param device_id: the device id (deviceId or accountId required)
@@ -156,13 +148,11 @@ def delete_asset(version, asset_id, device_id=None, account_id=None, latitude=No
     return 'do some magic!'
 
 
-def get_asset(version, asset_id, device_id=None, account_id=None, note_descending=None):  # noqa: E501
+def get_asset(asset_id, device_id=None, account_id=None, note_descending=None):  # noqa: E501
     """Get Asset
 
     Gets the full asset response including attached likes and notes. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param asset_id: the asset ID
     :type asset_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -177,13 +167,11 @@ def get_asset(version, asset_id, device_id=None, account_id=None, note_descendin
     return 'do some magic!'
 
 
-def remove_asset(version, asset_id, device_id=None, account_id=None, album_id=None, collection_id=None, remove_from_default_albums=None, latitude=None, longitude=None):  # noqa: E501
+def remove_asset(asset_id, device_id=None, account_id=None, album_id=None, collection_id=None, remove_from_default_albums=None, latitude=None, longitude=None):  # noqa: E501
     """Remove Asset from Collection
 
     Remove assets from collections # noqa: E501
 
-    :param version: 
-    :type version: 
     :param asset_id: the id of the asset to remove
     :type asset_id: str
     :param device_id: the device id (deviceId or accountId required)
@@ -206,13 +194,11 @@ def remove_asset(version, asset_id, device_id=None, account_id=None, album_id=No
     return 'do some magic!'
 
 
-def search_assets(version, device_id=None, account_id=None, album_ids=None, asset_ids=None, app_key=None, media_type=None, mime_type=None, keyword=None, version_code=None, version_name=None, updated_since=None, updated_before=None, sort_field=None, descending=None, search_media_library=None, filter_by_billable=None, active_only=None, return_app=None, start=None, limit=None, search_mode=None, asset_type=None, approval_status=None, assigned_account_id=None):  # noqa: E501
+def search_assets(device_id=None, account_id=None, album_ids=None, asset_ids=None, app_key=None, media_type=None, mime_type=None, keyword=None, version_code=None, version_name=None, updated_since=None, updated_before=None, sort_field=None, descending=None, search_media_library=None, filter_by_billable=None, active_only=None, return_app=None, start=None, limit=None, search_mode=None, asset_type=None, approval_status=None, assigned_account_id=None):  # noqa: E501
     """Search Assets
 
     Searches for assets # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique ID given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account ID of the user (deviceId or accountId required)
@@ -267,13 +253,11 @@ def search_assets(version, device_id=None, account_id=None, album_ids=None, asse
     return 'do some magic!'
 
 
-def update_asset(version, asset_id, device_id=None, account_id=None, album_id=None, attached_asset_id=None, version_code=None, version_name=None, meta_data=None, caption=None, asset_type=None, approval_status=None, assigned_account_id=None, media=None, media_url=None, media_string=None, media_string_file_name=None, media_string_content_type=None, media_height=None, media_width=None, attached_media=None, attached_media_url=None, attached_media_string=None, attached_media_string_file_name=None, attached_media_string_content_type=None, attached_media_height=None, attached_media_width=None, location_description=None, search_tags=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
+def update_asset(asset_id, device_id=None, account_id=None, album_id=None, attached_asset_id=None, version_code=None, version_name=None, meta_data=None, caption=None, asset_type=None, approval_status=None, assigned_account_id=None, media=None, media_url=None, media_string=None, media_string_file_name=None, media_string_content_type=None, media_height=None, media_width=None, attached_media=None, attached_media_url=None, attached_media_string=None, attached_media_string_file_name=None, attached_media_string_content_type=None, attached_media_height=None, attached_media_width=None, location_description=None, search_tags=None, app_key=None, latitude=None, longitude=None):  # noqa: E501
     """Update Asset
 
     Updates an asset&#39;s meta data. If an album reference is passed in, the participants with write permissions are allowed to edit the asset. Otherwise, only the asset up-loader has permission to edit the data. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param asset_id: the ID of the asset to update
     :type asset_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)

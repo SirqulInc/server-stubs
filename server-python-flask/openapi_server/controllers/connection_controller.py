@@ -11,13 +11,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def add_connection_to_group(version, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None):  # noqa: E501
+def add_connection_to_group(return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None):  # noqa: E501
     """Add Connection
 
     Adds a connection to a group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -42,13 +40,11 @@ def add_connection_to_group(version, return_nulls, group_id, device_id=None, acc
     return 'do some magic!'
 
 
-def add_connections_to_group(version, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None):  # noqa: E501
+def add_connections_to_group(connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None):  # noqa: E501
     """Add Connections
 
     Adds a list of connections to a group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param connection_group_id: the connection group ID
     :type connection_group_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -69,13 +65,11 @@ def add_connections_to_group(version, connection_group_id, device_id=None, accou
     return 'do some magic!'
 
 
-def add_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def add_sub_groups(return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Add Connection Groups
 
     Add sub groups to a group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the parent group id
@@ -96,13 +90,11 @@ def add_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id=Non
     return 'do some magic!'
 
 
-def create_or_update_connection(version, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, group_id=None, game_type=None, app_key=None, is_trusted=None, ignore_friend_request=None, is_contact=None, is_blocked=None, is_following=None, connection_response=None):  # noqa: E501
+def create_or_update_connection(device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, group_id=None, game_type=None, app_key=None, is_trusted=None, ignore_friend_request=None, is_contact=None, is_blocked=None, is_following=None, connection_response=None):  # noqa: E501
     """Create or Update Connection
 
     Creates or updates the connection of the user and another account. Allows a user to follow, block, mark as trusted, and/or add someone to a group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -137,13 +129,11 @@ def create_or_update_connection(version, device_id=None, account_id=None, connec
     return 'do some magic!'
 
 
-def create_or_update_group(version, return_nulls, device_id=None, account_id=None, name=None, group_id=None, asset_id=None, connections=None, description=None, can_view_profile_info=None, can_view_game_info=None, can_view_friend_info=None, active=None, latitude=None, longitude=None):  # noqa: E501
+def create_or_update_group(return_nulls, device_id=None, account_id=None, name=None, group_id=None, asset_id=None, connections=None, description=None, can_view_profile_info=None, can_view_game_info=None, can_view_friend_info=None, active=None, latitude=None, longitude=None):  # noqa: E501
     """Create or Update Connection Group
 
     Creates a new private group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param device_id: the device id (deviceId or accountId required)
@@ -178,13 +168,11 @@ def create_or_update_group(version, return_nulls, device_id=None, account_id=Non
     return 'do some magic!'
 
 
-def follow_accept(version, account_id, connection_account_id, app_key):  # noqa: E501
+def follow_accept(account_id, connection_account_id, app_key):  # noqa: E501
     """Accept Follow Request
 
     Accept someone&#39;s follow request. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who initiated the follow
@@ -197,13 +185,11 @@ def follow_accept(version, account_id, connection_account_id, app_key):  # noqa:
     return 'do some magic!'
 
 
-def follow_reject(version, account_id, connection_account_id, app_key):  # noqa: E501
+def follow_reject(account_id, connection_account_id, app_key):  # noqa: E501
     """Reject Follow Request
 
     Reject someone&#39;s follow request or remove them as a follower. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who initiated the follow
@@ -216,13 +202,11 @@ def follow_reject(version, account_id, connection_account_id, app_key):  # noqa:
     return 'do some magic!'
 
 
-def follow_remove(version, account_id, connection_account_id, app_key):  # noqa: E501
+def follow_remove(account_id, connection_account_id, app_key):  # noqa: E501
     """Remove Follower / Unfollow
 
     Unfollow someone you are following or remove them as a follower. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who you want to unfollow
@@ -235,13 +219,11 @@ def follow_remove(version, account_id, connection_account_id, app_key):  # noqa:
     return 'do some magic!'
 
 
-def follow_request(version, account_id, connection_account_id, app_key, approval_needed=None):  # noqa: E501
+def follow_request(account_id, connection_account_id, app_key, approval_needed=None):  # noqa: E501
     """Send Follow Request
 
     Send a request to follow someone. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param connection_account_id: the account ID of the user who you want to follow
@@ -256,13 +238,11 @@ def follow_request(version, account_id, connection_account_id, app_key, approval
     return 'do some magic!'
 
 
-def friend_accept(version, friend_account_id, notify_friend, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None):  # noqa: E501
+def friend_accept(friend_account_id, notify_friend, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None):  # noqa: E501
     """Accept Friend
 
     Accept a friend request and optionally sends a notification. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param notify_friend: determines whether to send a notification to the afflicting party
@@ -283,13 +263,11 @@ def friend_accept(version, friend_account_id, notify_friend, device_id=None, acc
     return 'do some magic!'
 
 
-def friend_reject(version, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notify_friend=None, notification_message=None):  # noqa: E501
+def friend_reject(friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notify_friend=None, notification_message=None):  # noqa: E501
     """Decline Friend
 
     Request a friend request and optionally sends a notification. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -310,13 +288,11 @@ def friend_reject(version, friend_account_id, device_id=None, account_id=None, g
     return 'do some magic!'
 
 
-def friend_remove(version, friend_account_id, device_id=None, account_id=None, notify_friend=None, remove_from_groups=None):  # noqa: E501
+def friend_remove(friend_account_id, device_id=None, account_id=None, notify_friend=None, remove_from_groups=None):  # noqa: E501
     """Delete Friend
 
     Removes a friend from the user&#39;s friends list. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the account ID of the friend to remove
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -333,13 +309,11 @@ def friend_remove(version, friend_account_id, device_id=None, account_id=None, n
     return 'do some magic!'
 
 
-def friend_request(version, friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None):  # noqa: E501
+def friend_request(friend_account_id, device_id=None, account_id=None, game_type=None, app_key=None, notification_message=None):  # noqa: E501
     """Request Friend
 
     Sends a friend request notification to another user. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param friend_account_id: the friend&#39;s account id
     :type friend_account_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -358,13 +332,11 @@ def friend_request(version, friend_account_id, device_id=None, account_id=None, 
     return 'do some magic!'
 
 
-def get_connection_sent_friend_requests(version, device_id=None, account_id=None):  # noqa: E501
+def get_connection_sent_friend_requests(device_id=None, account_id=None):  # noqa: E501
     """Get Sent Friend Requests
 
     Gets the connection sent friend requests. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the ID of the device
     :type device_id: str
     :param account_id: the id of the account
@@ -375,13 +347,11 @@ def get_connection_sent_friend_requests(version, device_id=None, account_id=None
     return 'do some magic!'
 
 
-def get_connections(version, return_nulls, filter, sort_field, descending, start, limit, device_id=None, account_id=None, connection_account_id=None, q=None, keyword=None, i=None, l=None, latitude=None, longitude=None):  # noqa: E501
+def get_connections(return_nulls, filter, sort_field, descending, start, limit, device_id=None, account_id=None, connection_account_id=None, q=None, keyword=None, i=None, l=None, latitude=None, longitude=None):  # noqa: E501
     """Search Connections
 
     Gets the connections. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param filter: a comma separated list of ConnectionApiMap. (NOTE on FOLLOWER vs FOLLOWING: FOLLOWER will get me a list of followers, FOLLOWING will get me a list of people I am following)
@@ -418,13 +388,11 @@ def get_connections(version, return_nulls, filter, sort_field, descending, start
     return 'do some magic!'
 
 
-def get_group_details(version, combine_connections, device_id=None, account_id=None, group_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_group_details(combine_connections, device_id=None, account_id=None, group_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Connection Group
 
      # noqa: E501
 
-    :param version: 
-    :type version: 
     :param combine_connections: whether to combine connections or not
     :type combine_connections: bool
     :param device_id: the device id (deviceId or accountId required)
@@ -443,13 +411,11 @@ def get_group_details(version, combine_connections, device_id=None, account_id=N
     return 'do some magic!'
 
 
-def group_search(version, sort_field, descending, active_only, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None):  # noqa: E501
+def group_search(sort_field, descending, active_only, start, limit, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None):  # noqa: E501
     """Search Connection Groups
 
     Gets a user&#39;s private groups and default groups. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort by
     :type sort_field: str
     :param descending: whether to return results in descending or ascending order
@@ -476,13 +442,11 @@ def group_search(version, sort_field, descending, active_only, start, limit, dev
     return 'do some magic!'
 
 
-def remove_connection_from_group(version, return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None):  # noqa: E501
+def remove_connection_from_group(return_nulls, group_id, device_id=None, account_id=None, connection_id=None, connection_account_id=None, pending_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Connection
 
     Removes the connection from group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -507,13 +471,11 @@ def remove_connection_from_group(version, return_nulls, group_id, device_id=None
     return 'do some magic!'
 
 
-def remove_connections_from_group(version, connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None):  # noqa: E501
+def remove_connections_from_group(connection_group_id, device_id=None, account_id=None, connection_ids=None, connection_account_ids=None, latitude=None, longitude=None):  # noqa: E501
     """Remove Connections
 
     Remove a list of connections from a group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param connection_group_id: connection group id
     :type connection_group_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -534,13 +496,11 @@ def remove_connections_from_group(version, connection_group_id, device_id=None, 
     return 'do some magic!'
 
 
-def remove_group(version, return_nulls, group_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def remove_group(return_nulls, group_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Connection Group
 
     Remove a user&#39;s group. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the group id
@@ -559,13 +519,11 @@ def remove_group(version, return_nulls, group_id, device_id=None, account_id=Non
     return 'do some magic!'
 
 
-def remove_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def remove_sub_groups(return_nulls, group_id, sub_group_ids, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Remove Connection Groups
 
     Remove sub groups from a group # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: whether to return nulls or not
     :type return_nulls: bool
     :param group_id: the parent group id
@@ -586,13 +544,11 @@ def remove_sub_groups(version, return_nulls, group_id, sub_group_ids, device_id=
     return 'do some magic!'
 
 
-def search_connections(version, return_nulls, start, limit, device_id=None, account_id=None, q=None, keyword=None, latitude=None, longitude=None, game_type=None, app_key=None, i=None, l=None, sort_field=None, has_location=None):  # noqa: E501
+def search_connections(return_nulls, start, limit, device_id=None, account_id=None, q=None, keyword=None, latitude=None, longitude=None, game_type=None, app_key=None, i=None, l=None, sort_field=None, has_location=None):  # noqa: E501
     """Search Possible Connections
 
     Search for accounts that the user may not have a connection with. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: return all json attributes if true. defualt is true.
     :type return_nulls: bool
     :param start: start index of the pagination

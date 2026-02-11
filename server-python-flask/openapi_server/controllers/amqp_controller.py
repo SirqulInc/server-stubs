@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def consumer_create(version, app_key, name, hostname, username, password, data_mapping, device_id=None, account_id=None, port=None, virtual_host=None, exchanger=None, exchanger_type=None, workers=None, use_ssl=None):  # noqa: E501
+def consumer_create(app_key, name, hostname, username, password, data_mapping, device_id=None, account_id=None, port=None, virtual_host=None, exchanger=None, exchanger_type=None, workers=None, use_ssl=None):  # noqa: E501
     """Create Consumer
 
     Create a connection to an existing amqp queue and register as a consumer. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     :type app_key: str
     :param name: The name of the queue to connect to
@@ -49,13 +47,11 @@ def consumer_create(version, app_key, name, hostname, username, password, data_m
     return 'do some magic!'
 
 
-def consumer_update(version, app_key, queue_id, data_mapping, device_id=None, account_id=None, use_ssl=None):  # noqa: E501
+def consumer_update(app_key, queue_id, data_mapping, device_id=None, account_id=None, use_ssl=None):  # noqa: E501
     """Update Consumer
 
     Update an existing amqp queue&#39;s data mapping. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key to use when creating an analytic or service request. The account needs to have permissions to the applicaton or it will be denied.
     :type app_key: str
     :param queue_id: The queue to update
@@ -74,13 +70,11 @@ def consumer_update(version, app_key, queue_id, data_mapping, device_id=None, ac
     return 'do some magic!'
 
 
-def queue_create(version, app_key, name, device_id=None, account_id=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None):  # noqa: E501
+def queue_create(app_key, name, device_id=None, account_id=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None):  # noqa: E501
     """Create Queue
 
     Create a basic AMQP queue. If the username and password and virtual host is not sepcified, the queue will be created on the virtual host assigned to the application. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key unique to each application.
     :type app_key: str
     :param name: The name of the queue to create
@@ -111,13 +105,11 @@ def queue_create(version, app_key, name, device_id=None, account_id=None, worker
     return 'do some magic!'
 
 
-def queue_delete(version, queue_id, device_id=None, account_id=None):  # noqa: E501
+def queue_delete(queue_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Queue
 
     Delete the stored queue record and close any active connections to the AMQP servers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to find
     :type queue_id: int
     :param device_id: The client device ID
@@ -130,13 +122,11 @@ def queue_delete(version, queue_id, device_id=None, account_id=None):  # noqa: E
     return 'do some magic!'
 
 
-def queue_get(version, device_id=None, account_id=None, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None):  # noqa: E501
+def queue_get(device_id=None, account_id=None, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None):  # noqa: E501
     """Get Queue
 
     Get the stored queue record. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The client device ID
     :type device_id: str
     :param account_id: The logged in user ID
@@ -157,13 +147,11 @@ def queue_get(version, device_id=None, account_id=None, queue_id=None, app_key=N
     return 'do some magic!'
 
 
-def queue_publish(version, message, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None):  # noqa: E501
+def queue_publish(message, queue_id=None, app_key=None, name=None, hostname=None, virtual_host=None):  # noqa: E501
     """Publish Queue
 
     Publish a message to a stored queue. Must supply the queueId, or the name and hostname and virtualHost, or the name and appKey to find the record. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param message: The payload to send to the queue
     :type message: str
     :param queue_id: The id of the queue to publish to
@@ -182,13 +170,11 @@ def queue_publish(version, message, queue_id=None, app_key=None, name=None, host
     return 'do some magic!'
 
 
-def queue_search(version, queue_id=None, device_id=None, account_id=None, name=None, start=None, limit=None):  # noqa: E501
+def queue_search(queue_id=None, device_id=None, account_id=None, name=None, start=None, limit=None):  # noqa: E501
     """Search Queue
 
     Get the queues setup for the BillableEntity&#39;s applications. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to find
     :type queue_id: int
     :param device_id: The client device ID
@@ -207,13 +193,11 @@ def queue_search(version, queue_id=None, device_id=None, account_id=None, name=N
     return 'do some magic!'
 
 
-def queue_update(version, queue_id, device_id=None, account_id=None, app_key=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None):  # noqa: E501
+def queue_update(queue_id, device_id=None, account_id=None, app_key=None, workers=None, analytic_tags=None, hostname=None, port=None, username=None, password=None, virtual_host=None, use_ssl=None):  # noqa: E501
     """Update Queue
 
     Update the basic AMQP queue. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param queue_id: The id of the queue to update
     :type queue_id: int
     :param device_id: The client deviceID

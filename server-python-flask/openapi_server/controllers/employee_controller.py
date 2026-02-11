@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def assign_employee(version, account_id, manager_account_id, employee_account_id, role=None):  # noqa: E501
+def assign_employee(account_id, manager_account_id, employee_account_id, role=None):  # noqa: E501
     """Assign Employee
 
     Assign An existing account to be an employee # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param manager_account_id: The account id of the manager to assign under
@@ -29,13 +27,11 @@ def assign_employee(version, account_id, manager_account_id, employee_account_id
     return 'do some magic!'
 
 
-def assign_to_location_employee(version, account_id, retailer_location_id, employee_account_id=None, assign=None):  # noqa: E501
+def assign_to_location_employee(account_id, retailer_location_id, employee_account_id=None, assign=None):  # noqa: E501
     """Assign Employee to Location
 
     Assign or unassign the account to a retailer location. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param retailer_location_id: The retailer location to apply the change to
@@ -50,13 +46,11 @@ def assign_to_location_employee(version, account_id, retailer_location_id, emplo
     return 'do some magic!'
 
 
-def create_employee(version, account_id, manager_account_id, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, about_us=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None):  # noqa: E501
+def create_employee(account_id, manager_account_id, username, password, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, about_us=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None):  # noqa: E501
     """Create Employee
 
     Create a new account record with the provided information. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param manager_account_id: The account id of the manager to assign under
@@ -123,13 +117,11 @@ def create_employee(version, account_id, manager_account_id, username, password,
     return 'do some magic!'
 
 
-def delete_employee(version, account_id, employee_account_id):  # noqa: E501
+def delete_employee(account_id, employee_account_id):  # noqa: E501
     """Delete Employee
 
     Set the deleted date field which marks the record as deleted. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee to delete
@@ -140,13 +132,11 @@ def delete_employee(version, account_id, employee_account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_employee(version, account_id, employee_account_id, settings_app_key=None):  # noqa: E501
+def get_employee(account_id, employee_account_id, settings_app_key=None):  # noqa: E501
     """Get Employee
 
     Get the account record for the account id provided. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee account to get
@@ -159,13 +149,11 @@ def get_employee(version, account_id, employee_account_id, settings_app_key=None
     return 'do some magic!'
 
 
-def search_employees(version, account_id, role=None, retailer_id=None, retailer_location_id=None, q=None, keyword=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, active_only=None, managed_only=None, settings_app_key=None, category_ids=None, query=None):  # noqa: E501
+def search_employees(account_id, role=None, retailer_id=None, retailer_location_id=None, q=None, keyword=None, sort_field=None, descending=None, i=None, start=None, l=None, limit=None, active_only=None, managed_only=None, settings_app_key=None, category_ids=None, query=None):  # noqa: E501
     """Search Employees
 
     Use the accountId to determine the associated BillableEntity. From there get a list of all accounts associated as managers/employees. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param role: The role to limit the search to: RETAILER or RETAILER_LIMITED. Leave empty to search on both roles.
@@ -206,13 +194,11 @@ def search_employees(version, account_id, role=None, retailer_id=None, retailer_
     return 'do some magic!'
 
 
-def unassign_employee(version, account_id, employee_account_id):  # noqa: E501
+def unassign_employee(account_id, employee_account_id):  # noqa: E501
     """Unassign Employee
 
     Unassign An existing account to be an employee # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param employee_account_id: The account id of the user to be unassigned
@@ -223,13 +209,11 @@ def unassign_employee(version, account_id, employee_account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def update_employee(version, account_id, employee_account_id, manager_account_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, active=None, password=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None):  # noqa: E501
+def update_employee(account_id, employee_account_id, manager_account_id=None, name=None, prefix_name=None, first_name=None, middle_name=None, last_name=None, suffix_name=None, title=None, asset_id=None, gender=None, home_phone=None, cell_phone=None, cell_phone_carrier=None, business_phone=None, email_address=None, street_address=None, street_address2=None, city=None, state=None, zipcode=None, country=None, role=None, active=None, password=None, retailer_location_ids=None, settings_app_key=None, app_blob=None, assigned_device_id=None):  # noqa: E501
     """Update Employee
 
     Update the account record with the provided information. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param employee_account_id: the id of the employee account

@@ -7,13 +7,11 @@ from openapi_server.models.shipment import Shipment  # noqa: E501
 from openapi_server import util
 
 
-def cancel_shipment(version, id):  # noqa: E501
+def cancel_shipment(id):  # noqa: E501
     """Cancel Shipment
 
     Remove shipment from route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to cancel
     :type id: int
 
@@ -22,13 +20,11 @@ def cancel_shipment(version, id):  # noqa: E501
     return 'do some magic!'
 
 
-def create_shipment(version, body=None):  # noqa: E501
+def create_shipment(body=None):  # noqa: E501
     """Create Shipment
 
     Create new shipment # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -40,13 +36,11 @@ def create_shipment(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_shipment(version, id):  # noqa: E501
+def delete_shipment(id):  # noqa: E501
     """Delete Shipment
 
     Delete an existing shipment # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to delete
     :type id: int
 
@@ -55,13 +49,11 @@ def delete_shipment(version, id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_shipment(version, id):  # noqa: E501
+def get_shipment(id):  # noqa: E501
     """Get Shipment
 
     Get an existing shipment # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to get
     :type id: int
 
@@ -70,13 +62,11 @@ def get_shipment(version, id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_shipments(version, sort_field, descending, start, limit, active_only, owner_id=None, rider_id=None, route_id=None):  # noqa: E501
+def search_shipments(sort_field, descending, start, limit, active_only, owner_id=None, rider_id=None, route_id=None):  # noqa: E501
     """Search Shipments
 
     Search for shipments # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order
@@ -99,13 +89,11 @@ def search_shipments(version, sort_field, descending, start, limit, active_only,
     return 'do some magic!'
 
 
-def update_shipment(version, id, body=None):  # noqa: E501
+def update_shipment(id, body=None):  # noqa: E501
     """Update Shipment
 
     Update an existing shipment # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to update
     :type id: int
     :param body: 
@@ -119,13 +107,11 @@ def update_shipment(version, id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def update_shipment_status(version, id, body=None):  # noqa: E501
+def update_shipment_status(id, body=None):  # noqa: E501
     """Uupdate Shipment Status
 
     Update status of an existing shipment # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the shipment to update status
     :type id: int
     :param body: 

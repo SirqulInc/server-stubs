@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_purchase_item(version, app_key, name, purchase_type, device_id=None, account_id=None, description=None, tickets=None, price=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None):  # noqa: E501
+def create_purchase_item(app_key, name, purchase_type, device_id=None, account_id=None, description=None, tickets=None, price=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None):  # noqa: E501
     """Create Purchase
 
     Creates a purchase item for in app purchases # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application key that the purchase can be used in
     :type app_key: str
     :param name: The name of the purchase item
@@ -62,13 +60,11 @@ def create_purchase_item(version, app_key, name, purchase_type, device_id=None, 
     return 'do some magic!'
 
 
-def delete_purchase_item(version, purchase_item_id, device_id=None, account_id=None):  # noqa: E501
+def delete_purchase_item(purchase_item_id, device_id=None, account_id=None):  # noqa: E501
     """Delete Purchase
 
     Marks the purchase item as deleted # noqa: E501
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -81,13 +77,11 @@ def delete_purchase_item(version, purchase_item_id, device_id=None, account_id=N
     return 'do some magic!'
 
 
-def get_purchase_item(version, purchase_item_id, device_id=None, account_id=None):  # noqa: E501
+def get_purchase_item(purchase_item_id, device_id=None, account_id=None):  # noqa: E501
     """Get Purchase
 
     Get detailed information about a purchase item # noqa: E501
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -100,13 +94,11 @@ def get_purchase_item(version, purchase_item_id, device_id=None, account_id=None
     return 'do some magic!'
 
 
-def search_purchase_items(version, device_id=None, account_id=None, app_key=None, filter_by_billable=None, purchase_type=None, service_action=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
+def search_purchase_items(device_id=None, account_id=None, app_key=None, filter_by_billable=None, purchase_type=None, service_action=None, keyword=None, sort_field=None, descending=None, start=None, limit=None, active_only=None):  # noqa: E501
     """Search Purchases
 
     Search for purchasable items from the system # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -137,13 +129,11 @@ def search_purchase_items(version, device_id=None, account_id=None, app_key=None
     return 'do some magic!'
 
 
-def update_purchase_item(version, purchase_item_id, device_id=None, account_id=None, name=None, description=None, tickets=None, price=None, purchase_type=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, active=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None):  # noqa: E501
+def update_purchase_item(purchase_item_id, device_id=None, account_id=None, name=None, description=None, tickets=None, price=None, purchase_type=None, purchase_code=None, secret_key=None, purchase_limit=None, service_action=None, cover_asset_id=None, promo_asset_id=None, giftable=None, assetable=None, active=None, allocate_tickets=None, ticket_type=None, points=None, offer_location_id=None):  # noqa: E501
     """Update Purchase
 
     Updates a purchase item for in app purchases # noqa: E501
 
-    :param version: 
-    :type version: 
     :param purchase_item_id: The purchase item id
     :type purchase_item_id: int
     :param device_id: The device id (deviceId or accountId required)

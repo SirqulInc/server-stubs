@@ -8,13 +8,11 @@ from openapi_server.models.wordz_word_response import WordzWordResponse  # noqa:
 from openapi_server import util
 
 
-def create_word(version, account_id, word, definition, active, allocate_tickets, ticket_count, asset_id=None, ticket_type=None, points=None):  # noqa: E501
+def create_word(account_id, word, definition, active, allocate_tickets, ticket_count, asset_id=None, ticket_type=None, points=None):  # noqa: E501
     """Create Word
 
     Create a word by the given params. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param word: The text of the word.
@@ -39,13 +37,11 @@ def create_word(version, account_id, word, definition, active, allocate_tickets,
     return 'do some magic!'
 
 
-def delete_word(version, word_id, account_id):  # noqa: E501
+def delete_word(word_id, account_id):  # noqa: E501
     """Delete Word
 
     Delete a word by the given id. The accountId given needs to be the owner or executive to delete. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to delete.
     :type word_id: int
     :param account_id: The account vor validating permission
@@ -56,13 +52,11 @@ def delete_word(version, word_id, account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_word(version, word_id, account_id):  # noqa: E501
+def get_word(word_id, account_id):  # noqa: E501
     """Get Word
 
     Get a word by the given id. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to get.
     :type word_id: int
     :param account_id: The logged in user.
@@ -73,13 +67,11 @@ def get_word(version, word_id, account_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_words(version, account_id, sort_field, descending, active_only, start, limit, keyword=None):  # noqa: E501
+def get_words(account_id, sort_field, descending, active_only, start, limit, keyword=None):  # noqa: E501
     """Search Words
 
     Search for words by the given params. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param sort_field: The column to sort the search on
@@ -100,13 +92,11 @@ def get_words(version, account_id, sort_field, descending, active_only, start, l
     return 'do some magic!'
 
 
-def update_word(version, word_id, account_id, ticket_count, word_text=None, definition=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None):  # noqa: E501
+def update_word(word_id, account_id, ticket_count, word_text=None, definition=None, asset_id=None, active=None, allocate_tickets=None, ticket_type=None, points=None):  # noqa: E501
     """Update Word
 
     Update a word by the given params. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param word_id: The id of the word to update.
     :type word_id: int
     :param account_id: The logged in user.

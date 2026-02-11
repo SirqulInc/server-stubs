@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_secure_application(version, account_id, app_key, key_cert, trust_store, username, password, active=None, biometric_type=None, biometric_position=None, biometric_position2=None):  # noqa: E501
+def create_secure_application(account_id, app_key, key_cert, trust_store, username, password, active=None, biometric_type=None, biometric_position=None, biometric_position2=None):  # noqa: E501
     """Create Secure Application
 
     Create a secure application record. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -42,13 +40,11 @@ def create_secure_application(version, account_id, app_key, key_cert, trust_stor
     return 'do some magic!'
 
 
-def delete_secure_application(version, account_id, app_key):  # noqa: E501
+def delete_secure_application(account_id, app_key):  # noqa: E501
     """Delete Secure Application
 
     Delete a secure application record. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -59,13 +55,11 @@ def delete_secure_application(version, account_id, app_key):  # noqa: E501
     return 'do some magic!'
 
 
-def login_secure(version, app_key, biometric_file, device_id=None, biometric_file2=None, age_restriction=None, return_profile=None, response_filters=None, latitude=None, longitude=None):  # noqa: E501
+def login_secure(app_key, biometric_file, device_id=None, biometric_file2=None, age_restriction=None, return_profile=None, response_filters=None, latitude=None, longitude=None):  # noqa: E501
     """Login Clear
 
     Login via Clear.me. Creates a new account if logging in for the first time. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: The application making the request, defines what type and position is required to make a secure login the request.
     :type app_key: str
     :param biometric_file: The data file used to perform authentication
@@ -90,13 +84,11 @@ def login_secure(version, app_key, biometric_file, device_id=None, biometric_fil
     return 'do some magic!'
 
 
-def purchase_secure(version, body):  # noqa: E501
+def purchase_secure(body):  # noqa: E501
     """Purchase Clear
 
     Purchase via Clear.me. Creates a new account if purchasing for the first time. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: The payment request object
     :type body: dict | bytes
 
@@ -108,13 +100,11 @@ def purchase_secure(version, body):  # noqa: E501
     return 'do some magic!'
 
 
-def reset_secure(version, account_id, app_key):  # noqa: E501
+def reset_secure(account_id, app_key):  # noqa: E501
     """Rest Secure Application
 
     Reset a secure application client. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure
@@ -125,13 +115,11 @@ def reset_secure(version, account_id, app_key):  # noqa: E501
     return 'do some magic!'
 
 
-def update_secure_application(version, account_id, app_key, active=None, key_cert=None, trust_store=None, username=None, password=None, biometric_type=None, biometric_position=None, biometric_position2=None):  # noqa: E501
+def update_secure_application(account_id, app_key, active=None, key_cert=None, trust_store=None, username=None, password=None, biometric_type=None, biometric_position=None, biometric_position2=None):  # noqa: E501
     """Update Secure Application
 
     Update a secure application record. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The unique id of the user making the request
     :type account_id: int
     :param app_key: The application to secure

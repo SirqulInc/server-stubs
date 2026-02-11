@@ -9,13 +9,11 @@ from openapi_server.models.theme_descriptor_response import ThemeDescriptorRespo
 from openapi_server import util
 
 
-def add_or_update_theme_descriptor(version, public_read, public_write, public_delete, public_add, visibility, include_friend_group, complete_with_default_values, device_id=None, account_id=None, game_type=None, theme_descriptor_id=None, title=None, description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, app_version=None, color_value_json=None, string_replacer_json=None, custom_json_objects=None, icon_image=None, scene_atlas_image=None, bg_image=None, bg_sound=None, music_selection=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
+def add_or_update_theme_descriptor(public_read, public_write, public_delete, public_add, visibility, include_friend_group, complete_with_default_values, device_id=None, account_id=None, game_type=None, theme_descriptor_id=None, title=None, description=None, connection_ids_to_add=None, connection_group_ids_to_add=None, app_version=None, color_value_json=None, string_replacer_json=None, custom_json_objects=None, icon_image=None, scene_atlas_image=None, bg_image=None, bg_sound=None, music_selection=None, location_description=None, latitude=None, longitude=None):  # noqa: E501
     """Create/Update Theme
 
     Creates or updates a theme descriptor that can be used to give applications a customized look and feel. The theme can be created by consumers and shared to other users, allowing them to use and/or collaborate on making the theme. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param public_read: determines whether the theme&#39;s participants have read permissions
     :type public_read: bool
     :param public_write: determines whether the theme&#39;s participants have write permissions
@@ -76,13 +74,11 @@ def add_or_update_theme_descriptor(version, public_read, public_write, public_de
     return 'do some magic!'
 
 
-def get_theme_descriptor(version, theme_descriptor_id, device_id=None, account_id=None, game_type=None, latitude=None, longitude=None):  # noqa: E501
+def get_theme_descriptor(theme_descriptor_id, device_id=None, account_id=None, game_type=None, latitude=None, longitude=None):  # noqa: E501
     """Get Theme
 
     Gets a theme. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param theme_descriptor_id: the theme id
     :type theme_descriptor_id: int
     :param device_id: a unique ID given by the device (deviceId or accountId required)
@@ -101,13 +97,11 @@ def get_theme_descriptor(version, theme_descriptor_id, device_id=None, account_i
     return 'do some magic!'
 
 
-def get_theme_descriptors(version, filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, app_version=None, latitude=None, longitude=None):  # noqa: E501
+def get_theme_descriptors(filter, sort_field, descending, start, limit, device_id=None, account_id=None, game_type=None, contest_type=None, owner_id=None, q=None, keyword=None, i=None, l=None, date_created=None, app_version=None, latitude=None, longitude=None):  # noqa: E501
     """Search Themes
 
     Searches for themes. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param filter: a comma separated list of Ownership
     :type filter: str
     :param sort_field: the field to sort by. See ThemeDescriptorApiMap
@@ -150,13 +144,11 @@ def get_theme_descriptors(version, filter, sort_field, descending, start, limit,
     return 'do some magic!'
 
 
-def remove_theme_descriptor(version, theme_descriptor_id, device_id=None, account_id=None, game_type=None, latitude=None, longitude=None):  # noqa: E501
+def remove_theme_descriptor(theme_descriptor_id, device_id=None, account_id=None, game_type=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Theme
 
     Removes a theme. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param theme_descriptor_id: the theme id to remove
     :type theme_descriptor_id: int
     :param device_id: a unique id given by the device (deviceId or accountId required)

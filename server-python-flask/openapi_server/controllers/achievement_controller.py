@@ -11,13 +11,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def api_version_achievement_tier_search_post(version, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None, sort_field=None, descending=None, descending_goal=None, start=None, limit=None):  # noqa: E501
+def achievement_tier_search_post(device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None, sort_field=None, descending=None, descending_goal=None, start=None, limit=None):  # noqa: E501
     """Searches an Achievement Tier
 
     Searches a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -46,13 +44,11 @@ def api_version_achievement_tier_search_post(version, device_id=None, account_id
     return 'do some magic!'
 
 
-def create_achievement(version, app_key, title, device_id=None, account_id=None, analytics_tag=None, description=None, rank_type=None, rank_increment=None, min_increment=None, max_increment=None, validate=None, active=None, trigger_definition=None):  # noqa: E501
+def create_achievement(app_key, title, device_id=None, account_id=None, analytics_tag=None, description=None, rank_type=None, rank_increment=None, min_increment=None, max_increment=None, validate=None, active=None, trigger_definition=None):  # noqa: E501
     """Create Achievement
 
     Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: the application key the achievement is for
     :type app_key: str
     :param title: the title of the achievement (255 character limit)
@@ -85,13 +81,11 @@ def create_achievement(version, app_key, title, device_id=None, account_id=None,
     return 'do some magic!'
 
 
-def create_achievement_tier(version, achievement_id, score_all_instances, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None):  # noqa: E501
+def create_achievement_tier(achievement_id, score_all_instances, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None):  # noqa: E501
     """Create Achievement Tier
 
     Create a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param achievement_id: the achievement id for adding a new tier
     :type achievement_id: int
     :param score_all_instances: score all instances
@@ -126,13 +120,11 @@ def create_achievement_tier(version, achievement_id, score_all_instances, device
     return 'do some magic!'
 
 
-def delete_achievement(version, achievement_id, account_id=None):  # noqa: E501
+def delete_achievement(achievement_id, account_id=None):  # noqa: E501
     """Delete Achievement
 
     Deletes an achievement (for developer/retailer use). User must have permissions to the application the achievement was created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param achievement_id: The ID of the achievement
     :type achievement_id: int
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -143,13 +135,11 @@ def delete_achievement(version, achievement_id, account_id=None):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_achievement_tier(version, achievement_tier_id, account_id=None):  # noqa: E501
+def delete_achievement_tier(achievement_tier_id, account_id=None):  # noqa: E501
     """Delete Achievement Tier
 
     Deletes an achievement tier (for developer/retailer use). User must have permissions to the application the achievement was created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param achievement_tier_id: the achievement id for deletion
     :type achievement_tier_id: int
     :param account_id: the account id of the user (deviceId or accountId required).
@@ -160,13 +150,11 @@ def delete_achievement_tier(version, achievement_tier_id, account_id=None):  # n
     return 'do some magic!'
 
 
-def get_achievement(version, achievement_id, device_id=None, account_id=None, achievement_type=None):  # noqa: E501
+def get_achievement(achievement_id, device_id=None, account_id=None, achievement_type=None):  # noqa: E501
     """Get Achievement
 
     Get an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param achievement_id: The ID of the achievement
     :type achievement_id: int
     :param device_id: a unique id given by the device (deviceId or accountId required)
@@ -181,13 +169,11 @@ def get_achievement(version, achievement_id, device_id=None, account_id=None, ac
     return 'do some magic!'
 
 
-def get_achievement_tier(version, account_id, achievement_tier_id):  # noqa: E501
+def get_achievement_tier(account_id, achievement_tier_id):  # noqa: E501
     """Gets an achievement tier
 
     Gets an achievement tier (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user (deviceId or accountId required)
     :type account_id: int
     :param achievement_tier_id: the achievement tier id that is being retrieved
@@ -198,13 +184,11 @@ def get_achievement_tier(version, account_id, achievement_tier_id):  # noqa: E50
     return 'do some magic!'
 
 
-def get_user_achievements(version, return_nulls, app_key, include_undiscovered, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, rank_type=None, achievement_type=None, latitude=None, longitude=None):  # noqa: E501
+def get_user_achievements(return_nulls, app_key, include_undiscovered, device_id=None, account_id=None, connection_account_email=None, connection_account_id=None, rank_type=None, achievement_type=None, latitude=None, longitude=None):  # noqa: E501
     """Get Achievement Progress
 
     Gets a list of user achievements. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param return_nulls: determines whether to return null fields in the response
     :type return_nulls: bool
     :param app_key: the application key for filtering results by application
@@ -233,13 +217,11 @@ def get_user_achievements(version, return_nulls, app_key, include_undiscovered, 
     return 'do some magic!'
 
 
-def list_achievement_tags(version, app_key=None):  # noqa: E501
+def list_achievement_tags(app_key=None):  # noqa: E501
     """List Achievement Tags
 
     List achievement tags by application # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: filter results by application key
     :type app_key: str
 
@@ -248,13 +230,11 @@ def list_achievement_tags(version, app_key=None):  # noqa: E501
     return 'do some magic!'
 
 
-def list_achievements(version, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None):  # noqa: E501
+def list_achievements(sort_field, descending, start, limit, active_only, device_id=None, account_id=None, app_key=None, keyword=None, achievement_type=None, rank_type=None):  # noqa: E501
     """List Achievements
 
     List achievements by billable. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: the field to sort by. See AchievementApiMap
     :type sort_field: str
     :param descending: determines whether the sorted list is in descending or ascending order
@@ -283,13 +263,11 @@ def list_achievements(version, sort_field, descending, start, limit, active_only
     return 'do some magic!'
 
 
-def search_achievements(version, app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id=None, account_id=None, keyword=None, achievement_type=None, rank_type=None):  # noqa: E501
+def search_achievements(app_key, sort_field, descending, include_tiers, include_inactive_tiers, start, limit, device_id=None, account_id=None, keyword=None, achievement_type=None, rank_type=None):  # noqa: E501
     """Search Achievements
 
     Searches achievements by application for consumers. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param app_key: the application key
     :type app_key: str
     :param sort_field: the field to sort by. See AchievementApiMap
@@ -320,13 +298,11 @@ def search_achievements(version, app_key, sort_field, descending, include_tiers,
     return 'do some magic!'
 
 
-def update_achievement(version, device_id=None, account_id=None, achievement_id=None, analytics_tag=None, title=None, description=None, rank_type=None, rank_increment=None, min_increment=None, null_min_increment=None, max_increment=None, null_max_increment=None, validate=None, active=None, trigger_definition=None):  # noqa: E501
+def update_achievement(device_id=None, account_id=None, achievement_id=None, analytics_tag=None, title=None, description=None, rank_type=None, rank_increment=None, min_increment=None, null_min_increment=None, max_increment=None, null_max_increment=None, validate=None, active=None, trigger_definition=None):  # noqa: E501
     """Update Achievement
 
     Updates an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: a unique id given by the device (deviceId or accountId required)
     :type device_id: str
     :param account_id: the account id of the user (deviceId or accountId required)
@@ -363,13 +339,11 @@ def update_achievement(version, device_id=None, account_id=None, achievement_id=
     return 'do some magic!'
 
 
-def update_achievement_tier(version, achievement_tier_id, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_all_instances=None):  # noqa: E501
+def update_achievement_tier(achievement_tier_id, device_id=None, account_id=None, icon=None, icon_asset_id=None, title=None, description=None, goal_count=None, mission_id=None, game_id=None, pack_id=None, game_level_id=None, game_object_id=None, score_all_instances=None):  # noqa: E501
     """Update Achievement Tier
 
     Updates a tier of an achievement (for developer/retailer use). User must have permissions to the application the achievement is created for. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param achievement_tier_id: the achievement tier id for updating
     :type achievement_tier_id: int
     :param device_id: a unique id given by the device (deviceId or accountId required)
@@ -404,13 +378,11 @@ def update_achievement_tier(version, achievement_tier_id, device_id=None, accoun
     return 'do some magic!'
 
 
-def update_user_achievement(version, account_id, achievement_id=None, tag=None, custom_id=None, increment=None, start_date=None, end_date=None, return_progress=None):  # noqa: E501
+def update_user_achievement(account_id, achievement_id=None, tag=None, custom_id=None, increment=None, start_date=None, end_date=None, return_progress=None):  # noqa: E501
     """Update Achievement Progress
 
     Update user achievement progress. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account id of the user
     :type account_id: int
     :param achievement_id: the achievement id (achievementId or tag required)

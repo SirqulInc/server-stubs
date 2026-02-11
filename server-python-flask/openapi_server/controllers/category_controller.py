@@ -9,13 +9,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def category_distance_search(version, account_id=None, keyword=None, app_key=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, min_offer_count=None, latitude=None, longitude=None, range=None):  # noqa: E501
+def category_distance_search(account_id=None, keyword=None, app_key=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, min_offer_count=None, latitude=None, longitude=None, range=None):  # noqa: E501
     """Search Categories by Distance
 
     Search for categories by distance. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The keyword string to search on
@@ -62,13 +60,11 @@ def category_distance_search(version, account_id=None, keyword=None, app_key=Non
     return 'do some magic!'
 
 
-def create_category(version, account_id, name, app_key=None, parent_category_id=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None):  # noqa: E501
+def create_category(account_id, name, app_key=None, parent_category_id=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None):  # noqa: E501
     """Create Category
 
     Create a new category. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param name: The name of the category
@@ -103,13 +99,11 @@ def create_category(version, account_id, name, app_key=None, parent_category_id=
     return 'do some magic!'
 
 
-def delete_category(version, account_id, category_id):  # noqa: E501
+def delete_category(account_id, category_id):  # noqa: E501
     """Delete Category
 
     Delete a category. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the ID of the account
     :type account_id: int
     :param category_id: the ID of the category
@@ -120,13 +114,11 @@ def delete_category(version, account_id, category_id):  # noqa: E501
     return 'do some magic!'
 
 
-def duplicate_category(version, account_id, category_id, app_key=None, parent_category_id=None):  # noqa: E501
+def duplicate_category(account_id, category_id, app_key=None, parent_category_id=None):  # noqa: E501
     """Duplicate Category
 
     Duplicate a category, including all its children. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user (must have permissions to the target application)
     :type account_id: int
     :param category_id: The category ID to duplicate (includes all children)
@@ -141,13 +133,11 @@ def duplicate_category(version, account_id, category_id, app_key=None, parent_ca
     return 'do some magic!'
 
 
-def get_category(version, category_id, return_external=None):  # noqa: E501
+def get_category(category_id, return_external=None):  # noqa: E501
     """Get Category
 
     Get the details of a specific category. Recursively include all child categories and their children. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param category_id: the ID of the category
     :type category_id: int
     :param return_external: Determines whether to return extra info about the category&#39;s \&quot;Participant\&quot; reference
@@ -158,13 +148,11 @@ def get_category(version, category_id, return_external=None):  # noqa: E501
     return 'do some magic!'
 
 
-def search_categories(version, account_id=None, keyword=None, app_key=None, category_id=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, exclude_external_type=None, min_offer_count=None, search_depth=None, search_mode=None):  # noqa: E501
+def search_categories(account_id=None, keyword=None, app_key=None, category_id=None, category_ids=None, parent_category_ids=None, root_only=None, sort_field=None, response_group=None, descending=None, start=None, limit=None, active_only=None, return_external=None, exact_match=None, type=None, external_type=None, exclude_external_type=None, min_offer_count=None, search_depth=None, search_mode=None):  # noqa: E501
     """Search Categories
 
     Search for categories. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param keyword: The string to search on
@@ -213,13 +201,11 @@ def search_categories(version, account_id=None, keyword=None, app_key=None, cate
     return 'do some magic!'
 
 
-def update_category(version, account_id, category_id, parent_category_id=None, name=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None):  # noqa: E501
+def update_category(account_id, category_id, parent_category_id=None, name=None, description=None, type=None, asset_id=None, external_id=None, external_type=None, external_category_slug=None, sqoot_slug=None, active=None, meta_data=None, search_tags=None):  # noqa: E501
     """Update Category
 
     Update a category. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the user
     :type account_id: int
     :param category_id: The ID of the category to edit

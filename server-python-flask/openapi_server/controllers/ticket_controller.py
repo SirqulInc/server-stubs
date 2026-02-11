@@ -11,13 +11,11 @@ from openapi_server.models.ticket_offer_response import TicketOfferResponse  # n
 from openapi_server import util
 
 
-def get_ticket_count(version, device_id=None, account_id=None, game_type=None, app_key=None, ticket_type=None):  # noqa: E501
+def get_ticket_count(device_id=None, account_id=None, game_type=None, app_key=None, ticket_type=None):  # noqa: E501
     """Get Ticket Count
 
     Gets the ticket count. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the id of the device that owns the tickets
     :type device_id: str
     :param account_id: the id of the account that owns the tickets
@@ -34,13 +32,11 @@ def get_ticket_count(version, device_id=None, account_id=None, game_type=None, a
     return 'do some magic!'
 
 
-def get_ticket_list(version, device_id=None, account_id=None, ticket_object_type=None, action_type=None, ticket_ids=None, object_ids=None, receipt_tokens=None, game_type=None, app_key=None):  # noqa: E501
+def get_ticket_list(device_id=None, account_id=None, ticket_object_type=None, action_type=None, ticket_ids=None, object_ids=None, receipt_tokens=None, game_type=None, app_key=None):  # noqa: E501
     """Get Ticket List
 
     Gets the list of tickets. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: the id of the device that owns the tickets
     :type device_id: str
     :param account_id: the id of the account that owns the tickets
@@ -65,13 +61,11 @@ def get_ticket_list(version, device_id=None, account_id=None, ticket_object_type
     return 'do some magic!'
 
 
-def gift_purchase(version, receiver_account_id, ticket_id, device_id=None, account_id=None, asset_id=None, custom_message=None, game_type=None, app_key=None):  # noqa: E501
+def gift_purchase(receiver_account_id, ticket_id, device_id=None, account_id=None, asset_id=None, custom_message=None, game_type=None, app_key=None):  # noqa: E501
     """Gift Tickets
 
     Gift tickets to another user. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param receiver_account_id: the id of the account receiving the tickets
     :type receiver_account_id: int
     :param ticket_id: the id of the tickets
@@ -94,13 +88,11 @@ def gift_purchase(version, receiver_account_id, ticket_id, device_id=None, accou
     return 'do some magic!'
 
 
-def save_ticket(version, action_type, ticket_object_type, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, receipt_data=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None):  # noqa: E501
+def save_ticket(action_type, ticket_object_type, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, receipt_data=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None):  # noqa: E501
     """Save Ticket
 
     Allow user to acquire a purchase item and generate a ticket record. Used to redeem tickets or add tickets to the system. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param action_type: the action being performed, values: COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER
     :type action_type: str
     :param ticket_object_type: the type of object being purchased, values: GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM
@@ -143,13 +135,11 @@ def save_ticket(version, action_type, ticket_object_type, return_nulls=None, dev
     return 'do some magic!'
 
 
-def save_ticket_via_file_upload(version, action_type, ticket_object_type, receipt_data, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None):  # noqa: E501
+def save_ticket_via_file_upload(action_type, ticket_object_type, receipt_data, return_nulls=None, device_id=None, account_id=None, game_type=None, app_key=None, object_id=None, purchase_code=None, receipt_token=None, count=None, ticket_type=None, purchase_provider=None, purchase_type=None, return_profile_response=None, include_profile_response=None, app_version=None):  # noqa: E501
     """Save Ticket with Reciept
 
     Similar to the Save Ticket endpoint but allows the receiptData to be in binary format. This must be a multi-part post # noqa: E501
 
-    :param version: 
-    :type version: 
     :param action_type: the action being performed { COMPLETED, // ADD TICKETS FOR COMPLETING A MISSION, CHALLENGE, GAME, PACK, LEVEL, LEVEL OBJECT REDEEMED, // REMOVE TICKETS FOR BUYING PACKS, HINTS, AND PEN TOOLS OPTIONS, ETC USERS_PLAYED, // ADD TICKETS FOR LEVELS PLAYED BY OTHER USERS TOURNAMENT_OWNER, // ADD TICKETS FOR TOURNAMENTS BY OTHER USERS PURCHASED, // ADD TICKET VIA IN APP PURCHASING SUMATION, // SUMATION OF TICKETS EARNED FROM CHILDREN GIFTED, // TRANSFERING OF PURCHASE ITEMS TO OTHER PEOPLE REFUNDED // FOR REFUNDING TICKETS BACK TO THE USER }
     :type action_type: str
     :param ticket_object_type: the type of object being purchased {GAME_OBJECT, GAME_LEVEL, PACK, GAME, MISSION, PROFILE, APPLICATION, TICKETS, ASSET, CUSTOM}
@@ -192,13 +182,11 @@ def save_ticket_via_file_upload(version, action_type, ticket_object_type, receip
     return 'do some magic!'
 
 
-def ticket_offers(version):  # noqa: E501
+def ticket_offers():  # noqa: E501
     """Get Ticket Offers
 
     Get a list offers for tickets owned by sirqul.  Purchasing these will add the number of tickets to the account specified by the offer. # noqa: E501
 
-    :param version: 
-    :type version: 
 
     :rtype: Union[TicketOfferResponse, Tuple[TicketOfferResponse, int], Tuple[TicketOfferResponse, int, Dict[str, str]]
     """

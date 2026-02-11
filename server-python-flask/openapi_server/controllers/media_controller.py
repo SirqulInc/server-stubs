@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_media(version, account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, ticket_price_type=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, category_ids=None, filter_ids=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, parental_rating=None, availability_date=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None):  # noqa: E501
+def create_media(account_id, title, barcode_type, no_expiration, available_limit, available_limit_per_user, added_limit, view_limit, max_prints, ticket_price, full_price, discount_price, special_offer_type, offer_visibility, active, retailer_location_ids=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, ticket_price_type=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, category_ids=None, filter_ids=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, parental_rating=None, availability_date=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None):  # noqa: E501
     """Create Media
 
     Create a media offering. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id of the logged in user
     :type account_id: int
     :param title: The title (255 char limit)
@@ -135,13 +133,11 @@ def create_media(version, account_id, title, barcode_type, no_expiration, availa
     return 'do some magic!'
 
 
-def delete_media(version, account_id, media_id):  # noqa: E501
+def delete_media(account_id, media_id):  # noqa: E501
     """Delete Media
 
     Delete a media offering that the user has permissions to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param media_id: the ID of the media to delete
@@ -152,13 +148,11 @@ def delete_media(version, account_id, media_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_media(version, account_id, media_id):  # noqa: E501
+def get_media(account_id, media_id):  # noqa: E501
     """Media Get
 
     Get a media offering. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the id of the logged in user
     :type account_id: int
     :param media_id: the id of the media to get
@@ -169,13 +163,11 @@ def get_media(version, account_id, media_id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_media(version, account_id, active_only, sort_field, descending, keyword=None, category_ids=None, filter_ids=None, start=None, limit=None):  # noqa: E501
+def search_media(account_id, active_only, sort_field, descending, keyword=None, category_ids=None, filter_ids=None, start=None, limit=None):  # noqa: E501
     """Search Media
 
     Searches on events that the account has access to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The logged in user.
     :type account_id: int
     :param active_only: Return only active results
@@ -200,13 +192,11 @@ def search_media(version, account_id, active_only, sort_field, descending, keywo
     return 'do some magic!'
 
 
-def update_media(version, account_id, media_id, retailer_location_ids=None, offer_locations=None, title=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_type=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, no_expiration=None, available_limit=None, available_limit_per_user=None, added_limit=None, view_limit=None, max_prints=None, ticket_price_type=None, ticket_price=None, full_price=None, discount_price=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, special_offer_type=None, offer_visibility=None, category_ids=None, filter_ids=None, active=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, availability_date=None, parental_rating=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None):  # noqa: E501
+def update_media(account_id, media_id, retailer_location_ids=None, offer_locations=None, title=None, sub_title=None, details=None, sub_details=None, fine_print=None, barcode_type=None, barcode_entry=None, external_redeem_options=None, external_url=None, tickets_reward_type=None, tickets_reward=None, activated=None, expires=None, no_expiration=None, available_limit=None, available_limit_per_user=None, added_limit=None, view_limit=None, max_prints=None, ticket_price_type=None, ticket_price=None, full_price=None, discount_price=None, show_remaining=None, show_redeemed=None, replaced=None, featured=None, special_offer_type=None, offer_visibility=None, category_ids=None, filter_ids=None, active=None, barcode_asset_id=None, image_asset_id=None, image_asset_id1=None, image_asset_id2=None, image_asset_id3=None, image_asset_id4=None, image_asset_id5=None, publisher=None, redeemable_start=None, redeemable_end=None, condition_type=None, isbn=None, asin=None, catalog_numbers=None, availability_date=None, parental_rating=None, media_type=None, duration=None, author=None, release_date=None, collection_ids=None, availability=None, availability_summary=None):  # noqa: E501
     """Update Media
 
     Update a media offering. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account used to perform the update, must have rights to edit the offer (deviceId or accountId required)
     :type account_id: int
     :param media_id: 

@@ -10,13 +10,11 @@ from openapi_server.models.stop import Stop  # noqa: E501
 from openapi_server import util
 
 
-def approve_route(version, route_id):  # noqa: E501
+def approve_route(route_id):  # noqa: E501
     """Approve Route
 
     Approve a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to approve
     :type route_id: int
 
@@ -25,13 +23,11 @@ def approve_route(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def copy_route(version, route_id, body=None):  # noqa: E501
+def copy_route(route_id, body=None):  # noqa: E501
     """Copy Route
 
     Make an copy of the given route with optional overriding properties # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to duplicate
     :type route_id: int
     :param body: 
@@ -45,13 +41,11 @@ def copy_route(version, route_id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def create_route(version, body=None):  # noqa: E501
+def create_route(body=None):  # noqa: E501
     """Create Route
 
     Create new route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param body: 
     :type body: dict | bytes
 
@@ -63,13 +57,11 @@ def create_route(version, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def create_route_directions(version, route_id):  # noqa: E501
+def create_route_directions(route_id):  # noqa: E501
     """Update Route Directions
 
     Regenerate the directions of a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to update directions for
     :type route_id: int
 
@@ -78,13 +70,11 @@ def create_route_directions(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def create_route_polyline(version, route_id):  # noqa: E501
+def create_route_polyline(route_id):  # noqa: E501
     """Create Route Polyline
 
     Update the polyline of the requested route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to create a polyline for
     :type route_id: int
 
@@ -93,13 +83,11 @@ def create_route_polyline(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def delete_route(version, route_id):  # noqa: E501
+def delete_route(route_id):  # noqa: E501
     """Delete Route
 
     Delete an existing route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
 
@@ -108,13 +96,11 @@ def delete_route(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def disapprove_route(version, route_id):  # noqa: E501
+def disapprove_route(route_id):  # noqa: E501
     """Disapprove Route
 
     Disapprove a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to reject
     :type route_id: int
 
@@ -123,13 +109,11 @@ def disapprove_route(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route(version, route_id, show_inherited_properties):  # noqa: E501
+def get_route(route_id, show_inherited_properties):  # noqa: E501
     """Get Route
 
     Get an existing route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get
     :type route_id: int
     :param show_inherited_properties: return inherited properties from parent or not
@@ -140,13 +124,11 @@ def get_route(version, route_id, show_inherited_properties):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route_directions(version, route_id):  # noqa: E501
+def get_route_directions(route_id):  # noqa: E501
     """Get Route Directions
 
     Get the directions of a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get directions for
     :type route_id: int
 
@@ -155,13 +137,11 @@ def get_route_directions(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route_shipments(version, route_id):  # noqa: E501
+def get_route_shipments(route_id):  # noqa: E501
     """Get Route Shipments
 
     Get the shipments on the requested route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get shipments for
     :type route_id: int
 
@@ -170,13 +150,11 @@ def get_route_shipments(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route_stop(version, route_id, stop_id):  # noqa: E501
+def get_route_stop(route_id, stop_id):  # noqa: E501
     """Get Route Stop
 
     Get the specific stop on a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to get stops for
     :type route_id: int
     :param stop_id: the id of the specific stop on the route
@@ -187,13 +165,11 @@ def get_route_stop(version, route_id, stop_id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_route_stops(version, route_id, confirmed_only):  # noqa: E501
+def get_route_stops(route_id, confirmed_only):  # noqa: E501
     """Get Route Stops
 
     The stops of the route requested # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param confirmed_only: only get stops that have been confirmed or not
@@ -204,13 +180,11 @@ def get_route_stops(version, route_id, confirmed_only):  # noqa: E501
     return 'do some magic!'
 
 
-def get_shipments_at_stop(version, route_id, stop_id):  # noqa: E501
+def get_shipments_at_stop(route_id, stop_id):  # noqa: E501
     """Get Shipments At Stop
 
     Get the list of shipments on the requested route at a stop # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param stop_id: the id of the stop to get shipments on
@@ -221,13 +195,11 @@ def get_shipments_at_stop(version, route_id, stop_id):  # noqa: E501
     return 'do some magic!'
 
 
-def optimize_route(version, route_id):  # noqa: E501
+def optimize_route(route_id):  # noqa: E501
     """Optimize Route
 
     Optimize a route. The optimization method based on how the server is configured. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to optimize
     :type route_id: int
 
@@ -236,13 +208,11 @@ def optimize_route(version, route_id):  # noqa: E501
     return 'do some magic!'
 
 
-def remove_stop(version, route_id, stop_id):  # noqa: E501
+def remove_stop(route_id, stop_id):  # noqa: E501
     """Delete Stop
 
     Delete a stop on a route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param stop_id: the id of the specific stop to delete on the route
@@ -253,13 +223,11 @@ def remove_stop(version, route_id, stop_id):  # noqa: E501
     return 'do some magic!'
 
 
-def reorder_route_stops_patch(version, route_id, body=None):  # noqa: E501
+def reorder_route_stops_patch(route_id, body=None):  # noqa: E501
     """Reorder Route Stops
 
     Reordering the stops on the route with and update route distance, time, direction, and polyline # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -273,13 +241,11 @@ def reorder_route_stops_patch(version, route_id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def reorder_route_stops_post(version, route_id, body=None):  # noqa: E501
+def reorder_route_stops_post(route_id, body=None):  # noqa: E501
     """Reorder Route Stops
 
     Reordering the stops on the route with and update route distance, time, direction, and polyline # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -293,13 +259,11 @@ def reorder_route_stops_post(version, route_id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def search_routes(version, sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id=None, program_id=None, scheduled_start=None, scheduled_end=None, updated_start=None, updated_end=None, featured=None, seat_count=None, approved=None, started=None, completed=None, valid=None, parent_id=None):  # noqa: E501
+def search_routes(sort_field, descending, start, limit, active_only, includes_empty, root_only, show_inherited_properties, hub_id=None, program_id=None, scheduled_start=None, scheduled_end=None, updated_start=None, updated_end=None, featured=None, seat_count=None, approved=None, started=None, completed=None, valid=None, parent_id=None):  # noqa: E501
     """Search Routes
 
     Search for routes. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param sort_field: The field to sort by
     :type sort_field: str
     :param descending: Determines whether the sorted list is in descending or ascending order
@@ -348,13 +312,11 @@ def search_routes(version, sort_field, descending, start, limit, active_only, in
     return 'do some magic!'
 
 
-def set_driver(version, id, driver_id):  # noqa: E501
+def set_driver(id, driver_id):  # noqa: E501
     """Set Driver
 
     Update the driver of the route. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param id: the id of the route
     :type id: int
     :param driver_id: the id of the driver
@@ -365,13 +327,11 @@ def set_driver(version, id, driver_id):  # noqa: E501
     return 'do some magic!'
 
 
-def update_route(version, route_id, body=None):  # noqa: E501
+def update_route(route_id, body=None):  # noqa: E501
     """Update Route
 
     Update an existing route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route
     :type route_id: int
     :param body: 
@@ -385,13 +345,11 @@ def update_route(version, route_id, body=None):  # noqa: E501
     return 'do some magic!'
 
 
-def update_route_stop(version, route_id, stop_id, body=None):  # noqa: E501
+def update_route_stop(route_id, stop_id, body=None):  # noqa: E501
     """Update Route Stop
 
     Update a stop on a specified route # noqa: E501
 
-    :param version: 
-    :type version: 
     :param route_id: the id of the route to update stops for
     :type route_id: int
     :param stop_id: the id of the specific stop to update on the route

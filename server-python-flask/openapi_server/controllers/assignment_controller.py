@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def assigment_assignee_account_search(version, account_id, keyword=None):  # noqa: E501
+def assigment_assignee_account_search(account_id, keyword=None):  # noqa: E501
     """Search Assignment Assignees
 
     Search for avaiable users for creating or updating assignment. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: The account id sending the request
     :type account_id: int
     :param keyword: The keyword to filter the returned results
@@ -27,13 +25,11 @@ def assigment_assignee_account_search(version, account_id, keyword=None):  # noq
     return 'do some magic!'
 
 
-def assignment_create(version, account_id, name, assignee_account_id, description=None, retailer_location_id=None, tags=None, active=None):  # noqa: E501
+def assignment_create(account_id, name, assignee_account_id, description=None, retailer_location_id=None, tags=None, active=None):  # noqa: E501
     """Create Assignment
 
     Create an assignment. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param name: the name for the assignment
@@ -54,13 +50,11 @@ def assignment_create(version, account_id, name, assignee_account_id, descriptio
     return 'do some magic!'
 
 
-def assignment_delete(version, account_id, assignment_id):  # noqa: E501
+def assignment_delete(account_id, assignment_id):  # noqa: E501
     """Delete Assignment
 
     Delete an assignment. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -71,13 +65,11 @@ def assignment_delete(version, account_id, assignment_id):  # noqa: E501
     return 'do some magic!'
 
 
-def assignment_get(version, account_id, assignment_id):  # noqa: E501
+def assignment_get(account_id, assignment_id):  # noqa: E501
     """Get Assignment
 
     Get the details of an assignment. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -88,13 +80,11 @@ def assignment_get(version, account_id, assignment_id):  # noqa: E501
     return 'do some magic!'
 
 
-def assignment_search(version, account_id, sort_field, descending, active_only, start, limit, creator_account_id=None, assignee_account_ids=None, retailer_location_ids=None, current_status_type=None, keyword=None):  # noqa: E501
+def assignment_search(account_id, sort_field, descending, active_only, start, limit, creator_account_id=None, assignee_account_ids=None, retailer_location_ids=None, current_status_type=None, keyword=None):  # noqa: E501
     """Search Assignments
 
     Search for assignments by the given parameters. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the account sending the request
     :type account_id: int
     :param sort_field: sort by table field
@@ -123,13 +113,11 @@ def assignment_search(version, account_id, sort_field, descending, active_only, 
     return 'do some magic!'
 
 
-def assignment_status_create(version, account_id, assignment_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None):  # noqa: E501
+def assignment_status_create(account_id, assignment_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None):  # noqa: E501
     """Create Assignment Status
 
     Create an assignment status. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id
@@ -158,13 +146,11 @@ def assignment_status_create(version, account_id, assignment_id, scheduled_notif
     return 'do some magic!'
 
 
-def assignment_status_delete(version, account_id, assignment_status_id):  # noqa: E501
+def assignment_status_delete(account_id, assignment_status_id):  # noqa: E501
     """Deletes Assignment Status
 
     Deletes an assignment status. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -175,13 +161,11 @@ def assignment_status_delete(version, account_id, assignment_status_id):  # noqa
     return 'do some magic!'
 
 
-def assignment_status_get(version, account_id, assignment_status_id):  # noqa: E501
+def assignment_status_get(account_id, assignment_status_id):  # noqa: E501
     """Get Assignment Status
 
     Get an assignment status. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -192,13 +176,11 @@ def assignment_status_get(version, account_id, assignment_status_id):  # noqa: E
     return 'do some magic!'
 
 
-def assignment_status_search(version, account_id, sort_field, descending, active_only, start, limit, assignment_id=None, creator_account_id=None, assignee_account_id=None, retailer_location_id=None, status_type=None, keyword=None):  # noqa: E501
+def assignment_status_search(account_id, sort_field, descending, active_only, start, limit, assignment_id=None, creator_account_id=None, assignee_account_id=None, retailer_location_id=None, status_type=None, keyword=None):  # noqa: E501
     """Search Assignment Statuses
 
     Search on assignment statuses. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param sort_field: the field to sort by. Possible values include: ID, CREATED, UPDATED, DELETED, SEARCH_TAGS, ACTIVE, CURRENT_STATUS, TODO, CONNECTION, METHOD, STATUS, CLOSURE, MESSAGE, FOLLOW_UP
@@ -229,13 +211,11 @@ def assignment_status_search(version, account_id, sort_field, descending, active
     return 'do some magic!'
 
 
-def assignment_status_update(version, account_id, assignment_status_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None):  # noqa: E501
+def assignment_status_update(account_id, assignment_status_id, scheduled_notification_id=None, to_do=None, connection=None, method=None, status=None, closure=None, message=None, follow_up=None, active=None):  # noqa: E501
     """Update Assignment Status
 
     Updates an assignment status. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_status_id: the assignment status id
@@ -264,13 +244,11 @@ def assignment_status_update(version, account_id, assignment_status_id, schedule
     return 'do some magic!'
 
 
-def assignment_update(version, account_id, assignment_id, name=None, description=None, assignee_account_id=None, retailer_location_id=None, tags=None, active=None):  # noqa: E501
+def assignment_update(account_id, assignment_id, name=None, description=None, assignee_account_id=None, retailer_location_id=None, tags=None, active=None):  # noqa: E501
     """Update Assignment
 
     Updates an assignment. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param account_id: the user account id
     :type account_id: int
     :param assignment_id: the assignment id

@@ -8,13 +8,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_offer_transaction_status(version, name, code, device_id=None, account_id=None, latitude=None, longitude=None, description=None, role=None, active=None, application_ids=None):  # noqa: E501
+def create_offer_transaction_status(name, code, device_id=None, account_id=None, latitude=None, longitude=None, description=None, role=None, active=None, application_ids=None):  # noqa: E501
     """Create Offer Status
 
     Create an offer status record # noqa: E501
 
-    :param version: 
-    :type version: 
     :param name: The name of the status
     :type name: str
     :param code: The status code, must be unique 
@@ -41,13 +39,11 @@ def create_offer_transaction_status(version, name, code, device_id=None, account
     return 'do some magic!'
 
 
-def delete_offer_transaction_status(version, status_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def delete_offer_transaction_status(status_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Delete Offer Status
 
     Mark an offer status record as deleted # noqa: E501
 
-    :param version: 
-    :type version: 
     :param status_id: The id of the record to delete
     :type status_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -64,13 +60,11 @@ def delete_offer_transaction_status(version, status_id, device_id=None, account_
     return 'do some magic!'
 
 
-def get_offer_transaction_status(version, status_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
+def get_offer_transaction_status(status_id, device_id=None, account_id=None, latitude=None, longitude=None):  # noqa: E501
     """Get Offer Status
 
     Get an offer status record # noqa: E501
 
-    :param version: 
-    :type version: 
     :param status_id: The id of the record to get 
     :type status_id: int
     :param device_id: The device id (deviceId or accountId required)
@@ -87,13 +81,11 @@ def get_offer_transaction_status(version, status_id, device_id=None, account_id=
     return 'do some magic!'
 
 
-def search_offer_transaction_statuses(version, device_id=None, account_id=None, latitude=None, longitude=None, keyword=None, role=None, app_key=None, sort_field=None, descending=None, start=None, limit=None, include_inactive=None):  # noqa: E501
+def search_offer_transaction_statuses(device_id=None, account_id=None, latitude=None, longitude=None, keyword=None, role=None, app_key=None, sort_field=None, descending=None, start=None, limit=None, include_inactive=None):  # noqa: E501
     """Search Offer Status
 
     Search for the available offer statuses # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)
@@ -124,13 +116,11 @@ def search_offer_transaction_statuses(version, device_id=None, account_id=None, 
     return 'do some magic!'
 
 
-def update_offer_transaction_status(version, device_id=None, account_id=None, latitude=None, longitude=None, status_id=None, name=None, description=None, code=None, role=None, active=None, application_ids=None):  # noqa: E501
+def update_offer_transaction_status(device_id=None, account_id=None, latitude=None, longitude=None, status_id=None, name=None, description=None, code=None, role=None, active=None, application_ids=None):  # noqa: E501
     """Update Offer Status
 
     Update an offer status record # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account id of the user (deviceId or accountId required)

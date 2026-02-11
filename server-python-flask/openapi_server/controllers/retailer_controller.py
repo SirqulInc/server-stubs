@@ -10,13 +10,11 @@ from openapi_server.models.sirqul_response import SirqulResponse  # noqa: E501
 from openapi_server import util
 
 
-def create_retailer(version, name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, category_ids_to_add=None, category_ids_to_remove=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, create_default_location=None, response_format=None):  # noqa: E501
+def create_retailer(name, device_id=None, account_id=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, category_ids_to_add=None, category_ids_to_remove=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, create_default_location=None, response_format=None):  # noqa: E501
     """Create Retailer
 
     Create a retailer record. A billable entity must be created first before a retailer record can be made. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param name: The name of the retailer
     :type name: str
     :param device_id: The device id (deviceId or accountId required)
@@ -89,13 +87,11 @@ def create_retailer(version, name, device_id=None, account_id=None, street_addre
     return 'do some magic!'
 
 
-def delete_retailer(version, device_id=None, account_id=None, retailer_id=None):  # noqa: E501
+def delete_retailer(device_id=None, account_id=None, retailer_id=None):  # noqa: E501
     """Delete Retailer
 
     Set the deleted timestamp to current time. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param device_id: The device id (deviceId or accountId required)
     :type device_id: str
     :param account_id: The account used to perform the delete, must have rights to edit the retailer.
@@ -108,13 +104,11 @@ def delete_retailer(version, device_id=None, account_id=None, retailer_id=None):
     return 'do some magic!'
 
 
-def get_retailer(version, retailer_id, device_id=None, account_id=None, include_counts=None):  # noqa: E501
+def get_retailer(retailer_id, device_id=None, account_id=None, include_counts=None):  # noqa: E501
     """Get Retailer
 
     Gets a retailer. Only the owner and the employees of a retailer have access to view its information. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_id: the ID of the retailer
     :type retailer_id: int
     :param device_id: the device id (deviceId or accountId required)
@@ -129,13 +123,11 @@ def get_retailer(version, retailer_id, device_id=None, account_id=None, include_
     return 'do some magic!'
 
 
-def get_retailers(version, visibility, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, q=None, keyword=None, category_ids=None, filter_ids=None, i=None, l=None):  # noqa: E501
+def get_retailers(visibility, sort_field, descending, start, limit, active_only, device_id=None, account_id=None, q=None, keyword=None, category_ids=None, filter_ids=None, i=None, l=None):  # noqa: E501
     """Search Retailers
 
     earches on retailers that the account has access to. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param visibility: 
     :type visibility: str
     :param sort_field: The column to sort the search on
@@ -170,13 +162,11 @@ def get_retailers(version, visibility, sort_field, descending, start, limit, act
     return 'do some magic!'
 
 
-def retailer_login_check(version, username, password, device_id=None, latitude=None, longitude=None, app_key=None):  # noqa: E501
+def retailer_login_check(username, password, device_id=None, latitude=None, longitude=None, app_key=None):  # noqa: E501
     """Login Retailer
 
     Retailer login check. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param username: the user&#39;s email address they used to sign-up
     :type username: str
     :param password: the password
@@ -195,13 +185,11 @@ def retailer_login_check(version, username, password, device_id=None, latitude=N
     return 'do some magic!'
 
 
-def update_retailer(version, retailer_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, active=None, response_format=None):  # noqa: E501
+def update_retailer(retailer_id, device_id=None, account_id=None, name=None, street_address=None, street_address2=None, city=None, state=None, postal_code=None, country=None, business_phone=None, business_phone_ext=None, website=None, email=None, facebook_url=None, twitter_url=None, logo=None, logo_asset_id=None, picture1=None, picture1_asset_id=None, picture2=None, picture2_asset_id=None, category_ids=None, filter_ids=None, latitude=None, longitude=None, meta_data=None, search_tags=None, retailer_type=None, visibility=None, active=None, response_format=None):  # noqa: E501
     """Update Retailer
 
     Update a retailer record. Only the owner and the employees of the retailer have access to update its information. # noqa: E501
 
-    :param version: 
-    :type version: 
     :param retailer_id: The ID of the retailer to update
     :type retailer_id: int
     :param device_id: The device id (deviceId or accountId required)
