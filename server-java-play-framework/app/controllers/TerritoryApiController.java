@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TerritoryResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TerritoryApiController extends Controller {
     private final TerritoryApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class TerritoryApiController extends Controller {
     }
 
     @ApiAction
-    public Result createTerritory(Http.Request request, BigDecimal version) throws Exception {
+    public Result createTerritory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -62,11 +61,11 @@ public class TerritoryApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.createTerritoryHttp(request, version, accountId, name, active);
+        return imp.createTerritoryHttp(request, accountId, name, active);
     }
 
     @ApiAction
-    public Result deleteTerritory(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteTerritory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -81,11 +80,11 @@ public class TerritoryApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'territoryId' parameter is required");
         }
-        return imp.deleteTerritoryHttp(request, version, accountId, territoryId);
+        return imp.deleteTerritoryHttp(request, accountId, territoryId);
     }
 
     @ApiAction
-    public Result getTerritory(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTerritory(Http.Request request) throws Exception {
         String valueterritoryId = request.getQueryString("territoryId");
         Long territoryId;
         if (valueterritoryId != null) {
@@ -93,11 +92,11 @@ public class TerritoryApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'territoryId' parameter is required");
         }
-        return imp.getTerritoryHttp(request, version, territoryId);
+        return imp.getTerritoryHttp(request, territoryId);
     }
 
     @ApiAction
-    public Result searchTerritories(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTerritories(Http.Request request) throws Exception {
         String valuekeyword = request.getQueryString("keyword");
         String keyword;
         if (valuekeyword != null) {
@@ -133,11 +132,11 @@ public class TerritoryApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'descending' parameter is required");
         }
-        return imp.searchTerritoriesHttp(request, version, sortField, descending, keyword, start, limit);
+        return imp.searchTerritoriesHttp(request, sortField, descending, keyword, start, limit);
     }
 
     @ApiAction
-    public Result updateTerritory(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateTerritory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -166,7 +165,7 @@ public class TerritoryApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updateTerritoryHttp(request, version, accountId, territoryId, name, active);
+        return imp.updateTerritoryHttp(request, accountId, territoryId, name, active);
     }
 
 }

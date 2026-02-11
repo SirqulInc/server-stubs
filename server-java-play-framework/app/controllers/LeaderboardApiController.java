@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.LeaderboardResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class LeaderboardApiController extends Controller {
     private final LeaderboardApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class LeaderboardApiController extends Controller {
     }
 
     @ApiAction
-    public Result createLeaderboard(Http.Request request, BigDecimal version) throws Exception {
+    public Result createLeaderboard(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -133,11 +132,11 @@ public class LeaderboardApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createLeaderboardHttp(request, version, accountId, appKey, rankType, leaderboardMode, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, sortField, title, description, metaData);
+        return imp.createLeaderboardHttp(request, accountId, appKey, rankType, leaderboardMode, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, sortField, title, description, metaData);
     }
 
     @ApiAction
-    public Result deleteLeaderboard(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteLeaderboard(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -152,11 +151,11 @@ public class LeaderboardApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'leaderboardId' parameter is required");
         }
-        return imp.deleteLeaderboardHttp(request, version, leaderboardId, accountId);
+        return imp.deleteLeaderboardHttp(request, leaderboardId, accountId);
     }
 
     @ApiAction
-    public Result getLeaderboard(Http.Request request, BigDecimal version) throws Exception {
+    public Result getLeaderboard(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -178,11 +177,11 @@ public class LeaderboardApiController extends Controller {
         } else {
             includeFullRankingList = null;
         }
-        return imp.getLeaderboardHttp(request, version, leaderboardId, accountId, includeFullRankingList);
+        return imp.getLeaderboardHttp(request, leaderboardId, accountId, includeFullRankingList);
     }
 
     @ApiAction
-    public Result searchLeaderboards(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchLeaderboards(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -267,11 +266,11 @@ public class LeaderboardApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchLeaderboardsHttp(request, version, accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit);
+        return imp.searchLeaderboardsHttp(request, accountId, appKey, globalOnly, keyword, leaderboardIds, rankTypes, sortField, descending, includeInactive, includeAppResponse, start, limit);
     }
 
     @ApiAction
-    public Result updateLeaderboard(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateLeaderboard(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -377,7 +376,7 @@ public class LeaderboardApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.updateLeaderboardHttp(request, version, leaderboardId, accountId, appKey, rankType, leaderboardMode, sortField, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, active, title, description, metaData);
+        return imp.updateLeaderboardHttp(request, leaderboardId, accountId, appKey, rankType, leaderboardMode, sortField, iconMedia, iconAssetId, bannerMedia, bannerAssetId, limitation, active, title, description, metaData);
     }
 
 }

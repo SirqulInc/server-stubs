@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.ApplicationUsageResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.SubscriptionPlanResponse;
 import apimodels.SubscriptionResponse;
@@ -31,8 +30,8 @@ public abstract class SubscriptionApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createSubscriptionHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, Long planId, String promoCode) throws Exception {
-        SubscriptionResponse obj = createSubscription(request, version, accountId, planId, promoCode);
+    public Result createSubscriptionHttp(Http.Request request, @NotNull Long accountId, Long planId, String promoCode) throws Exception {
+        SubscriptionResponse obj = createSubscription(request, accountId, planId, promoCode);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -44,25 +43,10 @@ public abstract class SubscriptionApiControllerImpInterface {
 
     }
 
-    public abstract SubscriptionResponse createSubscription(Http.Request request, BigDecimal version, @NotNull Long accountId, Long planId, String promoCode) throws Exception;
+    public abstract SubscriptionResponse createSubscription(Http.Request request, @NotNull Long accountId, Long planId, String promoCode) throws Exception;
 
-    public Result deleteSubscriptionHttp(Http.Request request, BigDecimal version, @NotNull Long accountId) throws Exception {
-        SirqulResponse obj = deleteSubscription(request, version, accountId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteSubscription(Http.Request request, BigDecimal version, @NotNull Long accountId) throws Exception;
-
-    public Result getSubscriptionHttp(Http.Request request, BigDecimal version, @NotNull Long accountId) throws Exception {
-        SubscriptionResponse obj = getSubscription(request, version, accountId);
+    public Result deleteSubscriptionHttp(Http.Request request, @NotNull Long accountId) throws Exception {
+        SirqulResponse obj = deleteSubscription(request, accountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -74,10 +58,10 @@ public abstract class SubscriptionApiControllerImpInterface {
 
     }
 
-    public abstract SubscriptionResponse getSubscription(Http.Request request, BigDecimal version, @NotNull Long accountId) throws Exception;
+    public abstract SirqulResponse deleteSubscription(Http.Request request, @NotNull Long accountId) throws Exception;
 
-    public Result getSubscriptionPlanHttp(Http.Request request, BigDecimal version, @NotNull Long planId) throws Exception {
-        SubscriptionPlanResponse obj = getSubscriptionPlan(request, version, planId);
+    public Result getSubscriptionHttp(Http.Request request, @NotNull Long accountId) throws Exception {
+        SubscriptionResponse obj = getSubscription(request, accountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -89,10 +73,25 @@ public abstract class SubscriptionApiControllerImpInterface {
 
     }
 
-    public abstract SubscriptionPlanResponse getSubscriptionPlan(Http.Request request, BigDecimal version, @NotNull Long planId) throws Exception;
+    public abstract SubscriptionResponse getSubscription(Http.Request request, @NotNull Long accountId) throws Exception;
 
-    public Result getSubscriptionPlansHttp(Http.Request request, BigDecimal version, Boolean visible, String role) throws Exception {
-        List<SubscriptionPlanResponse> obj = getSubscriptionPlans(request, version, visible, role);
+    public Result getSubscriptionPlanHttp(Http.Request request, @NotNull Long planId) throws Exception {
+        SubscriptionPlanResponse obj = getSubscriptionPlan(request, planId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract SubscriptionPlanResponse getSubscriptionPlan(Http.Request request, @NotNull Long planId) throws Exception;
+
+    public Result getSubscriptionPlansHttp(Http.Request request, Boolean visible, String role) throws Exception {
+        List<SubscriptionPlanResponse> obj = getSubscriptionPlans(request, visible, role);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (SubscriptionPlanResponse curItem : obj) {
@@ -106,25 +105,10 @@ public abstract class SubscriptionApiControllerImpInterface {
 
     }
 
-    public abstract List<SubscriptionPlanResponse> getSubscriptionPlans(Http.Request request, BigDecimal version, Boolean visible, String role) throws Exception;
+    public abstract List<SubscriptionPlanResponse> getSubscriptionPlans(Http.Request request, Boolean visible, String role) throws Exception;
 
-    public Result getSubscriptionUsageHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, Long applicationId, Long start, Long end) throws Exception {
-        ApplicationUsageResponse obj = getSubscriptionUsage(request, version, accountId, applicationId, start, end);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract ApplicationUsageResponse getSubscriptionUsage(Http.Request request, BigDecimal version, @NotNull Long accountId, Long applicationId, Long start, Long end) throws Exception;
-
-    public Result updateSubscriptionHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, Long planId, String promoCode, Boolean active) throws Exception {
-        SubscriptionResponse obj = updateSubscription(request, version, accountId, planId, promoCode, active);
+    public Result getSubscriptionUsageHttp(Http.Request request, @NotNull Long accountId, Long applicationId, Long start, Long end) throws Exception {
+        ApplicationUsageResponse obj = getSubscriptionUsage(request, accountId, applicationId, start, end);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -136,6 +120,21 @@ public abstract class SubscriptionApiControllerImpInterface {
 
     }
 
-    public abstract SubscriptionResponse updateSubscription(Http.Request request, BigDecimal version, @NotNull Long accountId, Long planId, String promoCode, Boolean active) throws Exception;
+    public abstract ApplicationUsageResponse getSubscriptionUsage(Http.Request request, @NotNull Long accountId, Long applicationId, Long start, Long end) throws Exception;
+
+    public Result updateSubscriptionHttp(Http.Request request, @NotNull Long accountId, Long planId, String promoCode, Boolean active) throws Exception {
+        SubscriptionResponse obj = updateSubscription(request, accountId, planId, promoCode, active);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract SubscriptionResponse updateSubscription(Http.Request request, @NotNull Long accountId, Long planId, String promoCode, Boolean active) throws Exception;
 
 }

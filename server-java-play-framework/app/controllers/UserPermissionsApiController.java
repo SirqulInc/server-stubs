@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.UserPermissionsResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class UserPermissionsApiController extends Controller {
     private final UserPermissionsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class UserPermissionsApiController extends Controller {
     }
 
     @ApiAction
-    public Result addUsersToPermissionable(Http.Request request, BigDecimal version) throws Exception {
+    public Result addUsersToPermissionable(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -160,11 +159,11 @@ public class UserPermissionsApiController extends Controller {
         } else {
             audienceIds = null;
         }
-        return imp.addUsersToPermissionableHttp(request, version, permissionableType, permissionableId, deviceId, accountId, read, write, delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds);
+        return imp.addUsersToPermissionableHttp(request, permissionableType, permissionableId, deviceId, accountId, read, write, delete, add, connectionIds, connectionAccountIds, connectionGroupIds, pending, admin, includeFriendGroup, latitude, longitude, audienceIds);
     }
 
     @ApiAction
-    public Result approvePermissionable(Http.Request request, BigDecimal version) throws Exception {
+    public Result approvePermissionable(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -200,11 +199,11 @@ public class UserPermissionsApiController extends Controller {
         } else {
             approvalStatus = "APPROVED";
         }
-        return imp.approvePermissionableHttp(request, version, permissionableType, permissionableId, deviceId, accountId, approvalStatus);
+        return imp.approvePermissionableHttp(request, permissionableType, permissionableId, deviceId, accountId, approvalStatus);
     }
 
     @ApiAction
-    public Result leaveFromPermissionable(Http.Request request, BigDecimal version) throws Exception {
+    public Result leaveFromPermissionable(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -247,11 +246,11 @@ public class UserPermissionsApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.leaveFromPermissionableHttp(request, version, permissionableType, permissionableId, deviceId, accountId, latitude, longitude);
+        return imp.leaveFromPermissionableHttp(request, permissionableType, permissionableId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeUsersFromPermissionable(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeUsersFromPermissionable(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -329,11 +328,11 @@ public class UserPermissionsApiController extends Controller {
         } else {
             audienceIds = null;
         }
-        return imp.removeUsersFromPermissionableHttp(request, version, permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds);
+        return imp.removeUsersFromPermissionableHttp(request, permissionableType, permissionableId, deviceId, accountId, connectionIds, connectionAccountIds, connectionGroupIds, removeFriendGroup, latitude, longitude, audienceIds);
     }
 
     @ApiAction
-    public Result searchPermissionables(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPermissionables(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -425,11 +424,11 @@ public class UserPermissionsApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchPermissionablesHttp(request, version, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit);
+        return imp.searchPermissionablesHttp(request, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, keyword, sortField, descending, pending, admin, start, limit);
     }
 
     @ApiAction
-    public Result searchPermissionablesFollowingDistance(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPermissionablesFollowingDistance(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -528,7 +527,7 @@ public class UserPermissionsApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchPermissionablesFollowingDistanceHttp(request, version, latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit);
+        return imp.searchPermissionablesFollowingDistanceHttp(request, latitude, longitude, deviceId, accountId, connectionAccountId, connectionAccountIds, permissionableType, permissionableId, searchRange, keyword, pending, admin, start, limit);
     }
 
 }

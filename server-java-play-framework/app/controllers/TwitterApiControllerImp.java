@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ProfileResponse;
 import apimodels.SirqulResponse;
 
@@ -13,16 +12,16 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TwitterApiControllerImp extends TwitterApiControllerImpInterface {
     @Override
-    public SirqulResponse authorizeTwitter(Http.Request request, BigDecimal version, @NotNull String appKey) throws Exception {
+    public SirqulResponse authorizeTwitter(Http.Request request, @NotNull String appKey) throws Exception {
         //Do your magic!!!
         return new SirqulResponse();
     }
 
     @Override
-    public ProfileResponse loginTwitter(Http.Request request, BigDecimal version, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception {
+    public ProfileResponse loginTwitter(Http.Request request, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception {
         //Do your magic!!!
         return new ProfileResponse();
     }

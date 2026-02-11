@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CsvImportResponse;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class CsvImportApiController extends Controller {
     private final CsvImportApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class CsvImportApiController extends Controller {
     }
 
     @ApiAction
-    public Result getStatusCSV(Http.Request request, BigDecimal version) throws Exception {
+    public Result getStatusCSV(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -77,11 +76,11 @@ public class CsvImportApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.getStatusCSVHttp(request, version, accountId, batchId, responseGroup, start, limit);
+        return imp.getStatusCSVHttp(request, accountId, batchId, responseGroup, start, limit);
     }
 
     @ApiAction
-    public Result listStatusCSV(Http.Request request, BigDecimal version) throws Exception {
+    public Result listStatusCSV(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -103,11 +102,11 @@ public class CsvImportApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.listStatusCSVHttp(request, version, accountId, start, limit);
+        return imp.listStatusCSVHttp(request, accountId, start, limit);
     }
 
     @ApiAction
-    public Result statusCSV(Http.Request request, BigDecimal version) throws Exception {
+    public Result statusCSV(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -122,11 +121,11 @@ public class CsvImportApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'batchId' parameter is required");
         }
-        return imp.statusCSVHttp(request, version, accountId, batchId);
+        return imp.statusCSVHttp(request, accountId, batchId);
     }
 
     @ApiAction
-    public Result uploadCSV(Http.Request request, BigDecimal version) throws Exception {
+    public Result uploadCSV(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -162,7 +161,7 @@ public class CsvImportApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'fileFormat' parameter is required");
         }
-        return imp.uploadCSVHttp(request, version, accountId, uploadType, importFile, fileFormat, appKey);
+        return imp.uploadCSVHttp(request, accountId, uploadType, importFile, fileFormat, appKey);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.OfferTransactionResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class WalletApiController extends Controller {
     private final WalletApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class WalletApiController extends Controller {
     }
 
     @ApiAction
-    public Result createOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -118,11 +117,11 @@ public class WalletApiController extends Controller {
         } else {
             status = null;
         }
-        return imp.createOfferTransactionHttp(request, version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status);
+        return imp.createOfferTransactionHttp(request, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey, status);
     }
 
     @ApiAction
-    public Result deleteOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -144,11 +143,11 @@ public class WalletApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'transactionId' parameter is required");
         }
-        return imp.deleteOfferTransactionHttp(request, version, transactionId, deviceId, accountId);
+        return imp.deleteOfferTransactionHttp(request, transactionId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -198,11 +197,11 @@ public class WalletApiController extends Controller {
         } else {
             returnFullResponse = true;
         }
-        return imp.getOfferTransactionHttp(request, version, transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse);
+        return imp.getOfferTransactionHttp(request, transactionId, deviceId, accountId, includeMission, latitude, longitude, returnFullResponse);
     }
 
     @ApiAction
-    public Result previewOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result previewOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -273,11 +272,11 @@ public class WalletApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.previewOfferTransactionHttp(request, version, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey);
+        return imp.previewOfferTransactionHttp(request, deviceId, accountId, offerId, offerLocationId, offerCart, promoCode, currencyType, usePoints, metaData, appKey);
     }
 
     @ApiAction
-    public Result searchOfferTransactions(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchOfferTransactions(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -565,11 +564,11 @@ public class WalletApiController extends Controller {
         } else {
             recurringExpirationBefore = null;
         }
-        return imp.searchOfferTransactionsHttp(request, version, deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore);
+        return imp.searchOfferTransactionsHttp(request, deviceId, accountId, keyword, retailerId, retailerIds, retailerLocationId, retailerLocationIds, excludeRetailerLocationIds, offerId, offerIds, offerLocationId, offerLocationIds, offerType, offerTypes, specialOfferType, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, sortField, descending, start, limit, latitude, longitude, redeemableStartDate, redeemableEndDate, filterByParentOffer, startedSince, startedBefore, endedSince, endedBefore, redeemed, statuses, reservationsOnly, activeOnly, returnFullResponse, recurringStartedSince, recurringStartedBefore, recurringExpirationSince, recurringExpirationBefore);
     }
 
     @ApiAction
-    public Result updateOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -661,7 +660,7 @@ public class WalletApiController extends Controller {
         } else {
             exceptionMembershipOfferIds = null;
         }
-        return imp.updateOfferTransactionHttp(request, version, transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds);
+        return imp.updateOfferTransactionHttp(request, transactionId, status, deviceId, accountId, offerLocationId, currencyType, usePoints, appKey, latitude, longitude, metaData, returnFullResponse, exceptionMembershipOfferIds);
     }
 
 }

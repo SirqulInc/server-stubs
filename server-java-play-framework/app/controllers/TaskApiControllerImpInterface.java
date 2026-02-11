@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TaskResponse;
 
@@ -29,8 +28,8 @@ public abstract class TaskApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createTaskHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception {
-        TaskResponse obj = createTask(request, version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
+    public Result createTaskHttp(Http.Request request, @NotNull Long accountId, @NotNull String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception {
+        TaskResponse obj = createTask(request, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class TaskApiControllerImpInterface {
 
     }
 
-    public abstract TaskResponse createTask(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception;
+    public abstract TaskResponse createTask(Http.Request request, @NotNull Long accountId, @NotNull String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception;
 
-    public Result deleteTaskHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long taskId) throws Exception {
-        SirqulResponse obj = deleteTask(request, version, accountId, taskId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteTask(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long taskId) throws Exception;
-
-    public Result getTaskHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long taskId) throws Exception {
-        TaskResponse obj = getTask(request, version, accountId, taskId);
+    public Result deleteTaskHttp(Http.Request request, @NotNull Long accountId, @NotNull Long taskId) throws Exception {
+        SirqulResponse obj = deleteTask(request, accountId, taskId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,10 +56,25 @@ public abstract class TaskApiControllerImpInterface {
 
     }
 
-    public abstract TaskResponse getTask(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long taskId) throws Exception;
+    public abstract SirqulResponse deleteTask(Http.Request request, @NotNull Long accountId, @NotNull Long taskId) throws Exception;
 
-    public Result searchTasksHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, String groupingId, String filter, String statuses, String templateTypes, String appKey, String keyword, String sortField, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception {
-        List<TaskResponse> obj = searchTasks(request, version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
+    public Result getTaskHttp(Http.Request request, @NotNull Long accountId, @NotNull Long taskId) throws Exception {
+        TaskResponse obj = getTask(request, accountId, taskId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract TaskResponse getTask(Http.Request request, @NotNull Long accountId, @NotNull Long taskId) throws Exception;
+
+    public Result searchTasksHttp(Http.Request request, @NotNull Long accountId, String groupingId, String filter, String statuses, String templateTypes, String appKey, String keyword, String sortField, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception {
+        List<TaskResponse> obj = searchTasks(request, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (TaskResponse curItem : obj) {
@@ -89,10 +88,10 @@ public abstract class TaskApiControllerImpInterface {
 
     }
 
-    public abstract List<TaskResponse> searchTasks(Http.Request request, BigDecimal version, @NotNull Long accountId, String groupingId, String filter, String statuses, String templateTypes, String appKey, String keyword, String sortField, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception;
+    public abstract List<TaskResponse> searchTasks(Http.Request request, @NotNull Long accountId, String groupingId, String filter, String statuses, String templateTypes, String appKey, String keyword, String sortField, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception;
 
-    public Result updateTaskHttp(Http.Request request, BigDecimal version, @NotNull Long taskId, @NotNull Long accountId, String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception {
-        TaskResponse obj = updateTask(request, version, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
+    public Result updateTaskHttp(Http.Request request, @NotNull Long taskId, @NotNull Long accountId, String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception {
+        TaskResponse obj = updateTask(request, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -104,6 +103,6 @@ public abstract class TaskApiControllerImpInterface {
 
     }
 
-    public abstract TaskResponse updateTask(Http.Request request, BigDecimal version, @NotNull Long taskId, @NotNull Long accountId, String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception;
+    public abstract TaskResponse updateTask(Http.Request request, @NotNull Long taskId, @NotNull Long accountId, String name, String appKey, String groupingId, String endpointURL, String payload, Long scheduledDate, Long startDate, Long endDate, String cronExpression, String visibility, Boolean active) throws Exception;
 
 }

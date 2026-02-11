@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.MediaOfferResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class MediaApiController extends Controller {
     private final MediaApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class MediaApiController extends Controller {
     }
 
     @ApiAction
-    public Result createMedia(Http.Request request, BigDecimal version) throws Exception {
+    public Result createMedia(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -440,11 +439,11 @@ public class MediaApiController extends Controller {
         } else {
             availabilitySummary = null;
         }
-        return imp.createMediaHttp(request, version, accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary);
+        return imp.createMediaHttp(request, accountId, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, specialOfferType, offerVisibility, active, retailerLocationIds, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, parentalRating, availabilityDate, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary);
     }
 
     @ApiAction
-    public Result deleteMedia(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteMedia(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -459,11 +458,11 @@ public class MediaApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'mediaId' parameter is required");
         }
-        return imp.deleteMediaHttp(request, version, accountId, mediaId);
+        return imp.deleteMediaHttp(request, accountId, mediaId);
     }
 
     @ApiAction
-    public Result getMedia(Http.Request request, BigDecimal version) throws Exception {
+    public Result getMedia(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -478,11 +477,11 @@ public class MediaApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'mediaId' parameter is required");
         }
-        return imp.getMediaHttp(request, version, accountId, mediaId);
+        return imp.getMediaHttp(request, accountId, mediaId);
     }
 
     @ApiAction
-    public Result searchMedia(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchMedia(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -546,11 +545,11 @@ public class MediaApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchMediaHttp(request, version, accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit);
+        return imp.searchMediaHttp(request, accountId, activeOnly, sortField, descending, keyword, categoryIds, filterIds, start, limit);
     }
 
     @ApiAction
-    public Result updateMedia(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateMedia(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -964,7 +963,7 @@ public class MediaApiController extends Controller {
         } else {
             availabilitySummary = null;
         }
-        return imp.updateMediaHttp(request, version, accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary);
+        return imp.updateMediaHttp(request, accountId, mediaId, retailerLocationIds, offerLocations, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, conditionType, isbn, asin, catalogNumbers, availabilityDate, parentalRating, mediaType, duration, author, releaseDate, collectionIds, availability, availabilitySummary);
     }
 
 }

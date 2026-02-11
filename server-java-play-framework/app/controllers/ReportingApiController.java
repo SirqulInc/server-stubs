@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RegionLegSummary;
 import apimodels.ReportBatchResponse;
 import apimodels.ReportRegionLegSummaryBatchResponse;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ReportingApiController extends Controller {
     private final ReportingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,7 +42,7 @@ public class ReportingApiController extends Controller {
     }
 
     @ApiAction
-    public Result createBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result createBatch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -121,11 +120,11 @@ public class ReportingApiController extends Controller {
         } else {
             pageUrl = null;
         }
-        return imp.createBatchHttp(request, version, accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl);
+        return imp.createBatchHttp(request, accountId, status, previewLimit, appKey, endpoint, parameters, name, startDate, endDate, description, pageUrl);
     }
 
     @ApiAction
-    public Result createRegionLegSummaryBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRegionLegSummaryBatch(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         List<@Valid RegionLegSummary> body;
         if (nodebody != null) {
@@ -138,11 +137,11 @@ public class ReportingApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createRegionLegSummaryBatchHttp(request, version, body);
+        return imp.createRegionLegSummaryBatchHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteBatch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -157,11 +156,11 @@ public class ReportingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'batchId' parameter is required");
         }
-        return imp.deleteBatchHttp(request, version, accountId, batchId);
+        return imp.deleteBatchHttp(request, accountId, batchId);
     }
 
     @ApiAction
-    public Result getReportBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result getReportBatch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -183,11 +182,11 @@ public class ReportingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'allResults' parameter is required");
         }
-        return imp.getReportBatchHttp(request, version, accountId, batchId, allResults);
+        return imp.getReportBatchHttp(request, accountId, batchId, allResults);
     }
 
     @ApiAction
-    public Result runReport(Http.Request request, BigDecimal version) throws Exception {
+    public Result runReport(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -244,11 +243,11 @@ public class ReportingApiController extends Controller {
         } else {
             responseFormat = null;
         }
-        return imp.runReportHttp(request, version, desc, accountId, query, parameters, order, start, limit, responseFormat);
+        return imp.runReportHttp(request, desc, accountId, query, parameters, order, start, limit, responseFormat);
     }
 
     @ApiAction
-    public Result searchBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchBatch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -312,7 +311,7 @@ public class ReportingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchBatchHttp(request, version, accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate);
+        return imp.searchBatchHttp(request, accountId, start, limit, names, appKey, status, globalAppSearch, startDate, endDate);
     }
 
 }

@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.AppResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AppDataApiController extends Controller {
     private final AppDataApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class AppDataApiController extends Controller {
     }
 
     @ApiAction
-    public Result getAppData(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAppData(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -216,11 +215,11 @@ public class AppDataApiController extends Controller {
         } else {
             purchaseType = null;
         }
-        return imp.getAppDataHttp(request, version, start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType);
+        return imp.getAppDataHttp(request, start, limit, deviceId, accountId, gameType, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType);
     }
 
     @ApiAction
-    public Result postAppData(Http.Request request, BigDecimal version) throws Exception {
+    public Result postAppData(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -403,11 +402,11 @@ public class AppDataApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.postAppDataHttp(request, version, gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType);
+        return imp.postAppDataHttp(request, gameType, start, limit, data, deviceId, accountId, includeGameData, q, keyword, sortField, descending, i, l, gameObjectCount, filter, dateCreated, ownerId, missionIds, gameIds, packIds, gameLevelIds, appVersion, includeHigherVersionPacks, includeHigherVersionLevels, responseGroups, purchaseType);
     }
 
     @ApiAction
-    public Result regenAppData(Http.Request request, BigDecimal version) throws Exception {
+    public Result regenAppData(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -436,7 +435,7 @@ public class AppDataApiController extends Controller {
         } else {
             apiVersion = null;
         }
-        return imp.regenAppDataHttp(request, version, accountId, appKey, buildVersion, apiVersion);
+        return imp.regenAppDataHttp(request, accountId, appKey, buildVersion, apiVersion);
     }
 
 }

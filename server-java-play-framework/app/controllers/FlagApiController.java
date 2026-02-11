@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CountResponse;
 import apimodels.FlagResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class FlagApiController extends Controller {
     private final FlagApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class FlagApiController extends Controller {
     }
 
     @ApiAction
-    public Result createFlag(Http.Request request, BigDecimal version) throws Exception {
+    public Result createFlag(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -91,11 +90,11 @@ public class FlagApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createFlagHttp(request, version, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude);
+        return imp.createFlagHttp(request, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude);
     }
 
     @ApiAction
-    public Result deleteFlag(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteFlag(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -138,11 +137,11 @@ public class FlagApiController extends Controller {
         } else {
             flagableId = null;
         }
-        return imp.deleteFlagHttp(request, version, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId);
+        return imp.deleteFlagHttp(request, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId);
     }
 
     @ApiAction
-    public Result getFlag(Http.Request request, BigDecimal version) throws Exception {
+    public Result getFlag(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -185,11 +184,11 @@ public class FlagApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getFlagHttp(request, version, flagableType, flagableId, deviceId, accountId, latitude, longitude);
+        return imp.getFlagHttp(request, flagableType, flagableId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getFlagThreshold(Http.Request request, BigDecimal version) throws Exception {
+    public Result getFlagThreshold(Http.Request request) throws Exception {
         String valueitemBeingFlaggedType = request.getQueryString("itemBeingFlaggedType");
         String itemBeingFlaggedType;
         if (valueitemBeingFlaggedType != null) {
@@ -204,11 +203,11 @@ public class FlagApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.getFlagThresholdHttp(request, version, itemBeingFlaggedType, appKey);
+        return imp.getFlagThresholdHttp(request, itemBeingFlaggedType, appKey);
     }
 
     @ApiAction
-    public Result updateFlagThreshold(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateFlagThreshold(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -244,7 +243,7 @@ public class FlagApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.updateFlagThresholdHttp(request, version, itemBeingFlaggedType, threshold, appKey, deviceId, accountId);
+        return imp.updateFlagThresholdHttp(request, itemBeingFlaggedType, threshold, appKey, deviceId, accountId);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ScoreResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ScoreApiController extends Controller {
     private final ScoreApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class ScoreApiController extends Controller {
     }
 
     @ApiAction
-    public Result createScore(Http.Request request, BigDecimal version) throws Exception {
+    public Result createScore(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -110,11 +109,11 @@ public class ScoreApiController extends Controller {
         } else {
             highest = null;
         }
-        return imp.createScoreHttp(request, version, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest);
+        return imp.createScoreHttp(request, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest);
     }
 
     @ApiAction
-    public Result getScore(Http.Request request, BigDecimal version) throws Exception {
+    public Result getScore(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -178,11 +177,11 @@ public class ScoreApiController extends Controller {
         } else {
             scoreStatus = null;
         }
-        return imp.getScoreHttp(request, version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus);
+        return imp.getScoreHttp(request, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus);
     }
 
     @ApiAction
-    public Result searchScores(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchScores(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -232,7 +231,7 @@ public class ScoreApiController extends Controller {
         } else {
             gameObjectId = null;
         }
-        return imp.searchScoresHttp(request, version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId);
+        return imp.searchScoresHttp(request, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId);
     }
 
 }

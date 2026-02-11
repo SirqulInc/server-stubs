@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TokenResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class FacebookApiController extends Controller {
     private final FacebookApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class FacebookApiController extends Controller {
     }
 
     @ApiAction
-    public Result getToken(Http.Request request, BigDecimal version) throws Exception {
+    public Result getToken(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -69,11 +68,11 @@ public class FacebookApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getTokenHttp(request, version, deviceId, accountId, latitude, longitude);
+        return imp.getTokenHttp(request, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result graphInterface(Http.Request request, BigDecimal version) throws Exception {
+    public Result graphInterface(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -144,7 +143,7 @@ public class FacebookApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.graphInterfaceHttp(request, version, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude);
+        return imp.graphInterfaceHttp(request, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude);
     }
 
 }

@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.Account;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class DependentApiController extends Controller {
     private final DependentApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class DependentApiController extends Controller {
     }
 
     @ApiAction
-    public Result create(Http.Request request, BigDecimal version,Long accountId) throws Exception {
+    public Result create(Http.Request request, Long accountId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Account body;
         if (nodebody != null) {
@@ -51,17 +50,17 @@ public class DependentApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createHttp(request, version, accountId, body);
+        return imp.createHttp(request, accountId, body);
     }
 
     @ApiAction
-    public Result getDependents(Http.Request request, BigDecimal version,Long accountId) throws Exception {
-        return imp.getDependentsHttp(request, version, accountId);
+    public Result getDependents(Http.Request request, Long accountId) throws Exception {
+        return imp.getDependentsHttp(request, accountId);
     }
 
     @ApiAction
-    public Result removeDependent(Http.Request request, BigDecimal version,Long accountId,Long dependentId) throws Exception {
-        return imp.removeDependentHttp(request, version, accountId, dependentId);
+    public Result removeDependent(Http.Request request, Long accountId,Long dependentId) throws Exception {
+        return imp.removeDependentHttp(request, accountId, dependentId);
     }
 
 }

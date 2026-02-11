@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.WeatherResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class WeatherApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result searchWeatherHttp(Http.Request request, BigDecimal version, Long regionId, Double latitude, Double longitude, Long timezoneOffset) throws Exception {
-        WeatherResponse obj = searchWeather(request, version, regionId, latitude, longitude, timezoneOffset);
+    public Result searchWeatherHttp(Http.Request request, Long regionId, Double latitude, Double longitude, Long timezoneOffset) throws Exception {
+        WeatherResponse obj = searchWeather(request, regionId, latitude, longitude, timezoneOffset);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class WeatherApiControllerImpInterface {
 
     }
 
-    public abstract WeatherResponse searchWeather(Http.Request request, BigDecimal version, Long regionId, Double latitude, Double longitude, Long timezoneOffset) throws Exception;
+    public abstract WeatherResponse searchWeather(Http.Request request, Long regionId, Double latitude, Double longitude, Long timezoneOffset) throws Exception;
 
 }

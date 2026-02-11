@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RatingIndexResponse;
 import apimodels.RatingResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RatingApiController extends Controller {
     private final RatingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class RatingApiController extends Controller {
     }
 
     @ApiAction
-    public Result createRating(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRating(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -119,11 +118,11 @@ public class RatingApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createRatingHttp(request, version, ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude);
+        return imp.createRatingHttp(request, ratableType, ratableId, ratingValue, deviceId, accountId, categoryId, display, description, locationDescription, latitude, longitude);
     }
 
     @ApiAction
-    public Result deleteRating(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteRating(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -145,11 +144,11 @@ public class RatingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'ratingId' parameter is required");
         }
-        return imp.deleteRatingHttp(request, version, ratingId, deviceId, accountId);
+        return imp.deleteRatingHttp(request, ratingId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result searchLocationRatingIndexes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchLocationRatingIndexes(Http.Request request) throws Exception {
         String valuecategoryIds = request.getQueryString("categoryIds");
         String categoryIds;
         if (valuecategoryIds != null) {
@@ -269,11 +268,11 @@ public class RatingApiController extends Controller {
         } else {
             returnFilters = null;
         }
-        return imp.searchLocationRatingIndexesHttp(request, version, categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters);
+        return imp.searchLocationRatingIndexesHttp(request, categoryIds, keyword, locationType, sortField, descending, start, limit, searchRange, latitude, longitude, returnOverallRating, distanceUnit, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters);
     }
 
     @ApiAction
-    public Result searchRatingIndexes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRatingIndexes(Http.Request request) throws Exception {
         String valueratableType = request.getQueryString("ratableType");
         String ratableType;
         if (valueratableType != null) {
@@ -365,11 +364,11 @@ public class RatingApiController extends Controller {
         } else {
             returnOverallRating = null;
         }
-        return imp.searchRatingIndexesHttp(request, version, ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating);
+        return imp.searchRatingIndexesHttp(request, ratableType, ratableIds, categoryIds, secondaryType, keyword, sortField, descending, start, limit, latitude, longitude, returnRatable, returnOverallRating);
     }
 
     @ApiAction
-    public Result searchRatings(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRatings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -447,11 +446,11 @@ public class RatingApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchRatingsHttp(request, version, deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit);
+        return imp.searchRatingsHttp(request, deviceId, accountId, filterAccountId, ratableType, ratableId, categoryIds, keyword, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result updateRating(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateRating(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -522,7 +521,7 @@ public class RatingApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.updateRatingHttp(request, version, ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude);
+        return imp.updateRatingHttp(request, ratingId, deviceId, accountId, ratingValue, categoryId, display, description, locationDescription, latitude, longitude);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.EventAttendanceResponse;
 import apimodels.OfferResponse;
 import apimodels.OfferShortResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class EventApiController extends Controller {
     private final EventApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class EventApiController extends Controller {
     }
 
     @ApiAction
-    public Result attendEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result attendEvent(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -113,11 +112,11 @@ public class EventApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.attendEventHttp(request, version, deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude);
+        return imp.attendEventHttp(request, deviceId, accountId, appKey, listingId, retailerLocationId, offerLocationId, transactionId, status, latitude, longitude);
     }
 
     @ApiAction
-    public Result createEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result createEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -202,11 +201,11 @@ public class EventApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createEventHttp(request, version, accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData);
+        return imp.createEventHttp(request, accountId, title, retailerLocationIds, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd, metaData);
     }
 
     @ApiAction
-    public Result deleteEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -221,11 +220,11 @@ public class EventApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'eventId' parameter is required");
         }
-        return imp.deleteEventHttp(request, version, accountId, eventId);
+        return imp.deleteEventHttp(request, accountId, eventId);
     }
 
     @ApiAction
-    public Result getEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result getEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -240,11 +239,11 @@ public class EventApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'eventId' parameter is required");
         }
-        return imp.getEventHttp(request, version, accountId, eventId);
+        return imp.getEventHttp(request, accountId, eventId);
     }
 
     @ApiAction
-    public Result searchEventTransactions(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchEventTransactions(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -378,11 +377,11 @@ public class EventApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchEventTransactionsHttp(request, version, deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit);
+        return imp.searchEventTransactionsHttp(request, deviceId, accountId, appKey, keyword, retailerId, retailerLocationId, excludeRetailerLocationId, listingId, offerId, offerLocationId, customerAccountIds, affiliatedCategoryIds, startDate, endDate, statuses, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchEvents(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchEvents(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -474,11 +473,11 @@ public class EventApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchEventsHttp(request, version, accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit);
+        return imp.searchEventsHttp(request, accountId, keyword, activeOnly, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, sortField, descending, startDate, endDate, start, limit);
     }
 
     @ApiAction
-    public Result updateEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -563,7 +562,7 @@ public class EventApiController extends Controller {
         } else {
             redeemableEnd = null;
         }
-        return imp.updateEventHttp(request, version, accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd);
+        return imp.updateEventHttp(request, accountId, eventId, retailerLocationIds, title, subTitle, details, categoryIds, filterIds, active, imageAssetId, redeemableStart, redeemableEnd);
     }
 
 }

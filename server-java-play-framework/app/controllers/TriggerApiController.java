@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TriggerResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TriggerApiController extends Controller {
     private final TriggerApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class TriggerApiController extends Controller {
     }
 
     @ApiAction
-    public Result createTrigger(Http.Request request, BigDecimal version) throws Exception {
+    public Result createTrigger(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -132,11 +131,11 @@ public class TriggerApiController extends Controller {
         } else {
             active = true;
         }
-        return imp.createTriggerHttp(request, version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active);
+        return imp.createTriggerHttp(request, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active);
     }
 
     @ApiAction
-    public Result deleteTrigger(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteTrigger(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -151,11 +150,11 @@ public class TriggerApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'triggerId' parameter is required");
         }
-        return imp.deleteTriggerHttp(request, version, accountId, triggerId);
+        return imp.deleteTriggerHttp(request, accountId, triggerId);
     }
 
     @ApiAction
-    public Result getTrigger(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTrigger(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -170,11 +169,11 @@ public class TriggerApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'triggerId' parameter is required");
         }
-        return imp.getTriggerHttp(request, version, accountId, triggerId);
+        return imp.getTriggerHttp(request, accountId, triggerId);
     }
 
     @ApiAction
-    public Result searchTriggers(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTriggers(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -259,11 +258,11 @@ public class TriggerApiController extends Controller {
         } else {
             activeOnly = true;
         }
-        return imp.searchTriggersHttp(request, version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
+        return imp.searchTriggersHttp(request, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result updateTrigger(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateTrigger(Http.Request request) throws Exception {
         String valuetriggerId = request.getQueryString("triggerId");
         Long triggerId;
         if (valuetriggerId != null) {
@@ -362,7 +361,7 @@ public class TriggerApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updateTriggerHttp(request, version, triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active);
+        return imp.updateTriggerHttp(request, triggerId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, conditionalInput, visibility, active);
     }
 
 }

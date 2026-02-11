@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CountResponse;
 import apimodels.FlagResponse;
 import apimodels.SirqulResponse;
@@ -30,8 +29,8 @@ public abstract class FlagApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createFlagHttp(Http.Request request, BigDecimal version, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, String flagDescription, Double latitude, Double longitude) throws Exception {
-        SirqulResponse obj = createFlag(request, version, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude);
+    public Result createFlagHttp(Http.Request request, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, String flagDescription, Double latitude, Double longitude) throws Exception {
+        SirqulResponse obj = createFlag(request, flagableType, flagableId, deviceId, accountId, flagDescription, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -43,25 +42,10 @@ public abstract class FlagApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse createFlag(Http.Request request, BigDecimal version, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, String flagDescription, Double latitude, Double longitude) throws Exception;
+    public abstract SirqulResponse createFlag(Http.Request request, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, String flagDescription, Double latitude, Double longitude) throws Exception;
 
-    public Result deleteFlagHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, String itemBeingFlaggedType, Long itemBeingFlaggedId, String flagableType, Long flagableId) throws Exception {
-        SirqulResponse obj = deleteFlag(request, version, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteFlag(Http.Request request, BigDecimal version, String deviceId, Long accountId, String itemBeingFlaggedType, Long itemBeingFlaggedId, String flagableType, Long flagableId) throws Exception;
-
-    public Result getFlagHttp(Http.Request request, BigDecimal version, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
-        FlagResponse obj = getFlag(request, version, flagableType, flagableId, deviceId, accountId, latitude, longitude);
+    public Result deleteFlagHttp(Http.Request request, String deviceId, Long accountId, String itemBeingFlaggedType, Long itemBeingFlaggedId, String flagableType, Long flagableId) throws Exception {
+        SirqulResponse obj = deleteFlag(request, deviceId, accountId, itemBeingFlaggedType, itemBeingFlaggedId, flagableType, flagableId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -73,25 +57,10 @@ public abstract class FlagApiControllerImpInterface {
 
     }
 
-    public abstract FlagResponse getFlag(Http.Request request, BigDecimal version, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
+    public abstract SirqulResponse deleteFlag(Http.Request request, String deviceId, Long accountId, String itemBeingFlaggedType, Long itemBeingFlaggedId, String flagableType, Long flagableId) throws Exception;
 
-    public Result getFlagThresholdHttp(Http.Request request, BigDecimal version, @NotNull String itemBeingFlaggedType, @NotNull String appKey) throws Exception {
-        CountResponse obj = getFlagThreshold(request, version, itemBeingFlaggedType, appKey);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract CountResponse getFlagThreshold(Http.Request request, BigDecimal version, @NotNull String itemBeingFlaggedType, @NotNull String appKey) throws Exception;
-
-    public Result updateFlagThresholdHttp(Http.Request request, BigDecimal version, @NotNull String itemBeingFlaggedType, @NotNull Long threshold, @NotNull String appKey, String deviceId, Long accountId) throws Exception {
-        CountResponse obj = updateFlagThreshold(request, version, itemBeingFlaggedType, threshold, appKey, deviceId, accountId);
+    public Result getFlagHttp(Http.Request request, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
+        FlagResponse obj = getFlag(request, flagableType, flagableId, deviceId, accountId, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -103,6 +72,36 @@ public abstract class FlagApiControllerImpInterface {
 
     }
 
-    public abstract CountResponse updateFlagThreshold(Http.Request request, BigDecimal version, @NotNull String itemBeingFlaggedType, @NotNull Long threshold, @NotNull String appKey, String deviceId, Long accountId) throws Exception;
+    public abstract FlagResponse getFlag(Http.Request request, @NotNull String flagableType, @NotNull Long flagableId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
+
+    public Result getFlagThresholdHttp(Http.Request request, @NotNull String itemBeingFlaggedType, @NotNull String appKey) throws Exception {
+        CountResponse obj = getFlagThreshold(request, itemBeingFlaggedType, appKey);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract CountResponse getFlagThreshold(Http.Request request, @NotNull String itemBeingFlaggedType, @NotNull String appKey) throws Exception;
+
+    public Result updateFlagThresholdHttp(Http.Request request, @NotNull String itemBeingFlaggedType, @NotNull Long threshold, @NotNull String appKey, String deviceId, Long accountId) throws Exception {
+        CountResponse obj = updateFlagThreshold(request, itemBeingFlaggedType, threshold, appKey, deviceId, accountId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract CountResponse updateFlagThreshold(Http.Request request, @NotNull String itemBeingFlaggedType, @NotNull Long threshold, @NotNull String appKey, String deviceId, Long accountId) throws Exception;
 
 }

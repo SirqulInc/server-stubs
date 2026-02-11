@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.AvailabilityResponse;
-import java.math.BigDecimal;
 import apimodels.ReservationResponse;
 import apimodels.TimeSlotResponse;
 
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ReservationApiController extends Controller {
     private final ReservationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class ReservationApiController extends Controller {
     }
 
     @ApiAction
-    public Result createReservation(Http.Request request, BigDecimal version) throws Exception {
+    public Result createReservation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -98,11 +97,11 @@ public class ReservationApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createReservationHttp(request, version, deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData);
+        return imp.createReservationHttp(request, deviceId, accountId, startDate, endDate, offerId, offerLocationId, appKey, metaData);
     }
 
     @ApiAction
-    public Result deleteReservation(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteReservation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -124,11 +123,11 @@ public class ReservationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'reservationId' parameter is required");
         }
-        return imp.deleteReservationHttp(request, version, reservationId, deviceId, accountId);
+        return imp.deleteReservationHttp(request, reservationId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result reservableAvailability(Http.Request request, BigDecimal version) throws Exception {
+    public Result reservableAvailability(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -171,11 +170,11 @@ public class ReservationApiController extends Controller {
         } else {
             availabilitySummary = null;
         }
-        return imp.reservableAvailabilityHttp(request, version, reservableId, reservableType, deviceId, accountId, availability, availabilitySummary);
+        return imp.reservableAvailabilityHttp(request, reservableId, reservableType, deviceId, accountId, availability, availabilitySummary);
     }
 
     @ApiAction
-    public Result searchAvailability(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAvailability(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -232,11 +231,11 @@ public class ReservationApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.searchAvailabilityHttp(request, version, reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit);
+        return imp.searchAvailabilityHttp(request, reservableId, reservableType, deviceId, accountId, startDate, endDate, start, limit);
     }
 
     @ApiAction
-    public Result searchReservations(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchReservations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -314,11 +313,11 @@ public class ReservationApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.searchReservationsHttp(request, version, deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit);
+        return imp.searchReservationsHttp(request, deviceId, appKey, accountId, filterAccountId, reservableId, reservableType, keyword, startDate, endDate, start, limit);
     }
 
     @ApiAction
-    public Result searchSchedule(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchSchedule(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -368,7 +367,7 @@ public class ReservationApiController extends Controller {
         } else {
             timeBucketMins = 30;
         }
-        return imp.searchScheduleHttp(request, version, reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins);
+        return imp.searchScheduleHttp(request, reservableId, reservableType, startDate, endDate, deviceId, accountId, timeBucketMins);
     }
 
 }

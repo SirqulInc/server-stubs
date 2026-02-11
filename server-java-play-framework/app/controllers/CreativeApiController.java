@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CreativeResponse;
 import apimodels.MissionResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class CreativeApiController extends Controller {
     private final CreativeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class CreativeApiController extends Controller {
     }
 
     @ApiAction
-    public Result addPreview(Http.Request request, BigDecimal version) throws Exception {
+    public Result addPreview(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -56,11 +55,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'creativeId' parameter is required");
         }
-        return imp.addPreviewHttp(request, version, accountId, creativeId);
+        return imp.addPreviewHttp(request, accountId, creativeId);
     }
 
     @ApiAction
-    public Result adsFind(Http.Request request, BigDecimal version) throws Exception {
+    public Result adsFind(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -173,11 +172,11 @@ public class CreativeApiController extends Controller {
         } else {
             missionIds = null;
         }
-        return imp.adsFindHttp(request, version, appKey, randomize, targetedAdsOnly, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds);
+        return imp.adsFindHttp(request, appKey, randomize, targetedAdsOnly, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeAudiences, allocatesTickets, missionIds);
     }
 
     @ApiAction
-    public Result createCreative(Http.Request request, BigDecimal version) throws Exception {
+    public Result createCreative(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -283,11 +282,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'waitForAsset' parameter is required");
         }
-        return imp.createCreativeHttp(request, version, accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, type, balance, referenceId, appVersion, missionId, offerId);
+        return imp.createCreativeHttp(request, accountId, name, active, waitForAsset, description, assetImageId, action, data, suffix, type, balance, referenceId, appVersion, missionId, offerId);
     }
 
     @ApiAction
-    public Result deleteCreative(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteCreative(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -302,11 +301,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'creativeId' parameter is required");
         }
-        return imp.deleteCreativeHttp(request, version, accountId, creativeId);
+        return imp.deleteCreativeHttp(request, accountId, creativeId);
     }
 
     @ApiAction
-    public Result getCreative(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCreative(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -321,11 +320,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'creativeId' parameter is required");
         }
-        return imp.getCreativeHttp(request, version, accountId, creativeId);
+        return imp.getCreativeHttp(request, accountId, creativeId);
     }
 
     @ApiAction
-    public Result getCreativesByApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCreativesByApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -368,11 +367,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.getCreativesByApplicationHttp(request, version, accountId, appKey, start, limit, missionId, keyword);
+        return imp.getCreativesByApplicationHttp(request, accountId, appKey, start, limit, missionId, keyword);
     }
 
     @ApiAction
-    public Result removePreview(Http.Request request, BigDecimal version) throws Exception {
+    public Result removePreview(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -387,11 +386,11 @@ public class CreativeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'creativeId' parameter is required");
         }
-        return imp.removePreviewHttp(request, version, accountId, creativeId);
+        return imp.removePreviewHttp(request, accountId, creativeId);
     }
 
     @ApiAction
-    public Result updateCreative(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateCreative(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -490,7 +489,7 @@ public class CreativeApiController extends Controller {
         } else {
             missionId = null;
         }
-        return imp.updateCreativeHttp(request, version, accountId, creativeId, name, description, assetImageId, action, data, suffix, type, balance, active, referenceId, appVersion, missionId);
+        return imp.updateCreativeHttp(request, accountId, creativeId, name, description, assetImageId, action, data, suffix, type, balance, active, referenceId, appVersion, missionId);
     }
 
 }

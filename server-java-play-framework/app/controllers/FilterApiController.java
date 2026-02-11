@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.FilterResponse;
 import apimodels.FilterTreeResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class FilterApiController extends Controller {
     private final FilterApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class FilterApiController extends Controller {
     }
 
     @ApiAction
-    public Result createFilter(Http.Request request, BigDecimal version) throws Exception {
+    public Result createFilter(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -105,11 +104,11 @@ public class FilterApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createFilterHttp(request, version, accountId, name, appKey, parentFilterId, description, externalId, externalType, active, metaData);
+        return imp.createFilterHttp(request, accountId, name, appKey, parentFilterId, description, externalId, externalType, active, metaData);
     }
 
     @ApiAction
-    public Result deleteFilter(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteFilter(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -124,11 +123,11 @@ public class FilterApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'filterId' parameter is required");
         }
-        return imp.deleteFilterHttp(request, version, accountId, filterId);
+        return imp.deleteFilterHttp(request, accountId, filterId);
     }
 
     @ApiAction
-    public Result getFilter(Http.Request request, BigDecimal version) throws Exception {
+    public Result getFilter(Http.Request request) throws Exception {
         String valuefilterId = request.getQueryString("filterId");
         Long filterId;
         if (valuefilterId != null) {
@@ -136,11 +135,11 @@ public class FilterApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'filterId' parameter is required");
         }
-        return imp.getFilterHttp(request, version, filterId);
+        return imp.getFilterHttp(request, filterId);
     }
 
     @ApiAction
-    public Result searchFilters(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchFilters(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -211,11 +210,11 @@ public class FilterApiController extends Controller {
         } else {
             activeOnly = true;
         }
-        return imp.searchFiltersHttp(request, version, accountId, keyword, appKey, responseGroup, rootOnly, sortField, descending, start, limit, activeOnly);
+        return imp.searchFiltersHttp(request, accountId, keyword, appKey, responseGroup, rootOnly, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result updateFilter(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateFilter(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -279,7 +278,7 @@ public class FilterApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.updateFilterHttp(request, version, accountId, filterId, parentFilterId, name, description, externalId, externalType, active, metaData);
+        return imp.updateFilterHttp(request, accountId, filterId, parentFilterId, name, description, externalId, externalType, active, metaData);
     }
 
 }

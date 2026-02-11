@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.ProfileResponse;
 import apimodels.SirqulResponse;
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ThirdPartyCredentialsApiController extends Controller {
     private final ThirdPartyCredentialsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class ThirdPartyCredentialsApiController extends Controller {
     }
 
     @ApiAction
-    public Result createCredential(Http.Request request, BigDecimal version) throws Exception {
+    public Result createCredential(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -164,11 +163,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             audienceIdsToRemove = null;
         }
-        return imp.createCredentialHttp(request, version, thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove);
+        return imp.createCredentialHttp(request, thirdPartyId, thirdPartyToken, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyName, emailAddress, signinOnlyMode, responseFilters, latitude, longitude, metaData, thirdPartyRefreshToken, audienceIdsToAdd, audienceIdsToRemove);
     }
 
     @ApiAction
-    public Result createNetwork(Http.Request request, BigDecimal version) throws Exception {
+    public Result createNetwork(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         String body;
         if (nodebody != null) {
@@ -291,11 +290,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             oauthSecretKey = null;
         }
-        return imp.createNetworkHttp(request, version, accountId, name, enableIntrospection, description, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body);
+        return imp.createNetworkHttp(request, accountId, name, enableIntrospection, description, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body);
     }
 
     @ApiAction
-    public Result deleteCredential(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteCredential(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -324,11 +323,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.deleteCredentialHttp(request, version, accountId, networkUID, thirdPartyId, appKey);
+        return imp.deleteCredentialHttp(request, accountId, networkUID, thirdPartyId, appKey);
     }
 
     @ApiAction
-    public Result deleteNetwork(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteNetwork(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -343,11 +342,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'networkUID' parameter is required");
         }
-        return imp.deleteNetworkHttp(request, version, accountId, networkUID);
+        return imp.deleteNetworkHttp(request, accountId, networkUID);
     }
 
     @ApiAction
-    public Result getCredential(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCredential(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -453,11 +452,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             referralAccountId = null;
         }
-        return imp.getCredentialHttp(request, version, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId);
+        return imp.getCredentialHttp(request, networkUID, appKey, accountId, deviceId, sessionId, thirdPartyCredentialId, thirdPartyToken, thirdPartySecret, createNewAccount, responseFilters, latitude, longitude, audienceIdsToAdd, audienceIdsToRemove, referralAccountId);
     }
 
     @ApiAction
-    public Result getNetwork(Http.Request request, BigDecimal version) throws Exception {
+    public Result getNetwork(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -472,11 +471,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'networkUID' parameter is required");
         }
-        return imp.getNetworkHttp(request, version, accountId, networkUID);
+        return imp.getNetworkHttp(request, accountId, networkUID);
     }
 
     @ApiAction
-    public Result searchCredentials(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchCredentials(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -519,11 +518,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchCredentialsHttp(request, version, accountId, keyword, networkUID, descending, start, limit);
+        return imp.searchCredentialsHttp(request, accountId, keyword, networkUID, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchNetworks(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchNetworks(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -580,11 +579,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             filterBillable = null;
         }
-        return imp.searchNetworksHttp(request, version, accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable);
+        return imp.searchNetworksHttp(request, accountId, sortField, descending, start, limit, activeOnly, keyword, filterBillable);
     }
 
     @ApiAction
-    public Result sendMFAChallenge(Http.Request request, BigDecimal version) throws Exception {
+    public Result sendMFAChallenge(Http.Request request) throws Exception {
         String valuethirdPartyToken = request.getQueryString("thirdPartyToken");
         String thirdPartyToken;
         if (valuethirdPartyToken != null) {
@@ -620,11 +619,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             deviceId = null;
         }
-        return imp.sendMFAChallengeHttp(request, version, networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId);
+        return imp.sendMFAChallengeHttp(request, networkUID, appKey, thirdPartyToken, thirdPartyCredentialId, deviceId);
     }
 
     @ApiAction
-    public Result updateCredential(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateCredential(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -688,11 +687,11 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             thirdPartyRefreshToken = null;
         }
-        return imp.updateCredentialHttp(request, version, networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken);
+        return imp.updateCredentialHttp(request, networkUID, thirdPartyId, appKey, deviceId, thirdPartyName, thirdPartyToken, responseFilters, metaData, thirdPartyRefreshToken);
     }
 
     @ApiAction
-    public Result updateNetwork(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateNetwork(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         String body;
         if (nodebody != null) {
@@ -822,7 +821,7 @@ public class ThirdPartyCredentialsApiController extends Controller {
         } else {
             oauthSecretKey = null;
         }
-        return imp.updateNetworkHttp(request, version, accountId, networkUID, name, description, enableIntrospection, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body);
+        return imp.updateNetworkHttp(request, accountId, networkUID, name, description, enableIntrospection, introspectionMethod, introspectionURL, introspectionParams, requiredRootField, enableMFA, sizeMFA, shelfLifeMFA, oauthTokenURL, oauthPrivateKey, oauthPublicKey, oauthClientId, oauthSecretKey, body);
     }
 
 }

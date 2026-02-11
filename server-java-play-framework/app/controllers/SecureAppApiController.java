@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.PaymentRequest;
 import apimodels.ProfileResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class SecureAppApiController extends Controller {
     private final SecureAppApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class SecureAppApiController extends Controller {
     }
 
     @ApiAction
-    public Result createSecureApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result createSecureApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -113,11 +112,11 @@ public class SecureAppApiController extends Controller {
         } else {
             biometricPosition2 = "UNKNOWN";
         }
-        return imp.createSecureApplicationHttp(request, version, accountId, appKey, keyCert, trustStore, username, password, active, biometricType, biometricPosition, biometricPosition2);
+        return imp.createSecureApplicationHttp(request, accountId, appKey, keyCert, trustStore, username, password, active, biometricType, biometricPosition, biometricPosition2);
     }
 
     @ApiAction
-    public Result deleteSecureApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteSecureApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -132,11 +131,11 @@ public class SecureAppApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.deleteSecureApplicationHttp(request, version, accountId, appKey);
+        return imp.deleteSecureApplicationHttp(request, accountId, appKey);
     }
 
     @ApiAction
-    public Result loginSecure(Http.Request request, BigDecimal version) throws Exception {
+    public Result loginSecure(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -200,11 +199,11 @@ public class SecureAppApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.loginSecureHttp(request, version, appKey, biometricFile, deviceId, biometricFile2, ageRestriction, returnProfile, responseFilters, latitude, longitude);
+        return imp.loginSecureHttp(request, appKey, biometricFile, deviceId, biometricFile2, ageRestriction, returnProfile, responseFilters, latitude, longitude);
     }
 
     @ApiAction
-    public Result purchaseSecure(Http.Request request, BigDecimal version) throws Exception {
+    public Result purchaseSecure(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         PaymentRequest body;
         if (nodebody != null) {
@@ -215,11 +214,11 @@ public class SecureAppApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
-        return imp.purchaseSecureHttp(request, version, body);
+        return imp.purchaseSecureHttp(request, body);
     }
 
     @ApiAction
-    public Result resetSecure(Http.Request request, BigDecimal version) throws Exception {
+    public Result resetSecure(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -234,11 +233,11 @@ public class SecureAppApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.resetSecureHttp(request, version, accountId, appKey);
+        return imp.resetSecureHttp(request, accountId, appKey);
     }
 
     @ApiAction
-    public Result updateSecureApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateSecureApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -309,7 +308,7 @@ public class SecureAppApiController extends Controller {
         } else {
             biometricPosition2 = null;
         }
-        return imp.updateSecureApplicationHttp(request, version, accountId, appKey, active, keyCert, trustStore, username, password, biometricType, biometricPosition, biometricPosition2);
+        return imp.updateSecureApplicationHttp(request, accountId, appKey, active, keyCert, trustStore, username, password, biometricType, biometricPosition, biometricPosition2);
     }
 
 }

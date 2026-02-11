@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class StripeApiController extends Controller {
     private final StripeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class StripeApiController extends Controller {
     }
 
     @ApiAction
-    public Result createStripeCheckoutSession(Http.Request request, BigDecimal version) throws Exception {
+    public Result createStripeCheckoutSession(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -54,7 +53,7 @@ public class StripeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'stripeParameters' parameter is required");
         }
-        return imp.createStripeCheckoutSessionHttp(request, version, appKey, stripeParameters);
+        return imp.createStripeCheckoutSessionHttp(request, appKey, stripeParameters);
     }
 
 }

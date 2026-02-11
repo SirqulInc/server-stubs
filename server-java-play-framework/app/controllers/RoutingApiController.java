@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RoutingListResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RoutingApiController extends Controller {
     private final RoutingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class RoutingApiController extends Controller {
     }
 
     @ApiAction
-    public Result computeRouting(Http.Request request, BigDecimal version) throws Exception {
+    public Result computeRouting(Http.Request request) throws Exception {
         String valuedata = request.getQueryString("data");
         String data;
         if (valuedata != null) {
@@ -47,7 +46,7 @@ public class RoutingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.computeRoutingHttp(request, version, data);
+        return imp.computeRoutingHttp(request, data);
     }
 
 }

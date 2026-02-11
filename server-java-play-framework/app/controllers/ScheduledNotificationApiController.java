@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ScheduledNotificationFullResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ScheduledNotificationApiController extends Controller {
     private final ScheduledNotificationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class ScheduledNotificationApiController extends Controller {
     }
 
     @ApiAction
-    public Result createScheduledNotification(Http.Request request, BigDecimal version) throws Exception {
+    public Result createScheduledNotification(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -279,11 +278,11 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             sendToAll = null;
         }
-        return imp.createScheduledNotificationHttp(request, version, accountId, name, type, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll);
+        return imp.createScheduledNotificationHttp(request, accountId, name, type, message, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, sendNow, eventType, deepLinkURI, sendToAll);
     }
 
     @ApiAction
-    public Result deleteScheduledNotification(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteScheduledNotification(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -305,11 +304,11 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             deleteByGroupingId = null;
         }
-        return imp.deleteScheduledNotificationHttp(request, version, accountId, scheduledNotificationId, deleteByGroupingId);
+        return imp.deleteScheduledNotificationHttp(request, accountId, scheduledNotificationId, deleteByGroupingId);
     }
 
     @ApiAction
-    public Result getScheduledNotification(Http.Request request, BigDecimal version) throws Exception {
+    public Result getScheduledNotification(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -324,11 +323,11 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'scheduledNotificationId' parameter is required");
         }
-        return imp.getScheduledNotificationHttp(request, version, accountId, scheduledNotificationId);
+        return imp.getScheduledNotificationHttp(request, accountId, scheduledNotificationId);
     }
 
     @ApiAction
-    public Result scheduleNotificationListings(Http.Request request, BigDecimal version) throws Exception {
+    public Result scheduleNotificationListings(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -385,11 +384,11 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'recipientReportId' parameter is required");
         }
-        return imp.scheduleNotificationListingsHttp(request, version, accountId, appKey, reportName, message, offset, recipientReportId, reportParams, type);
+        return imp.scheduleNotificationListingsHttp(request, accountId, appKey, reportName, message, offset, recipientReportId, reportParams, type);
     }
 
     @ApiAction
-    public Result searchScheduledNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchScheduledNotifications(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -530,11 +529,11 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             returnAudienceAccountCount = null;
         }
-        return imp.searchScheduledNotificationsHttp(request, version, accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount);
+        return imp.searchScheduledNotificationsHttp(request, accountId, groupingId, audienceId, filter, types, contentIds, contentTypes, parentIds, parentTypes, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly, groupByGroupingId, returnAudienceAccountCount);
     }
 
     @ApiAction
-    public Result updateScheduledNotification(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateScheduledNotification(Http.Request request) throws Exception {
         String valuescheduledNotificationId = request.getQueryString("scheduledNotificationId");
         Long scheduledNotificationId;
         if (valuescheduledNotificationId != null) {
@@ -801,7 +800,7 @@ public class ScheduledNotificationApiController extends Controller {
         } else {
             sendToAll = null;
         }
-        return imp.updateScheduledNotificationHttp(request, version, scheduledNotificationId, accountId, name, type, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll);
+        return imp.updateScheduledNotificationHttp(request, scheduledNotificationId, accountId, name, type, message, payload, contentId, contentName, contentType, parentId, parentType, appKey, groupingId, connectionGroupIds, connectionAccountIds, audienceId, audienceIds, albumIds, reportId, reportParams, endpointURL, scheduledDate, startDate, endDate, cronExpression, cronType, metaData, conditionalInput, templateType, visibility, active, errorMessage, status, updateByGroupingId, sendNow, eventType, deepLinkURI, sendToAll);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.OrsonAiAddMovieResponse;
 import apimodels.OrsonAiBatchResponse;
@@ -36,7 +35,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OrsonApiController extends Controller {
     private final OrsonApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -50,7 +49,7 @@ public class OrsonApiController extends Controller {
     }
 
     @ApiAction
-    public Result addMovie(Http.Request request, BigDecimal version) throws Exception {
+    public Result addMovie(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -100,11 +99,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.addMovieHttp(request, version, accountId, movieName, thirdPartyAccountId, tags, _file, url, paramCallback);
+        return imp.addMovieHttp(request, accountId, movieName, thirdPartyAccountId, tags, _file, url, paramCallback);
     }
 
     @ApiAction
-    public Result aiDocs(Http.Request request, BigDecimal version) throws Exception {
+    public Result aiDocs(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -140,11 +139,11 @@ public class OrsonApiController extends Controller {
         } else {
             offset = null;
         }
-        return imp.aiDocsHttp(request, version, accountId, doc, returnTopics, limit, offset);
+        return imp.aiDocsHttp(request, accountId, doc, returnTopics, limit, offset);
     }
 
     @ApiAction
-    public Result aiFindImages(Http.Request request, BigDecimal version) throws Exception {
+    public Result aiFindImages(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -180,11 +179,11 @@ public class OrsonApiController extends Controller {
         } else {
             size = null;
         }
-        return imp.aiFindImagesHttp(request, version, accountId, text, parseFlag, fetchFlag, size);
+        return imp.aiFindImagesHttp(request, accountId, text, parseFlag, fetchFlag, size);
     }
 
     @ApiAction
-    public Result aiTags(Http.Request request, BigDecimal version) throws Exception {
+    public Result aiTags(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -220,11 +219,11 @@ public class OrsonApiController extends Controller {
         } else {
             offset = null;
         }
-        return imp.aiTagsHttp(request, version, accountId, tags, conditional, limit, offset);
+        return imp.aiTagsHttp(request, accountId, tags, conditional, limit, offset);
     }
 
     @ApiAction
-    public Result aiText(Http.Request request, BigDecimal version) throws Exception {
+    public Result aiText(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -260,11 +259,11 @@ public class OrsonApiController extends Controller {
         } else {
             offset = null;
         }
-        return imp.aiTextHttp(request, version, accountId, terms, conditional, limit, offset);
+        return imp.aiTextHttp(request, accountId, terms, conditional, limit, offset);
     }
 
     @ApiAction
-    public Result batch(Http.Request request, BigDecimal version) throws Exception {
+    public Result batch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -314,11 +313,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.batchHttp(request, version, accountId, thirdPartyAccountId, limit, operations, _file, url, paramCallback);
+        return imp.batchHttp(request, accountId, thirdPartyAccountId, limit, operations, _file, url, paramCallback);
     }
 
     @ApiAction
-    public Result createInstantEpisode(Http.Request request, BigDecimal version) throws Exception {
+    public Result createInstantEpisode(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -333,11 +332,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.createInstantEpisodeHttp(request, version, accountId, data);
+        return imp.createInstantEpisodeHttp(request, accountId, data);
     }
 
     @ApiAction
-    public Result createVoiceCanvas(Http.Request request, BigDecimal version) throws Exception {
+    public Result createVoiceCanvas(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -401,11 +400,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.createVoiceCanvasHttp(request, version, accountId, dimensions, thirdPartyAccountId, text, _file, url, parseFlag, fetchFlag, paramCallback);
+        return imp.createVoiceCanvasHttp(request, accountId, dimensions, thirdPartyAccountId, text, _file, url, parseFlag, fetchFlag, paramCallback);
     }
 
     @ApiAction
-    public Result emotion(Http.Request request, BigDecimal version) throws Exception {
+    public Result emotion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -441,11 +440,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.emotionHttp(request, version, accountId, thirdPartyAccountId, _file, url, paramCallback);
+        return imp.emotionHttp(request, accountId, thirdPartyAccountId, _file, url, paramCallback);
     }
 
     @ApiAction
-    public Result getAddMovieResult(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getAddMovieResult(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -453,11 +452,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getAddMovieResultHttp(request, version, requestId, accountId);
+        return imp.getAddMovieResultHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getBatch(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getBatch(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -465,11 +464,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getBatchHttp(request, version, requestId, accountId);
+        return imp.getBatchHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getEmotion(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getEmotion(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -477,11 +476,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getEmotionHttp(request, version, requestId, accountId);
+        return imp.getEmotionHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getEpisodeStatus(Http.Request request, BigDecimal version,Long episodeId) throws Exception {
+    public Result getEpisodeStatus(Http.Request request, Long episodeId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -489,11 +488,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getEpisodeStatusHttp(request, version, episodeId, accountId);
+        return imp.getEpisodeStatusHttp(request, episodeId, accountId);
     }
 
     @ApiAction
-    public Result getRenderStatus(Http.Request request, BigDecimal version,String renderId) throws Exception {
+    public Result getRenderStatus(Http.Request request, String renderId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -501,11 +500,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getRenderStatusHttp(request, version, renderId, accountId);
+        return imp.getRenderStatusHttp(request, renderId, accountId);
     }
 
     @ApiAction
-    public Result getSTT(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getSTT(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -513,11 +512,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getSTTHttp(request, version, requestId, accountId);
+        return imp.getSTTHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getTTS(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getTTS(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -525,11 +524,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getTTSHttp(request, version, requestId, accountId);
+        return imp.getTTSHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getTechTune(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getTechTune(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -537,11 +536,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getTechTuneHttp(request, version, requestId, accountId);
+        return imp.getTechTuneHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getTopics(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getTopics(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -549,11 +548,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getTopicsHttp(request, version, requestId, accountId);
+        return imp.getTopicsHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result getVoiceCanvas(Http.Request request, BigDecimal version,String requestId) throws Exception {
+    public Result getVoiceCanvas(Http.Request request, String requestId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -561,11 +560,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getVoiceCanvasHttp(request, version, requestId, accountId);
+        return imp.getVoiceCanvasHttp(request, requestId, accountId);
     }
 
     @ApiAction
-    public Result startVideoRender(Http.Request request, BigDecimal version) throws Exception {
+    public Result startVideoRender(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -580,11 +579,11 @@ public class OrsonApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.startVideoRenderHttp(request, version, accountId, data);
+        return imp.startVideoRenderHttp(request, accountId, data);
     }
 
     @ApiAction
-    public Result stt(Http.Request request, BigDecimal version) throws Exception {
+    public Result stt(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -634,11 +633,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.sttHttp(request, version, accountId, thirdPartyAccountId, sourceLanguage, targetLanguage, _file, url, paramCallback);
+        return imp.sttHttp(request, accountId, thirdPartyAccountId, sourceLanguage, targetLanguage, _file, url, paramCallback);
     }
 
     @ApiAction
-    public Result summarizeTopics(Http.Request request, BigDecimal version) throws Exception {
+    public Result summarizeTopics(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -695,11 +694,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.summarizeTopicsHttp(request, version, accountId, thirdPartyAccountId, doc, _file, url, limit, offset, paramCallback);
+        return imp.summarizeTopicsHttp(request, accountId, thirdPartyAccountId, doc, _file, url, limit, offset, paramCallback);
     }
 
     @ApiAction
-    public Result techTune(Http.Request request, BigDecimal version) throws Exception {
+    public Result techTune(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -742,11 +741,11 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.techTuneHttp(request, version, accountId, numFacesExpected, thirdPartyAccountId, _file, url, paramCallback);
+        return imp.techTuneHttp(request, accountId, numFacesExpected, thirdPartyAccountId, _file, url, paramCallback);
     }
 
     @ApiAction
-    public Result tts(Http.Request request, BigDecimal version) throws Exception {
+    public Result tts(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -789,7 +788,7 @@ public class OrsonApiController extends Controller {
         } else {
             paramCallback = null;
         }
-        return imp.ttsHttp(request, version, accountId, text, thirdPartyAccountId, language, voice, paramCallback);
+        return imp.ttsHttp(request, accountId, text, thirdPartyAccountId, language, voice, paramCallback);
     }
 
 }

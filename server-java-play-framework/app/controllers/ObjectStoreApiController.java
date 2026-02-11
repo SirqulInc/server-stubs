@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ObjectStoreResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ObjectStoreApiController extends Controller {
     private final ObjectStoreApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class ObjectStoreApiController extends Controller {
     }
 
     @ApiAction
-    public Result addField(Http.Request request, BigDecimal version) throws Exception {
+    public Result addField(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -75,11 +74,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'fieldType' parameter is required");
         }
-        return imp.addFieldHttp(request, version, accountId, appKey, objectName, fieldName, fieldType);
+        return imp.addFieldHttp(request, accountId, appKey, objectName, fieldName, fieldType);
     }
 
     @ApiAction
-    public Result createData(Http.Request request, BigDecimal version,String objectName) throws Exception {
+    public Result createData(Http.Request request, String objectName) throws Exception {
         JsonNode nodebody = request.body().asJson();
         String body;
         if (nodebody != null) {
@@ -97,11 +96,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             accountId = null;
         }
-        return imp.createDataHttp(request, version, objectName, accountId, body);
+        return imp.createDataHttp(request, objectName, accountId, body);
     }
 
     @ApiAction
-    public Result createObject(Http.Request request, BigDecimal version) throws Exception {
+    public Result createObject(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -123,11 +122,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'objectName' parameter is required");
         }
-        return imp.createObjectHttp(request, version, accountId, appKey, objectName);
+        return imp.createObjectHttp(request, accountId, appKey, objectName);
     }
 
     @ApiAction
-    public Result deleteData(Http.Request request, BigDecimal version,String objectName,String objectId) throws Exception {
+    public Result deleteData(Http.Request request, String objectName,String objectId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -135,11 +134,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             accountId = null;
         }
-        return imp.deleteDataHttp(request, version, objectName, objectId, accountId);
+        return imp.deleteDataHttp(request, objectName, objectId, accountId);
     }
 
     @ApiAction
-    public Result deleteField(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteField(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -168,11 +167,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'fieldName' parameter is required");
         }
-        return imp.deleteFieldHttp(request, version, accountId, appKey, objectName, fieldName);
+        return imp.deleteFieldHttp(request, accountId, appKey, objectName, fieldName);
     }
 
     @ApiAction
-    public Result deleteObject(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteObject(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -194,11 +193,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'objectName' parameter is required");
         }
-        return imp.deleteObjectHttp(request, version, accountId, appKey, objectName);
+        return imp.deleteObjectHttp(request, accountId, appKey, objectName);
     }
 
     @ApiAction
-    public Result getData(Http.Request request, BigDecimal version,String objectName,String objectId) throws Exception {
+    public Result getData(Http.Request request, String objectName,String objectId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -213,11 +212,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             include = null;
         }
-        return imp.getDataHttp(request, version, objectName, objectId, accountId, include);
+        return imp.getDataHttp(request, objectName, objectId, accountId, include);
     }
 
     @ApiAction
-    public Result getObject(Http.Request request, BigDecimal version) throws Exception {
+    public Result getObject(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -239,11 +238,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'objectName' parameter is required");
         }
-        return imp.getObjectHttp(request, version, accountId, appKey, objectName);
+        return imp.getObjectHttp(request, accountId, appKey, objectName);
     }
 
     @ApiAction
-    public Result searchData(Http.Request request, BigDecimal version,String objectName) throws Exception {
+    public Result searchData(Http.Request request, String objectName) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -293,11 +292,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             include = null;
         }
-        return imp.searchDataHttp(request, version, objectName, count, start, limit, accountId, criteria, order, include);
+        return imp.searchDataHttp(request, objectName, count, start, limit, accountId, criteria, order, include);
     }
 
     @ApiAction
-    public Result searchObject(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchObject(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -333,11 +332,11 @@ public class ObjectStoreApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchObjectHttp(request, version, accountId, appKey, start, limit, keyword);
+        return imp.searchObjectHttp(request, accountId, appKey, start, limit, keyword);
     }
 
     @ApiAction
-    public Result updateData(Http.Request request, BigDecimal version,String objectName,String objectId) throws Exception {
+    public Result updateData(Http.Request request, String objectName,String objectId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         String body;
         if (nodebody != null) {
@@ -355,7 +354,7 @@ public class ObjectStoreApiController extends Controller {
         } else {
             accountId = null;
         }
-        return imp.updateDataHttp(request, version, objectName, objectId, accountId, body);
+        return imp.updateDataHttp(request, objectName, objectId, accountId, body);
     }
 
 }

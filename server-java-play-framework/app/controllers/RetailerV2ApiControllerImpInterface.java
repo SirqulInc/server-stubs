@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class RetailerV2ApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result getRetaokilerHttp(Http.Request request, BigDecimal version, @NotNull Long retailerId, @NotNull Boolean activeOnly, String keyword, String sortField, Long start, Long limit) throws Exception {
-        SirqulResponse obj = getRetaokiler(request, version, retailerId, activeOnly, keyword, sortField, start, limit);
+    public Result getRetaokilerHttp(Http.Request request, @NotNull Long retailerId, @NotNull Boolean activeOnly, String keyword, String sortField, Long start, Long limit) throws Exception {
+        SirqulResponse obj = getRetaokiler(request, retailerId, activeOnly, keyword, sortField, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class RetailerV2ApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse getRetaokiler(Http.Request request, BigDecimal version, @NotNull Long retailerId, @NotNull Boolean activeOnly, String keyword, String sortField, Long start, Long limit) throws Exception;
+    public abstract SirqulResponse getRetaokiler(Http.Request request, @NotNull Long retailerId, @NotNull Boolean activeOnly, String keyword, String sortField, Long start, Long limit) throws Exception;
 
 }

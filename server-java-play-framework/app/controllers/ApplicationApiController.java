@@ -4,7 +4,6 @@ import apimodels.AccountListResponse;
 import apimodels.ApplicationResponse;
 import apimodels.ApplicationSettingsResponse;
 import apimodels.ApplicationShortResponse;
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.PlacementResponse;
 import apimodels.SirqulResponse;
@@ -31,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ApplicationApiController extends Controller {
     private final ApplicationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -45,7 +44,7 @@ public class ApplicationApiController extends Controller {
     }
 
     @ApiAction
-    public Result createApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result createApplication(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -599,11 +598,11 @@ public class ApplicationApiController extends Controller {
         } else {
             openAISecretKey = null;
         }
-        return imp.createApplicationHttp(request, version, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey);
+        return imp.createApplicationHttp(request, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey);
     }
 
     @ApiAction
-    public Result createApplicationPlacement(Http.Request request, BigDecimal version) throws Exception {
+    public Result createApplicationPlacement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -681,11 +680,11 @@ public class ApplicationApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.createApplicationPlacementHttp(request, version, appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active);
+        return imp.createApplicationPlacementHttp(request, appKey, size, deviceId, accountId, name, description, height, width, refreshInterval, defaultImageId, active);
     }
 
     @ApiAction
-    public Result deleteApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -700,11 +699,11 @@ public class ApplicationApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.deleteApplicationHttp(request, version, accountId, appKey);
+        return imp.deleteApplicationHttp(request, accountId, appKey);
     }
 
     @ApiAction
-    public Result deleteApplicationPlacement(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteApplicationPlacement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -726,11 +725,11 @@ public class ApplicationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'placementId' parameter is required");
         }
-        return imp.deleteApplicationPlacementHttp(request, version, placementId, deviceId, accountId);
+        return imp.deleteApplicationPlacementHttp(request, placementId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result getApplication(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -745,11 +744,11 @@ public class ApplicationApiController extends Controller {
         } else {
             applicationId = null;
         }
-        return imp.getApplicationHttp(request, version, appKey, applicationId);
+        return imp.getApplicationHttp(request, appKey, applicationId);
     }
 
     @ApiAction
-    public Result getApplicationPlacement(Http.Request request, BigDecimal version) throws Exception {
+    public Result getApplicationPlacement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -771,16 +770,16 @@ public class ApplicationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'placementId' parameter is required");
         }
-        return imp.getApplicationPlacementHttp(request, version, placementId, deviceId, accountId);
+        return imp.getApplicationPlacementHttp(request, placementId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getApplicationVersions(Http.Request request, BigDecimal version) throws Exception {
-        return imp.getApplicationVersionsHttp(request, version);
+    public Result getApplicationVersions(Http.Request request) throws Exception {
+        return imp.getApplicationVersionsHttp(request);
     }
 
     @ApiAction
-    public Result getUniqueUsersByApp(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUniqueUsersByApp(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -837,11 +836,11 @@ public class ApplicationApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.getUniqueUsersByAppHttp(request, version, appKey, q, keyword, since, i, start, l, limit);
+        return imp.getUniqueUsersByAppHttp(request, appKey, q, keyword, since, i, start, l, limit);
     }
 
     @ApiAction
-    public Result listApplications(Http.Request request, BigDecimal version) throws Exception {
+    public Result listApplications(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -982,11 +981,11 @@ public class ApplicationApiController extends Controller {
         } else {
             activeOnly = true;
         }
-        return imp.listApplicationsHttp(request, version, accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly);
+        return imp.listApplicationsHttp(request, accountId, q, keyword, platforms, deviceIds, deviceVersions, categoryIds, sortField, hasAds, publicNotifications, filterBillable, filterContentAdmin, descending, i, start, l, limit, applicationIds, hasObjectStore, activeOnly);
     }
 
     @ApiAction
-    public Result searchApplicationPlacement(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchApplicationPlacement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1022,11 +1021,11 @@ public class ApplicationApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.searchApplicationPlacementHttp(request, version, appKey, deviceId, accountId, start, limit);
+        return imp.searchApplicationPlacementHttp(request, appKey, deviceId, accountId, start, limit);
     }
 
     @ApiAction
-    public Result searchApplicationSettings(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchApplicationSettings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1083,11 +1082,11 @@ public class ApplicationApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchApplicationSettingsHttp(request, version, deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit);
+        return imp.searchApplicationSettingsHttp(request, deviceId, accountId, connectionAccountId, keyword, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchApplications(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchApplications(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1200,11 +1199,11 @@ public class ApplicationApiController extends Controller {
         } else {
             activeOnly = false;
         }
-        return imp.searchApplicationsHttp(request, version, deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly);
+        return imp.searchApplicationsHttp(request, deviceId, accountId, latitude, longitude, q, keyword, qSearchFields, sortField, descending, i, start, l, limit, hasAds, publicNotifications, activeOnly);
     }
 
     @ApiAction
-    public Result updateApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateApplication(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1765,11 +1764,11 @@ public class ApplicationApiController extends Controller {
         } else {
             openAISecretKey = null;
         }
-        return imp.updateApplicationHttp(request, version, appKey, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey);
+        return imp.updateApplicationHttp(request, appKey, appName, deviceId, accountId, about, bundleId, appIconAssetId, appLogoAssetId, facebookAppId, facebookAppSecret, googleApiKey, updateEULADate, eulaVersion, landingPageUrl, showInActivities, activityDescription, inviteWelcomeText, invitePageUrl, urlScheme, platforms, downloadUrls, categoryIds, scoringType, hintCost, maxScore, ticketsPerPoint, hasGameData, publicNotifications, useMatchingAlgorithm, globalTickets, buildVersion, apiVersion, placementName, placementDescription, placementSize, placementHeight, placementWidth, placementRefreshInterval, createObjectStore, publicContentApproval, productionMode, minimumSessionLength, sessionGapLength, localAdsEnabled, sqootApiKey, trilatProcessingType, maxSampleSize, minRSSI, modules, authorizedCount, authorizedServers, defaultTimezone, smtpPass, metaData, placementMetaData, ipsFloor, enableAPNSBadge, includeInReport, defaultAppFilterId, enableWelcomeEmail, appleAppId, appleTeamId, appleAuthKeyId, appleAuthKey, appleIssuerId, appStoreKeyId, appStoreKey, googlePrivateKeyFile, authorizeNetApiKey, authorizeNetTransactionKey, emailSender, smtpUser, smtpHost, vatomBusinessId, vatomRestClientId, vatomRestSecretKey, twilioAccountSID, twilioAuthToken, twilioSenderPhoneNumber, openAISecretKey);
     }
 
     @ApiAction
-    public Result updateApplicationActive(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateApplicationActive(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1791,11 +1790,11 @@ public class ApplicationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'active' parameter is required");
         }
-        return imp.updateApplicationActiveHttp(request, version, accountId, appKey, active);
+        return imp.updateApplicationActiveHttp(request, accountId, appKey, active);
     }
 
     @ApiAction
-    public Result updateApplicationPlacement(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateApplicationPlacement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1873,11 +1872,11 @@ public class ApplicationApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updateApplicationPlacementHttp(request, version, placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active);
+        return imp.updateApplicationPlacementHttp(request, placementId, deviceId, accountId, name, description, size, height, width, refreshInterval, defaultImageId, active);
     }
 
     @ApiAction
-    public Result uploadApplicationCertificate(Http.Request request, BigDecimal version) throws Exception {
+    public Result uploadApplicationCertificate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1906,7 +1905,7 @@ public class ApplicationApiController extends Controller {
         } else {
             certificate = null;
         }
-        return imp.uploadApplicationCertificateHttp(request, version, appKey, deviceId, accountId, certificate);
+        return imp.uploadApplicationCertificateHttp(request, appKey, deviceId, accountId, certificate);
     }
 
 }

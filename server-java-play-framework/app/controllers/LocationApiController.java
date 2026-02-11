@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CoordsResponse;
 import apimodels.GeoPointResponse;
 import java.io.InputStream;
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class LocationApiController extends Controller {
     private final LocationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class LocationApiController extends Controller {
     }
 
     @ApiAction
-    public Result cacheTrilaterationData(Http.Request request, BigDecimal version) throws Exception {
+    public Result cacheTrilaterationData(Http.Request request) throws Exception {
         String valueudid = request.getQueryString("udid");
         String udid;
         if (valueudid != null) {
@@ -80,11 +79,11 @@ public class LocationApiController extends Controller {
         } else {
             dataFile = null;
         }
-        return imp.cacheTrilaterationDataHttp(request, version, udid, sourceTime, minimumSampleSize, data, dataFile);
+        return imp.cacheTrilaterationDataHttp(request, udid, sourceTime, minimumSampleSize, data, dataFile);
     }
 
     @ApiAction
-    public Result cacheTrilaterationDataGzip(Http.Request request, BigDecimal version) throws Exception {
+    public Result cacheTrilaterationDataGzip(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         TrilatCacheRequest body;
         if (nodebody != null) {
@@ -95,11 +94,11 @@ public class LocationApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.cacheTrilaterationDataGzipHttp(request, version, body);
+        return imp.cacheTrilaterationDataGzipHttp(request, body);
     }
 
     @ApiAction
-    public Result getLocationByIp(Http.Request request, BigDecimal version) throws Exception {
+    public Result getLocationByIp(Http.Request request) throws Exception {
         String valueip = request.getQueryString("ip");
         String ip;
         if (valueip != null) {
@@ -107,11 +106,11 @@ public class LocationApiController extends Controller {
         } else {
             ip = null;
         }
-        return imp.getLocationByIpHttp(request, version, ip);
+        return imp.getLocationByIpHttp(request, ip);
     }
 
     @ApiAction
-    public Result getLocationByTrilateration(Http.Request request, BigDecimal version) throws Exception {
+    public Result getLocationByTrilateration(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -147,11 +146,11 @@ public class LocationApiController extends Controller {
         } else {
             responseFilters = null;
         }
-        return imp.getLocationByTrilaterationHttp(request, version, accountId, latitude, longitude, data, responseFilters);
+        return imp.getLocationByTrilaterationHttp(request, accountId, latitude, longitude, data, responseFilters);
     }
 
     @ApiAction
-    public Result getLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result getLocations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -285,7 +284,7 @@ public class LocationApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.getLocationsHttp(request, version, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit);
+        return imp.getLocationsHttp(request, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit);
     }
 
 }

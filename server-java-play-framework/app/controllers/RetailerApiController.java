@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.AccountLoginResponse;
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.RetailerFullResponse;
 import apimodels.RetailerResponse;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RetailerApiController extends Controller {
     private final RetailerApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,7 +42,7 @@ public class RetailerApiController extends Controller {
     }
 
     @ApiAction
-    public Result createRetailer(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRetailer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -275,11 +274,11 @@ public class RetailerApiController extends Controller {
         } else {
             responseFormat = null;
         }
-        return imp.createRetailerHttp(request, version, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, categoryIdsToAdd, categoryIdsToRemove, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, createDefaultLocation, responseFormat);
+        return imp.createRetailerHttp(request, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, categoryIdsToAdd, categoryIdsToRemove, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, createDefaultLocation, responseFormat);
     }
 
     @ApiAction
-    public Result deleteRetailer(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteRetailer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -301,11 +300,11 @@ public class RetailerApiController extends Controller {
         } else {
             retailerId = null;
         }
-        return imp.deleteRetailerHttp(request, version, deviceId, accountId, retailerId);
+        return imp.deleteRetailerHttp(request, deviceId, accountId, retailerId);
     }
 
     @ApiAction
-    public Result getRetailer(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRetailer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -334,11 +333,11 @@ public class RetailerApiController extends Controller {
         } else {
             includeCounts = null;
         }
-        return imp.getRetailerHttp(request, version, retailerId, deviceId, accountId, includeCounts);
+        return imp.getRetailerHttp(request, retailerId, deviceId, accountId, includeCounts);
     }
 
     @ApiAction
-    public Result getRetailers(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRetailers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -437,11 +436,11 @@ public class RetailerApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.getRetailersHttp(request, version, visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l);
+        return imp.getRetailersHttp(request, visibility, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, categoryIds, filterIds, i, l);
     }
 
     @ApiAction
-    public Result retailerLoginCheck(Http.Request request, BigDecimal version) throws Exception {
+    public Result retailerLoginCheck(Http.Request request) throws Exception {
         String valueusername = request.getQueryString("username");
         String username;
         if (valueusername != null) {
@@ -484,11 +483,11 @@ public class RetailerApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.retailerLoginCheckHttp(request, version, username, password, deviceId, latitude, longitude, appKey);
+        return imp.retailerLoginCheckHttp(request, username, password, deviceId, latitude, longitude, appKey);
     }
 
     @ApiAction
-    public Result updateRetailer(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateRetailer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -713,7 +712,7 @@ public class RetailerApiController extends Controller {
         } else {
             responseFormat = null;
         }
-        return imp.updateRetailerHttp(request, version, retailerId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, active, responseFormat);
+        return imp.updateRetailerHttp(request, retailerId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, facebookUrl, twitterUrl, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, metaData, searchTags, retailerType, visibility, active, responseFormat);
     }
 
 }

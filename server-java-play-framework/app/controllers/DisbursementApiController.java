@@ -25,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class DisbursementApiController extends Controller {
     private final DisbursementApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +39,7 @@ public class DisbursementApiController extends Controller {
     }
 
     @ApiAction
-    public Result checkDisbursements(Http.Request request, BigDecimal version) throws Exception {
+    public Result checkDisbursements(Http.Request request) throws Exception {
         String valuedisbursementId = request.getQueryString("disbursementId");
         Long disbursementId;
         if (valuedisbursementId != null) {
@@ -47,11 +47,11 @@ public class DisbursementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'disbursementId' parameter is required");
         }
-        return imp.checkDisbursementsHttp(request, version, disbursementId);
+        return imp.checkDisbursementsHttp(request, disbursementId);
     }
 
     @ApiAction
-    public Result createDisbursement(Http.Request request, BigDecimal version) throws Exception {
+    public Result createDisbursement(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -122,11 +122,11 @@ public class DisbursementApiController extends Controller {
         } else {
             introspectionParams = null;
         }
-        return imp.createDisbursementHttp(request, version, accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams);
+        return imp.createDisbursementHttp(request, accountId, receiverAccountId, originalSenderAccountId, amount, provider, scheduledDate, title, comment, externalId, introspectionParams);
     }
 
     @ApiAction
-    public Result getDisbursement(Http.Request request, BigDecimal version) throws Exception {
+    public Result getDisbursement(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -141,11 +141,11 @@ public class DisbursementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'disbursementId' parameter is required");
         }
-        return imp.getDisbursementHttp(request, version, accountId, disbursementId);
+        return imp.getDisbursementHttp(request, accountId, disbursementId);
     }
 
     @ApiAction
-    public Result searchDisbursements(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchDisbursements(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -216,11 +216,11 @@ public class DisbursementApiController extends Controller {
         } else {
             externalId = null;
         }
-        return imp.searchDisbursementsHttp(request, version, accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId);
+        return imp.searchDisbursementsHttp(request, accountId, receiverAccountId, statuses, providers, beforeDate, afterDate, start, limit, activeOnly, externalId);
     }
 
     @ApiAction
-    public Result updateDisbursement(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateDisbursement(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -291,7 +291,7 @@ public class DisbursementApiController extends Controller {
         } else {
             introspectionParams = null;
         }
-        return imp.updateDisbursementHttp(request, version, accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams);
+        return imp.updateDisbursementHttp(request, accountId, disbursementId, amount, provider, scheduledDate, title, comment, externalId, retry, introspectionParams);
     }
 
 }

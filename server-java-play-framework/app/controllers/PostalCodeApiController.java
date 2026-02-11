@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PostalCodeResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class PostalCodeApiController extends Controller {
     private final PostalCodeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class PostalCodeApiController extends Controller {
     }
 
     @ApiAction
-    public Result createPostalCode(Http.Request request, BigDecimal version) throws Exception {
+    public Result createPostalCode(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -90,11 +89,11 @@ public class PostalCodeApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.createPostalCodeHttp(request, version, accountId, code, latitude, longitude, stateCode, city, active);
+        return imp.createPostalCodeHttp(request, accountId, code, latitude, longitude, stateCode, city, active);
     }
 
     @ApiAction
-    public Result deletePostalCode(Http.Request request, BigDecimal version) throws Exception {
+    public Result deletePostalCode(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -109,11 +108,11 @@ public class PostalCodeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'postalCodeId' parameter is required");
         }
-        return imp.deletePostalCodeHttp(request, version, accountId, postalCodeId);
+        return imp.deletePostalCodeHttp(request, accountId, postalCodeId);
     }
 
     @ApiAction
-    public Result getPostalCode(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPostalCode(Http.Request request) throws Exception {
         String valuepostalCodeId = request.getQueryString("postalCodeId");
         Long postalCodeId;
         if (valuepostalCodeId != null) {
@@ -121,11 +120,11 @@ public class PostalCodeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'postalCodeId' parameter is required");
         }
-        return imp.getPostalCodeHttp(request, version, postalCodeId);
+        return imp.getPostalCodeHttp(request, postalCodeId);
     }
 
     @ApiAction
-    public Result getPostalCodes(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPostalCodes(Http.Request request) throws Exception {
         String valuelatitude = request.getQueryString("latitude");
         Double latitude;
         if (valuelatitude != null) {
@@ -182,11 +181,11 @@ public class PostalCodeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'descending' parameter is required");
         }
-        return imp.getPostalCodesHttp(request, version, sortField, descending, latitude, longitude, keyword, miles, start, limit);
+        return imp.getPostalCodesHttp(request, sortField, descending, latitude, longitude, keyword, miles, start, limit);
     }
 
     @ApiAction
-    public Result updatePostalCode(Http.Request request, BigDecimal version) throws Exception {
+    public Result updatePostalCode(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -243,7 +242,7 @@ public class PostalCodeApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updatePostalCodeHttp(request, version, accountId, postalCodeId, code, latitude, longitude, stateCode, city, active);
+        return imp.updatePostalCodeHttp(request, accountId, postalCodeId, code, latitude, longitude, stateCode, city, active);
     }
 
 }

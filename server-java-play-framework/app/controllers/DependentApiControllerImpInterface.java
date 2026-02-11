@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.Account;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.google.inject.Inject;
@@ -29,8 +28,8 @@ public abstract class DependentApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createHttp(Http.Request request, BigDecimal version, Long accountId, Account body) throws Exception {
-        SirqulResponse obj = create(request, version, accountId, body);
+    public Result createHttp(Http.Request request, Long accountId, Account body) throws Exception {
+        SirqulResponse obj = create(request, accountId, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,10 +41,10 @@ public abstract class DependentApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse create(Http.Request request, BigDecimal version, Long accountId, Account body) throws Exception;
+    public abstract SirqulResponse create(Http.Request request, Long accountId, Account body) throws Exception;
 
-    public Result getDependentsHttp(Http.Request request, BigDecimal version, Long accountId) throws Exception {
-        SirqulResponse obj = getDependents(request, version, accountId);
+    public Result getDependentsHttp(Http.Request request, Long accountId) throws Exception {
+        SirqulResponse obj = getDependents(request, accountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -57,14 +56,14 @@ public abstract class DependentApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse getDependents(Http.Request request, BigDecimal version, Long accountId) throws Exception;
+    public abstract SirqulResponse getDependents(Http.Request request, Long accountId) throws Exception;
 
-    public Result removeDependentHttp(Http.Request request, BigDecimal version, Long accountId, Long dependentId) throws Exception {
-        removeDependent(request, version, accountId, dependentId);
+    public Result removeDependentHttp(Http.Request request, Long accountId, Long dependentId) throws Exception {
+        removeDependent(request, accountId, dependentId);
         return ok();
 
     }
 
-    public abstract void removeDependent(Http.Request request, BigDecimal version, Long accountId, Long dependentId) throws Exception;
+    public abstract void removeDependent(Http.Request request, Long accountId, Long dependentId) throws Exception;
 
 }

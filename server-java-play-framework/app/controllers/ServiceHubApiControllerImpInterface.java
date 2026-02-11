@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ServiceHub;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class ServiceHubApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createServiceHubHttp(Http.Request request, BigDecimal version, ServiceHub body) throws Exception {
-        ServiceHub obj = createServiceHub(request, version, body);
+    public Result createServiceHubHttp(Http.Request request, ServiceHub body) throws Exception {
+        ServiceHub obj = createServiceHub(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,28 +40,28 @@ public abstract class ServiceHubApiControllerImpInterface {
 
     }
 
-    public abstract ServiceHub createServiceHub(Http.Request request, BigDecimal version, ServiceHub body) throws Exception;
+    public abstract ServiceHub createServiceHub(Http.Request request, ServiceHub body) throws Exception;
 
-    public Result deleteServiceHubHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        deleteServiceHub(request, version, id);
+    public Result deleteServiceHubHttp(Http.Request request, Long id) throws Exception {
+        deleteServiceHub(request, id);
         return ok();
 
     }
 
-    public abstract void deleteServiceHub(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract void deleteServiceHub(Http.Request request, Long id) throws Exception;
 
-    public Result getServiceHubHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        Object obj = getServiceHub(request, version, id);
+    public Result getServiceHubHttp(Http.Request request, Long id) throws Exception {
+        Object obj = getServiceHub(request, id);
         JsonNode result = mapper.valueToTree(obj);
 
         return ok(result);
 
     }
 
-    public abstract Object getServiceHub(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract Object getServiceHub(Http.Request request, Long id) throws Exception;
 
-    public Result postServiceHubHttp(Http.Request request, BigDecimal version, Long id, ServiceHub body) throws Exception {
-        ServiceHub obj = postServiceHub(request, version, id, body);
+    public Result postServiceHubHttp(Http.Request request, Long id, ServiceHub body) throws Exception {
+        ServiceHub obj = postServiceHub(request, id, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -74,10 +73,10 @@ public abstract class ServiceHubApiControllerImpInterface {
 
     }
 
-    public abstract ServiceHub postServiceHub(Http.Request request, BigDecimal version, Long id, ServiceHub body) throws Exception;
+    public abstract ServiceHub postServiceHub(Http.Request request, Long id, ServiceHub body) throws Exception;
 
-    public Result putServiceHubHttp(Http.Request request, BigDecimal version, Long id, ServiceHub body) throws Exception {
-        ServiceHub obj = putServiceHub(request, version, id, body);
+    public Result putServiceHubHttp(Http.Request request, Long id, ServiceHub body) throws Exception {
+        ServiceHub obj = putServiceHub(request, id, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -89,10 +88,10 @@ public abstract class ServiceHubApiControllerImpInterface {
 
     }
 
-    public abstract ServiceHub putServiceHub(Http.Request request, BigDecimal version, Long id, ServiceHub body) throws Exception;
+    public abstract ServiceHub putServiceHub(Http.Request request, Long id, ServiceHub body) throws Exception;
 
-    public Result searchServiceHubsHttp(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, String keyword, Long retailerId) throws Exception {
-        List<ServiceHub> obj = searchServiceHubs(request, version, sortField, descending, start, limit, activeOnly, keyword, retailerId);
+    public Result searchServiceHubsHttp(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, String keyword, Long retailerId) throws Exception {
+        List<ServiceHub> obj = searchServiceHubs(request, sortField, descending, start, limit, activeOnly, keyword, retailerId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (ServiceHub curItem : obj) {
@@ -106,6 +105,6 @@ public abstract class ServiceHubApiControllerImpInterface {
 
     }
 
-    public abstract List<ServiceHub> searchServiceHubs(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, String keyword, Long retailerId) throws Exception;
+    public abstract List<ServiceHub> searchServiceHubs(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, String keyword, Long retailerId) throws Exception;
 
 }

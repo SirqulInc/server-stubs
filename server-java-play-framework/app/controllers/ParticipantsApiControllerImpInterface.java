@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class ParticipantsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result processAllParticipantsHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, String appKey, Boolean useShortNameAsID) throws Exception {
-        SirqulResponse obj = processAllParticipants(request, version, accountId, appKey, useShortNameAsID);
+    public Result processAllParticipantsHttp(Http.Request request, @NotNull Long accountId, String appKey, Boolean useShortNameAsID) throws Exception {
+        SirqulResponse obj = processAllParticipants(request, accountId, appKey, useShortNameAsID);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,10 +41,10 @@ public abstract class ParticipantsApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse processAllParticipants(Http.Request request, BigDecimal version, @NotNull Long accountId, String appKey, Boolean useShortNameAsID) throws Exception;
+    public abstract SirqulResponse processAllParticipants(Http.Request request, @NotNull Long accountId, String appKey, Boolean useShortNameAsID) throws Exception;
 
-    public Result processParticipantsHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String league, String appKey, Boolean useShortNameAsID, InputStream _file) throws Exception {
-        SirqulResponse obj = processParticipants(request, version, accountId, league, appKey, useShortNameAsID, _file);
+    public Result processParticipantsHttp(Http.Request request, @NotNull Long accountId, @NotNull String league, String appKey, Boolean useShortNameAsID, InputStream _file) throws Exception {
+        SirqulResponse obj = processParticipants(request, accountId, league, appKey, useShortNameAsID, _file);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -57,6 +56,6 @@ public abstract class ParticipantsApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse processParticipants(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String league, String appKey, Boolean useShortNameAsID, InputStream _file) throws Exception;
+    public abstract SirqulResponse processParticipants(Http.Request request, @NotNull Long accountId, @NotNull String league, String appKey, Boolean useShortNameAsID, InputStream _file) throws Exception;
 
 }

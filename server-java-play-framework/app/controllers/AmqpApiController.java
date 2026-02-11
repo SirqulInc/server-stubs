@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.QueueResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AmqpApiController extends Controller {
     private final AmqpApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class AmqpApiController extends Controller {
     }
 
     @ApiAction
-    public Result consumerCreate(Http.Request request, BigDecimal version) throws Exception {
+    public Result consumerCreate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -139,11 +138,11 @@ public class AmqpApiController extends Controller {
         } else {
             useSSL = null;
         }
-        return imp.consumerCreateHttp(request, version, appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL);
+        return imp.consumerCreateHttp(request, appKey, name, hostname, username, password, dataMapping, deviceId, accountId, port, virtualHost, exchanger, exchangerType, workers, useSSL);
     }
 
     @ApiAction
-    public Result consumerUpdate(Http.Request request, BigDecimal version) throws Exception {
+    public Result consumerUpdate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -186,11 +185,11 @@ public class AmqpApiController extends Controller {
         } else {
             useSSL = null;
         }
-        return imp.consumerUpdateHttp(request, version, appKey, queueId, dataMapping, deviceId, accountId, useSSL);
+        return imp.consumerUpdateHttp(request, appKey, queueId, dataMapping, deviceId, accountId, useSSL);
     }
 
     @ApiAction
-    public Result queueCreate(Http.Request request, BigDecimal version) throws Exception {
+    public Result queueCreate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -275,11 +274,11 @@ public class AmqpApiController extends Controller {
         } else {
             useSSL = null;
         }
-        return imp.queueCreateHttp(request, version, appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL);
+        return imp.queueCreateHttp(request, appKey, name, deviceId, accountId, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL);
     }
 
     @ApiAction
-    public Result queueDelete(Http.Request request, BigDecimal version) throws Exception {
+    public Result queueDelete(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -301,11 +300,11 @@ public class AmqpApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'queueId' parameter is required");
         }
-        return imp.queueDeleteHttp(request, version, queueId, deviceId, accountId);
+        return imp.queueDeleteHttp(request, queueId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result queueGet(Http.Request request, BigDecimal version) throws Exception {
+    public Result queueGet(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -355,11 +354,11 @@ public class AmqpApiController extends Controller {
         } else {
             virtualHost = null;
         }
-        return imp.queueGetHttp(request, version, deviceId, accountId, queueId, appKey, name, hostname, virtualHost);
+        return imp.queueGetHttp(request, deviceId, accountId, queueId, appKey, name, hostname, virtualHost);
     }
 
     @ApiAction
-    public Result queuePublish(Http.Request request, BigDecimal version) throws Exception {
+    public Result queuePublish(Http.Request request) throws Exception {
         String valuequeueId = request.getQueryString("queueId");
         Long queueId;
         if (valuequeueId != null) {
@@ -402,11 +401,11 @@ public class AmqpApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'message' parameter is required");
         }
-        return imp.queuePublishHttp(request, version, message, queueId, appKey, name, hostname, virtualHost);
+        return imp.queuePublishHttp(request, message, queueId, appKey, name, hostname, virtualHost);
     }
 
     @ApiAction
-    public Result queueSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result queueSearch(Http.Request request) throws Exception {
         String valuequeueId = request.getQueryString("queueId");
         Long queueId;
         if (valuequeueId != null) {
@@ -449,11 +448,11 @@ public class AmqpApiController extends Controller {
         } else {
             limit = 10;
         }
-        return imp.queueSearchHttp(request, version, queueId, deviceId, accountId, name, start, limit);
+        return imp.queueSearchHttp(request, queueId, deviceId, accountId, name, start, limit);
     }
 
     @ApiAction
-    public Result queueUpdate(Http.Request request, BigDecimal version) throws Exception {
+    public Result queueUpdate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -538,7 +537,7 @@ public class AmqpApiController extends Controller {
         } else {
             useSSL = null;
         }
-        return imp.queueUpdateHttp(request, version, queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL);
+        return imp.queueUpdateHttp(request, queueId, deviceId, accountId, appKey, workers, analyticTags, hostname, port, username, password, virtualHost, useSSL);
     }
 
 }

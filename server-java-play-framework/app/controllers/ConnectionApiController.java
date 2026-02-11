@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ConnectionGroupResponse;
 import apimodels.ConnectionInfoResponse;
 import apimodels.ConnectionListResponse;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ConnectionApiController extends Controller {
     private final ConnectionApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,7 +42,7 @@ public class ConnectionApiController extends Controller {
     }
 
     @ApiAction
-    public Result addConnectionToGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result addConnectionToGroup(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -107,11 +106,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addConnectionToGroupHttp(request, version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude);
+        return imp.addConnectionToGroupHttp(request, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude);
     }
 
     @ApiAction
-    public Result addConnectionsToGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result addConnectionsToGroup(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -161,11 +160,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addConnectionsToGroupHttp(request, version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude);
+        return imp.addConnectionsToGroupHttp(request, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude);
     }
 
     @ApiAction
-    public Result addSubGroups(Http.Request request, BigDecimal version) throws Exception {
+    public Result addSubGroups(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -215,11 +214,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addSubGroupsHttp(request, version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude);
+        return imp.addSubGroupsHttp(request, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result createOrUpdateConnection(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOrUpdateConnection(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -318,11 +317,11 @@ public class ConnectionApiController extends Controller {
         } else {
             connectionResponse = null;
         }
-        return imp.createOrUpdateConnectionHttp(request, version, deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse);
+        return imp.createOrUpdateConnectionHttp(request, deviceId, accountId, connectionId, connectionAccountId, pendingId, groupId, gameType, appKey, isTrusted, ignoreFriendRequest, isContact, isBlocked, isFollowing, connectionResponse);
     }
 
     @ApiAction
-    public Result createOrUpdateGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOrUpdateGroup(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -421,11 +420,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createOrUpdateGroupHttp(request, version, returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude);
+        return imp.createOrUpdateGroupHttp(request, returnNulls, deviceId, accountId, name, groupId, assetId, connections, description, canViewProfileInfo, canViewGameInfo, canViewFriendInfo, active, latitude, longitude);
     }
 
     @ApiAction
-    public Result followAccept(Http.Request request, BigDecimal version) throws Exception {
+    public Result followAccept(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -447,11 +446,11 @@ public class ConnectionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.followAcceptHttp(request, version, accountId, connectionAccountId, appKey);
+        return imp.followAcceptHttp(request, accountId, connectionAccountId, appKey);
     }
 
     @ApiAction
-    public Result followReject(Http.Request request, BigDecimal version) throws Exception {
+    public Result followReject(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -473,11 +472,11 @@ public class ConnectionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.followRejectHttp(request, version, accountId, connectionAccountId, appKey);
+        return imp.followRejectHttp(request, accountId, connectionAccountId, appKey);
     }
 
     @ApiAction
-    public Result followRemove(Http.Request request, BigDecimal version) throws Exception {
+    public Result followRemove(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -499,11 +498,11 @@ public class ConnectionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.followRemoveHttp(request, version, accountId, connectionAccountId, appKey);
+        return imp.followRemoveHttp(request, accountId, connectionAccountId, appKey);
     }
 
     @ApiAction
-    public Result followRequest(Http.Request request, BigDecimal version) throws Exception {
+    public Result followRequest(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -532,11 +531,11 @@ public class ConnectionApiController extends Controller {
         } else {
             approvalNeeded = true;
         }
-        return imp.followRequestHttp(request, version, accountId, connectionAccountId, appKey, approvalNeeded);
+        return imp.followRequestHttp(request, accountId, connectionAccountId, appKey, approvalNeeded);
     }
 
     @ApiAction
-    public Result friendAccept(Http.Request request, BigDecimal version) throws Exception {
+    public Result friendAccept(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -586,11 +585,11 @@ public class ConnectionApiController extends Controller {
         } else {
             notificationMessage = null;
         }
-        return imp.friendAcceptHttp(request, version, friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage);
+        return imp.friendAcceptHttp(request, friendAccountId, notifyFriend, deviceId, accountId, gameType, appKey, notificationMessage);
     }
 
     @ApiAction
-    public Result friendReject(Http.Request request, BigDecimal version) throws Exception {
+    public Result friendReject(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -640,11 +639,11 @@ public class ConnectionApiController extends Controller {
         } else {
             notificationMessage = null;
         }
-        return imp.friendRejectHttp(request, version, friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage);
+        return imp.friendRejectHttp(request, friendAccountId, deviceId, accountId, gameType, appKey, notifyFriend, notificationMessage);
     }
 
     @ApiAction
-    public Result friendRemove(Http.Request request, BigDecimal version) throws Exception {
+    public Result friendRemove(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -680,11 +679,11 @@ public class ConnectionApiController extends Controller {
         } else {
             removeFromGroups = null;
         }
-        return imp.friendRemoveHttp(request, version, friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups);
+        return imp.friendRemoveHttp(request, friendAccountId, deviceId, accountId, notifyFriend, removeFromGroups);
     }
 
     @ApiAction
-    public Result friendRequest(Http.Request request, BigDecimal version) throws Exception {
+    public Result friendRequest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -727,11 +726,11 @@ public class ConnectionApiController extends Controller {
         } else {
             notificationMessage = null;
         }
-        return imp.friendRequestHttp(request, version, friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage);
+        return imp.friendRequestHttp(request, friendAccountId, deviceId, accountId, gameType, appKey, notificationMessage);
     }
 
     @ApiAction
-    public Result getConnectionSentFriendRequests(Http.Request request, BigDecimal version) throws Exception {
+    public Result getConnectionSentFriendRequests(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -746,11 +745,11 @@ public class ConnectionApiController extends Controller {
         } else {
             accountId = null;
         }
-        return imp.getConnectionSentFriendRequestsHttp(request, version, deviceId, accountId);
+        return imp.getConnectionSentFriendRequestsHttp(request, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getConnections(Http.Request request, BigDecimal version) throws Exception {
+    public Result getConnections(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -856,11 +855,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getConnectionsHttp(request, version, returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude);
+        return imp.getConnectionsHttp(request, returnNulls, filter, sortField, descending, start, limit, deviceId, accountId, connectionAccountId, q, keyword, i, l, latitude, longitude);
     }
 
     @ApiAction
-    public Result getGroupDetails(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGroupDetails(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -903,11 +902,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getGroupDetailsHttp(request, version, combineConnections, deviceId, accountId, groupId, latitude, longitude);
+        return imp.getGroupDetailsHttp(request, combineConnections, deviceId, accountId, groupId, latitude, longitude);
     }
 
     @ApiAction
-    public Result groupSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result groupSearch(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -978,11 +977,11 @@ public class ConnectionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.groupSearchHttp(request, version, sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword);
+        return imp.groupSearchHttp(request, sortField, descending, activeOnly, start, limit, deviceId, accountId, latitude, longitude, keyword);
     }
 
     @ApiAction
-    public Result removeConnectionFromGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeConnectionFromGroup(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1046,11 +1045,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeConnectionFromGroupHttp(request, version, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude);
+        return imp.removeConnectionFromGroupHttp(request, returnNulls, groupId, deviceId, accountId, connectionId, connectionAccountId, pendingId, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeConnectionsFromGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeConnectionsFromGroup(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1100,11 +1099,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeConnectionsFromGroupHttp(request, version, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude);
+        return imp.removeConnectionsFromGroupHttp(request, connectionGroupId, deviceId, accountId, connectionIds, connectionAccountIds, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeGroup(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeGroup(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1147,11 +1146,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeGroupHttp(request, version, returnNulls, groupId, deviceId, accountId, latitude, longitude);
+        return imp.removeGroupHttp(request, returnNulls, groupId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeSubGroups(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeSubGroups(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1201,11 +1200,11 @@ public class ConnectionApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeSubGroupsHttp(request, version, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude);
+        return imp.removeSubGroupsHttp(request, returnNulls, groupId, subGroupIds, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchConnections(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchConnections(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1311,7 +1310,7 @@ public class ConnectionApiController extends Controller {
         } else {
             hasLocation = null;
         }
-        return imp.searchConnectionsHttp(request, version, returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation);
+        return imp.searchConnectionsHttp(request, returnNulls, start, limit, deviceId, accountId, q, keyword, latitude, longitude, gameType, appKey, i, l, sortField, hasLocation);
     }
 
 }

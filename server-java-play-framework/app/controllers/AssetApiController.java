@@ -3,7 +3,6 @@ package controllers;
 import apimodels.AssetFullResponse;
 import apimodels.AssetResponse;
 import apimodels.AssetShortResponse;
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
 
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AssetApiController extends Controller {
     private final AssetApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,12 +42,12 @@ public class AssetApiController extends Controller {
     }
 
     @ApiAction
-    public Result assetDownload(Http.Request request, BigDecimal version, @Pattern(regexp=".+")String filename) throws Exception {
-        return imp.assetDownloadHttp(request, version, filename);
+    public Result assetDownload(Http.Request request,  @Pattern(regexp=".+")String filename) throws Exception {
+        return imp.assetDownloadHttp(request, filename);
     }
 
     @ApiAction
-    public Result assetMorph(Http.Request request, BigDecimal version) throws Exception {
+    public Result assetMorph(Http.Request request) throws Exception {
         String valueofferId = request.getQueryString("offerId");
         Long offerId;
         if (valueofferId != null) {
@@ -98,11 +97,11 @@ public class AssetApiController extends Controller {
         } else {
             template = null;
         }
-        return imp.assetMorphHttp(request, version, offerId, adSize, creativeId, width, height, backgroundSize, template);
+        return imp.assetMorphHttp(request, offerId, adSize, creativeId, width, height, backgroundSize, template);
     }
 
     @ApiAction
-    public Result createAsset(Http.Request request, BigDecimal version) throws Exception {
+    public Result createAsset(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -341,11 +340,11 @@ public class AssetApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createAssetHttp(request, version, returnNulls, deviceId, accountId, albumId, collectionId, addToDefaultAlbum, addToMediaLibrary, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, app, appKey, searchTags, latitude, longitude);
+        return imp.createAssetHttp(request, returnNulls, deviceId, accountId, albumId, collectionId, addToDefaultAlbum, addToMediaLibrary, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, app, appKey, searchTags, latitude, longitude);
     }
 
     @ApiAction
-    public Result deleteAsset(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteAsset(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -381,11 +380,11 @@ public class AssetApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.deleteAssetHttp(request, version, assetId, deviceId, accountId, latitude, longitude);
+        return imp.deleteAssetHttp(request, assetId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getAsset(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAsset(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -414,11 +413,11 @@ public class AssetApiController extends Controller {
         } else {
             noteDescending = false;
         }
-        return imp.getAssetHttp(request, version, assetId, deviceId, accountId, noteDescending);
+        return imp.getAssetHttp(request, assetId, deviceId, accountId, noteDescending);
     }
 
     @ApiAction
-    public Result removeAsset(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeAsset(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -475,11 +474,11 @@ public class AssetApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeAssetHttp(request, version, assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude);
+        return imp.removeAssetHttp(request, assetId, deviceId, accountId, albumId, collectionId, removeFromDefaultAlbums, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchAssets(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAssets(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -648,11 +647,11 @@ public class AssetApiController extends Controller {
         } else {
             assignedAccountId = null;
         }
-        return imp.searchAssetsHttp(request, version, deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId);
+        return imp.searchAssetsHttp(request, deviceId, accountId, albumIds, assetIds, appKey, mediaType, mimeType, keyword, versionCode, versionName, updatedSince, updatedBefore, sortField, descending, searchMediaLibrary, filterByBillable, activeOnly, returnApp, start, limit, searchMode, assetType, approvalStatus, assignedAccountId);
     }
 
     @ApiAction
-    public Result updateAsset(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateAsset(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -870,7 +869,7 @@ public class AssetApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.updateAssetHttp(request, version, assetId, deviceId, accountId, albumId, attachedAssetId, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, searchTags, appKey, latitude, longitude);
+        return imp.updateAssetHttp(request, assetId, deviceId, accountId, albumId, attachedAssetId, versionCode, versionName, metaData, caption, assetType, approvalStatus, assignedAccountId, media, mediaUrl, mediaString, mediaStringFileName, mediaStringContentType, mediaHeight, mediaWidth, attachedMedia, attachedMediaUrl, attachedMediaString, attachedMediaStringFileName, attachedMediaStringContentType, attachedMediaHeight, attachedMediaWidth, locationDescription, searchTags, appKey, latitude, longitude);
     }
 
 }

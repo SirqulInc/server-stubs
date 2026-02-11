@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.GameLevelListResponse;
 import apimodels.GameLevelResponse;
 import apimodels.QuestionResponse;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class GameLevelApiController extends Controller {
     private final GameLevelApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,7 +42,7 @@ public class GameLevelApiController extends Controller {
     }
 
     @ApiAction
-    public Result createGameLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result createGameLevel(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -226,11 +225,11 @@ public class GameLevelApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createGameLevelHttp(request, version, accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData);
+        return imp.createGameLevelHttp(request, accountId, name, gameData, gameDataSuffix, appKey, description, difficulty, appVersion, assetImageId, assetIconId, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData);
     }
 
     @ApiAction
-    public Result deleteGameLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteGameLevel(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -245,11 +244,11 @@ public class GameLevelApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'levelId' parameter is required");
         }
-        return imp.deleteGameLevelHttp(request, version, accountId, levelId);
+        return imp.deleteGameLevelHttp(request, accountId, levelId);
     }
 
     @ApiAction
-    public Result getGameLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGameLevel(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -271,11 +270,11 @@ public class GameLevelApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.getGameLevelHttp(request, version, accountId, levelId, includeGameData);
+        return imp.getGameLevelHttp(request, accountId, levelId, includeGameData);
     }
 
     @ApiAction
-    public Result getGameLevelsByApplication(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGameLevelsByApplication(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -346,11 +345,11 @@ public class GameLevelApiController extends Controller {
         } else {
             filters = null;
         }
-        return imp.getGameLevelsByApplicationHttp(request, version, accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters);
+        return imp.getGameLevelsByApplicationHttp(request, accountId, appKey, keyword, sortField, descending, start, limit, appVersion, includeGameData, filters);
     }
 
     @ApiAction
-    public Result getGameLevelsByBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGameLevelsByBillableEntity(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -407,11 +406,11 @@ public class GameLevelApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.getGameLevelsByBillableEntityHttp(request, version, accountId, appKey, keyword, sortField, descending, activeOnly, start, limit);
+        return imp.getGameLevelsByBillableEntityHttp(request, accountId, appKey, keyword, sortField, descending, activeOnly, start, limit);
     }
 
     @ApiAction
-    public Result getQuestionsInLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result getQuestionsInLevel(Http.Request request) throws Exception {
         String valuelevelId = request.getQueryString("levelId");
         Long levelId;
         if (valuelevelId != null) {
@@ -426,11 +425,11 @@ public class GameLevelApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getQuestionsInLevelHttp(request, version, levelId, accountId);
+        return imp.getQuestionsInLevelHttp(request, levelId, accountId);
     }
 
     @ApiAction
-    public Result getWordsInLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result getWordsInLevel(Http.Request request) throws Exception {
         String valuelevelId = request.getQueryString("levelId");
         Long levelId;
         if (valuelevelId != null) {
@@ -445,11 +444,11 @@ public class GameLevelApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getWordsInLevelHttp(request, version, levelId, accountId);
+        return imp.getWordsInLevelHttp(request, levelId, accountId);
     }
 
     @ApiAction
-    public Result updateGameLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateGameLevel(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -639,11 +638,11 @@ public class GameLevelApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.updateGameLevelHttp(request, version, accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData);
+        return imp.updateGameLevelHttp(request, accountId, levelId, appKey, name, description, difficulty, appVersion, assetImageId, assetIconId, gameData, gameDataSuffix, visibility, friendGroup, connectionIds, connectionGroupIds, balance, active, allocateTickets, ticketCount, ticketType, points, tutorialTitle, tutorialMessage, tutorialAlignment, tutorialImageAssetId, offerId, metaData);
     }
 
     @ApiAction
-    public Result updateQuestionsInLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateQuestionsInLevel(Http.Request request) throws Exception {
         String valuelevelId = request.getQueryString("levelId");
         Long levelId;
         if (valuelevelId != null) {
@@ -665,11 +664,11 @@ public class GameLevelApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'questionIds' parameter is required");
         }
-        return imp.updateQuestionsInLevelHttp(request, version, levelId, accountId, questionIds);
+        return imp.updateQuestionsInLevelHttp(request, levelId, accountId, questionIds);
     }
 
     @ApiAction
-    public Result updateWordsInLevel(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateWordsInLevel(Http.Request request) throws Exception {
         String valuelevelId = request.getQueryString("levelId");
         Long levelId;
         if (valuelevelId != null) {
@@ -691,7 +690,7 @@ public class GameLevelApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'wordIds' parameter is required");
         }
-        return imp.updateWordsInLevelHttp(request, version, levelId, accountId, wordIds);
+        return imp.updateWordsInLevelHttp(request, levelId, accountId, wordIds);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.RetailerLocationResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RetailerLocationApiController extends Controller {
     private final RetailerLocationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class RetailerLocationApiController extends Controller {
     }
 
     @ApiAction
-    public Result createRetailerLocationConsumer(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRetailerLocationConsumer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -245,11 +244,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createRetailerLocationConsumerHttp(request, version, appKey, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, detailsHeader, detailsBody, hours, tags, logoAssetId, picture1AssetId, picture2AssetId, categoryIds, filterIds, metaData, publicLocation, active, locationType, latitude, longitude);
+        return imp.createRetailerLocationConsumerHttp(request, appKey, name, deviceId, accountId, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, detailsHeader, detailsBody, hours, tags, logoAssetId, picture1AssetId, picture2AssetId, categoryIds, filterIds, metaData, publicLocation, active, locationType, latitude, longitude);
     }
 
     @ApiAction
-    public Result createRetailerLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRetailerLocations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -523,11 +522,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             responseIncludes = null;
         }
-        return imp.createRetailerLocationsHttp(request, version, retailerId, name, streetAddress, city, state, postalCode, deviceId, accountId, streetAddress2, country, businessPhone, businessPhoneExt, website, email, internalId, detailsHeader, detailsBody, hours, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, building, googlePlaceId, yelpId, active, publicLocation, locationType, audienceIds, audienceIdsToAdd, audienceIdsToRemove, responseFormat, responseIncludes);
+        return imp.createRetailerLocationsHttp(request, retailerId, name, streetAddress, city, state, postalCode, deviceId, accountId, streetAddress2, country, businessPhone, businessPhoneExt, website, email, internalId, detailsHeader, detailsBody, hours, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, building, googlePlaceId, yelpId, active, publicLocation, locationType, audienceIds, audienceIdsToAdd, audienceIdsToRemove, responseFormat, responseIncludes);
     }
 
     @ApiAction
-    public Result deleteRetailerLocation(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteRetailerLocation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -549,11 +548,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             retailerLocationId = null;
         }
-        return imp.deleteRetailerLocationHttp(request, version, deviceId, accountId, retailerLocationId);
+        return imp.deleteRetailerLocationHttp(request, deviceId, accountId, retailerLocationId);
     }
 
     @ApiAction
-    public Result getRetailerLocation(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRetailerLocation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -582,11 +581,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             retailerLocationToken = null;
         }
-        return imp.getRetailerLocationHttp(request, version, retailerLocationId, deviceId, accountId, retailerLocationToken);
+        return imp.getRetailerLocationHttp(request, retailerLocationId, deviceId, accountId, retailerLocationToken);
     }
 
     @ApiAction
-    public Result getRetailerLocationConsumer(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRetailerLocationConsumer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -608,11 +607,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'retailerLocationId' parameter is required");
         }
-        return imp.getRetailerLocationConsumerHttp(request, version, retailerLocationId, deviceId, accountId);
+        return imp.getRetailerLocationConsumerHttp(request, retailerLocationId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result indexedRetailerLocationDistanceSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result indexedRetailerLocationDistanceSearch(Http.Request request) throws Exception {
         String valuelatitude = request.getQueryString("latitude");
         Double latitude;
         if (valuelatitude != null) {
@@ -851,11 +850,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             includeRating = null;
         }
-        return imp.indexedRetailerLocationDistanceSearchHttp(request, version, latitude, longitude, searchRange, start, limit, accountId, address, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, distanceUnit, returnFavorited, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating);
+        return imp.indexedRetailerLocationDistanceSearchHttp(request, latitude, longitude, searchRange, start, limit, accountId, address, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, distanceUnit, returnFavorited, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating);
     }
 
     @ApiAction
-    public Result indexedRetailerLocationSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result indexedRetailerLocationSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1052,11 +1051,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             includeRating = null;
         }
-        return imp.indexedRetailerLocationSearchHttp(request, version, accountId, start, limit, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating);
+        return imp.indexedRetailerLocationSearchHttp(request, accountId, start, limit, hasOffers, categories, filters, audiences, retailerIds, retailerLocationIds, tags, locationType, sortField, descending, q, keyword, keywordOperator, searchExpression, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, returnExternalCategoryData, includeFavorite, includeLiked, includeRating);
     }
 
     @ApiAction
-    public Result searchRetailerLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRetailerLocations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1232,11 +1231,11 @@ public class RetailerLocationApiController extends Controller {
         } else {
             includeRating = null;
         }
-        return imp.searchRetailerLocationsHttp(request, version, deviceId, accountId, q, keyword, retailerIds, retailerLocationIds, locationType, sortField, descending, i, start, l, limit, showPublicLocations, activeOnly, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, includeFavorite, includeLiked, includeRating);
+        return imp.searchRetailerLocationsHttp(request, deviceId, accountId, q, keyword, retailerIds, retailerLocationIds, locationType, sortField, descending, i, start, l, limit, showPublicLocations, activeOnly, returnRetailer, returnAssets, returnOffers, returnCategories, returnFilters, returnAudiences, returnQrCode, includeFavorite, includeLiked, includeRating);
     }
 
     @ApiAction
-    public Result updateRetailerLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateRetailerLocations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1524,7 +1523,7 @@ public class RetailerLocationApiController extends Controller {
         } else {
             tags = null;
         }
-        return imp.updateRetailerLocationsHttp(request, version, retailerLocationId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, internalId, detailsHeader, detailsBody, hours, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, building, googlePlaceId, yelpId, metaData, paymentProvider, active, publicLocation, locationType, audienceIds, audienceIdsToAdd, audienceIdsToRemove, responseFormat, tags);
+        return imp.updateRetailerLocationsHttp(request, retailerLocationId, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, country, businessPhone, businessPhoneExt, website, email, internalId, detailsHeader, detailsBody, hours, logo, logoAssetId, picture1, picture1AssetId, picture2, picture2AssetId, categoryIds, filterIds, latitude, longitude, building, googlePlaceId, yelpId, metaData, paymentProvider, active, publicLocation, locationType, audienceIds, audienceIdsToAdd, audienceIdsToRemove, responseFormat, tags);
     }
 
 }

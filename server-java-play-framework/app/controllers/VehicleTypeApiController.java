@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.VehicleType;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class VehicleTypeApiController extends Controller {
     private final VehicleTypeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class VehicleTypeApiController extends Controller {
     }
 
     @ApiAction
-    public Result createVehicleType(Http.Request request, BigDecimal version) throws Exception {
+    public Result createVehicleType(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         VehicleType body;
         if (nodebody != null) {
@@ -57,21 +56,21 @@ public class VehicleTypeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'vehicleType' parameter is required");
         }
-        return imp.createVehicleTypeHttp(request, version, vehicleType, body);
+        return imp.createVehicleTypeHttp(request, vehicleType, body);
     }
 
     @ApiAction
-    public Result deleteVehicleType(Http.Request request, BigDecimal version,Long vehicleTypeId) throws Exception {
-        return imp.deleteVehicleTypeHttp(request, version, vehicleTypeId);
+    public Result deleteVehicleType(Http.Request request, Long vehicleTypeId) throws Exception {
+        return imp.deleteVehicleTypeHttp(request, vehicleTypeId);
     }
 
     @ApiAction
-    public Result getVehicleType(Http.Request request, BigDecimal version,Long vehicleTypeId) throws Exception {
-        return imp.getVehicleTypeHttp(request, version, vehicleTypeId);
+    public Result getVehicleType(Http.Request request, Long vehicleTypeId) throws Exception {
+        return imp.getVehicleTypeHttp(request, vehicleTypeId);
     }
 
     @ApiAction
-    public Result searchVehicleTypes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchVehicleTypes(Http.Request request) throws Exception {
         String valueretailerId = request.getQueryString("retailerId");
         Long retailerId;
         if (valueretailerId != null) {
@@ -121,11 +120,11 @@ public class VehicleTypeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchVehicleTypesHttp(request, version, sortField, descending, start, limit, activeOnly, retailerId, hubId);
+        return imp.searchVehicleTypesHttp(request, sortField, descending, start, limit, activeOnly, retailerId, hubId);
     }
 
     @ApiAction
-    public Result updateVehicleType(Http.Request request, BigDecimal version,Long vehicleTypeId) throws Exception {
+    public Result updateVehicleType(Http.Request request, Long vehicleTypeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         VehicleType body;
         if (nodebody != null) {
@@ -143,7 +142,7 @@ public class VehicleTypeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'vehicleType' parameter is required");
         }
-        return imp.updateVehicleTypeHttp(request, version, vehicleTypeId, vehicleType, body);
+        return imp.updateVehicleTypeHttp(request, vehicleTypeId, vehicleType, body);
     }
 
 }

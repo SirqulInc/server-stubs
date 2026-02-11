@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CargoType;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class CargoTypeApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createCargoTypeHttp(Http.Request request, BigDecimal version, CargoType body) throws Exception {
-        CargoType obj = createCargoType(request, version, body);
+    public Result createCargoTypeHttp(Http.Request request, CargoType body) throws Exception {
+        CargoType obj = createCargoType(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,18 +40,18 @@ public abstract class CargoTypeApiControllerImpInterface {
 
     }
 
-    public abstract CargoType createCargoType(Http.Request request, BigDecimal version, CargoType body) throws Exception;
+    public abstract CargoType createCargoType(Http.Request request, CargoType body) throws Exception;
 
-    public Result deleteCargoTypeHttp(Http.Request request, BigDecimal version, Long cargoTypeId) throws Exception {
-        deleteCargoType(request, version, cargoTypeId);
+    public Result deleteCargoTypeHttp(Http.Request request, Long cargoTypeId) throws Exception {
+        deleteCargoType(request, cargoTypeId);
         return ok();
 
     }
 
-    public abstract void deleteCargoType(Http.Request request, BigDecimal version, Long cargoTypeId) throws Exception;
+    public abstract void deleteCargoType(Http.Request request, Long cargoTypeId) throws Exception;
 
-    public Result getCargoTypeHttp(Http.Request request, BigDecimal version, Long cargoTypeId) throws Exception {
-        CargoType obj = getCargoType(request, version, cargoTypeId);
+    public Result getCargoTypeHttp(Http.Request request, Long cargoTypeId) throws Exception {
+        CargoType obj = getCargoType(request, cargoTypeId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -64,10 +63,10 @@ public abstract class CargoTypeApiControllerImpInterface {
 
     }
 
-    public abstract CargoType getCargoType(Http.Request request, BigDecimal version, Long cargoTypeId) throws Exception;
+    public abstract CargoType getCargoType(Http.Request request, Long cargoTypeId) throws Exception;
 
-    public Result searchCargoTypesHttp(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception {
-        List<CargoType> obj = searchCargoTypes(request, version, sortField, descending, start, limit, activeOnly, retailerId, hubId);
+    public Result searchCargoTypesHttp(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception {
+        List<CargoType> obj = searchCargoTypes(request, sortField, descending, start, limit, activeOnly, retailerId, hubId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (CargoType curItem : obj) {
@@ -81,10 +80,10 @@ public abstract class CargoTypeApiControllerImpInterface {
 
     }
 
-    public abstract List<CargoType> searchCargoTypes(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception;
+    public abstract List<CargoType> searchCargoTypes(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception;
 
-    public Result updateCargoTypeHttp(Http.Request request, BigDecimal version, Long cargoTypeId, CargoType body) throws Exception {
-        CargoType obj = updateCargoType(request, version, cargoTypeId, body);
+    public Result updateCargoTypeHttp(Http.Request request, Long cargoTypeId, CargoType body) throws Exception {
+        CargoType obj = updateCargoType(request, cargoTypeId, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -96,6 +95,6 @@ public abstract class CargoTypeApiControllerImpInterface {
 
     }
 
-    public abstract CargoType updateCargoType(Http.Request request, BigDecimal version, Long cargoTypeId, CargoType body) throws Exception;
+    public abstract CargoType updateCargoType(Http.Request request, Long cargoTypeId, CargoType body) throws Exception;
 
 }

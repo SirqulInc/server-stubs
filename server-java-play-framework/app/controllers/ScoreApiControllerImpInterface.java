@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ScoreResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class ScoreApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createScoreHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer points, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, Integer timeTaken, Boolean highest) throws Exception {
-        ScoreResponse obj = createScore(request, version, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest);
+    public Result createScoreHttp(Http.Request request, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer points, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, Integer timeTaken, Boolean highest) throws Exception {
+        ScoreResponse obj = createScore(request, accountId, appKey, points, missionId, gameId, packId, gameLevelId, gameObjectId, timeTaken, highest);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,10 +40,10 @@ public abstract class ScoreApiControllerImpInterface {
 
     }
 
-    public abstract ScoreResponse createScore(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer points, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, Integer timeTaken, Boolean highest) throws Exception;
+    public abstract ScoreResponse createScore(Http.Request request, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer points, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, Integer timeTaken, Boolean highest) throws Exception;
 
-    public Result getScoreHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, String scoreObjectType, String scoreStatus) throws Exception {
-        ScoreResponse obj = getScore(request, version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus);
+    public Result getScoreHttp(Http.Request request, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, String scoreObjectType, String scoreStatus) throws Exception {
+        ScoreResponse obj = getScore(request, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId, scoreObjectType, scoreStatus);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -56,10 +55,10 @@ public abstract class ScoreApiControllerImpInterface {
 
     }
 
-    public abstract ScoreResponse getScore(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, String scoreObjectType, String scoreStatus) throws Exception;
+    public abstract ScoreResponse getScore(Http.Request request, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId, String scoreObjectType, String scoreStatus) throws Exception;
 
-    public Result searchScoresHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId) throws Exception {
-        List<ScoreResponse> obj = searchScores(request, version, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId);
+    public Result searchScoresHttp(Http.Request request, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId) throws Exception {
+        List<ScoreResponse> obj = searchScores(request, accountId, appKey, missionId, gameId, packId, gameLevelId, gameObjectId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (ScoreResponse curItem : obj) {
@@ -73,6 +72,6 @@ public abstract class ScoreApiControllerImpInterface {
 
     }
 
-    public abstract List<ScoreResponse> searchScores(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId) throws Exception;
+    public abstract List<ScoreResponse> searchScores(Http.Request request, @NotNull Long accountId, @NotNull String appKey, Long missionId, Long gameId, Long packId, Long gameLevelId, Long gameObjectId) throws Exception;
 
 }

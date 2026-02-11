@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ParticipantsApiController extends Controller {
     private final ParticipantsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class ParticipantsApiController extends Controller {
     }
 
     @ApiAction
-    public Result processAllParticipants(Http.Request request, BigDecimal version) throws Exception {
+    public Result processAllParticipants(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -62,11 +61,11 @@ public class ParticipantsApiController extends Controller {
         } else {
             useShortNameAsID = null;
         }
-        return imp.processAllParticipantsHttp(request, version, accountId, appKey, useShortNameAsID);
+        return imp.processAllParticipantsHttp(request, accountId, appKey, useShortNameAsID);
     }
 
     @ApiAction
-    public Result processParticipants(Http.Request request, BigDecimal version) throws Exception {
+    public Result processParticipants(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -102,7 +101,7 @@ public class ParticipantsApiController extends Controller {
         } else {
             _file = null;
         }
-        return imp.processParticipantsHttp(request, version, accountId, league, appKey, useShortNameAsID, _file);
+        return imp.processParticipantsHttp(request, accountId, league, appKey, useShortNameAsID, _file);
     }
 
 }

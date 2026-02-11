@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CsvImportResponse;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
@@ -30,8 +29,8 @@ public abstract class CsvImportApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result getStatusCSVHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception {
-        SirqulResponse obj = getStatusCSV(request, version, accountId, batchId, responseGroup, start, limit);
+    public Result getStatusCSVHttp(Http.Request request, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception {
+        SirqulResponse obj = getStatusCSV(request, accountId, batchId, responseGroup, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -43,25 +42,10 @@ public abstract class CsvImportApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse getStatusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception;
+    public abstract SirqulResponse getStatusCSV(Http.Request request, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception;
 
-    public Result listStatusCSVHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
-        CsvImportResponse obj = listStatusCSV(request, version, accountId, start, limit);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract CsvImportResponse listStatusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception;
-
-    public Result statusCSVHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId) throws Exception {
-        CsvImportResponse obj = statusCSV(request, version, accountId, batchId);
+    public Result listStatusCSVHttp(Http.Request request, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+        CsvImportResponse obj = listStatusCSV(request, accountId, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -73,10 +57,10 @@ public abstract class CsvImportApiControllerImpInterface {
 
     }
 
-    public abstract CsvImportResponse statusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId) throws Exception;
+    public abstract CsvImportResponse listStatusCSV(Http.Request request, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception;
 
-    public Result uploadCSVHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception {
-        CsvImportResponse obj = uploadCSV(request, version, accountId, uploadType, importFile, fileFormat, appKey);
+    public Result statusCSVHttp(Http.Request request, @NotNull Long accountId, @NotNull Long batchId) throws Exception {
+        CsvImportResponse obj = statusCSV(request, accountId, batchId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -88,6 +72,21 @@ public abstract class CsvImportApiControllerImpInterface {
 
     }
 
-    public abstract CsvImportResponse uploadCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception;
+    public abstract CsvImportResponse statusCSV(Http.Request request, @NotNull Long accountId, @NotNull Long batchId) throws Exception;
+
+    public Result uploadCSVHttp(Http.Request request, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception {
+        CsvImportResponse obj = uploadCSV(request, accountId, uploadType, importFile, fileFormat, appKey);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract CsvImportResponse uploadCSV(Http.Request request, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception;
 
 }

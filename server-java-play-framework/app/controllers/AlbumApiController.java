@@ -2,7 +2,6 @@ package controllers;
 
 import apimodels.AlbumFullResponse;
 import apimodels.AlbumResponse;
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.SearchResponse;
 import apimodels.SirqulResponse;
@@ -29,7 +28,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AlbumApiController extends Controller {
     private final AlbumApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -43,7 +42,7 @@ public class AlbumApiController extends Controller {
     }
 
     @ApiAction
-    public Result addAlbumCollection(Http.Request request, BigDecimal version) throws Exception {
+    public Result addAlbumCollection(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -366,11 +365,11 @@ public class AlbumApiController extends Controller {
         } else {
             linkedObjectId = null;
         }
-        return imp.addAlbumCollectionHttp(request, version, title, coverAssetNullable, includeCoverInAssetList, publicRead, publicWrite, publicDelete, publicAdd, anonymous, deviceId, accountId, assetsToAdd, media, mediaURL, assetId, attachedMedia, attachedMediaURL, startDate, endDate, tags, description, albumType, albumTypeId, subType, latitude, longitude, locationDescription, visibility, gameType, appKey, cellPhone, streetAddress, streetAddress2, city, state, postalCode, fullAddress, metaData, categoryIds, categoryFilterIds, audienceIds, includeAllAppUsersAsMembers, includeAudiencesAsMembers, audienceOperator, approvalStatus, linkedObjectType, linkedObjectId);
+        return imp.addAlbumCollectionHttp(request, title, coverAssetNullable, includeCoverInAssetList, publicRead, publicWrite, publicDelete, publicAdd, anonymous, deviceId, accountId, assetsToAdd, media, mediaURL, assetId, attachedMedia, attachedMediaURL, startDate, endDate, tags, description, albumType, albumTypeId, subType, latitude, longitude, locationDescription, visibility, gameType, appKey, cellPhone, streetAddress, streetAddress2, city, state, postalCode, fullAddress, metaData, categoryIds, categoryFilterIds, audienceIds, includeAllAppUsersAsMembers, includeAudiencesAsMembers, audienceOperator, approvalStatus, linkedObjectType, linkedObjectId);
     }
 
     @ApiAction
-    public Result addAlbumUsers(Http.Request request, BigDecimal version) throws Exception {
+    public Result addAlbumUsers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -441,11 +440,11 @@ public class AlbumApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'includeFriendGroup' parameter is required");
         }
-        return imp.addAlbumUsersHttp(request, version, albumId, includeFriendGroup, deviceId, accountId, read, write, delete, add, connections, connectionGroups);
+        return imp.addAlbumUsersHttp(request, albumId, includeFriendGroup, deviceId, accountId, read, write, delete, add, connections, connectionGroups);
     }
 
     @ApiAction
-    public Result approveAlbum(Http.Request request, BigDecimal version) throws Exception {
+    public Result approveAlbum(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -481,11 +480,11 @@ public class AlbumApiController extends Controller {
         } else {
             verified = null;
         }
-        return imp.approveAlbumHttp(request, version, albumId, deviceId, accountId, approvalStatus, verified);
+        return imp.approveAlbumHttp(request, albumId, deviceId, accountId, approvalStatus, verified);
     }
 
     @ApiAction
-    public Result getAlbumCollection(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAlbumCollection(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -549,11 +548,11 @@ public class AlbumApiController extends Controller {
         } else {
             audiencePreviewSize = null;
         }
-        return imp.getAlbumCollectionHttp(request, version, returnNulls, albumId, deviceId, accountId, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize);
+        return imp.getAlbumCollectionHttp(request, returnNulls, albumId, deviceId, accountId, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize);
     }
 
     @ApiAction
-    public Result leaveAlbum(Http.Request request, BigDecimal version) throws Exception {
+    public Result leaveAlbum(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -575,11 +574,11 @@ public class AlbumApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'albumId' parameter is required");
         }
-        return imp.leaveAlbumHttp(request, version, albumId, deviceId, accountId);
+        return imp.leaveAlbumHttp(request, albumId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result removeAlbum(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeAlbum(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -601,11 +600,11 @@ public class AlbumApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'albumId' parameter is required");
         }
-        return imp.removeAlbumHttp(request, version, albumId, deviceId, accountId);
+        return imp.removeAlbumHttp(request, albumId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result removeAlbumUsers(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeAlbumUsers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -648,11 +647,11 @@ public class AlbumApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'removeFriendGroup' parameter is required");
         }
-        return imp.removeAlbumUsersHttp(request, version, albumId, removeFriendGroup, deviceId, accountId, connections, connectionGroups);
+        return imp.removeAlbumUsersHttp(request, albumId, removeFriendGroup, deviceId, accountId, connections, connectionGroups);
     }
 
     @ApiAction
-    public Result searchAlbums(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAlbums(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1073,11 +1072,11 @@ public class AlbumApiController extends Controller {
         } else {
             generateAlbums = null;
         }
-        return imp.searchAlbumsHttp(request, version, filter, albumTypeId, subType, includeInactive, sortField, descending, start, limit, range, includeLiked, includeFavorited, includePermissions, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, deviceId, accountId, connectionAccountId, ownerId, albumIds, excludeAlbumIds, mediaId, keyword, albumType, limitPerAlbumType, dateCreated, updatedSince, updatedBefore, createdSince, createdBefore, startedSince, startedBefore, endedSince, endedBefore, latitude, longitude, appKey, categoryIds, categoryFilterIds, audienceIds, excludeAudienceIds, includeCompletable, includeRating, searchMode, stackSearch, stackWindowSize, minStackPerPage, stackPaginationIdentifier, stackDetails, flagCountMinimum, removeFlaggedContent, verifiedFilter, linkedObjectType, linkedObjectId, orderAudienceId, ignoreDefaultAppFilter, searchExpression, generateAlbums);
+        return imp.searchAlbumsHttp(request, filter, albumTypeId, subType, includeInactive, sortField, descending, start, limit, range, includeLiked, includeFavorited, includePermissions, likePreviewSize, assetPreviewSize, notePreviewSize, connectionPreviewSize, audiencePreviewSize, deviceId, accountId, connectionAccountId, ownerId, albumIds, excludeAlbumIds, mediaId, keyword, albumType, limitPerAlbumType, dateCreated, updatedSince, updatedBefore, createdSince, createdBefore, startedSince, startedBefore, endedSince, endedBefore, latitude, longitude, appKey, categoryIds, categoryFilterIds, audienceIds, excludeAudienceIds, includeCompletable, includeRating, searchMode, stackSearch, stackWindowSize, minStackPerPage, stackPaginationIdentifier, stackDetails, flagCountMinimum, removeFlaggedContent, verifiedFilter, linkedObjectType, linkedObjectId, orderAudienceId, ignoreDefaultAppFilter, searchExpression, generateAlbums);
     }
 
     @ApiAction
-    public Result updateAlbumCollection(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateAlbumCollection(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1393,7 +1392,7 @@ public class AlbumApiController extends Controller {
         } else {
             indexNow = null;
         }
-        return imp.updateAlbumCollectionHttp(request, version, albumId, deviceId, accountId, assetsToAdd, assetsToRemove, assetId, media, mediaURL, active, title, startDate, endDate, tags, description, albumType, albumTypeId, subType, publicRead, publicWrite, publicDelete, publicAdd, latitude, longitude, locationDescription, visibility, cellPhone, streetAddress, streetAddress2, city, state, postalCode, fullAddress, anonymous, metaData, categoryIds, categoryFilterIds, audienceIds, audienceIdsToAdd, audienceIdsToRemove, includeAllAppUsersAsMembers, includeAudiencesAsMembers, audienceOperator, linkedObjectType, linkedObjectId, indexNow);
+        return imp.updateAlbumCollectionHttp(request, albumId, deviceId, accountId, assetsToAdd, assetsToRemove, assetId, media, mediaURL, active, title, startDate, endDate, tags, description, albumType, albumTypeId, subType, publicRead, publicWrite, publicDelete, publicAdd, latitude, longitude, locationDescription, visibility, cellPhone, streetAddress, streetAddress2, city, state, postalCode, fullAddress, anonymous, metaData, categoryIds, categoryFilterIds, audienceIds, audienceIdsToAdd, audienceIdsToRemove, includeAllAppUsersAsMembers, includeAudiencesAsMembers, audienceOperator, linkedObjectType, linkedObjectId, indexNow);
     }
 
 }

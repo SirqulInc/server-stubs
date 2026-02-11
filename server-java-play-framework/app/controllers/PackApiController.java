@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PackResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class PackApiController extends Controller {
     private final PackApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class PackApiController extends Controller {
     }
 
     @ApiAction
-    public Result createPack(Http.Request request, BigDecimal version) throws Exception {
+    public Result createPack(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -209,11 +208,11 @@ public class PackApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.createPackHttp(request, version, accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points);
+        return imp.createPackHttp(request, accountId, title, packOrder, price, highest, allocateTickets, ticketCount, description, searchTags, active, gameType, appKey, packType, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, priceType, gameLevelIds, inGame, ticketType, points);
     }
 
     @ApiAction
-    public Result deletePack(Http.Request request, BigDecimal version) throws Exception {
+    public Result deletePack(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -228,11 +227,11 @@ public class PackApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'packId' parameter is required");
         }
-        return imp.deletePackHttp(request, version, accountId, packId);
+        return imp.deletePackHttp(request, accountId, packId);
     }
 
     @ApiAction
-    public Result getPack(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPack(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -254,11 +253,11 @@ public class PackApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'includeGameData' parameter is required");
         }
-        return imp.getPackHttp(request, version, accountId, packId, includeGameData);
+        return imp.getPackHttp(request, accountId, packId, includeGameData);
     }
 
     @ApiAction
-    public Result searchPacks(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPacks(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -329,11 +328,11 @@ public class PackApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.searchPacksHttp(request, version, accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey);
+        return imp.searchPacksHttp(request, accountId, sortField, descending, keyword, packType, start, limit, includeGameData, includeInactive, appKey);
     }
 
     @ApiAction
-    public Result updatePack(Http.Request request, BigDecimal version) throws Exception {
+    public Result updatePack(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -509,7 +508,7 @@ public class PackApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.updatePackHttp(request, version, accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points);
+        return imp.updatePackHttp(request, accountId, packId, allocateTickets, ticketCount, title, description, searchTags, active, gameType, appKey, packType, packOrder, sequenceType, backgroundId, imageId, startDate, endDate, authorOverride, price, priceType, gameLevelIds, inGame, highest, ticketType, points);
     }
 
 }

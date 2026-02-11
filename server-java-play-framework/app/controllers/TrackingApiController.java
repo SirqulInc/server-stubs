@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.AccountMiniResponse;
-import java.math.BigDecimal;
 import apimodels.Leg;
 import apimodels.LegResponse;
 import apimodels.PredictedLocationResponse;
@@ -31,7 +30,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TrackingApiController extends Controller {
     private final TrackingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -45,7 +44,7 @@ public class TrackingApiController extends Controller {
     }
 
     @ApiAction
-    public Result batchSaveTracking(Http.Request request, BigDecimal version) throws Exception {
+    public Result batchSaveTracking(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -95,11 +94,11 @@ public class TrackingApiController extends Controller {
         } else {
             slaveUID = null;
         }
-        return imp.batchSaveTrackingHttp(request, version, data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID);
+        return imp.batchSaveTrackingHttp(request, data, deviceId, accountId, generateAccounts, updateAccountLocations, defaultTag, slaveUID);
     }
 
     @ApiAction
-    public Result getPredictedLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPredictedLocations(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -163,11 +162,11 @@ public class TrackingApiController extends Controller {
         } else {
             sortOrder = "MATCHES";
         }
-        return imp.getPredictedLocationsHttp(request, version, accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder);
+        return imp.getPredictedLocationsHttp(request, accountId, latitude, longitude, dateCheck, hourCheck, threshold, distanceUnit, searchRange, sortOrder);
     }
 
     @ApiAction
-    public Result getPredictedPath(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPredictedPath(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -189,11 +188,11 @@ public class TrackingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'endStepId' parameter is required");
         }
-        return imp.getPredictedPathHttp(request, version, accountId, startStepId, endStepId);
+        return imp.getPredictedPathHttp(request, accountId, startStepId, endStepId);
     }
 
     @ApiAction
-    public Result getPreferredLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPreferredLocations(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -271,11 +270,11 @@ public class TrackingApiController extends Controller {
         } else {
             distanceUnit = "MILES";
         }
-        return imp.getPreferredLocationsHttp(request, version, accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit);
+        return imp.getPreferredLocationsHttp(request, accountId, latitude, longitude, dateCheck, hourCheck, sortField, descending, start, limit, searchRange, distanceUnit);
     }
 
     @ApiAction
-    public Result getTrackingLegs(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTrackingLegs(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -332,11 +331,11 @@ public class TrackingApiController extends Controller {
         } else {
             getLastPoint = false;
         }
-        return imp.getTrackingLegsHttp(request, version, deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint);
+        return imp.getTrackingLegsHttp(request, deviceId, accountId, ownerId, trackingDeviceId, startDate, endDate, tags, getLastPoint);
     }
 
     @ApiAction
-    public Result saveTrackingLeg(Http.Request request, BigDecimal version) throws Exception {
+    public Result saveTrackingLeg(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -421,11 +420,11 @@ public class TrackingApiController extends Controller {
         } else {
             tags = null;
         }
-        return imp.saveTrackingLegHttp(request, version, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags);
+        return imp.saveTrackingLegHttp(request, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration, steps, tags);
     }
 
     @ApiAction
-    public Result saveTrackingStep(Http.Request request, BigDecimal version) throws Exception {
+    public Result saveTrackingStep(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -503,11 +502,11 @@ public class TrackingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'endDate' parameter is required");
         }
-        return imp.saveTrackingStepHttp(request, version, legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration);
+        return imp.saveTrackingStepHttp(request, legId, startLat, startLng, startDate, endLat, endLng, endDate, deviceId, accountId, distance, duration);
     }
 
     @ApiAction
-    public Result searchAccountsWithTrackingLegs(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAccountsWithTrackingLegs(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -606,11 +605,11 @@ public class TrackingApiController extends Controller {
         } else {
             activeOnly = false;
         }
-        return imp.searchAccountsWithTrackingLegsHttp(request, version, accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly);
+        return imp.searchAccountsWithTrackingLegsHttp(request, accountId, keyword, startDate, endDate, tags, audienceIds, latitude, longitude, range, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result searchTrackingLegs(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTrackingLegs(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -667,7 +666,7 @@ public class TrackingApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.searchTrackingLegsHttp(request, version, accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit);
+        return imp.searchTrackingLegsHttp(request, accountId, appKey, trackingDeviceId, startDate, endDate, tags, start, limit);
     }
 
 }

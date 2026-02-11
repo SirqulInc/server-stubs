@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.MissionShortResponse;
 import apimodels.SirqulResponse;
 import apimodels.TournamentResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TournamentApiController extends Controller {
     private final TournamentApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class TournamentApiController extends Controller {
     }
 
     @ApiAction
-    public Result createTournament(Http.Request request, BigDecimal version) throws Exception {
+    public Result createTournament(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -287,11 +286,11 @@ public class TournamentApiController extends Controller {
         } else {
             tieTag = null;
         }
-        return imp.createTournamentHttp(request, version, accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag);
+        return imp.createTournamentHttp(request, accountId, appKey, title, costToPlay, startDate, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, missionType, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag);
     }
 
     @ApiAction
-    public Result deleteTournament(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteTournament(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -306,11 +305,11 @@ public class TournamentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'missionId' parameter is required");
         }
-        return imp.deleteTournamentHttp(request, version, accountId, missionId);
+        return imp.deleteTournamentHttp(request, accountId, missionId);
     }
 
     @ApiAction
-    public Result getTournament(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTournament(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -346,11 +345,11 @@ public class TournamentApiController extends Controller {
         } else {
             objectPreviewSize = 50;
         }
-        return imp.getTournamentHttp(request, version, accountId, missionId, joinCode, includeScores, objectPreviewSize);
+        return imp.getTournamentHttp(request, accountId, missionId, joinCode, includeScores, objectPreviewSize);
     }
 
     @ApiAction
-    public Result searchObjects(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchObjects(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -393,11 +392,11 @@ public class TournamentApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchObjectsHttp(request, version, accountId, gameLevelId, sortField, descending, start, limit);
+        return imp.searchObjectsHttp(request, accountId, gameLevelId, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchRounds(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRounds(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -454,11 +453,11 @@ public class TournamentApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchRoundsHttp(request, version, accountId, appKey, status, missionType, currentOnly, visibilities, start, limit);
+        return imp.searchRoundsHttp(request, accountId, appKey, status, missionType, currentOnly, visibilities, start, limit);
     }
 
     @ApiAction
-    public Result searchTournaments(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTournaments(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -543,11 +542,11 @@ public class TournamentApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchTournamentsHttp(request, version, accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit);
+        return imp.searchTournamentsHttp(request, accountId, appKey, keyword, subType, includeInactive, missionTypes, filter, sortField, descending, visibility, start, limit);
     }
 
     @ApiAction
-    public Result submitTournamentScore(Http.Request request, BigDecimal version) throws Exception {
+    public Result submitTournamentScore(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -597,11 +596,11 @@ public class TournamentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'scores' parameter is required");
         }
-        return imp.submitTournamentScoreHttp(request, version, accountId, appKey, missionId, gameId, packId, scores, gameLevelId);
+        return imp.submitTournamentScoreHttp(request, accountId, appKey, missionId, gameId, packId, scores, gameLevelId);
     }
 
     @ApiAction
-    public Result submitTournamentVote(Http.Request request, BigDecimal version) throws Exception {
+    public Result submitTournamentVote(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -644,11 +643,11 @@ public class TournamentApiController extends Controller {
         } else {
             checkIfDeviceAlreadyVoted = false;
         }
-        return imp.submitTournamentVoteHttp(request, version, accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted);
+        return imp.submitTournamentVoteHttp(request, accountId, appKey, missionId, gameObjectId, deviceId, checkIfDeviceAlreadyVoted);
     }
 
     @ApiAction
-    public Result substituteTournamentPlayer(Http.Request request, BigDecimal version) throws Exception {
+    public Result substituteTournamentPlayer(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -677,11 +676,11 @@ public class TournamentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'gameLevelId' parameter is required");
         }
-        return imp.substituteTournamentPlayerHttp(request, version, accountId, missionId, packId, gameLevelId);
+        return imp.substituteTournamentPlayerHttp(request, accountId, missionId, packId, gameLevelId);
     }
 
     @ApiAction
-    public Result updateTournament(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateTournament(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -920,7 +919,7 @@ public class TournamentApiController extends Controller {
         } else {
             tieTag = null;
         }
-        return imp.updateTournamentHttp(request, version, accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag);
+        return imp.updateTournamentHttp(request, accountId, missionId, title, subType, imageAssetId, secondsBetweenLevels, secondsForTieBreaker, secondsBetweenPacks, maximumLevelLength, costToPlay, costToPlayType, minimumToPlay, startingLimit, availableLimit, description, metaData, startDate, audienceIds, active, enableBuyBack, offerIds, offerAssetId, fixedReward, splitReward, allocateTickets, tournamentData, visibility, preliminaryGroups, preliminaryGroupAdvancements, enableMultipleEntries, enableMultipleVotes, featured, winnerTag, tieTag);
     }
 
 }

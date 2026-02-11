@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Stop;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class StopApiController extends Controller {
     private final StopApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,12 +38,12 @@ public class StopApiController extends Controller {
     }
 
     @ApiAction
-    public Result getStop(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.getStopHttp(request, version, id);
+    public Result getStop(Http.Request request, Long id) throws Exception {
+        return imp.getStopHttp(request, id);
     }
 
     @ApiAction
-    public Result updateStop(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateStop(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Stop body;
         if (nodebody != null) {
@@ -55,7 +54,7 @@ public class StopApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateStopHttp(request, version, id, body);
+        return imp.updateStopHttp(request, id, body);
     }
 
 }

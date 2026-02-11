@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.LikableResponse;
 import apimodels.SearchResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class LikeApiController extends Controller {
     private final LikeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class LikeApiController extends Controller {
     }
 
     @ApiAction
-    public Result registerLike(Http.Request request, BigDecimal version) throws Exception {
+    public Result registerLike(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -125,11 +124,11 @@ public class LikeApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.registerLikeHttp(request, version, likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude);
+        return imp.registerLikeHttp(request, likableType, likableId, deviceId, accountId, permissionableType, permissionableId, like, app, gameType, appKey, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeLike(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeLike(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -172,11 +171,11 @@ public class LikeApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeLikeHttp(request, version, likableType, likableId, deviceId, accountId, latitude, longitude);
+        return imp.removeLikeHttp(request, likableType, likableId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchLikes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchLikes(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -254,7 +253,7 @@ public class LikeApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchLikesHttp(request, version, likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit);
+        return imp.searchLikesHttp(request, likableType, likableId, deviceId, accountId, connectionAccountIds, sortField, descending, updatedSince, updatedBefore, start, limit);
     }
 
 }

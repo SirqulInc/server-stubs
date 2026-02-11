@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Location;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class LocationApiV2ApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createLocationV2Http(Http.Request request, BigDecimal version, Location body) throws Exception {
-        SirqulResponse obj = createLocationV2(request, version, body);
+    public Result createLocationV2Http(Http.Request request, Location body) throws Exception {
+        SirqulResponse obj = createLocationV2(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,10 +41,10 @@ public abstract class LocationApiV2ApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse createLocationV2(Http.Request request, BigDecimal version, Location body) throws Exception;
+    public abstract SirqulResponse createLocationV2(Http.Request request, Location body) throws Exception;
 
-    public Result updateLocationV2Http(Http.Request request, BigDecimal version, Long id, Location body) throws Exception {
-        SirqulResponse obj = updateLocationV2(request, version, id, body);
+    public Result updateLocationV2Http(Http.Request request, Long id, Location body) throws Exception {
+        SirqulResponse obj = updateLocationV2(request, id, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -57,6 +56,6 @@ public abstract class LocationApiV2ApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse updateLocationV2(Http.Request request, BigDecimal version, Long id, Location body) throws Exception;
+    public abstract SirqulResponse updateLocationV2(Http.Request request, Long id, Location body) throws Exception;
 
 }

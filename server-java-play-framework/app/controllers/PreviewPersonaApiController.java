@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PreviewPersonaResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class PreviewPersonaApiController extends Controller {
     private final PreviewPersonaApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class PreviewPersonaApiController extends Controller {
     }
 
     @ApiAction
-    public Result createPersona(Http.Request request, BigDecimal version) throws Exception {
+    public Result createPersona(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -104,11 +103,11 @@ public class PreviewPersonaApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.createPersonaHttp(request, version, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude);
+        return imp.createPersonaHttp(request, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude);
     }
 
     @ApiAction
-    public Result deletePersona(Http.Request request, BigDecimal version) throws Exception {
+    public Result deletePersona(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -123,11 +122,11 @@ public class PreviewPersonaApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'personaId' parameter is required");
         }
-        return imp.deletePersonaHttp(request, version, accountId, personaId);
+        return imp.deletePersonaHttp(request, accountId, personaId);
     }
 
     @ApiAction
-    public Result getPersonaList(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPersonaList(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -142,11 +141,11 @@ public class PreviewPersonaApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'personaId' parameter is required");
         }
-        return imp.getPersonaListHttp(request, version, accountId, personaId);
+        return imp.getPersonaListHttp(request, accountId, personaId);
     }
 
     @ApiAction
-    public Result searchPersona(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPersona(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -168,11 +167,11 @@ public class PreviewPersonaApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchPersonaHttp(request, version, accountId, start, limit);
+        return imp.searchPersonaHttp(request, accountId, start, limit);
     }
 
     @ApiAction
-    public Result updatePersona(Http.Request request, BigDecimal version) throws Exception {
+    public Result updatePersona(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -250,7 +249,7 @@ public class PreviewPersonaApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.updatePersonaHttp(request, version, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude);
+        return imp.updatePersonaHttp(request, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude);
     }
 
 }

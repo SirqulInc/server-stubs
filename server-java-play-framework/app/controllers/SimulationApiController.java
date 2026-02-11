@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class SimulationApiController extends Controller {
     private final SimulationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class SimulationApiController extends Controller {
     }
 
     @ApiAction
-    public Result simulation(Http.Request request, BigDecimal version) throws Exception {
+    public Result simulation(Http.Request request) throws Exception {
         String valuedata = request.getQueryString("data");
         String data;
         if (valuedata != null) {
@@ -54,7 +53,7 @@ public class SimulationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'realTime' parameter is required");
         }
-        return imp.simulationHttp(request, version, data, realTime);
+        return imp.simulationHttp(request, data, realTime);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RegionResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RegionApiController extends Controller {
     private final RegionApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class RegionApiController extends Controller {
     }
 
     @ApiAction
-    public Result createRegion(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRegion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -187,11 +186,11 @@ public class RegionApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.createRegionHttp(request, version, accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active);
+        return imp.createRegionHttp(request, accountId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active);
     }
 
     @ApiAction
-    public Result deleteRegion(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteRegion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -206,11 +205,11 @@ public class RegionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'regionId' parameter is required");
         }
-        return imp.deleteRegionHttp(request, version, accountId, regionId);
+        return imp.deleteRegionHttp(request, accountId, regionId);
     }
 
     @ApiAction
-    public Result getRegion(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRegion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -225,11 +224,11 @@ public class RegionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'regionId' parameter is required");
         }
-        return imp.getRegionHttp(request, version, regionId, accountId);
+        return imp.getRegionHttp(request, regionId, accountId);
     }
 
     @ApiAction
-    public Result searchRegions(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRegions(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -384,11 +383,11 @@ public class RegionApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchRegionsHttp(request, version, accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit);
+        return imp.searchRegionsHttp(request, accountId, query, keyword, latitude, longitude, range, regionClass, visibility, searchMode, sortField, descending, includeParent, includeChildren, includePostalCodes, categoryIds, filterIds, versionCode, activeOnly, showDeleted, lastUpdatedSince, start, limit);
     }
 
     @ApiAction
-    public Result updateRegion(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateRegion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -550,7 +549,7 @@ public class RegionApiController extends Controller {
         } else {
             clearLists = null;
         }
-        return imp.updateRegionHttp(request, version, accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists);
+        return imp.updateRegionHttp(request, accountId, regionId, regionClass, shortName, fullName, parentIds, childrenIds, postalCodeIds, locations, retailerLocationId, visibility, categoryIds, filterIds, start, end, polygon, metaData, latitude, longitude, versionCode, root, active, clearLists);
     }
 
 }

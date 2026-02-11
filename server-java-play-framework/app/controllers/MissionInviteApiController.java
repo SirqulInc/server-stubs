@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.MissionResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class MissionInviteApiController extends Controller {
     private final MissionInviteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class MissionInviteApiController extends Controller {
     }
 
     @ApiAction
-    public Result createMissionInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result createMissionInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -76,11 +75,11 @@ public class MissionInviteApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.createMissionInviteHttp(request, version, deviceId, accountId, missionId, joinCode, includeGameData);
+        return imp.createMissionInviteHttp(request, deviceId, accountId, missionId, joinCode, includeGameData);
     }
 
     @ApiAction
-    public Result deleteMissionInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteMissionInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -116,11 +115,11 @@ public class MissionInviteApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.deleteMissionInviteHttp(request, version, deviceId, accountId, missionId, missionInviteId, includeGameData);
+        return imp.deleteMissionInviteHttp(request, deviceId, accountId, missionId, missionInviteId, includeGameData);
     }
 
     @ApiAction
-    public Result getMissionInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result getMissionInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -163,11 +162,11 @@ public class MissionInviteApiController extends Controller {
         } else {
             includeScores = null;
         }
-        return imp.getMissionInviteHttp(request, version, deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores);
+        return imp.getMissionInviteHttp(request, deviceId, accountId, missionId, missionInviteId, includeGameData, includeScores);
     }
 
     @ApiAction
-    public Result searchMissionInvites(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchMissionInvites(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -259,11 +258,11 @@ public class MissionInviteApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.searchMissionInvitesHttp(request, version, deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData);
+        return imp.searchMissionInvitesHttp(request, deviceId, accountId, appKey, appVersion, missionId, status, lastUpdated, start, limit, keyword, missionTypes, filterByBillable, includeGameData);
     }
 
     @ApiAction
-    public Result updateMissionInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateMissionInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -341,7 +340,7 @@ public class MissionInviteApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.updateMissionInviteHttp(request, version, deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData);
+        return imp.updateMissionInviteHttp(request, deviceId, accountId, appKey, missionId, missionInviteId, packId, gameLevelId, status, permissionableType, permissionableId, includeGameData);
     }
 
 }

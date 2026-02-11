@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.util.Map;
 import apimodels.Shipment;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ShipmentApiController extends Controller {
     private final ShipmentApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,12 +39,12 @@ public class ShipmentApiController extends Controller {
     }
 
     @ApiAction
-    public Result cancelShipment(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.cancelShipmentHttp(request, version, id);
+    public Result cancelShipment(Http.Request request, Long id) throws Exception {
+        return imp.cancelShipmentHttp(request, id);
     }
 
     @ApiAction
-    public Result createShipment(Http.Request request, BigDecimal version) throws Exception {
+    public Result createShipment(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Shipment body;
         if (nodebody != null) {
@@ -56,21 +55,21 @@ public class ShipmentApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createShipmentHttp(request, version, body);
+        return imp.createShipmentHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteShipment(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.deleteShipmentHttp(request, version, id);
+    public Result deleteShipment(Http.Request request, Long id) throws Exception {
+        return imp.deleteShipmentHttp(request, id);
     }
 
     @ApiAction
-    public Result getShipment(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.getShipmentHttp(request, version, id);
+    public Result getShipment(Http.Request request, Long id) throws Exception {
+        return imp.getShipmentHttp(request, id);
     }
 
     @ApiAction
-    public Result searchShipments(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchShipments(Http.Request request) throws Exception {
         String valueownerId = request.getQueryString("ownerId");
         Long ownerId;
         if (valueownerId != null) {
@@ -127,11 +126,11 @@ public class ShipmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchShipmentsHttp(request, version, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId);
+        return imp.searchShipmentsHttp(request, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId);
     }
 
     @ApiAction
-    public Result updateShipment(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateShipment(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Shipment body;
         if (nodebody != null) {
@@ -142,11 +141,11 @@ public class ShipmentApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateShipmentHttp(request, version, id, body);
+        return imp.updateShipmentHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateShipmentStatus(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateShipmentStatus(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Map<String, Boolean> body;
         if (nodebody != null) {
@@ -159,7 +158,7 @@ public class ShipmentApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateShipmentStatusHttp(request, version, id, body);
+        return imp.updateShipmentStatusHttp(request, id, body);
     }
 
 }

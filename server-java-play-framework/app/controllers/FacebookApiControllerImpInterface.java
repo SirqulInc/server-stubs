@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TokenResponse;
 
@@ -29,8 +28,8 @@ public abstract class FacebookApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result getTokenHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
-        TokenResponse obj = getToken(request, version, deviceId, accountId, latitude, longitude);
+    public Result getTokenHttp(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
+        TokenResponse obj = getToken(request, deviceId, accountId, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,10 +41,10 @@ public abstract class FacebookApiControllerImpInterface {
 
     }
 
-    public abstract TokenResponse getToken(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
+    public abstract TokenResponse getToken(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
 
-    public Result graphInterfaceHttp(Http.Request request, BigDecimal version, @NotNull String event, String deviceId, Long accountId, String permissionableType, Long permissionableId, Long assetId, String gameType, String appKey, Double latitude, Double longitude) throws Exception {
-        SirqulResponse obj = graphInterface(request, version, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude);
+    public Result graphInterfaceHttp(Http.Request request, @NotNull String event, String deviceId, Long accountId, String permissionableType, Long permissionableId, Long assetId, String gameType, String appKey, Double latitude, Double longitude) throws Exception {
+        SirqulResponse obj = graphInterface(request, event, deviceId, accountId, permissionableType, permissionableId, assetId, gameType, appKey, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -57,6 +56,6 @@ public abstract class FacebookApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse graphInterface(Http.Request request, BigDecimal version, @NotNull String event, String deviceId, Long accountId, String permissionableType, Long permissionableId, Long assetId, String gameType, String appKey, Double latitude, Double longitude) throws Exception;
+    public abstract SirqulResponse graphInterface(Http.Request request, @NotNull String event, String deviceId, Long accountId, String permissionableType, Long permissionableId, Long assetId, String gameType, String appKey, Double latitude, Double longitude) throws Exception;
 
 }

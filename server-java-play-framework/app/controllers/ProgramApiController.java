@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Program;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ProgramApiController extends Controller {
     private final ProgramApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class ProgramApiController extends Controller {
     }
 
     @ApiAction
-    public Result createProgram(Http.Request request, BigDecimal version) throws Exception {
+    public Result createProgram(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Program body;
         if (nodebody != null) {
@@ -50,21 +49,21 @@ public class ProgramApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createProgramHttp(request, version, body);
+        return imp.createProgramHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteProgram(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.deleteProgramHttp(request, version, id);
+    public Result deleteProgram(Http.Request request, Long id) throws Exception {
+        return imp.deleteProgramHttp(request, id);
     }
 
     @ApiAction
-    public Result getProgram(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.getProgramHttp(request, version, id);
+    public Result getProgram(Http.Request request, Long id) throws Exception {
+        return imp.getProgramHttp(request, id);
     }
 
     @ApiAction
-    public Result postProgram(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result postProgram(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Program body;
         if (nodebody != null) {
@@ -75,11 +74,11 @@ public class ProgramApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.postProgramHttp(request, version, id, body);
+        return imp.postProgramHttp(request, id, body);
     }
 
     @ApiAction
-    public Result putProgram(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result putProgram(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Program body;
         if (nodebody != null) {
@@ -90,11 +89,11 @@ public class ProgramApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.putProgramHttp(request, version, id, body);
+        return imp.putProgramHttp(request, id, body);
     }
 
     @ApiAction
-    public Result searchPrograms(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPrograms(Http.Request request) throws Exception {
         String valuekeyword = request.getQueryString("keyword");
         String keyword;
         if (valuekeyword != null) {
@@ -137,7 +136,7 @@ public class ProgramApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchProgramsHttp(request, version, sortField, descending, start, limit, activeOnly, keyword);
+        return imp.searchProgramsHttp(request, sortField, descending, start, limit, activeOnly, keyword);
     }
 
 }

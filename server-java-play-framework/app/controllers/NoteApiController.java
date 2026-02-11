@@ -27,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class NoteApiController extends Controller {
     private final NoteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +41,7 @@ public class NoteApiController extends Controller {
     }
 
     @ApiAction
-    public Result batchOperation(Http.Request request, BigDecimal version) throws Exception {
+    public Result batchOperation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -77,11 +77,11 @@ public class NoteApiController extends Controller {
         } else {
             batchOperation = null;
         }
-        return imp.batchOperationHttp(request, version, notableId, notableType, deviceId, accountId, batchOperation);
+        return imp.batchOperationHttp(request, notableId, notableType, deviceId, accountId, batchOperation);
     }
 
     @ApiAction
-    public Result createNote(Http.Request request, BigDecimal version) throws Exception {
+    public Result createNote(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -376,11 +376,11 @@ public class NoteApiController extends Controller {
         } else {
             assetLongitude = null;
         }
-        return imp.createNoteHttp(request, version, comment, deviceId, accountId, notableType, notableId, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, receiverAccountIds, returnFullResponse, initializeAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude);
+        return imp.createNoteHttp(request, comment, deviceId, accountId, notableType, notableId, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, receiverAccountIds, returnFullResponse, initializeAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude);
     }
 
     @ApiAction
-    public Result deleteNote(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteNote(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -423,11 +423,11 @@ public class NoteApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.deleteNoteHttp(request, version, noteId, deviceId, accountId, latitude, longitude, appKey);
+        return imp.deleteNoteHttp(request, noteId, deviceId, accountId, latitude, longitude, appKey);
     }
 
     @ApiAction
-    public Result getNote(Http.Request request, BigDecimal version) throws Exception {
+    public Result getNote(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -456,11 +456,11 @@ public class NoteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'noteId' parameter is required");
         }
-        return imp.getNoteHttp(request, version, noteId, deviceId, accountId, returnFullResponse);
+        return imp.getNoteHttp(request, noteId, deviceId, accountId, returnFullResponse);
     }
 
     @ApiAction
-    public Result searchNotes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchNotes(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -580,11 +580,11 @@ public class NoteApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchNotesHttp(request, version, deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit);
+        return imp.searchNotesHttp(request, deviceId, accountId, notableType, notableId, noteTypes, appKey, keyword, flagCountMinimum, flagsExceedThreshold, includeInactive, sortField, descending, returnFullResponse, updatedSince, updatedBefore, start, limit);
     }
 
     @ApiAction
-    public Result updateNote(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateNote(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -872,7 +872,7 @@ public class NoteApiController extends Controller {
         } else {
             assetLongitude = null;
         }
-        return imp.updateNoteHttp(request, version, noteId, deviceId, accountId, comment, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, returnFullResponse, active, updateAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude);
+        return imp.updateNoteHttp(request, noteId, deviceId, accountId, comment, noteType, assetIds, tags, permissionableType, permissionableId, appKey, locationDescription, latitude, longitude, metaData, returnFullResponse, active, updateAsset, assetReturnNulls, assetAlbumId, assetCollectionId, assetAddToDefaultAlbum, assetAddToMediaLibrary, assetVersionCode, assetVersionName, assetMetaData, assetCaption, assetMedia, assetMediaUrl, assetMediaString, assetMediaStringFileName, assetMediaStringContentType, assetAttachedMedia, assetAttachedMediaUrl, assetAttachedMediaString, assetAttachedMediaStringFileName, assetAttachedMediaStringContentType, assetLocationDescription, assetApp, assetSearchTags, assetLatitude, assetLongitude);
     }
 
 }

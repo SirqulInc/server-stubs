@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PreviewPersonaResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class PreviewPersonaApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createPersonaHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String title, String previewAccounts, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception {
-        PreviewPersonaResponse obj = createPersona(request, version, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude);
+    public Result createPersonaHttp(Http.Request request, @NotNull Long accountId, @NotNull String title, String previewAccounts, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception {
+        PreviewPersonaResponse obj = createPersona(request, accountId, title, previewAccounts, date, age, gender, gameExperienceLevel, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class PreviewPersonaApiControllerImpInterface {
 
     }
 
-    public abstract PreviewPersonaResponse createPersona(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String title, String previewAccounts, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception;
+    public abstract PreviewPersonaResponse createPersona(Http.Request request, @NotNull Long accountId, @NotNull String title, String previewAccounts, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception;
 
-    public Result deletePersonaHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId) throws Exception {
-        SirqulResponse obj = deletePersona(request, version, accountId, personaId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deletePersona(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId) throws Exception;
-
-    public Result getPersonaListHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId) throws Exception {
-        PreviewPersonaResponse obj = getPersonaList(request, version, accountId, personaId);
+    public Result deletePersonaHttp(Http.Request request, @NotNull Long accountId, @NotNull Long personaId) throws Exception {
+        SirqulResponse obj = deletePersona(request, accountId, personaId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,25 +56,10 @@ public abstract class PreviewPersonaApiControllerImpInterface {
 
     }
 
-    public abstract PreviewPersonaResponse getPersonaList(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId) throws Exception;
+    public abstract SirqulResponse deletePersona(Http.Request request, @NotNull Long accountId, @NotNull Long personaId) throws Exception;
 
-    public Result searchPersonaHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
-        PreviewPersonaResponse obj = searchPersona(request, version, accountId, start, limit);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract PreviewPersonaResponse searchPersona(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception;
-
-    public Result updatePersonaHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId, String title, String previewAccounts, Boolean active, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception {
-        PreviewPersonaResponse obj = updatePersona(request, version, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude);
+    public Result getPersonaListHttp(Http.Request request, @NotNull Long accountId, @NotNull Long personaId) throws Exception {
+        PreviewPersonaResponse obj = getPersonaList(request, accountId, personaId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -102,6 +71,36 @@ public abstract class PreviewPersonaApiControllerImpInterface {
 
     }
 
-    public abstract PreviewPersonaResponse updatePersona(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long personaId, String title, String previewAccounts, Boolean active, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception;
+    public abstract PreviewPersonaResponse getPersonaList(Http.Request request, @NotNull Long accountId, @NotNull Long personaId) throws Exception;
+
+    public Result searchPersonaHttp(Http.Request request, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+        PreviewPersonaResponse obj = searchPersona(request, accountId, start, limit);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract PreviewPersonaResponse searchPersona(Http.Request request, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception;
+
+    public Result updatePersonaHttp(Http.Request request, @NotNull Long accountId, @NotNull Long personaId, String title, String previewAccounts, Boolean active, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception {
+        PreviewPersonaResponse obj = updatePersona(request, accountId, personaId, title, previewAccounts, active, date, age, gender, gameExperienceLevel, latitude, longitude);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract PreviewPersonaResponse updatePersona(Http.Request request, @NotNull Long accountId, @NotNull Long personaId, String title, String previewAccounts, Boolean active, Long date, Integer age, String gender, String gameExperienceLevel, Double latitude, Double longitude) throws Exception;
 
 }

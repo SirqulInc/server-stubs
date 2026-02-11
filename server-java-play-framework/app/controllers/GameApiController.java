@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.GameResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class GameApiController extends Controller {
     private final GameApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class GameApiController extends Controller {
     }
 
     @ApiAction
-    public Result createGame(Http.Request request, BigDecimal version) throws Exception {
+    public Result createGame(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -90,11 +89,11 @@ public class GameApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.createGameHttp(request, version, accountId, appKey, title, description, metaData, packIds, includeGameData);
+        return imp.createGameHttp(request, accountId, appKey, title, description, metaData, packIds, includeGameData);
     }
 
     @ApiAction
-    public Result deleteGame(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteGame(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -109,11 +108,11 @@ public class GameApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'gameId' parameter is required");
         }
-        return imp.deleteGameHttp(request, version, accountId, gameId);
+        return imp.deleteGameHttp(request, accountId, gameId);
     }
 
     @ApiAction
-    public Result getGame(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGame(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -135,11 +134,11 @@ public class GameApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.getGameHttp(request, version, accountId, gameId, includeGameData);
+        return imp.getGameHttp(request, accountId, gameId, includeGameData);
     }
 
     @ApiAction
-    public Result searchGames(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchGames(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -196,11 +195,11 @@ public class GameApiController extends Controller {
         } else {
             includeInactive = null;
         }
-        return imp.searchGamesHttp(request, version, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive);
+        return imp.searchGamesHttp(request, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive);
     }
 
     @ApiAction
-    public Result updateGame(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateGame(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -257,7 +256,7 @@ public class GameApiController extends Controller {
         } else {
             includeGameData = null;
         }
-        return imp.updateGameHttp(request, version, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData);
+        return imp.updateGameHttp(request, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData);
     }
 
 }

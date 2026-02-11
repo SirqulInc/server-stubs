@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ImportStatuses;
 import java.util.Map;
 import apimodels.Orders;
@@ -31,8 +30,8 @@ public abstract class OptimizeApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result getOptimizationResultHttp(Http.Request request, BigDecimal version, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception {
-        Map<String, ShipmentOrder> obj = getOptimizationResult(request, version, batchID, start, limit);
+    public Result getOptimizationResultHttp(Http.Request request, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+        Map<String, ShipmentOrder> obj = getOptimizationResult(request, batchID, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (Map.Entry<String, ShipmentOrder> entry : obj.entrySet()) {
@@ -46,10 +45,10 @@ public abstract class OptimizeApiControllerImpInterface {
 
     }
 
-    public abstract Map<String, ShipmentOrder> getOptimizationResult(Http.Request request, BigDecimal version, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception;
+    public abstract Map<String, ShipmentOrder> getOptimizationResult(Http.Request request, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception;
 
-    public Result requestOptimizationHttp(Http.Request request, BigDecimal version, Orders body) throws Exception {
-        ImportStatuses obj = requestOptimization(request, version, body);
+    public Result requestOptimizationHttp(Http.Request request, Orders body) throws Exception {
+        ImportStatuses obj = requestOptimization(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -61,6 +60,6 @@ public abstract class OptimizeApiControllerImpInterface {
 
     }
 
-    public abstract ImportStatuses requestOptimization(Http.Request request, BigDecimal version, Orders body) throws Exception;
+    public abstract ImportStatuses requestOptimization(Http.Request request, Orders body) throws Exception;
 
 }

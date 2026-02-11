@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RankFullResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RankingApiController extends Controller {
     private final RankingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class RankingApiController extends Controller {
     }
 
     @ApiAction
-    public Result getHistoricalRankings(Http.Request request, BigDecimal version) throws Exception {
+    public Result getHistoricalRankings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -111,11 +110,11 @@ public class RankingApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.getHistoricalRankingsHttp(request, version, appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit);
+        return imp.getHistoricalRankingsHttp(request, appKey, rankType, startDate, endDate, deviceId, accountId, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result getRankings(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRankings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -242,11 +241,11 @@ public class RankingApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.getRankingsHttp(request, version, deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit);
+        return imp.getRankingsHttp(request, deviceId, accountId, gameType, appKey, q, keyword, rankType, leaderboardMode, withinAccountIds, returnUserRank, albumId, audienceId, sortField, descending, i, start, l, limit);
     }
 
     @ApiAction
-    public Result getUserRank(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserRank(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -324,11 +323,11 @@ public class RankingApiController extends Controller {
         } else {
             limit = 100;
         }
-        return imp.getUserRankHttp(request, version, deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit);
+        return imp.getUserRankHttp(request, deviceId, accountId, appKey, rankType, returnUserRank, leaderboardMode, sortField, keyword, descending, start, limit);
     }
 
     @ApiAction
-    public Result overrideUserRank(Http.Request request, BigDecimal version) throws Exception {
+    public Result overrideUserRank(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -483,11 +482,11 @@ public class RankingApiController extends Controller {
         } else {
             endDate = null;
         }
-        return imp.overrideUserRankHttp(request, version, accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate);
+        return imp.overrideUserRankHttp(request, accountId, ownerAccountId, appKey, rankType, totalScore, totalCount, totalTime, dailyScore, dailyCount, dailyTime, weeklyScore, weeklyCount, weeklyTime, monthlyScore, monthlyCount, monthlyTime, topScore, lowestScore, streakCount, streakBestCount, startDate, endDate);
     }
 
     @ApiAction
-    public Result updateRankings(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateRankings(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -558,7 +557,7 @@ public class RankingApiController extends Controller {
         } else {
             createLeaderboard = false;
         }
-        return imp.updateRankingsHttp(request, version, accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard);
+        return imp.updateRankingsHttp(request, accountId, appKey, rankType, increment, timeIncrement, tag, startDate, endDate, updateGlobal, createLeaderboard);
     }
 
 }

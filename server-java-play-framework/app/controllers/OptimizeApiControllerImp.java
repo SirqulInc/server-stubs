@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ImportStatuses;
 import java.util.Map;
 import apimodels.Orders;
@@ -15,16 +14,16 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OptimizeApiControllerImp extends OptimizeApiControllerImpInterface {
     @Override
-    public Map<String, ShipmentOrder> getOptimizationResult(Http.Request request, BigDecimal version, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+    public Map<String, ShipmentOrder> getOptimizationResult(Http.Request request, String batchID, @NotNull Integer start, @NotNull Integer limit) throws Exception {
         //Do your magic!!!
         return new HashMap<String, ShipmentOrder>();
     }
 
     @Override
-    public ImportStatuses requestOptimization(Http.Request request, BigDecimal version, Orders body) throws Exception {
+    public ImportStatuses requestOptimization(Http.Request request, Orders body) throws Exception {
         //Do your magic!!!
         return new ImportStatuses();
     }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Direction;
 import apimodels.Route;
 import apimodels.Shipment;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RouteApiController extends Controller {
     private final RouteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,12 +41,12 @@ public class RouteApiController extends Controller {
     }
 
     @ApiAction
-    public Result approveRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.approveRouteHttp(request, version, routeId);
+    public Result approveRoute(Http.Request request, Long routeId) throws Exception {
+        return imp.approveRouteHttp(request, routeId);
     }
 
     @ApiAction
-    public Result copyRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result copyRoute(Http.Request request, Long routeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Route body;
         if (nodebody != null) {
@@ -58,11 +57,11 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.copyRouteHttp(request, version, routeId, body);
+        return imp.copyRouteHttp(request, routeId, body);
     }
 
     @ApiAction
-    public Result createRoute(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRoute(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Route body;
         if (nodebody != null) {
@@ -73,31 +72,31 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createRouteHttp(request, version, body);
+        return imp.createRouteHttp(request, body);
     }
 
     @ApiAction
-    public Result createRouteDirections(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.createRouteDirectionsHttp(request, version, routeId);
+    public Result createRouteDirections(Http.Request request, Long routeId) throws Exception {
+        return imp.createRouteDirectionsHttp(request, routeId);
     }
 
     @ApiAction
-    public Result createRoutePolyline(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.createRoutePolylineHttp(request, version, routeId);
+    public Result createRoutePolyline(Http.Request request, Long routeId) throws Exception {
+        return imp.createRoutePolylineHttp(request, routeId);
     }
 
     @ApiAction
-    public Result deleteRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.deleteRouteHttp(request, version, routeId);
+    public Result deleteRoute(Http.Request request, Long routeId) throws Exception {
+        return imp.deleteRouteHttp(request, routeId);
     }
 
     @ApiAction
-    public Result disapproveRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.disapproveRouteHttp(request, version, routeId);
+    public Result disapproveRoute(Http.Request request, Long routeId) throws Exception {
+        return imp.disapproveRouteHttp(request, routeId);
     }
 
     @ApiAction
-    public Result getRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result getRoute(Http.Request request, Long routeId) throws Exception {
         String valueshowInheritedProperties = request.getQueryString("showInheritedProperties");
         Boolean showInheritedProperties;
         if (valueshowInheritedProperties != null) {
@@ -105,26 +104,26 @@ public class RouteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'showInheritedProperties' parameter is required");
         }
-        return imp.getRouteHttp(request, version, routeId, showInheritedProperties);
+        return imp.getRouteHttp(request, routeId, showInheritedProperties);
     }
 
     @ApiAction
-    public Result getRouteDirections(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.getRouteDirectionsHttp(request, version, routeId);
+    public Result getRouteDirections(Http.Request request, Long routeId) throws Exception {
+        return imp.getRouteDirectionsHttp(request, routeId);
     }
 
     @ApiAction
-    public Result getRouteShipments(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.getRouteShipmentsHttp(request, version, routeId);
+    public Result getRouteShipments(Http.Request request, Long routeId) throws Exception {
+        return imp.getRouteShipmentsHttp(request, routeId);
     }
 
     @ApiAction
-    public Result getRouteStop(Http.Request request, BigDecimal version,Long routeId,Long stopId) throws Exception {
-        return imp.getRouteStopHttp(request, version, routeId, stopId);
+    public Result getRouteStop(Http.Request request, Long routeId,Long stopId) throws Exception {
+        return imp.getRouteStopHttp(request, routeId, stopId);
     }
 
     @ApiAction
-    public Result getRouteStops(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result getRouteStops(Http.Request request, Long routeId) throws Exception {
         String valueconfirmedOnly = request.getQueryString("confirmedOnly");
         Boolean confirmedOnly;
         if (valueconfirmedOnly != null) {
@@ -132,26 +131,26 @@ public class RouteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'confirmedOnly' parameter is required");
         }
-        return imp.getRouteStopsHttp(request, version, routeId, confirmedOnly);
+        return imp.getRouteStopsHttp(request, routeId, confirmedOnly);
     }
 
     @ApiAction
-    public Result getShipmentsAtStop(Http.Request request, BigDecimal version,Long routeId,Long stopId) throws Exception {
-        return imp.getShipmentsAtStopHttp(request, version, routeId, stopId);
+    public Result getShipmentsAtStop(Http.Request request, Long routeId,Long stopId) throws Exception {
+        return imp.getShipmentsAtStopHttp(request, routeId, stopId);
     }
 
     @ApiAction
-    public Result optimizeRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
-        return imp.optimizeRouteHttp(request, version, routeId);
+    public Result optimizeRoute(Http.Request request, Long routeId) throws Exception {
+        return imp.optimizeRouteHttp(request, routeId);
     }
 
     @ApiAction
-    public Result removeStop(Http.Request request, BigDecimal version,Long routeId,Long stopId) throws Exception {
-        return imp.removeStopHttp(request, version, routeId, stopId);
+    public Result removeStop(Http.Request request, Long routeId,Long stopId) throws Exception {
+        return imp.removeStopHttp(request, routeId, stopId);
     }
 
     @ApiAction
-    public Result reorderRouteStopsPatch(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result reorderRouteStopsPatch(Http.Request request, Long routeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         List<@Valid Stop> body;
         if (nodebody != null) {
@@ -164,11 +163,11 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.reorderRouteStopsPatchHttp(request, version, routeId, body);
+        return imp.reorderRouteStopsPatchHttp(request, routeId, body);
     }
 
     @ApiAction
-    public Result reorderRouteStopsPost(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result reorderRouteStopsPost(Http.Request request, Long routeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         List<@Valid Stop> body;
         if (nodebody != null) {
@@ -181,11 +180,11 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.reorderRouteStopsPostHttp(request, version, routeId, body);
+        return imp.reorderRouteStopsPostHttp(request, routeId, body);
     }
 
     @ApiAction
-    public Result searchRoutes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRoutes(Http.Request request) throws Exception {
         String valuehubId = request.getQueryString("hubId");
         Long hubId;
         if (valuehubId != null) {
@@ -333,16 +332,16 @@ public class RouteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'showInheritedProperties' parameter is required");
         }
-        return imp.searchRoutesHttp(request, version, sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId);
+        return imp.searchRoutesHttp(request, sortField, descending, start, limit, activeOnly, includesEmpty, rootOnly, showInheritedProperties, hubId, programId, scheduledStart, scheduledEnd, updatedStart, updatedEnd, featured, seatCount, approved, started, completed, valid, parentId);
     }
 
     @ApiAction
-    public Result setDriver(Http.Request request, BigDecimal version,Long id,Long driverId) throws Exception {
-        return imp.setDriverHttp(request, version, id, driverId);
+    public Result setDriver(Http.Request request, Long id,Long driverId) throws Exception {
+        return imp.setDriverHttp(request, id, driverId);
     }
 
     @ApiAction
-    public Result updateRoute(Http.Request request, BigDecimal version,Long routeId) throws Exception {
+    public Result updateRoute(Http.Request request, Long routeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Route body;
         if (nodebody != null) {
@@ -353,11 +352,11 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateRouteHttp(request, version, routeId, body);
+        return imp.updateRouteHttp(request, routeId, body);
     }
 
     @ApiAction
-    public Result updateRouteStop(Http.Request request, BigDecimal version,Long routeId,Long stopId) throws Exception {
+    public Result updateRouteStop(Http.Request request, Long routeId,Long stopId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Stop body;
         if (nodebody != null) {
@@ -368,7 +367,7 @@ public class RouteApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateRouteStopHttp(request, version, routeId, stopId, body);
+        return imp.updateRouteStopHttp(request, routeId, stopId, body);
     }
 
 }

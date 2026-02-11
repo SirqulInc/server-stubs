@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CellCarrierResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class CarrierApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result searchCarriersHttp(Http.Request request, BigDecimal version, String keyword, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception {
-        List<CellCarrierResponse> obj = searchCarriers(request, version, keyword, descending, start, limit, activeOnly);
+    public Result searchCarriersHttp(Http.Request request, String keyword, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception {
+        List<CellCarrierResponse> obj = searchCarriers(request, keyword, descending, start, limit, activeOnly);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (CellCarrierResponse curItem : obj) {
@@ -43,6 +42,6 @@ public abstract class CarrierApiControllerImpInterface {
 
     }
 
-    public abstract List<CellCarrierResponse> searchCarriers(Http.Request request, BigDecimal version, String keyword, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception;
+    public abstract List<CellCarrierResponse> searchCarriers(Http.Request request, String keyword, Boolean descending, Integer start, Integer limit, Boolean activeOnly) throws Exception;
 
 }

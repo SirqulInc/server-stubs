@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.QuestionResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class QuestionApiController extends Controller {
     private final QuestionApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class QuestionApiController extends Controller {
     }
 
     @ApiAction
-    public Result createQuestion(Http.Request request, BigDecimal version) throws Exception {
+    public Result createQuestion(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -118,11 +117,11 @@ public class QuestionApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.createQuestionHttp(request, version, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points);
+        return imp.createQuestionHttp(request, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points);
     }
 
     @ApiAction
-    public Result deleteQuestion(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteQuestion(Http.Request request) throws Exception {
         String valuequestionId = request.getQueryString("questionId");
         Long questionId;
         if (valuequestionId != null) {
@@ -137,11 +136,11 @@ public class QuestionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.deleteQuestionHttp(request, version, questionId, accountId);
+        return imp.deleteQuestionHttp(request, questionId, accountId);
     }
 
     @ApiAction
-    public Result getQuestion(Http.Request request, BigDecimal version) throws Exception {
+    public Result getQuestion(Http.Request request) throws Exception {
         String valuequestionId = request.getQueryString("questionId");
         Long questionId;
         if (valuequestionId != null) {
@@ -156,11 +155,11 @@ public class QuestionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getQuestionHttp(request, version, questionId, accountId);
+        return imp.getQuestionHttp(request, questionId, accountId);
     }
 
     @ApiAction
-    public Result searchQuestions(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchQuestions(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -210,11 +209,11 @@ public class QuestionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchQuestionsHttp(request, version, accountId, sortField, descending, activeOnly, start, limit, keyword);
+        return imp.searchQuestionsHttp(request, accountId, sortField, descending, activeOnly, start, limit, keyword);
     }
 
     @ApiAction
-    public Result updateQuestion(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateQuestion(Http.Request request) throws Exception {
         String valuequestionId = request.getQueryString("questionId");
         Long questionId;
         if (valuequestionId != null) {
@@ -299,7 +298,7 @@ public class QuestionApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.updateQuestionHttp(request, version, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points);
+        return imp.updateQuestionHttp(request, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points);
     }
 
 }

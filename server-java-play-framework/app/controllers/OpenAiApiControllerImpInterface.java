@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.WrappedProxyItemResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class OpenAiApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result imageGenerationHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String postBody, Boolean returnRawResponse) throws Exception {
-        WrappedProxyItemResponse obj = imageGeneration(request, version, accountId, postBody, returnRawResponse);
+    public Result imageGenerationHttp(Http.Request request, @NotNull Long accountId, @NotNull String postBody, Boolean returnRawResponse) throws Exception {
+        WrappedProxyItemResponse obj = imageGeneration(request, accountId, postBody, returnRawResponse);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class OpenAiApiControllerImpInterface {
 
     }
 
-    public abstract WrappedProxyItemResponse imageGeneration(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String postBody, Boolean returnRawResponse) throws Exception;
+    public abstract WrappedProxyItemResponse imageGeneration(Http.Request request, @NotNull Long accountId, @NotNull String postBody, Boolean returnRawResponse) throws Exception;
 
 }

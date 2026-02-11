@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ListingFullResponse;
 import apimodels.ListingGroupResponse;
 import apimodels.ListingResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ListingApiController extends Controller {
     private final ListingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class ListingApiController extends Controller {
     }
 
     @ApiAction
-    public Result createListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result createListing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -141,11 +140,11 @@ public class ListingApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.createListingHttp(request, version, accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData);
+        return imp.createListingHttp(request, accountId, name, filterIds, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData);
     }
 
     @ApiAction
-    public Result deleteListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteListing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -160,11 +159,11 @@ public class ListingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'listingId' parameter is required");
         }
-        return imp.deleteListingHttp(request, version, accountId, listingId);
+        return imp.deleteListingHttp(request, accountId, listingId);
     }
 
     @ApiAction
-    public Result getListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result getListing(Http.Request request) throws Exception {
         String valuelistingId = request.getQueryString("listingId");
         Long listingId;
         if (valuelistingId != null) {
@@ -172,11 +171,11 @@ public class ListingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'listingId' parameter is required");
         }
-        return imp.getListingHttp(request, version, listingId);
+        return imp.getListingHttp(request, listingId);
     }
 
     @ApiAction
-    public Result searchListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchListing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -282,11 +281,11 @@ public class ListingApiController extends Controller {
         } else {
             externalGroupId = null;
         }
-        return imp.searchListingHttp(request, version, accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId);
+        return imp.searchListingHttp(request, accountId, keyword, start, limit, activeOnly, latitude, longitude, startDate, endDate, categoryIds, filterIds, useListingOrderIds, externalId, externalId2, externalGroupId);
     }
 
     @ApiAction
-    public Result summaryListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result summaryListing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -322,11 +321,11 @@ public class ListingApiController extends Controller {
         } else {
             useListingOrderIds = true;
         }
-        return imp.summaryListingHttp(request, version, accountId, startDate, categoryIds, daysToInclude, useListingOrderIds);
+        return imp.summaryListingHttp(request, accountId, startDate, categoryIds, daysToInclude, useListingOrderIds);
     }
 
     @ApiAction
-    public Result updateListing(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateListing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -432,7 +431,7 @@ public class ListingApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.updateListingHttp(request, version, accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData);
+        return imp.updateListingHttp(request, accountId, listingId, filterIds, name, description, start, end, locationName, locationDescription, isPrivate, externalId, externalId2, externalGroupId, active, metaData);
     }
 
 }

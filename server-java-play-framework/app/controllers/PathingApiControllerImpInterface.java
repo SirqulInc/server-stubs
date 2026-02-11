@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PathingResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class PathingApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result computePathHttp(Http.Request request, BigDecimal version, @NotNull String data, @NotNull String units, @NotNull Boolean reducePath, @NotNull Boolean directions) throws Exception {
-        PathingResponse obj = computePath(request, version, data, units, reducePath, directions);
+    public Result computePathHttp(Http.Request request, @NotNull String data, @NotNull String units, @NotNull Boolean reducePath, @NotNull Boolean directions) throws Exception {
+        PathingResponse obj = computePath(request, data, units, reducePath, directions);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class PathingApiControllerImpInterface {
 
     }
 
-    public abstract PathingResponse computePath(Http.Request request, BigDecimal version, @NotNull String data, @NotNull String units, @NotNull Boolean reducePath, @NotNull Boolean directions) throws Exception;
+    public abstract PathingResponse computePath(Http.Request request, @NotNull String data, @NotNull String units, @NotNull Boolean reducePath, @NotNull Boolean directions) throws Exception;
 
 }

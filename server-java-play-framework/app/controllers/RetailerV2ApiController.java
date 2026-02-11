@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RetailerV2ApiController extends Controller {
     private final RetailerV2ApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class RetailerV2ApiController extends Controller {
     }
 
     @ApiAction
-    public Result getRetaokiler(Http.Request request, BigDecimal version) throws Exception {
+    public Result getRetaokiler(Http.Request request) throws Exception {
         String valuekeyword = request.getQueryString("keyword");
         String keyword;
         if (valuekeyword != null) {
@@ -82,7 +81,7 @@ public class RetailerV2ApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.getRetaokilerHttp(request, version, retailerId, activeOnly, keyword, sortField, start, limit);
+        return imp.getRetaokilerHttp(request, retailerId, activeOnly, keyword, sortField, start, limit);
     }
 
 }

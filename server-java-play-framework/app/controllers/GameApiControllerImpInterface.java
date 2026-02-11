@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.GameResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class GameApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createGameHttp(Http.Request request, BigDecimal version, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
-        GameResponse obj = createGame(request, version, accountId, appKey, title, description, metaData, packIds, includeGameData);
+    public Result createGameHttp(Http.Request request, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
+        GameResponse obj = createGame(request, accountId, appKey, title, description, metaData, packIds, includeGameData);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class GameApiControllerImpInterface {
 
     }
 
-    public abstract GameResponse createGame(Http.Request request, BigDecimal version, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception;
+    public abstract GameResponse createGame(Http.Request request, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception;
 
-    public Result deleteGameHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId) throws Exception {
-        SirqulResponse obj = deleteGame(request, version, accountId, gameId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteGame(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId) throws Exception;
-
-    public Result getGameHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception {
-        GameResponse obj = getGame(request, version, accountId, gameId, includeGameData);
+    public Result deleteGameHttp(Http.Request request, @NotNull Long accountId, @NotNull Long gameId) throws Exception {
+        SirqulResponse obj = deleteGame(request, accountId, gameId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,25 +56,10 @@ public abstract class GameApiControllerImpInterface {
 
     }
 
-    public abstract GameResponse getGame(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception;
+    public abstract SirqulResponse deleteGame(Http.Request request, @NotNull Long accountId, @NotNull Long gameId) throws Exception;
 
-    public Result searchGamesHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception {
-        GameResponse obj = searchGames(request, version, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract GameResponse searchGames(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception;
-
-    public Result updateGameHttp(Http.Request request, BigDecimal version, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
-        GameResponse obj = updateGame(request, version, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData);
+    public Result getGameHttp(Http.Request request, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception {
+        GameResponse obj = getGame(request, accountId, gameId, includeGameData);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -102,6 +71,36 @@ public abstract class GameApiControllerImpInterface {
 
     }
 
-    public abstract GameResponse updateGame(Http.Request request, BigDecimal version, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception;
+    public abstract GameResponse getGame(Http.Request request, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception;
+
+    public Result searchGamesHttp(Http.Request request, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception {
+        GameResponse obj = searchGames(request, accountId, appKey, start, limit, keyword, appVersion, includeGameData, includeInactive);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract GameResponse searchGames(Http.Request request, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception;
+
+    public Result updateGameHttp(Http.Request request, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
+        GameResponse obj = updateGame(request, accountId, gameId, appKey, title, description, metaData, packIds, includeGameData);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract GameResponse updateGame(Http.Request request, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception;
 
 }

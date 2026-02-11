@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.VehicleType;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class VehicleTypeApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createVehicleTypeHttp(Http.Request request, BigDecimal version, @NotNull String vehicleType, VehicleType body) throws Exception {
-        VehicleType obj = createVehicleType(request, version, vehicleType, body);
+    public Result createVehicleTypeHttp(Http.Request request, @NotNull String vehicleType, VehicleType body) throws Exception {
+        VehicleType obj = createVehicleType(request, vehicleType, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,18 +40,18 @@ public abstract class VehicleTypeApiControllerImpInterface {
 
     }
 
-    public abstract VehicleType createVehicleType(Http.Request request, BigDecimal version, @NotNull String vehicleType, VehicleType body) throws Exception;
+    public abstract VehicleType createVehicleType(Http.Request request, @NotNull String vehicleType, VehicleType body) throws Exception;
 
-    public Result deleteVehicleTypeHttp(Http.Request request, BigDecimal version, Long vehicleTypeId) throws Exception {
-        deleteVehicleType(request, version, vehicleTypeId);
+    public Result deleteVehicleTypeHttp(Http.Request request, Long vehicleTypeId) throws Exception {
+        deleteVehicleType(request, vehicleTypeId);
         return ok();
 
     }
 
-    public abstract void deleteVehicleType(Http.Request request, BigDecimal version, Long vehicleTypeId) throws Exception;
+    public abstract void deleteVehicleType(Http.Request request, Long vehicleTypeId) throws Exception;
 
-    public Result getVehicleTypeHttp(Http.Request request, BigDecimal version, Long vehicleTypeId) throws Exception {
-        VehicleType obj = getVehicleType(request, version, vehicleTypeId);
+    public Result getVehicleTypeHttp(Http.Request request, Long vehicleTypeId) throws Exception {
+        VehicleType obj = getVehicleType(request, vehicleTypeId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -64,10 +63,10 @@ public abstract class VehicleTypeApiControllerImpInterface {
 
     }
 
-    public abstract VehicleType getVehicleType(Http.Request request, BigDecimal version, Long vehicleTypeId) throws Exception;
+    public abstract VehicleType getVehicleType(Http.Request request, Long vehicleTypeId) throws Exception;
 
-    public Result searchVehicleTypesHttp(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception {
-        List<VehicleType> obj = searchVehicleTypes(request, version, sortField, descending, start, limit, activeOnly, retailerId, hubId);
+    public Result searchVehicleTypesHttp(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception {
+        List<VehicleType> obj = searchVehicleTypes(request, sortField, descending, start, limit, activeOnly, retailerId, hubId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (VehicleType curItem : obj) {
@@ -81,10 +80,10 @@ public abstract class VehicleTypeApiControllerImpInterface {
 
     }
 
-    public abstract List<VehicleType> searchVehicleTypes(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception;
+    public abstract List<VehicleType> searchVehicleTypes(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long retailerId, Long hubId) throws Exception;
 
-    public Result updateVehicleTypeHttp(Http.Request request, BigDecimal version, Long vehicleTypeId, @NotNull String vehicleType, VehicleType body) throws Exception {
-        VehicleType obj = updateVehicleType(request, version, vehicleTypeId, vehicleType, body);
+    public Result updateVehicleTypeHttp(Http.Request request, Long vehicleTypeId, @NotNull String vehicleType, VehicleType body) throws Exception {
+        VehicleType obj = updateVehicleType(request, vehicleTypeId, vehicleType, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -96,6 +95,6 @@ public abstract class VehicleTypeApiControllerImpInterface {
 
     }
 
-    public abstract VehicleType updateVehicleType(Http.Request request, BigDecimal version, Long vehicleTypeId, @NotNull String vehicleType, VehicleType body) throws Exception;
+    public abstract VehicleType updateVehicleType(Http.Request request, Long vehicleTypeId, @NotNull String vehicleType, VehicleType body) throws Exception;
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -24,7 +23,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class VatomApiController extends Controller {
     private final VatomApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -38,7 +37,7 @@ public class VatomApiController extends Controller {
     }
 
     @ApiAction
-    public Result createFollowing(Http.Request request, BigDecimal version) throws Exception {
+    public Result createFollowing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -60,44 +59,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.createFollowingHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.createFollowingHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result createSpace(Http.Request request, BigDecimal version) throws Exception {
-        String valueaccountId = request.getQueryString("accountId");
-        Long accountId;
-        if (valueaccountId != null) {
-            accountId = Long.parseLong(valueaccountId);
-        } else {
-            throw new IllegalArgumentException("'accountId' parameter is required");
-        }
-        String valueappKey = request.getQueryString("appKey");
-        String appKey;
-        if (valueappKey != null) {
-            appKey = valueappKey;
-        } else {
-            throw new IllegalArgumentException("'appKey' parameter is required");
-        }
-        String valuevatomParameters = request.getQueryString("vatomParameters");
-        String vatomParameters;
-        if (valuevatomParameters != null) {
-            vatomParameters = valuevatomParameters;
-        } else {
-            throw new IllegalArgumentException("'vatomParameters' parameter is required");
-        }
-        String valuereturnRawResponse = request.getQueryString("returnRawResponse");
-        Boolean returnRawResponse;
-        if (valuereturnRawResponse != null) {
-            returnRawResponse = Boolean.valueOf(valuereturnRawResponse);
-        } else {
-            returnRawResponse = null;
-        }
-        return imp.createSpaceHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
-    }
-
-    @ApiAction
-    public Result createVatomEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result createSpace(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -126,11 +92,44 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.createVatomEventHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.createSpaceHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result deleteFollowing(Http.Request request, BigDecimal version) throws Exception {
+    public Result createVatomEvent(Http.Request request) throws Exception {
+        String valueaccountId = request.getQueryString("accountId");
+        Long accountId;
+        if (valueaccountId != null) {
+            accountId = Long.parseLong(valueaccountId);
+        } else {
+            throw new IllegalArgumentException("'accountId' parameter is required");
+        }
+        String valueappKey = request.getQueryString("appKey");
+        String appKey;
+        if (valueappKey != null) {
+            appKey = valueappKey;
+        } else {
+            throw new IllegalArgumentException("'appKey' parameter is required");
+        }
+        String valuevatomParameters = request.getQueryString("vatomParameters");
+        String vatomParameters;
+        if (valuevatomParameters != null) {
+            vatomParameters = valuevatomParameters;
+        } else {
+            throw new IllegalArgumentException("'vatomParameters' parameter is required");
+        }
+        String valuereturnRawResponse = request.getQueryString("returnRawResponse");
+        Boolean returnRawResponse;
+        if (valuereturnRawResponse != null) {
+            returnRawResponse = Boolean.valueOf(valuereturnRawResponse);
+        } else {
+            returnRawResponse = null;
+        }
+        return imp.createVatomEventHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
+    }
+
+    @ApiAction
+    public Result deleteFollowing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -152,11 +151,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.deleteFollowingHttp(request, version, accountId, vatomRelsKey, returnRawResponse);
+        return imp.deleteFollowingHttp(request, accountId, vatomRelsKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result deletePointsBalance(Http.Request request, BigDecimal version) throws Exception {
+    public Result deletePointsBalance(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -185,11 +184,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.deletePointsBalanceHttp(request, version, accountId, appKey, vatomCampaignId, returnRawResponse);
+        return imp.deletePointsBalanceHttp(request, accountId, appKey, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result deleteSpace(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteSpace(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -218,11 +217,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.deleteSpaceHttp(request, version, accountId, appKey, vatomSpaceId, returnRawResponse);
+        return imp.deleteSpaceHttp(request, accountId, appKey, vatomSpaceId, returnRawResponse);
     }
 
     @ApiAction
-    public Result deleteVatomEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteVatomEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -251,11 +250,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.deleteVatomEventHttp(request, version, accountId, appKey, vatomEventId, returnRawResponse);
+        return imp.deleteVatomEventHttp(request, accountId, appKey, vatomEventId, returnRawResponse);
     }
 
     @ApiAction
-    public Result deleteVatomNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteVatomNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -277,11 +276,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.deleteVatomNFTHttp(request, version, accountId, vatomId, returnRawResponse);
+        return imp.deleteVatomNFTHttp(request, accountId, vatomId, returnRawResponse);
     }
 
     @ApiAction
-    public Result executeActionOnNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result executeActionOnNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -310,11 +309,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.executeActionOnNFTHttp(request, version, accountId, vatomId, vatomParameters, returnRawResponse);
+        return imp.executeActionOnNFTHttp(request, accountId, vatomId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result geomapSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result geomapSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -336,11 +335,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.geomapSearchHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.geomapSearchHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result getBusinessBehaviors(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBusinessBehaviors(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -362,11 +361,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getBusinessBehaviorsHttp(request, version, accountId, appKey, returnRawResponse);
+        return imp.getBusinessBehaviorsHttp(request, accountId, appKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result getBusinessCoinsBalance(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBusinessCoinsBalance(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -388,11 +387,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getBusinessCoinsBalanceHttp(request, version, accountId, appKey, returnRawResponse);
+        return imp.getBusinessCoinsBalanceHttp(request, accountId, appKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result getBusinessIds(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBusinessIds(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -407,11 +406,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getBusinessIdsHttp(request, version, accountId, returnRawResponse);
+        return imp.getBusinessIdsHttp(request, accountId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getBusinessInfo(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBusinessInfo(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -440,11 +439,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getBusinessInfoHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.getBusinessInfoHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result getBusinessUsers(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBusinessUsers(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -466,44 +465,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getBusinessUsersHttp(request, version, accountId, appKey, returnRawResponse);
+        return imp.getBusinessUsersHttp(request, accountId, appKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result getCampaignGroupEntities(Http.Request request, BigDecimal version) throws Exception {
-        String valueaccountId = request.getQueryString("accountId");
-        Long accountId;
-        if (valueaccountId != null) {
-            accountId = Long.parseLong(valueaccountId);
-        } else {
-            throw new IllegalArgumentException("'accountId' parameter is required");
-        }
-        String valueappKey = request.getQueryString("appKey");
-        String appKey;
-        if (valueappKey != null) {
-            appKey = valueappKey;
-        } else {
-            throw new IllegalArgumentException("'appKey' parameter is required");
-        }
-        String valuevatomCampaignId = request.getQueryString("vatomCampaignId");
-        String vatomCampaignId;
-        if (valuevatomCampaignId != null) {
-            vatomCampaignId = valuevatomCampaignId;
-        } else {
-            throw new IllegalArgumentException("'vatomCampaignId' parameter is required");
-        }
-        String valuereturnRawResponse = request.getQueryString("returnRawResponse");
-        Boolean returnRawResponse;
-        if (valuereturnRawResponse != null) {
-            returnRawResponse = Boolean.valueOf(valuereturnRawResponse);
-        } else {
-            returnRawResponse = null;
-        }
-        return imp.getCampaignGroupEntitiesHttp(request, version, accountId, appKey, vatomCampaignId, returnRawResponse);
-    }
-
-    @ApiAction
-    public Result getCampaignGroupRules(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCampaignGroupEntities(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -532,11 +498,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getCampaignGroupRulesHttp(request, version, accountId, appKey, vatomCampaignId, returnRawResponse);
+        return imp.getCampaignGroupEntitiesHttp(request, accountId, appKey, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getCampaignGroupStats(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCampaignGroupRules(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -565,11 +531,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getCampaignGroupStatsHttp(request, version, accountId, appKey, vatomCampaignId, returnRawResponse);
+        return imp.getCampaignGroupRulesHttp(request, accountId, appKey, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getCampaignInfo(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCampaignGroupStats(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -598,11 +564,44 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getCampaignInfoHttp(request, version, accountId, appKey, vatomCampaignId, returnRawResponse);
+        return imp.getCampaignGroupStatsHttp(request, accountId, appKey, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getEventGuestList(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCampaignInfo(Http.Request request) throws Exception {
+        String valueaccountId = request.getQueryString("accountId");
+        Long accountId;
+        if (valueaccountId != null) {
+            accountId = Long.parseLong(valueaccountId);
+        } else {
+            throw new IllegalArgumentException("'accountId' parameter is required");
+        }
+        String valueappKey = request.getQueryString("appKey");
+        String appKey;
+        if (valueappKey != null) {
+            appKey = valueappKey;
+        } else {
+            throw new IllegalArgumentException("'appKey' parameter is required");
+        }
+        String valuevatomCampaignId = request.getQueryString("vatomCampaignId");
+        String vatomCampaignId;
+        if (valuevatomCampaignId != null) {
+            vatomCampaignId = valuevatomCampaignId;
+        } else {
+            throw new IllegalArgumentException("'vatomCampaignId' parameter is required");
+        }
+        String valuereturnRawResponse = request.getQueryString("returnRawResponse");
+        Boolean returnRawResponse;
+        if (valuereturnRawResponse != null) {
+            returnRawResponse = Boolean.valueOf(valuereturnRawResponse);
+        } else {
+            returnRawResponse = null;
+        }
+        return imp.getCampaignInfoHttp(request, accountId, appKey, vatomCampaignId, returnRawResponse);
+    }
+
+    @ApiAction
+    public Result getEventGuestList(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -631,11 +630,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getEventGuestListHttp(request, version, accountId, appKey, vatomEventId, returnRawResponse);
+        return imp.getEventGuestListHttp(request, accountId, appKey, vatomEventId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getInventory(Http.Request request, BigDecimal version) throws Exception {
+    public Result getInventory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -657,11 +656,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getInventoryHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.getInventoryHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result getMyFollowing(Http.Request request, BigDecimal version) throws Exception {
+    public Result getMyFollowing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -676,11 +675,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getMyFollowingHttp(request, version, accountId, returnRawResponse);
+        return imp.getMyFollowingHttp(request, accountId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getPointsBalance(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPointsBalance(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -709,11 +708,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getPointsBalanceHttp(request, version, accountId, vatomUserId, vatomCampaignId, returnRawResponse);
+        return imp.getPointsBalanceHttp(request, accountId, vatomUserId, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getPointsBalanceAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPointsBalanceAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -749,11 +748,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getPointsBalanceAsBusinessHttp(request, version, accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse);
+        return imp.getPointsBalanceAsBusinessHttp(request, accountId, appKey, vatomUserId, vatomCampaignId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getSpace(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSpace(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -782,11 +781,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getSpaceHttp(request, version, accountId, appKey, vatomSpaceId, returnRawResponse);
+        return imp.getSpaceHttp(request, accountId, appKey, vatomSpaceId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserCoinsAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserCoinsAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -815,11 +814,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserCoinsAsBusinessHttp(request, version, accountId, vatomUserId, appKey, returnRawResponse);
+        return imp.getUserCoinsAsBusinessHttp(request, accountId, vatomUserId, appKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserCoinsBalance(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserCoinsBalance(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -848,11 +847,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserCoinsBalanceHttp(request, version, accountId, vatomUserId, vatomParameters, returnRawResponse);
+        return imp.getUserCoinsBalanceHttp(request, accountId, vatomUserId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserFollowers(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserFollowers(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -874,11 +873,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserFollowersHttp(request, version, accountId, vatomUserId, returnRawResponse);
+        return imp.getUserFollowersHttp(request, accountId, vatomUserId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserFollowing(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserFollowing(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -900,11 +899,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserFollowingHttp(request, version, accountId, vatomUserId, returnRawResponse);
+        return imp.getUserFollowingHttp(request, accountId, vatomUserId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserInfo(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserInfo(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -926,11 +925,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserInfoHttp(request, version, accountId, vatomUserId, returnRawResponse);
+        return imp.getUserInfoHttp(request, accountId, vatomUserId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getUserProfile(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserProfile(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -945,11 +944,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getUserProfileHttp(request, version, accountId, returnRawResponse);
+        return imp.getUserProfileHttp(request, accountId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getVatomEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result getVatomEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -978,11 +977,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getVatomEventHttp(request, version, accountId, appKey, vatomEventId, returnRawResponse);
+        return imp.getVatomEventHttp(request, accountId, appKey, vatomEventId, returnRawResponse);
     }
 
     @ApiAction
-    public Result getVatomNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result getVatomNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1004,11 +1003,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.getVatomNFTHttp(request, version, accountId, vatomId, returnRawResponse);
+        return imp.getVatomNFTHttp(request, accountId, vatomId, returnRawResponse);
     }
 
     @ApiAction
-    public Result listCommunities(Http.Request request, BigDecimal version) throws Exception {
+    public Result listCommunities(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1037,11 +1036,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.listCommunitiesHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.listCommunitiesHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result listEvents(Http.Request request, BigDecimal version) throws Exception {
+    public Result listEvents(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1070,11 +1069,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.listEventsHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.listEventsHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result listSpaces(Http.Request request, BigDecimal version) throws Exception {
+    public Result listSpaces(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1103,11 +1102,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.listSpacesHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.listSpacesHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result listUserCoinTransactions(Http.Request request, BigDecimal version) throws Exception {
+    public Result listUserCoinTransactions(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1136,11 +1135,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.listUserCoinTransactionsHttp(request, version, accountId, vatomUserId, vatomParameters, returnRawResponse);
+        return imp.listUserCoinTransactionsHttp(request, accountId, vatomUserId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result listUserCoinTransactionsAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result listUserCoinTransactionsAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1176,11 +1175,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.listUserCoinTransactionsAsBusinessHttp(request, version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
+        return imp.listUserCoinTransactionsAsBusinessHttp(request, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result performActionOnNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result performActionOnNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1216,11 +1215,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.performActionOnNFTHttp(request, version, accountId, vatomId, vatomAction, vatomParameters, returnRawResponse);
+        return imp.performActionOnNFTHttp(request, accountId, vatomId, vatomAction, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result redeemNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result redeemNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1249,11 +1248,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.redeemNFTHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.redeemNFTHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result redeemUserCoinsAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result redeemUserCoinsAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1289,11 +1288,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.redeemUserCoinsAsBusinessHttp(request, version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
+        return imp.redeemUserCoinsAsBusinessHttp(request, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result searchBusinesses(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchBusinesses(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1315,11 +1314,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.searchBusinessesHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.searchBusinessesHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result searchCampaignGroups(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchCampaignGroups(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1341,11 +1340,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.searchCampaignGroupsHttp(request, version, accountId, appKey, returnRawResponse);
+        return imp.searchCampaignGroupsHttp(request, accountId, appKey, returnRawResponse);
     }
 
     @ApiAction
-    public Result searchIdentities(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchIdentities(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1360,11 +1359,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.searchIdentitiesHttp(request, version, accountId, returnRawResponse);
+        return imp.searchIdentitiesHttp(request, accountId, returnRawResponse);
     }
 
     @ApiAction
-    public Result searchInventory(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchInventory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1386,11 +1385,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.searchInventoryHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.searchInventoryHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result sendNFT(Http.Request request, BigDecimal version) throws Exception {
+    public Result sendNFT(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1426,11 +1425,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.sendNFTHttp(request, version, accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse);
+        return imp.sendNFTHttp(request, accountId, appKey, vatomCampaignId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result setPointsBalanceAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result setPointsBalanceAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1473,11 +1472,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.setPointsBalanceAsBusinessHttp(request, version, accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse);
+        return imp.setPointsBalanceAsBusinessHttp(request, accountId, appKey, vatomUserId, vatomCampaignId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result transferUserCoins(Http.Request request, BigDecimal version) throws Exception {
+    public Result transferUserCoins(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1506,11 +1505,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.transferUserCoinsHttp(request, version, accountId, vatomUserId, vatomParameters, returnRawResponse);
+        return imp.transferUserCoinsHttp(request, accountId, vatomUserId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateBusinessCoins(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateBusinessCoins(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1539,11 +1538,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateBusinessCoinsHttp(request, version, accountId, appKey, vatomParameters, returnRawResponse);
+        return imp.updateBusinessCoinsHttp(request, accountId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateEventGuestList(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateEventGuestList(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1579,11 +1578,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateEventGuestListHttp(request, version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse);
+        return imp.updateEventGuestListHttp(request, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateSpace(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateSpace(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1619,11 +1618,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateSpaceHttp(request, version, accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse);
+        return imp.updateSpaceHttp(request, accountId, appKey, vatomSpaceId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateUserCoinsAsBusiness(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateUserCoinsAsBusiness(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1659,11 +1658,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateUserCoinsAsBusinessHttp(request, version, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
+        return imp.updateUserCoinsAsBusinessHttp(request, accountId, vatomUserId, appKey, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateUserProfile(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateUserProfile(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1685,11 +1684,11 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateUserProfileHttp(request, version, accountId, vatomParameters, returnRawResponse);
+        return imp.updateUserProfileHttp(request, accountId, vatomParameters, returnRawResponse);
     }
 
     @ApiAction
-    public Result updateVatomEvent(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateVatomEvent(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1725,7 +1724,7 @@ public class VatomApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.updateVatomEventHttp(request, version, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse);
+        return imp.updateVatomEventHttp(request, accountId, appKey, vatomEventId, vatomParameters, returnRawResponse);
     }
 
 }

@@ -3,7 +3,6 @@ package controllers;
 import apimodels.AccountMiniResponse;
 import apimodels.AssignmentResponse;
 import apimodels.AssignmentStatusResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AssignmentApiController extends Controller {
     private final AssignmentApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class AssignmentApiController extends Controller {
     }
 
     @ApiAction
-    public Result assigmentAssigneeAccountSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result assigmentAssigneeAccountSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -57,11 +56,11 @@ public class AssignmentApiController extends Controller {
         } else {
             keyword = null;
         }
-        return imp.assigmentAssigneeAccountSearchHttp(request, version, accountId, keyword);
+        return imp.assigmentAssigneeAccountSearchHttp(request, accountId, keyword);
     }
 
     @ApiAction
-    public Result assignmentCreate(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentCreate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -111,11 +110,11 @@ public class AssignmentApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.assignmentCreateHttp(request, version, accountId, name, assigneeAccountId, description, retailerLocationId, tags, active);
+        return imp.assignmentCreateHttp(request, accountId, name, assigneeAccountId, description, retailerLocationId, tags, active);
     }
 
     @ApiAction
-    public Result assignmentDelete(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentDelete(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -130,11 +129,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'assignmentId' parameter is required");
         }
-        return imp.assignmentDeleteHttp(request, version, accountId, assignmentId);
+        return imp.assignmentDeleteHttp(request, accountId, assignmentId);
     }
 
     @ApiAction
-    public Result assignmentGet(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentGet(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -149,11 +148,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'assignmentId' parameter is required");
         }
-        return imp.assignmentGetHttp(request, version, accountId, assignmentId);
+        return imp.assignmentGetHttp(request, accountId, assignmentId);
     }
 
     @ApiAction
-    public Result assignmentSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -231,11 +230,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.assignmentSearchHttp(request, version, accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword);
+        return imp.assignmentSearchHttp(request, accountId, sortField, descending, activeOnly, start, limit, creatorAccountId, assigneeAccountIds, retailerLocationIds, currentStatusType, keyword);
     }
 
     @ApiAction
-    public Result assignmentStatusCreate(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentStatusCreate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -313,11 +312,11 @@ public class AssignmentApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.assignmentStatusCreateHttp(request, version, accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active);
+        return imp.assignmentStatusCreateHttp(request, accountId, assignmentId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active);
     }
 
     @ApiAction
-    public Result assignmentStatusDelete(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentStatusDelete(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -332,11 +331,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'assignmentStatusId' parameter is required");
         }
-        return imp.assignmentStatusDeleteHttp(request, version, accountId, assignmentStatusId);
+        return imp.assignmentStatusDeleteHttp(request, accountId, assignmentStatusId);
     }
 
     @ApiAction
-    public Result assignmentStatusGet(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentStatusGet(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -351,11 +350,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'assignmentStatusId' parameter is required");
         }
-        return imp.assignmentStatusGetHttp(request, version, accountId, assignmentStatusId);
+        return imp.assignmentStatusGetHttp(request, accountId, assignmentStatusId);
     }
 
     @ApiAction
-    public Result assignmentStatusSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentStatusSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -440,11 +439,11 @@ public class AssignmentApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.assignmentStatusSearchHttp(request, version, accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword);
+        return imp.assignmentStatusSearchHttp(request, accountId, sortField, descending, activeOnly, start, limit, assignmentId, creatorAccountId, assigneeAccountId, retailerLocationId, statusType, keyword);
     }
 
     @ApiAction
-    public Result assignmentStatusUpdate(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentStatusUpdate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -522,11 +521,11 @@ public class AssignmentApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.assignmentStatusUpdateHttp(request, version, accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active);
+        return imp.assignmentStatusUpdateHttp(request, accountId, assignmentStatusId, scheduledNotificationId, toDo, connection, method, status, closure, message, followUp, active);
     }
 
     @ApiAction
-    public Result assignmentUpdate(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignmentUpdate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -583,7 +582,7 @@ public class AssignmentApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.assignmentUpdateHttp(request, version, accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active);
+        return imp.assignmentUpdateHttp(request, accountId, assignmentId, name, description, assigneeAccountId, retailerLocationId, tags, active);
     }
 
 }

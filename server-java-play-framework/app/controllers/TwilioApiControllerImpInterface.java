@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.TwiMLResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class TwilioApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result smsBuyOfferHttp(Http.Request request, BigDecimal version, String appKey, @NotNull String body, @NotNull String from, @NotNull String currencyType) throws Exception {
-        TwiMLResponse obj = smsBuyOffer(request, version, appKey, body, from, currencyType);
+    public Result smsBuyOfferHttp(Http.Request request, String appKey, @NotNull String body, @NotNull String from, @NotNull String currencyType) throws Exception {
+        TwiMLResponse obj = smsBuyOffer(request, appKey, body, from, currencyType);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class TwilioApiControllerImpInterface {
 
     }
 
-    public abstract TwiMLResponse smsBuyOffer(Http.Request request, BigDecimal version, String appKey, @NotNull String body, @NotNull String from, @NotNull String currencyType) throws Exception;
+    public abstract TwiMLResponse smsBuyOffer(Http.Request request, String appKey, @NotNull String body, @NotNull String from, @NotNull String currencyType) throws Exception;
 
 }

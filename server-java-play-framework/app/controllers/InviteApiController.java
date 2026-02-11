@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ConsumerInviteResponse;
 import apimodels.InviteResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class InviteApiController extends Controller {
     private final InviteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class InviteApiController extends Controller {
     }
 
     @ApiAction
-    public Result acceptInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result acceptInvite(Http.Request request) throws Exception {
         String valuetoken = request.getQueryString("token");
         String token;
         if (valuetoken != null) {
@@ -140,11 +139,11 @@ public class InviteApiController extends Controller {
         } else {
             autoFavoriteRetailerLocation = false;
         }
-        return imp.acceptInviteHttp(request, version, token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation);
+        return imp.acceptInviteHttp(request, token, accountId, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey, autoFriend, autoAttendEvent, autoFavoriteOffer, autoFavoriteOfferLocation, autoFavoriteRetailerLocation);
     }
 
     @ApiAction
-    public Result albumContestInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result albumContestInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -194,11 +193,11 @@ public class InviteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.albumContestInviteHttp(request, version, deviceId, accountId, appId, appKey, albumContestId, latitude, longitude);
+        return imp.albumContestInviteHttp(request, deviceId, accountId, appId, appKey, albumContestId, latitude, longitude);
     }
 
     @ApiAction
-    public Result albumInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result albumInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -248,11 +247,11 @@ public class InviteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.albumInviteHttp(request, version, deviceId, accountId, appId, appKey, albumId, latitude, longitude);
+        return imp.albumInviteHttp(request, deviceId, accountId, appId, appKey, albumId, latitude, longitude);
     }
 
     @ApiAction
-    public Result eventInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result eventInvite(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -288,11 +287,11 @@ public class InviteApiController extends Controller {
         } else {
             retailerLocationId = null;
         }
-        return imp.eventInviteHttp(request, version, accountId, appKey, listingId, receiverAccountIds, retailerLocationId);
+        return imp.eventInviteHttp(request, accountId, appKey, listingId, receiverAccountIds, retailerLocationId);
     }
 
     @ApiAction
-    public Result gameInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result gameInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -342,11 +341,11 @@ public class InviteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.gameInviteHttp(request, version, deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude);
+        return imp.gameInviteHttp(request, deviceId, accountId, appId, appKey, gameLevelId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result getInvite(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -410,11 +409,11 @@ public class InviteApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.getInviteHttp(request, version, accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey);
+        return imp.getInviteHttp(request, accountId, token, albumId, missionId, albumContestId, offerId, offerLocationId, retailerLocationId, appKey);
     }
 
     @ApiAction
-    public Result missionInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result missionInvite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -464,11 +463,11 @@ public class InviteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.missionInviteHttp(request, version, deviceId, accountId, appId, appKey, missionId, latitude, longitude);
+        return imp.missionInviteHttp(request, deviceId, accountId, appId, appKey, missionId, latitude, longitude);
     }
 
     @ApiAction
-    public Result offerInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result offerInvite(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -490,11 +489,11 @@ public class InviteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'offerId' parameter is required");
         }
-        return imp.offerInviteHttp(request, version, accountId, appKey, offerId);
+        return imp.offerInviteHttp(request, accountId, appKey, offerId);
     }
 
     @ApiAction
-    public Result offerLocationInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result offerLocationInvite(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -516,11 +515,11 @@ public class InviteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'offerLocationId' parameter is required");
         }
-        return imp.offerLocationInviteHttp(request, version, accountId, appKey, offerLocationId);
+        return imp.offerLocationInviteHttp(request, accountId, appKey, offerLocationId);
     }
 
     @ApiAction
-    public Result retailerLocationInvite(Http.Request request, BigDecimal version) throws Exception {
+    public Result retailerLocationInvite(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -549,7 +548,7 @@ public class InviteApiController extends Controller {
         } else {
             albumId = null;
         }
-        return imp.retailerLocationInviteHttp(request, version, accountId, appKey, retailerLocationId, albumId);
+        return imp.retailerLocationInviteHttp(request, accountId, appKey, retailerLocationId, albumId);
     }
 
 }

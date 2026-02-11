@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ProfileResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class TwitterApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result authorizeTwitterHttp(Http.Request request, BigDecimal version, @NotNull String appKey) throws Exception {
-        SirqulResponse obj = authorizeTwitter(request, version, appKey);
+    public Result authorizeTwitterHttp(Http.Request request, @NotNull String appKey) throws Exception {
+        SirqulResponse obj = authorizeTwitter(request, appKey);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,10 +41,10 @@ public abstract class TwitterApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse authorizeTwitter(Http.Request request, BigDecimal version, @NotNull String appKey) throws Exception;
+    public abstract SirqulResponse authorizeTwitter(Http.Request request, @NotNull String appKey) throws Exception;
 
-    public Result loginTwitterHttp(Http.Request request, BigDecimal version, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception {
-        ProfileResponse obj = loginTwitter(request, version, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude);
+    public Result loginTwitterHttp(Http.Request request, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception {
+        ProfileResponse obj = loginTwitter(request, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -57,6 +56,6 @@ public abstract class TwitterApiControllerImpInterface {
 
     }
 
-    public abstract ProfileResponse loginTwitter(Http.Request request, BigDecimal version, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception;
+    public abstract ProfileResponse loginTwitter(Http.Request request, @NotNull String accessToken, @NotNull String accessTokenSecret, @NotNull String appKey, @NotNull String responseFilters, String deviceId, Double latitude, Double longitude) throws Exception;
 
 }

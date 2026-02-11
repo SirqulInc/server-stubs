@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RouteSettings;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class RouteSettingApiController extends Controller {
     private final RouteSettingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class RouteSettingApiController extends Controller {
     }
 
     @ApiAction
-    public Result createRouteSettings(Http.Request request, BigDecimal version) throws Exception {
+    public Result createRouteSettings(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         RouteSettings body;
         if (nodebody != null) {
@@ -50,21 +49,21 @@ public class RouteSettingApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createRouteSettingsHttp(request, version, body);
+        return imp.createRouteSettingsHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteRouteSettings(Http.Request request, BigDecimal version,Long routeSettingsId) throws Exception {
-        return imp.deleteRouteSettingsHttp(request, version, routeSettingsId);
+    public Result deleteRouteSettings(Http.Request request, Long routeSettingsId) throws Exception {
+        return imp.deleteRouteSettingsHttp(request, routeSettingsId);
     }
 
     @ApiAction
-    public Result getRouteSettings(Http.Request request, BigDecimal version,Long routeSettingsId) throws Exception {
-        return imp.getRouteSettingsHttp(request, version, routeSettingsId);
+    public Result getRouteSettings(Http.Request request, Long routeSettingsId) throws Exception {
+        return imp.getRouteSettingsHttp(request, routeSettingsId);
     }
 
     @ApiAction
-    public Result searchRouteSettings(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRouteSettings(Http.Request request) throws Exception {
         String valuehubId = request.getQueryString("hubId");
         Long hubId;
         if (valuehubId != null) {
@@ -121,11 +120,11 @@ public class RouteSettingApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchRouteSettingsHttp(request, version, sortField, descending, start, limit, activeOnly, hubId, programId, keyword);
+        return imp.searchRouteSettingsHttp(request, sortField, descending, start, limit, activeOnly, hubId, programId, keyword);
     }
 
     @ApiAction
-    public Result updateRouteSettings(Http.Request request, BigDecimal version,Long routeSettingsId) throws Exception {
+    public Result updateRouteSettings(Http.Request request, Long routeSettingsId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         RouteSettings body;
         if (nodebody != null) {
@@ -136,7 +135,7 @@ public class RouteSettingApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateRouteSettingsHttp(request, version, routeSettingsId, body);
+        return imp.updateRouteSettingsHttp(request, routeSettingsId, body);
     }
 
 }

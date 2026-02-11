@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.BillableEntityResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class BillableEntityApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createBillableEntityHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception {
-        BillableEntityResponse obj = createBillableEntity(request, version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
+    public Result createBillableEntityHttp(Http.Request request, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception {
+        BillableEntityResponse obj = createBillableEntity(request, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class BillableEntityApiControllerImpInterface {
 
     }
 
-    public abstract BillableEntityResponse createBillableEntity(Http.Request request, BigDecimal version, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception;
+    public abstract BillableEntityResponse createBillableEntity(Http.Request request, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception;
 
-    public Result deleteBillableEntityHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId) throws Exception {
-        SirqulResponse obj = deleteBillableEntity(request, version, deviceId, accountId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteBillableEntity(Http.Request request, BigDecimal version, String deviceId, Long accountId) throws Exception;
-
-    public Result getBillableEntityHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, Boolean includeCounts, Boolean includePayments) throws Exception {
-        BillableEntityResponse obj = getBillableEntity(request, version, deviceId, accountId, includeCounts, includePayments);
+    public Result deleteBillableEntityHttp(Http.Request request, String deviceId, Long accountId) throws Exception {
+        SirqulResponse obj = deleteBillableEntity(request, deviceId, accountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,10 +56,10 @@ public abstract class BillableEntityApiControllerImpInterface {
 
     }
 
-    public abstract BillableEntityResponse getBillableEntity(Http.Request request, BigDecimal version, String deviceId, Long accountId, Boolean includeCounts, Boolean includePayments) throws Exception;
+    public abstract SirqulResponse deleteBillableEntity(Http.Request request, String deviceId, Long accountId) throws Exception;
 
-    public Result updateBillableEntityHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception {
-        BillableEntityResponse obj = updateBillableEntity(request, version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
+    public Result getBillableEntityHttp(Http.Request request, String deviceId, Long accountId, Boolean includeCounts, Boolean includePayments) throws Exception {
+        BillableEntityResponse obj = getBillableEntity(request, deviceId, accountId, includeCounts, includePayments);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -87,6 +71,21 @@ public abstract class BillableEntityApiControllerImpInterface {
 
     }
 
-    public abstract BillableEntityResponse updateBillableEntity(Http.Request request, BigDecimal version, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception;
+    public abstract BillableEntityResponse getBillableEntity(Http.Request request, String deviceId, Long accountId, Boolean includeCounts, Boolean includePayments) throws Exception;
+
+    public Result updateBillableEntityHttp(Http.Request request, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception {
+        BillableEntityResponse obj = updateBillableEntity(request, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract BillableEntityResponse updateBillableEntity(Http.Request request, String deviceId, Long accountId, String name, String streetAddress, String streetAddress2, String city, String state, String postalCode, String businessPhone, String businessPhoneExt, String authorizeNetApiKey, String authorizeNetTransactionKey) throws Exception;
 
 }

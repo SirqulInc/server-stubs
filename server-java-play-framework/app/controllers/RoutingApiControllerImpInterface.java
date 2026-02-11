@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.RoutingListResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class RoutingApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result computeRoutingHttp(Http.Request request, BigDecimal version, @NotNull String data) throws Exception {
-        RoutingListResponse obj = computeRouting(request, version, data);
+    public Result computeRoutingHttp(Http.Request request, @NotNull String data) throws Exception {
+        RoutingListResponse obj = computeRouting(request, data);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class RoutingApiControllerImpInterface {
 
     }
 
-    public abstract RoutingListResponse computeRouting(Http.Request request, BigDecimal version, @NotNull String data) throws Exception;
+    public abstract RoutingListResponse computeRouting(Http.Request request, @NotNull String data) throws Exception;
 
 }

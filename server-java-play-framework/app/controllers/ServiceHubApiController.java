@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ServiceHub;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ServiceHubApiController extends Controller {
     private final ServiceHubApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class ServiceHubApiController extends Controller {
     }
 
     @ApiAction
-    public Result createServiceHub(Http.Request request, BigDecimal version) throws Exception {
+    public Result createServiceHub(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         ServiceHub body;
         if (nodebody != null) {
@@ -50,21 +49,21 @@ public class ServiceHubApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createServiceHubHttp(request, version, body);
+        return imp.createServiceHubHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteServiceHub(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.deleteServiceHubHttp(request, version, id);
+    public Result deleteServiceHub(Http.Request request, Long id) throws Exception {
+        return imp.deleteServiceHubHttp(request, id);
     }
 
     @ApiAction
-    public Result getServiceHub(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.getServiceHubHttp(request, version, id);
+    public Result getServiceHub(Http.Request request, Long id) throws Exception {
+        return imp.getServiceHubHttp(request, id);
     }
 
     @ApiAction
-    public Result postServiceHub(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result postServiceHub(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         ServiceHub body;
         if (nodebody != null) {
@@ -75,11 +74,11 @@ public class ServiceHubApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.postServiceHubHttp(request, version, id, body);
+        return imp.postServiceHubHttp(request, id, body);
     }
 
     @ApiAction
-    public Result putServiceHub(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result putServiceHub(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         ServiceHub body;
         if (nodebody != null) {
@@ -90,11 +89,11 @@ public class ServiceHubApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.putServiceHubHttp(request, version, id, body);
+        return imp.putServiceHubHttp(request, id, body);
     }
 
     @ApiAction
-    public Result searchServiceHubs(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchServiceHubs(Http.Request request) throws Exception {
         String valuekeyword = request.getQueryString("keyword");
         String keyword;
         if (valuekeyword != null) {
@@ -144,7 +143,7 @@ public class ServiceHubApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchServiceHubsHttp(request, version, sortField, descending, start, limit, activeOnly, keyword, retailerId);
+        return imp.searchServiceHubsHttp(request, sortField, descending, start, limit, activeOnly, keyword, retailerId);
     }
 
 }

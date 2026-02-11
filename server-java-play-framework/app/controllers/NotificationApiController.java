@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.BlockedNotificationResponse;
 import apimodels.NotificationMessageListResponse;
 import apimodels.NotificationRecipientResponse;
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class NotificationApiController extends Controller {
     private final NotificationApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class NotificationApiController extends Controller {
     }
 
     @ApiAction
-    public Result createNotificationTemplate(Http.Request request, BigDecimal version) throws Exception {
+    public Result createNotificationTemplate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -94,11 +93,11 @@ public class NotificationApiController extends Controller {
         } else {
             tags = null;
         }
-        return imp.createNotificationTemplateHttp(request, version, accountId, conduit, title, body, appKey, event, tags);
+        return imp.createNotificationTemplateHttp(request, accountId, conduit, title, body, appKey, event, tags);
     }
 
     @ApiAction
-    public Result createOrUpdateBlockedNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOrUpdateBlockedNotifications(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -120,11 +119,11 @@ public class NotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.createOrUpdateBlockedNotificationsHttp(request, version, appKey, data, accountId);
+        return imp.createOrUpdateBlockedNotificationsHttp(request, appKey, data, accountId);
     }
 
     @ApiAction
-    public Result deleteNotificationTemplate(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteNotificationTemplate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -139,11 +138,11 @@ public class NotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'notificationTemplateId' parameter is required");
         }
-        return imp.deleteNotificationTemplateHttp(request, version, accountId, notificationTemplateId);
+        return imp.deleteNotificationTemplateHttp(request, accountId, notificationTemplateId);
     }
 
     @ApiAction
-    public Result getNotificationTemplate(Http.Request request, BigDecimal version) throws Exception {
+    public Result getNotificationTemplate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -158,11 +157,11 @@ public class NotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'notificationTemplateId' parameter is required");
         }
-        return imp.getNotificationTemplateHttp(request, version, accountId, notificationTemplateId);
+        return imp.getNotificationTemplateHttp(request, accountId, notificationTemplateId);
     }
 
     @ApiAction
-    public Result getNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result getNotifications(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -310,11 +309,11 @@ public class NotificationApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.getNotificationsHttp(request, version, deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit);
+        return imp.getNotificationsHttp(request, deviceId, accountId, connectionAccountId, appKey, eventType, contentIds, contentTypes, parentIds, parentTypes, actionCategory, conduits, keyword, returnReadMessages, markAsRead, fromDate, latitude, longitude, returnSent, ignoreFlagged, start, limit);
     }
 
     @ApiAction
-    public Result registerNotificationToken(Http.Request request, BigDecimal version) throws Exception {
+    public Result registerNotificationToken(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -385,11 +384,11 @@ public class NotificationApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.registerNotificationTokenHttp(request, version, token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude);
+        return imp.registerNotificationTokenHttp(request, token, pushType, deviceId, accountId, environment, appKey, gameType, active, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchBlockedNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchBlockedNotifications(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -474,11 +473,11 @@ public class NotificationApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchBlockedNotificationsHttp(request, version, appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit);
+        return imp.searchBlockedNotificationsHttp(request, appKey, accountId, searchTags, events, conduits, customTypes, contentTypes, contentIds, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchNotificationTemplate(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchNotificationTemplate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -556,11 +555,11 @@ public class NotificationApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchNotificationTemplateHttp(request, version, accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword);
+        return imp.searchNotificationTemplateHttp(request, accountId, sortField, descending, start, limit, appKey, event, conduit, globalOnly, reservedOnly, keyword);
     }
 
     @ApiAction
-    public Result searchRecipients(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRecipients(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -652,11 +651,11 @@ public class NotificationApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchRecipientsHttp(request, version, sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit);
+        return imp.searchRecipientsHttp(request, sortField, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, recipientAccountIds, descending, start, limit);
     }
 
     @ApiAction
-    public Result searchRecipientsCount(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchRecipientsCount(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -741,11 +740,11 @@ public class NotificationApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.searchRecipientsCountHttp(request, version, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit);
+        return imp.searchRecipientsCountHttp(request, deviceId, accountId, appKey, conduit, keyword, audienceId, audienceIds, connectionGroupIds, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result sendBatchNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result sendBatchNotifications(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -809,11 +808,11 @@ public class NotificationApiController extends Controller {
         } else {
             parentType = null;
         }
-        return imp.sendBatchNotificationsHttp(request, version, accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType);
+        return imp.sendBatchNotificationsHttp(request, accountId, appKey, customMessage, conduit, contentId, contentName, contentType, parentId, parentType);
     }
 
     @ApiAction
-    public Result sendCustomNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result sendCustomNotifications(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -940,11 +939,11 @@ public class NotificationApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.sendCustomNotificationsHttp(request, version, deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude);
+        return imp.sendCustomNotificationsHttp(request, deviceId, accountId, receiverAccountIds, includeFriendGroup, appKey, gameType, conduit, contentId, contentName, contentType, parentId, parentType, actionCategory, subject, customMessage, friendOnlyAPNS, latitude, longitude);
     }
 
     @ApiAction
-    public Result updateNotificationTemplate(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateNotificationTemplate(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -980,7 +979,7 @@ public class NotificationApiController extends Controller {
         } else {
             tags = null;
         }
-        return imp.updateNotificationTemplateHttp(request, version, accountId, notificationTemplateId, title, body, tags);
+        return imp.updateNotificationTemplateHttp(request, accountId, notificationTemplateId, title, body, tags);
     }
 
 }

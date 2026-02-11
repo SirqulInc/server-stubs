@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.AccountResponse;
-import java.math.BigDecimal;
 import apimodels.SearchResponse;
 import apimodels.SirqulResponse;
 import apimodels.WrappedResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class FavoriteApiController extends Controller {
     private final FavoriteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class FavoriteApiController extends Controller {
     }
 
     @ApiAction
-    public Result addFavorite(Http.Request request, BigDecimal version) throws Exception {
+    public Result addFavorite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -85,11 +84,11 @@ public class FavoriteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addFavoriteHttp(request, version, favoritableId, favoritableType, deviceId, accountId, latitude, longitude);
+        return imp.addFavoriteHttp(request, favoritableId, favoritableType, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result deleteFavorite(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteFavorite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -125,11 +124,11 @@ public class FavoriteApiController extends Controller {
         } else {
             favoritableType = null;
         }
-        return imp.deleteFavoriteHttp(request, version, deviceId, accountId, favoriteId, favoritableId, favoritableType);
+        return imp.deleteFavoriteHttp(request, deviceId, accountId, favoriteId, favoritableId, favoritableType);
     }
 
     @ApiAction
-    public Result getFavorite(Http.Request request, BigDecimal version) throws Exception {
+    public Result getFavorite(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -165,11 +164,11 @@ public class FavoriteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getFavoriteHttp(request, version, favoriteId, deviceId, accountId, latitude, longitude);
+        return imp.getFavoriteHttp(request, favoriteId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchFavorites(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchFavorites(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -268,11 +267,11 @@ public class FavoriteApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.searchFavoritesHttp(request, version, favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude);
+        return imp.searchFavoritesHttp(request, favoritableType, sortField, descending, start, limit, activeOnly, returnFullResponse, deviceId, accountId, connectionAccountId, secondaryType, keyword, latitude, longitude);
     }
 
     @ApiAction
-    public Result whoHasFavorited(Http.Request request, BigDecimal version) throws Exception {
+    public Result whoHasFavorited(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -336,7 +335,7 @@ public class FavoriteApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.whoHasFavoritedHttp(request, version, favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword);
+        return imp.whoHasFavoritedHttp(request, favoritableId, favoritableType, start, limit, deviceId, accountId, latitude, longitude, keyword);
     }
 
 }

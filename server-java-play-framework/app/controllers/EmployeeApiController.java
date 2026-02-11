@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.EmployeeResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class EmployeeApiController extends Controller {
     private final EmployeeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class EmployeeApiController extends Controller {
     }
 
     @ApiAction
-    public Result assignEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -69,11 +68,11 @@ public class EmployeeApiController extends Controller {
         } else {
             role = null;
         }
-        return imp.assignEmployeeHttp(request, version, accountId, managerAccountId, employeeAccountId, role);
+        return imp.assignEmployeeHttp(request, accountId, managerAccountId, employeeAccountId, role);
     }
 
     @ApiAction
-    public Result assignToLocationEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result assignToLocationEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -102,11 +101,11 @@ public class EmployeeApiController extends Controller {
         } else {
             assign = true;
         }
-        return imp.assignToLocationEmployeeHttp(request, version, accountId, retailerLocationId, employeeAccountId, assign);
+        return imp.assignToLocationEmployeeHttp(request, accountId, retailerLocationId, employeeAccountId, assign);
     }
 
     @ApiAction
-    public Result createEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result createEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -317,11 +316,11 @@ public class EmployeeApiController extends Controller {
         } else {
             assignedDeviceId = null;
         }
-        return imp.createEmployeeHttp(request, version, accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId);
+        return imp.createEmployeeHttp(request, accountId, managerAccountId, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, aboutUs, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId);
     }
 
     @ApiAction
-    public Result deleteEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -336,11 +335,11 @@ public class EmployeeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'employeeAccountId' parameter is required");
         }
-        return imp.deleteEmployeeHttp(request, version, accountId, employeeAccountId);
+        return imp.deleteEmployeeHttp(request, accountId, employeeAccountId);
     }
 
     @ApiAction
-    public Result getEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result getEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -362,11 +361,11 @@ public class EmployeeApiController extends Controller {
         } else {
             settingsAppKey = null;
         }
-        return imp.getEmployeeHttp(request, version, accountId, employeeAccountId, settingsAppKey);
+        return imp.getEmployeeHttp(request, accountId, employeeAccountId, settingsAppKey);
     }
 
     @ApiAction
-    public Result searchEmployees(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchEmployees(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -486,11 +485,11 @@ public class EmployeeApiController extends Controller {
         } else {
             query = null;
         }
-        return imp.searchEmployeesHttp(request, version, accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query);
+        return imp.searchEmployeesHttp(request, accountId, role, retailerId, retailerLocationId, q, keyword, sortField, descending, i, start, l, limit, activeOnly, managedOnly, settingsAppKey, categoryIds, query);
     }
 
     @ApiAction
-    public Result unassignEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result unassignEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -505,11 +504,11 @@ public class EmployeeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'employeeAccountId' parameter is required");
         }
-        return imp.unassignEmployeeHttp(request, version, accountId, employeeAccountId);
+        return imp.unassignEmployeeHttp(request, accountId, employeeAccountId);
     }
 
     @ApiAction
-    public Result updateEmployee(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateEmployee(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -720,7 +719,7 @@ public class EmployeeApiController extends Controller {
         } else {
             assignedDeviceId = null;
         }
-        return imp.updateEmployeeHttp(request, version, accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId);
+        return imp.updateEmployeeHttp(request, accountId, employeeAccountId, managerAccountId, name, prefixName, firstName, middleName, lastName, suffixName, title, assetId, gender, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, role, active, password, retailerLocationIds, settingsAppKey, appBlob, assignedDeviceId);
     }
 
 }

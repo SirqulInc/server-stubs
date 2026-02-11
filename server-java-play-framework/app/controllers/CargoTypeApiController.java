@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CargoType;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class CargoTypeApiController extends Controller {
     private final CargoTypeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class CargoTypeApiController extends Controller {
     }
 
     @ApiAction
-    public Result createCargoType(Http.Request request, BigDecimal version) throws Exception {
+    public Result createCargoType(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         CargoType body;
         if (nodebody != null) {
@@ -50,21 +49,21 @@ public class CargoTypeApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createCargoTypeHttp(request, version, body);
+        return imp.createCargoTypeHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteCargoType(Http.Request request, BigDecimal version,Long cargoTypeId) throws Exception {
-        return imp.deleteCargoTypeHttp(request, version, cargoTypeId);
+    public Result deleteCargoType(Http.Request request, Long cargoTypeId) throws Exception {
+        return imp.deleteCargoTypeHttp(request, cargoTypeId);
     }
 
     @ApiAction
-    public Result getCargoType(Http.Request request, BigDecimal version,Long cargoTypeId) throws Exception {
-        return imp.getCargoTypeHttp(request, version, cargoTypeId);
+    public Result getCargoType(Http.Request request, Long cargoTypeId) throws Exception {
+        return imp.getCargoTypeHttp(request, cargoTypeId);
     }
 
     @ApiAction
-    public Result searchCargoTypes(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchCargoTypes(Http.Request request) throws Exception {
         String valueretailerId = request.getQueryString("retailerId");
         Long retailerId;
         if (valueretailerId != null) {
@@ -114,11 +113,11 @@ public class CargoTypeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchCargoTypesHttp(request, version, sortField, descending, start, limit, activeOnly, retailerId, hubId);
+        return imp.searchCargoTypesHttp(request, sortField, descending, start, limit, activeOnly, retailerId, hubId);
     }
 
     @ApiAction
-    public Result updateCargoType(Http.Request request, BigDecimal version,Long cargoTypeId) throws Exception {
+    public Result updateCargoType(Http.Request request, Long cargoTypeId) throws Exception {
         JsonNode nodebody = request.body().asJson();
         CargoType body;
         if (nodebody != null) {
@@ -129,7 +128,7 @@ public class CargoTypeApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateCargoTypeHttp(request, version, cargoTypeId, body);
+        return imp.updateCargoTypeHttp(request, cargoTypeId, body);
     }
 
 }

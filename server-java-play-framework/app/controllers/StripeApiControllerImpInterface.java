@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class StripeApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createStripeCheckoutSessionHttp(Http.Request request, BigDecimal version, @NotNull String appKey, @NotNull String stripeParameters) throws Exception {
-        SirqulResponse obj = createStripeCheckoutSession(request, version, appKey, stripeParameters);
+    public Result createStripeCheckoutSessionHttp(Http.Request request, @NotNull String appKey, @NotNull String stripeParameters) throws Exception {
+        SirqulResponse obj = createStripeCheckoutSession(request, appKey, stripeParameters);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class StripeApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse createStripeCheckoutSession(Http.Request request, BigDecimal version, @NotNull String appKey, @NotNull String stripeParameters) throws Exception;
+    public abstract SirqulResponse createStripeCheckoutSession(Http.Request request, @NotNull String appKey, @NotNull String stripeParameters) throws Exception;
 
 }

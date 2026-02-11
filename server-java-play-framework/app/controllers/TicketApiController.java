@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CountResponse;
 import java.io.InputStream;
 import apimodels.ProfileResponse;
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TicketApiController extends Controller {
     private final TicketApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class TicketApiController extends Controller {
     }
 
     @ApiAction
-    public Result getTicketCount(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTicketCount(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -80,11 +79,11 @@ public class TicketApiController extends Controller {
         } else {
             ticketType = null;
         }
-        return imp.getTicketCountHttp(request, version, deviceId, accountId, gameType, appKey, ticketType);
+        return imp.getTicketCountHttp(request, deviceId, accountId, gameType, appKey, ticketType);
     }
 
     @ApiAction
-    public Result getTicketList(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTicketList(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -148,11 +147,11 @@ public class TicketApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.getTicketListHttp(request, version, deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey);
+        return imp.getTicketListHttp(request, deviceId, accountId, ticketObjectType, actionType, ticketIds, objectIds, receiptTokens, gameType, appKey);
     }
 
     @ApiAction
-    public Result giftPurchase(Http.Request request, BigDecimal version) throws Exception {
+    public Result giftPurchase(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -209,11 +208,11 @@ public class TicketApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.giftPurchaseHttp(request, version, receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey);
+        return imp.giftPurchaseHttp(request, receiverAccountId, ticketId, deviceId, accountId, assetId, customMessage, gameType, appKey);
     }
 
     @ApiAction
-    public Result saveTicket(Http.Request request, BigDecimal version) throws Exception {
+    public Result saveTicket(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -340,11 +339,11 @@ public class TicketApiController extends Controller {
         } else {
             appVersion = null;
         }
-        return imp.saveTicketHttp(request, version, actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion);
+        return imp.saveTicketHttp(request, actionType, ticketObjectType, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, receiptData, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion);
     }
 
     @ApiAction
-    public Result saveTicketViaFileUpload(Http.Request request, BigDecimal version) throws Exception {
+    public Result saveTicketViaFileUpload(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -471,12 +470,12 @@ public class TicketApiController extends Controller {
         } else {
             appVersion = null;
         }
-        return imp.saveTicketViaFileUploadHttp(request, version, actionType, ticketObjectType, receiptData, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion);
+        return imp.saveTicketViaFileUploadHttp(request, actionType, ticketObjectType, receiptData, returnNulls, deviceId, accountId, gameType, appKey, objectId, purchaseCode, receiptToken, count, ticketType, purchaseProvider, purchaseType, returnProfileResponse, includeProfileResponse, appVersion);
     }
 
     @ApiAction
-    public Result ticketOffers(Http.Request request, BigDecimal version) throws Exception {
-        return imp.ticketOffersHttp(request, version);
+    public Result ticketOffers(Http.Request request) throws Exception {
+        return imp.ticketOffersHttp(request);
     }
 
 }

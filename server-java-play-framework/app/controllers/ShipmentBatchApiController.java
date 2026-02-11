@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ShipmentBatch;
 import apimodels.ShipmentImportStatus;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ShipmentBatchApiController extends Controller {
     private final ShipmentBatchApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class ShipmentBatchApiController extends Controller {
     }
 
     @ApiAction
-    public Result createShipmentBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result createShipmentBatch(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         ShipmentBatch body;
         if (nodebody != null) {
@@ -51,21 +50,21 @@ public class ShipmentBatchApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createShipmentBatchHttp(request, version, body);
+        return imp.createShipmentBatchHttp(request, body);
     }
 
     @ApiAction
-    public Result deleteShipmentBatch(Http.Request request, BigDecimal version,Long batchId) throws Exception {
-        return imp.deleteShipmentBatchHttp(request, version, batchId);
+    public Result deleteShipmentBatch(Http.Request request, Long batchId) throws Exception {
+        return imp.deleteShipmentBatchHttp(request, batchId);
     }
 
     @ApiAction
-    public Result getShipmentBatch(Http.Request request, BigDecimal version,Long batchId) throws Exception {
-        return imp.getShipmentBatchHttp(request, version, batchId);
+    public Result getShipmentBatch(Http.Request request, Long batchId) throws Exception {
+        return imp.getShipmentBatchHttp(request, batchId);
     }
 
     @ApiAction
-    public Result getShipmentBatchStatus(Http.Request request, BigDecimal version,Long batchId) throws Exception {
+    public Result getShipmentBatchStatus(Http.Request request, Long batchId) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -143,11 +142,11 @@ public class ShipmentBatchApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.getShipmentBatchStatusHttp(request, version, batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword);
+        return imp.getShipmentBatchStatusHttp(request, batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword);
     }
 
     @ApiAction
-    public Result searchShipmentBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchShipmentBatch(Http.Request request) throws Exception {
         String valuehubId = request.getQueryString("hubId");
         Long hubId;
         if (valuehubId != null) {
@@ -183,7 +182,7 @@ public class ShipmentBatchApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchShipmentBatchHttp(request, version, hubId, sortField, descending, start, limit);
+        return imp.searchShipmentBatchHttp(request, hubId, sortField, descending, start, limit);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.MissionFormatResponse;
 import apimodels.MissionResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class MissionApiController extends Controller {
     private final MissionApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class MissionApiController extends Controller {
     }
 
     @ApiAction
-    public Result createMission(Http.Request request, BigDecimal version) throws Exception {
+    public Result createMission(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -224,11 +223,11 @@ public class MissionApiController extends Controller {
         } else {
             radius = null;
         }
-        return imp.createMissionHttp(request, version, accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius);
+        return imp.createMissionHttp(request, accountId, title, description, subType, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, missionTask, formatType, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, metaData, applicationIds, devices, deviceIds, deviceVersions, locations, radius);
     }
 
     @ApiAction
-    public Result deleteMission(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteMission(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -243,11 +242,11 @@ public class MissionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'missionId' parameter is required");
         }
-        return imp.deleteMissionHttp(request, version, accountId, missionId);
+        return imp.deleteMissionHttp(request, accountId, missionId);
     }
 
     @ApiAction
-    public Result findMissions(Http.Request request, BigDecimal version) throws Exception {
+    public Result findMissions(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -381,11 +380,11 @@ public class MissionApiController extends Controller {
         } else {
             audienceOperator = null;
         }
-        return imp.findMissionsHttp(request, version, appKey, suffix, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator);
+        return imp.findMissionsHttp(request, appKey, suffix, type, accountId, appVersion, latitude, longitude, device, deviceIdentifier, deviceVersion, start, limit, includeGameData, includeAudiences, allocatesTickets, randomize, targetedAdsOnly, missionIds, audienceOperator);
     }
 
     @ApiAction
-    public Result getMission(Http.Request request, BigDecimal version) throws Exception {
+    public Result getMission(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -407,11 +406,11 @@ public class MissionApiController extends Controller {
         } else {
             returnCreative = null;
         }
-        return imp.getMissionHttp(request, version, accountId, missionId, returnCreative);
+        return imp.getMissionHttp(request, accountId, missionId, returnCreative);
     }
 
     @ApiAction
-    public Result importMission(Http.Request request, BigDecimal version) throws Exception {
+    public Result importMission(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -468,11 +467,11 @@ public class MissionApiController extends Controller {
         } else {
             adSize = null;
         }
-        return imp.importMissionHttp(request, version, accountId, latitude, longitude, appKey, keyword, start, limit, adSize);
+        return imp.importMissionHttp(request, accountId, latitude, longitude, appKey, keyword, start, limit, adSize);
     }
 
     @ApiAction
-    public Result searchMissionFormats(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchMissionFormats(Http.Request request) throws Exception {
         String valuestart = request.getQueryString("start");
         Integer start;
         if (valuestart != null) {
@@ -494,11 +493,11 @@ public class MissionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchMissionFormatsHttp(request, version, start, limit, activeOnly);
+        return imp.searchMissionFormatsHttp(request, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result searchMissions(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchMissions(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -576,11 +575,11 @@ public class MissionApiController extends Controller {
         } else {
             descending = null;
         }
-        return imp.searchMissionsHttp(request, version, accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending);
+        return imp.searchMissionsHttp(request, accountId, keyword, subType, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending);
     }
 
     @ApiAction
-    public Result searchMissionsByBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchMissionsByBillableEntity(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -651,11 +650,11 @@ public class MissionApiController extends Controller {
         } else {
             descending = null;
         }
-        return imp.searchMissionsByBillableEntityHttp(request, version, accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending);
+        return imp.searchMissionsByBillableEntityHttp(request, accountId, keyword, start, limit, includeGameData, includeAudiences, includeInactive, suffix, sortField, descending);
     }
 
     @ApiAction
-    public Result updateMission(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateMission(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -831,7 +830,7 @@ public class MissionApiController extends Controller {
         } else {
             radius = null;
         }
-        return imp.updateMissionHttp(request, version, accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius);
+        return imp.updateMissionHttp(request, accountId, missionId, title, description, subType, metaData, startDate, endDate, active, gameLevelIds, creativeIds, audienceIds, offerId, balance, advancedReporting, allocateTickets, ticketCount, ticketType, points, applicationIds, devices, deviceIds, deviceVersions, locations, radius);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.BillableEntityResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class BillableEntityApiController extends Controller {
     private final BillableEntityApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class BillableEntityApiController extends Controller {
     }
 
     @ApiAction
-    public Result createBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result createBillableEntity(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -125,11 +124,11 @@ public class BillableEntityApiController extends Controller {
         } else {
             authorizeNetTransactionKey = null;
         }
-        return imp.createBillableEntityHttp(request, version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
+        return imp.createBillableEntityHttp(request, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
     }
 
     @ApiAction
-    public Result deleteBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteBillableEntity(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -144,11 +143,11 @@ public class BillableEntityApiController extends Controller {
         } else {
             accountId = null;
         }
-        return imp.deleteBillableEntityHttp(request, version, deviceId, accountId);
+        return imp.deleteBillableEntityHttp(request, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBillableEntity(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -177,11 +176,11 @@ public class BillableEntityApiController extends Controller {
         } else {
             includePayments = true;
         }
-        return imp.getBillableEntityHttp(request, version, deviceId, accountId, includeCounts, includePayments);
+        return imp.getBillableEntityHttp(request, deviceId, accountId, includeCounts, includePayments);
     }
 
     @ApiAction
-    public Result updateBillableEntity(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateBillableEntity(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -266,7 +265,7 @@ public class BillableEntityApiController extends Controller {
         } else {
             authorizeNetTransactionKey = null;
         }
-        return imp.updateBillableEntityHttp(request, version, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
+        return imp.updateBillableEntityHttp(request, deviceId, accountId, name, streetAddress, streetAddress2, city, state, postalCode, businessPhone, businessPhoneExt, authorizeNetApiKey, authorizeNetTransactionKey);
     }
 
 }

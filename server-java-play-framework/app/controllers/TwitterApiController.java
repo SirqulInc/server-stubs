@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ProfileResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TwitterApiController extends Controller {
     private final TwitterApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class TwitterApiController extends Controller {
     }
 
     @ApiAction
-    public Result authorizeTwitter(Http.Request request, BigDecimal version) throws Exception {
+    public Result authorizeTwitter(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -48,11 +47,11 @@ public class TwitterApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.authorizeTwitterHttp(request, version, appKey);
+        return imp.authorizeTwitterHttp(request, appKey);
     }
 
     @ApiAction
-    public Result loginTwitter(Http.Request request, BigDecimal version) throws Exception {
+    public Result loginTwitter(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -102,7 +101,7 @@ public class TwitterApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.loginTwitterHttp(request, version, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude);
+        return imp.loginTwitterHttp(request, accessToken, accessTokenSecret, appKey, responseFilters, deviceId, latitude, longitude);
     }
 
 }

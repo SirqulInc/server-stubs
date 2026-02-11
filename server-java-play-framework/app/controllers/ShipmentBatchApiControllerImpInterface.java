@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ShipmentBatch;
 import apimodels.ShipmentImportStatus;
 
@@ -29,8 +28,8 @@ public abstract class ShipmentBatchApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createShipmentBatchHttp(Http.Request request, BigDecimal version, ShipmentBatch body) throws Exception {
-        ShipmentBatch obj = createShipmentBatch(request, version, body);
+    public Result createShipmentBatchHttp(Http.Request request, ShipmentBatch body) throws Exception {
+        ShipmentBatch obj = createShipmentBatch(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,18 +41,18 @@ public abstract class ShipmentBatchApiControllerImpInterface {
 
     }
 
-    public abstract ShipmentBatch createShipmentBatch(Http.Request request, BigDecimal version, ShipmentBatch body) throws Exception;
+    public abstract ShipmentBatch createShipmentBatch(Http.Request request, ShipmentBatch body) throws Exception;
 
-    public Result deleteShipmentBatchHttp(Http.Request request, BigDecimal version, Long batchId) throws Exception {
-        deleteShipmentBatch(request, version, batchId);
+    public Result deleteShipmentBatchHttp(Http.Request request, Long batchId) throws Exception {
+        deleteShipmentBatch(request, batchId);
         return ok();
 
     }
 
-    public abstract void deleteShipmentBatch(Http.Request request, BigDecimal version, Long batchId) throws Exception;
+    public abstract void deleteShipmentBatch(Http.Request request, Long batchId) throws Exception;
 
-    public Result getShipmentBatchHttp(Http.Request request, BigDecimal version, Long batchId) throws Exception {
-        ShipmentBatch obj = getShipmentBatch(request, version, batchId);
+    public Result getShipmentBatchHttp(Http.Request request, Long batchId) throws Exception {
+        ShipmentBatch obj = getShipmentBatch(request, batchId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -65,10 +64,10 @@ public abstract class ShipmentBatchApiControllerImpInterface {
 
     }
 
-    public abstract ShipmentBatch getShipmentBatch(Http.Request request, BigDecimal version, Long batchId) throws Exception;
+    public abstract ShipmentBatch getShipmentBatch(Http.Request request, Long batchId) throws Exception;
 
-    public Result getShipmentBatchStatusHttp(Http.Request request, BigDecimal version, Long batchId, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, Boolean valid, Boolean started, Boolean completed, Boolean hasShipment, Boolean hasRoute, String keyword) throws Exception {
-        List<ShipmentImportStatus> obj = getShipmentBatchStatus(request, version, batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword);
+    public Result getShipmentBatchStatusHttp(Http.Request request, Long batchId, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, Boolean valid, Boolean started, Boolean completed, Boolean hasShipment, Boolean hasRoute, String keyword) throws Exception {
+        List<ShipmentImportStatus> obj = getShipmentBatchStatus(request, batchId, accountId, sortField, descending, start, limit, valid, started, completed, hasShipment, hasRoute, keyword);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (ShipmentImportStatus curItem : obj) {
@@ -82,10 +81,10 @@ public abstract class ShipmentBatchApiControllerImpInterface {
 
     }
 
-    public abstract List<ShipmentImportStatus> getShipmentBatchStatus(Http.Request request, BigDecimal version, Long batchId, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, Boolean valid, Boolean started, Boolean completed, Boolean hasShipment, Boolean hasRoute, String keyword) throws Exception;
+    public abstract List<ShipmentImportStatus> getShipmentBatchStatus(Http.Request request, Long batchId, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, Boolean valid, Boolean started, Boolean completed, Boolean hasShipment, Boolean hasRoute, String keyword) throws Exception;
 
-    public Result searchShipmentBatchHttp(Http.Request request, BigDecimal version, @NotNull Long hubId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit) throws Exception {
-        List<ShipmentBatch> obj = searchShipmentBatch(request, version, hubId, sortField, descending, start, limit);
+    public Result searchShipmentBatchHttp(Http.Request request, @NotNull Long hubId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+        List<ShipmentBatch> obj = searchShipmentBatch(request, hubId, sortField, descending, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (ShipmentBatch curItem : obj) {
@@ -99,6 +98,6 @@ public abstract class ShipmentBatchApiControllerImpInterface {
 
     }
 
-    public abstract List<ShipmentBatch> searchShipmentBatch(Http.Request request, BigDecimal version, @NotNull Long hubId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit) throws Exception;
+    public abstract List<ShipmentBatch> searchShipmentBatch(Http.Request request, @NotNull Long hubId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit) throws Exception;
 
 }

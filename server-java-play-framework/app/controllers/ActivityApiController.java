@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.ActivityResponse;
-import java.math.BigDecimal;
 import apimodels.EntityReference;
 
 import com.typesafe.config.Config;
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ActivityApiController extends Controller {
     private final ActivityApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class ActivityApiController extends Controller {
     }
 
     @ApiAction
-    public Result createEntityReference(Http.Request request, BigDecimal version) throws Exception {
+    public Result createEntityReference(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         EntityReference body;
         if (nodebody != null) {
@@ -51,7 +50,7 @@ public class ActivityApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
-        return imp.createEntityReferenceHttp(request, version, body);
+        return imp.createEntityReferenceHttp(request, body);
     }
 
 }

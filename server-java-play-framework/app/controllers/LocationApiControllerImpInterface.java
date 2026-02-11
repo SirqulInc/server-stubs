@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CoordsResponse;
 import apimodels.GeoPointResponse;
 import java.io.InputStream;
@@ -33,8 +32,8 @@ public abstract class LocationApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result cacheTrilaterationDataHttp(Http.Request request, BigDecimal version, @NotNull String udid, Long sourceTime, Integer minimumSampleSize, String data, InputStream dataFile) throws Exception {
-        SirqulResponse obj = cacheTrilaterationData(request, version, udid, sourceTime, minimumSampleSize, data, dataFile);
+    public Result cacheTrilaterationDataHttp(Http.Request request, @NotNull String udid, Long sourceTime, Integer minimumSampleSize, String data, InputStream dataFile) throws Exception {
+        SirqulResponse obj = cacheTrilaterationData(request, udid, sourceTime, minimumSampleSize, data, dataFile);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -46,25 +45,10 @@ public abstract class LocationApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse cacheTrilaterationData(Http.Request request, BigDecimal version, @NotNull String udid, Long sourceTime, Integer minimumSampleSize, String data, InputStream dataFile) throws Exception;
+    public abstract SirqulResponse cacheTrilaterationData(Http.Request request, @NotNull String udid, Long sourceTime, Integer minimumSampleSize, String data, InputStream dataFile) throws Exception;
 
-    public Result cacheTrilaterationDataGzipHttp(Http.Request request, BigDecimal version, TrilatCacheRequest body) throws Exception {
-        SirqulResponse obj = cacheTrilaterationDataGzip(request, version, body);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse cacheTrilaterationDataGzip(Http.Request request, BigDecimal version, TrilatCacheRequest body) throws Exception;
-
-    public Result getLocationByIpHttp(Http.Request request, BigDecimal version, String ip) throws Exception {
-        CoordsResponse obj = getLocationByIp(request, version, ip);
+    public Result cacheTrilaterationDataGzipHttp(Http.Request request, TrilatCacheRequest body) throws Exception {
+        SirqulResponse obj = cacheTrilaterationDataGzip(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -76,25 +60,10 @@ public abstract class LocationApiControllerImpInterface {
 
     }
 
-    public abstract CoordsResponse getLocationByIp(Http.Request request, BigDecimal version, String ip) throws Exception;
+    public abstract SirqulResponse cacheTrilaterationDataGzip(Http.Request request, TrilatCacheRequest body) throws Exception;
 
-    public Result getLocationByTrilaterationHttp(Http.Request request, BigDecimal version, Long accountId, Double latitude, Double longitude, String data, String responseFilters) throws Exception {
-        GeoPointResponse obj = getLocationByTrilateration(request, version, accountId, latitude, longitude, data, responseFilters);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract GeoPointResponse getLocationByTrilateration(Http.Request request, BigDecimal version, Long accountId, Double latitude, Double longitude, String data, String responseFilters) throws Exception;
-
-    public Result getLocationsHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double currentlatitude, Double currentlongitude, Double currentLatitude, Double currentLongitude, String query, String zipcode, String zipCode, Double selectedMaplatitude, Double selectedMaplongitude, Double selectedMapLatitude, Double selectedMapLongitude, Double searchRange, Boolean useGeocode, Integer i, Integer start, Integer l, Integer limit) throws Exception {
-        LocationSearchResponse obj = getLocations(request, version, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit);
+    public Result getLocationByIpHttp(Http.Request request, String ip) throws Exception {
+        CoordsResponse obj = getLocationByIp(request, ip);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -106,6 +75,36 @@ public abstract class LocationApiControllerImpInterface {
 
     }
 
-    public abstract LocationSearchResponse getLocations(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double currentlatitude, Double currentlongitude, Double currentLatitude, Double currentLongitude, String query, String zipcode, String zipCode, Double selectedMaplatitude, Double selectedMaplongitude, Double selectedMapLatitude, Double selectedMapLongitude, Double searchRange, Boolean useGeocode, Integer i, Integer start, Integer l, Integer limit) throws Exception;
+    public abstract CoordsResponse getLocationByIp(Http.Request request, String ip) throws Exception;
+
+    public Result getLocationByTrilaterationHttp(Http.Request request, Long accountId, Double latitude, Double longitude, String data, String responseFilters) throws Exception {
+        GeoPointResponse obj = getLocationByTrilateration(request, accountId, latitude, longitude, data, responseFilters);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract GeoPointResponse getLocationByTrilateration(Http.Request request, Long accountId, Double latitude, Double longitude, String data, String responseFilters) throws Exception;
+
+    public Result getLocationsHttp(Http.Request request, String deviceId, Long accountId, Double currentlatitude, Double currentlongitude, Double currentLatitude, Double currentLongitude, String query, String zipcode, String zipCode, Double selectedMaplatitude, Double selectedMaplongitude, Double selectedMapLatitude, Double selectedMapLongitude, Double searchRange, Boolean useGeocode, Integer i, Integer start, Integer l, Integer limit) throws Exception {
+        LocationSearchResponse obj = getLocations(request, deviceId, accountId, currentlatitude, currentlongitude, currentLatitude, currentLongitude, query, zipcode, zipCode, selectedMaplatitude, selectedMaplongitude, selectedMapLatitude, selectedMapLongitude, searchRange, useGeocode, i, start, l, limit);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract LocationSearchResponse getLocations(Http.Request request, String deviceId, Long accountId, Double currentlatitude, Double currentlongitude, Double currentLatitude, Double currentLongitude, String query, String zipcode, String zipCode, Double selectedMaplatitude, Double selectedMaplongitude, Double selectedMapLatitude, Double selectedMapLongitude, Double searchRange, Boolean useGeocode, Integer i, Integer start, Integer l, Integer limit) throws Exception;
 
 }

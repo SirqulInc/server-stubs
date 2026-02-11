@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.OfferTransactionStatusResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class OfferStatusApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createOfferTransactionStatusHttp(Http.Request request, BigDecimal version, @NotNull String name, @NotNull Integer code, String deviceId, Long accountId, Double latitude, Double longitude, String description, String role, Boolean active, String applicationIds) throws Exception {
-        OfferTransactionStatusResponse obj = createOfferTransactionStatus(request, version, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds);
+    public Result createOfferTransactionStatusHttp(Http.Request request, @NotNull String name, @NotNull Integer code, String deviceId, Long accountId, Double latitude, Double longitude, String description, String role, Boolean active, String applicationIds) throws Exception {
+        OfferTransactionStatusResponse obj = createOfferTransactionStatus(request, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class OfferStatusApiControllerImpInterface {
 
     }
 
-    public abstract OfferTransactionStatusResponse createOfferTransactionStatus(Http.Request request, BigDecimal version, @NotNull String name, @NotNull Integer code, String deviceId, Long accountId, Double latitude, Double longitude, String description, String role, Boolean active, String applicationIds) throws Exception;
+    public abstract OfferTransactionStatusResponse createOfferTransactionStatus(Http.Request request, @NotNull String name, @NotNull Integer code, String deviceId, Long accountId, Double latitude, Double longitude, String description, String role, Boolean active, String applicationIds) throws Exception;
 
-    public Result deleteOfferTransactionStatusHttp(Http.Request request, BigDecimal version, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
-        SirqulResponse obj = deleteOfferTransactionStatus(request, version, statusId, deviceId, accountId, latitude, longitude);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteOfferTransactionStatus(Http.Request request, BigDecimal version, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
-
-    public Result getOfferTransactionStatusHttp(Http.Request request, BigDecimal version, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
-        OfferTransactionStatusResponse obj = getOfferTransactionStatus(request, version, statusId, deviceId, accountId, latitude, longitude);
+    public Result deleteOfferTransactionStatusHttp(Http.Request request, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
+        SirqulResponse obj = deleteOfferTransactionStatus(request, statusId, deviceId, accountId, latitude, longitude);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,10 +56,25 @@ public abstract class OfferStatusApiControllerImpInterface {
 
     }
 
-    public abstract OfferTransactionStatusResponse getOfferTransactionStatus(Http.Request request, BigDecimal version, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
+    public abstract SirqulResponse deleteOfferTransactionStatus(Http.Request request, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
 
-    public Result searchOfferTransactionStatusesHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude, String keyword, String role, String appKey, String sortField, Boolean descending, Integer start, Integer limit, Boolean includeInactive) throws Exception {
-        List<OfferTransactionStatusResponse> obj = searchOfferTransactionStatuses(request, version, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive);
+    public Result getOfferTransactionStatusHttp(Http.Request request, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception {
+        OfferTransactionStatusResponse obj = getOfferTransactionStatus(request, statusId, deviceId, accountId, latitude, longitude);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract OfferTransactionStatusResponse getOfferTransactionStatus(Http.Request request, @NotNull Long statusId, String deviceId, Long accountId, Double latitude, Double longitude) throws Exception;
+
+    public Result searchOfferTransactionStatusesHttp(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude, String keyword, String role, String appKey, String sortField, Boolean descending, Integer start, Integer limit, Boolean includeInactive) throws Exception {
+        List<OfferTransactionStatusResponse> obj = searchOfferTransactionStatuses(request, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (OfferTransactionStatusResponse curItem : obj) {
@@ -89,10 +88,10 @@ public abstract class OfferStatusApiControllerImpInterface {
 
     }
 
-    public abstract List<OfferTransactionStatusResponse> searchOfferTransactionStatuses(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude, String keyword, String role, String appKey, String sortField, Boolean descending, Integer start, Integer limit, Boolean includeInactive) throws Exception;
+    public abstract List<OfferTransactionStatusResponse> searchOfferTransactionStatuses(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude, String keyword, String role, String appKey, String sortField, Boolean descending, Integer start, Integer limit, Boolean includeInactive) throws Exception;
 
-    public Result updateOfferTransactionStatusHttp(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude, Long statusId, String name, String description, Integer code, String role, Boolean active, String applicationIds) throws Exception {
-        OfferTransactionStatusResponse obj = updateOfferTransactionStatus(request, version, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds);
+    public Result updateOfferTransactionStatusHttp(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude, Long statusId, String name, String description, Integer code, String role, Boolean active, String applicationIds) throws Exception {
+        OfferTransactionStatusResponse obj = updateOfferTransactionStatus(request, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -104,6 +103,6 @@ public abstract class OfferStatusApiControllerImpInterface {
 
     }
 
-    public abstract OfferTransactionStatusResponse updateOfferTransactionStatus(Http.Request request, BigDecimal version, String deviceId, Long accountId, Double latitude, Double longitude, Long statusId, String name, String description, Integer code, String role, Boolean active, String applicationIds) throws Exception;
+    public abstract OfferTransactionStatusResponse updateOfferTransactionStatus(Http.Request request, String deviceId, Long accountId, Double latitude, Double longitude, Long statusId, String name, String description, Integer code, String role, Boolean active, String applicationIds) throws Exception;
 
 }

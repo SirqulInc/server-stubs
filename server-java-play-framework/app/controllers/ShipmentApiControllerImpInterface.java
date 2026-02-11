@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.util.Map;
 import apimodels.Shipment;
 
@@ -29,16 +28,16 @@ public abstract class ShipmentApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result cancelShipmentHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        cancelShipment(request, version, id);
+    public Result cancelShipmentHttp(Http.Request request, Long id) throws Exception {
+        cancelShipment(request, id);
         return ok();
 
     }
 
-    public abstract void cancelShipment(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract void cancelShipment(Http.Request request, Long id) throws Exception;
 
-    public Result createShipmentHttp(Http.Request request, BigDecimal version, Shipment body) throws Exception {
-        Shipment obj = createShipment(request, version, body);
+    public Result createShipmentHttp(Http.Request request, Shipment body) throws Exception {
+        Shipment obj = createShipment(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -50,18 +49,18 @@ public abstract class ShipmentApiControllerImpInterface {
 
     }
 
-    public abstract Shipment createShipment(Http.Request request, BigDecimal version, Shipment body) throws Exception;
+    public abstract Shipment createShipment(Http.Request request, Shipment body) throws Exception;
 
-    public Result deleteShipmentHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        deleteShipment(request, version, id);
+    public Result deleteShipmentHttp(Http.Request request, Long id) throws Exception {
+        deleteShipment(request, id);
         return ok();
 
     }
 
-    public abstract void deleteShipment(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract void deleteShipment(Http.Request request, Long id) throws Exception;
 
-    public Result getShipmentHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        Shipment obj = getShipment(request, version, id);
+    public Result getShipmentHttp(Http.Request request, Long id) throws Exception {
+        Shipment obj = getShipment(request, id);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -73,10 +72,10 @@ public abstract class ShipmentApiControllerImpInterface {
 
     }
 
-    public abstract Shipment getShipment(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract Shipment getShipment(Http.Request request, Long id) throws Exception;
 
-    public Result searchShipmentsHttp(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long ownerId, Long riderId, Long routeId) throws Exception {
-        List<Shipment> obj = searchShipments(request, version, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId);
+    public Result searchShipmentsHttp(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long ownerId, Long riderId, Long routeId) throws Exception {
+        List<Shipment> obj = searchShipments(request, sortField, descending, start, limit, activeOnly, ownerId, riderId, routeId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (Shipment curItem : obj) {
@@ -90,10 +89,10 @@ public abstract class ShipmentApiControllerImpInterface {
 
     }
 
-    public abstract List<Shipment> searchShipments(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long ownerId, Long riderId, Long routeId) throws Exception;
+    public abstract List<Shipment> searchShipments(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, @NotNull Integer start, @NotNull Integer limit, @NotNull Boolean activeOnly, Long ownerId, Long riderId, Long routeId) throws Exception;
 
-    public Result updateShipmentHttp(Http.Request request, BigDecimal version, Long id, Shipment body) throws Exception {
-        Shipment obj = updateShipment(request, version, id, body);
+    public Result updateShipmentHttp(Http.Request request, Long id, Shipment body) throws Exception {
+        Shipment obj = updateShipment(request, id, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -105,14 +104,14 @@ public abstract class ShipmentApiControllerImpInterface {
 
     }
 
-    public abstract Shipment updateShipment(Http.Request request, BigDecimal version, Long id, Shipment body) throws Exception;
+    public abstract Shipment updateShipment(Http.Request request, Long id, Shipment body) throws Exception;
 
-    public Result updateShipmentStatusHttp(Http.Request request, BigDecimal version, Long id, Map<String, Boolean> body) throws Exception {
-        updateShipmentStatus(request, version, id, body);
+    public Result updateShipmentStatusHttp(Http.Request request, Long id, Map<String, Boolean> body) throws Exception {
+        updateShipmentStatus(request, id, body);
         return ok();
 
     }
 
-    public abstract void updateShipmentStatus(Http.Request request, BigDecimal version, Long id, Map<String, Boolean> body) throws Exception;
+    public abstract void updateShipmentStatus(Http.Request request, Long id, Map<String, Boolean> body) throws Exception;
 
 }

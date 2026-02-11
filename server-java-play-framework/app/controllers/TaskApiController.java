@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TaskResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TaskApiController extends Controller {
     private final TaskApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class TaskApiController extends Controller {
     }
 
     @ApiAction
-    public Result createTask(Http.Request request, BigDecimal version) throws Exception {
+    public Result createTask(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -125,11 +124,11 @@ public class TaskApiController extends Controller {
         } else {
             active = true;
         }
-        return imp.createTaskHttp(request, version, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
+        return imp.createTaskHttp(request, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
     }
 
     @ApiAction
-    public Result deleteTask(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteTask(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -144,11 +143,11 @@ public class TaskApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'taskId' parameter is required");
         }
-        return imp.deleteTaskHttp(request, version, accountId, taskId);
+        return imp.deleteTaskHttp(request, accountId, taskId);
     }
 
     @ApiAction
-    public Result getTask(Http.Request request, BigDecimal version) throws Exception {
+    public Result getTask(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -163,11 +162,11 @@ public class TaskApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'taskId' parameter is required");
         }
-        return imp.getTaskHttp(request, version, accountId, taskId);
+        return imp.getTaskHttp(request, accountId, taskId);
     }
 
     @ApiAction
-    public Result searchTasks(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTasks(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -252,11 +251,11 @@ public class TaskApiController extends Controller {
         } else {
             activeOnly = true;
         }
-        return imp.searchTasksHttp(request, version, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
+        return imp.searchTasksHttp(request, accountId, groupingId, filter, statuses, templateTypes, appKey, keyword, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result updateTask(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateTask(Http.Request request) throws Exception {
         String valuetaskId = request.getQueryString("taskId");
         Long taskId;
         if (valuetaskId != null) {
@@ -348,7 +347,7 @@ public class TaskApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updateTaskHttp(request, version, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
+        return imp.updateTaskHttp(request, taskId, accountId, name, appKey, groupingId, endpointURL, payload, scheduledDate, startDate, endDate, cronExpression, visibility, active);
     }
 
 }

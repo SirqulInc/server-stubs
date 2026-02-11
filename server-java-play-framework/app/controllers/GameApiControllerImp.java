@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.GameResponse;
 import apimodels.SirqulResponse;
 
@@ -13,34 +12,34 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class GameApiControllerImp extends GameApiControllerImpInterface {
     @Override
-    public GameResponse createGame(Http.Request request, BigDecimal version, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
+    public GameResponse createGame(Http.Request request, Long accountId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
         //Do your magic!!!
         return new GameResponse();
     }
 
     @Override
-    public SirqulResponse deleteGame(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId) throws Exception {
+    public SirqulResponse deleteGame(Http.Request request, @NotNull Long accountId, @NotNull Long gameId) throws Exception {
         //Do your magic!!!
         return new SirqulResponse();
     }
 
     @Override
-    public GameResponse getGame(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception {
+    public GameResponse getGame(Http.Request request, @NotNull Long accountId, @NotNull Long gameId, Boolean includeGameData) throws Exception {
         //Do your magic!!!
         return new GameResponse();
     }
 
     @Override
-    public GameResponse searchGames(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception {
+    public GameResponse searchGames(Http.Request request, @NotNull Long accountId, @NotNull String appKey, @NotNull Integer start, @NotNull Integer limit, String keyword, String appVersion, Boolean includeGameData, Boolean includeInactive) throws Exception {
         //Do your magic!!!
         return new GameResponse();
     }
 
     @Override
-    public GameResponse updateGame(Http.Request request, BigDecimal version, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
+    public GameResponse updateGame(Http.Request request, Long accountId, Long gameId, String appKey, String title, String description, String metaData, String packIds, Boolean includeGameData) throws Exception {
         //Do your magic!!!
         return new GameResponse();
     }

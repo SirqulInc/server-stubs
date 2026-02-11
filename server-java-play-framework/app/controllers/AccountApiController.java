@@ -31,7 +31,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AccountApiController extends Controller {
     private final AccountApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -45,7 +45,7 @@ public class AccountApiController extends Controller {
     }
 
     @ApiAction
-    public Result accountLocationSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result accountLocationSearch(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -284,11 +284,11 @@ public class AccountApiController extends Controller {
         } else {
             contentAdminOnly = null;
         }
-        return imp.accountLocationSearchHttp(request, version, deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly);
+        return imp.accountLocationSearchHttp(request, deviceId, accountId, q, keyword, postalCode, latitude, longitude, appKey, range, locationLastUpdated, gender, minAge, maxAge, companionshipIndex, i, start, l, limit, searchMode, sortField, descending, roles, tags, experience, categoryIds, audienceIds, audienceOperator, updateCurrentLocation, updatePreferredSettings, showExactLocations, showConnectionToSearcher, flagCountMinimum, verifiedUserOnly, contentAdminOnly);
     }
 
     @ApiAction
-    public Result blockAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result blockAccount(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -338,11 +338,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.blockAccountHttp(request, version, accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude);
+        return imp.blockAccountHttp(request, accountIdBeingBlocked, deviceId, accountId, blockFlagValue, removeFromGroupsIfBlocked, latitude, longitude);
     }
 
     @ApiAction
-    public Result createAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result createAccount(Http.Request request) throws Exception {
         String valuename = request.getQueryString("name");
         String name;
         if (valuename != null) {
@@ -847,11 +847,11 @@ public class AccountApiController extends Controller {
         } else {
             personalAudienceId = null;
         }
-        return imp.createAccountHttp(request, version, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId);
+        return imp.createAccountHttp(request, username, password, name, prefixName, firstName, middleName, lastName, suffixName, title, deviceId, deviceIdType, emailAddress, assetId, streetAddress, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, inviteToken, referralAccountId, sendValidation, gameType, appKey, appVersion, responseType, audienceIdsToAdd, appBlob, appEnablePush, appEnableSMS, appEnableEmail, locationVisibility, homeLatitude, homeLongitude, appNickname, personalAudienceId);
     }
 
     @ApiAction
-    public Result editAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result editAccount(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1426,11 +1426,11 @@ public class AccountApiController extends Controller {
         } else {
             nonGuestUsername = null;
         }
-        return imp.editAccountHttp(request, version, deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername);
+        return imp.editAccountHttp(request, deviceId, accountId, connectionAccountId, role, assetId, name, prefixName, firstName, middleName, lastName, suffixName, title, gender, age, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, emailAddress, streetAddress, streetAddress2, city, state, zipcode, country, makeProfileInfoPublic, makeGameInfoPublic, makeFriendsInfoPublic, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, platforms, tags, aboutUs, matchToken, gameExperience, categories, categoryIds, responseFilters, showAsZipcode, showExactLocation, showOthersExactLocation, acceptedTerms, locationVisibility, appBlob, appEnablePush, appEnableSMS, appEnableEmail, gameType, appKey, latitude, longitude, returnProfile, audienceIdsToAdd, audienceIdsToRemove, referralAccountId, appNickname, personalAudienceId, nonGuestUsername);
     }
 
     @ApiAction
-    public Result editUsername(Http.Request request, BigDecimal version) throws Exception {
+    public Result editUsername(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1459,11 +1459,11 @@ public class AccountApiController extends Controller {
         } else {
             username = null;
         }
-        return imp.editUsernameHttp(request, version, deviceId, accountId, emailAddress, username);
+        return imp.editUsernameHttp(request, deviceId, accountId, emailAddress, username);
     }
 
     @ApiAction
-    public Result getAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAccount(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1548,11 +1548,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getAccountHttp(request, version, returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude);
+        return imp.getAccountHttp(request, returnNulls, deviceId, accountId, connectionAccountEmail, connectionAccountId, responseFilters, gameType, appKey, purchaseType, updateViewedDate, latitude, longitude);
     }
 
     @ApiAction
-    public Result getProfileAssets(Http.Request request, BigDecimal version) throws Exception {
+    public Result getProfileAssets(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -1651,11 +1651,11 @@ public class AccountApiController extends Controller {
         } else {
             limit = 0;
         }
-        return imp.getProfileAssetsHttp(request, version, returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit);
+        return imp.getProfileAssetsHttp(request, returnNulls, deviceId, accountId, ownerId, mediaTypes, mimeTypes, sortField, descending, latitude, longitude, i, start, l, limit);
     }
 
     @ApiAction
-    public Result getReferralList(Http.Request request, BigDecimal version) throws Exception {
+    public Result getReferralList(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -1733,11 +1733,11 @@ public class AccountApiController extends Controller {
         } else {
             childrenChildren = true;
         }
-        return imp.getReferralListHttp(request, version, accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren);
+        return imp.getReferralListHttp(request, accountId, appKey, retrieveType, levelLimit, ancestorLevelLimit, childrenLevelLimit, ancestorListStart, ancestorListLimit, childrenListStart, childrenListLimit, childrenChildren);
     }
 
     @ApiAction
-    public Result getSettings(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSettings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1766,11 +1766,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getSettingsHttp(request, version, deviceId, accountId, latitude, longitude);
+        return imp.getSettingsHttp(request, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result loginDelegate(Http.Request request, BigDecimal version) throws Exception {
+    public Result loginDelegate(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1848,11 +1848,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.loginDelegateHttp(request, version, accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude);
+        return imp.loginDelegateHttp(request, accessToken, appKey, deviceId, accessTokenSecret, delegatedAccountId, delegatedUsername, networkUID, ageRestriction, responseFilters, latitude, longitude);
     }
 
     @ApiAction
-    public Result loginGeneral(Http.Request request, BigDecimal version) throws Exception {
+    public Result loginGeneral(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1944,11 +1944,11 @@ public class AccountApiController extends Controller {
         } else {
             thirdPartyCredentialId = 0;
         }
-        return imp.loginGeneralHttp(request, version, accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId);
+        return imp.loginGeneralHttp(request, accessToken, networkUID, appKey, deviceId, deviceIdType, accessTokenSecret, ageRestriction, responseFilters, latitude, longitude, emailMatch, chosenAccountId, thirdPartyCredentialId);
     }
 
     @ApiAction
-    public Result loginUsername(Http.Request request, BigDecimal version) throws Exception {
+    public Result loginUsername(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2019,11 +2019,11 @@ public class AccountApiController extends Controller {
         } else {
             responseFilters = null;
         }
-        return imp.loginUsernameHttp(request, version, username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters);
+        return imp.loginUsernameHttp(request, username, password, deviceId, latitude, longitude, app, gameType, appKey, returnProfile, responseFilters);
     }
 
     @ApiAction
-    public Result logout(Http.Request request, BigDecimal version) throws Exception {
+    public Result logout(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2059,11 +2059,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.logoutHttp(request, version, deviceId, deviceIdType, accountId, latitude, longitude);
+        return imp.logoutHttp(request, deviceId, deviceIdType, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result mergeAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result mergeAccount(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2092,11 +2092,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'appKey' parameter is required");
         }
-        return imp.mergeAccountHttp(request, version, mergeAccountId, appKey, deviceId, accountId);
+        return imp.mergeAccountHttp(request, mergeAccountId, appKey, deviceId, accountId);
     }
 
     @ApiAction
-    public Result passwordChange(Http.Request request, BigDecimal version) throws Exception {
+    public Result passwordChange(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -2125,11 +2125,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'confirmPassword' parameter is required");
         }
-        return imp.passwordChangeHttp(request, version, accountId, oldPassword, newPassword, confirmPassword);
+        return imp.passwordChangeHttp(request, accountId, oldPassword, newPassword, confirmPassword);
     }
 
     @ApiAction
-    public Result passwordReset(Http.Request request, BigDecimal version) throws Exception {
+    public Result passwordReset(Http.Request request) throws Exception {
         String valuetoken = request.getQueryString("token");
         String token;
         if (valuetoken != null) {
@@ -2151,11 +2151,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'confirm' parameter is required");
         }
-        return imp.passwordResetHttp(request, version, token, password, confirm);
+        return imp.passwordResetHttp(request, token, password, confirm);
     }
 
     @ApiAction
-    public Result requestPasswordReset(Http.Request request, BigDecimal version) throws Exception {
+    public Result requestPasswordReset(Http.Request request) throws Exception {
         String valueemail = request.getQueryString("email");
         String email;
         if (valueemail != null) {
@@ -2191,11 +2191,11 @@ public class AccountApiController extends Controller {
         } else {
             referer = "http://dev.sirqul.com/resetpassword";
         }
-        return imp.requestPasswordResetHttp(request, version, email, from, domain, subUrl, referer);
+        return imp.requestPasswordResetHttp(request, email, from, domain, subUrl, referer);
     }
 
     @ApiAction
-    public Result requestValidateAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result requestValidateAccount(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -2203,11 +2203,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.requestValidateAccountHttp(request, version, accountId);
+        return imp.requestValidateAccountHttp(request, accountId);
     }
 
     @ApiAction
-    public Result searchAccounts(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAccounts(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -2334,11 +2334,11 @@ public class AccountApiController extends Controller {
         } else {
             activeOnly = false;
         }
-        return imp.searchAccountsHttp(request, version, accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly);
+        return imp.searchAccountsHttp(request, accountId, appKey, keyword, latitude, longitude, radius, gender, gameExperience, age, categoryIds, returnNulls, responseFilters, purchaseType, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result secureLogin(Http.Request request, BigDecimal version) throws Exception {
+    public Result secureLogin(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2402,11 +2402,11 @@ public class AccountApiController extends Controller {
         } else {
             responseFilters = "PROFILE";
         }
-        return imp.secureLoginHttp(request, version, username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters);
+        return imp.secureLoginHttp(request, username, password, gameType, deviceId, charsetName, latitude, longitude, returnProfile, responseFilters);
     }
 
     @ApiAction
-    public Result secureSignup(Http.Request request, BigDecimal version) throws Exception {
+    public Result secureSignup(Http.Request request) throws Exception {
         String valuename = request.getQueryString("name");
         String name;
         if (valuename != null) {
@@ -2834,11 +2834,11 @@ public class AccountApiController extends Controller {
         } else {
             responseType = null;
         }
-        return imp.secureSignupHttp(request, version, deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType);
+        return imp.secureSignupHttp(request, deviceId, username, password, name, inviteToken, prefixName, firstName, middleName, lastName, suffixName, title, deviceIdType, emailAddress, assetId, address, zipcode, gender, birthday, homePhone, cellPhone, cellPhoneCarrier, businessPhone, role, platforms, tags, aboutUs, gameExperience, categoryIds, hometown, height, heightIndex, ethnicity, bodyType, maritalStatus, children, religion, education, educationIndex, smoke, drink, companionship, companionshipIndex, preferredMinAge, preferredMaxAge, preferredMinHeight, preferredMaxHeight, preferredGender, preferredEducation, preferredEducationIndex, preferredBodyType, preferredEthnicity, preferredLocation, preferredLocationRange, latitude, longitude, acceptedTerms, charsetName, gameType, appKey, appVersion, responseType);
     }
 
     @ApiAction
-    public Result setMatchToken(Http.Request request, BigDecimal version) throws Exception {
+    public Result setMatchToken(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2888,11 +2888,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.setMatchTokenHttp(request, version, deviceId, accountId, matchToken, gameType, appKey, latitude, longitude);
+        return imp.setMatchTokenHttp(request, deviceId, accountId, matchToken, gameType, appKey, latitude, longitude);
     }
 
     @ApiAction
-    public Result updateActveStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateActveStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2928,11 +2928,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'active' parameter is required");
         }
-        return imp.updateActveStatusHttp(request, version, accountId, connectionAccountId, active, deviceId, appKey);
+        return imp.updateActveStatusHttp(request, accountId, connectionAccountId, active, deviceId, appKey);
     }
 
     @ApiAction
-    public Result updateLocation(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateLocation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2968,11 +2968,11 @@ public class AccountApiController extends Controller {
         } else {
             clientTime = null;
         }
-        return imp.updateLocationHttp(request, version, deviceId, accountId, latitude, longitude, clientTime);
+        return imp.updateLocationHttp(request, deviceId, accountId, latitude, longitude, clientTime);
     }
 
     @ApiAction
-    public Result updateSettings(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateSettings(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -3057,11 +3057,11 @@ public class AccountApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.updateSettingsHttp(request, version, deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude);
+        return imp.updateSettingsHttp(request, deviceId, accountId, blockedNotifications, suggestionMethod, suggestionCount, suggestionTimeFrame, showOthersExactLocation, showAsZipcode, showExactLocation, favoriteVisibility, latitude, longitude);
     }
 
     @ApiAction
-    public Result validateAccountSignup(Http.Request request, BigDecimal version) throws Exception {
+    public Result validateAccountSignup(Http.Request request) throws Exception {
         String valuetoken = request.getQueryString("token");
         String token;
         if (valuetoken != null) {
@@ -3069,11 +3069,11 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'token' parameter is required");
         }
-        return imp.validateAccountSignupHttp(request, version, token);
+        return imp.validateAccountSignupHttp(request, token);
     }
 
     @ApiAction
-    public Result validatePasswordReset(Http.Request request, BigDecimal version) throws Exception {
+    public Result validatePasswordReset(Http.Request request) throws Exception {
         String valuetoken = request.getQueryString("token");
         String token;
         if (valuetoken != null) {
@@ -3081,7 +3081,7 @@ public class AccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'token' parameter is required");
         }
-        return imp.validatePasswordResetHttp(request, version, token);
+        return imp.validatePasswordResetHttp(request, token);
     }
 
 }

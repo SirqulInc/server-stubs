@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Stop;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class StopApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result getStopHttp(Http.Request request, BigDecimal version, Long id) throws Exception {
-        Stop obj = getStop(request, version, id);
+    public Result getStopHttp(Http.Request request, Long id) throws Exception {
+        Stop obj = getStop(request, id);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,10 +40,10 @@ public abstract class StopApiControllerImpInterface {
 
     }
 
-    public abstract Stop getStop(Http.Request request, BigDecimal version, Long id) throws Exception;
+    public abstract Stop getStop(Http.Request request, Long id) throws Exception;
 
-    public Result updateStopHttp(Http.Request request, BigDecimal version, Long id, Stop body) throws Exception {
-        Stop obj = updateStop(request, version, id, body);
+    public Result updateStopHttp(Http.Request request, Long id, Stop body) throws Exception {
+        Stop obj = updateStop(request, id, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -56,6 +55,6 @@ public abstract class StopApiControllerImpInterface {
 
     }
 
-    public abstract Stop updateStop(Http.Request request, BigDecimal version, Long id, Stop body) throws Exception;
+    public abstract Stop updateStop(Http.Request request, Long id, Stop body) throws Exception;
 
 }

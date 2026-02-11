@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.BidResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class BidApiController extends Controller {
     private final BidApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class BidApiController extends Controller {
     }
 
     @ApiAction
-    public Result createBid(Http.Request request, BigDecimal version) throws Exception {
+    public Result createBid(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -97,11 +96,11 @@ public class BidApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'budgetSchedule' parameter is required");
         }
-        return imp.createBidHttp(request, version, biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId);
+        return imp.createBidHttp(request, biddableType, biddableId, amountPerView, amountPerAction, budgetAmount, budgetSchedule, deviceId, accountId);
     }
 
     @ApiAction
-    public Result deleteBid(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteBid(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -123,11 +122,11 @@ public class BidApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'bidId' parameter is required");
         }
-        return imp.deleteBidHttp(request, version, bidId, deviceId, accountId);
+        return imp.deleteBidHttp(request, bidId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getBid(Http.Request request, BigDecimal version) throws Exception {
+    public Result getBid(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -149,11 +148,11 @@ public class BidApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'bidId' parameter is required");
         }
-        return imp.getBidHttp(request, version, bidId, deviceId, accountId);
+        return imp.getBidHttp(request, bidId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result updateBid(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateBid(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -203,7 +202,7 @@ public class BidApiController extends Controller {
         } else {
             budgetSchedule = null;
         }
-        return imp.updateBidHttp(request, version, bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule);
+        return imp.updateBidHttp(request, bidId, deviceId, accountId, amountPerView, amountPerAction, budgetAmount, budgetSchedule);
     }
 
 }

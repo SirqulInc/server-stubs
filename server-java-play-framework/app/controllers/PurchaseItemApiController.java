@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PurchaseItemFullResponse;
 import apimodels.PurchaseItemResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class PurchaseItemApiController extends Controller {
     private final PurchaseItemApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class PurchaseItemApiController extends Controller {
     }
 
     @ApiAction
-    public Result createPurchaseItem(Http.Request request, BigDecimal version) throws Exception {
+    public Result createPurchaseItem(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -182,11 +181,11 @@ public class PurchaseItemApiController extends Controller {
         } else {
             offerLocationId = null;
         }
-        return imp.createPurchaseItemHttp(request, version, appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId);
+        return imp.createPurchaseItemHttp(request, appKey, name, purchaseType, deviceId, accountId, description, tickets, price, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, allocateTickets, ticketType, points, offerLocationId);
     }
 
     @ApiAction
-    public Result deletePurchaseItem(Http.Request request, BigDecimal version) throws Exception {
+    public Result deletePurchaseItem(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -208,11 +207,11 @@ public class PurchaseItemApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'purchaseItemId' parameter is required");
         }
-        return imp.deletePurchaseItemHttp(request, version, purchaseItemId, deviceId, accountId);
+        return imp.deletePurchaseItemHttp(request, purchaseItemId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getPurchaseItem(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPurchaseItem(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -234,11 +233,11 @@ public class PurchaseItemApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'purchaseItemId' parameter is required");
         }
-        return imp.getPurchaseItemHttp(request, version, purchaseItemId, deviceId, accountId);
+        return imp.getPurchaseItemHttp(request, purchaseItemId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result searchPurchaseItems(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPurchaseItems(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -323,11 +322,11 @@ public class PurchaseItemApiController extends Controller {
         } else {
             activeOnly = false;
         }
-        return imp.searchPurchaseItemsHttp(request, version, deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly);
+        return imp.searchPurchaseItemsHttp(request, deviceId, accountId, appKey, filterByBillable, purchaseType, serviceAction, keyword, sortField, descending, start, limit, activeOnly);
     }
 
     @ApiAction
-    public Result updatePurchaseItem(Http.Request request, BigDecimal version) throws Exception {
+    public Result updatePurchaseItem(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -475,7 +474,7 @@ public class PurchaseItemApiController extends Controller {
         } else {
             offerLocationId = null;
         }
-        return imp.updatePurchaseItemHttp(request, version, purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId);
+        return imp.updatePurchaseItemHttp(request, purchaseItemId, deviceId, accountId, name, description, tickets, price, purchaseType, purchaseCode, secretKey, purchaseLimit, serviceAction, coverAssetId, promoAssetId, giftable, assetable, active, allocateTickets, ticketType, points, offerLocationId);
     }
 
 }

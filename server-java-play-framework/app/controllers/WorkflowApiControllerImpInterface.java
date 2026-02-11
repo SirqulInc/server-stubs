@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class WorkflowApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result runWorkflowHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long workflowId, Long skuId, Integer versionCode, String parameters) throws Exception {
-        SirqulResponse obj = runWorkflow(request, version, accountId, workflowId, skuId, versionCode, parameters);
+    public Result runWorkflowHttp(Http.Request request, @NotNull Long accountId, @NotNull Long workflowId, Long skuId, Integer versionCode, String parameters) throws Exception {
+        SirqulResponse obj = runWorkflow(request, accountId, workflowId, skuId, versionCode, parameters);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class WorkflowApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse runWorkflow(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long workflowId, Long skuId, Integer versionCode, String parameters) throws Exception;
+    public abstract SirqulResponse runWorkflow(Http.Request request, @NotNull Long accountId, @NotNull Long workflowId, Long skuId, Integer versionCode, String parameters) throws Exception;
 
 }

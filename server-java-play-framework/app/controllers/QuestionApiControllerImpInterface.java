@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.QuestionResponse;
 import apimodels.SirqulResponse;
 
@@ -29,8 +28,8 @@ public abstract class QuestionApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createQuestionHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String question, @NotNull String answers, @NotNull Boolean active, @NotNull Boolean allocateTickets, @NotNull Long ticketCount, String tags, String videoURL, Long assetId, String ticketType, Long points) throws Exception {
-        QuestionResponse obj = createQuestion(request, version, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points);
+    public Result createQuestionHttp(Http.Request request, @NotNull Long accountId, @NotNull String question, @NotNull String answers, @NotNull Boolean active, @NotNull Boolean allocateTickets, @NotNull Long ticketCount, String tags, String videoURL, Long assetId, String ticketType, Long points) throws Exception {
+        QuestionResponse obj = createQuestion(request, accountId, question, answers, active, allocateTickets, ticketCount, tags, videoURL, assetId, ticketType, points);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class QuestionApiControllerImpInterface {
 
     }
 
-    public abstract QuestionResponse createQuestion(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String question, @NotNull String answers, @NotNull Boolean active, @NotNull Boolean allocateTickets, @NotNull Long ticketCount, String tags, String videoURL, Long assetId, String ticketType, Long points) throws Exception;
+    public abstract QuestionResponse createQuestion(Http.Request request, @NotNull Long accountId, @NotNull String question, @NotNull String answers, @NotNull Boolean active, @NotNull Boolean allocateTickets, @NotNull Long ticketCount, String tags, String videoURL, Long assetId, String ticketType, Long points) throws Exception;
 
-    public Result deleteQuestionHttp(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId) throws Exception {
-        SirqulResponse obj = deleteQuestion(request, version, questionId, accountId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteQuestion(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId) throws Exception;
-
-    public Result getQuestionHttp(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId) throws Exception {
-        QuestionResponse obj = getQuestion(request, version, questionId, accountId);
+    public Result deleteQuestionHttp(Http.Request request, @NotNull Long questionId, @NotNull Long accountId) throws Exception {
+        SirqulResponse obj = deleteQuestion(request, questionId, accountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,10 +56,25 @@ public abstract class QuestionApiControllerImpInterface {
 
     }
 
-    public abstract QuestionResponse getQuestion(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId) throws Exception;
+    public abstract SirqulResponse deleteQuestion(Http.Request request, @NotNull Long questionId, @NotNull Long accountId) throws Exception;
 
-    public Result searchQuestionsHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Boolean activeOnly, @NotNull Integer start, @NotNull Integer limit, String keyword) throws Exception {
-        List<QuestionResponse> obj = searchQuestions(request, version, accountId, sortField, descending, activeOnly, start, limit, keyword);
+    public Result getQuestionHttp(Http.Request request, @NotNull Long questionId, @NotNull Long accountId) throws Exception {
+        QuestionResponse obj = getQuestion(request, questionId, accountId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract QuestionResponse getQuestion(Http.Request request, @NotNull Long questionId, @NotNull Long accountId) throws Exception;
+
+    public Result searchQuestionsHttp(Http.Request request, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Boolean activeOnly, @NotNull Integer start, @NotNull Integer limit, String keyword) throws Exception {
+        List<QuestionResponse> obj = searchQuestions(request, accountId, sortField, descending, activeOnly, start, limit, keyword);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (QuestionResponse curItem : obj) {
@@ -89,10 +88,10 @@ public abstract class QuestionApiControllerImpInterface {
 
     }
 
-    public abstract List<QuestionResponse> searchQuestions(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Boolean activeOnly, @NotNull Integer start, @NotNull Integer limit, String keyword) throws Exception;
+    public abstract List<QuestionResponse> searchQuestions(Http.Request request, @NotNull Long accountId, @NotNull String sortField, @NotNull Boolean descending, @NotNull Boolean activeOnly, @NotNull Integer start, @NotNull Integer limit, String keyword) throws Exception;
 
-    public Result updateQuestionHttp(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId, @NotNull Long ticketCount, String question, String answers, String tags, String videoURL, Long assetId, Boolean active, Boolean allocateTickets, String ticketType, Long points) throws Exception {
-        QuestionResponse obj = updateQuestion(request, version, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points);
+    public Result updateQuestionHttp(Http.Request request, @NotNull Long questionId, @NotNull Long accountId, @NotNull Long ticketCount, String question, String answers, String tags, String videoURL, Long assetId, Boolean active, Boolean allocateTickets, String ticketType, Long points) throws Exception {
+        QuestionResponse obj = updateQuestion(request, questionId, accountId, ticketCount, question, answers, tags, videoURL, assetId, active, allocateTickets, ticketType, points);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -104,6 +103,6 @@ public abstract class QuestionApiControllerImpInterface {
 
     }
 
-    public abstract QuestionResponse updateQuestion(Http.Request request, BigDecimal version, @NotNull Long questionId, @NotNull Long accountId, @NotNull Long ticketCount, String question, String answers, String tags, String videoURL, Long assetId, Boolean active, Boolean allocateTickets, String ticketType, Long points) throws Exception;
+    public abstract QuestionResponse updateQuestion(Http.Request request, @NotNull Long questionId, @NotNull Long accountId, @NotNull Long ticketCount, String question, String answers, String tags, String videoURL, Long assetId, Boolean active, Boolean allocateTickets, String ticketType, Long points) throws Exception;
 
 }

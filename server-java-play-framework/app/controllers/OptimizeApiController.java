@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ImportStatuses;
 import java.util.Map;
 import apimodels.Orders;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OptimizeApiController extends Controller {
     private final OptimizeApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class OptimizeApiController extends Controller {
     }
 
     @ApiAction
-    public Result getOptimizationResult(Http.Request request, BigDecimal version,String batchID) throws Exception {
+    public Result getOptimizationResult(Http.Request request, String batchID) throws Exception {
         String valuestart = request.getQueryString("start");
         Integer start;
         if (valuestart != null) {
@@ -57,11 +56,11 @@ public class OptimizeApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.getOptimizationResultHttp(request, version, batchID, start, limit);
+        return imp.getOptimizationResultHttp(request, batchID, start, limit);
     }
 
     @ApiAction
-    public Result requestOptimization(Http.Request request, BigDecimal version) throws Exception {
+    public Result requestOptimization(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Orders body;
         if (nodebody != null) {
@@ -72,7 +71,7 @@ public class OptimizeApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.requestOptimizationHttp(request, version, body);
+        return imp.requestOptimizationHttp(request, body);
     }
 
 }

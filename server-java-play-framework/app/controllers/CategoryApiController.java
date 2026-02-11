@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CategoryResponse;
 import apimodels.CategoryTreeResponse;
 import apimodels.SirqulResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class CategoryApiController extends Controller {
     private final CategoryApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class CategoryApiController extends Controller {
     }
 
     @ApiAction
-    public Result categoryDistanceSearch(Http.Request request, BigDecimal version) throws Exception {
+    public Result categoryDistanceSearch(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -182,11 +181,11 @@ public class CategoryApiController extends Controller {
         } else {
             range = null;
         }
-        return imp.categoryDistanceSearchHttp(request, version, accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, minOfferCount, latitude, longitude, range);
+        return imp.categoryDistanceSearchHttp(request, accountId, keyword, appKey, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, minOfferCount, latitude, longitude, range);
     }
 
     @ApiAction
-    public Result createCategory(Http.Request request, BigDecimal version) throws Exception {
+    public Result createCategory(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -285,11 +284,11 @@ public class CategoryApiController extends Controller {
         } else {
             searchTags = null;
         }
-        return imp.createCategoryHttp(request, version, accountId, name, appKey, parentCategoryId, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags);
+        return imp.createCategoryHttp(request, accountId, name, appKey, parentCategoryId, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags);
     }
 
     @ApiAction
-    public Result deleteCategory(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteCategory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -304,11 +303,11 @@ public class CategoryApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'categoryId' parameter is required");
         }
-        return imp.deleteCategoryHttp(request, version, accountId, categoryId);
+        return imp.deleteCategoryHttp(request, accountId, categoryId);
     }
 
     @ApiAction
-    public Result duplicateCategory(Http.Request request, BigDecimal version) throws Exception {
+    public Result duplicateCategory(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -337,11 +336,11 @@ public class CategoryApiController extends Controller {
         } else {
             parentCategoryId = null;
         }
-        return imp.duplicateCategoryHttp(request, version, accountId, categoryId, appKey, parentCategoryId);
+        return imp.duplicateCategoryHttp(request, accountId, categoryId, appKey, parentCategoryId);
     }
 
     @ApiAction
-    public Result getCategory(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCategory(Http.Request request) throws Exception {
         String valuecategoryId = request.getQueryString("categoryId");
         Long categoryId;
         if (valuecategoryId != null) {
@@ -356,11 +355,11 @@ public class CategoryApiController extends Controller {
         } else {
             returnExternal = true;
         }
-        return imp.getCategoryHttp(request, version, categoryId, returnExternal);
+        return imp.getCategoryHttp(request, categoryId, returnExternal);
     }
 
     @ApiAction
-    public Result searchCategories(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchCategories(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -508,11 +507,11 @@ public class CategoryApiController extends Controller {
         } else {
             searchMode = null;
         }
-        return imp.searchCategoriesHttp(request, version, accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode);
+        return imp.searchCategoriesHttp(request, accountId, keyword, appKey, categoryId, categoryIds, parentCategoryIds, rootOnly, sortField, responseGroup, descending, start, limit, activeOnly, returnExternal, exactMatch, type, externalType, excludeExternalType, minOfferCount, searchDepth, searchMode);
     }
 
     @ApiAction
-    public Result updateCategory(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateCategory(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -611,7 +610,7 @@ public class CategoryApiController extends Controller {
         } else {
             searchTags = null;
         }
-        return imp.updateCategoryHttp(request, version, accountId, categoryId, parentCategoryId, name, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags);
+        return imp.updateCategoryHttp(request, accountId, categoryId, parentCategoryId, name, description, type, assetId, externalId, externalType, externalCategorySlug, sqootSlug, active, metaData, searchTags);
     }
 
 }

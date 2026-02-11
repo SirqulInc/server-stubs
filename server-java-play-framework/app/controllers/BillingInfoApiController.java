@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.PaymentTypesResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class BillingInfoApiController extends Controller {
     private final BillingInfoApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class BillingInfoApiController extends Controller {
     }
 
     @ApiAction
-    public Result addPaymentMethod(Http.Request request, BigDecimal version) throws Exception {
+    public Result addPaymentMethod(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -201,11 +200,11 @@ public class BillingInfoApiController extends Controller {
         } else {
             metaData = null;
         }
-        return imp.addPaymentMethodHttp(request, version, accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData);
+        return imp.addPaymentMethodHttp(request, accountId, paymentMethodId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, defaultPaymentMethod, paymentMethodNickname, taxId, providerCustomerProfileId, providerPaymentProfileId, metaData);
     }
 
     @ApiAction
-    public Result createPaymentMethod(Http.Request request, BigDecimal version) throws Exception {
+    public Result createPaymentMethod(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -381,11 +380,11 @@ public class BillingInfoApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.createPaymentMethodHttp(request, version, accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey);
+        return imp.createPaymentMethodHttp(request, accountId, accountName, firstName, lastName, address, city, state, postalCode, country, phone, creditCardNumber, expirationDate, ccv, accountNumber, bankName, routingNumber, paymentMethodNickname, taxId, defaultPaymentMethod, authToken, provider, providerCustomerProfileId, providerPaymentProfileId, metaData, appKey);
     }
 
     @ApiAction
-    public Result createSmartContract(Http.Request request, BigDecimal version) throws Exception {
+    public Result createSmartContract(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -414,11 +413,11 @@ public class BillingInfoApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'tokenSymbol' parameter is required");
         }
-        return imp.createSmartContractHttp(request, version, accountId, tokenName, tokenSymbol, paymentMethodId);
+        return imp.createSmartContractHttp(request, accountId, tokenName, tokenSymbol, paymentMethodId);
     }
 
     @ApiAction
-    public Result getCryptoBalance(Http.Request request, BigDecimal version) throws Exception {
+    public Result getCryptoBalance(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -440,11 +439,11 @@ public class BillingInfoApiController extends Controller {
         } else {
             paymentMethodId = null;
         }
-        return imp.getCryptoBalanceHttp(request, version, accountId, ownerAccountId, paymentMethodId);
+        return imp.getCryptoBalanceHttp(request, accountId, ownerAccountId, paymentMethodId);
     }
 
     @ApiAction
-    public Result getPaymentMethod(Http.Request request, BigDecimal version) throws Exception {
+    public Result getPaymentMethod(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -466,11 +465,11 @@ public class BillingInfoApiController extends Controller {
         } else {
             getCurrentBalance = null;
         }
-        return imp.getPaymentMethodHttp(request, version, accountId, paymentMethodId, getCurrentBalance);
+        return imp.getPaymentMethodHttp(request, accountId, paymentMethodId, getCurrentBalance);
     }
 
     @ApiAction
-    public Result searchPaymentMethod(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchPaymentMethod(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -527,7 +526,7 @@ public class BillingInfoApiController extends Controller {
         } else {
             limit = 5;
         }
-        return imp.searchPaymentMethodHttp(request, version, accountId, provider, type, keyword, sortField, descending, start, limit);
+        return imp.searchPaymentMethodHttp(request, accountId, provider, type, keyword, sortField, descending, start, limit);
     }
 
 }

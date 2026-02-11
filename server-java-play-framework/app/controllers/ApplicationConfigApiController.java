@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.ApplicationConfigResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ApplicationConfigApiController extends Controller {
     private final ApplicationConfigApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class ApplicationConfigApiController extends Controller {
     }
 
     @ApiAction
-    public Result createApplicationConfig(Http.Request request, BigDecimal version) throws Exception {
+    public Result createApplicationConfig(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -90,11 +89,11 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             udid = null;
         }
-        return imp.createApplicationConfigHttp(request, version, accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid);
+        return imp.createApplicationConfigHttp(request, accountId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid);
     }
 
     @ApiAction
-    public Result deleteApplicationConfig(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteApplicationConfig(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -109,11 +108,11 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'configId' parameter is required");
         }
-        return imp.deleteApplicationConfigHttp(request, version, accountId, configId);
+        return imp.deleteApplicationConfigHttp(request, accountId, configId);
     }
 
     @ApiAction
-    public Result getApplicationConfig(Http.Request request, BigDecimal version) throws Exception {
+    public Result getApplicationConfig(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -128,11 +127,11 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'configId' parameter is required");
         }
-        return imp.getApplicationConfigHttp(request, version, accountId, configId);
+        return imp.getApplicationConfigHttp(request, accountId, configId);
     }
 
     @ApiAction
-    public Result getApplicationConfigByConfigVersion(Http.Request request, BigDecimal version) throws Exception {
+    public Result getApplicationConfigByConfigVersion(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -175,11 +174,11 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             allowOlderVersions = false;
         }
-        return imp.getApplicationConfigByConfigVersionHttp(request, version, appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions);
+        return imp.getApplicationConfigByConfigVersionHttp(request, appKey, configVersion, retailerId, retailerLocationId, udid, allowOlderVersions);
     }
 
     @ApiAction
-    public Result searchApplicationConfig(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchApplicationConfig(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -250,11 +249,11 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.searchApplicationConfigHttp(request, version, accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit);
+        return imp.searchApplicationConfigHttp(request, accountId, appKey, retailerId, retailerLocationId, udid, configVersion, sortField, descending, start, limit);
     }
 
     @ApiAction
-    public Result updateApplicationConfig(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateApplicationConfig(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -311,7 +310,7 @@ public class ApplicationConfigApiController extends Controller {
         } else {
             udid = null;
         }
-        return imp.updateApplicationConfigHttp(request, version, accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid);
+        return imp.updateApplicationConfigHttp(request, accountId, configId, appKey, configVersion, assetId, retailerId, retailerLocationId, udid);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.WrappedProxyItemResponse;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OpenAiApiController extends Controller {
     private final OpenAiApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class OpenAiApiController extends Controller {
     }
 
     @ApiAction
-    public Result imageGeneration(Http.Request request, BigDecimal version) throws Exception {
+    public Result imageGeneration(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -61,7 +60,7 @@ public class OpenAiApiController extends Controller {
         } else {
             returnRawResponse = null;
         }
-        return imp.imageGenerationHttp(request, version, accountId, postBody, returnRawResponse);
+        return imp.imageGenerationHttp(request, accountId, postBody, returnRawResponse);
     }
 
 }

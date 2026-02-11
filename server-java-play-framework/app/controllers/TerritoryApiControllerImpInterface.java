@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.TerritoryResponse;
 
@@ -29,8 +28,8 @@ public abstract class TerritoryApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createTerritoryHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String name, Boolean active) throws Exception {
-        TerritoryResponse obj = createTerritory(request, version, accountId, name, active);
+    public Result createTerritoryHttp(Http.Request request, @NotNull Long accountId, @NotNull String name, Boolean active) throws Exception {
+        TerritoryResponse obj = createTerritory(request, accountId, name, active);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,25 +41,10 @@ public abstract class TerritoryApiControllerImpInterface {
 
     }
 
-    public abstract TerritoryResponse createTerritory(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String name, Boolean active) throws Exception;
+    public abstract TerritoryResponse createTerritory(Http.Request request, @NotNull Long accountId, @NotNull String name, Boolean active) throws Exception;
 
-    public Result deleteTerritoryHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long territoryId) throws Exception {
-        SirqulResponse obj = deleteTerritory(request, version, accountId, territoryId);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract SirqulResponse deleteTerritory(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long territoryId) throws Exception;
-
-    public Result getTerritoryHttp(Http.Request request, BigDecimal version, @NotNull Long territoryId) throws Exception {
-        TerritoryResponse obj = getTerritory(request, version, territoryId);
+    public Result deleteTerritoryHttp(Http.Request request, @NotNull Long accountId, @NotNull Long territoryId) throws Exception {
+        SirqulResponse obj = deleteTerritory(request, accountId, territoryId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -72,10 +56,25 @@ public abstract class TerritoryApiControllerImpInterface {
 
     }
 
-    public abstract TerritoryResponse getTerritory(Http.Request request, BigDecimal version, @NotNull Long territoryId) throws Exception;
+    public abstract SirqulResponse deleteTerritory(Http.Request request, @NotNull Long accountId, @NotNull Long territoryId) throws Exception;
 
-    public Result searchTerritoriesHttp(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, String keyword, Integer start, Integer limit) throws Exception {
-        List<TerritoryResponse> obj = searchTerritories(request, version, sortField, descending, keyword, start, limit);
+    public Result getTerritoryHttp(Http.Request request, @NotNull Long territoryId) throws Exception {
+        TerritoryResponse obj = getTerritory(request, territoryId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract TerritoryResponse getTerritory(Http.Request request, @NotNull Long territoryId) throws Exception;
+
+    public Result searchTerritoriesHttp(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, String keyword, Integer start, Integer limit) throws Exception {
+        List<TerritoryResponse> obj = searchTerritories(request, sortField, descending, keyword, start, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (TerritoryResponse curItem : obj) {
@@ -89,10 +88,10 @@ public abstract class TerritoryApiControllerImpInterface {
 
     }
 
-    public abstract List<TerritoryResponse> searchTerritories(Http.Request request, BigDecimal version, @NotNull String sortField, @NotNull Boolean descending, String keyword, Integer start, Integer limit) throws Exception;
+    public abstract List<TerritoryResponse> searchTerritories(Http.Request request, @NotNull String sortField, @NotNull Boolean descending, String keyword, Integer start, Integer limit) throws Exception;
 
-    public Result updateTerritoryHttp(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long territoryId, String name, Boolean active) throws Exception {
-        TerritoryResponse obj = updateTerritory(request, version, accountId, territoryId, name, active);
+    public Result updateTerritoryHttp(Http.Request request, @NotNull Long accountId, @NotNull Long territoryId, String name, Boolean active) throws Exception {
+        TerritoryResponse obj = updateTerritory(request, accountId, territoryId, name, active);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -104,6 +103,6 @@ public abstract class TerritoryApiControllerImpInterface {
 
     }
 
-    public abstract TerritoryResponse updateTerritory(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long territoryId, String name, Boolean active) throws Exception;
+    public abstract TerritoryResponse updateTerritory(Http.Request request, @NotNull Long accountId, @NotNull Long territoryId, String name, Boolean active) throws Exception;
 
 }

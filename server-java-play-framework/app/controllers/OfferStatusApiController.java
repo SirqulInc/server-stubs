@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.OfferTransactionStatusResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OfferStatusApiController extends Controller {
     private final OfferStatusApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class OfferStatusApiController extends Controller {
     }
 
     @ApiAction
-    public Result createOfferTransactionStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOfferTransactionStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -111,11 +110,11 @@ public class OfferStatusApiController extends Controller {
         } else {
             applicationIds = null;
         }
-        return imp.createOfferTransactionStatusHttp(request, version, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds);
+        return imp.createOfferTransactionStatusHttp(request, name, code, deviceId, accountId, latitude, longitude, description, role, active, applicationIds);
     }
 
     @ApiAction
-    public Result deleteOfferTransactionStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteOfferTransactionStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -151,11 +150,11 @@ public class OfferStatusApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'statusId' parameter is required");
         }
-        return imp.deleteOfferTransactionStatusHttp(request, version, statusId, deviceId, accountId, latitude, longitude);
+        return imp.deleteOfferTransactionStatusHttp(request, statusId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getOfferTransactionStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferTransactionStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -191,11 +190,11 @@ public class OfferStatusApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'statusId' parameter is required");
         }
-        return imp.getOfferTransactionStatusHttp(request, version, statusId, deviceId, accountId, latitude, longitude);
+        return imp.getOfferTransactionStatusHttp(request, statusId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result searchOfferTransactionStatuses(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchOfferTransactionStatuses(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -280,11 +279,11 @@ public class OfferStatusApiController extends Controller {
         } else {
             includeInactive = false;
         }
-        return imp.searchOfferTransactionStatusesHttp(request, version, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive);
+        return imp.searchOfferTransactionStatusesHttp(request, deviceId, accountId, latitude, longitude, keyword, role, appKey, sortField, descending, start, limit, includeInactive);
     }
 
     @ApiAction
-    public Result updateOfferTransactionStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateOfferTransactionStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -362,7 +361,7 @@ public class OfferStatusApiController extends Controller {
         } else {
             applicationIds = null;
         }
-        return imp.updateOfferTransactionStatusHttp(request, version, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds);
+        return imp.updateOfferTransactionStatusHttp(request, deviceId, accountId, latitude, longitude, statusId, name, description, code, role, active, applicationIds);
     }
 
 }

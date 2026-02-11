@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.CsvImportResponse;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
@@ -14,28 +13,28 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class CsvImportApiControllerImp extends CsvImportApiControllerImpInterface {
     @Override
-    public SirqulResponse getStatusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception {
+    public SirqulResponse getStatusCSV(Http.Request request, @NotNull Long accountId, @NotNull Long batchId, @NotNull String responseGroup, @NotNull Long start, @NotNull Long limit) throws Exception {
         //Do your magic!!!
         return new SirqulResponse();
     }
 
     @Override
-    public CsvImportResponse listStatusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
+    public CsvImportResponse listStatusCSV(Http.Request request, @NotNull Long accountId, @NotNull Integer start, @NotNull Integer limit) throws Exception {
         //Do your magic!!!
         return new CsvImportResponse();
     }
 
     @Override
-    public CsvImportResponse statusCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull Long batchId) throws Exception {
+    public CsvImportResponse statusCSV(Http.Request request, @NotNull Long accountId, @NotNull Long batchId) throws Exception {
         //Do your magic!!!
         return new CsvImportResponse();
     }
 
     @Override
-    public CsvImportResponse uploadCSV(Http.Request request, BigDecimal version, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception {
+    public CsvImportResponse uploadCSV(Http.Request request, @NotNull Long accountId, @NotNull String uploadType, @NotNull InputStream importFile, @NotNull String fileFormat, String appKey) throws Exception {
         //Do your magic!!!
         return new CsvImportResponse();
     }

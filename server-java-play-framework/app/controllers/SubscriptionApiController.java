@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.ApplicationUsageResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.SubscriptionPlanResponse;
 import apimodels.SubscriptionResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class SubscriptionApiController extends Controller {
     private final SubscriptionApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class SubscriptionApiController extends Controller {
     }
 
     @ApiAction
-    public Result createSubscription(Http.Request request, BigDecimal version) throws Exception {
+    public Result createSubscription(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -64,11 +63,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             promoCode = null;
         }
-        return imp.createSubscriptionHttp(request, version, accountId, planId, promoCode);
+        return imp.createSubscriptionHttp(request, accountId, planId, promoCode);
     }
 
     @ApiAction
-    public Result deleteSubscription(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteSubscription(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -76,11 +75,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.deleteSubscriptionHttp(request, version, accountId);
+        return imp.deleteSubscriptionHttp(request, accountId);
     }
 
     @ApiAction
-    public Result getSubscription(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSubscription(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -88,11 +87,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getSubscriptionHttp(request, version, accountId);
+        return imp.getSubscriptionHttp(request, accountId);
     }
 
     @ApiAction
-    public Result getSubscriptionPlan(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSubscriptionPlan(Http.Request request) throws Exception {
         String valueplanId = request.getQueryString("planId");
         Long planId;
         if (valueplanId != null) {
@@ -100,11 +99,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'planId' parameter is required");
         }
-        return imp.getSubscriptionPlanHttp(request, version, planId);
+        return imp.getSubscriptionPlanHttp(request, planId);
     }
 
     @ApiAction
-    public Result getSubscriptionPlans(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSubscriptionPlans(Http.Request request) throws Exception {
         String valuevisible = request.getQueryString("visible");
         Boolean visible;
         if (valuevisible != null) {
@@ -119,11 +118,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             role = null;
         }
-        return imp.getSubscriptionPlansHttp(request, version, visible, role);
+        return imp.getSubscriptionPlansHttp(request, visible, role);
     }
 
     @ApiAction
-    public Result getSubscriptionUsage(Http.Request request, BigDecimal version) throws Exception {
+    public Result getSubscriptionUsage(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -152,11 +151,11 @@ public class SubscriptionApiController extends Controller {
         } else {
             end = null;
         }
-        return imp.getSubscriptionUsageHttp(request, version, accountId, applicationId, start, end);
+        return imp.getSubscriptionUsageHttp(request, accountId, applicationId, start, end);
     }
 
     @ApiAction
-    public Result updateSubscription(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateSubscription(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -185,7 +184,7 @@ public class SubscriptionApiController extends Controller {
         } else {
             active = null;
         }
-        return imp.updateSubscriptionHttp(request, version, accountId, planId, promoCode, active);
+        return imp.updateSubscriptionHttp(request, accountId, planId, promoCode, active);
     }
 
 }

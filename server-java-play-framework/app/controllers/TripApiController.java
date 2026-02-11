@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.Trip;
 
 import com.typesafe.config.Config;
@@ -25,7 +24,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class TripApiController extends Controller {
     private final TripApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -39,7 +38,7 @@ public class TripApiController extends Controller {
     }
 
     @ApiAction
-    public Result createTrip(Http.Request request, BigDecimal version) throws Exception {
+    public Result createTrip(Http.Request request) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -50,16 +49,16 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.createTripHttp(request, version, body);
+        return imp.createTripHttp(request, body);
     }
 
     @ApiAction
-    public Result delete(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.deleteHttp(request, version, id);
+    public Result delete(Http.Request request, Long id) throws Exception {
+        return imp.deleteHttp(request, id);
     }
 
     @ApiAction
-    public Result driveTrip(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result driveTrip(Http.Request request, Long id) throws Exception {
         String valuerecurrence = request.getQueryString("recurrence");
         Boolean recurrence;
         if (valuerecurrence != null) {
@@ -67,11 +66,11 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'recurrence' parameter is required");
         }
-        return imp.driveTripHttp(request, version, id, recurrence);
+        return imp.driveTripHttp(request, id, recurrence);
     }
 
     @ApiAction
-    public Result flexibleTrip(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result flexibleTrip(Http.Request request, Long id) throws Exception {
         String valuerecurrence = request.getQueryString("recurrence");
         Boolean recurrence;
         if (valuerecurrence != null) {
@@ -79,16 +78,16 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'recurrence' parameter is required");
         }
-        return imp.flexibleTripHttp(request, version, id, recurrence);
+        return imp.flexibleTripHttp(request, id, recurrence);
     }
 
     @ApiAction
-    public Result getTrip(Http.Request request, BigDecimal version,Long id) throws Exception {
-        return imp.getTripHttp(request, version, id);
+    public Result getTrip(Http.Request request, Long id) throws Exception {
+        return imp.getTripHttp(request, id);
     }
 
     @ApiAction
-    public Result getTripMatches(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result getTripMatches(Http.Request request, Long id) throws Exception {
         String valuematchedHasRoute = request.getQueryString("matchedHasRoute");
         Boolean matchedHasRoute;
         if (valuematchedHasRoute != null) {
@@ -138,11 +137,11 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.getTripMatchesHttp(request, version, id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver);
+        return imp.getTripMatchesHttp(request, id, sortField, descending, start, limit, activeOnly, matchedHasRoute, matchedHasDriver);
     }
 
     @ApiAction
-    public Result processTripMatches(Http.Request request, BigDecimal version) throws Exception {
+    public Result processTripMatches(Http.Request request) throws Exception {
         String valuestartDate = request.getQueryString("startDate");
         Long startDate;
         if (valuestartDate != null) {
@@ -164,11 +163,11 @@ public class TripApiController extends Controller {
         } else {
             tripId = null;
         }
-        return imp.processTripMatchesHttp(request, version, startDate, endDate, tripId);
+        return imp.processTripMatchesHttp(request, startDate, endDate, tripId);
     }
 
     @ApiAction
-    public Result ride(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result ride(Http.Request request, Long id) throws Exception {
         String valuerecurrence = request.getQueryString("recurrence");
         Boolean recurrence;
         if (valuerecurrence != null) {
@@ -176,11 +175,11 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'recurrence' parameter is required");
         }
-        return imp.rideHttp(request, version, id, recurrence);
+        return imp.rideHttp(request, id, recurrence);
     }
 
     @ApiAction
-    public Result search(Http.Request request, BigDecimal version) throws Exception {
+    public Result search(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -244,11 +243,11 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchHttp(request, version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications);
+        return imp.searchHttp(request, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, hasNotifications);
     }
 
     @ApiAction
-    public Result searchTrips(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchTrips(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -319,11 +318,11 @@ public class TripApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchTripsHttp(request, version, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver);
+        return imp.searchTripsHttp(request, accountId, sortField, descending, start, limit, activeOnly, startDate, endDate, matchedHasRoute, matchedHasDriver);
     }
 
     @ApiAction
-    public Result updateLocations(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateLocations(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -334,11 +333,11 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateLocationsHttp(request, version, id, body);
+        return imp.updateLocationsHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateRecurrenceLocations(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateRecurrenceLocations(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -349,11 +348,11 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateRecurrenceLocationsHttp(request, version, id, body);
+        return imp.updateRecurrenceLocationsHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateRecurrenceShipments(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateRecurrenceShipments(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -364,11 +363,11 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateRecurrenceShipmentsHttp(request, version, id, body);
+        return imp.updateRecurrenceShipmentsHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateShipments(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateShipments(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -379,11 +378,11 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateShipmentsHttp(request, version, id, body);
+        return imp.updateShipmentsHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateTrip(Http.Request request, BigDecimal version,Long id) throws Exception {
+    public Result updateTrip(Http.Request request, Long id) throws Exception {
         JsonNode nodebody = request.body().asJson();
         Trip body;
         if (nodebody != null) {
@@ -394,11 +393,11 @@ public class TripApiController extends Controller {
         } else {
             body = null;
         }
-        return imp.updateTripHttp(request, version, id, body);
+        return imp.updateTripHttp(request, id, body);
     }
 
     @ApiAction
-    public Result updateTripNotifications(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateTripNotifications(Http.Request request) throws Exception {
         String valueid = request.getQueryString("id");
         Long id;
         if (valueid != null) {
@@ -413,7 +412,7 @@ public class TripApiController extends Controller {
         } else {
             notifications = null;
         }
-        return imp.updateTripNotificationsHttp(request, version, id, notifications);
+        return imp.updateTripNotificationsHttp(request, id, notifications);
     }
 
 }

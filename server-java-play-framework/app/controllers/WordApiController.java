@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 import apimodels.WordzWordResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class WordApiController extends Controller {
     private final WordApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class WordApiController extends Controller {
     }
 
     @ApiAction
-    public Result createWord(Http.Request request, BigDecimal version) throws Exception {
+    public Result createWord(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -104,11 +103,11 @@ public class WordApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.createWordHttp(request, version, accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points);
+        return imp.createWordHttp(request, accountId, word, definition, active, allocateTickets, ticketCount, assetId, ticketType, points);
     }
 
     @ApiAction
-    public Result deleteWord(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteWord(Http.Request request) throws Exception {
         String valuewordId = request.getQueryString("wordId");
         Long wordId;
         if (valuewordId != null) {
@@ -123,11 +122,11 @@ public class WordApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.deleteWordHttp(request, version, wordId, accountId);
+        return imp.deleteWordHttp(request, wordId, accountId);
     }
 
     @ApiAction
-    public Result getWord(Http.Request request, BigDecimal version) throws Exception {
+    public Result getWord(Http.Request request) throws Exception {
         String valuewordId = request.getQueryString("wordId");
         Long wordId;
         if (valuewordId != null) {
@@ -142,11 +141,11 @@ public class WordApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.getWordHttp(request, version, wordId, accountId);
+        return imp.getWordHttp(request, wordId, accountId);
     }
 
     @ApiAction
-    public Result getWords(Http.Request request, BigDecimal version) throws Exception {
+    public Result getWords(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -196,11 +195,11 @@ public class WordApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.getWordsHttp(request, version, accountId, sortField, descending, activeOnly, start, limit, keyword);
+        return imp.getWordsHttp(request, accountId, sortField, descending, activeOnly, start, limit, keyword);
     }
 
     @ApiAction
-    public Result updateWord(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateWord(Http.Request request) throws Exception {
         String valuewordId = request.getQueryString("wordId");
         Long wordId;
         if (valuewordId != null) {
@@ -271,7 +270,7 @@ public class WordApiController extends Controller {
         } else {
             points = null;
         }
-        return imp.updateWordHttp(request, version, wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points);
+        return imp.updateWordHttp(request, wordId, accountId, ticketCount, wordText, definition, assetId, active, allocateTickets, ticketType, points);
     }
 
 }

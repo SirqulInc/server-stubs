@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.google.inject.Inject;
@@ -28,8 +27,8 @@ public abstract class SimulationApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result simulationHttp(Http.Request request, BigDecimal version, @NotNull String data, @NotNull Boolean realTime) throws Exception {
-        SirqulResponse obj = simulation(request, version, data, realTime);
+    public Result simulationHttp(Http.Request request, @NotNull String data, @NotNull Boolean realTime) throws Exception {
+        SirqulResponse obj = simulation(request, data, realTime);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -41,6 +40,6 @@ public abstract class SimulationApiControllerImpInterface {
 
     }
 
-    public abstract SirqulResponse simulation(Http.Request request, BigDecimal version, @NotNull String data, @NotNull Boolean realTime) throws Exception;
+    public abstract SirqulResponse simulation(Http.Request request, @NotNull String data, @NotNull Boolean realTime) throws Exception;
 
 }

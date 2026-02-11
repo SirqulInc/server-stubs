@@ -2,7 +2,6 @@ package controllers;
 
 import apimodels.AlbumContestListResponse;
 import apimodels.AlbumContestResponse;
-import java.math.BigDecimal;
 import apimodels.SirqulResponse;
 
 import com.typesafe.config.Config;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ContestApiController extends Controller {
     private final ContestApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class ContestApiController extends Controller {
     }
 
     @ApiAction
-    public Result addOrUpdateAlbumContest(Http.Request request, BigDecimal version) throws Exception {
+    public Result addOrUpdateAlbumContest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -217,11 +216,11 @@ public class ContestApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addOrUpdateAlbumContestHttp(request, version, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude);
+        return imp.addOrUpdateAlbumContestHttp(request, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, deviceId, accountId, gameType, appKey, contestType, albumContestId, title, description, albumId1, removeAlbum1, albumId2, removeAlbum2, startDate, endDate, locationDescription, connectionIdsToAdd, connectionGroupIdsToAdd, latitude, longitude);
     }
 
     @ApiAction
-    public Result approveAlbumContest(Http.Request request, BigDecimal version) throws Exception {
+    public Result approveAlbumContest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -250,11 +249,11 @@ public class ContestApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'approvalStatus' parameter is required");
         }
-        return imp.approveAlbumContestHttp(request, version, albumContestId, approvalStatus, deviceId, accountId);
+        return imp.approveAlbumContestHttp(request, albumContestId, approvalStatus, deviceId, accountId);
     }
 
     @ApiAction
-    public Result deleteContest(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteContest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -290,11 +289,11 @@ public class ContestApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.deleteContestHttp(request, version, albumContestId, deviceId, accountId, latitude, longitude);
+        return imp.deleteContestHttp(request, albumContestId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getAlbumContest(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAlbumContest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -330,11 +329,11 @@ public class ContestApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getAlbumContestHttp(request, version, albumContestId, deviceId, accountId, latitude, longitude);
+        return imp.getAlbumContestHttp(request, albumContestId, deviceId, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result getAlbumContests(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAlbumContests(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -468,11 +467,11 @@ public class ContestApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getAlbumContestsHttp(request, version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude);
+        return imp.getAlbumContestsHttp(request, filter, sortField, descending, start, limit, deviceId, accountId, gameType, appKey, appType, contestType, ownerId, q, keyword, i, l, dateCreated, latitude, longitude);
     }
 
     @ApiAction
-    public Result voteOnAlbumContest(Http.Request request, BigDecimal version) throws Exception {
+    public Result voteOnAlbumContest(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -522,7 +521,7 @@ public class ContestApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.voteOnAlbumContestHttp(request, version, albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude);
+        return imp.voteOnAlbumContestHttp(request, albumContestId, albumId, deviceId, accountId, contestType, latitude, longitude);
     }
 
 }

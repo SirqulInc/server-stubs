@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.PurchaseItemListResponse;
 import apimodels.SirqulResponse;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class ThemeDescriptorApiController extends Controller {
     private final ThemeDescriptorApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -42,7 +41,7 @@ public class ThemeDescriptorApiController extends Controller {
     }
 
     @ApiAction
-    public Result addOrUpdateThemeDescriptor(Http.Request request, BigDecimal version) throws Exception {
+    public Result addOrUpdateThemeDescriptor(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -232,11 +231,11 @@ public class ThemeDescriptorApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.addOrUpdateThemeDescriptorHttp(request, version, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, completeWithDefaultValues, deviceId, accountId, gameType, themeDescriptorId, title, description, connectionIdsToAdd, connectionGroupIdsToAdd, appVersion, colorValueJson, stringReplacerJson, customJsonObjects, iconImage, sceneAtlasImage, bgImage, bgSound, musicSelection, locationDescription, latitude, longitude);
+        return imp.addOrUpdateThemeDescriptorHttp(request, publicRead, publicWrite, publicDelete, publicAdd, visibility, includeFriendGroup, completeWithDefaultValues, deviceId, accountId, gameType, themeDescriptorId, title, description, connectionIdsToAdd, connectionGroupIdsToAdd, appVersion, colorValueJson, stringReplacerJson, customJsonObjects, iconImage, sceneAtlasImage, bgImage, bgSound, musicSelection, locationDescription, latitude, longitude);
     }
 
     @ApiAction
-    public Result getThemeDescriptor(Http.Request request, BigDecimal version) throws Exception {
+    public Result getThemeDescriptor(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -279,11 +278,11 @@ public class ThemeDescriptorApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getThemeDescriptorHttp(request, version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude);
+        return imp.getThemeDescriptorHttp(request, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude);
     }
 
     @ApiAction
-    public Result getThemeDescriptors(Http.Request request, BigDecimal version) throws Exception {
+    public Result getThemeDescriptors(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -410,11 +409,11 @@ public class ThemeDescriptorApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getThemeDescriptorsHttp(request, version, filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude);
+        return imp.getThemeDescriptorsHttp(request, filter, sortField, descending, start, limit, deviceId, accountId, gameType, contestType, ownerId, q, keyword, i, l, dateCreated, appVersion, latitude, longitude);
     }
 
     @ApiAction
-    public Result removeThemeDescriptor(Http.Request request, BigDecimal version) throws Exception {
+    public Result removeThemeDescriptor(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -457,7 +456,7 @@ public class ThemeDescriptorApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.removeThemeDescriptorHttp(request, version, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude);
+        return imp.removeThemeDescriptorHttp(request, themeDescriptorId, deviceId, accountId, gameType, latitude, longitude);
     }
 
 }

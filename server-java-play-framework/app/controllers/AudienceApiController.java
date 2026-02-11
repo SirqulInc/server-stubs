@@ -3,7 +3,6 @@ package controllers;
 import apimodels.AgeGroupResponse;
 import apimodels.AudienceDeviceResponse;
 import apimodels.AudienceResponse;
-import java.math.BigDecimal;
 import apimodels.OfferListResponse;
 import apimodels.SearchResponse;
 import apimodels.SirqulResponse;
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AudienceApiController extends Controller {
     private final AudienceApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class AudienceApiController extends Controller {
     }
 
     @ApiAction
-    public Result createAudience(Http.Request request, BigDecimal version) throws Exception {
+    public Result createAudience(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -248,11 +247,11 @@ public class AudienceApiController extends Controller {
         } else {
             uniqueName = null;
         }
-        return imp.createAudienceHttp(request, version, accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName);
+        return imp.createAudienceHttp(request, accountId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, startTimeOffset, endTimeOffset, sendSuggestion, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName);
     }
 
     @ApiAction
-    public Result deleteAudience(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteAudience(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -267,16 +266,16 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'audienceId' parameter is required");
         }
-        return imp.deleteAudienceHttp(request, version, accountId, audienceId);
+        return imp.deleteAudienceHttp(request, accountId, audienceId);
     }
 
     @ApiAction
-    public Result getAgeGroups(Http.Request request, BigDecimal version) throws Exception {
-        return imp.getAgeGroupsHttp(request, version);
+    public Result getAgeGroups(Http.Request request) throws Exception {
+        return imp.getAgeGroupsHttp(request);
     }
 
     @ApiAction
-    public Result getAudience(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAudience(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -319,11 +318,11 @@ public class AudienceApiController extends Controller {
         } else {
             albumTypesForCount = null;
         }
-        return imp.getAudienceHttp(request, version, accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount);
+        return imp.getAudienceHttp(request, accountId, audienceId, appKey, returnAccountCount, returnAlbumCount, albumTypesForCount);
     }
 
     @ApiAction
-    public Result getAudienceList(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAudienceList(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -457,11 +456,11 @@ public class AudienceApiController extends Controller {
         } else {
             albumTypesForCount = null;
         }
-        return imp.getAudienceListHttp(request, version, accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount);
+        return imp.getAudienceListHttp(request, accountId, albumIds, keyword, keywordFields, sortField, descending, start, limit, sendSuggestion, activeOnly, groupByGroupingId, appKey, returnGlobal, exactKeyword, audienceType, audienceTypes, returnAccountCount, returnAlbumCount, albumTypesForCount);
     }
 
     @ApiAction
-    public Result getDevices(Http.Request request, BigDecimal version) throws Exception {
+    public Result getDevices(Http.Request request) throws Exception {
         String valueincludeInactive = request.getQueryString("includeInactive");
         Boolean includeInactive;
         if (valueincludeInactive != null) {
@@ -469,16 +468,16 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'includeInactive' parameter is required");
         }
-        return imp.getDevicesHttp(request, version, includeInactive);
+        return imp.getDevicesHttp(request, includeInactive);
     }
 
     @ApiAction
-    public Result getExperiences(Http.Request request, BigDecimal version) throws Exception {
-        return imp.getExperiencesHttp(request, version);
+    public Result getExperiences(Http.Request request) throws Exception {
+        return imp.getExperiencesHttp(request);
     }
 
     @ApiAction
-    public Result getGroupedAudiences(Http.Request request, BigDecimal version) throws Exception {
+    public Result getGroupedAudiences(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -493,11 +492,11 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'audienceGroupingId' parameter is required");
         }
-        return imp.getGroupedAudiencesHttp(request, version, accountId, audienceGroupingId);
+        return imp.getGroupedAudiencesHttp(request, accountId, audienceGroupingId);
     }
 
     @ApiAction
-    public Result listByAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result listByAccount(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -519,11 +518,11 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'suggestionType' parameter is required");
         }
-        return imp.listByAccountHttp(request, version, accountId, limit, suggestionType);
+        return imp.listByAccountHttp(request, accountId, limit, suggestionType);
     }
 
     @ApiAction
-    public Result listByAudience(Http.Request request, BigDecimal version) throws Exception {
+    public Result listByAudience(Http.Request request) throws Exception {
         String valuegender = request.getQueryString("gender");
         String gender;
         if (valuegender != null) {
@@ -566,11 +565,11 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.listByAudienceHttp(request, version, limit, gender, age, categoryIds, latitude, longitude);
+        return imp.listByAudienceHttp(request, limit, gender, age, categoryIds, latitude, longitude);
     }
 
     @ApiAction
-    public Result listLastestByAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result listLastestByAccount(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -592,11 +591,11 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'suggestionType' parameter is required");
         }
-        return imp.listLastestByAccountHttp(request, version, accountId, timeframe, suggestionType);
+        return imp.listLastestByAccountHttp(request, accountId, timeframe, suggestionType);
     }
 
     @ApiAction
-    public Result sendByAccount(Http.Request request, BigDecimal version) throws Exception {
+    public Result sendByAccount(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -618,11 +617,11 @@ public class AudienceApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'longitude' parameter is required");
         }
-        return imp.sendByAccountHttp(request, version, accountId, latitude, longitude);
+        return imp.sendByAccountHttp(request, accountId, latitude, longitude);
     }
 
     @ApiAction
-    public Result updateAudience(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateAudience(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -840,7 +839,7 @@ public class AudienceApiController extends Controller {
         } else {
             uniqueName = null;
         }
-        return imp.updateAudienceHttp(request, version, accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName);
+        return imp.updateAudienceHttp(request, accountId, audienceId, name, description, searchTags, gender, ageGroups, categoryIds, applicationIds, gameExperienceLevel, devices, deviceIds, deviceVersions, locations, radius, active, sendSuggestion, startTimeOffset, endTimeOffset, associateDescription, associateType, associateId, groupingId, metaData, visibility, audienceType, useOrder, cohortRegionsData, appKey, trilaterationTypes, uniqueName);
     }
 
 }

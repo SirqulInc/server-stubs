@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.ChartData;
 import apimodels.SirqulResponse;
 import apimodels.UserActivityResponse;
@@ -27,7 +26,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AnalyticsApiController extends Controller {
     private final AnalyticsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -41,7 +40,7 @@ public class AnalyticsApiController extends Controller {
     }
 
     @ApiAction
-    public Result activities(Http.Request request, BigDecimal version) throws Exception {
+    public Result activities(Http.Request request) throws Exception {
         String valuestart = request.getQueryString("start");
         Integer start;
         if (valuestart != null) {
@@ -63,11 +62,11 @@ public class AnalyticsApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'accountId' parameter is required");
         }
-        return imp.activitiesHttp(request, version, start, limit, accountId);
+        return imp.activitiesHttp(request, start, limit, accountId);
     }
 
     @ApiAction
-    public Result aggregatedFilteredUsage(Http.Request request, BigDecimal version) throws Exception {
+    public Result aggregatedFilteredUsage(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -285,11 +284,11 @@ public class AnalyticsApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.aggregatedFilteredUsageHttp(request, version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude);
+        return imp.aggregatedFilteredUsageHttp(request, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, groupByRoot, groupBy, distinctCount, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude);
     }
 
     @ApiAction
-    public Result filteredUsage(Http.Request request, BigDecimal version) throws Exception {
+    public Result filteredUsage(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -563,11 +562,11 @@ public class AnalyticsApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.filteredUsageHttp(request, version, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude);
+        return imp.filteredUsageHttp(request, deviceId, accountId, applicationId, appKey, startDate, endDate, deviceType, device, deviceOS, gender, ageGroup, country, state, city, zip, model, tag, userAccountId, userAccountDisplay, userAccountUsername, customId, customType, customValue, customValue2, customLong, customLong2, customMessage, customMessage2, groupBy, distinctCount, sumColumn, sortField, descending, hideUnknown, responseFormat, l, limit, latitude, longitude);
     }
 
     @ApiAction
-    public Result usage(Http.Request request, BigDecimal version) throws Exception {
+    public Result usage(Http.Request request) throws Exception {
         String valuetag = request.getQueryString("tag");
         String tag;
         if (valuetag != null) {
@@ -785,11 +784,11 @@ public class AnalyticsApiController extends Controller {
         } else {
             customLong2 = null;
         }
-        return imp.usageHttp(request, version, tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2);
+        return imp.usageHttp(request, tag, deviceId, accountId, applicationId, appKey, appVersion, device, deviceType, deviceOS, model, latitude, longitude, customId, customType, achievementIncrement, city, state, country, zip, locationDescription, clientTime, errorMessage, ip, userAgent, backgroundEvent, customMessage, customMessage2, customValue, customValue2, customLong, customLong2);
     }
 
     @ApiAction
-    public Result usageBatch(Http.Request request, BigDecimal version) throws Exception {
+    public Result usageBatch(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -867,7 +866,7 @@ public class AnalyticsApiController extends Controller {
         } else {
             returnSummaryResponse = null;
         }
-        return imp.usageBatchHttp(request, version, appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse);
+        return imp.usageBatchHttp(request, appKey, device, data, deviceId, accountId, appVersion, deviceType, deviceOS, model, updateRanking, returnSummaryResponse);
     }
 
 }

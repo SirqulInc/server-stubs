@@ -31,7 +31,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class OfferApiController extends Controller {
     private final OfferApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -45,7 +45,7 @@ public class OfferApiController extends Controller {
     }
 
     @ApiAction
-    public Result batchUpdateOfferLocations(Http.Request request, BigDecimal version) throws Exception {
+    public Result batchUpdateOfferLocations(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -67,11 +67,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'data' parameter is required");
         }
-        return imp.batchUpdateOfferLocationsHttp(request, version, data, deviceId, accountId);
+        return imp.batchUpdateOfferLocationsHttp(request, data, deviceId, accountId);
     }
 
     @ApiAction
-    public Result createOffer(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOffer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -674,11 +674,11 @@ public class OfferApiController extends Controller {
         } else {
             availabilitySummary = null;
         }
-        return imp.createOfferHttp(request, version, includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary);
+        return imp.createOfferHttp(request, includeOfferLocations, title, barcodeType, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPrice, fullPrice, discountPrice, offerType, specialOfferType, offerVisibility, active, deviceId, accountId, tags, parentOfferId, retailerLocationIds, offerLocations, subTitle, details, subDetails, finePrint, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, ticketPriceType, showRemaining, showRedeemed, replaced, featured, categoryIds, filterIds, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary);
     }
 
     @ApiAction
-    public Result deleteOffer(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteOffer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -700,11 +700,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'offerId' parameter is required");
         }
-        return imp.deleteOfferHttp(request, version, offerId, deviceId, accountId);
+        return imp.deleteOfferHttp(request, offerId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result deleteOfferLocation(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteOfferLocation(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -726,11 +726,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'offerLocationId' parameter is required");
         }
-        return imp.deleteOfferLocationHttp(request, version, offerLocationId, deviceId, accountId);
+        return imp.deleteOfferLocationHttp(request, offerLocationId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getOffer(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOffer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -759,11 +759,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'includeOfferLocations' parameter is required");
         }
-        return imp.getOfferHttp(request, version, offerId, includeOfferLocations, deviceId, accountId);
+        return imp.getOfferHttp(request, offerId, includeOfferLocations, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getOfferDetails(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferDetails(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -834,11 +834,11 @@ public class OfferApiController extends Controller {
         } else {
             includeChildOffers = false;
         }
-        return imp.getOfferDetailsHttp(request, version, deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers);
+        return imp.getOfferDetailsHttp(request, deviceId, accountId, offerId, offerLocationId, distance, latitude, longitude, includeOfferLocations, includeRetailerLocations, includeChildOffers);
     }
 
     @ApiAction
-    public Result getOfferListCounts(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferListCounts(Http.Request request) throws Exception {
         String valuelatitude = request.getQueryString("latitude");
         Double latitude;
         if (valuelatitude != null) {
@@ -867,11 +867,11 @@ public class OfferApiController extends Controller {
         } else {
             distanceUnit = "MILES";
         }
-        return imp.getOfferListCountsHttp(request, version, latitude, longitude, searchRange, distanceUnit);
+        return imp.getOfferListCountsHttp(request, latitude, longitude, searchRange, distanceUnit);
     }
 
     @ApiAction
-    public Result getOfferLocation(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferLocation(Http.Request request) throws Exception {
         String valueofferLocationId = request.getQueryString("offerLocationId");
         Long offerLocationId;
         if (valueofferLocationId != null) {
@@ -886,11 +886,11 @@ public class OfferApiController extends Controller {
         } else {
             udid = null;
         }
-        return imp.getOfferLocationHttp(request, version, offerLocationId, udid);
+        return imp.getOfferLocationHttp(request, offerLocationId, udid);
     }
 
     @ApiAction
-    public Result getOfferLocationsForRetailers(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOfferLocationsForRetailers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1031,11 +1031,11 @@ public class OfferApiController extends Controller {
         } else {
             lastNotificationSent = null;
         }
-        return imp.getOfferLocationsForRetailersHttp(request, version, sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent);
+        return imp.getOfferLocationsForRetailersHttp(request, sortField, descending, start, limit, activeOnly, includeRetailerLocation, deviceId, accountId, keyword, retailerId, retailerLocationId, offerType, specialOfferType, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent);
     }
 
     @ApiAction
-    public Result getOffersForRetailers(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOffersForRetailers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1253,11 +1253,11 @@ public class OfferApiController extends Controller {
         } else {
             lastNotificationSent = null;
         }
-        return imp.getOffersForRetailersHttp(request, version, offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent);
+        return imp.getOffersForRetailersHttp(request, offerVisibility, sortField, descending, start, limit, availableOnly, activeOnly, includeCategories, includeFilters, includeOfferLocations, deviceId, accountId, categoryIds, filterIds, q, keyword, retailerId, retailerLocationId, couponType, offerType, offerTypes, specialOfferType, i, l, barcodeType, barcodeEntry, isbn, asin, deviceStatus, needsNotificationSent, lastNotificationSent);
     }
 
     @ApiAction
-    public Result redeemOfferTransaction(Http.Request request, BigDecimal version) throws Exception {
+    public Result redeemOfferTransaction(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1293,11 +1293,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'status' parameter is required");
         }
-        return imp.redeemOfferTransactionHttp(request, version, offerTransactionId, status, deviceId, accountId, offerLocationId);
+        return imp.redeemOfferTransactionHttp(request, offerTransactionId, status, deviceId, accountId, offerLocationId);
     }
 
     @ApiAction
-    public Result searchOfferTransactionsForRetailers(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchOfferTransactionsForRetailers(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -1466,11 +1466,11 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.searchOfferTransactionsForRetailersHttp(request, version, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l);
+        return imp.searchOfferTransactionsForRetailersHttp(request, sortField, descending, start, limit, activeOnly, deviceId, accountId, q, keyword, retailerId, retailerLocationId, offerId, offerLocationId, redeemed, reservationsOnly, couponType, offerType, specialOfferType, customerAccountIds, categoryIds, redeemableStartDate, redeemableEndDate, i, l);
     }
 
     @ApiAction
-    public Result searchOffersForConsumer(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchOffersForConsumer(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -1688,11 +1688,11 @@ public class OfferApiController extends Controller {
         } else {
             groupBy = null;
         }
-        return imp.searchOffersForConsumerHttp(request, version, latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, type, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy);
+        return imp.searchOffersForConsumerHttp(request, latitude, longitude, recommendationType, locationId, start, limit, maxRecommendations, distanceUnit, appKey, deviceId, accountId, searchRange, tags, supportedPostalCodes, keyword, categories, filters, offerTypes, type, sortField, recommendOfferIds, retailerLocationIds, offerId, includeMission, includeCategories, includeFilters, includeExpired, includeFavorite, closestOfferOnly, searchExpression, groupBy);
     }
 
     @ApiAction
-    public Result topOfferTransactions(Http.Request request, BigDecimal version) throws Exception {
+    public Result topOfferTransactions(Http.Request request) throws Exception {
         String valuestart = request.getQueryString("start");
         Integer start;
         if (valuestart != null) {
@@ -1707,11 +1707,11 @@ public class OfferApiController extends Controller {
         } else {
             limit = 20;
         }
-        return imp.topOfferTransactionsHttp(request, version, start, limit);
+        return imp.topOfferTransactionsHttp(request, start, limit);
     }
 
     @ApiAction
-    public Result updateOffer(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateOffer(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2321,11 +2321,11 @@ public class OfferApiController extends Controller {
         } else {
             availabilitySummary = null;
         }
-        return imp.updateOfferHttp(request, version, offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary);
+        return imp.updateOfferHttp(request, offerId, includeOfferLocations, deviceId, accountId, parentOfferId, retailerLocationIds, offerLocations, tags, title, subTitle, details, subDetails, finePrint, barcodeType, barcodeEntry, externalRedeemOptions, externalUrl, externalId, ticketsRewardType, ticketsReward, activated, expires, noExpiration, availableLimit, availableLimitPerUser, addedLimit, viewLimit, maxPrints, ticketPriceType, ticketPrice, fullPrice, discountPrice, showRemaining, showRedeemed, replaced, featured, offerType, specialOfferType, offerVisibility, categoryIds, filterIds, active, barcodeAssetId, imageAssetId, imageAssetId1, imageAssetId2, imageAssetId3, imageAssetId4, imageAssetId5, publisher, redeemableStart, redeemableEnd, brand, productType, conditionType, isbn, asin, catalogNumbers, department, features, minimumPrice, width, height, depth, weight, unit, studio, parentalRating, publishDate, availabilityDate, sizeId, listingId, mediaType, duration, author, releaseDate, collectionIds, rebootTimeHour, rebootTimeMinute, idleTimeoutInSecond, serialNumber, udid, deviceType, devicePower, deviceInterference, availability, availabilitySummary);
     }
 
     @ApiAction
-    public Result updateOfferStatus(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateOfferStatus(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -2354,7 +2354,7 @@ public class OfferApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'active' parameter is required");
         }
-        return imp.updateOfferStatusHttp(request, version, offerIds, active, deviceId, accountId);
+        return imp.updateOfferStatusHttp(request, offerIds, active, deviceId, accountId);
     }
 
 }

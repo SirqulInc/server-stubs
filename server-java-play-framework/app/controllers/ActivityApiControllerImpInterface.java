@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.ActivityResponse;
-import java.math.BigDecimal;
 import apimodels.EntityReference;
 
 import com.google.inject.Inject;
@@ -29,8 +28,8 @@ public abstract class ActivityApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
-    public Result createEntityReferenceHttp(Http.Request request, BigDecimal version, EntityReference body) throws Exception {
-        ActivityResponse obj = createEntityReference(request, version, body);
+    public Result createEntityReferenceHttp(Http.Request request, EntityReference body) throws Exception {
+        ActivityResponse obj = createEntityReference(request, body);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -42,6 +41,6 @@ public abstract class ActivityApiControllerImpInterface {
 
     }
 
-    public abstract ActivityResponse createEntityReference(Http.Request request, BigDecimal version, EntityReference body) throws Exception;
+    public abstract ActivityResponse createEntityReference(Http.Request request, EntityReference body) throws Exception;
 
 }

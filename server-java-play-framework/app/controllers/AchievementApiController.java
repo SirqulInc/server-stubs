@@ -4,7 +4,6 @@ import apimodels.AchievementProgressResponse;
 import apimodels.AchievementResponse;
 import apimodels.AchievementShortResponse;
 import apimodels.AchievementTierResponse;
-import java.math.BigDecimal;
 import java.io.InputStream;
 import apimodels.SirqulResponse;
 
@@ -30,7 +29,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class AchievementApiController extends Controller {
     private final AchievementApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,7 +43,7 @@ public class AchievementApiController extends Controller {
     }
 
     @ApiAction
-    public Result apiVersionAchievementTierSearchPost(Http.Request request, BigDecimal version) throws Exception {
+    public Result achievementTierSearchPost(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -122,11 +121,11 @@ public class AchievementApiController extends Controller {
         } else {
             limit = null;
         }
-        return imp.apiVersionAchievementTierSearchPostHttp(request, version, deviceId, accountId, appKey, keyword, achievementType, rankType, sortField, descending, descendingGoal, start, limit);
+        return imp.achievementTierSearchPostHttp(request, deviceId, accountId, appKey, keyword, achievementType, rankType, sortField, descending, descendingGoal, start, limit);
     }
 
     @ApiAction
-    public Result createAchievement(Http.Request request, BigDecimal version) throws Exception {
+    public Result createAchievement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -218,11 +217,11 @@ public class AchievementApiController extends Controller {
         } else {
             triggerDefinition = null;
         }
-        return imp.createAchievementHttp(request, version, appKey, title, deviceId, accountId, analyticsTag, description, rankType, rankIncrement, minIncrement, maxIncrement, validate, active, triggerDefinition);
+        return imp.createAchievementHttp(request, appKey, title, deviceId, accountId, analyticsTag, description, rankType, rankIncrement, minIncrement, maxIncrement, validate, active, triggerDefinition);
     }
 
     @ApiAction
-    public Result createAchievementTier(Http.Request request, BigDecimal version) throws Exception {
+    public Result createAchievementTier(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -321,11 +320,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'scoreAllInstances' parameter is required");
         }
-        return imp.createAchievementTierHttp(request, version, achievementId, scoreAllInstances, deviceId, accountId, icon, iconAssetId, title, description, goalCount, missionId, gameId, packId, gameLevelId, gameObjectId);
+        return imp.createAchievementTierHttp(request, achievementId, scoreAllInstances, deviceId, accountId, icon, iconAssetId, title, description, goalCount, missionId, gameId, packId, gameLevelId, gameObjectId);
     }
 
     @ApiAction
-    public Result deleteAchievement(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteAchievement(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -340,11 +339,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'achievementId' parameter is required");
         }
-        return imp.deleteAchievementHttp(request, version, achievementId, accountId);
+        return imp.deleteAchievementHttp(request, achievementId, accountId);
     }
 
     @ApiAction
-    public Result deleteAchievementTier(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteAchievementTier(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -359,11 +358,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'achievementTierId' parameter is required");
         }
-        return imp.deleteAchievementTierHttp(request, version, achievementTierId, accountId);
+        return imp.deleteAchievementTierHttp(request, achievementTierId, accountId);
     }
 
     @ApiAction
-    public Result getAchievement(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAchievement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -392,11 +391,11 @@ public class AchievementApiController extends Controller {
         } else {
             achievementType = null;
         }
-        return imp.getAchievementHttp(request, version, achievementId, deviceId, accountId, achievementType);
+        return imp.getAchievementHttp(request, achievementId, deviceId, accountId, achievementType);
     }
 
     @ApiAction
-    public Result getAchievementTier(Http.Request request, BigDecimal version) throws Exception {
+    public Result getAchievementTier(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -411,11 +410,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'achievementTierId' parameter is required");
         }
-        return imp.getAchievementTierHttp(request, version, accountId, achievementTierId);
+        return imp.getAchievementTierHttp(request, accountId, achievementTierId);
     }
 
     @ApiAction
-    public Result getUserAchievements(Http.Request request, BigDecimal version) throws Exception {
+    public Result getUserAchievements(Http.Request request) throws Exception {
         String valuereturnNulls = request.getQueryString("returnNulls");
         Boolean returnNulls;
         if (valuereturnNulls != null) {
@@ -493,11 +492,11 @@ public class AchievementApiController extends Controller {
         } else {
             longitude = null;
         }
-        return imp.getUserAchievementsHttp(request, version, returnNulls, appKey, includeUndiscovered, deviceId, accountId, connectionAccountEmail, connectionAccountId, rankType, achievementType, latitude, longitude);
+        return imp.getUserAchievementsHttp(request, returnNulls, appKey, includeUndiscovered, deviceId, accountId, connectionAccountEmail, connectionAccountId, rankType, achievementType, latitude, longitude);
     }
 
     @ApiAction
-    public Result listAchievementTags(Http.Request request, BigDecimal version) throws Exception {
+    public Result listAchievementTags(Http.Request request) throws Exception {
         String valueappKey = request.getQueryString("appKey");
         String appKey;
         if (valueappKey != null) {
@@ -505,11 +504,11 @@ public class AchievementApiController extends Controller {
         } else {
             appKey = null;
         }
-        return imp.listAchievementTagsHttp(request, version, appKey);
+        return imp.listAchievementTagsHttp(request, appKey);
     }
 
     @ApiAction
-    public Result listAchievements(Http.Request request, BigDecimal version) throws Exception {
+    public Result listAchievements(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -587,11 +586,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'activeOnly' parameter is required");
         }
-        return imp.listAchievementsHttp(request, version, sortField, descending, start, limit, activeOnly, deviceId, accountId, appKey, keyword, achievementType, rankType);
+        return imp.listAchievementsHttp(request, sortField, descending, start, limit, activeOnly, deviceId, accountId, appKey, keyword, achievementType, rankType);
     }
 
     @ApiAction
-    public Result searchAchievements(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchAchievements(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -676,11 +675,11 @@ public class AchievementApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'limit' parameter is required");
         }
-        return imp.searchAchievementsHttp(request, version, appKey, sortField, descending, includeTiers, includeInactiveTiers, start, limit, deviceId, accountId, keyword, achievementType, rankType);
+        return imp.searchAchievementsHttp(request, appKey, sortField, descending, includeTiers, includeInactiveTiers, start, limit, deviceId, accountId, keyword, achievementType, rankType);
     }
 
     @ApiAction
-    public Result updateAchievement(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateAchievement(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -786,11 +785,11 @@ public class AchievementApiController extends Controller {
         } else {
             triggerDefinition = null;
         }
-        return imp.updateAchievementHttp(request, version, deviceId, accountId, achievementId, analyticsTag, title, description, rankType, rankIncrement, minIncrement, nullMinIncrement, maxIncrement, nullMaxIncrement, validate, active, triggerDefinition);
+        return imp.updateAchievementHttp(request, deviceId, accountId, achievementId, analyticsTag, title, description, rankType, rankIncrement, minIncrement, nullMinIncrement, maxIncrement, nullMaxIncrement, validate, active, triggerDefinition);
     }
 
     @ApiAction
-    public Result updateAchievementTier(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateAchievementTier(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -889,11 +888,11 @@ public class AchievementApiController extends Controller {
         } else {
             scoreAllInstances = null;
         }
-        return imp.updateAchievementTierHttp(request, version, achievementTierId, deviceId, accountId, icon, iconAssetId, title, description, goalCount, missionId, gameId, packId, gameLevelId, gameObjectId, scoreAllInstances);
+        return imp.updateAchievementTierHttp(request, achievementTierId, deviceId, accountId, icon, iconAssetId, title, description, goalCount, missionId, gameId, packId, gameLevelId, gameObjectId, scoreAllInstances);
     }
 
     @ApiAction
-    public Result updateUserAchievement(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateUserAchievement(Http.Request request) throws Exception {
         String valueaccountId = request.getQueryString("accountId");
         Long accountId;
         if (valueaccountId != null) {
@@ -950,7 +949,7 @@ public class AchievementApiController extends Controller {
         } else {
             returnProgress = null;
         }
-        return imp.updateUserAchievementHttp(request, version, accountId, achievementId, tag, customId, increment, startDate, endDate, returnProgress);
+        return imp.updateUserAchievementHttp(request, accountId, achievementId, tag, customId, increment, startDate, endDate, returnProgress);
     }
 
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-import java.math.BigDecimal;
 import apimodels.OrderResponse;
 import apimodels.SirqulResponse;
 
@@ -26,7 +25,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-09T20:49:20.380387445Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-02-11T19:25:37.664944661Z[Etc/UTC]", comments = "Generator version: 7.20.0-SNAPSHOT")
 public class PurchaseOrderApiController extends Controller {
     private final PurchaseOrderApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -40,7 +39,7 @@ public class PurchaseOrderApiController extends Controller {
     }
 
     @ApiAction
-    public Result createOrder(Http.Request request, BigDecimal version) throws Exception {
+    public Result createOrder(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -125,11 +124,11 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             promoCode = null;
         }
-        return imp.createOrderHttp(request, version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode);
+        return imp.createOrderHttp(request, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode);
     }
 
     @ApiAction
-    public Result deleteOrder(Http.Request request, BigDecimal version) throws Exception {
+    public Result deleteOrder(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -151,11 +150,11 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'orderId' parameter is required");
         }
-        return imp.deleteOrderHttp(request, version, orderId, deviceId, accountId);
+        return imp.deleteOrderHttp(request, orderId, deviceId, accountId);
     }
 
     @ApiAction
-    public Result getOrder(Http.Request request, BigDecimal version) throws Exception {
+    public Result getOrder(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -184,11 +183,11 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             externalOrderId = null;
         }
-        return imp.getOrderHttp(request, version, deviceId, accountId, orderId, externalOrderId);
+        return imp.getOrderHttp(request, deviceId, accountId, orderId, externalOrderId);
     }
 
     @ApiAction
-    public Result previewOrder(Http.Request request, BigDecimal version) throws Exception {
+    public Result previewOrder(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -273,11 +272,11 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             promoCode = null;
         }
-        return imp.previewOrderHttp(request, version, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode);
+        return imp.previewOrderHttp(request, appKey, cart, deviceId, accountId, description, currencyType, paymentMethodId, externalOrderId, externalPaymentId, remoteRefType, externalDate, promoCode);
     }
 
     @ApiAction
-    public Result searchOrders(Http.Request request, BigDecimal version) throws Exception {
+    public Result searchOrders(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -495,11 +494,11 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             endedBefore = null;
         }
-        return imp.searchOrdersHttp(request, version, appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore);
+        return imp.searchOrdersHttp(request, appKey, deviceId, accountId, start, limit, descending, activeOnly, ignoreCustomerFilter, orderItemTypes, orderItemIds, orderCustomTypes, orderCustomIds, sortField, offerTypes, specialOfferTypes, categoryIds, filterIds, offerAudienceIds, transactionAudienceIds, offerIds, offerLocationIds, retailerIds, retailerLocationIds, statuses, keyword, redeemableStartDate, redeemableEndDate, startedSince, startedBefore, endedSince, endedBefore);
     }
 
     @ApiAction
-    public Result updateOrder(Http.Request request, BigDecimal version) throws Exception {
+    public Result updateOrder(Http.Request request) throws Exception {
         String valuedeviceId = request.getQueryString("deviceId");
         String deviceId;
         if (valuedeviceId != null) {
@@ -577,7 +576,7 @@ public class PurchaseOrderApiController extends Controller {
         } else {
             externalDate = null;
         }
-        return imp.updateOrderHttp(request, version, orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate);
+        return imp.updateOrderHttp(request, orderId, appKey, cart, deviceId, accountId, paymentTransactionId, description, currencyType, paymentMethodId, externalPaymentId, externalDate);
     }
 
 }
