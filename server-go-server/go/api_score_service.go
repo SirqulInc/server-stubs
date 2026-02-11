@@ -29,7 +29,7 @@ func NewScoreAPIService() *ScoreAPIService {
 }
 
 // CreateScore - Create Score
-func (s *ScoreAPIService) CreateScore(ctx context.Context, version float32, accountId int64, appKey string, points int32, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, timeTaken int32, highest bool) (ImplResponse, error) {
+func (s *ScoreAPIService) CreateScore(ctx context.Context, accountId int64, appKey string, points int32, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, timeTaken int32, highest bool) (ImplResponse, error) {
 	// TODO - update CreateScore with the required logic for this service method.
 	// Add api_score_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ScoreAPIService) CreateScore(ctx context.Context, version float32, acco
 }
 
 // GetScore - Get Score
-func (s *ScoreAPIService) GetScore(ctx context.Context, version float32, accountId int64, appKey string, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, scoreObjectType string, scoreStatus string) (ImplResponse, error) {
+func (s *ScoreAPIService) GetScore(ctx context.Context, accountId int64, appKey string, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, scoreObjectType string, scoreStatus string) (ImplResponse, error) {
 	// TODO - update GetScore with the required logic for this service method.
 	// Add api_score_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ScoreAPIService) GetScore(ctx context.Context, version float32, account
 }
 
 // SearchScores - Search Score
-func (s *ScoreAPIService) SearchScores(ctx context.Context, version float32, accountId int64, appKey string, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64) (ImplResponse, error) {
+func (s *ScoreAPIService) SearchScores(ctx context.Context, accountId int64, appKey string, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64) (ImplResponse, error) {
 	// TODO - update SearchScores with the required logic for this service method.
 	// Add api_score_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

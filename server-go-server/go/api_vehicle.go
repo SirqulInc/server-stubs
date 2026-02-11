@@ -57,31 +57,31 @@ func (c *VehicleAPIController) Routes() Routes {
 		"SearchVehicle": Route{
 			"SearchVehicle",
 			strings.ToUpper("Get"),
-			"/api/{version}/vehicle",
+			"/api/3.18/vehicle",
 			c.SearchVehicle,
 		},
 		"CreateVehicle": Route{
 			"CreateVehicle",
 			strings.ToUpper("Post"),
-			"/api/{version}/vehicle",
+			"/api/3.18/vehicle",
 			c.CreateVehicle,
 		},
 		"GetVehicle": Route{
 			"GetVehicle",
 			strings.ToUpper("Get"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.GetVehicle,
 		},
 		"UpdateVehicle": Route{
 			"UpdateVehicle",
 			strings.ToUpper("Put"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.UpdateVehicle,
 		},
 		"DeleteVehicle": Route{
 			"DeleteVehicle",
 			strings.ToUpper("Delete"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.DeleteVehicle,
 		},
 	}
@@ -93,31 +93,31 @@ func (c *VehicleAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchVehicle",
 			strings.ToUpper("Get"),
-			"/api/{version}/vehicle",
+			"/api/3.18/vehicle",
 			c.SearchVehicle,
 		},
 		Route{
 			"CreateVehicle",
 			strings.ToUpper("Post"),
-			"/api/{version}/vehicle",
+			"/api/3.18/vehicle",
 			c.CreateVehicle,
 		},
 		Route{
 			"GetVehicle",
 			strings.ToUpper("Get"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.GetVehicle,
 		},
 		Route{
 			"UpdateVehicle",
 			strings.ToUpper("Put"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.UpdateVehicle,
 		},
 		Route{
 			"DeleteVehicle",
 			strings.ToUpper("Delete"),
-			"/api/{version}/vehicle/{id}",
+			"/api/3.18/vehicle/{id}",
 			c.DeleteVehicle,
 		},
 	}
@@ -127,18 +127,9 @@ func (c *VehicleAPIController) OrderedRoutes() []Route {
 
 // SearchVehicle - Search Vehicle
 func (c *VehicleAPIController) SearchVehicle(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var hubIdParam int64
@@ -237,7 +228,7 @@ func (c *VehicleAPIController) SearchVehicle(w http.ResponseWriter, r *http.Requ
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchVehicle(r.Context(), versionParam, hubIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam)
+	result, err := c.service.SearchVehicle(r.Context(), hubIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -249,18 +240,9 @@ func (c *VehicleAPIController) SearchVehicle(w http.ResponseWriter, r *http.Requ
 
 // CreateVehicle - Create Vehicle
 func (c *VehicleAPIController) CreateVehicle(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var vehicleParam string
@@ -287,7 +269,7 @@ func (c *VehicleAPIController) CreateVehicle(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateVehicle(r.Context(), versionParam, vehicleParam, bodyParam)
+	result, err := c.service.CreateVehicle(r.Context(), vehicleParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -300,14 +282,6 @@ func (c *VehicleAPIController) CreateVehicle(w http.ResponseWriter, r *http.Requ
 // GetVehicle - Get Vehicle
 func (c *VehicleAPIController) GetVehicle(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -316,7 +290,7 @@ func (c *VehicleAPIController) GetVehicle(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetVehicle(r.Context(), versionParam, idParam)
+	result, err := c.service.GetVehicle(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -334,14 +308,6 @@ func (c *VehicleAPIController) UpdateVehicle(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -374,7 +340,7 @@ func (c *VehicleAPIController) UpdateVehicle(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateVehicle(r.Context(), versionParam, idParam, vehicleParam, bodyParam)
+	result, err := c.service.UpdateVehicle(r.Context(), idParam, vehicleParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -387,14 +353,6 @@ func (c *VehicleAPIController) UpdateVehicle(w http.ResponseWriter, r *http.Requ
 // DeleteVehicle - Delete Vehicle
 func (c *VehicleAPIController) DeleteVehicle(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -403,7 +361,7 @@ func (c *VehicleAPIController) DeleteVehicle(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteVehicle(r.Context(), versionParam, idParam)
+	result, err := c.service.DeleteVehicle(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // BillingInfoAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *BillingInfoAPIController) Routes() Routes {
 		"CreatePaymentMethod": Route{
 			"CreatePaymentMethod",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/create",
+			"/api/3.18/billing/create",
 			c.CreatePaymentMethod,
 		},
 		"GetPaymentMethod": Route{
 			"GetPaymentMethod",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/get",
+			"/api/3.18/billing/get",
 			c.GetPaymentMethod,
 		},
 		"SearchPaymentMethod": Route{
 			"SearchPaymentMethod",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/search",
+			"/api/3.18/billing/search",
 			c.SearchPaymentMethod,
 		},
 		"AddPaymentMethod": Route{
 			"AddPaymentMethod",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/update",
+			"/api/3.18/billing/update",
 			c.AddPaymentMethod,
 		},
 		"GetCryptoBalance": Route{
 			"GetCryptoBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/crypto/get",
+			"/api/3.18/billing/crypto/get",
 			c.GetCryptoBalance,
 		},
 		"CreateSmartContract": Route{
 			"CreateSmartContract",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/crypto/transfer",
+			"/api/3.18/billing/crypto/transfer",
 			c.CreateSmartContract,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *BillingInfoAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreatePaymentMethod",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/create",
+			"/api/3.18/billing/create",
 			c.CreatePaymentMethod,
 		},
 		Route{
 			"GetPaymentMethod",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/get",
+			"/api/3.18/billing/get",
 			c.GetPaymentMethod,
 		},
 		Route{
 			"SearchPaymentMethod",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/search",
+			"/api/3.18/billing/search",
 			c.SearchPaymentMethod,
 		},
 		Route{
 			"AddPaymentMethod",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/update",
+			"/api/3.18/billing/update",
 			c.AddPaymentMethod,
 		},
 		Route{
 			"GetCryptoBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/billing/crypto/get",
+			"/api/3.18/billing/crypto/get",
 			c.GetCryptoBalance,
 		},
 		Route{
 			"CreateSmartContract",
 			strings.ToUpper("Post"),
-			"/api/{version}/billing/crypto/transfer",
+			"/api/3.18/billing/crypto/transfer",
 			c.CreateSmartContract,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *BillingInfoAPIController) OrderedRoutes() []Route {
 
 // CreatePaymentMethod - Create Payment Method
 func (c *BillingInfoAPIController) CreatePaymentMethod(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -345,7 +334,7 @@ func (c *BillingInfoAPIController) CreatePaymentMethod(w http.ResponseWriter, r 
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.CreatePaymentMethod(r.Context(), versionParam, accountIdParam, accountNameParam, firstNameParam, lastNameParam, addressParam, cityParam, stateParam, postalCodeParam, countryParam, phoneParam, creditCardNumberParam, expirationDateParam, ccvParam, accountNumberParam, bankNameParam, routingNumberParam, paymentMethodNicknameParam, taxIdParam, defaultPaymentMethodParam, authTokenParam, providerParam, providerCustomerProfileIdParam, providerPaymentProfileIdParam, metaDataParam, appKeyParam)
+	result, err := c.service.CreatePaymentMethod(r.Context(), accountIdParam, accountNameParam, firstNameParam, lastNameParam, addressParam, cityParam, stateParam, postalCodeParam, countryParam, phoneParam, creditCardNumberParam, expirationDateParam, ccvParam, accountNumberParam, bankNameParam, routingNumberParam, paymentMethodNicknameParam, taxIdParam, defaultPaymentMethodParam, authTokenParam, providerParam, providerCustomerProfileIdParam, providerPaymentProfileIdParam, metaDataParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -357,18 +346,9 @@ func (c *BillingInfoAPIController) CreatePaymentMethod(w http.ResponseWriter, r 
 
 // GetPaymentMethod - Get Payment Method
 func (c *BillingInfoAPIController) GetPaymentMethod(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -415,7 +395,7 @@ func (c *BillingInfoAPIController) GetPaymentMethod(w http.ResponseWriter, r *ht
 		getCurrentBalanceParam = param
 	} else {
 	}
-	result, err := c.service.GetPaymentMethod(r.Context(), versionParam, accountIdParam, paymentMethodIdParam, getCurrentBalanceParam)
+	result, err := c.service.GetPaymentMethod(r.Context(), accountIdParam, paymentMethodIdParam, getCurrentBalanceParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -427,18 +407,9 @@ func (c *BillingInfoAPIController) GetPaymentMethod(w http.ResponseWriter, r *ht
 
 // SearchPaymentMethod - Search Payment Methods
 func (c *BillingInfoAPIController) SearchPaymentMethod(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -537,7 +508,7 @@ func (c *BillingInfoAPIController) SearchPaymentMethod(w http.ResponseWriter, r 
 		var param int32 = 5
 		limitParam = param
 	}
-	result, err := c.service.SearchPaymentMethod(r.Context(), versionParam, accountIdParam, providerParam, type_Param, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchPaymentMethod(r.Context(), accountIdParam, providerParam, type_Param, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -549,18 +520,9 @@ func (c *BillingInfoAPIController) SearchPaymentMethod(w http.ResponseWriter, r 
 
 // AddPaymentMethod - Update Payment Method
 func (c *BillingInfoAPIController) AddPaymentMethod(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -747,7 +709,7 @@ func (c *BillingInfoAPIController) AddPaymentMethod(w http.ResponseWriter, r *ht
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.AddPaymentMethod(r.Context(), versionParam, accountIdParam, paymentMethodIdParam, accountNameParam, firstNameParam, lastNameParam, addressParam, cityParam, stateParam, postalCodeParam, countryParam, phoneParam, creditCardNumberParam, expirationDateParam, ccvParam, accountNumberParam, bankNameParam, routingNumberParam, defaultPaymentMethodParam, paymentMethodNicknameParam, taxIdParam, providerCustomerProfileIdParam, providerPaymentProfileIdParam, metaDataParam)
+	result, err := c.service.AddPaymentMethod(r.Context(), accountIdParam, paymentMethodIdParam, accountNameParam, firstNameParam, lastNameParam, addressParam, cityParam, stateParam, postalCodeParam, countryParam, phoneParam, creditCardNumberParam, expirationDateParam, ccvParam, accountNumberParam, bankNameParam, routingNumberParam, defaultPaymentMethodParam, paymentMethodNicknameParam, taxIdParam, providerCustomerProfileIdParam, providerPaymentProfileIdParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -759,18 +721,9 @@ func (c *BillingInfoAPIController) AddPaymentMethod(w http.ResponseWriter, r *ht
 
 // GetCryptoBalance - Get Crypto Balances
 func (c *BillingInfoAPIController) GetCryptoBalance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -817,7 +770,7 @@ func (c *BillingInfoAPIController) GetCryptoBalance(w http.ResponseWriter, r *ht
 		paymentMethodIdParam = param
 	} else {
 	}
-	result, err := c.service.GetCryptoBalance(r.Context(), versionParam, accountIdParam, ownerAccountIdParam, paymentMethodIdParam)
+	result, err := c.service.GetCryptoBalance(r.Context(), accountIdParam, ownerAccountIdParam, paymentMethodIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -829,18 +782,9 @@ func (c *BillingInfoAPIController) GetCryptoBalance(w http.ResponseWriter, r *ht
 
 // CreateSmartContract - Create Smart Contract
 func (c *BillingInfoAPIController) CreateSmartContract(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -891,7 +835,7 @@ func (c *BillingInfoAPIController) CreateSmartContract(w http.ResponseWriter, r 
 		paymentMethodIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateSmartContract(r.Context(), versionParam, accountIdParam, tokenNameParam, tokenSymbolParam, paymentMethodIdParam)
+	result, err := c.service.CreateSmartContract(r.Context(), accountIdParam, tokenNameParam, tokenSymbolParam, paymentMethodIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

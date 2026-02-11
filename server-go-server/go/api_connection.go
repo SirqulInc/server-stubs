@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ConnectionAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,133 +52,133 @@ func (c *ConnectionAPIController) Routes() Routes {
 		"AddConnectionsToGroup": Route{
 			"AddConnectionsToGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/connection/group/addConnections",
+			"/api/3.18/connection/group/addConnections",
 			c.AddConnectionsToGroup,
 		},
 		"RemoveConnectionsFromGroup": Route{
 			"RemoveConnectionsFromGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/connection/group/removeConnections",
+			"/api/3.18/connection/group/removeConnections",
 			c.RemoveConnectionsFromGroup,
 		},
 		"GroupSearch": Route{
 			"GroupSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/connection/group/search",
+			"/api/3.18/connection/group/search",
 			c.GroupSearch,
 		},
 		"SearchConnections": Route{
 			"SearchConnections",
 			strings.ToUpper("Get"),
-			"/api/{version}/connection/search",
+			"/api/3.18/connection/search",
 			c.SearchConnections,
 		},
 		"CreateOrUpdateConnection": Route{
 			"CreateOrUpdateConnection",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/add",
+			"/api/3.18/consumer/connection/add",
 			c.CreateOrUpdateConnection,
 		},
 		"GetConnections": Route{
 			"GetConnections",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/get",
+			"/api/3.18/consumer/connection/get",
 			c.GetConnections,
 		},
 		"GetConnectionSentFriendRequests": Route{
 			"GetConnectionSentFriendRequests",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/getRequested",
+			"/api/3.18/consumer/connection/getRequested",
 			c.GetConnectionSentFriendRequests,
 		},
 		"CreateOrUpdateGroup": Route{
 			"CreateOrUpdateGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group",
+			"/api/3.18/consumer/connection/group",
 			c.CreateOrUpdateGroup,
 		},
 		"AddConnectionToGroup": Route{
 			"AddConnectionToGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/addConnection",
+			"/api/3.18/consumer/connection/group/addConnection",
 			c.AddConnectionToGroup,
 		},
 		"AddSubGroups": Route{
 			"AddSubGroups",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/addSubGroup",
+			"/api/3.18/consumer/connection/group/addSubGroup",
 			c.AddSubGroups,
 		},
 		"GetGroupDetails": Route{
 			"GetGroupDetails",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/group/details/get",
+			"/api/3.18/consumer/connection/group/details/get",
 			c.GetGroupDetails,
 		},
 		"RemoveGroup": Route{
 			"RemoveGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/remove",
+			"/api/3.18/consumer/connection/group/remove",
 			c.RemoveGroup,
 		},
 		"RemoveConnectionFromGroup": Route{
 			"RemoveConnectionFromGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/removeConnection",
+			"/api/3.18/consumer/connection/group/removeConnection",
 			c.RemoveConnectionFromGroup,
 		},
 		"RemoveSubGroups": Route{
 			"RemoveSubGroups",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/removeSubGroup",
+			"/api/3.18/consumer/connection/group/removeSubGroup",
 			c.RemoveSubGroups,
 		},
 		"FriendAccept": Route{
 			"FriendAccept",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/accept",
+			"/api/3.18/consumer/friend/accept",
 			c.FriendAccept,
 		},
 		"FriendReject": Route{
 			"FriendReject",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/reject",
+			"/api/3.18/consumer/friend/reject",
 			c.FriendReject,
 		},
 		"FriendRemove": Route{
 			"FriendRemove",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/remove",
+			"/api/3.18/consumer/friend/remove",
 			c.FriendRemove,
 		},
 		"FriendRequest": Route{
 			"FriendRequest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/request",
+			"/api/3.18/consumer/friend/request",
 			c.FriendRequest,
 		},
 		"FollowRequest": Route{
 			"FollowRequest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/request",
+			"/api/3.18/consumer/follow/request",
 			c.FollowRequest,
 		},
 		"FollowAccept": Route{
 			"FollowAccept",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/accept",
+			"/api/3.18/consumer/follow/accept",
 			c.FollowAccept,
 		},
 		"FollowReject": Route{
 			"FollowReject",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/reject",
+			"/api/3.18/consumer/follow/reject",
 			c.FollowReject,
 		},
 		"FollowRemove": Route{
 			"FollowRemove",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/remove",
+			"/api/3.18/consumer/follow/remove",
 			c.FollowRemove,
 		},
 	}
@@ -192,133 +190,133 @@ func (c *ConnectionAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddConnectionsToGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/connection/group/addConnections",
+			"/api/3.18/connection/group/addConnections",
 			c.AddConnectionsToGroup,
 		},
 		Route{
 			"RemoveConnectionsFromGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/connection/group/removeConnections",
+			"/api/3.18/connection/group/removeConnections",
 			c.RemoveConnectionsFromGroup,
 		},
 		Route{
 			"GroupSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/connection/group/search",
+			"/api/3.18/connection/group/search",
 			c.GroupSearch,
 		},
 		Route{
 			"SearchConnections",
 			strings.ToUpper("Get"),
-			"/api/{version}/connection/search",
+			"/api/3.18/connection/search",
 			c.SearchConnections,
 		},
 		Route{
 			"CreateOrUpdateConnection",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/add",
+			"/api/3.18/consumer/connection/add",
 			c.CreateOrUpdateConnection,
 		},
 		Route{
 			"GetConnections",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/get",
+			"/api/3.18/consumer/connection/get",
 			c.GetConnections,
 		},
 		Route{
 			"GetConnectionSentFriendRequests",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/getRequested",
+			"/api/3.18/consumer/connection/getRequested",
 			c.GetConnectionSentFriendRequests,
 		},
 		Route{
 			"CreateOrUpdateGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group",
+			"/api/3.18/consumer/connection/group",
 			c.CreateOrUpdateGroup,
 		},
 		Route{
 			"AddConnectionToGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/addConnection",
+			"/api/3.18/consumer/connection/group/addConnection",
 			c.AddConnectionToGroup,
 		},
 		Route{
 			"AddSubGroups",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/addSubGroup",
+			"/api/3.18/consumer/connection/group/addSubGroup",
 			c.AddSubGroups,
 		},
 		Route{
 			"GetGroupDetails",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/connection/group/details/get",
+			"/api/3.18/consumer/connection/group/details/get",
 			c.GetGroupDetails,
 		},
 		Route{
 			"RemoveGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/remove",
+			"/api/3.18/consumer/connection/group/remove",
 			c.RemoveGroup,
 		},
 		Route{
 			"RemoveConnectionFromGroup",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/removeConnection",
+			"/api/3.18/consumer/connection/group/removeConnection",
 			c.RemoveConnectionFromGroup,
 		},
 		Route{
 			"RemoveSubGroups",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/connection/group/removeSubGroup",
+			"/api/3.18/consumer/connection/group/removeSubGroup",
 			c.RemoveSubGroups,
 		},
 		Route{
 			"FriendAccept",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/accept",
+			"/api/3.18/consumer/friend/accept",
 			c.FriendAccept,
 		},
 		Route{
 			"FriendReject",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/reject",
+			"/api/3.18/consumer/friend/reject",
 			c.FriendReject,
 		},
 		Route{
 			"FriendRemove",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/remove",
+			"/api/3.18/consumer/friend/remove",
 			c.FriendRemove,
 		},
 		Route{
 			"FriendRequest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/friend/request",
+			"/api/3.18/consumer/friend/request",
 			c.FriendRequest,
 		},
 		Route{
 			"FollowRequest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/request",
+			"/api/3.18/consumer/follow/request",
 			c.FollowRequest,
 		},
 		Route{
 			"FollowAccept",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/accept",
+			"/api/3.18/consumer/follow/accept",
 			c.FollowAccept,
 		},
 		Route{
 			"FollowReject",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/reject",
+			"/api/3.18/consumer/follow/reject",
 			c.FollowReject,
 		},
 		Route{
 			"FollowRemove",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/follow/remove",
+			"/api/3.18/consumer/follow/remove",
 			c.FollowRemove,
 		},
 	}
@@ -328,18 +326,9 @@ func (c *ConnectionAPIController) OrderedRoutes() []Route {
 
 // AddConnectionsToGroup - Add Connections
 func (c *ConnectionAPIController) AddConnectionsToGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var connectionGroupIdParam int64
@@ -421,7 +410,7 @@ func (c *ConnectionAPIController) AddConnectionsToGroup(w http.ResponseWriter, r
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddConnectionsToGroup(r.Context(), versionParam, connectionGroupIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddConnectionsToGroup(r.Context(), connectionGroupIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -433,18 +422,9 @@ func (c *ConnectionAPIController) AddConnectionsToGroup(w http.ResponseWriter, r
 
 // RemoveConnectionsFromGroup - Remove Connections
 func (c *ConnectionAPIController) RemoveConnectionsFromGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var connectionGroupIdParam int64
@@ -526,7 +506,7 @@ func (c *ConnectionAPIController) RemoveConnectionsFromGroup(w http.ResponseWrit
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveConnectionsFromGroup(r.Context(), versionParam, connectionGroupIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveConnectionsFromGroup(r.Context(), connectionGroupIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -538,18 +518,9 @@ func (c *ConnectionAPIController) RemoveConnectionsFromGroup(w http.ResponseWrit
 
 // GroupSearch - Search Connection Groups
 func (c *ConnectionAPIController) GroupSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -681,7 +652,7 @@ func (c *ConnectionAPIController) GroupSearch(w http.ResponseWriter, r *http.Req
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.GroupSearch(r.Context(), versionParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam)
+	result, err := c.service.GroupSearch(r.Context(), sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -693,18 +664,9 @@ func (c *ConnectionAPIController) GroupSearch(w http.ResponseWriter, r *http.Req
 
 // SearchConnections - Search Possible Connections
 func (c *ConnectionAPIController) SearchConnections(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -881,7 +843,7 @@ func (c *ConnectionAPIController) SearchConnections(w http.ResponseWriter, r *ht
 		hasLocationParam = param
 	} else {
 	}
-	result, err := c.service.SearchConnections(r.Context(), versionParam, returnNullsParam, startParam, limitParam, deviceIdParam, accountIdParam, qParam, keywordParam, latitudeParam, longitudeParam, gameTypeParam, appKeyParam, iParam, lParam, sortFieldParam, hasLocationParam)
+	result, err := c.service.SearchConnections(r.Context(), returnNullsParam, startParam, limitParam, deviceIdParam, accountIdParam, qParam, keywordParam, latitudeParam, longitudeParam, gameTypeParam, appKeyParam, iParam, lParam, sortFieldParam, hasLocationParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -893,18 +855,9 @@ func (c *ConnectionAPIController) SearchConnections(w http.ResponseWriter, r *ht
 
 // CreateOrUpdateConnection - Create or Update Connection
 func (c *ConnectionAPIController) CreateOrUpdateConnection(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1082,7 +1035,7 @@ func (c *ConnectionAPIController) CreateOrUpdateConnection(w http.ResponseWriter
 		connectionResponseParam = param
 	} else {
 	}
-	result, err := c.service.CreateOrUpdateConnection(r.Context(), versionParam, deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, groupIdParam, gameTypeParam, appKeyParam, isTrustedParam, ignoreFriendRequestParam, isContactParam, isBlockedParam, isFollowingParam, connectionResponseParam)
+	result, err := c.service.CreateOrUpdateConnection(r.Context(), deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, groupIdParam, gameTypeParam, appKeyParam, isTrustedParam, ignoreFriendRequestParam, isContactParam, isBlockedParam, isFollowingParam, connectionResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1094,18 +1047,9 @@ func (c *ConnectionAPIController) CreateOrUpdateConnection(w http.ResponseWriter
 
 // GetConnections - Search Connections
 func (c *ConnectionAPIController) GetConnections(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -1295,7 +1239,7 @@ func (c *ConnectionAPIController) GetConnections(w http.ResponseWriter, r *http.
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetConnections(r.Context(), versionParam, returnNullsParam, filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, connectionAccountIdParam, qParam, keywordParam, iParam, lParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetConnections(r.Context(), returnNullsParam, filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, connectionAccountIdParam, qParam, keywordParam, iParam, lParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1307,18 +1251,9 @@ func (c *ConnectionAPIController) GetConnections(w http.ResponseWriter, r *http.
 
 // GetConnectionSentFriendRequests - Get Sent Friend Requests
 func (c *ConnectionAPIController) GetConnectionSentFriendRequests(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1342,7 +1277,7 @@ func (c *ConnectionAPIController) GetConnectionSentFriendRequests(w http.Respons
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetConnectionSentFriendRequests(r.Context(), versionParam, deviceIdParam, accountIdParam)
+	result, err := c.service.GetConnectionSentFriendRequests(r.Context(), deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1354,18 +1289,9 @@ func (c *ConnectionAPIController) GetConnectionSentFriendRequests(w http.Respons
 
 // CreateOrUpdateGroup - Create or Update Connection Group
 func (c *ConnectionAPIController) CreateOrUpdateGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -1538,7 +1464,7 @@ func (c *ConnectionAPIController) CreateOrUpdateGroup(w http.ResponseWriter, r *
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreateOrUpdateGroup(r.Context(), versionParam, returnNullsParam, deviceIdParam, accountIdParam, nameParam, groupIdParam, assetIdParam, connectionsParam, descriptionParam, canViewProfileInfoParam, canViewGameInfoParam, canViewFriendInfoParam, activeParam, latitudeParam, longitudeParam)
+	result, err := c.service.CreateOrUpdateGroup(r.Context(), returnNullsParam, deviceIdParam, accountIdParam, nameParam, groupIdParam, assetIdParam, connectionsParam, descriptionParam, canViewProfileInfoParam, canViewGameInfoParam, canViewFriendInfoParam, activeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1550,18 +1476,9 @@ func (c *ConnectionAPIController) CreateOrUpdateGroup(w http.ResponseWriter, r *
 
 // AddConnectionToGroup - Add Connection
 func (c *ConnectionAPIController) AddConnectionToGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -1687,7 +1604,7 @@ func (c *ConnectionAPIController) AddConnectionToGroup(w http.ResponseWriter, r 
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddConnectionToGroup(r.Context(), versionParam, returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddConnectionToGroup(r.Context(), returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1699,18 +1616,9 @@ func (c *ConnectionAPIController) AddConnectionToGroup(w http.ResponseWriter, r 
 
 // AddSubGroups - Add Connection Groups
 func (c *ConnectionAPIController) AddSubGroups(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -1803,7 +1711,7 @@ func (c *ConnectionAPIController) AddSubGroups(w http.ResponseWriter, r *http.Re
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddSubGroups(r.Context(), versionParam, returnNullsParam, groupIdParam, subGroupIdsParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddSubGroups(r.Context(), returnNullsParam, groupIdParam, subGroupIdsParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1815,18 +1723,9 @@ func (c *ConnectionAPIController) AddSubGroups(w http.ResponseWriter, r *http.Re
 
 // GetGroupDetails - Get Connection Group
 func (c *ConnectionAPIController) GetGroupDetails(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var combineConnectionsParam bool
@@ -1908,7 +1807,7 @@ func (c *ConnectionAPIController) GetGroupDetails(w http.ResponseWriter, r *http
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetGroupDetails(r.Context(), versionParam, combineConnectionsParam, deviceIdParam, accountIdParam, groupIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetGroupDetails(r.Context(), combineConnectionsParam, deviceIdParam, accountIdParam, groupIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1920,18 +1819,9 @@ func (c *ConnectionAPIController) GetGroupDetails(w http.ResponseWriter, r *http
 
 // RemoveGroup - Delete Connection Group
 func (c *ConnectionAPIController) RemoveGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -2015,7 +1905,7 @@ func (c *ConnectionAPIController) RemoveGroup(w http.ResponseWriter, r *http.Req
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveGroup(r.Context(), versionParam, returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveGroup(r.Context(), returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2027,18 +1917,9 @@ func (c *ConnectionAPIController) RemoveGroup(w http.ResponseWriter, r *http.Req
 
 // RemoveConnectionFromGroup - Delete Connection
 func (c *ConnectionAPIController) RemoveConnectionFromGroup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -2164,7 +2045,7 @@ func (c *ConnectionAPIController) RemoveConnectionFromGroup(w http.ResponseWrite
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveConnectionFromGroup(r.Context(), versionParam, returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveConnectionFromGroup(r.Context(), returnNullsParam, groupIdParam, deviceIdParam, accountIdParam, connectionIdParam, connectionAccountIdParam, pendingIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2176,18 +2057,9 @@ func (c *ConnectionAPIController) RemoveConnectionFromGroup(w http.ResponseWrite
 
 // RemoveSubGroups - Remove Connection Groups
 func (c *ConnectionAPIController) RemoveSubGroups(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -2280,7 +2152,7 @@ func (c *ConnectionAPIController) RemoveSubGroups(w http.ResponseWriter, r *http
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveSubGroups(r.Context(), versionParam, returnNullsParam, groupIdParam, subGroupIdsParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveSubGroups(r.Context(), returnNullsParam, groupIdParam, subGroupIdsParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2292,18 +2164,9 @@ func (c *ConnectionAPIController) RemoveSubGroups(w http.ResponseWriter, r *http
 
 // FriendAccept - Accept Friend
 func (c *ConnectionAPIController) FriendAccept(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var friendAccountIdParam int64
@@ -2380,7 +2243,7 @@ func (c *ConnectionAPIController) FriendAccept(w http.ResponseWriter, r *http.Re
 		notificationMessageParam = param
 	} else {
 	}
-	result, err := c.service.FriendAccept(r.Context(), versionParam, friendAccountIdParam, notifyFriendParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notificationMessageParam)
+	result, err := c.service.FriendAccept(r.Context(), friendAccountIdParam, notifyFriendParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notificationMessageParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2392,18 +2255,9 @@ func (c *ConnectionAPIController) FriendAccept(w http.ResponseWriter, r *http.Re
 
 // FriendReject - Decline Friend
 func (c *ConnectionAPIController) FriendReject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var friendAccountIdParam int64
@@ -2478,7 +2332,7 @@ func (c *ConnectionAPIController) FriendReject(w http.ResponseWriter, r *http.Re
 		notificationMessageParam = param
 	} else {
 	}
-	result, err := c.service.FriendReject(r.Context(), versionParam, friendAccountIdParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notifyFriendParam, notificationMessageParam)
+	result, err := c.service.FriendReject(r.Context(), friendAccountIdParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notifyFriendParam, notificationMessageParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2490,18 +2344,9 @@ func (c *ConnectionAPIController) FriendReject(w http.ResponseWriter, r *http.Re
 
 // FriendRemove - Delete Friend
 func (c *ConnectionAPIController) FriendRemove(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var friendAccountIdParam int64
@@ -2569,7 +2414,7 @@ func (c *ConnectionAPIController) FriendRemove(w http.ResponseWriter, r *http.Re
 		removeFromGroupsParam = param
 	} else {
 	}
-	result, err := c.service.FriendRemove(r.Context(), versionParam, friendAccountIdParam, deviceIdParam, accountIdParam, notifyFriendParam, removeFromGroupsParam)
+	result, err := c.service.FriendRemove(r.Context(), friendAccountIdParam, deviceIdParam, accountIdParam, notifyFriendParam, removeFromGroupsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2581,18 +2426,9 @@ func (c *ConnectionAPIController) FriendRemove(w http.ResponseWriter, r *http.Re
 
 // FriendRequest - Request Friend
 func (c *ConnectionAPIController) FriendRequest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var friendAccountIdParam int64
@@ -2653,7 +2489,7 @@ func (c *ConnectionAPIController) FriendRequest(w http.ResponseWriter, r *http.R
 		notificationMessageParam = param
 	} else {
 	}
-	result, err := c.service.FriendRequest(r.Context(), versionParam, friendAccountIdParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notificationMessageParam)
+	result, err := c.service.FriendRequest(r.Context(), friendAccountIdParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, notificationMessageParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2665,18 +2501,9 @@ func (c *ConnectionAPIController) FriendRequest(w http.ResponseWriter, r *http.R
 
 // FollowRequest - Send Follow Request
 func (c *ConnectionAPIController) FollowRequest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2736,7 +2563,7 @@ func (c *ConnectionAPIController) FollowRequest(w http.ResponseWriter, r *http.R
 		var param bool = true
 		approvalNeededParam = param
 	}
-	result, err := c.service.FollowRequest(r.Context(), versionParam, accountIdParam, connectionAccountIdParam, appKeyParam, approvalNeededParam)
+	result, err := c.service.FollowRequest(r.Context(), accountIdParam, connectionAccountIdParam, appKeyParam, approvalNeededParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2748,18 +2575,9 @@ func (c *ConnectionAPIController) FollowRequest(w http.ResponseWriter, r *http.R
 
 // FollowAccept - Accept Follow Request
 func (c *ConnectionAPIController) FollowAccept(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2803,7 +2621,7 @@ func (c *ConnectionAPIController) FollowAccept(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.FollowAccept(r.Context(), versionParam, accountIdParam, connectionAccountIdParam, appKeyParam)
+	result, err := c.service.FollowAccept(r.Context(), accountIdParam, connectionAccountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2815,18 +2633,9 @@ func (c *ConnectionAPIController) FollowAccept(w http.ResponseWriter, r *http.Re
 
 // FollowReject - Reject Follow Request
 func (c *ConnectionAPIController) FollowReject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2870,7 +2679,7 @@ func (c *ConnectionAPIController) FollowReject(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.FollowReject(r.Context(), versionParam, accountIdParam, connectionAccountIdParam, appKeyParam)
+	result, err := c.service.FollowReject(r.Context(), accountIdParam, connectionAccountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2882,18 +2691,9 @@ func (c *ConnectionAPIController) FollowReject(w http.ResponseWriter, r *http.Re
 
 // FollowRemove - Remove Follower / Unfollow
 func (c *ConnectionAPIController) FollowRemove(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2937,7 +2737,7 @@ func (c *ConnectionAPIController) FollowRemove(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.FollowRemove(r.Context(), versionParam, accountIdParam, connectionAccountIdParam, appKeyParam)
+	result, err := c.service.FollowRemove(r.Context(), accountIdParam, connectionAccountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

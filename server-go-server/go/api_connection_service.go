@@ -29,7 +29,7 @@ func NewConnectionAPIService() *ConnectionAPIService {
 }
 
 // AddConnectionsToGroup - Add Connections
-func (s *ConnectionAPIService) AddConnectionsToGroup(ctx context.Context, version float32, connectionGroupId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) AddConnectionsToGroup(ctx context.Context, connectionGroupId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddConnectionsToGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ConnectionAPIService) AddConnectionsToGroup(ctx context.Context, versio
 }
 
 // RemoveConnectionsFromGroup - Remove Connections
-func (s *ConnectionAPIService) RemoveConnectionsFromGroup(ctx context.Context, version float32, connectionGroupId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) RemoveConnectionsFromGroup(ctx context.Context, connectionGroupId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveConnectionsFromGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ConnectionAPIService) RemoveConnectionsFromGroup(ctx context.Context, v
 }
 
 // GroupSearch - Search Connection Groups
-func (s *ConnectionAPIService) GroupSearch(ctx context.Context, version float32, sortField string, descending bool, activeOnly bool, start int32, limit int32, deviceId string, accountId int64, latitude float64, longitude float64, keyword string) (ImplResponse, error) {
+func (s *ConnectionAPIService) GroupSearch(ctx context.Context, sortField string, descending bool, activeOnly bool, start int32, limit int32, deviceId string, accountId int64, latitude float64, longitude float64, keyword string) (ImplResponse, error) {
 	// TODO - update GroupSearch with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ConnectionAPIService) GroupSearch(ctx context.Context, version float32,
 }
 
 // SearchConnections - Search Possible Connections
-func (s *ConnectionAPIService) SearchConnections(ctx context.Context, version float32, returnNulls bool, start int32, limit int32, deviceId string, accountId int64, q string, keyword string, latitude float64, longitude float64, gameType string, appKey string, i int32, l int32, sortField string, hasLocation bool) (ImplResponse, error) {
+func (s *ConnectionAPIService) SearchConnections(ctx context.Context, returnNulls bool, start int32, limit int32, deviceId string, accountId int64, q string, keyword string, latitude float64, longitude float64, gameType string, appKey string, i int32, l int32, sortField string, hasLocation bool) (ImplResponse, error) {
 	// TODO - update SearchConnections with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ConnectionAPIService) SearchConnections(ctx context.Context, version fl
 }
 
 // CreateOrUpdateConnection - Create or Update Connection
-func (s *ConnectionAPIService) CreateOrUpdateConnection(ctx context.Context, version float32, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, groupId int64, gameType string, appKey string, isTrusted bool, ignoreFriendRequest bool, isContact bool, isBlocked bool, isFollowing bool, connectionResponse bool) (ImplResponse, error) {
+func (s *ConnectionAPIService) CreateOrUpdateConnection(ctx context.Context, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, groupId int64, gameType string, appKey string, isTrusted bool, ignoreFriendRequest bool, isContact bool, isBlocked bool, isFollowing bool, connectionResponse bool) (ImplResponse, error) {
 	// TODO - update CreateOrUpdateConnection with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ConnectionAPIService) CreateOrUpdateConnection(ctx context.Context, ver
 }
 
 // GetConnections - Search Connections
-func (s *ConnectionAPIService) GetConnections(ctx context.Context, version float32, returnNulls bool, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, connectionAccountId int64, q string, keyword string, i int32, l int32, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) GetConnections(ctx context.Context, returnNulls bool, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, connectionAccountId int64, q string, keyword string, i int32, l int32, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetConnections with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *ConnectionAPIService) GetConnections(ctx context.Context, version float
 }
 
 // GetConnectionSentFriendRequests - Get Sent Friend Requests
-func (s *ConnectionAPIService) GetConnectionSentFriendRequests(ctx context.Context, version float32, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *ConnectionAPIService) GetConnectionSentFriendRequests(ctx context.Context, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetConnectionSentFriendRequests with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *ConnectionAPIService) GetConnectionSentFriendRequests(ctx context.Conte
 }
 
 // CreateOrUpdateGroup - Create or Update Connection Group
-func (s *ConnectionAPIService) CreateOrUpdateGroup(ctx context.Context, version float32, returnNulls bool, deviceId string, accountId int64, name string, groupId int64, assetId int64, connections string, description string, canViewProfileInfo bool, canViewGameInfo bool, canViewFriendInfo bool, active bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) CreateOrUpdateGroup(ctx context.Context, returnNulls bool, deviceId string, accountId int64, name string, groupId int64, assetId int64, connections string, description string, canViewProfileInfo bool, canViewGameInfo bool, canViewFriendInfo bool, active bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreateOrUpdateGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *ConnectionAPIService) CreateOrUpdateGroup(ctx context.Context, version 
 }
 
 // AddConnectionToGroup - Add Connection
-func (s *ConnectionAPIService) AddConnectionToGroup(ctx context.Context, version float32, returnNulls bool, groupId int64, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) AddConnectionToGroup(ctx context.Context, returnNulls bool, groupId int64, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddConnectionToGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *ConnectionAPIService) AddConnectionToGroup(ctx context.Context, version
 }
 
 // AddSubGroups - Add Connection Groups
-func (s *ConnectionAPIService) AddSubGroups(ctx context.Context, version float32, returnNulls bool, groupId int64, subGroupIds string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) AddSubGroups(ctx context.Context, returnNulls bool, groupId int64, subGroupIds string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddSubGroups with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *ConnectionAPIService) AddSubGroups(ctx context.Context, version float32
 }
 
 // GetGroupDetails - Get Connection Group
-func (s *ConnectionAPIService) GetGroupDetails(ctx context.Context, version float32, combineConnections bool, deviceId string, accountId int64, groupId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) GetGroupDetails(ctx context.Context, combineConnections bool, deviceId string, accountId int64, groupId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetGroupDetails with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *ConnectionAPIService) GetGroupDetails(ctx context.Context, version floa
 }
 
 // RemoveGroup - Delete Connection Group
-func (s *ConnectionAPIService) RemoveGroup(ctx context.Context, version float32, returnNulls bool, groupId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) RemoveGroup(ctx context.Context, returnNulls bool, groupId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *ConnectionAPIService) RemoveGroup(ctx context.Context, version float32,
 }
 
 // RemoveConnectionFromGroup - Delete Connection
-func (s *ConnectionAPIService) RemoveConnectionFromGroup(ctx context.Context, version float32, returnNulls bool, groupId int64, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) RemoveConnectionFromGroup(ctx context.Context, returnNulls bool, groupId int64, deviceId string, accountId int64, connectionId int64, connectionAccountId int64, pendingId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveConnectionFromGroup with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *ConnectionAPIService) RemoveConnectionFromGroup(ctx context.Context, ve
 }
 
 // RemoveSubGroups - Remove Connection Groups
-func (s *ConnectionAPIService) RemoveSubGroups(ctx context.Context, version float32, returnNulls bool, groupId int64, subGroupIds string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ConnectionAPIService) RemoveSubGroups(ctx context.Context, returnNulls bool, groupId int64, subGroupIds string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveSubGroups with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *ConnectionAPIService) RemoveSubGroups(ctx context.Context, version floa
 }
 
 // FriendAccept - Accept Friend
-func (s *ConnectionAPIService) FriendAccept(ctx context.Context, version float32, friendAccountId int64, notifyFriend bool, deviceId string, accountId int64, gameType string, appKey string, notificationMessage string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FriendAccept(ctx context.Context, friendAccountId int64, notifyFriend bool, deviceId string, accountId int64, gameType string, appKey string, notificationMessage string) (ImplResponse, error) {
 	// TODO - update FriendAccept with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *ConnectionAPIService) FriendAccept(ctx context.Context, version float32
 }
 
 // FriendReject - Decline Friend
-func (s *ConnectionAPIService) FriendReject(ctx context.Context, version float32, friendAccountId int64, deviceId string, accountId int64, gameType string, appKey string, notifyFriend bool, notificationMessage string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FriendReject(ctx context.Context, friendAccountId int64, deviceId string, accountId int64, gameType string, appKey string, notifyFriend bool, notificationMessage string) (ImplResponse, error) {
 	// TODO - update FriendReject with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -205,7 +205,7 @@ func (s *ConnectionAPIService) FriendReject(ctx context.Context, version float32
 }
 
 // FriendRemove - Delete Friend
-func (s *ConnectionAPIService) FriendRemove(ctx context.Context, version float32, friendAccountId int64, deviceId string, accountId int64, notifyFriend bool, removeFromGroups bool) (ImplResponse, error) {
+func (s *ConnectionAPIService) FriendRemove(ctx context.Context, friendAccountId int64, deviceId string, accountId int64, notifyFriend bool, removeFromGroups bool) (ImplResponse, error) {
 	// TODO - update FriendRemove with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -216,7 +216,7 @@ func (s *ConnectionAPIService) FriendRemove(ctx context.Context, version float32
 }
 
 // FriendRequest - Request Friend
-func (s *ConnectionAPIService) FriendRequest(ctx context.Context, version float32, friendAccountId int64, deviceId string, accountId int64, gameType string, appKey string, notificationMessage string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FriendRequest(ctx context.Context, friendAccountId int64, deviceId string, accountId int64, gameType string, appKey string, notificationMessage string) (ImplResponse, error) {
 	// TODO - update FriendRequest with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -227,7 +227,7 @@ func (s *ConnectionAPIService) FriendRequest(ctx context.Context, version float3
 }
 
 // FollowRequest - Send Follow Request
-func (s *ConnectionAPIService) FollowRequest(ctx context.Context, version float32, accountId int64, connectionAccountId int64, appKey string, approvalNeeded bool) (ImplResponse, error) {
+func (s *ConnectionAPIService) FollowRequest(ctx context.Context, accountId int64, connectionAccountId int64, appKey string, approvalNeeded bool) (ImplResponse, error) {
 	// TODO - update FollowRequest with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -238,7 +238,7 @@ func (s *ConnectionAPIService) FollowRequest(ctx context.Context, version float3
 }
 
 // FollowAccept - Accept Follow Request
-func (s *ConnectionAPIService) FollowAccept(ctx context.Context, version float32, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FollowAccept(ctx context.Context, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update FollowAccept with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -249,7 +249,7 @@ func (s *ConnectionAPIService) FollowAccept(ctx context.Context, version float32
 }
 
 // FollowReject - Reject Follow Request
-func (s *ConnectionAPIService) FollowReject(ctx context.Context, version float32, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FollowReject(ctx context.Context, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update FollowReject with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -260,7 +260,7 @@ func (s *ConnectionAPIService) FollowReject(ctx context.Context, version float32
 }
 
 // FollowRemove - Remove Follower / Unfollow
-func (s *ConnectionAPIService) FollowRemove(ctx context.Context, version float32, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
+func (s *ConnectionAPIService) FollowRemove(ctx context.Context, accountId int64, connectionAccountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update FollowRemove with the required logic for this service method.
 	// Add api_connection_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -29,7 +29,7 @@ func NewVehicleTypeAPIService() *VehicleTypeAPIService {
 }
 
 // SearchVehicleTypes - Search Vehicle Type
-func (s *VehicleTypeAPIService) SearchVehicleTypes(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, retailerId int64, hubId int64) (ImplResponse, error) {
+func (s *VehicleTypeAPIService) SearchVehicleTypes(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, retailerId int64, hubId int64) (ImplResponse, error) {
 	// TODO - update SearchVehicleTypes with the required logic for this service method.
 	// Add api_vehicle_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *VehicleTypeAPIService) SearchVehicleTypes(ctx context.Context, version 
 }
 
 // CreateVehicleType - Create Vehicle Type
-func (s *VehicleTypeAPIService) CreateVehicleType(ctx context.Context, version float32, vehicleType string, body VehicleType) (ImplResponse, error) {
+func (s *VehicleTypeAPIService) CreateVehicleType(ctx context.Context, vehicleType string, body VehicleType) (ImplResponse, error) {
 	// TODO - update CreateVehicleType with the required logic for this service method.
 	// Add api_vehicle_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *VehicleTypeAPIService) CreateVehicleType(ctx context.Context, version f
 }
 
 // GetVehicleType - Get Vehicle Type
-func (s *VehicleTypeAPIService) GetVehicleType(ctx context.Context, version float32, vehicleTypeId int64) (ImplResponse, error) {
+func (s *VehicleTypeAPIService) GetVehicleType(ctx context.Context, vehicleTypeId int64) (ImplResponse, error) {
 	// TODO - update GetVehicleType with the required logic for this service method.
 	// Add api_vehicle_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *VehicleTypeAPIService) GetVehicleType(ctx context.Context, version floa
 }
 
 // UpdateVehicleType - Update Vehicle Type
-func (s *VehicleTypeAPIService) UpdateVehicleType(ctx context.Context, version float32, vehicleTypeId int64, vehicleType string, body VehicleType) (ImplResponse, error) {
+func (s *VehicleTypeAPIService) UpdateVehicleType(ctx context.Context, vehicleTypeId int64, vehicleType string, body VehicleType) (ImplResponse, error) {
 	// TODO - update UpdateVehicleType with the required logic for this service method.
 	// Add api_vehicle_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *VehicleTypeAPIService) UpdateVehicleType(ctx context.Context, version f
 }
 
 // DeleteVehicleType - Delete Vehicle Type
-func (s *VehicleTypeAPIService) DeleteVehicleType(ctx context.Context, version float32, vehicleTypeId int64) (ImplResponse, error) {
+func (s *VehicleTypeAPIService) DeleteVehicleType(ctx context.Context, vehicleTypeId int64) (ImplResponse, error) {
 	// TODO - update DeleteVehicleType with the required logic for this service method.
 	// Add api_vehicle_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

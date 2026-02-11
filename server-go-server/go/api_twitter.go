@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TwitterAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,13 +52,13 @@ func (c *TwitterAPIController) Routes() Routes {
 		"AuthorizeTwitter": Route{
 			"AuthorizeTwitter",
 			strings.ToUpper("Post"),
-			"/api/{version}/twitter/authorize",
+			"/api/3.18/twitter/authorize",
 			c.AuthorizeTwitter,
 		},
 		"LoginTwitter": Route{
 			"LoginTwitter",
 			strings.ToUpper("Post"),
-			"/api/{version}/twitter/login",
+			"/api/3.18/twitter/login",
 			c.LoginTwitter,
 		},
 	}
@@ -72,13 +70,13 @@ func (c *TwitterAPIController) OrderedRoutes() []Route {
 		Route{
 			"AuthorizeTwitter",
 			strings.ToUpper("Post"),
-			"/api/{version}/twitter/authorize",
+			"/api/3.18/twitter/authorize",
 			c.AuthorizeTwitter,
 		},
 		Route{
 			"LoginTwitter",
 			strings.ToUpper("Post"),
-			"/api/{version}/twitter/login",
+			"/api/3.18/twitter/login",
 			c.LoginTwitter,
 		},
 	}
@@ -88,18 +86,9 @@ func (c *TwitterAPIController) OrderedRoutes() []Route {
 
 // AuthorizeTwitter - Authorize Twitter
 func (c *TwitterAPIController) AuthorizeTwitter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -111,7 +100,7 @@ func (c *TwitterAPIController) AuthorizeTwitter(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.AuthorizeTwitter(r.Context(), versionParam, appKeyParam)
+	result, err := c.service.AuthorizeTwitter(r.Context(), appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -123,18 +112,9 @@ func (c *TwitterAPIController) AuthorizeTwitter(w http.ResponseWriter, r *http.R
 
 // LoginTwitter - Login Twitter
 func (c *TwitterAPIController) LoginTwitter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accessTokenParam string
@@ -208,7 +188,7 @@ func (c *TwitterAPIController) LoginTwitter(w http.ResponseWriter, r *http.Reque
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.LoginTwitter(r.Context(), versionParam, accessTokenParam, accessTokenSecretParam, appKeyParam, responseFiltersParam, deviceIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.LoginTwitter(r.Context(), accessTokenParam, accessTokenSecretParam, appKeyParam, responseFiltersParam, deviceIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

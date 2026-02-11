@@ -29,7 +29,7 @@ func NewApplicationConfigAPIService() *ApplicationConfigAPIService {
 }
 
 // CreateApplicationConfig - Create AppConfig
-func (s *ApplicationConfigAPIService) CreateApplicationConfig(ctx context.Context, version float32, accountId int64, appKey string, configVersion string, assetId int64, retailerId int64, retailerLocationId int64, udid string) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) CreateApplicationConfig(ctx context.Context, accountId int64, appKey string, configVersion string, assetId int64, retailerId int64, retailerLocationId int64, udid string) (ImplResponse, error) {
 	// TODO - update CreateApplicationConfig with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ApplicationConfigAPIService) CreateApplicationConfig(ctx context.Contex
 }
 
 // DeleteApplicationConfig - Delete AppConfig
-func (s *ApplicationConfigAPIService) DeleteApplicationConfig(ctx context.Context, version float32, accountId int64, configId int64) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) DeleteApplicationConfig(ctx context.Context, accountId int64, configId int64) (ImplResponse, error) {
 	// TODO - update DeleteApplicationConfig with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ApplicationConfigAPIService) DeleteApplicationConfig(ctx context.Contex
 }
 
 // GetApplicationConfig - Get AppConfig
-func (s *ApplicationConfigAPIService) GetApplicationConfig(ctx context.Context, version float32, accountId int64, configId int64) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) GetApplicationConfig(ctx context.Context, accountId int64, configId int64) (ImplResponse, error) {
 	// TODO - update GetApplicationConfig with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ApplicationConfigAPIService) GetApplicationConfig(ctx context.Context, 
 }
 
 // GetApplicationConfigByConfigVersion - Get AppConfig by Version
-func (s *ApplicationConfigAPIService) GetApplicationConfigByConfigVersion(ctx context.Context, version float32, appKey string, configVersion string, retailerId int64, retailerLocationId int64, udid string, allowOlderVersions bool) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) GetApplicationConfigByConfigVersion(ctx context.Context, appKey string, configVersion string, retailerId int64, retailerLocationId int64, udid string, allowOlderVersions bool) (ImplResponse, error) {
 	// TODO - update GetApplicationConfigByConfigVersion with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ApplicationConfigAPIService) GetApplicationConfigByConfigVersion(ctx co
 }
 
 // SearchApplicationConfig - Search AppConfigs
-func (s *ApplicationConfigAPIService) SearchApplicationConfig(ctx context.Context, version float32, accountId int64, appKey string, retailerId int64, retailerLocationId int64, udid string, configVersion string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) SearchApplicationConfig(ctx context.Context, accountId int64, appKey string, retailerId int64, retailerLocationId int64, udid string, configVersion string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchApplicationConfig with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ApplicationConfigAPIService) SearchApplicationConfig(ctx context.Contex
 }
 
 // UpdateApplicationConfig - Update AppConfig
-func (s *ApplicationConfigAPIService) UpdateApplicationConfig(ctx context.Context, version float32, accountId int64, configId int64, appKey string, configVersion string, assetId int64, retailerId int64, retailerLocationId int64, udid string) (ImplResponse, error) {
+func (s *ApplicationConfigAPIService) UpdateApplicationConfig(ctx context.Context, accountId int64, configId int64, appKey string, configVersion string, assetId int64, retailerId int64, retailerLocationId int64, udid string) (ImplResponse, error) {
 	// TODO - update UpdateApplicationConfig with the required logic for this service method.
 	// Add api_application_config_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

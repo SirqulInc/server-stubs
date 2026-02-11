@@ -29,7 +29,7 @@ func NewBillingInfoAPIService() *BillingInfoAPIService {
 }
 
 // CreatePaymentMethod - Create Payment Method
-func (s *BillingInfoAPIService) CreatePaymentMethod(ctx context.Context, version float32, accountId int64, accountName string, firstName string, lastName string, address string, city string, state string, postalCode string, country string, phone string, creditCardNumber string, expirationDate string, ccv string, accountNumber string, bankName string, routingNumber string, paymentMethodNickname string, taxId string, defaultPaymentMethod bool, authToken string, provider string, providerCustomerProfileId string, providerPaymentProfileId string, metaData string, appKey string) (ImplResponse, error) {
+func (s *BillingInfoAPIService) CreatePaymentMethod(ctx context.Context, accountId int64, accountName string, firstName string, lastName string, address string, city string, state string, postalCode string, country string, phone string, creditCardNumber string, expirationDate string, ccv string, accountNumber string, bankName string, routingNumber string, paymentMethodNickname string, taxId string, defaultPaymentMethod bool, authToken string, provider string, providerCustomerProfileId string, providerPaymentProfileId string, metaData string, appKey string) (ImplResponse, error) {
 	// TODO - update CreatePaymentMethod with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *BillingInfoAPIService) CreatePaymentMethod(ctx context.Context, version
 }
 
 // GetPaymentMethod - Get Payment Method
-func (s *BillingInfoAPIService) GetPaymentMethod(ctx context.Context, version float32, accountId int64, paymentMethodId int64, getCurrentBalance bool) (ImplResponse, error) {
+func (s *BillingInfoAPIService) GetPaymentMethod(ctx context.Context, accountId int64, paymentMethodId int64, getCurrentBalance bool) (ImplResponse, error) {
 	// TODO - update GetPaymentMethod with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *BillingInfoAPIService) GetPaymentMethod(ctx context.Context, version fl
 }
 
 // SearchPaymentMethod - Search Payment Methods
-func (s *BillingInfoAPIService) SearchPaymentMethod(ctx context.Context, version float32, accountId int64, provider string, type_ string, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *BillingInfoAPIService) SearchPaymentMethod(ctx context.Context, accountId int64, provider string, type_ string, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchPaymentMethod with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *BillingInfoAPIService) SearchPaymentMethod(ctx context.Context, version
 }
 
 // AddPaymentMethod - Update Payment Method
-func (s *BillingInfoAPIService) AddPaymentMethod(ctx context.Context, version float32, accountId int64, paymentMethodId int64, accountName string, firstName string, lastName string, address string, city string, state string, postalCode string, country string, phone string, creditCardNumber string, expirationDate string, ccv string, accountNumber string, bankName string, routingNumber string, defaultPaymentMethod bool, paymentMethodNickname string, taxId string, providerCustomerProfileId string, providerPaymentProfileId string, metaData string) (ImplResponse, error) {
+func (s *BillingInfoAPIService) AddPaymentMethod(ctx context.Context, accountId int64, paymentMethodId int64, accountName string, firstName string, lastName string, address string, city string, state string, postalCode string, country string, phone string, creditCardNumber string, expirationDate string, ccv string, accountNumber string, bankName string, routingNumber string, defaultPaymentMethod bool, paymentMethodNickname string, taxId string, providerCustomerProfileId string, providerPaymentProfileId string, metaData string) (ImplResponse, error) {
 	// TODO - update AddPaymentMethod with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *BillingInfoAPIService) AddPaymentMethod(ctx context.Context, version fl
 }
 
 // GetCryptoBalance - Get Crypto Balances
-func (s *BillingInfoAPIService) GetCryptoBalance(ctx context.Context, version float32, accountId int64, ownerAccountId int64, paymentMethodId int64) (ImplResponse, error) {
+func (s *BillingInfoAPIService) GetCryptoBalance(ctx context.Context, accountId int64, ownerAccountId int64, paymentMethodId int64) (ImplResponse, error) {
 	// TODO - update GetCryptoBalance with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *BillingInfoAPIService) GetCryptoBalance(ctx context.Context, version fl
 }
 
 // CreateSmartContract - Create Smart Contract
-func (s *BillingInfoAPIService) CreateSmartContract(ctx context.Context, version float32, accountId int64, tokenName string, tokenSymbol string, paymentMethodId int64) (ImplResponse, error) {
+func (s *BillingInfoAPIService) CreateSmartContract(ctx context.Context, accountId int64, tokenName string, tokenSymbol string, paymentMethodId int64) (ImplResponse, error) {
 	// TODO - update CreateSmartContract with the required logic for this service method.
 	// Add api_billing_info_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

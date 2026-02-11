@@ -29,7 +29,7 @@ func NewFacebookAPIService() *FacebookAPIService {
 }
 
 // GetToken - Get Facebook Token
-func (s *FacebookAPIService) GetToken(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FacebookAPIService) GetToken(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetToken with the required logic for this service method.
 	// Add api_facebook_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *FacebookAPIService) GetToken(ctx context.Context, version float32, devi
 }
 
 // GraphInterface - Post to Facebook
-func (s *FacebookAPIService) GraphInterface(ctx context.Context, version float32, event string, deviceId string, accountId int64, permissionableType string, permissionableId int64, assetId int64, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FacebookAPIService) GraphInterface(ctx context.Context, event string, deviceId string, accountId int64, permissionableType string, permissionableId int64, assetId int64, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GraphInterface with the required logic for this service method.
 	// Add api_facebook_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

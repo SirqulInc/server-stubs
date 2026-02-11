@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // GameAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *GameAPIController) Routes() Routes {
 		"CreateGame": Route{
 			"CreateGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/create",
+			"/api/3.18/game/create",
 			c.CreateGame,
 		},
 		"UpdateGame": Route{
 			"UpdateGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/update",
+			"/api/3.18/game/update",
 			c.UpdateGame,
 		},
 		"GetGame": Route{
 			"GetGame",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/get",
+			"/api/3.18/game/get",
 			c.GetGame,
 		},
 		"DeleteGame": Route{
 			"DeleteGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/delete",
+			"/api/3.18/game/delete",
 			c.DeleteGame,
 		},
 		"SearchGames": Route{
 			"SearchGames",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/search",
+			"/api/3.18/game/search",
 			c.SearchGames,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *GameAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/create",
+			"/api/3.18/game/create",
 			c.CreateGame,
 		},
 		Route{
 			"UpdateGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/update",
+			"/api/3.18/game/update",
 			c.UpdateGame,
 		},
 		Route{
 			"GetGame",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/get",
+			"/api/3.18/game/get",
 			c.GetGame,
 		},
 		Route{
 			"DeleteGame",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/delete",
+			"/api/3.18/game/delete",
 			c.DeleteGame,
 		},
 		Route{
 			"SearchGames",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/search",
+			"/api/3.18/game/search",
 			c.SearchGames,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *GameAPIController) OrderedRoutes() []Route {
 
 // CreateGame - Create a Game
 func (c *GameAPIController) CreateGame(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -201,7 +190,7 @@ func (c *GameAPIController) CreateGame(w http.ResponseWriter, r *http.Request) {
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateGame(r.Context(), versionParam, accountIdParam, appKeyParam, titleParam, descriptionParam, metaDataParam, packIdsParam, includeGameDataParam)
+	result, err := c.service.CreateGame(r.Context(), accountIdParam, appKeyParam, titleParam, descriptionParam, metaDataParam, packIdsParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -213,18 +202,9 @@ func (c *GameAPIController) CreateGame(w http.ResponseWriter, r *http.Request) {
 
 // UpdateGame - Update a Game
 func (c *GameAPIController) UpdateGame(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -304,7 +284,7 @@ func (c *GameAPIController) UpdateGame(w http.ResponseWriter, r *http.Request) {
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateGame(r.Context(), versionParam, accountIdParam, gameIdParam, appKeyParam, titleParam, descriptionParam, metaDataParam, packIdsParam, includeGameDataParam)
+	result, err := c.service.UpdateGame(r.Context(), accountIdParam, gameIdParam, appKeyParam, titleParam, descriptionParam, metaDataParam, packIdsParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -316,18 +296,9 @@ func (c *GameAPIController) UpdateGame(w http.ResponseWriter, r *http.Request) {
 
 // GetGame - Get a Game by id
 func (c *GameAPIController) GetGame(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -376,7 +347,7 @@ func (c *GameAPIController) GetGame(w http.ResponseWriter, r *http.Request) {
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.GetGame(r.Context(), versionParam, accountIdParam, gameIdParam, includeGameDataParam)
+	result, err := c.service.GetGame(r.Context(), accountIdParam, gameIdParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -388,18 +359,9 @@ func (c *GameAPIController) GetGame(w http.ResponseWriter, r *http.Request) {
 
 // DeleteGame - Delete a Game
 func (c *GameAPIController) DeleteGame(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -434,7 +396,7 @@ func (c *GameAPIController) DeleteGame(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "gameId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteGame(r.Context(), versionParam, accountIdParam, gameIdParam)
+	result, err := c.service.DeleteGame(r.Context(), accountIdParam, gameIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -446,18 +408,9 @@ func (c *GameAPIController) DeleteGame(w http.ResponseWriter, r *http.Request) {
 
 // SearchGames - Search a Game
 func (c *GameAPIController) SearchGames(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -559,7 +512,7 @@ func (c *GameAPIController) SearchGames(w http.ResponseWriter, r *http.Request) 
 		includeInactiveParam = param
 	} else {
 	}
-	result, err := c.service.SearchGames(r.Context(), versionParam, accountIdParam, appKeyParam, startParam, limitParam, keywordParam, appVersionParam, includeGameDataParam, includeInactiveParam)
+	result, err := c.service.SearchGames(r.Context(), accountIdParam, appKeyParam, startParam, limitParam, keywordParam, appVersionParam, includeGameDataParam, includeInactiveParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

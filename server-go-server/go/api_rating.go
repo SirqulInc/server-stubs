@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // RatingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *RatingAPIController) Routes() Routes {
 		"CreateRating": Route{
 			"CreateRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/create",
+			"/api/3.18/rating/create",
 			c.CreateRating,
 		},
 		"DeleteRating": Route{
 			"DeleteRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/delete",
+			"/api/3.18/rating/delete",
 			c.DeleteRating,
 		},
 		"SearchRatingIndexes": Route{
 			"SearchRatingIndexes",
 			strings.ToUpper("Get"),
-			"/api/{version}/rating/index/search",
+			"/api/3.18/rating/index/search",
 			c.SearchRatingIndexes,
 		},
 		"SearchRatings": Route{
 			"SearchRatings",
 			strings.ToUpper("Get"),
-			"/api/{version}/rating/search",
+			"/api/3.18/rating/search",
 			c.SearchRatings,
 		},
 		"UpdateRating": Route{
 			"UpdateRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/update",
+			"/api/3.18/rating/update",
 			c.UpdateRating,
 		},
 		"SearchLocationRatingIndexes": Route{
 			"SearchLocationRatingIndexes",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/rating/index/search",
+			"/api/3.18/location/rating/index/search",
 			c.SearchLocationRatingIndexes,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *RatingAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/create",
+			"/api/3.18/rating/create",
 			c.CreateRating,
 		},
 		Route{
 			"DeleteRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/delete",
+			"/api/3.18/rating/delete",
 			c.DeleteRating,
 		},
 		Route{
 			"SearchRatingIndexes",
 			strings.ToUpper("Get"),
-			"/api/{version}/rating/index/search",
+			"/api/3.18/rating/index/search",
 			c.SearchRatingIndexes,
 		},
 		Route{
 			"SearchRatings",
 			strings.ToUpper("Get"),
-			"/api/{version}/rating/search",
+			"/api/3.18/rating/search",
 			c.SearchRatings,
 		},
 		Route{
 			"UpdateRating",
 			strings.ToUpper("Post"),
-			"/api/{version}/rating/update",
+			"/api/3.18/rating/update",
 			c.UpdateRating,
 		},
 		Route{
 			"SearchLocationRatingIndexes",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/rating/index/search",
+			"/api/3.18/location/rating/index/search",
 			c.SearchLocationRatingIndexes,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *RatingAPIController) OrderedRoutes() []Route {
 
 // CreateRating - Create Rating
 func (c *RatingAPIController) CreateRating(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var ratableTypeParam string
@@ -275,7 +264,7 @@ func (c *RatingAPIController) CreateRating(w http.ResponseWriter, r *http.Reques
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreateRating(r.Context(), versionParam, ratableTypeParam, ratableIdParam, ratingValueParam, deviceIdParam, accountIdParam, categoryIdParam, displayParam, descriptionParam, locationDescriptionParam, latitudeParam, longitudeParam)
+	result, err := c.service.CreateRating(r.Context(), ratableTypeParam, ratableIdParam, ratingValueParam, deviceIdParam, accountIdParam, categoryIdParam, displayParam, descriptionParam, locationDescriptionParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -287,18 +276,9 @@ func (c *RatingAPIController) CreateRating(w http.ResponseWriter, r *http.Reques
 
 // DeleteRating - Delete Rating
 func (c *RatingAPIController) DeleteRating(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var ratingIdParam int64
@@ -338,7 +318,7 @@ func (c *RatingAPIController) DeleteRating(w http.ResponseWriter, r *http.Reques
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteRating(r.Context(), versionParam, ratingIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteRating(r.Context(), ratingIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -350,18 +330,9 @@ func (c *RatingAPIController) DeleteRating(w http.ResponseWriter, r *http.Reques
 
 // SearchRatingIndexes - Search Rating Indexes
 func (c *RatingAPIController) SearchRatingIndexes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var ratableTypeParam string
@@ -506,7 +477,7 @@ func (c *RatingAPIController) SearchRatingIndexes(w http.ResponseWriter, r *http
 		returnOverallRatingParam = param
 	} else {
 	}
-	result, err := c.service.SearchRatingIndexes(r.Context(), versionParam, ratableTypeParam, ratableIdsParam, categoryIdsParam, secondaryTypeParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, latitudeParam, longitudeParam, returnRatableParam, returnOverallRatingParam)
+	result, err := c.service.SearchRatingIndexes(r.Context(), ratableTypeParam, ratableIdsParam, categoryIdsParam, secondaryTypeParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, latitudeParam, longitudeParam, returnRatableParam, returnOverallRatingParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -518,18 +489,9 @@ func (c *RatingAPIController) SearchRatingIndexes(w http.ResponseWriter, r *http
 
 // SearchRatings - Search Ratings
 func (c *RatingAPIController) SearchRatings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -651,7 +613,7 @@ func (c *RatingAPIController) SearchRatings(w http.ResponseWriter, r *http.Reque
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchRatings(r.Context(), versionParam, deviceIdParam, accountIdParam, filterAccountIdParam, ratableTypeParam, ratableIdParam, categoryIdsParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchRatings(r.Context(), deviceIdParam, accountIdParam, filterAccountIdParam, ratableTypeParam, ratableIdParam, categoryIdsParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -663,18 +625,9 @@ func (c *RatingAPIController) SearchRatings(w http.ResponseWriter, r *http.Reque
 
 // UpdateRating - Update Rating
 func (c *RatingAPIController) UpdateRating(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var ratingIdParam int64
@@ -791,7 +744,7 @@ func (c *RatingAPIController) UpdateRating(w http.ResponseWriter, r *http.Reques
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateRating(r.Context(), versionParam, ratingIdParam, deviceIdParam, accountIdParam, ratingValueParam, categoryIdParam, displayParam, descriptionParam, locationDescriptionParam, latitudeParam, longitudeParam)
+	result, err := c.service.UpdateRating(r.Context(), ratingIdParam, deviceIdParam, accountIdParam, ratingValueParam, categoryIdParam, displayParam, descriptionParam, locationDescriptionParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -803,18 +756,9 @@ func (c *RatingAPIController) UpdateRating(w http.ResponseWriter, r *http.Reques
 
 // SearchLocationRatingIndexes - Search Location Rating Indexes
 func (c *RatingAPIController) SearchLocationRatingIndexes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var categoryIdsParam string
@@ -1020,7 +964,7 @@ func (c *RatingAPIController) SearchLocationRatingIndexes(w http.ResponseWriter,
 		returnFiltersParam = param
 	} else {
 	}
-	result, err := c.service.SearchLocationRatingIndexes(r.Context(), versionParam, categoryIdsParam, keywordParam, locationTypeParam, sortFieldParam, descendingParam, startParam, limitParam, searchRangeParam, latitudeParam, longitudeParam, returnOverallRatingParam, distanceUnitParam, returnRetailerParam, returnAssetsParam, returnOffersParam, returnCategoriesParam, returnFiltersParam)
+	result, err := c.service.SearchLocationRatingIndexes(r.Context(), categoryIdsParam, keywordParam, locationTypeParam, sortFieldParam, descendingParam, startParam, limitParam, searchRangeParam, latitudeParam, longitudeParam, returnOverallRatingParam, distanceUnitParam, returnRetailerParam, returnAssetsParam, returnOffersParam, returnCategoriesParam, returnFiltersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

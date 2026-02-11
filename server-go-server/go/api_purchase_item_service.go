@@ -29,7 +29,7 @@ func NewPurchaseItemAPIService() *PurchaseItemAPIService {
 }
 
 // CreatePurchaseItem - Create Purchase
-func (s *PurchaseItemAPIService) CreatePurchaseItem(ctx context.Context, version float32, appKey string, name string, purchaseType string, deviceId string, accountId int64, description string, tickets int32, price float32, purchaseCode string, secretKey string, purchaseLimit int32, serviceAction string, coverAssetId int64, promoAssetId int64, giftable bool, assetable bool, allocateTickets bool, ticketType string, points int64, offerLocationId int64) (ImplResponse, error) {
+func (s *PurchaseItemAPIService) CreatePurchaseItem(ctx context.Context, appKey string, name string, purchaseType string, deviceId string, accountId int64, description string, tickets int32, price float32, purchaseCode string, secretKey string, purchaseLimit int32, serviceAction string, coverAssetId int64, promoAssetId int64, giftable bool, assetable bool, allocateTickets bool, ticketType string, points int64, offerLocationId int64) (ImplResponse, error) {
 	// TODO - update CreatePurchaseItem with the required logic for this service method.
 	// Add api_purchase_item_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *PurchaseItemAPIService) CreatePurchaseItem(ctx context.Context, version
 }
 
 // DeletePurchaseItem - Delete Purchase
-func (s *PurchaseItemAPIService) DeletePurchaseItem(ctx context.Context, version float32, purchaseItemId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *PurchaseItemAPIService) DeletePurchaseItem(ctx context.Context, purchaseItemId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeletePurchaseItem with the required logic for this service method.
 	// Add api_purchase_item_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *PurchaseItemAPIService) DeletePurchaseItem(ctx context.Context, version
 }
 
 // GetPurchaseItem - Get Purchase
-func (s *PurchaseItemAPIService) GetPurchaseItem(ctx context.Context, version float32, purchaseItemId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *PurchaseItemAPIService) GetPurchaseItem(ctx context.Context, purchaseItemId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetPurchaseItem with the required logic for this service method.
 	// Add api_purchase_item_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *PurchaseItemAPIService) GetPurchaseItem(ctx context.Context, version fl
 }
 
 // SearchPurchaseItems - Search Purchases
-func (s *PurchaseItemAPIService) SearchPurchaseItems(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, filterByBillable bool, purchaseType string, serviceAction string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *PurchaseItemAPIService) SearchPurchaseItems(ctx context.Context, deviceId string, accountId int64, appKey string, filterByBillable bool, purchaseType string, serviceAction string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchPurchaseItems with the required logic for this service method.
 	// Add api_purchase_item_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *PurchaseItemAPIService) SearchPurchaseItems(ctx context.Context, versio
 }
 
 // UpdatePurchaseItem - Update Purchase
-func (s *PurchaseItemAPIService) UpdatePurchaseItem(ctx context.Context, version float32, purchaseItemId int64, deviceId string, accountId int64, name string, description string, tickets int32, price float32, purchaseType string, purchaseCode string, secretKey string, purchaseLimit int32, serviceAction string, coverAssetId int64, promoAssetId int64, giftable bool, assetable bool, active bool, allocateTickets bool, ticketType string, points int64, offerLocationId int64) (ImplResponse, error) {
+func (s *PurchaseItemAPIService) UpdatePurchaseItem(ctx context.Context, purchaseItemId int64, deviceId string, accountId int64, name string, description string, tickets int32, price float32, purchaseType string, purchaseCode string, secretKey string, purchaseLimit int32, serviceAction string, coverAssetId int64, promoAssetId int64, giftable bool, assetable bool, active bool, allocateTickets bool, ticketType string, points int64, offerLocationId int64) (ImplResponse, error) {
 	// TODO - update UpdatePurchaseItem with the required logic for this service method.
 	// Add api_purchase_item_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

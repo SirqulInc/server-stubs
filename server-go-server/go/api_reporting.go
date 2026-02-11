@@ -17,8 +17,6 @@ import (
 	"io"
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ReportingAPIController binds http requests to an api service and writes the service results to the http response
@@ -57,37 +55,37 @@ func (c *ReportingAPIController) Routes() Routes {
 		"CreateBatch": Route{
 			"CreateBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/batch/create",
+			"/api/3.18/report/batch/create",
 			c.CreateBatch,
 		},
 		"DeleteBatch": Route{
 			"DeleteBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/batch/delete",
+			"/api/3.18/report/batch/delete",
 			c.DeleteBatch,
 		},
 		"GetReportBatch": Route{
 			"GetReportBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/report/batch/get",
+			"/api/3.18/report/batch/get",
 			c.GetReportBatch,
 		},
 		"SearchBatch": Route{
 			"SearchBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/report/batch/search",
+			"/api/3.18/report/batch/search",
 			c.SearchBatch,
 		},
 		"CreateRegionLegSummaryBatch": Route{
 			"CreateRegionLegSummaryBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/region/summary/batch",
+			"/api/3.18/report/region/summary/batch",
 			c.CreateRegionLegSummaryBatch,
 		},
 		"RunReport": Route{
 			"RunReport",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/run",
+			"/api/3.18/report/run",
 			c.RunReport,
 		},
 	}
@@ -99,37 +97,37 @@ func (c *ReportingAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/batch/create",
+			"/api/3.18/report/batch/create",
 			c.CreateBatch,
 		},
 		Route{
 			"DeleteBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/batch/delete",
+			"/api/3.18/report/batch/delete",
 			c.DeleteBatch,
 		},
 		Route{
 			"GetReportBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/report/batch/get",
+			"/api/3.18/report/batch/get",
 			c.GetReportBatch,
 		},
 		Route{
 			"SearchBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/report/batch/search",
+			"/api/3.18/report/batch/search",
 			c.SearchBatch,
 		},
 		Route{
 			"CreateRegionLegSummaryBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/region/summary/batch",
+			"/api/3.18/report/region/summary/batch",
 			c.CreateRegionLegSummaryBatch,
 		},
 		Route{
 			"RunReport",
 			strings.ToUpper("Post"),
-			"/api/{version}/report/run",
+			"/api/3.18/report/run",
 			c.RunReport,
 		},
 	}
@@ -139,18 +137,9 @@ func (c *ReportingAPIController) OrderedRoutes() []Route {
 
 // CreateBatch - Create Offline Report
 func (c *ReportingAPIController) CreateBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -264,7 +253,7 @@ func (c *ReportingAPIController) CreateBatch(w http.ResponseWriter, r *http.Requ
 		pageUrlParam = param
 	} else {
 	}
-	result, err := c.service.CreateBatch(r.Context(), versionParam, accountIdParam, statusParam, previewLimitParam, appKeyParam, endpointParam, parametersParam, nameParam, startDateParam, endDateParam, descriptionParam, pageUrlParam)
+	result, err := c.service.CreateBatch(r.Context(), accountIdParam, statusParam, previewLimitParam, appKeyParam, endpointParam, parametersParam, nameParam, startDateParam, endDateParam, descriptionParam, pageUrlParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -276,18 +265,9 @@ func (c *ReportingAPIController) CreateBatch(w http.ResponseWriter, r *http.Requ
 
 // DeleteBatch - Delete Offline Report
 func (c *ReportingAPIController) DeleteBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -322,7 +302,7 @@ func (c *ReportingAPIController) DeleteBatch(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "batchId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteBatch(r.Context(), versionParam, accountIdParam, batchIdParam)
+	result, err := c.service.DeleteBatch(r.Context(), accountIdParam, batchIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -334,18 +314,9 @@ func (c *ReportingAPIController) DeleteBatch(w http.ResponseWriter, r *http.Requ
 
 // GetReportBatch - Get Offline Report
 func (c *ReportingAPIController) GetReportBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -396,7 +367,7 @@ func (c *ReportingAPIController) GetReportBatch(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "allResults"}, nil)
 		return
 	}
-	result, err := c.service.GetReportBatch(r.Context(), versionParam, accountIdParam, batchIdParam, allResultsParam)
+	result, err := c.service.GetReportBatch(r.Context(), accountIdParam, batchIdParam, allResultsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -408,18 +379,9 @@ func (c *ReportingAPIController) GetReportBatch(w http.ResponseWriter, r *http.R
 
 // SearchBatch - Search Offline Reports
 func (c *ReportingAPIController) SearchBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -533,7 +495,7 @@ func (c *ReportingAPIController) SearchBatch(w http.ResponseWriter, r *http.Requ
 		endDateParam = param
 	} else {
 	}
-	result, err := c.service.SearchBatch(r.Context(), versionParam, accountIdParam, startParam, limitParam, namesParam, appKeyParam, statusParam, globalAppSearchParam, startDateParam, endDateParam)
+	result, err := c.service.SearchBatch(r.Context(), accountIdParam, startParam, limitParam, namesParam, appKeyParam, statusParam, globalAppSearchParam, startDateParam, endDateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -545,15 +507,6 @@ func (c *ReportingAPIController) SearchBatch(w http.ResponseWriter, r *http.Requ
 
 // CreateRegionLegSummaryBatch - Create Offline Report
 func (c *ReportingAPIController) CreateRegionLegSummaryBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam []RegionLegSummary
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -567,7 +520,7 @@ func (c *ReportingAPIController) CreateRegionLegSummaryBatch(w http.ResponseWrit
 			return
 		}
 	}
-	result, err := c.service.CreateRegionLegSummaryBatch(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateRegionLegSummaryBatch(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -579,18 +532,9 @@ func (c *ReportingAPIController) CreateRegionLegSummaryBatch(w http.ResponseWrit
 
 // RunReport - Run Report
 func (c *ReportingAPIController) RunReport(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var descParam bool
@@ -679,7 +623,7 @@ func (c *ReportingAPIController) RunReport(w http.ResponseWriter, r *http.Reques
 		responseFormatParam = param
 	} else {
 	}
-	result, err := c.service.RunReport(r.Context(), versionParam, descParam, accountIdParam, queryParam, parametersParam, orderParam, startParam, limitParam, responseFormatParam)
+	result, err := c.service.RunReport(r.Context(), descParam, accountIdParam, queryParam, parametersParam, orderParam, startParam, limitParam, responseFormatParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

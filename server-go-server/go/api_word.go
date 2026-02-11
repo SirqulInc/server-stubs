@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // WordAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *WordAPIController) Routes() Routes {
 		"CreateWord": Route{
 			"CreateWord",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/word/create",
+			"/api/3.18/game/word/create",
 			c.CreateWord,
 		},
 		"DeleteWord": Route{
 			"DeleteWord",
 			strings.ToUpper("Delete"),
-			"/api/{version}/game/word/delete",
+			"/api/3.18/game/word/delete",
 			c.DeleteWord,
 		},
 		"GetWord": Route{
 			"GetWord",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/word/get",
+			"/api/3.18/game/word/get",
 			c.GetWord,
 		},
 		"GetWords": Route{
 			"GetWords",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/word/search",
+			"/api/3.18/game/word/search",
 			c.GetWords,
 		},
 		"UpdateWord": Route{
 			"UpdateWord",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/word/update",
+			"/api/3.18/game/word/update",
 			c.UpdateWord,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *WordAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateWord",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/word/create",
+			"/api/3.18/game/word/create",
 			c.CreateWord,
 		},
 		Route{
 			"DeleteWord",
 			strings.ToUpper("Delete"),
-			"/api/{version}/game/word/delete",
+			"/api/3.18/game/word/delete",
 			c.DeleteWord,
 		},
 		Route{
 			"GetWord",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/word/get",
+			"/api/3.18/game/word/get",
 			c.GetWord,
 		},
 		Route{
 			"GetWords",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/word/search",
+			"/api/3.18/game/word/search",
 			c.GetWords,
 		},
 		Route{
 			"UpdateWord",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/word/update",
+			"/api/3.18/game/word/update",
 			c.UpdateWord,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *WordAPIController) OrderedRoutes() []Route {
 
 // CreateWord - Create Word
 func (c *WordAPIController) CreateWord(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -255,7 +244,7 @@ func (c *WordAPIController) CreateWord(w http.ResponseWriter, r *http.Request) {
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.CreateWord(r.Context(), versionParam, accountIdParam, wordParam, definitionParam, activeParam, allocateTicketsParam, ticketCountParam, assetIdParam, ticketTypeParam, pointsParam)
+	result, err := c.service.CreateWord(r.Context(), accountIdParam, wordParam, definitionParam, activeParam, allocateTicketsParam, ticketCountParam, assetIdParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -267,18 +256,9 @@ func (c *WordAPIController) CreateWord(w http.ResponseWriter, r *http.Request) {
 
 // DeleteWord - Delete Word
 func (c *WordAPIController) DeleteWord(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var wordIdParam int64
@@ -313,7 +293,7 @@ func (c *WordAPIController) DeleteWord(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteWord(r.Context(), versionParam, wordIdParam, accountIdParam)
+	result, err := c.service.DeleteWord(r.Context(), wordIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -325,18 +305,9 @@ func (c *WordAPIController) DeleteWord(w http.ResponseWriter, r *http.Request) {
 
 // GetWord - Get Word
 func (c *WordAPIController) GetWord(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var wordIdParam int64
@@ -371,7 +342,7 @@ func (c *WordAPIController) GetWord(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetWord(r.Context(), versionParam, wordIdParam, accountIdParam)
+	result, err := c.service.GetWord(r.Context(), wordIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -383,18 +354,9 @@ func (c *WordAPIController) GetWord(w http.ResponseWriter, r *http.Request) {
 
 // GetWords - Search Words
 func (c *WordAPIController) GetWords(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -493,7 +455,7 @@ func (c *WordAPIController) GetWords(w http.ResponseWriter, r *http.Request) {
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.GetWords(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, keywordParam)
+	result, err := c.service.GetWords(r.Context(), accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -505,18 +467,9 @@ func (c *WordAPIController) GetWords(w http.ResponseWriter, r *http.Request) {
 
 // UpdateWord - Update Word
 func (c *WordAPIController) UpdateWord(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var wordIdParam int64
@@ -644,7 +597,7 @@ func (c *WordAPIController) UpdateWord(w http.ResponseWriter, r *http.Request) {
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateWord(r.Context(), versionParam, wordIdParam, accountIdParam, ticketCountParam, wordTextParam, definitionParam, assetIdParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam)
+	result, err := c.service.UpdateWord(r.Context(), wordIdParam, accountIdParam, ticketCountParam, wordTextParam, definitionParam, assetIdParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

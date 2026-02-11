@@ -57,13 +57,13 @@ func (c *StopAPIController) Routes() Routes {
 		"GetStop": Route{
 			"GetStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/stop/{id}",
+			"/api/3.18/stop/{id}",
 			c.GetStop,
 		},
 		"UpdateStop": Route{
 			"UpdateStop",
 			strings.ToUpper("Put"),
-			"/api/{version}/stop/{id}",
+			"/api/3.18/stop/{id}",
 			c.UpdateStop,
 		},
 	}
@@ -75,13 +75,13 @@ func (c *StopAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/stop/{id}",
+			"/api/3.18/stop/{id}",
 			c.GetStop,
 		},
 		Route{
 			"UpdateStop",
 			strings.ToUpper("Put"),
-			"/api/{version}/stop/{id}",
+			"/api/3.18/stop/{id}",
 			c.UpdateStop,
 		},
 	}
@@ -92,14 +92,6 @@ func (c *StopAPIController) OrderedRoutes() []Route {
 // GetStop - Get Stop
 func (c *StopAPIController) GetStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -108,7 +100,7 @@ func (c *StopAPIController) GetStop(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetStop(r.Context(), versionParam, idParam)
+	result, err := c.service.GetStop(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -121,14 +113,6 @@ func (c *StopAPIController) GetStop(w http.ResponseWriter, r *http.Request) {
 // UpdateStop - Update Stop
 func (c *StopAPIController) UpdateStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -152,7 +136,7 @@ func (c *StopAPIController) UpdateStop(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateStop(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateStop(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

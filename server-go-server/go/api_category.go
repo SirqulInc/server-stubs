@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // CategoryAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,43 +52,43 @@ func (c *CategoryAPIController) Routes() Routes {
 		"CreateCategory": Route{
 			"CreateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/create",
+			"/api/3.18/category/create",
 			c.CreateCategory,
 		},
 		"DeleteCategory": Route{
 			"DeleteCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/delete",
+			"/api/3.18/category/delete",
 			c.DeleteCategory,
 		},
 		"DuplicateCategory": Route{
 			"DuplicateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/duplicate",
+			"/api/3.18/category/duplicate",
 			c.DuplicateCategory,
 		},
 		"GetCategory": Route{
 			"GetCategory",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/get",
+			"/api/3.18/category/get",
 			c.GetCategory,
 		},
 		"SearchCategories": Route{
 			"SearchCategories",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/search",
+			"/api/3.18/category/search",
 			c.SearchCategories,
 		},
 		"CategoryDistanceSearch": Route{
 			"CategoryDistanceSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/distancesearch",
+			"/api/3.18/category/distancesearch",
 			c.CategoryDistanceSearch,
 		},
 		"UpdateCategory": Route{
 			"UpdateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/update",
+			"/api/3.18/category/update",
 			c.UpdateCategory,
 		},
 	}
@@ -102,43 +100,43 @@ func (c *CategoryAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/create",
+			"/api/3.18/category/create",
 			c.CreateCategory,
 		},
 		Route{
 			"DeleteCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/delete",
+			"/api/3.18/category/delete",
 			c.DeleteCategory,
 		},
 		Route{
 			"DuplicateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/duplicate",
+			"/api/3.18/category/duplicate",
 			c.DuplicateCategory,
 		},
 		Route{
 			"GetCategory",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/get",
+			"/api/3.18/category/get",
 			c.GetCategory,
 		},
 		Route{
 			"SearchCategories",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/search",
+			"/api/3.18/category/search",
 			c.SearchCategories,
 		},
 		Route{
 			"CategoryDistanceSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/category/distancesearch",
+			"/api/3.18/category/distancesearch",
 			c.CategoryDistanceSearch,
 		},
 		Route{
 			"UpdateCategory",
 			strings.ToUpper("Post"),
-			"/api/{version}/category/update",
+			"/api/3.18/category/update",
 			c.UpdateCategory,
 		},
 	}
@@ -148,18 +146,9 @@ func (c *CategoryAPIController) OrderedRoutes() []Route {
 
 // CreateCategory - Create Category
 func (c *CategoryAPIController) CreateCategory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -292,7 +281,7 @@ func (c *CategoryAPIController) CreateCategory(w http.ResponseWriter, r *http.Re
 		searchTagsParam = param
 	} else {
 	}
-	result, err := c.service.CreateCategory(r.Context(), versionParam, accountIdParam, nameParam, appKeyParam, parentCategoryIdParam, descriptionParam, type_Param, assetIdParam, externalIdParam, externalTypeParam, externalCategorySlugParam, sqootSlugParam, activeParam, metaDataParam, searchTagsParam)
+	result, err := c.service.CreateCategory(r.Context(), accountIdParam, nameParam, appKeyParam, parentCategoryIdParam, descriptionParam, type_Param, assetIdParam, externalIdParam, externalTypeParam, externalCategorySlugParam, sqootSlugParam, activeParam, metaDataParam, searchTagsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -304,18 +293,9 @@ func (c *CategoryAPIController) CreateCategory(w http.ResponseWriter, r *http.Re
 
 // DeleteCategory - Delete Category
 func (c *CategoryAPIController) DeleteCategory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -350,7 +330,7 @@ func (c *CategoryAPIController) DeleteCategory(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "categoryId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteCategory(r.Context(), versionParam, accountIdParam, categoryIdParam)
+	result, err := c.service.DeleteCategory(r.Context(), accountIdParam, categoryIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -362,18 +342,9 @@ func (c *CategoryAPIController) DeleteCategory(w http.ResponseWriter, r *http.Re
 
 // DuplicateCategory - Duplicate Category
 func (c *CategoryAPIController) DuplicateCategory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -429,7 +400,7 @@ func (c *CategoryAPIController) DuplicateCategory(w http.ResponseWriter, r *http
 		parentCategoryIdParam = param
 	} else {
 	}
-	result, err := c.service.DuplicateCategory(r.Context(), versionParam, accountIdParam, categoryIdParam, appKeyParam, parentCategoryIdParam)
+	result, err := c.service.DuplicateCategory(r.Context(), accountIdParam, categoryIdParam, appKeyParam, parentCategoryIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -441,18 +412,9 @@ func (c *CategoryAPIController) DuplicateCategory(w http.ResponseWriter, r *http
 
 // GetCategory - Get Category
 func (c *CategoryAPIController) GetCategory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var categoryIdParam int64
@@ -487,7 +449,7 @@ func (c *CategoryAPIController) GetCategory(w http.ResponseWriter, r *http.Reque
 		var param bool = true
 		returnExternalParam = param
 	}
-	result, err := c.service.GetCategory(r.Context(), versionParam, categoryIdParam, returnExternalParam)
+	result, err := c.service.GetCategory(r.Context(), categoryIdParam, returnExternalParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -499,18 +461,9 @@ func (c *CategoryAPIController) GetCategory(w http.ResponseWriter, r *http.Reque
 
 // SearchCategories - Search Categories
 func (c *CategoryAPIController) SearchCategories(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -753,7 +706,7 @@ func (c *CategoryAPIController) SearchCategories(w http.ResponseWriter, r *http.
 		searchModeParam = param
 	} else {
 	}
-	result, err := c.service.SearchCategories(r.Context(), versionParam, accountIdParam, keywordParam, appKeyParam, categoryIdParam, categoryIdsParam, parentCategoryIdsParam, rootOnlyParam, sortFieldParam, responseGroupParam, descendingParam, startParam, limitParam, activeOnlyParam, returnExternalParam, exactMatchParam, type_Param, externalTypeParam, excludeExternalTypeParam, minOfferCountParam, searchDepthParam, searchModeParam)
+	result, err := c.service.SearchCategories(r.Context(), accountIdParam, keywordParam, appKeyParam, categoryIdParam, categoryIdsParam, parentCategoryIdsParam, rootOnlyParam, sortFieldParam, responseGroupParam, descendingParam, startParam, limitParam, activeOnlyParam, returnExternalParam, exactMatchParam, type_Param, externalTypeParam, excludeExternalTypeParam, minOfferCountParam, searchDepthParam, searchModeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -765,18 +718,9 @@ func (c *CategoryAPIController) SearchCategories(w http.ResponseWriter, r *http.
 
 // CategoryDistanceSearch - Search Categories by Distance
 func (c *CategoryAPIController) CategoryDistanceSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1013,7 +957,7 @@ func (c *CategoryAPIController) CategoryDistanceSearch(w http.ResponseWriter, r 
 		range_Param = param
 	} else {
 	}
-	result, err := c.service.CategoryDistanceSearch(r.Context(), versionParam, accountIdParam, keywordParam, appKeyParam, categoryIdsParam, parentCategoryIdsParam, rootOnlyParam, sortFieldParam, responseGroupParam, descendingParam, startParam, limitParam, activeOnlyParam, returnExternalParam, exactMatchParam, type_Param, externalTypeParam, minOfferCountParam, latitudeParam, longitudeParam, range_Param)
+	result, err := c.service.CategoryDistanceSearch(r.Context(), accountIdParam, keywordParam, appKeyParam, categoryIdsParam, parentCategoryIdsParam, rootOnlyParam, sortFieldParam, responseGroupParam, descendingParam, startParam, limitParam, activeOnlyParam, returnExternalParam, exactMatchParam, type_Param, externalTypeParam, minOfferCountParam, latitudeParam, longitudeParam, range_Param)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1025,18 +969,9 @@ func (c *CategoryAPIController) CategoryDistanceSearch(w http.ResponseWriter, r 
 
 // UpdateCategory - Update Category
 func (c *CategoryAPIController) UpdateCategory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1176,7 +1111,7 @@ func (c *CategoryAPIController) UpdateCategory(w http.ResponseWriter, r *http.Re
 		searchTagsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateCategory(r.Context(), versionParam, accountIdParam, categoryIdParam, parentCategoryIdParam, nameParam, descriptionParam, type_Param, assetIdParam, externalIdParam, externalTypeParam, externalCategorySlugParam, sqootSlugParam, activeParam, metaDataParam, searchTagsParam)
+	result, err := c.service.UpdateCategory(r.Context(), accountIdParam, categoryIdParam, parentCategoryIdParam, nameParam, descriptionParam, type_Param, assetIdParam, externalIdParam, externalTypeParam, externalCategorySlugParam, sqootSlugParam, activeParam, metaDataParam, searchTagsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

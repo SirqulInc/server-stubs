@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // VatomAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,325 +52,325 @@ func (c *VatomAPIController) Routes() Routes {
 		"GetUserProfile": Route{
 			"GetUserProfile",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/get",
+			"/api/3.18/vatom/me/get",
 			c.GetUserProfile,
 		},
 		"UpdateUserProfile": Route{
 			"UpdateUserProfile",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/update",
+			"/api/3.18/vatom/me/update",
 			c.UpdateUserProfile,
 		},
 		"SearchIdentities": Route{
 			"SearchIdentities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/identities/search",
+			"/api/3.18/vatom/me/identities/search",
 			c.SearchIdentities,
 		},
 		"GetUserInfo": Route{
 			"GetUserInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/user/get",
+			"/api/3.18/vatom/user/get",
 			c.GetUserInfo,
 		},
 		"GetMyFollowing": Route{
 			"GetMyFollowing",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/rels/following",
+			"/api/3.18/vatom/me/rels/following",
 			c.GetMyFollowing,
 		},
 		"CreateFollowing": Route{
 			"CreateFollowing",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/rels/following/create",
+			"/api/3.18/vatom/me/rels/following/create",
 			c.CreateFollowing,
 		},
 		"DeleteFollowing": Route{
 			"DeleteFollowing",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/rels/following/delete",
+			"/api/3.18/vatom/me/rels/following/delete",
 			c.DeleteFollowing,
 		},
 		"GetUserFollowers": Route{
 			"GetUserFollowers",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/users/rels/followers",
+			"/api/3.18/vatom/users/rels/followers",
 			c.GetUserFollowers,
 		},
 		"GetUserFollowing": Route{
 			"GetUserFollowing",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/users/rels/following",
+			"/api/3.18/vatom/users/rels/following",
 			c.GetUserFollowing,
 		},
 		"GetUserCoinsBalance": Route{
 			"GetUserCoinsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/coins/get",
+			"/api/3.18/vatom/u/coins/get",
 			c.GetUserCoinsBalance,
 		},
 		"ListUserCoinTransactions": Route{
 			"ListUserCoinTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/coins/txns/search",
+			"/api/3.18/vatom/u/coins/txns/search",
 			c.ListUserCoinTransactions,
 		},
 		"TransferUserCoins": Route{
 			"TransferUserCoins",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/u/coins/transfer",
+			"/api/3.18/vatom/u/coins/transfer",
 			c.TransferUserCoins,
 		},
 		"GetBusinessCoinsBalance": Route{
 			"GetBusinessCoinsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/coins/get",
+			"/api/3.18/vatom/b/coins/get",
 			c.GetBusinessCoinsBalance,
 		},
 		"UpdateBusinessCoins": Route{
 			"UpdateBusinessCoins",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/coins/update",
+			"/api/3.18/vatom/b/coins/update",
 			c.UpdateBusinessCoins,
 		},
 		"GetUserCoinsAsBusiness": Route{
 			"GetUserCoinsAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users/coins/get",
+			"/api/3.18/vatom/b/users/coins/get",
 			c.GetUserCoinsAsBusiness,
 		},
 		"UpdateUserCoinsAsBusiness": Route{
 			"UpdateUserCoinsAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/users/coins/update",
+			"/api/3.18/vatom/b/users/coins/update",
 			c.UpdateUserCoinsAsBusiness,
 		},
 		"ListUserCoinTransactionsAsBusiness": Route{
 			"ListUserCoinTransactionsAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users/coins/txns/search",
+			"/api/3.18/vatom/b/users/coins/txns/search",
 			c.ListUserCoinTransactionsAsBusiness,
 		},
 		"RedeemUserCoinsAsBusiness": Route{
 			"RedeemUserCoinsAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/users/coins/redeem",
+			"/api/3.18/vatom/b/users/coins/redeem",
 			c.RedeemUserCoinsAsBusiness,
 		},
 		"GetBusinessIds": Route{
 			"GetBusinessIds",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/businesses",
+			"/api/3.18/vatom/me/businesses",
 			c.GetBusinessIds,
 		},
 		"GetInventory": Route{
 			"GetInventory",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/inventory",
+			"/api/3.18/vatom/me/inventory",
 			c.GetInventory,
 		},
 		"SearchInventory": Route{
 			"SearchInventory",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/user-inventory/search",
+			"/api/3.18/vatom/user-inventory/search",
 			c.SearchInventory,
 		},
 		"PerformActionOnNFT": Route{
 			"PerformActionOnNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/vatoms/actions",
+			"/api/3.18/vatom/me/vatoms/actions",
 			c.PerformActionOnNFT,
 		},
 		"ExecuteActionOnNFT": Route{
 			"ExecuteActionOnNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/vatoms/execute-action",
+			"/api/3.18/vatom/vatoms/execute-action",
 			c.ExecuteActionOnNFT,
 		},
 		"GeomapSearch": Route{
 			"GeomapSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/vatoms/geo-map/search",
+			"/api/3.18/vatom/vatoms/geo-map/search",
 			c.GeomapSearch,
 		},
 		"GetVatomNFT": Route{
 			"GetVatomNFT",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/vatoms/get",
+			"/api/3.18/vatom/vatoms/get",
 			c.GetVatomNFT,
 		},
 		"DeleteVatomNFT": Route{
 			"DeleteVatomNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/vatoms/delete",
+			"/api/3.18/vatom/vatoms/delete",
 			c.DeleteVatomNFT,
 		},
 		"GetBusinessInfo": Route{
 			"GetBusinessInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/get",
+			"/api/3.18/vatom/b/get",
 			c.GetBusinessInfo,
 		},
 		"SearchBusinesses": Route{
 			"SearchBusinesses",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/search",
+			"/api/3.18/vatom/b/search",
 			c.SearchBusinesses,
 		},
 		"GetBusinessUsers": Route{
 			"GetBusinessUsers",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users",
+			"/api/3.18/vatom/b/users",
 			c.GetBusinessUsers,
 		},
 		"GetBusinessBehaviors": Route{
 			"GetBusinessBehaviors",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/behaviors",
+			"/api/3.18/vatom/b/behaviors",
 			c.GetBusinessBehaviors,
 		},
 		"GetCampaignInfo": Route{
 			"GetCampaignInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/get",
+			"/api/3.18/vatom/b/campaign-groups/get",
 			c.GetCampaignInfo,
 		},
 		"SearchCampaignGroups": Route{
 			"SearchCampaignGroups",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/search",
+			"/api/3.18/vatom/b/campaign-groups/search",
 			c.SearchCampaignGroups,
 		},
 		"GetCampaignGroupStats": Route{
 			"GetCampaignGroupStats",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/stats",
+			"/api/3.18/vatom/b/campaign-groups/stats",
 			c.GetCampaignGroupStats,
 		},
 		"GetCampaignGroupEntities": Route{
 			"GetCampaignGroupEntities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/entities",
+			"/api/3.18/vatom/b/campaign-groups/entities",
 			c.GetCampaignGroupEntities,
 		},
 		"GetCampaignGroupRules": Route{
 			"GetCampaignGroupRules",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/rules",
+			"/api/3.18/vatom/b/campaign-groups/rules",
 			c.GetCampaignGroupRules,
 		},
 		"SendNFT": Route{
 			"SendNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaigns/send",
+			"/api/3.18/vatom/b/campaigns/send",
 			c.SendNFT,
 		},
 		"RedeemNFT": Route{
 			"RedeemNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/redemptions",
+			"/api/3.18/vatom/b/redemptions",
 			c.RedeemNFT,
 		},
 		"GetPointsBalance": Route{
 			"GetPointsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/campaign/points/get",
+			"/api/3.18/vatom/u/campaign/points/get",
 			c.GetPointsBalance,
 		},
 		"GetPointsBalanceAsBusiness": Route{
 			"GetPointsBalanceAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign/u/points/get",
+			"/api/3.18/vatom/b/campaign/u/points/get",
 			c.GetPointsBalanceAsBusiness,
 		},
 		"SetPointsBalanceAsBusiness": Route{
 			"SetPointsBalanceAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaign/u/points/update",
+			"/api/3.18/vatom/b/campaign/u/points/update",
 			c.SetPointsBalanceAsBusiness,
 		},
 		"DeletePointsBalance": Route{
 			"DeletePointsBalance",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaign/points/delete",
+			"/api/3.18/vatom/b/campaign/points/delete",
 			c.DeletePointsBalance,
 		},
 		"ListCommunities": Route{
 			"ListCommunities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/communities/search",
+			"/api/3.18/vatom/b/communities/search",
 			c.ListCommunities,
 		},
 		"ListSpaces": Route{
 			"ListSpaces",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/spaces/search",
+			"/api/3.18/vatom/b/spaces/search",
 			c.ListSpaces,
 		},
 		"GetSpace": Route{
 			"GetSpace",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/spaces/get",
+			"/api/3.18/vatom/b/spaces/get",
 			c.GetSpace,
 		},
 		"CreateSpace": Route{
 			"CreateSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/create",
+			"/api/3.18/vatom/b/spaces/create",
 			c.CreateSpace,
 		},
 		"UpdateSpace": Route{
 			"UpdateSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/update",
+			"/api/3.18/vatom/b/spaces/update",
 			c.UpdateSpace,
 		},
 		"DeleteSpace": Route{
 			"DeleteSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/delete",
+			"/api/3.18/vatom/b/spaces/delete",
 			c.DeleteSpace,
 		},
 		"ListEvents": Route{
 			"ListEvents",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/search",
+			"/api/3.18/vatom/b/events/search",
 			c.ListEvents,
 		},
 		"GetVatomEvent": Route{
 			"GetVatomEvent",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/get",
+			"/api/3.18/vatom/b/events/get",
 			c.GetVatomEvent,
 		},
 		"CreateVatomEvent": Route{
 			"CreateVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/create",
+			"/api/3.18/vatom/b/events/create",
 			c.CreateVatomEvent,
 		},
 		"UpdateVatomEvent": Route{
 			"UpdateVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/update",
+			"/api/3.18/vatom/b/events/update",
 			c.UpdateVatomEvent,
 		},
 		"DeleteVatomEvent": Route{
 			"DeleteVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/delete",
+			"/api/3.18/vatom/b/events/delete",
 			c.DeleteVatomEvent,
 		},
 		"GetEventGuestList": Route{
 			"GetEventGuestList",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/guests/get",
+			"/api/3.18/vatom/b/events/guests/get",
 			c.GetEventGuestList,
 		},
 		"UpdateEventGuestList": Route{
 			"UpdateEventGuestList",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/guests/update",
+			"/api/3.18/vatom/b/events/guests/update",
 			c.UpdateEventGuestList,
 		},
 	}
@@ -384,325 +382,325 @@ func (c *VatomAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetUserProfile",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/get",
+			"/api/3.18/vatom/me/get",
 			c.GetUserProfile,
 		},
 		Route{
 			"UpdateUserProfile",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/update",
+			"/api/3.18/vatom/me/update",
 			c.UpdateUserProfile,
 		},
 		Route{
 			"SearchIdentities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/identities/search",
+			"/api/3.18/vatom/me/identities/search",
 			c.SearchIdentities,
 		},
 		Route{
 			"GetUserInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/user/get",
+			"/api/3.18/vatom/user/get",
 			c.GetUserInfo,
 		},
 		Route{
 			"GetMyFollowing",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/rels/following",
+			"/api/3.18/vatom/me/rels/following",
 			c.GetMyFollowing,
 		},
 		Route{
 			"CreateFollowing",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/rels/following/create",
+			"/api/3.18/vatom/me/rels/following/create",
 			c.CreateFollowing,
 		},
 		Route{
 			"DeleteFollowing",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/rels/following/delete",
+			"/api/3.18/vatom/me/rels/following/delete",
 			c.DeleteFollowing,
 		},
 		Route{
 			"GetUserFollowers",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/users/rels/followers",
+			"/api/3.18/vatom/users/rels/followers",
 			c.GetUserFollowers,
 		},
 		Route{
 			"GetUserFollowing",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/users/rels/following",
+			"/api/3.18/vatom/users/rels/following",
 			c.GetUserFollowing,
 		},
 		Route{
 			"GetUserCoinsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/coins/get",
+			"/api/3.18/vatom/u/coins/get",
 			c.GetUserCoinsBalance,
 		},
 		Route{
 			"ListUserCoinTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/coins/txns/search",
+			"/api/3.18/vatom/u/coins/txns/search",
 			c.ListUserCoinTransactions,
 		},
 		Route{
 			"TransferUserCoins",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/u/coins/transfer",
+			"/api/3.18/vatom/u/coins/transfer",
 			c.TransferUserCoins,
 		},
 		Route{
 			"GetBusinessCoinsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/coins/get",
+			"/api/3.18/vatom/b/coins/get",
 			c.GetBusinessCoinsBalance,
 		},
 		Route{
 			"UpdateBusinessCoins",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/coins/update",
+			"/api/3.18/vatom/b/coins/update",
 			c.UpdateBusinessCoins,
 		},
 		Route{
 			"GetUserCoinsAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users/coins/get",
+			"/api/3.18/vatom/b/users/coins/get",
 			c.GetUserCoinsAsBusiness,
 		},
 		Route{
 			"UpdateUserCoinsAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/users/coins/update",
+			"/api/3.18/vatom/b/users/coins/update",
 			c.UpdateUserCoinsAsBusiness,
 		},
 		Route{
 			"ListUserCoinTransactionsAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users/coins/txns/search",
+			"/api/3.18/vatom/b/users/coins/txns/search",
 			c.ListUserCoinTransactionsAsBusiness,
 		},
 		Route{
 			"RedeemUserCoinsAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/users/coins/redeem",
+			"/api/3.18/vatom/b/users/coins/redeem",
 			c.RedeemUserCoinsAsBusiness,
 		},
 		Route{
 			"GetBusinessIds",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/businesses",
+			"/api/3.18/vatom/me/businesses",
 			c.GetBusinessIds,
 		},
 		Route{
 			"GetInventory",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/me/inventory",
+			"/api/3.18/vatom/me/inventory",
 			c.GetInventory,
 		},
 		Route{
 			"SearchInventory",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/user-inventory/search",
+			"/api/3.18/vatom/user-inventory/search",
 			c.SearchInventory,
 		},
 		Route{
 			"PerformActionOnNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/me/vatoms/actions",
+			"/api/3.18/vatom/me/vatoms/actions",
 			c.PerformActionOnNFT,
 		},
 		Route{
 			"ExecuteActionOnNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/vatoms/execute-action",
+			"/api/3.18/vatom/vatoms/execute-action",
 			c.ExecuteActionOnNFT,
 		},
 		Route{
 			"GeomapSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/vatoms/geo-map/search",
+			"/api/3.18/vatom/vatoms/geo-map/search",
 			c.GeomapSearch,
 		},
 		Route{
 			"GetVatomNFT",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/vatoms/get",
+			"/api/3.18/vatom/vatoms/get",
 			c.GetVatomNFT,
 		},
 		Route{
 			"DeleteVatomNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/vatoms/delete",
+			"/api/3.18/vatom/vatoms/delete",
 			c.DeleteVatomNFT,
 		},
 		Route{
 			"GetBusinessInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/get",
+			"/api/3.18/vatom/b/get",
 			c.GetBusinessInfo,
 		},
 		Route{
 			"SearchBusinesses",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/search",
+			"/api/3.18/vatom/b/search",
 			c.SearchBusinesses,
 		},
 		Route{
 			"GetBusinessUsers",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/users",
+			"/api/3.18/vatom/b/users",
 			c.GetBusinessUsers,
 		},
 		Route{
 			"GetBusinessBehaviors",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/behaviors",
+			"/api/3.18/vatom/b/behaviors",
 			c.GetBusinessBehaviors,
 		},
 		Route{
 			"GetCampaignInfo",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/get",
+			"/api/3.18/vatom/b/campaign-groups/get",
 			c.GetCampaignInfo,
 		},
 		Route{
 			"SearchCampaignGroups",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/search",
+			"/api/3.18/vatom/b/campaign-groups/search",
 			c.SearchCampaignGroups,
 		},
 		Route{
 			"GetCampaignGroupStats",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/stats",
+			"/api/3.18/vatom/b/campaign-groups/stats",
 			c.GetCampaignGroupStats,
 		},
 		Route{
 			"GetCampaignGroupEntities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/entities",
+			"/api/3.18/vatom/b/campaign-groups/entities",
 			c.GetCampaignGroupEntities,
 		},
 		Route{
 			"GetCampaignGroupRules",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign-groups/rules",
+			"/api/3.18/vatom/b/campaign-groups/rules",
 			c.GetCampaignGroupRules,
 		},
 		Route{
 			"SendNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaigns/send",
+			"/api/3.18/vatom/b/campaigns/send",
 			c.SendNFT,
 		},
 		Route{
 			"RedeemNFT",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/redemptions",
+			"/api/3.18/vatom/b/redemptions",
 			c.RedeemNFT,
 		},
 		Route{
 			"GetPointsBalance",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/u/campaign/points/get",
+			"/api/3.18/vatom/u/campaign/points/get",
 			c.GetPointsBalance,
 		},
 		Route{
 			"GetPointsBalanceAsBusiness",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/campaign/u/points/get",
+			"/api/3.18/vatom/b/campaign/u/points/get",
 			c.GetPointsBalanceAsBusiness,
 		},
 		Route{
 			"SetPointsBalanceAsBusiness",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaign/u/points/update",
+			"/api/3.18/vatom/b/campaign/u/points/update",
 			c.SetPointsBalanceAsBusiness,
 		},
 		Route{
 			"DeletePointsBalance",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/campaign/points/delete",
+			"/api/3.18/vatom/b/campaign/points/delete",
 			c.DeletePointsBalance,
 		},
 		Route{
 			"ListCommunities",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/communities/search",
+			"/api/3.18/vatom/b/communities/search",
 			c.ListCommunities,
 		},
 		Route{
 			"ListSpaces",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/spaces/search",
+			"/api/3.18/vatom/b/spaces/search",
 			c.ListSpaces,
 		},
 		Route{
 			"GetSpace",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/spaces/get",
+			"/api/3.18/vatom/b/spaces/get",
 			c.GetSpace,
 		},
 		Route{
 			"CreateSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/create",
+			"/api/3.18/vatom/b/spaces/create",
 			c.CreateSpace,
 		},
 		Route{
 			"UpdateSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/update",
+			"/api/3.18/vatom/b/spaces/update",
 			c.UpdateSpace,
 		},
 		Route{
 			"DeleteSpace",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/spaces/delete",
+			"/api/3.18/vatom/b/spaces/delete",
 			c.DeleteSpace,
 		},
 		Route{
 			"ListEvents",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/search",
+			"/api/3.18/vatom/b/events/search",
 			c.ListEvents,
 		},
 		Route{
 			"GetVatomEvent",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/get",
+			"/api/3.18/vatom/b/events/get",
 			c.GetVatomEvent,
 		},
 		Route{
 			"CreateVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/create",
+			"/api/3.18/vatom/b/events/create",
 			c.CreateVatomEvent,
 		},
 		Route{
 			"UpdateVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/update",
+			"/api/3.18/vatom/b/events/update",
 			c.UpdateVatomEvent,
 		},
 		Route{
 			"DeleteVatomEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/delete",
+			"/api/3.18/vatom/b/events/delete",
 			c.DeleteVatomEvent,
 		},
 		Route{
 			"GetEventGuestList",
 			strings.ToUpper("Get"),
-			"/api/{version}/vatom/b/events/guests/get",
+			"/api/3.18/vatom/b/events/guests/get",
 			c.GetEventGuestList,
 		},
 		Route{
 			"UpdateEventGuestList",
 			strings.ToUpper("Post"),
-			"/api/{version}/vatom/b/events/guests/update",
+			"/api/3.18/vatom/b/events/guests/update",
 			c.UpdateEventGuestList,
 		},
 	}
@@ -712,18 +710,9 @@ func (c *VatomAPIController) OrderedRoutes() []Route {
 
 // GetUserProfile - Get Vatom User Profile
 func (c *VatomAPIController) GetUserProfile(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -756,7 +745,7 @@ func (c *VatomAPIController) GetUserProfile(w http.ResponseWriter, r *http.Reque
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserProfile(r.Context(), versionParam, accountIdParam, returnRawResponseParam)
+	result, err := c.service.GetUserProfile(r.Context(), accountIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -768,18 +757,9 @@ func (c *VatomAPIController) GetUserProfile(w http.ResponseWriter, r *http.Reque
 
 // UpdateUserProfile - Update Vatom User Profile
 func (c *VatomAPIController) UpdateUserProfile(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -821,7 +801,7 @@ func (c *VatomAPIController) UpdateUserProfile(w http.ResponseWriter, r *http.Re
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateUserProfile(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateUserProfile(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -833,18 +813,9 @@ func (c *VatomAPIController) UpdateUserProfile(w http.ResponseWriter, r *http.Re
 
 // SearchIdentities - Search User Identities
 func (c *VatomAPIController) SearchIdentities(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -877,7 +848,7 @@ func (c *VatomAPIController) SearchIdentities(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SearchIdentities(r.Context(), versionParam, accountIdParam, returnRawResponseParam)
+	result, err := c.service.SearchIdentities(r.Context(), accountIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -889,18 +860,9 @@ func (c *VatomAPIController) SearchIdentities(w http.ResponseWriter, r *http.Req
 
 // GetUserInfo - Get User Info
 func (c *VatomAPIController) GetUserInfo(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -942,7 +904,7 @@ func (c *VatomAPIController) GetUserInfo(w http.ResponseWriter, r *http.Request)
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserInfo(r.Context(), versionParam, accountIdParam, vatomUserIdParam, returnRawResponseParam)
+	result, err := c.service.GetUserInfo(r.Context(), accountIdParam, vatomUserIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -954,18 +916,9 @@ func (c *VatomAPIController) GetUserInfo(w http.ResponseWriter, r *http.Request)
 
 // GetMyFollowing - Get following
 func (c *VatomAPIController) GetMyFollowing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -998,7 +951,7 @@ func (c *VatomAPIController) GetMyFollowing(w http.ResponseWriter, r *http.Reque
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetMyFollowing(r.Context(), versionParam, accountIdParam, returnRawResponseParam)
+	result, err := c.service.GetMyFollowing(r.Context(), accountIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1010,18 +963,9 @@ func (c *VatomAPIController) GetMyFollowing(w http.ResponseWriter, r *http.Reque
 
 // CreateFollowing - Create following
 func (c *VatomAPIController) CreateFollowing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1063,7 +1007,7 @@ func (c *VatomAPIController) CreateFollowing(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.CreateFollowing(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.CreateFollowing(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1075,18 +1019,9 @@ func (c *VatomAPIController) CreateFollowing(w http.ResponseWriter, r *http.Requ
 
 // DeleteFollowing - Delete following
 func (c *VatomAPIController) DeleteFollowing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1128,7 +1063,7 @@ func (c *VatomAPIController) DeleteFollowing(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.DeleteFollowing(r.Context(), versionParam, accountIdParam, vatomRelsKeyParam, returnRawResponseParam)
+	result, err := c.service.DeleteFollowing(r.Context(), accountIdParam, vatomRelsKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1140,18 +1075,9 @@ func (c *VatomAPIController) DeleteFollowing(w http.ResponseWriter, r *http.Requ
 
 // GetUserFollowers - Get user followers
 func (c *VatomAPIController) GetUserFollowers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1193,7 +1119,7 @@ func (c *VatomAPIController) GetUserFollowers(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserFollowers(r.Context(), versionParam, accountIdParam, vatomUserIdParam, returnRawResponseParam)
+	result, err := c.service.GetUserFollowers(r.Context(), accountIdParam, vatomUserIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1205,18 +1131,9 @@ func (c *VatomAPIController) GetUserFollowers(w http.ResponseWriter, r *http.Req
 
 // GetUserFollowing - Get user following
 func (c *VatomAPIController) GetUserFollowing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1258,7 +1175,7 @@ func (c *VatomAPIController) GetUserFollowing(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserFollowing(r.Context(), versionParam, accountIdParam, vatomUserIdParam, returnRawResponseParam)
+	result, err := c.service.GetUserFollowing(r.Context(), accountIdParam, vatomUserIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1270,18 +1187,9 @@ func (c *VatomAPIController) GetUserFollowing(w http.ResponseWriter, r *http.Req
 
 // GetUserCoinsBalance - Gets the coins balance for a Vatom User
 func (c *VatomAPIController) GetUserCoinsBalance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1330,7 +1238,7 @@ func (c *VatomAPIController) GetUserCoinsBalance(w http.ResponseWriter, r *http.
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserCoinsBalance(r.Context(), versionParam, accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.GetUserCoinsBalance(r.Context(), accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1342,18 +1250,9 @@ func (c *VatomAPIController) GetUserCoinsBalance(w http.ResponseWriter, r *http.
 
 // ListUserCoinTransactions - List Coin Transactions for a Vatom User
 func (c *VatomAPIController) ListUserCoinTransactions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1402,7 +1301,7 @@ func (c *VatomAPIController) ListUserCoinTransactions(w http.ResponseWriter, r *
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ListUserCoinTransactions(r.Context(), versionParam, accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ListUserCoinTransactions(r.Context(), accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1414,18 +1313,9 @@ func (c *VatomAPIController) ListUserCoinTransactions(w http.ResponseWriter, r *
 
 // TransferUserCoins - Transfer coins from Vatom Users
 func (c *VatomAPIController) TransferUserCoins(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1476,7 +1366,7 @@ func (c *VatomAPIController) TransferUserCoins(w http.ResponseWriter, r *http.Re
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.TransferUserCoins(r.Context(), versionParam, accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.TransferUserCoins(r.Context(), accountIdParam, vatomUserIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1488,18 +1378,9 @@ func (c *VatomAPIController) TransferUserCoins(w http.ResponseWriter, r *http.Re
 
 // GetBusinessCoinsBalance - Get the coins for a Business
 func (c *VatomAPIController) GetBusinessCoinsBalance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1541,7 +1422,7 @@ func (c *VatomAPIController) GetBusinessCoinsBalance(w http.ResponseWriter, r *h
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetBusinessCoinsBalance(r.Context(), versionParam, accountIdParam, appKeyParam, returnRawResponseParam)
+	result, err := c.service.GetBusinessCoinsBalance(r.Context(), accountIdParam, appKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1553,18 +1434,9 @@ func (c *VatomAPIController) GetBusinessCoinsBalance(w http.ResponseWriter, r *h
 
 // UpdateBusinessCoins - Fund coins for a Business
 func (c *VatomAPIController) UpdateBusinessCoins(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1615,7 +1487,7 @@ func (c *VatomAPIController) UpdateBusinessCoins(w http.ResponseWriter, r *http.
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateBusinessCoins(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateBusinessCoins(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1627,18 +1499,9 @@ func (c *VatomAPIController) UpdateBusinessCoins(w http.ResponseWriter, r *http.
 
 // GetUserCoinsAsBusiness - Get the coins for a user (as a Business)
 func (c *VatomAPIController) GetUserCoinsAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1689,7 +1552,7 @@ func (c *VatomAPIController) GetUserCoinsAsBusiness(w http.ResponseWriter, r *ht
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetUserCoinsAsBusiness(r.Context(), versionParam, accountIdParam, vatomUserIdParam, appKeyParam, returnRawResponseParam)
+	result, err := c.service.GetUserCoinsAsBusiness(r.Context(), accountIdParam, vatomUserIdParam, appKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1701,18 +1564,9 @@ func (c *VatomAPIController) GetUserCoinsAsBusiness(w http.ResponseWriter, r *ht
 
 // UpdateUserCoinsAsBusiness - Update the coins for a user (as a Business)
 func (c *VatomAPIController) UpdateUserCoinsAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1772,7 +1626,7 @@ func (c *VatomAPIController) UpdateUserCoinsAsBusiness(w http.ResponseWriter, r 
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateUserCoinsAsBusiness(r.Context(), versionParam, accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateUserCoinsAsBusiness(r.Context(), accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1784,18 +1638,9 @@ func (c *VatomAPIController) UpdateUserCoinsAsBusiness(w http.ResponseWriter, r 
 
 // ListUserCoinTransactionsAsBusiness - List coin transactions for a user (as a Business)
 func (c *VatomAPIController) ListUserCoinTransactionsAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1853,7 +1698,7 @@ func (c *VatomAPIController) ListUserCoinTransactionsAsBusiness(w http.ResponseW
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ListUserCoinTransactionsAsBusiness(r.Context(), versionParam, accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ListUserCoinTransactionsAsBusiness(r.Context(), accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1865,18 +1710,9 @@ func (c *VatomAPIController) ListUserCoinTransactionsAsBusiness(w http.ResponseW
 
 // RedeemUserCoinsAsBusiness - Redeem the coins for a user (as a Business)
 func (c *VatomAPIController) RedeemUserCoinsAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1936,7 +1772,7 @@ func (c *VatomAPIController) RedeemUserCoinsAsBusiness(w http.ResponseWriter, r 
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.RedeemUserCoinsAsBusiness(r.Context(), versionParam, accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.RedeemUserCoinsAsBusiness(r.Context(), accountIdParam, vatomUserIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1948,18 +1784,9 @@ func (c *VatomAPIController) RedeemUserCoinsAsBusiness(w http.ResponseWriter, r 
 
 // GetBusinessIds - Get the user business ids
 func (c *VatomAPIController) GetBusinessIds(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1992,7 +1819,7 @@ func (c *VatomAPIController) GetBusinessIds(w http.ResponseWriter, r *http.Reque
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetBusinessIds(r.Context(), versionParam, accountIdParam, returnRawResponseParam)
+	result, err := c.service.GetBusinessIds(r.Context(), accountIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2004,18 +1831,9 @@ func (c *VatomAPIController) GetBusinessIds(w http.ResponseWriter, r *http.Reque
 
 // GetInventory - Get Vatom User's Inventory
 func (c *VatomAPIController) GetInventory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2057,7 +1875,7 @@ func (c *VatomAPIController) GetInventory(w http.ResponseWriter, r *http.Request
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetInventory(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.GetInventory(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2069,18 +1887,9 @@ func (c *VatomAPIController) GetInventory(w http.ResponseWriter, r *http.Request
 
 // SearchInventory - Search Vatom User's Inventory
 func (c *VatomAPIController) SearchInventory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2120,7 +1929,7 @@ func (c *VatomAPIController) SearchInventory(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SearchInventory(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.SearchInventory(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2132,18 +1941,9 @@ func (c *VatomAPIController) SearchInventory(w http.ResponseWriter, r *http.Requ
 
 // PerformActionOnNFT - Perform Action on NFT
 func (c *VatomAPIController) PerformActionOnNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2203,7 +2003,7 @@ func (c *VatomAPIController) PerformActionOnNFT(w http.ResponseWriter, r *http.R
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.PerformActionOnNFT(r.Context(), versionParam, accountIdParam, vatomIdParam, vatomActionParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.PerformActionOnNFT(r.Context(), accountIdParam, vatomIdParam, vatomActionParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2215,18 +2015,9 @@ func (c *VatomAPIController) PerformActionOnNFT(w http.ResponseWriter, r *http.R
 
 // ExecuteActionOnNFT - Execute Action on NFT
 func (c *VatomAPIController) ExecuteActionOnNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2277,7 +2068,7 @@ func (c *VatomAPIController) ExecuteActionOnNFT(w http.ResponseWriter, r *http.R
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ExecuteActionOnNFT(r.Context(), versionParam, accountIdParam, vatomIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ExecuteActionOnNFT(r.Context(), accountIdParam, vatomIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2289,18 +2080,9 @@ func (c *VatomAPIController) ExecuteActionOnNFT(w http.ResponseWriter, r *http.R
 
 // GeomapSearch - Search Vatom Geo Map
 func (c *VatomAPIController) GeomapSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2342,7 +2124,7 @@ func (c *VatomAPIController) GeomapSearch(w http.ResponseWriter, r *http.Request
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GeomapSearch(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.GeomapSearch(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2354,18 +2136,9 @@ func (c *VatomAPIController) GeomapSearch(w http.ResponseWriter, r *http.Request
 
 // GetVatomNFT - Get Vatom NFT Details
 func (c *VatomAPIController) GetVatomNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2407,7 +2180,7 @@ func (c *VatomAPIController) GetVatomNFT(w http.ResponseWriter, r *http.Request)
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetVatomNFT(r.Context(), versionParam, accountIdParam, vatomIdParam, returnRawResponseParam)
+	result, err := c.service.GetVatomNFT(r.Context(), accountIdParam, vatomIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2419,18 +2192,9 @@ func (c *VatomAPIController) GetVatomNFT(w http.ResponseWriter, r *http.Request)
 
 // DeleteVatomNFT - Delete Vatom NFT
 func (c *VatomAPIController) DeleteVatomNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2472,7 +2236,7 @@ func (c *VatomAPIController) DeleteVatomNFT(w http.ResponseWriter, r *http.Reque
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.DeleteVatomNFT(r.Context(), versionParam, accountIdParam, vatomIdParam, returnRawResponseParam)
+	result, err := c.service.DeleteVatomNFT(r.Context(), accountIdParam, vatomIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2484,18 +2248,9 @@ func (c *VatomAPIController) DeleteVatomNFT(w http.ResponseWriter, r *http.Reque
 
 // GetBusinessInfo - Get Vatom Business Info
 func (c *VatomAPIController) GetBusinessInfo(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2544,7 +2299,7 @@ func (c *VatomAPIController) GetBusinessInfo(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetBusinessInfo(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.GetBusinessInfo(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2556,18 +2311,9 @@ func (c *VatomAPIController) GetBusinessInfo(w http.ResponseWriter, r *http.Requ
 
 // SearchBusinesses - Search for Vatom Businesses
 func (c *VatomAPIController) SearchBusinesses(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2607,7 +2353,7 @@ func (c *VatomAPIController) SearchBusinesses(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SearchBusinesses(r.Context(), versionParam, accountIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.SearchBusinesses(r.Context(), accountIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2619,18 +2365,9 @@ func (c *VatomAPIController) SearchBusinesses(w http.ResponseWriter, r *http.Req
 
 // GetBusinessUsers - Get Vatom Business Users
 func (c *VatomAPIController) GetBusinessUsers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2672,7 +2409,7 @@ func (c *VatomAPIController) GetBusinessUsers(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetBusinessUsers(r.Context(), versionParam, accountIdParam, appKeyParam, returnRawResponseParam)
+	result, err := c.service.GetBusinessUsers(r.Context(), accountIdParam, appKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2684,18 +2421,9 @@ func (c *VatomAPIController) GetBusinessUsers(w http.ResponseWriter, r *http.Req
 
 // GetBusinessBehaviors - Get Vatom Business Behaviors
 func (c *VatomAPIController) GetBusinessBehaviors(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2737,7 +2465,7 @@ func (c *VatomAPIController) GetBusinessBehaviors(w http.ResponseWriter, r *http
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetBusinessBehaviors(r.Context(), versionParam, accountIdParam, appKeyParam, returnRawResponseParam)
+	result, err := c.service.GetBusinessBehaviors(r.Context(), accountIdParam, appKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2749,18 +2477,9 @@ func (c *VatomAPIController) GetBusinessBehaviors(w http.ResponseWriter, r *http
 
 // GetCampaignInfo - Get Campaign Info
 func (c *VatomAPIController) GetCampaignInfo(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2811,7 +2530,7 @@ func (c *VatomAPIController) GetCampaignInfo(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetCampaignInfo(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetCampaignInfo(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2823,18 +2542,9 @@ func (c *VatomAPIController) GetCampaignInfo(w http.ResponseWriter, r *http.Requ
 
 // SearchCampaignGroups - Search Campaign Groups
 func (c *VatomAPIController) SearchCampaignGroups(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2876,7 +2586,7 @@ func (c *VatomAPIController) SearchCampaignGroups(w http.ResponseWriter, r *http
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SearchCampaignGroups(r.Context(), versionParam, accountIdParam, appKeyParam, returnRawResponseParam)
+	result, err := c.service.SearchCampaignGroups(r.Context(), accountIdParam, appKeyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2888,18 +2598,9 @@ func (c *VatomAPIController) SearchCampaignGroups(w http.ResponseWriter, r *http
 
 // GetCampaignGroupStats - Get Campaign Group Stats
 func (c *VatomAPIController) GetCampaignGroupStats(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2950,7 +2651,7 @@ func (c *VatomAPIController) GetCampaignGroupStats(w http.ResponseWriter, r *htt
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetCampaignGroupStats(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetCampaignGroupStats(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2962,18 +2663,9 @@ func (c *VatomAPIController) GetCampaignGroupStats(w http.ResponseWriter, r *htt
 
 // GetCampaignGroupEntities - Get Campaign Group Entities
 func (c *VatomAPIController) GetCampaignGroupEntities(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3024,7 +2716,7 @@ func (c *VatomAPIController) GetCampaignGroupEntities(w http.ResponseWriter, r *
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetCampaignGroupEntities(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetCampaignGroupEntities(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3036,18 +2728,9 @@ func (c *VatomAPIController) GetCampaignGroupEntities(w http.ResponseWriter, r *
 
 // GetCampaignGroupRules - Get Campaign Group Rules
 func (c *VatomAPIController) GetCampaignGroupRules(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3098,7 +2781,7 @@ func (c *VatomAPIController) GetCampaignGroupRules(w http.ResponseWriter, r *htt
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetCampaignGroupRules(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetCampaignGroupRules(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3110,18 +2793,9 @@ func (c *VatomAPIController) GetCampaignGroupRules(w http.ResponseWriter, r *htt
 
 // SendNFT - Send NFT
 func (c *VatomAPIController) SendNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3181,7 +2855,7 @@ func (c *VatomAPIController) SendNFT(w http.ResponseWriter, r *http.Request) {
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SendNFT(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.SendNFT(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3193,18 +2867,9 @@ func (c *VatomAPIController) SendNFT(w http.ResponseWriter, r *http.Request) {
 
 // RedeemNFT - Redeem NFT
 func (c *VatomAPIController) RedeemNFT(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3255,7 +2920,7 @@ func (c *VatomAPIController) RedeemNFT(w http.ResponseWriter, r *http.Request) {
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.RedeemNFT(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.RedeemNFT(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3267,18 +2932,9 @@ func (c *VatomAPIController) RedeemNFT(w http.ResponseWriter, r *http.Request) {
 
 // GetPointsBalance - Get Points Balance
 func (c *VatomAPIController) GetPointsBalance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3329,7 +2985,7 @@ func (c *VatomAPIController) GetPointsBalance(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetPointsBalance(r.Context(), versionParam, accountIdParam, vatomUserIdParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetPointsBalance(r.Context(), accountIdParam, vatomUserIdParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3341,18 +2997,9 @@ func (c *VatomAPIController) GetPointsBalance(w http.ResponseWriter, r *http.Req
 
 // GetPointsBalanceAsBusiness - Get Points Balance as Business
 func (c *VatomAPIController) GetPointsBalanceAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3412,7 +3059,7 @@ func (c *VatomAPIController) GetPointsBalanceAsBusiness(w http.ResponseWriter, r
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetPointsBalanceAsBusiness(r.Context(), versionParam, accountIdParam, appKeyParam, vatomUserIdParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.GetPointsBalanceAsBusiness(r.Context(), accountIdParam, appKeyParam, vatomUserIdParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3424,18 +3071,9 @@ func (c *VatomAPIController) GetPointsBalanceAsBusiness(w http.ResponseWriter, r
 
 // SetPointsBalanceAsBusiness - Set Points Balance as Business
 func (c *VatomAPIController) SetPointsBalanceAsBusiness(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3504,7 +3142,7 @@ func (c *VatomAPIController) SetPointsBalanceAsBusiness(w http.ResponseWriter, r
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.SetPointsBalanceAsBusiness(r.Context(), versionParam, accountIdParam, appKeyParam, vatomUserIdParam, vatomCampaignIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.SetPointsBalanceAsBusiness(r.Context(), accountIdParam, appKeyParam, vatomUserIdParam, vatomCampaignIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3516,18 +3154,9 @@ func (c *VatomAPIController) SetPointsBalanceAsBusiness(w http.ResponseWriter, r
 
 // DeletePointsBalance - Reset All Points Balance
 func (c *VatomAPIController) DeletePointsBalance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3578,7 +3207,7 @@ func (c *VatomAPIController) DeletePointsBalance(w http.ResponseWriter, r *http.
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.DeletePointsBalance(r.Context(), versionParam, accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
+	result, err := c.service.DeletePointsBalance(r.Context(), accountIdParam, appKeyParam, vatomCampaignIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3590,18 +3219,9 @@ func (c *VatomAPIController) DeletePointsBalance(w http.ResponseWriter, r *http.
 
 // ListCommunities - List Vatom Communities
 func (c *VatomAPIController) ListCommunities(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3650,7 +3270,7 @@ func (c *VatomAPIController) ListCommunities(w http.ResponseWriter, r *http.Requ
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ListCommunities(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ListCommunities(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3662,18 +3282,9 @@ func (c *VatomAPIController) ListCommunities(w http.ResponseWriter, r *http.Requ
 
 // ListSpaces - List Vatom Spaces
 func (c *VatomAPIController) ListSpaces(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3722,7 +3333,7 @@ func (c *VatomAPIController) ListSpaces(w http.ResponseWriter, r *http.Request) 
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ListSpaces(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ListSpaces(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3734,18 +3345,9 @@ func (c *VatomAPIController) ListSpaces(w http.ResponseWriter, r *http.Request) 
 
 // GetSpace - Get Vatom Space
 func (c *VatomAPIController) GetSpace(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3796,7 +3398,7 @@ func (c *VatomAPIController) GetSpace(w http.ResponseWriter, r *http.Request) {
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetSpace(r.Context(), versionParam, accountIdParam, appKeyParam, vatomSpaceIdParam, returnRawResponseParam)
+	result, err := c.service.GetSpace(r.Context(), accountIdParam, appKeyParam, vatomSpaceIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3808,18 +3410,9 @@ func (c *VatomAPIController) GetSpace(w http.ResponseWriter, r *http.Request) {
 
 // CreateSpace - Create Vatom Space
 func (c *VatomAPIController) CreateSpace(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3870,7 +3463,7 @@ func (c *VatomAPIController) CreateSpace(w http.ResponseWriter, r *http.Request)
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.CreateSpace(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.CreateSpace(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3882,18 +3475,9 @@ func (c *VatomAPIController) CreateSpace(w http.ResponseWriter, r *http.Request)
 
 // UpdateSpace - Update Vatom Space
 func (c *VatomAPIController) UpdateSpace(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3953,7 +3537,7 @@ func (c *VatomAPIController) UpdateSpace(w http.ResponseWriter, r *http.Request)
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateSpace(r.Context(), versionParam, accountIdParam, appKeyParam, vatomSpaceIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateSpace(r.Context(), accountIdParam, appKeyParam, vatomSpaceIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3965,18 +3549,9 @@ func (c *VatomAPIController) UpdateSpace(w http.ResponseWriter, r *http.Request)
 
 // DeleteSpace - Delete Vatom Space
 func (c *VatomAPIController) DeleteSpace(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4027,7 +3602,7 @@ func (c *VatomAPIController) DeleteSpace(w http.ResponseWriter, r *http.Request)
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.DeleteSpace(r.Context(), versionParam, accountIdParam, appKeyParam, vatomSpaceIdParam, returnRawResponseParam)
+	result, err := c.service.DeleteSpace(r.Context(), accountIdParam, appKeyParam, vatomSpaceIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4039,18 +3614,9 @@ func (c *VatomAPIController) DeleteSpace(w http.ResponseWriter, r *http.Request)
 
 // ListEvents - List Vatom Events
 func (c *VatomAPIController) ListEvents(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4099,7 +3665,7 @@ func (c *VatomAPIController) ListEvents(w http.ResponseWriter, r *http.Request) 
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ListEvents(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.ListEvents(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4111,18 +3677,9 @@ func (c *VatomAPIController) ListEvents(w http.ResponseWriter, r *http.Request) 
 
 // GetVatomEvent - Get Vatom Event
 func (c *VatomAPIController) GetVatomEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4173,7 +3730,7 @@ func (c *VatomAPIController) GetVatomEvent(w http.ResponseWriter, r *http.Reques
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetVatomEvent(r.Context(), versionParam, accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
+	result, err := c.service.GetVatomEvent(r.Context(), accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4185,18 +3742,9 @@ func (c *VatomAPIController) GetVatomEvent(w http.ResponseWriter, r *http.Reques
 
 // CreateVatomEvent - Create Vatom Event
 func (c *VatomAPIController) CreateVatomEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4247,7 +3795,7 @@ func (c *VatomAPIController) CreateVatomEvent(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.CreateVatomEvent(r.Context(), versionParam, accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.CreateVatomEvent(r.Context(), accountIdParam, appKeyParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4259,18 +3807,9 @@ func (c *VatomAPIController) CreateVatomEvent(w http.ResponseWriter, r *http.Req
 
 // UpdateVatomEvent - Update Vatom Event
 func (c *VatomAPIController) UpdateVatomEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4330,7 +3869,7 @@ func (c *VatomAPIController) UpdateVatomEvent(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateVatomEvent(r.Context(), versionParam, accountIdParam, appKeyParam, vatomEventIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateVatomEvent(r.Context(), accountIdParam, appKeyParam, vatomEventIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4342,18 +3881,9 @@ func (c *VatomAPIController) UpdateVatomEvent(w http.ResponseWriter, r *http.Req
 
 // DeleteVatomEvent - Delete Vatom Event
 func (c *VatomAPIController) DeleteVatomEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4404,7 +3934,7 @@ func (c *VatomAPIController) DeleteVatomEvent(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.DeleteVatomEvent(r.Context(), versionParam, accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
+	result, err := c.service.DeleteVatomEvent(r.Context(), accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4416,18 +3946,9 @@ func (c *VatomAPIController) DeleteVatomEvent(w http.ResponseWriter, r *http.Req
 
 // GetEventGuestList - Get Vatom Event Guest List
 func (c *VatomAPIController) GetEventGuestList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4478,7 +3999,7 @@ func (c *VatomAPIController) GetEventGuestList(w http.ResponseWriter, r *http.Re
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetEventGuestList(r.Context(), versionParam, accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
+	result, err := c.service.GetEventGuestList(r.Context(), accountIdParam, appKeyParam, vatomEventIdParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4490,18 +4011,9 @@ func (c *VatomAPIController) GetEventGuestList(w http.ResponseWriter, r *http.Re
 
 // UpdateEventGuestList - Update Vatom Event Guest List
 func (c *VatomAPIController) UpdateEventGuestList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4561,7 +4073,7 @@ func (c *VatomAPIController) UpdateEventGuestList(w http.ResponseWriter, r *http
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.UpdateEventGuestList(r.Context(), versionParam, accountIdParam, appKeyParam, vatomEventIdParam, vatomParametersParam, returnRawResponseParam)
+	result, err := c.service.UpdateEventGuestList(r.Context(), accountIdParam, appKeyParam, vatomEventIdParam, vatomParametersParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

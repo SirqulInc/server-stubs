@@ -29,7 +29,7 @@ func NewLikeAPIService() *LikeAPIService {
 }
 
 // RegisterLike - Create Like
-func (s *LikeAPIService) RegisterLike(ctx context.Context, version float32, likableType string, likableId int64, deviceId string, accountId int64, permissionableType string, permissionableId int64, like bool, app string, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *LikeAPIService) RegisterLike(ctx context.Context, likableType string, likableId int64, deviceId string, accountId int64, permissionableType string, permissionableId int64, like bool, app string, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RegisterLike with the required logic for this service method.
 	// Add api_like_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *LikeAPIService) RegisterLike(ctx context.Context, version float32, lika
 }
 
 // RemoveLike - Delete Like
-func (s *LikeAPIService) RemoveLike(ctx context.Context, version float32, likableType string, likableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *LikeAPIService) RemoveLike(ctx context.Context, likableType string, likableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveLike with the required logic for this service method.
 	// Add api_like_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *LikeAPIService) RemoveLike(ctx context.Context, version float32, likabl
 }
 
 // SearchLikes - Search Likes
-func (s *LikeAPIService) SearchLikes(ctx context.Context, version float32, likableType string, likableId int64, deviceId string, accountId int64, connectionAccountIds string, sortField string, descending bool, updatedSince int64, updatedBefore int64, start int32, limit int32) (ImplResponse, error) {
+func (s *LikeAPIService) SearchLikes(ctx context.Context, likableType string, likableId int64, deviceId string, accountId int64, connectionAccountIds string, sortField string, descending bool, updatedSince int64, updatedBefore int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchLikes with the required logic for this service method.
 	// Add api_like_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

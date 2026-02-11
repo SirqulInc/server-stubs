@@ -95,7 +95,7 @@ type AchievementAPIRouter interface {
 	DeleteAchievementTier(http.ResponseWriter, *http.Request)
 	UpdateAchievementTier(http.ResponseWriter, *http.Request)
 	GetAchievementTier(http.ResponseWriter, *http.Request)
-	ApiVersionAchievementTierSearchPost(http.ResponseWriter, *http.Request)
+	AchievementTierSearchPost(http.ResponseWriter, *http.Request)
 	UpdateAchievement(http.ResponseWriter, *http.Request)
 }
 // ActivityAPIRouter defines the required methods for binding the api requests to a responses for the ActivityAPI
@@ -1214,14 +1214,14 @@ type WorkflowAPIRouter interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AMQPAPIServicer interface { 
-	ConsumerCreate(context.Context, float32, string, string, string, string, string, string, string, int64, int32, string, string, string, int32, bool) (ImplResponse, error)
-	ConsumerUpdate(context.Context, float32, string, int64, string, string, int64, bool) (ImplResponse, error)
-	QueueCreate(context.Context, float32, string, string, string, int64, int32, string, string, int32, string, string, string, bool) (ImplResponse, error)
-	QueueDelete(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	QueueGet(context.Context, float32, string, int64, int64, string, string, string, string) (ImplResponse, error)
-	QueuePublish(context.Context, float32, string, int64, string, string, string, string) (ImplResponse, error)
-	QueueSearch(context.Context, float32, int64, string, int64, string, int32, int32) (ImplResponse, error)
-	QueueUpdate(context.Context, float32, int64, string, int64, string, int32, string, string, int32, string, string, string, bool) (ImplResponse, error)
+	ConsumerCreate(context.Context, string, string, string, string, string, string, string, int64, int32, string, string, string, int32, bool) (ImplResponse, error)
+	ConsumerUpdate(context.Context, string, int64, string, string, int64, bool) (ImplResponse, error)
+	QueueCreate(context.Context, string, string, string, int64, int32, string, string, int32, string, string, string, bool) (ImplResponse, error)
+	QueueDelete(context.Context, int64, string, int64) (ImplResponse, error)
+	QueueGet(context.Context, string, int64, int64, string, string, string, string) (ImplResponse, error)
+	QueuePublish(context.Context, string, int64, string, string, string, string) (ImplResponse, error)
+	QueueSearch(context.Context, int64, string, int64, string, int32, int32) (ImplResponse, error)
+	QueueUpdate(context.Context, int64, string, int64, string, int32, string, string, int32, string, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -1230,33 +1230,33 @@ type AMQPAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AccountAPIServicer interface { 
-	BlockAccount(context.Context, float32, int64, string, int64, bool, bool, float64, float64) (ImplResponse, error)
-	EditUsername(context.Context, float32, string, int64, string, string) (ImplResponse, error)
-	SetMatchToken(context.Context, float32, string, int64, string, string, string, float64, float64) (ImplResponse, error)
-	MergeAccount(context.Context, float32, int64, string, string, int64) (ImplResponse, error)
-	CreateAccount(context.Context, float32, string, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, float64, float64, bool, string, int64, bool, string, string, string, string, string, string, bool, bool, bool, string, float64, float64, string, int64) (ImplResponse, error)
-	UpdateActveStatus(context.Context, float32, int64, int64, bool, string, string) (ImplResponse, error)
-	SecureSignup(context.Context, float32, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, float64, float64, bool, string, string, string, string, string) (ImplResponse, error)
-	LoginUsername(context.Context, float32, string, string, string, float64, float64, string, string, string, bool, string) (ImplResponse, error)
-	UpdateLocation(context.Context, float32, string, int64, float64, float64, int64) (ImplResponse, error)
-	LoginGeneral(context.Context, float32, string, string, string, string, string, string, int32, string, float64, float64, bool, int64, int64) (ImplResponse, error)
-	LoginDelegate(context.Context, float32, string, string, string, string, int64, string, string, int32, string, float64, float64) (ImplResponse, error)
-	SecureLogin(context.Context, float32, string, string, string, string, string, float64, float64, bool, string) (ImplResponse, error)
-	Logout(context.Context, float32, string, string, int64, float64, float64) (ImplResponse, error)
-	PasswordChange(context.Context, float32, int64, string, string, string) (ImplResponse, error)
-	PasswordReset(context.Context, float32, string, string, string) (ImplResponse, error)
-	GetProfileAssets(context.Context, float32, bool, string, int64, int64, string, string, string, bool, float64, float64, int32, int32, int32, int32) (ImplResponse, error)
-	GetAccount(context.Context, float32, bool, string, int64, string, int64, string, string, string, string, bool, float64, float64) (ImplResponse, error)
-	SearchAccounts(context.Context, float32, int64, string, string, float64, float64, float64, string, string, int32, string, bool, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
-	GetReferralList(context.Context, float32, int64, string, string, float32, float32, float32, float32, float32, float32, float32, bool) (ImplResponse, error)
-	EditAccount(context.Context, float32, string, int64, int64, string, int64, string, string, string, string, string, string, string, string, int32, int64, string, string, string, string, string, string, string, string, string, string, string, bool, bool, bool, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, string, string, string, string, string, string, string, string, bool, bool, bool, bool, string, string, bool, bool, bool, string, string, float64, float64, bool, string, string, int64, string, int64, string) (ImplResponse, error)
-	RequestValidateAccount(context.Context, float32, int64) (ImplResponse, error)
-	RequestPasswordReset(context.Context, float32, string, string, string, string, string) (ImplResponse, error)
-	AccountLocationSearch(context.Context, float32, string, int64, string, string, string, float64, float64, string, float64, int64, string, int32, int32, int32, int32, int32, int32, int32, string, string, bool, string, string, string, string, string, string, bool, bool, bool, bool, int64, bool, bool) (ImplResponse, error)
-	GetSettings(context.Context, float32, string, int64, float64, float64) (ImplResponse, error)
-	UpdateSettings(context.Context, float32, string, int64, string, string, int32, int32, bool, bool, bool, string, float64, float64) (ImplResponse, error)
-	ValidateAccountSignup(context.Context, float32, string) (ImplResponse, error)
-	ValidatePasswordReset(context.Context, float32, string) (ImplResponse, error)
+	BlockAccount(context.Context, int64, string, int64, bool, bool, float64, float64) (ImplResponse, error)
+	EditUsername(context.Context, string, int64, string, string) (ImplResponse, error)
+	SetMatchToken(context.Context, string, int64, string, string, string, float64, float64) (ImplResponse, error)
+	MergeAccount(context.Context, int64, string, string, int64) (ImplResponse, error)
+	CreateAccount(context.Context, string, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, float64, float64, bool, string, int64, bool, string, string, string, string, string, string, bool, bool, bool, string, float64, float64, string, int64) (ImplResponse, error)
+	UpdateActveStatus(context.Context, int64, int64, bool, string, string) (ImplResponse, error)
+	SecureSignup(context.Context, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, float64, float64, bool, string, string, string, string, string) (ImplResponse, error)
+	LoginUsername(context.Context, string, string, string, float64, float64, string, string, string, bool, string) (ImplResponse, error)
+	UpdateLocation(context.Context, string, int64, float64, float64, int64) (ImplResponse, error)
+	LoginGeneral(context.Context, string, string, string, string, string, string, int32, string, float64, float64, bool, int64, int64) (ImplResponse, error)
+	LoginDelegate(context.Context, string, string, string, string, int64, string, string, int32, string, float64, float64) (ImplResponse, error)
+	SecureLogin(context.Context, string, string, string, string, string, float64, float64, bool, string) (ImplResponse, error)
+	Logout(context.Context, string, string, int64, float64, float64) (ImplResponse, error)
+	PasswordChange(context.Context, int64, string, string, string) (ImplResponse, error)
+	PasswordReset(context.Context, string, string, string) (ImplResponse, error)
+	GetProfileAssets(context.Context, bool, string, int64, int64, string, string, string, bool, float64, float64, int32, int32, int32, int32) (ImplResponse, error)
+	GetAccount(context.Context, bool, string, int64, string, int64, string, string, string, string, bool, float64, float64) (ImplResponse, error)
+	SearchAccounts(context.Context, int64, string, string, float64, float64, float64, string, string, int32, string, bool, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
+	GetReferralList(context.Context, int64, string, string, float32, float32, float32, float32, float32, float32, float32, bool) (ImplResponse, error)
+	EditAccount(context.Context, string, int64, int64, string, int64, string, string, string, string, string, string, string, string, int32, int64, string, string, string, string, string, string, string, string, string, string, string, bool, bool, bool, string, string, int32, string, string, string, string, string, string, int32, string, string, string, int32, int32, int32, int32, int32, string, string, int32, string, string, string, float64, string, string, string, string, string, string, string, string, bool, bool, bool, bool, string, string, bool, bool, bool, string, string, float64, float64, bool, string, string, int64, string, int64, string) (ImplResponse, error)
+	RequestValidateAccount(context.Context, int64) (ImplResponse, error)
+	RequestPasswordReset(context.Context, string, string, string, string, string) (ImplResponse, error)
+	AccountLocationSearch(context.Context, string, int64, string, string, string, float64, float64, string, float64, int64, string, int32, int32, int32, int32, int32, int32, int32, string, string, bool, string, string, string, string, string, string, bool, bool, bool, bool, int64, bool, bool) (ImplResponse, error)
+	GetSettings(context.Context, string, int64, float64, float64) (ImplResponse, error)
+	UpdateSettings(context.Context, string, int64, string, string, int32, int32, bool, bool, bool, string, float64, float64) (ImplResponse, error)
+	ValidateAccountSignup(context.Context, string) (ImplResponse, error)
+	ValidatePasswordReset(context.Context, string) (ImplResponse, error)
 }
 
 
@@ -1265,20 +1265,20 @@ type AccountAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AchievementAPIServicer interface { 
-	CreateAchievement(context.Context, float32, string, string, string, int64, string, string, string, int32, int32, int32, bool, bool, string) (ImplResponse, error)
-	DeleteAchievement(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetAchievement(context.Context, float32, int64, string, int64, string) (ImplResponse, error)
-	ListAchievements(context.Context, float32, string, bool, int32, int32, bool, string, int64, string, string, string, string) (ImplResponse, error)
-	GetUserAchievements(context.Context, float32, bool, string, bool, string, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
-	UpdateUserAchievement(context.Context, float32, int64, int64, string, int64, int64, int64, int64, bool) (ImplResponse, error)
-	SearchAchievements(context.Context, float32, string, string, bool, bool, bool, int32, int32, string, int64, string, string, string) (ImplResponse, error)
-	ListAchievementTags(context.Context, float32, string) (ImplResponse, error)
-	CreateAchievementTier(context.Context, float32, int64, bool, string, int64, *os.File, int64, string, string, int64, int64, int64, int64, int64, int32) (ImplResponse, error)
-	DeleteAchievementTier(context.Context, float32, int64, int64) (ImplResponse, error)
-	UpdateAchievementTier(context.Context, float32, int64, string, int64, *os.File, int64, string, string, int64, int64, int64, int64, int64, int64, bool) (ImplResponse, error)
-	GetAchievementTier(context.Context, float32, int64, int64) (ImplResponse, error)
-	ApiVersionAchievementTierSearchPost(context.Context, float32, string, int64, string, string, int64, string, string, bool, bool, int64, int64) (ImplResponse, error)
-	UpdateAchievement(context.Context, float32, string, int64, int64, string, string, string, string, int32, int32, bool, int32, bool, bool, bool, string) (ImplResponse, error)
+	CreateAchievement(context.Context, string, string, string, int64, string, string, string, int32, int32, int32, bool, bool, string) (ImplResponse, error)
+	DeleteAchievement(context.Context, int64, int64) (ImplResponse, error)
+	GetAchievement(context.Context, int64, string, int64, string) (ImplResponse, error)
+	ListAchievements(context.Context, string, bool, int32, int32, bool, string, int64, string, string, string, string) (ImplResponse, error)
+	GetUserAchievements(context.Context, bool, string, bool, string, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
+	UpdateUserAchievement(context.Context, int64, int64, string, int64, int64, int64, int64, bool) (ImplResponse, error)
+	SearchAchievements(context.Context, string, string, bool, bool, bool, int32, int32, string, int64, string, string, string) (ImplResponse, error)
+	ListAchievementTags(context.Context, string) (ImplResponse, error)
+	CreateAchievementTier(context.Context, int64, bool, string, int64, *os.File, int64, string, string, int64, int64, int64, int64, int64, int32) (ImplResponse, error)
+	DeleteAchievementTier(context.Context, int64, int64) (ImplResponse, error)
+	UpdateAchievementTier(context.Context, int64, string, int64, *os.File, int64, string, string, int64, int64, int64, int64, int64, int64, bool) (ImplResponse, error)
+	GetAchievementTier(context.Context, int64, int64) (ImplResponse, error)
+	AchievementTierSearchPost(context.Context, string, int64, string, string, int64, string, string, bool, bool, int64, int64) (ImplResponse, error)
+	UpdateAchievement(context.Context, string, int64, int64, string, string, string, string, int32, int32, bool, int32, bool, bool, bool, string) (ImplResponse, error)
 }
 
 
@@ -1287,7 +1287,7 @@ type AchievementAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ActivityAPIServicer interface { 
-	CreateEntityReference(context.Context, float32, EntityReference) (ImplResponse, error)
+	CreateEntityReference(context.Context, EntityReference) (ImplResponse, error)
 }
 
 
@@ -1296,15 +1296,15 @@ type ActivityAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AlbumAPIServicer interface { 
-	ApproveAlbum(context.Context, float32, int64, string, int64, string, bool) (ImplResponse, error)
-	AddAlbumCollection(context.Context, float32, string, bool, bool, bool, bool, bool, bool, bool, string, int64, string, *os.File, string, int64, *os.File, string, int64, int64, string, string, string, int64, string, float64, float64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, bool, string, string, string, int64) (ImplResponse, error)
-	RemoveAlbum(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetAlbumCollection(context.Context, float32, bool, int64, string, int64, int32, int32, int32, int32, int32) (ImplResponse, error)
-	SearchAlbums(context.Context, float32, string, int64, string, bool, string, bool, int32, int32, float64, bool, bool, bool, int32, int32, int32, int32, int32, string, int64, int64, int64, string, string, int64, string, string, int32, int64, int64, int64, int64, int64, int64, int64, int64, int64, float64, float64, string, string, string, string, string, bool, bool, string, bool, int32, int32, string, bool, int64, bool, bool, string, int64, int64, bool, string, bool) (ImplResponse, error)
-	UpdateAlbumCollection(context.Context, float32, int64, string, int64, string, string, int64, *os.File, string, bool, string, int64, int64, string, string, string, int64, string, bool, bool, bool, bool, float64, float64, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, string, bool, bool, string, string, int64, bool) (ImplResponse, error)
-	AddAlbumUsers(context.Context, float32, int64, bool, string, int64, bool, bool, bool, bool, string, string) (ImplResponse, error)
-	RemoveAlbumUsers(context.Context, float32, int64, bool, string, int64, string, string) (ImplResponse, error)
-	LeaveAlbum(context.Context, float32, int64, string, int64) (ImplResponse, error)
+	ApproveAlbum(context.Context, int64, string, int64, string, bool) (ImplResponse, error)
+	AddAlbumCollection(context.Context, string, bool, bool, bool, bool, bool, bool, bool, string, int64, string, *os.File, string, int64, *os.File, string, int64, int64, string, string, string, int64, string, float64, float64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, bool, string, string, string, int64) (ImplResponse, error)
+	RemoveAlbum(context.Context, int64, string, int64) (ImplResponse, error)
+	GetAlbumCollection(context.Context, bool, int64, string, int64, int32, int32, int32, int32, int32) (ImplResponse, error)
+	SearchAlbums(context.Context, string, int64, string, bool, string, bool, int32, int32, float64, bool, bool, bool, int32, int32, int32, int32, int32, string, int64, int64, int64, string, string, int64, string, string, int32, int64, int64, int64, int64, int64, int64, int64, int64, int64, float64, float64, string, string, string, string, string, bool, bool, string, bool, int32, int32, string, bool, int64, bool, bool, string, int64, int64, bool, string, bool) (ImplResponse, error)
+	UpdateAlbumCollection(context.Context, int64, string, int64, string, string, int64, *os.File, string, bool, string, int64, int64, string, string, string, int64, string, bool, bool, bool, bool, float64, float64, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, string, bool, bool, string, string, int64, bool) (ImplResponse, error)
+	AddAlbumUsers(context.Context, int64, bool, string, int64, bool, bool, bool, bool, string, string) (ImplResponse, error)
+	RemoveAlbumUsers(context.Context, int64, bool, string, int64, string, string) (ImplResponse, error)
+	LeaveAlbum(context.Context, int64, string, int64) (ImplResponse, error)
 }
 
 
@@ -1313,11 +1313,11 @@ type AlbumAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AnalyticsAPIServicer interface { 
-	AggregatedFilteredUsage(context.Context, float32, string, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, bool, bool, string, int32, int32, float64, float64) (ImplResponse, error)
-	FilteredUsage(context.Context, float32, string, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, int64, string, float64, float64, int64, int64, string, string, string, string, string, string, bool, bool, string, int32, int32, float64, float64) (ImplResponse, error)
-	Usage(context.Context, float32, string, string, int64, int64, string, string, string, string, string, string, float64, float64, int64, string, int64, string, string, string, string, string, int64, string, string, string, bool, string, string, float64, float64, int64, int64) (ImplResponse, error)
-	UsageBatch(context.Context, float32, string, string, string, string, int64, string, string, string, string, bool, bool) (ImplResponse, error)
-	Activities(context.Context, float32, int32, int32, int64) (ImplResponse, error)
+	AggregatedFilteredUsage(context.Context, string, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, bool, bool, string, int32, int32, float64, float64) (ImplResponse, error)
+	FilteredUsage(context.Context, string, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, int64, string, string, int64, string, float64, float64, int64, int64, string, string, string, string, string, string, bool, bool, string, int32, int32, float64, float64) (ImplResponse, error)
+	Usage(context.Context, string, string, int64, int64, string, string, string, string, string, string, float64, float64, int64, string, int64, string, string, string, string, string, int64, string, string, string, bool, string, string, float64, float64, int64, int64) (ImplResponse, error)
+	UsageBatch(context.Context, string, string, string, string, int64, string, string, string, string, bool, bool) (ImplResponse, error)
+	Activities(context.Context, int32, int32, int64) (ImplResponse, error)
 }
 
 
@@ -1326,9 +1326,9 @@ type AnalyticsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AppDataAPIServicer interface { 
-	GetAppData(context.Context, float32, int32, int32, string, int64, string, bool, string, string, string, bool, int32, int32, bool, string, int64, int64, string, string, string, string, string, bool, bool, string, string) (ImplResponse, error)
-	PostAppData(context.Context, float32, string, int32, int32, string, string, int64, bool, string, string, string, bool, int32, int32, bool, string, int64, int64, string, string, string, string, string, bool, bool, string, string) (ImplResponse, error)
-	RegenAppData(context.Context, float32, int64, string, string, string) (ImplResponse, error)
+	GetAppData(context.Context, int32, int32, string, int64, string, bool, string, string, string, bool, int32, int32, bool, string, int64, int64, string, string, string, string, string, bool, bool, string, string) (ImplResponse, error)
+	PostAppData(context.Context, string, int32, int32, string, string, int64, bool, string, string, string, bool, int32, int32, bool, string, int64, int64, string, string, string, string, string, bool, bool, string, string) (ImplResponse, error)
+	RegenAppData(context.Context, int64, string, string, string) (ImplResponse, error)
 }
 
 
@@ -1337,22 +1337,22 @@ type AppDataAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ApplicationAPIServicer interface { 
-	UpdateApplicationActive(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	UploadApplicationCertificate(context.Context, float32, string, string, int64, *os.File) (ImplResponse, error)
-	CreateApplication(context.Context, float32, string, string, int64, string, string, int64, int64, string, string, string, bool, string, string, bool, string, string, string, string, string, string, string, string, int32, int32, float32, bool, bool, bool, bool, float32, float32, string, string, string, int32, int32, int32, bool, bool, bool, int32, int32, bool, string, string, int32, float64, string, int32, string, string, string, string, string, bool, bool, bool, int64, bool, string, string, string, *os.File, string, string, *os.File, *os.File, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteApplication(context.Context, float32, int64, string) (ImplResponse, error)
-	GetApplication(context.Context, float32, string, int64) (ImplResponse, error)
-	ListApplications(context.Context, float32, int64, string, string, string, string, string, string, string, bool, bool, bool, bool, bool, int32, int32, int32, int32, string, bool, bool) (ImplResponse, error)
-	CreateApplicationPlacement(context.Context, float32, string, string, string, int64, string, string, int32, int32, int32, int64, bool) (ImplResponse, error)
-	DeleteApplicationPlacement(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetApplicationPlacement(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	SearchApplicationPlacement(context.Context, float32, string, string, int64, int32, int32) (ImplResponse, error)
-	UpdateApplicationPlacement(context.Context, float32, int64, string, int64, string, string, string, int32, int32, int32, int64, bool) (ImplResponse, error)
-	SearchApplications(context.Context, float32, string, int64, float64, float64, string, string, string, string, bool, int32, int32, int32, int32, bool, bool, bool) (ImplResponse, error)
-	SearchApplicationSettings(context.Context, float32, string, int64, int64, string, string, bool, int32, int32) (ImplResponse, error)
-	UpdateApplication(context.Context, float32, string, string, string, int64, string, string, int64, int64, string, string, string, bool, string, string, bool, string, string, string, string, string, string, string, string, int32, int32, float32, bool, bool, bool, bool, float32, float32, string, string, string, int32, int32, int32, bool, bool, bool, int32, int32, bool, string, string, int32, float64, string, int32, string, string, string, string, string, bool, bool, bool, int64, bool, string, string, string, *os.File, string, string, *os.File, *os.File, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
-	GetUniqueUsersByApp(context.Context, float32, string, string, string, int64, int32, int32, int32, int32) (ImplResponse, error)
-	GetApplicationVersions(context.Context, float32) (ImplResponse, error)
+	UpdateApplicationActive(context.Context, int64, string, bool) (ImplResponse, error)
+	UploadApplicationCertificate(context.Context, string, string, int64, *os.File) (ImplResponse, error)
+	CreateApplication(context.Context, string, string, int64, string, string, int64, int64, string, string, string, bool, string, string, bool, string, string, string, string, string, string, string, string, int32, int32, float32, bool, bool, bool, bool, float32, float32, string, string, string, int32, int32, int32, bool, bool, bool, int32, int32, bool, string, string, int32, float64, string, int32, string, string, string, string, string, bool, bool, bool, int64, bool, string, string, string, *os.File, string, string, *os.File, *os.File, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteApplication(context.Context, int64, string) (ImplResponse, error)
+	GetApplication(context.Context, string, int64) (ImplResponse, error)
+	ListApplications(context.Context, int64, string, string, string, string, string, string, string, bool, bool, bool, bool, bool, int32, int32, int32, int32, string, bool, bool) (ImplResponse, error)
+	CreateApplicationPlacement(context.Context, string, string, string, int64, string, string, int32, int32, int32, int64, bool) (ImplResponse, error)
+	DeleteApplicationPlacement(context.Context, int64, string, int64) (ImplResponse, error)
+	GetApplicationPlacement(context.Context, int64, string, int64) (ImplResponse, error)
+	SearchApplicationPlacement(context.Context, string, string, int64, int32, int32) (ImplResponse, error)
+	UpdateApplicationPlacement(context.Context, int64, string, int64, string, string, string, int32, int32, int32, int64, bool) (ImplResponse, error)
+	SearchApplications(context.Context, string, int64, float64, float64, string, string, string, string, bool, int32, int32, int32, int32, bool, bool, bool) (ImplResponse, error)
+	SearchApplicationSettings(context.Context, string, int64, int64, string, string, bool, int32, int32) (ImplResponse, error)
+	UpdateApplication(context.Context, string, string, string, int64, string, string, int64, int64, string, string, string, bool, string, string, bool, string, string, string, string, string, string, string, string, int32, int32, float32, bool, bool, bool, bool, float32, float32, string, string, string, int32, int32, int32, bool, bool, bool, int32, int32, bool, string, string, int32, float64, string, int32, string, string, string, string, string, bool, bool, bool, int64, bool, string, string, string, *os.File, string, string, *os.File, *os.File, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	GetUniqueUsersByApp(context.Context, string, string, string, int64, int32, int32, int32, int32) (ImplResponse, error)
+	GetApplicationVersions(context.Context) (ImplResponse, error)
 }
 
 
@@ -1361,12 +1361,12 @@ type ApplicationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ApplicationConfigAPIServicer interface { 
-	CreateApplicationConfig(context.Context, float32, int64, string, string, int64, int64, int64, string) (ImplResponse, error)
-	DeleteApplicationConfig(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetApplicationConfig(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetApplicationConfigByConfigVersion(context.Context, float32, string, string, int64, int64, string, bool) (ImplResponse, error)
-	SearchApplicationConfig(context.Context, float32, int64, string, int64, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
-	UpdateApplicationConfig(context.Context, float32, int64, int64, string, string, int64, int64, int64, string) (ImplResponse, error)
+	CreateApplicationConfig(context.Context, int64, string, string, int64, int64, int64, string) (ImplResponse, error)
+	DeleteApplicationConfig(context.Context, int64, int64) (ImplResponse, error)
+	GetApplicationConfig(context.Context, int64, int64) (ImplResponse, error)
+	GetApplicationConfigByConfigVersion(context.Context, string, string, int64, int64, string, bool) (ImplResponse, error)
+	SearchApplicationConfig(context.Context, int64, string, int64, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
+	UpdateApplicationConfig(context.Context, int64, int64, string, string, int64, int64, int64, string) (ImplResponse, error)
 }
 
 
@@ -1375,14 +1375,14 @@ type ApplicationConfigAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AssetAPIServicer interface { 
-	CreateAsset(context.Context, float32, bool, string, int64, int64, int64, string, bool, int32, string, string, string, string, string, int64, *os.File, string, string, string, string, int32, int32, *os.File, string, string, string, string, int32, int32, string, string, string, string, float64, float64) (ImplResponse, error)
-	DeleteAsset(context.Context, float32, string, string, int64, float64, float64) (ImplResponse, error)
-	AssetDownload(context.Context, float32, string) (ImplResponse, error)
-	GetAsset(context.Context, float32, int64, string, int64, bool) (ImplResponse, error)
-	AssetMorph(context.Context, float32, int64, string, int64, int32, int32, string, string) (ImplResponse, error)
-	RemoveAsset(context.Context, float32, string, string, int64, int64, int64, bool, float64, float64) (ImplResponse, error)
-	SearchAssets(context.Context, float32, string, int64, string, string, string, string, string, string, int32, string, int64, int64, string, bool, bool, bool, bool, bool, int32, int32, string, string, string, int64) (ImplResponse, error)
-	UpdateAsset(context.Context, float32, int64, string, int64, int64, int64, int32, string, string, string, string, string, int64, *os.File, string, string, string, string, int32, int32, *os.File, string, string, string, string, int32, int32, string, string, string, float64, float64) (ImplResponse, error)
+	CreateAsset(context.Context, bool, string, int64, int64, int64, string, bool, int32, string, string, string, string, string, int64, *os.File, string, string, string, string, int32, int32, *os.File, string, string, string, string, int32, int32, string, string, string, string, float64, float64) (ImplResponse, error)
+	DeleteAsset(context.Context, string, string, int64, float64, float64) (ImplResponse, error)
+	AssetDownload(context.Context, string) (ImplResponse, error)
+	GetAsset(context.Context, int64, string, int64, bool) (ImplResponse, error)
+	AssetMorph(context.Context, int64, string, int64, int32, int32, string, string) (ImplResponse, error)
+	RemoveAsset(context.Context, string, string, int64, int64, int64, bool, float64, float64) (ImplResponse, error)
+	SearchAssets(context.Context, string, int64, string, string, string, string, string, string, int32, string, int64, int64, string, bool, bool, bool, bool, bool, int32, int32, string, string, string, int64) (ImplResponse, error)
+	UpdateAsset(context.Context, int64, string, int64, int64, int64, int32, string, string, string, string, string, int64, *os.File, string, string, string, string, int32, int32, *os.File, string, string, string, string, int32, int32, string, string, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -1391,17 +1391,17 @@ type AssetAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AssignmentAPIServicer interface { 
-	AssigmentAssigneeAccountSearch(context.Context, float32, int64, string) (ImplResponse, error)
-	AssignmentCreate(context.Context, float32, int64, string, int64, string, int64, string, bool) (ImplResponse, error)
-	AssignmentDelete(context.Context, float32, int64, int64) (ImplResponse, error)
-	AssignmentGet(context.Context, float32, int64, int64) (ImplResponse, error)
-	AssignmentSearch(context.Context, float32, int64, string, bool, bool, int32, int32, int64, string, string, string, string) (ImplResponse, error)
-	AssignmentStatusCreate(context.Context, float32, int64, int64, int64, string, string, string, string, string, string, int64, bool) (ImplResponse, error)
-	AssignmentStatusDelete(context.Context, float32, int64, int64) (ImplResponse, error)
-	AssignmentStatusGet(context.Context, float32, int64, int64) (ImplResponse, error)
-	AssignmentStatusSearch(context.Context, float32, int64, string, bool, bool, int32, int32, int64, int64, int64, int64, string, string) (ImplResponse, error)
-	AssignmentStatusUpdate(context.Context, float32, int64, int64, int64, string, string, string, string, string, string, int64, bool) (ImplResponse, error)
-	AssignmentUpdate(context.Context, float32, int64, int64, string, string, int64, int64, string, bool) (ImplResponse, error)
+	AssigmentAssigneeAccountSearch(context.Context, int64, string) (ImplResponse, error)
+	AssignmentCreate(context.Context, int64, string, int64, string, int64, string, bool) (ImplResponse, error)
+	AssignmentDelete(context.Context, int64, int64) (ImplResponse, error)
+	AssignmentGet(context.Context, int64, int64) (ImplResponse, error)
+	AssignmentSearch(context.Context, int64, string, bool, bool, int32, int32, int64, string, string, string, string) (ImplResponse, error)
+	AssignmentStatusCreate(context.Context, int64, int64, int64, string, string, string, string, string, string, int64, bool) (ImplResponse, error)
+	AssignmentStatusDelete(context.Context, int64, int64) (ImplResponse, error)
+	AssignmentStatusGet(context.Context, int64, int64) (ImplResponse, error)
+	AssignmentStatusSearch(context.Context, int64, string, bool, bool, int32, int32, int64, int64, int64, int64, string, string) (ImplResponse, error)
+	AssignmentStatusUpdate(context.Context, int64, int64, int64, string, string, string, string, string, string, int64, bool) (ImplResponse, error)
+	AssignmentUpdate(context.Context, int64, int64, string, string, int64, int64, string, bool) (ImplResponse, error)
 }
 
 
@@ -1410,19 +1410,19 @@ type AssignmentAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type AudienceAPIServicer interface { 
-	GetAgeGroups(context.Context, float32) (ImplResponse, error)
-	CreateAudience(context.Context, float32, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, int32, int32, bool, string, string, int64, string, string, string, string, bool, string, string, string, bool) (ImplResponse, error)
-	DeleteAudience(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetDevices(context.Context, float32, bool) (ImplResponse, error)
-	GetExperiences(context.Context, float32) (ImplResponse, error)
-	GetAudience(context.Context, float32, int64, int64, string, bool, bool, string) (ImplResponse, error)
-	GetGroupedAudiences(context.Context, float32, int64, string) (ImplResponse, error)
-	GetAudienceList(context.Context, float32, int64, string, string, string, string, bool, int32, int32, bool, bool, bool, string, bool, bool, string, string, bool, bool, string) (ImplResponse, error)
-	ListLastestByAccount(context.Context, float32, int64, int32, string) (ImplResponse, error)
-	ListByAccount(context.Context, float32, int64, int32, string) (ImplResponse, error)
-	ListByAudience(context.Context, float32, int32, string, int32, string, float64, float64) (ImplResponse, error)
-	SendByAccount(context.Context, float32, int64, float64, float64) (ImplResponse, error)
-	UpdateAudience(context.Context, float32, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, bool, int32, int32, string, string, int64, string, string, string, string, bool, string, string, string, bool) (ImplResponse, error)
+	GetAgeGroups(context.Context) (ImplResponse, error)
+	CreateAudience(context.Context, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, int32, int32, bool, string, string, int64, string, string, string, string, bool, string, string, string, bool) (ImplResponse, error)
+	DeleteAudience(context.Context, int64, int64) (ImplResponse, error)
+	GetDevices(context.Context, bool) (ImplResponse, error)
+	GetExperiences(context.Context) (ImplResponse, error)
+	GetAudience(context.Context, int64, int64, string, bool, bool, string) (ImplResponse, error)
+	GetGroupedAudiences(context.Context, int64, string) (ImplResponse, error)
+	GetAudienceList(context.Context, int64, string, string, string, string, bool, int32, int32, bool, bool, bool, string, bool, bool, string, string, bool, bool, string) (ImplResponse, error)
+	ListLastestByAccount(context.Context, int64, int32, string) (ImplResponse, error)
+	ListByAccount(context.Context, int64, int32, string) (ImplResponse, error)
+	ListByAudience(context.Context, int32, string, int32, string, float64, float64) (ImplResponse, error)
+	SendByAccount(context.Context, int64, float64, float64) (ImplResponse, error)
+	UpdateAudience(context.Context, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, bool, int32, int32, string, string, int64, string, string, string, string, bool, string, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -1431,10 +1431,10 @@ type AudienceAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type BidAPIServicer interface { 
-	CreateBid(context.Context, float32, string, int64, float64, float64, float64, string, string, int64) (ImplResponse, error)
-	DeleteBid(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetBid(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	UpdateBid(context.Context, float32, int64, string, int64, float64, float64, float64, string) (ImplResponse, error)
+	CreateBid(context.Context, string, int64, float64, float64, float64, string, string, int64) (ImplResponse, error)
+	DeleteBid(context.Context, int64, string, int64) (ImplResponse, error)
+	GetBid(context.Context, int64, string, int64) (ImplResponse, error)
+	UpdateBid(context.Context, int64, string, int64, float64, float64, float64, string) (ImplResponse, error)
 }
 
 
@@ -1443,10 +1443,10 @@ type BidAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type BillableEntityAPIServicer interface { 
-	CreateBillableEntity(context.Context, float32, string, int64, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteBillableEntity(context.Context, float32, string, int64) (ImplResponse, error)
-	GetBillableEntity(context.Context, float32, string, int64, bool, bool) (ImplResponse, error)
-	UpdateBillableEntity(context.Context, float32, string, int64, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	CreateBillableEntity(context.Context, string, int64, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteBillableEntity(context.Context, string, int64) (ImplResponse, error)
+	GetBillableEntity(context.Context, string, int64, bool, bool) (ImplResponse, error)
+	UpdateBillableEntity(context.Context, string, int64, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
 }
 
 
@@ -1455,12 +1455,12 @@ type BillableEntityAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type BillingInfoAPIServicer interface { 
-	CreatePaymentMethod(context.Context, float32, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, string) (ImplResponse, error)
-	GetPaymentMethod(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	SearchPaymentMethod(context.Context, float32, int64, string, string, string, string, bool, int32, int32) (ImplResponse, error)
-	AddPaymentMethod(context.Context, float32, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string) (ImplResponse, error)
-	GetCryptoBalance(context.Context, float32, int64, int64, int64) (ImplResponse, error)
-	CreateSmartContract(context.Context, float32, int64, string, string, int64) (ImplResponse, error)
+	CreatePaymentMethod(context.Context, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, string) (ImplResponse, error)
+	GetPaymentMethod(context.Context, int64, int64, bool) (ImplResponse, error)
+	SearchPaymentMethod(context.Context, int64, string, string, string, string, bool, int32, int32) (ImplResponse, error)
+	AddPaymentMethod(context.Context, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string) (ImplResponse, error)
+	GetCryptoBalance(context.Context, int64, int64, int64) (ImplResponse, error)
+	CreateSmartContract(context.Context, int64, string, string, int64) (ImplResponse, error)
 }
 
 
@@ -1469,10 +1469,10 @@ type BillingInfoAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type CSVImportAPIServicer interface { 
-	ListStatusCSV(context.Context, float32, int64, int32, int32) (ImplResponse, error)
-	StatusCSV(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetStatusCSV(context.Context, float32, int64, int64, string, int64, int64) (ImplResponse, error)
-	UploadCSV(context.Context, float32, int64, string, *os.File, string, string) (ImplResponse, error)
+	ListStatusCSV(context.Context, int64, int32, int32) (ImplResponse, error)
+	StatusCSV(context.Context, int64, int64) (ImplResponse, error)
+	GetStatusCSV(context.Context, int64, int64, string, int64, int64) (ImplResponse, error)
+	UploadCSV(context.Context, int64, string, *os.File, string, string) (ImplResponse, error)
 }
 
 
@@ -1481,11 +1481,11 @@ type CSVImportAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type CargoTypeAPIServicer interface { 
-	SearchCargoTypes(context.Context, float32, string, bool, int32, int32, bool, int64, int64) (ImplResponse, error)
-	CreateCargoType(context.Context, float32, CargoType) (ImplResponse, error)
-	GetCargoType(context.Context, float32, int64) (ImplResponse, error)
-	UpdateCargoType(context.Context, float32, int64, CargoType) (ImplResponse, error)
-	DeleteCargoType(context.Context, float32, int64) (ImplResponse, error)
+	SearchCargoTypes(context.Context, string, bool, int32, int32, bool, int64, int64) (ImplResponse, error)
+	CreateCargoType(context.Context, CargoType) (ImplResponse, error)
+	GetCargoType(context.Context, int64) (ImplResponse, error)
+	UpdateCargoType(context.Context, int64, CargoType) (ImplResponse, error)
+	DeleteCargoType(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -1494,7 +1494,7 @@ type CargoTypeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type CarrierAPIServicer interface { 
-	SearchCarriers(context.Context, float32, string, bool, int32, int32, bool) (ImplResponse, error)
+	SearchCarriers(context.Context, string, bool, int32, int32, bool) (ImplResponse, error)
 }
 
 
@@ -1503,13 +1503,13 @@ type CarrierAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type CategoryAPIServicer interface { 
-	CreateCategory(context.Context, float32, int64, string, string, int64, string, string, int64, string, string, string, string, bool, string, string) (ImplResponse, error)
-	DeleteCategory(context.Context, float32, int64, int64) (ImplResponse, error)
-	DuplicateCategory(context.Context, float32, int64, int64, string, int64) (ImplResponse, error)
-	GetCategory(context.Context, float32, int64, bool) (ImplResponse, error)
-	SearchCategories(context.Context, float32, int64, string, string, string, string, string, bool, string, string, bool, int32, int32, bool, bool, bool, string, string, bool, int32, int32, string) (ImplResponse, error)
-	CategoryDistanceSearch(context.Context, float32, int64, string, string, string, string, bool, string, string, bool, int32, int32, bool, bool, bool, string, string, int32, float64, float64, float64) (ImplResponse, error)
-	UpdateCategory(context.Context, float32, int64, int64, int64, string, string, string, int64, string, string, string, string, bool, string, string) (ImplResponse, error)
+	CreateCategory(context.Context, int64, string, string, int64, string, string, int64, string, string, string, string, bool, string, string) (ImplResponse, error)
+	DeleteCategory(context.Context, int64, int64) (ImplResponse, error)
+	DuplicateCategory(context.Context, int64, int64, string, int64) (ImplResponse, error)
+	GetCategory(context.Context, int64, bool) (ImplResponse, error)
+	SearchCategories(context.Context, int64, string, string, string, string, string, bool, string, string, bool, int32, int32, bool, bool, bool, string, string, bool, int32, int32, string) (ImplResponse, error)
+	CategoryDistanceSearch(context.Context, int64, string, string, string, string, bool, string, string, bool, int32, int32, bool, bool, bool, string, string, int32, float64, float64, float64) (ImplResponse, error)
+	UpdateCategory(context.Context, int64, int64, int64, string, string, string, int64, string, string, string, string, bool, string, string) (ImplResponse, error)
 }
 
 
@@ -1518,28 +1518,28 @@ type CategoryAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ConnectionAPIServicer interface { 
-	AddConnectionsToGroup(context.Context, float32, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
-	RemoveConnectionsFromGroup(context.Context, float32, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
-	GroupSearch(context.Context, float32, string, bool, bool, int32, int32, string, int64, float64, float64, string) (ImplResponse, error)
-	SearchConnections(context.Context, float32, bool, int32, int32, string, int64, string, string, float64, float64, string, string, int32, int32, string, bool) (ImplResponse, error)
-	CreateOrUpdateConnection(context.Context, float32, string, int64, int64, int64, int64, int64, string, string, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
-	GetConnections(context.Context, float32, bool, string, string, bool, int32, int32, string, int64, int64, string, string, int32, int32, float64, float64) (ImplResponse, error)
-	GetConnectionSentFriendRequests(context.Context, float32, string, int64) (ImplResponse, error)
-	CreateOrUpdateGroup(context.Context, float32, bool, string, int64, string, int64, int64, string, string, bool, bool, bool, bool, float64, float64) (ImplResponse, error)
-	AddConnectionToGroup(context.Context, float32, bool, int64, string, int64, int64, int64, int64, float64, float64) (ImplResponse, error)
-	AddSubGroups(context.Context, float32, bool, int64, string, string, int64, float64, float64) (ImplResponse, error)
-	GetGroupDetails(context.Context, float32, bool, string, int64, int64, float64, float64) (ImplResponse, error)
-	RemoveGroup(context.Context, float32, bool, int64, string, int64, float64, float64) (ImplResponse, error)
-	RemoveConnectionFromGroup(context.Context, float32, bool, int64, string, int64, int64, int64, int64, float64, float64) (ImplResponse, error)
-	RemoveSubGroups(context.Context, float32, bool, int64, string, string, int64, float64, float64) (ImplResponse, error)
-	FriendAccept(context.Context, float32, int64, bool, string, int64, string, string, string) (ImplResponse, error)
-	FriendReject(context.Context, float32, int64, string, int64, string, string, bool, string) (ImplResponse, error)
-	FriendRemove(context.Context, float32, int64, string, int64, bool, bool) (ImplResponse, error)
-	FriendRequest(context.Context, float32, int64, string, int64, string, string, string) (ImplResponse, error)
-	FollowRequest(context.Context, float32, int64, int64, string, bool) (ImplResponse, error)
-	FollowAccept(context.Context, float32, int64, int64, string) (ImplResponse, error)
-	FollowReject(context.Context, float32, int64, int64, string) (ImplResponse, error)
-	FollowRemove(context.Context, float32, int64, int64, string) (ImplResponse, error)
+	AddConnectionsToGroup(context.Context, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
+	RemoveConnectionsFromGroup(context.Context, int64, string, int64, string, string, float64, float64) (ImplResponse, error)
+	GroupSearch(context.Context, string, bool, bool, int32, int32, string, int64, float64, float64, string) (ImplResponse, error)
+	SearchConnections(context.Context, bool, int32, int32, string, int64, string, string, float64, float64, string, string, int32, int32, string, bool) (ImplResponse, error)
+	CreateOrUpdateConnection(context.Context, string, int64, int64, int64, int64, int64, string, string, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
+	GetConnections(context.Context, bool, string, string, bool, int32, int32, string, int64, int64, string, string, int32, int32, float64, float64) (ImplResponse, error)
+	GetConnectionSentFriendRequests(context.Context, string, int64) (ImplResponse, error)
+	CreateOrUpdateGroup(context.Context, bool, string, int64, string, int64, int64, string, string, bool, bool, bool, bool, float64, float64) (ImplResponse, error)
+	AddConnectionToGroup(context.Context, bool, int64, string, int64, int64, int64, int64, float64, float64) (ImplResponse, error)
+	AddSubGroups(context.Context, bool, int64, string, string, int64, float64, float64) (ImplResponse, error)
+	GetGroupDetails(context.Context, bool, string, int64, int64, float64, float64) (ImplResponse, error)
+	RemoveGroup(context.Context, bool, int64, string, int64, float64, float64) (ImplResponse, error)
+	RemoveConnectionFromGroup(context.Context, bool, int64, string, int64, int64, int64, int64, float64, float64) (ImplResponse, error)
+	RemoveSubGroups(context.Context, bool, int64, string, string, int64, float64, float64) (ImplResponse, error)
+	FriendAccept(context.Context, int64, bool, string, int64, string, string, string) (ImplResponse, error)
+	FriendReject(context.Context, int64, string, int64, string, string, bool, string) (ImplResponse, error)
+	FriendRemove(context.Context, int64, string, int64, bool, bool) (ImplResponse, error)
+	FriendRequest(context.Context, int64, string, int64, string, string, string) (ImplResponse, error)
+	FollowRequest(context.Context, int64, int64, string, bool) (ImplResponse, error)
+	FollowAccept(context.Context, int64, int64, string) (ImplResponse, error)
+	FollowReject(context.Context, int64, int64, string) (ImplResponse, error)
+	FollowRemove(context.Context, int64, int64, string) (ImplResponse, error)
 }
 
 
@@ -1548,12 +1548,12 @@ type ConnectionAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ContestAPIServicer interface { 
-	AddOrUpdateAlbumContest(context.Context, float32, bool, bool, bool, bool, string, bool, string, int64, string, string, string, int64, string, string, int64, bool, int64, bool, int64, int64, string, string, string, float64, float64) (ImplResponse, error)
-	ApproveAlbumContest(context.Context, float32, int64, string, string, int64) (ImplResponse, error)
-	GetAlbumContest(context.Context, float32, int64, string, int64, float64, float64) (ImplResponse, error)
-	DeleteContest(context.Context, float32, int64, string, int64, float64, float64) (ImplResponse, error)
-	GetAlbumContests(context.Context, float32, string, string, bool, int32, int32, string, int64, string, string, string, string, int64, string, string, int32, int32, int64, float64, float64) (ImplResponse, error)
-	VoteOnAlbumContest(context.Context, float32, int64, int64, string, int64, string, float64, float64) (ImplResponse, error)
+	AddOrUpdateAlbumContest(context.Context, bool, bool, bool, bool, string, bool, string, int64, string, string, string, int64, string, string, int64, bool, int64, bool, int64, int64, string, string, string, float64, float64) (ImplResponse, error)
+	ApproveAlbumContest(context.Context, int64, string, string, int64) (ImplResponse, error)
+	GetAlbumContest(context.Context, int64, string, int64, float64, float64) (ImplResponse, error)
+	DeleteContest(context.Context, int64, string, int64, float64, float64) (ImplResponse, error)
+	GetAlbumContests(context.Context, string, string, bool, int32, int32, string, int64, string, string, string, string, int64, string, string, int32, int32, int64, float64, float64) (ImplResponse, error)
+	VoteOnAlbumContest(context.Context, int64, int64, string, int64, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -1562,14 +1562,14 @@ type ContestAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type CreativeAPIServicer interface { 
-	AddPreview(context.Context, float32, int64, int64) (ImplResponse, error)
-	CreateCreative(context.Context, float32, int64, string, bool, bool, string, int64, string, string, string, string, float64, int64, string, int64, int64) (ImplResponse, error)
-	DeleteCreative(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetCreative(context.Context, float32, int64, int64) (ImplResponse, error)
-	RemovePreview(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetCreativesByApplication(context.Context, float32, int64, string, int32, int32, int64, string) (ImplResponse, error)
-	UpdateCreative(context.Context, float32, int64, int64, string, string, int64, string, string, string, string, float64, bool, int64, string, int64) (ImplResponse, error)
-	AdsFind(context.Context, float32, string, bool, bool, string, int64, string, float64, float64, string, int64, string, int32, int32, bool, bool, string) (ImplResponse, error)
+	AddPreview(context.Context, int64, int64) (ImplResponse, error)
+	CreateCreative(context.Context, int64, string, bool, bool, string, int64, string, string, string, string, float64, int64, string, int64, int64) (ImplResponse, error)
+	DeleteCreative(context.Context, int64, int64) (ImplResponse, error)
+	GetCreative(context.Context, int64, int64) (ImplResponse, error)
+	RemovePreview(context.Context, int64, int64) (ImplResponse, error)
+	GetCreativesByApplication(context.Context, int64, string, int32, int32, int64, string) (ImplResponse, error)
+	UpdateCreative(context.Context, int64, int64, string, string, int64, string, string, string, string, float64, bool, int64, string, int64) (ImplResponse, error)
+	AdsFind(context.Context, string, bool, bool, string, int64, string, float64, float64, string, int64, string, int32, int32, bool, bool, string) (ImplResponse, error)
 }
 
 
@@ -1578,9 +1578,9 @@ type CreativeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type DependentAPIServicer interface { 
-	GetDependents(context.Context, float32, int64) (ImplResponse, error)
-	Create(context.Context, float32, int64, Account) (ImplResponse, error)
-	RemoveDependent(context.Context, float32, int64, int64) (ImplResponse, error)
+	GetDependents(context.Context, int64) (ImplResponse, error)
+	Create(context.Context, int64, Account) (ImplResponse, error)
+	RemoveDependent(context.Context, int64, int64) (ImplResponse, error)
 }
 
 
@@ -1589,11 +1589,11 @@ type DependentAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type DisbursementAPIServicer interface { 
-	CheckDisbursements(context.Context, float32, int64) (ImplResponse, error)
-	CreateDisbursement(context.Context, float32, int64, int64, int64, float32, string, int64, string, string, string, string) (ImplResponse, error)
-	GetDisbursement(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchDisbursements(context.Context, float32, int64, int64, string, string, int64, int64, int32, int32, bool, string) (ImplResponse, error)
-	UpdateDisbursement(context.Context, float32, int64, int64, float32, string, int64, string, string, string, bool, string) (ImplResponse, error)
+	CheckDisbursements(context.Context, int64) (ImplResponse, error)
+	CreateDisbursement(context.Context, int64, int64, int64, float32, string, int64, string, string, string, string) (ImplResponse, error)
+	GetDisbursement(context.Context, int64, int64) (ImplResponse, error)
+	SearchDisbursements(context.Context, int64, int64, string, string, int64, int64, int32, int32, bool, string) (ImplResponse, error)
+	UpdateDisbursement(context.Context, int64, int64, float32, string, int64, string, string, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -1602,14 +1602,14 @@ type DisbursementAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type EmployeeAPIServicer interface { 
-	AssignToLocationEmployee(context.Context, float32, int64, int64, int64, bool) (ImplResponse, error)
-	CreateEmployee(context.Context, float32, int64, int64, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteEmployee(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetEmployee(context.Context, float32, int64, int64, string) (ImplResponse, error)
-	SearchEmployees(context.Context, float32, int64, string, int64, int64, string, string, string, bool, int32, int32, int32, int32, bool, bool, string, string, string) (ImplResponse, error)
-	UpdateEmployee(context.Context, float32, int64, int64, int64, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string) (ImplResponse, error)
-	AssignEmployee(context.Context, float32, int64, int64, int64, string) (ImplResponse, error)
-	UnassignEmployee(context.Context, float32, int64, int64) (ImplResponse, error)
+	AssignToLocationEmployee(context.Context, int64, int64, int64, bool) (ImplResponse, error)
+	CreateEmployee(context.Context, int64, int64, string, string, string, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteEmployee(context.Context, int64, int64) (ImplResponse, error)
+	GetEmployee(context.Context, int64, int64, string) (ImplResponse, error)
+	SearchEmployees(context.Context, int64, string, int64, int64, string, string, string, bool, int32, int32, int32, int32, bool, bool, string, string, string) (ImplResponse, error)
+	UpdateEmployee(context.Context, int64, int64, int64, string, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, bool, string, string, string, string, string) (ImplResponse, error)
+	AssignEmployee(context.Context, int64, int64, int64, string) (ImplResponse, error)
+	UnassignEmployee(context.Context, int64, int64) (ImplResponse, error)
 }
 
 
@@ -1618,13 +1618,13 @@ type EmployeeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type EventAPIServicer interface { 
-	AttendEvent(context.Context, float32, string, int64, string, int64, int64, int64, int64, int32, float64, float64) (ImplResponse, error)
-	SearchEventTransactions(context.Context, float32, string, int64, string, string, int64, int64, int64, int64, int64, int64, string, string, int64, int64, string, string, bool, int32, int32) (ImplResponse, error)
-	CreateEvent(context.Context, float32, int64, string, string, string, string, string, string, bool, int64, int64, int64, string) (ImplResponse, error)
-	DeleteEvent(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetEvent(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchEvents(context.Context, float32, int64, string, bool, string, string, string, string, string, bool, int64, int64, int32, int32) (ImplResponse, error)
-	UpdateEvent(context.Context, float32, int64, int64, string, string, string, string, string, string, bool, int64, int64, int64) (ImplResponse, error)
+	AttendEvent(context.Context, string, int64, string, int64, int64, int64, int64, int32, float64, float64) (ImplResponse, error)
+	SearchEventTransactions(context.Context, string, int64, string, string, int64, int64, int64, int64, int64, int64, string, string, int64, int64, string, string, bool, int32, int32) (ImplResponse, error)
+	CreateEvent(context.Context, int64, string, string, string, string, string, string, bool, int64, int64, int64, string) (ImplResponse, error)
+	DeleteEvent(context.Context, int64, int64) (ImplResponse, error)
+	GetEvent(context.Context, int64, int64) (ImplResponse, error)
+	SearchEvents(context.Context, int64, string, bool, string, string, string, string, string, bool, int64, int64, int32, int32) (ImplResponse, error)
+	UpdateEvent(context.Context, int64, int64, string, string, string, string, string, string, bool, int64, int64, int64) (ImplResponse, error)
 }
 
 
@@ -1633,8 +1633,8 @@ type EventAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type FacebookAPIServicer interface { 
-	GetToken(context.Context, float32, string, int64, float64, float64) (ImplResponse, error)
-	GraphInterface(context.Context, float32, string, string, int64, string, int64, int64, string, string, float64, float64) (ImplResponse, error)
+	GetToken(context.Context, string, int64, float64, float64) (ImplResponse, error)
+	GraphInterface(context.Context, string, string, int64, string, int64, int64, string, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -1643,11 +1643,11 @@ type FacebookAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type FavoriteAPIServicer interface { 
-	AddFavorite(context.Context, float32, int64, string, string, int64, float64, float64) (ImplResponse, error)
-	DeleteFavorite(context.Context, float32, string, int64, int64, int64, string) (ImplResponse, error)
-	GetFavorite(context.Context, float32, int64, string, int64, float64, float64) (ImplResponse, error)
-	SearchFavorites(context.Context, float32, string, string, bool, int32, int32, bool, bool, string, int64, int64, string, string, float64, float64) (ImplResponse, error)
-	WhoHasFavorited(context.Context, float32, int64, string, int32, int32, string, int64, float64, float64, string) (ImplResponse, error)
+	AddFavorite(context.Context, int64, string, string, int64, float64, float64) (ImplResponse, error)
+	DeleteFavorite(context.Context, string, int64, int64, int64, string) (ImplResponse, error)
+	GetFavorite(context.Context, int64, string, int64, float64, float64) (ImplResponse, error)
+	SearchFavorites(context.Context, string, string, bool, int32, int32, bool, bool, string, int64, int64, string, string, float64, float64) (ImplResponse, error)
+	WhoHasFavorited(context.Context, int64, string, int32, int32, string, int64, float64, float64, string) (ImplResponse, error)
 }
 
 
@@ -1656,11 +1656,11 @@ type FavoriteAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type FilterAPIServicer interface { 
-	CreateFilter(context.Context, float32, int64, string, string, int64, string, string, string, bool, string) (ImplResponse, error)
-	DeleteFilter(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetFilter(context.Context, float32, int64) (ImplResponse, error)
-	SearchFilters(context.Context, float32, int64, string, string, string, bool, string, bool, int32, int32, bool) (ImplResponse, error)
-	UpdateFilter(context.Context, float32, int64, int64, int64, string, string, string, string, bool, string) (ImplResponse, error)
+	CreateFilter(context.Context, int64, string, string, int64, string, string, string, bool, string) (ImplResponse, error)
+	DeleteFilter(context.Context, int64, int64) (ImplResponse, error)
+	GetFilter(context.Context, int64) (ImplResponse, error)
+	SearchFilters(context.Context, int64, string, string, string, bool, string, bool, int32, int32, bool) (ImplResponse, error)
+	UpdateFilter(context.Context, int64, int64, int64, string, string, string, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -1669,11 +1669,11 @@ type FilterAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type FlagAPIServicer interface { 
-	CreateFlag(context.Context, float32, string, int64, string, int64, string, float64, float64) (ImplResponse, error)
-	DeleteFlag(context.Context, float32, string, int64, string, int64, string, int64) (ImplResponse, error)
-	GetFlag(context.Context, float32, string, int64, string, int64, float64, float64) (ImplResponse, error)
-	GetFlagThreshold(context.Context, float32, string, string) (ImplResponse, error)
-	UpdateFlagThreshold(context.Context, float32, string, int64, string, string, int64) (ImplResponse, error)
+	CreateFlag(context.Context, string, int64, string, int64, string, float64, float64) (ImplResponse, error)
+	DeleteFlag(context.Context, string, int64, string, int64, string, int64) (ImplResponse, error)
+	GetFlag(context.Context, string, int64, string, int64, float64, float64) (ImplResponse, error)
+	GetFlagThreshold(context.Context, string, string) (ImplResponse, error)
+	UpdateFlagThreshold(context.Context, string, int64, string, string, int64) (ImplResponse, error)
 }
 
 
@@ -1682,11 +1682,11 @@ type FlagAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type GameAPIServicer interface { 
-	CreateGame(context.Context, float32, int64, string, string, string, string, string, bool) (ImplResponse, error)
-	UpdateGame(context.Context, float32, int64, int64, string, string, string, string, string, bool) (ImplResponse, error)
-	GetGame(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	DeleteGame(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchGames(context.Context, float32, int64, string, int32, int32, string, string, bool, bool) (ImplResponse, error)
+	CreateGame(context.Context, int64, string, string, string, string, string, bool) (ImplResponse, error)
+	UpdateGame(context.Context, int64, int64, string, string, string, string, string, bool) (ImplResponse, error)
+	GetGame(context.Context, int64, int64, bool) (ImplResponse, error)
+	DeleteGame(context.Context, int64, int64) (ImplResponse, error)
+	SearchGames(context.Context, int64, string, int32, int32, string, string, bool, bool) (ImplResponse, error)
 }
 
 
@@ -1695,16 +1695,16 @@ type GameAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type GameLevelAPIServicer interface { 
-	CreateGameLevel(context.Context, float32, int64, string, string, string, string, string, string, string, int64, int64, string, bool, string, string, float64, bool, bool, int64, string, int64, string, string, string, int64, int64, string) (ImplResponse, error)
-	DeleteGameLevel(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetGameLevel(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	GetQuestionsInLevel(context.Context, float32, int64, int64) (ImplResponse, error)
-	UpdateQuestionsInLevel(context.Context, float32, int64, int64, string) (ImplResponse, error)
-	GetGameLevelsByApplication(context.Context, float32, int64, string, string, string, bool, int32, int32, string, bool, string) (ImplResponse, error)
-	GetGameLevelsByBillableEntity(context.Context, float32, int64, string, string, string, bool, bool, int64, int64) (ImplResponse, error)
-	UpdateGameLevel(context.Context, float32, int64, int64, string, string, string, string, string, int64, int64, string, string, string, bool, string, string, float64, bool, bool, int64, string, int64, string, string, string, int64, int64, string) (ImplResponse, error)
-	GetWordsInLevel(context.Context, float32, int64, int64) (ImplResponse, error)
-	UpdateWordsInLevel(context.Context, float32, int64, int64, string) (ImplResponse, error)
+	CreateGameLevel(context.Context, int64, string, string, string, string, string, string, string, int64, int64, string, bool, string, string, float64, bool, bool, int64, string, int64, string, string, string, int64, int64, string) (ImplResponse, error)
+	DeleteGameLevel(context.Context, int64, int64) (ImplResponse, error)
+	GetGameLevel(context.Context, int64, int64, bool) (ImplResponse, error)
+	GetQuestionsInLevel(context.Context, int64, int64) (ImplResponse, error)
+	UpdateQuestionsInLevel(context.Context, int64, int64, string) (ImplResponse, error)
+	GetGameLevelsByApplication(context.Context, int64, string, string, string, bool, int32, int32, string, bool, string) (ImplResponse, error)
+	GetGameLevelsByBillableEntity(context.Context, int64, string, string, string, bool, bool, int64, int64) (ImplResponse, error)
+	UpdateGameLevel(context.Context, int64, int64, string, string, string, string, string, int64, int64, string, string, string, bool, string, string, float64, bool, bool, int64, string, int64, string, string, string, int64, int64, string) (ImplResponse, error)
+	GetWordsInLevel(context.Context, int64, int64) (ImplResponse, error)
+	UpdateWordsInLevel(context.Context, int64, int64, string) (ImplResponse, error)
 }
 
 
@@ -1713,16 +1713,16 @@ type GameLevelAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type InviteAPIServicer interface { 
-	AcceptInvite(context.Context, float32, string, int64, int64, int64, int64, int64, int64, int64, string, bool, bool, bool, bool, bool) (ImplResponse, error)
-	AlbumInvite(context.Context, float32, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
-	AlbumContestInvite(context.Context, float32, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
-	EventInvite(context.Context, float32, int64, string, int64, string, int64) (ImplResponse, error)
-	GameInvite(context.Context, float32, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
-	GetInvite(context.Context, float32, int64, string, int64, int64, int64, int64, int64, int64, string) (ImplResponse, error)
-	MissionInvite(context.Context, float32, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
-	OfferInvite(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	OfferLocationInvite(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	RetailerLocationInvite(context.Context, float32, int64, string, int64, int64) (ImplResponse, error)
+	AcceptInvite(context.Context, string, int64, int64, int64, int64, int64, int64, int64, string, bool, bool, bool, bool, bool) (ImplResponse, error)
+	AlbumInvite(context.Context, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
+	AlbumContestInvite(context.Context, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
+	EventInvite(context.Context, int64, string, int64, string, int64) (ImplResponse, error)
+	GameInvite(context.Context, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
+	GetInvite(context.Context, int64, string, int64, int64, int64, int64, int64, int64, string) (ImplResponse, error)
+	MissionInvite(context.Context, string, int64, int64, string, int64, float64, float64) (ImplResponse, error)
+	OfferInvite(context.Context, int64, string, int64) (ImplResponse, error)
+	OfferLocationInvite(context.Context, int64, string, int64) (ImplResponse, error)
+	RetailerLocationInvite(context.Context, int64, string, int64, int64) (ImplResponse, error)
 }
 
 
@@ -1731,11 +1731,11 @@ type InviteAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type LeaderboardAPIServicer interface { 
-	CreateLeaderboard(context.Context, float32, int64, string, string, string, *os.File, int64, *os.File, int64, int32, string, string, string, string) (ImplResponse, error)
-	DeleteLeaderboard(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetLeaderboard(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	SearchLeaderboards(context.Context, float32, int64, string, bool, string, string, string, string, bool, bool, bool, int32, int32) (ImplResponse, error)
-	UpdateLeaderboard(context.Context, float32, int64, int64, string, string, string, string, *os.File, int64, *os.File, int64, int32, bool, string, string, string) (ImplResponse, error)
+	CreateLeaderboard(context.Context, int64, string, string, string, *os.File, int64, *os.File, int64, int32, string, string, string, string) (ImplResponse, error)
+	DeleteLeaderboard(context.Context, int64, int64) (ImplResponse, error)
+	GetLeaderboard(context.Context, int64, int64, bool) (ImplResponse, error)
+	SearchLeaderboards(context.Context, int64, string, bool, string, string, string, string, bool, bool, bool, int32, int32) (ImplResponse, error)
+	UpdateLeaderboard(context.Context, int64, int64, string, string, string, string, *os.File, int64, *os.File, int64, int32, bool, string, string, string) (ImplResponse, error)
 }
 
 
@@ -1744,9 +1744,9 @@ type LeaderboardAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type LikeAPIServicer interface { 
-	RegisterLike(context.Context, float32, string, int64, string, int64, string, int64, bool, string, string, string, float64, float64) (ImplResponse, error)
-	RemoveLike(context.Context, float32, string, int64, string, int64, float64, float64) (ImplResponse, error)
-	SearchLikes(context.Context, float32, string, int64, string, int64, string, string, bool, int64, int64, int32, int32) (ImplResponse, error)
+	RegisterLike(context.Context, string, int64, string, int64, string, int64, bool, string, string, string, float64, float64) (ImplResponse, error)
+	RemoveLike(context.Context, string, int64, string, int64, float64, float64) (ImplResponse, error)
+	SearchLikes(context.Context, string, int64, string, int64, string, string, bool, int64, int64, int32, int32) (ImplResponse, error)
 }
 
 
@@ -1755,12 +1755,12 @@ type LikeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ListingAPIServicer interface { 
-	CreateListing(context.Context, float32, int64, string, string, string, int64, int64, string, string, bool, string, string, string, bool, string) (ImplResponse, error)
-	DeleteListing(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetListing(context.Context, float32, int64) (ImplResponse, error)
-	SearchListing(context.Context, float32, int64, string, int32, int32, bool, float64, float64, int64, int64, string, string, bool, string, string, string) (ImplResponse, error)
-	SummaryListing(context.Context, float32, int64, int64, string, int32, bool) (ImplResponse, error)
-	UpdateListing(context.Context, float32, int64, int64, string, string, string, int64, int64, string, string, bool, string, string, string, bool, string) (ImplResponse, error)
+	CreateListing(context.Context, int64, string, string, string, int64, int64, string, string, bool, string, string, string, bool, string) (ImplResponse, error)
+	DeleteListing(context.Context, int64, int64) (ImplResponse, error)
+	GetListing(context.Context, int64) (ImplResponse, error)
+	SearchListing(context.Context, int64, string, int32, int32, bool, float64, float64, int64, int64, string, string, bool, string, string, string) (ImplResponse, error)
+	SummaryListing(context.Context, int64, int64, string, int32, bool) (ImplResponse, error)
+	UpdateListing(context.Context, int64, int64, string, string, string, int64, int64, string, string, bool, string, string, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -1769,11 +1769,11 @@ type ListingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type LocationAPIServicer interface { 
-	GetLocationByIp(context.Context, float32, string) (ImplResponse, error)
-	GetLocations(context.Context, float32, string, int64, float64, float64, float64, float64, string, string, string, float64, float64, float64, float64, float64, bool, int32, int32, int32, int32) (ImplResponse, error)
-	CacheTrilaterationData(context.Context, float32, string, int64, int32, string, *os.File) (ImplResponse, error)
-	CacheTrilaterationDataGzip(context.Context, float32, TrilatCacheRequest) (ImplResponse, error)
-	GetLocationByTrilateration(context.Context, float32, int64, float64, float64, string, string) (ImplResponse, error)
+	GetLocationByIp(context.Context, string) (ImplResponse, error)
+	GetLocations(context.Context, string, int64, float64, float64, float64, float64, string, string, string, float64, float64, float64, float64, float64, bool, int32, int32, int32, int32) (ImplResponse, error)
+	CacheTrilaterationData(context.Context, string, int64, int32, string, *os.File) (ImplResponse, error)
+	CacheTrilaterationDataGzip(context.Context, TrilatCacheRequest) (ImplResponse, error)
+	GetLocationByTrilateration(context.Context, int64, float64, float64, string, string) (ImplResponse, error)
 }
 
 
@@ -1782,8 +1782,8 @@ type LocationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type LocationApiV2APIServicer interface { 
-	CreateLocationV2(context.Context, float32, Location) (ImplResponse, error)
-	UpdateLocationV2(context.Context, float32, int64, Location) (ImplResponse, error)
+	CreateLocationV2(context.Context, Location) (ImplResponse, error)
+	UpdateLocationV2(context.Context, int64, Location) (ImplResponse, error)
 }
 
 
@@ -1792,11 +1792,11 @@ type LocationApiV2APIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type MediaAPIServicer interface { 
-	CreateMedia(context.Context, float32, int64, string, string, bool, int32, int32, int32, int32, int32, int64, float64, float64, string, string, bool, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, bool, bool, bool, bool, string, string, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, int64, string, int32, string, int64, string, string, string) (ImplResponse, error)
-	DeleteMedia(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetMedia(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchMedia(context.Context, float32, int64, bool, string, bool, string, string, string, int32, int32) (ImplResponse, error)
-	UpdateMedia(context.Context, float32, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, bool, int32, int32, int32, int32, int32, string, int64, float64, float64, bool, bool, bool, bool, string, string, string, string, bool, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, int64, string, string, int32, string, int64, string, string, string) (ImplResponse, error)
+	CreateMedia(context.Context, int64, string, string, bool, int32, int32, int32, int32, int32, int64, float64, float64, string, string, bool, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, bool, bool, bool, bool, string, string, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, int64, string, int32, string, int64, string, string, string) (ImplResponse, error)
+	DeleteMedia(context.Context, int64, int64) (ImplResponse, error)
+	GetMedia(context.Context, int64, int64) (ImplResponse, error)
+	SearchMedia(context.Context, int64, bool, string, bool, string, string, string, int32, int32) (ImplResponse, error)
+	UpdateMedia(context.Context, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, bool, int32, int32, int32, int32, int32, string, int64, float64, float64, bool, bool, bool, bool, string, string, string, string, bool, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, int64, string, string, int32, string, int64, string, string, string) (ImplResponse, error)
 }
 
 
@@ -1805,15 +1805,15 @@ type MediaAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type MissionAPIServicer interface { 
-	CreateMission(context.Context, float32, int64, string, string, string, int64, int64, bool, string, string, string, string, string, int64, float64, bool, bool, int64, string, int64, string, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteMission(context.Context, float32, int64, int64) (ImplResponse, error)
-	FindMissions(context.Context, float32, string, string, string, int64, string, float64, float64, string, int64, string, int32, int32, bool, bool, bool, bool, bool, string, string) (ImplResponse, error)
-	SearchMissionFormats(context.Context, float32, int32, int32, bool) (ImplResponse, error)
-	GetMission(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	ImportMission(context.Context, float32, int64, float64, float64, string, string, int32, int32, string) (ImplResponse, error)
-	SearchMissions(context.Context, float32, int64, string, string, int32, int32, bool, bool, bool, string, string, bool) (ImplResponse, error)
-	SearchMissionsByBillableEntity(context.Context, float32, int64, string, int32, int32, bool, bool, bool, string, string, bool) (ImplResponse, error)
-	UpdateMission(context.Context, float32, int64, int64, string, string, string, string, int64, int64, bool, string, string, string, int64, float64, bool, bool, int64, string, int64, string, string, string, string, string, string) (ImplResponse, error)
+	CreateMission(context.Context, int64, string, string, string, int64, int64, bool, string, string, string, string, string, int64, float64, bool, bool, int64, string, int64, string, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteMission(context.Context, int64, int64) (ImplResponse, error)
+	FindMissions(context.Context, string, string, string, int64, string, float64, float64, string, int64, string, int32, int32, bool, bool, bool, bool, bool, string, string) (ImplResponse, error)
+	SearchMissionFormats(context.Context, int32, int32, bool) (ImplResponse, error)
+	GetMission(context.Context, int64, int64, bool) (ImplResponse, error)
+	ImportMission(context.Context, int64, float64, float64, string, string, int32, int32, string) (ImplResponse, error)
+	SearchMissions(context.Context, int64, string, string, int32, int32, bool, bool, bool, string, string, bool) (ImplResponse, error)
+	SearchMissionsByBillableEntity(context.Context, int64, string, int32, int32, bool, bool, bool, string, string, bool) (ImplResponse, error)
+	UpdateMission(context.Context, int64, int64, string, string, string, string, int64, int64, bool, string, string, string, int64, float64, bool, bool, int64, string, int64, string, string, string, string, string, string) (ImplResponse, error)
 }
 
 
@@ -1822,11 +1822,11 @@ type MissionAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type MissionInviteAPIServicer interface { 
-	CreateMissionInvite(context.Context, float32, string, int64, int64, string, bool) (ImplResponse, error)
-	DeleteMissionInvite(context.Context, float32, string, int64, int64, int64, bool) (ImplResponse, error)
-	GetMissionInvite(context.Context, float32, string, int64, int64, int64, bool, string) (ImplResponse, error)
-	SearchMissionInvites(context.Context, float32, string, int64, string, string, int64, string, int64, int32, int32, string, string, bool, bool) (ImplResponse, error)
-	UpdateMissionInvite(context.Context, float32, string, int64, string, int64, int64, int64, int64, string, string, int64, bool) (ImplResponse, error)
+	CreateMissionInvite(context.Context, string, int64, int64, string, bool) (ImplResponse, error)
+	DeleteMissionInvite(context.Context, string, int64, int64, int64, bool) (ImplResponse, error)
+	GetMissionInvite(context.Context, string, int64, int64, int64, bool, string) (ImplResponse, error)
+	SearchMissionInvites(context.Context, string, int64, string, string, int64, string, int64, int32, int32, string, string, bool, bool) (ImplResponse, error)
+	UpdateMissionInvite(context.Context, string, int64, string, int64, int64, int64, int64, string, string, int64, bool) (ImplResponse, error)
 }
 
 
@@ -1835,12 +1835,12 @@ type MissionInviteAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type NoteAPIServicer interface { 
-	BatchOperation(context.Context, float32, int64, string, string, int64, string) (ImplResponse, error)
-	CreateNote(context.Context, float32, string, string, int64, string, int64, string, string, string, string, int64, string, string, float64, float64, string, string, bool, bool, bool, int64, int64, string, bool, int32, string, string, string, *os.File, string, string, string, string, *os.File, string, string, string, string, string, string, string, float64, float32) (ImplResponse, error)
-	GetNote(context.Context, float32, int64, string, int64, bool) (ImplResponse, error)
-	DeleteNote(context.Context, float32, int64, string, int64, float64, float64, string) (ImplResponse, error)
-	SearchNotes(context.Context, float32, string, int64, string, int64, string, string, string, int64, bool, bool, string, bool, bool, int64, int64, int32, int32) (ImplResponse, error)
-	UpdateNote(context.Context, float32, int64, string, int64, string, string, string, string, string, int64, string, string, float64, float64, string, bool, bool, bool, bool, int64, int64, string, bool, int32, string, string, string, *os.File, string, string, string, string, *os.File, string, string, string, string, string, string, string, float64, float64) (ImplResponse, error)
+	BatchOperation(context.Context, int64, string, string, int64, string) (ImplResponse, error)
+	CreateNote(context.Context, string, string, int64, string, int64, string, string, string, string, int64, string, string, float64, float64, string, string, bool, bool, bool, int64, int64, string, bool, int32, string, string, string, *os.File, string, string, string, string, *os.File, string, string, string, string, string, string, string, float64, float32) (ImplResponse, error)
+	GetNote(context.Context, int64, string, int64, bool) (ImplResponse, error)
+	DeleteNote(context.Context, int64, string, int64, float64, float64, string) (ImplResponse, error)
+	SearchNotes(context.Context, string, int64, string, int64, string, string, string, int64, bool, bool, string, bool, bool, int64, int64, int32, int32) (ImplResponse, error)
+	UpdateNote(context.Context, int64, string, int64, string, string, string, string, string, int64, string, string, float64, float64, string, bool, bool, bool, bool, int64, int64, string, bool, int32, string, string, string, *os.File, string, string, string, string, *os.File, string, string, string, string, string, string, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -1849,19 +1849,19 @@ type NoteAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type NotificationAPIServicer interface { 
-	SendBatchNotifications(context.Context, float32, int64, string, string, string, int64, string, string, int64, string) (ImplResponse, error)
-	SendCustomNotifications(context.Context, float32, string, int64, string, bool, string, string, string, int64, string, string, int64, string, string, string, string, bool, float64, float64) (ImplResponse, error)
-	SearchRecipients(context.Context, float32, string, string, int64, string, string, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
-	SearchRecipientsCount(context.Context, float32, string, int64, string, string, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
-	GetNotifications(context.Context, float32, string, int64, int64, string, string, string, string, string, string, string, string, string, bool, bool, int64, float64, float64, bool, bool, int32, int32) (ImplResponse, error)
-	CreateNotificationTemplate(context.Context, float32, int64, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteNotificationTemplate(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetNotificationTemplate(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchNotificationTemplate(context.Context, float32, int64, string, bool, int32, int32, string, string, string, bool, bool, string) (ImplResponse, error)
-	UpdateNotificationTemplate(context.Context, float32, int64, int64, string, string, string) (ImplResponse, error)
-	RegisterNotificationToken(context.Context, float32, string, string, string, int64, string, string, string, bool, float64, float64) (ImplResponse, error)
-	SearchBlockedNotifications(context.Context, float32, string, int64, string, string, string, string, string, string, string, bool, int32, int32) (ImplResponse, error)
-	CreateOrUpdateBlockedNotifications(context.Context, float32, string, string, int64) (ImplResponse, error)
+	SendBatchNotifications(context.Context, int64, string, string, string, int64, string, string, int64, string) (ImplResponse, error)
+	SendCustomNotifications(context.Context, string, int64, string, bool, string, string, string, int64, string, string, int64, string, string, string, string, bool, float64, float64) (ImplResponse, error)
+	SearchRecipients(context.Context, string, string, int64, string, string, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
+	SearchRecipientsCount(context.Context, string, int64, string, string, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
+	GetNotifications(context.Context, string, int64, int64, string, string, string, string, string, string, string, string, string, bool, bool, int64, float64, float64, bool, bool, int32, int32) (ImplResponse, error)
+	CreateNotificationTemplate(context.Context, int64, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteNotificationTemplate(context.Context, int64, int64) (ImplResponse, error)
+	GetNotificationTemplate(context.Context, int64, int64) (ImplResponse, error)
+	SearchNotificationTemplate(context.Context, int64, string, bool, int32, int32, string, string, string, bool, bool, string) (ImplResponse, error)
+	UpdateNotificationTemplate(context.Context, int64, int64, string, string, string) (ImplResponse, error)
+	RegisterNotificationToken(context.Context, string, string, string, int64, string, string, string, bool, float64, float64) (ImplResponse, error)
+	SearchBlockedNotifications(context.Context, string, int64, string, string, string, string, string, string, string, bool, int32, int32) (ImplResponse, error)
+	CreateOrUpdateBlockedNotifications(context.Context, string, string, int64) (ImplResponse, error)
 }
 
 
@@ -1870,17 +1870,17 @@ type NotificationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ObjectStoreAPIServicer interface { 
-	CreateObject(context.Context, float32, int64, string, string) (ImplResponse, error)
-	SearchData(context.Context, float32, string, bool, int64, int64, int64, string, string, string) (ImplResponse, error)
-	CreateData(context.Context, float32, string, int64, string) (ImplResponse, error)
-	GetData(context.Context, float32, string, string, int64, string) (ImplResponse, error)
-	UpdateData(context.Context, float32, string, string, int64, string) (ImplResponse, error)
-	DeleteData(context.Context, float32, string, string, int64) (ImplResponse, error)
-	DeleteObject(context.Context, float32, int64, string, string) (ImplResponse, error)
-	AddField(context.Context, float32, int64, string, string, string, string) (ImplResponse, error)
-	DeleteField(context.Context, float32, int64, string, string, string) (ImplResponse, error)
-	GetObject(context.Context, float32, int64, string, string) (ImplResponse, error)
-	SearchObject(context.Context, float32, int64, string, int64, int64, string) (ImplResponse, error)
+	CreateObject(context.Context, int64, string, string) (ImplResponse, error)
+	SearchData(context.Context, string, bool, int64, int64, int64, string, string, string) (ImplResponse, error)
+	CreateData(context.Context, string, int64, string) (ImplResponse, error)
+	GetData(context.Context, string, string, int64, string) (ImplResponse, error)
+	UpdateData(context.Context, string, string, int64, string) (ImplResponse, error)
+	DeleteData(context.Context, string, string, int64) (ImplResponse, error)
+	DeleteObject(context.Context, int64, string, string) (ImplResponse, error)
+	AddField(context.Context, int64, string, string, string, string) (ImplResponse, error)
+	DeleteField(context.Context, int64, string, string, string) (ImplResponse, error)
+	GetObject(context.Context, int64, string, string) (ImplResponse, error)
+	SearchObject(context.Context, int64, string, int64, int64, string) (ImplResponse, error)
 }
 
 
@@ -1889,22 +1889,22 @@ type ObjectStoreAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OfferAPIServicer interface { 
-	GetOfferDetails(context.Context, float32, string, int64, int64, int64, float64, float64, float64, bool, bool, bool) (ImplResponse, error)
-	SearchOffersForConsumer(context.Context, float32, float64, float64, string, int64, int32, int32, int32, string, string, string, int64, float64, string, string, string, string, string, string, string, string, string, string, int64, bool, bool, bool, bool, bool, bool, string, string) (ImplResponse, error)
-	GetOfferListCounts(context.Context, float32, float64, float64, float32, string) (ImplResponse, error)
-	GetOfferLocation(context.Context, float32, int64, string) (ImplResponse, error)
-	TopOfferTransactions(context.Context, float32, int32, int32) (ImplResponse, error)
-	CreateOffer(context.Context, float32, bool, string, string, bool, int32, int32, int32, int32, int32, int64, float64, float64, string, string, string, bool, string, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, bool, bool, bool, bool, string, string, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, float64, float64, float64, float64, float64, string, string, string, int64, int64, int64, int64, string, int32, string, int64, string, int32, int32, int32, string, string, string, float64, float64, string, string) (ImplResponse, error)
-	DeleteOffer(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetOffer(context.Context, float32, int64, bool, string, int64) (ImplResponse, error)
-	BatchUpdateOfferLocations(context.Context, float32, string, string, int64) (ImplResponse, error)
-	DeleteOfferLocation(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetOfferLocationsForRetailers(context.Context, float32, string, bool, int32, int32, bool, bool, string, int64, string, int64, int64, string, string, string, string, string, string, string, bool, int64) (ImplResponse, error)
-	GetOffersForRetailers(context.Context, float32, string, string, bool, int32, int32, bool, bool, bool, bool, bool, string, int64, string, string, string, string, int64, int64, string, string, string, string, int32, int32, string, string, string, string, string, bool, int64) (ImplResponse, error)
-	UpdateOfferStatus(context.Context, float32, string, bool, string, int64) (ImplResponse, error)
-	SearchOfferTransactionsForRetailers(context.Context, float32, string, bool, int32, int32, bool, string, int64, string, string, int64, int64, int64, int64, bool, bool, string, string, string, string, string, int64, int64, int32, int32) (ImplResponse, error)
-	RedeemOfferTransaction(context.Context, float32, int64, int32, string, int64, int64) (ImplResponse, error)
-	UpdateOffer(context.Context, float32, int64, bool, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, bool, int32, int32, int32, int32, int32, string, int64, float64, float64, bool, bool, bool, bool, string, string, string, string, string, bool, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, float64, float64, float64, float64, float64, string, string, string, int64, int64, int64, int64, string, int32, string, int64, string, int32, int32, int32, string, string, string, float64, float64, string, string) (ImplResponse, error)
+	GetOfferDetails(context.Context, string, int64, int64, int64, float64, float64, float64, bool, bool, bool) (ImplResponse, error)
+	SearchOffersForConsumer(context.Context, float64, float64, string, int64, int32, int32, int32, string, string, string, int64, float64, string, string, string, string, string, string, string, string, string, string, int64, bool, bool, bool, bool, bool, bool, string, string) (ImplResponse, error)
+	GetOfferListCounts(context.Context, float64, float64, float32, string) (ImplResponse, error)
+	GetOfferLocation(context.Context, int64, string) (ImplResponse, error)
+	TopOfferTransactions(context.Context, int32, int32) (ImplResponse, error)
+	CreateOffer(context.Context, bool, string, string, bool, int32, int32, int32, int32, int32, int64, float64, float64, string, string, string, bool, string, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, bool, bool, bool, bool, string, string, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, float64, float64, float64, float64, float64, string, string, string, int64, int64, int64, int64, string, int32, string, int64, string, int32, int32, int32, string, string, string, float64, float64, string, string) (ImplResponse, error)
+	DeleteOffer(context.Context, int64, string, int64) (ImplResponse, error)
+	GetOffer(context.Context, int64, bool, string, int64) (ImplResponse, error)
+	BatchUpdateOfferLocations(context.Context, string, string, int64) (ImplResponse, error)
+	DeleteOfferLocation(context.Context, int64, string, int64) (ImplResponse, error)
+	GetOfferLocationsForRetailers(context.Context, string, bool, int32, int32, bool, bool, string, int64, string, int64, int64, string, string, string, string, string, string, string, bool, int64) (ImplResponse, error)
+	GetOffersForRetailers(context.Context, string, string, bool, int32, int32, bool, bool, bool, bool, bool, string, int64, string, string, string, string, int64, int64, string, string, string, string, int32, int32, string, string, string, string, string, bool, int64) (ImplResponse, error)
+	UpdateOfferStatus(context.Context, string, bool, string, int64) (ImplResponse, error)
+	SearchOfferTransactionsForRetailers(context.Context, string, bool, int32, int32, bool, string, int64, string, string, int64, int64, int64, int64, bool, bool, string, string, string, string, string, int64, int64, int32, int32) (ImplResponse, error)
+	RedeemOfferTransaction(context.Context, int64, int32, string, int64, int64) (ImplResponse, error)
+	UpdateOffer(context.Context, int64, bool, string, int64, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, bool, int32, int32, int32, int32, int32, string, int64, float64, float64, bool, bool, bool, bool, string, string, string, string, string, bool, int64, int64, int64, int64, int64, int64, int64, string, int64, int64, string, string, string, string, string, string, string, string, float64, float64, float64, float64, float64, string, string, string, int64, int64, int64, int64, string, int32, string, int64, string, int32, int32, int32, string, string, string, float64, float64, string, string) (ImplResponse, error)
 }
 
 
@@ -1913,11 +1913,11 @@ type OfferAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OfferStatusAPIServicer interface { 
-	CreateOfferTransactionStatus(context.Context, float32, string, int32, string, int64, float64, float64, string, string, bool, string) (ImplResponse, error)
-	DeleteOfferTransactionStatus(context.Context, float32, int64, string, int64, float64, float64) (ImplResponse, error)
-	GetOfferTransactionStatus(context.Context, float32, int64, string, int64, float64, float64) (ImplResponse, error)
-	SearchOfferTransactionStatuses(context.Context, float32, string, int64, float64, float64, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
-	UpdateOfferTransactionStatus(context.Context, float32, string, int64, float64, float64, int64, string, string, int32, string, bool, string) (ImplResponse, error)
+	CreateOfferTransactionStatus(context.Context, string, int32, string, int64, float64, float64, string, string, bool, string) (ImplResponse, error)
+	DeleteOfferTransactionStatus(context.Context, int64, string, int64, float64, float64) (ImplResponse, error)
+	GetOfferTransactionStatus(context.Context, int64, string, int64, float64, float64) (ImplResponse, error)
+	SearchOfferTransactionStatuses(context.Context, string, int64, float64, float64, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
+	UpdateOfferTransactionStatus(context.Context, string, int64, float64, float64, int64, string, string, int32, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -1926,7 +1926,7 @@ type OfferStatusAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OpenAIAPIServicer interface { 
-	ImageGeneration(context.Context, float32, int64, string, bool) (ImplResponse, error)
+	ImageGeneration(context.Context, int64, string, bool) (ImplResponse, error)
 }
 
 
@@ -1935,8 +1935,8 @@ type OpenAIAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OptimizeAPIServicer interface { 
-	RequestOptimization(context.Context, float32, Orders) (ImplResponse, error)
-	GetOptimizationResult(context.Context, float32, string, int32, int32) (ImplResponse, error)
+	RequestOptimization(context.Context, Orders) (ImplResponse, error)
+	GetOptimizationResult(context.Context, string, int32, int32) (ImplResponse, error)
 }
 
 
@@ -1945,30 +1945,30 @@ type OptimizeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type OrsonAPIServicer interface { 
-	CreateInstantEpisode(context.Context, float32, int64, string) (ImplResponse, error)
-	GetEpisodeStatus(context.Context, float32, int64, int64) (ImplResponse, error)
-	StartVideoRender(context.Context, float32, int64, string) (ImplResponse, error)
-	GetRenderStatus(context.Context, float32, string, int64) (ImplResponse, error)
-	CreateVoiceCanvas(context.Context, float32, int64, string, string, string, *os.File, string, bool, bool, string) (ImplResponse, error)
-	GetVoiceCanvas(context.Context, float32, string, int64) (ImplResponse, error)
-	SummarizeTopics(context.Context, float32, int64, string, string, *os.File, string, int32, int32, string) (ImplResponse, error)
-	GetTopics(context.Context, float32, string, int64) (ImplResponse, error)
-	AddMovie(context.Context, float32, int64, string, string, string, *os.File, string, string) (ImplResponse, error)
-	GetAddMovieResult(context.Context, float32, string, int64) (ImplResponse, error)
-	Stt(context.Context, float32, int64, string, string, string, *os.File, string, string) (ImplResponse, error)
-	GetSTT(context.Context, float32, string, int64) (ImplResponse, error)
-	Tts(context.Context, float32, int64, string, string, string, string, string) (ImplResponse, error)
-	GetTTS(context.Context, float32, string, int64) (ImplResponse, error)
-	TechTune(context.Context, float32, int64, int32, string, *os.File, string, string) (ImplResponse, error)
-	GetTechTune(context.Context, float32, string, int64) (ImplResponse, error)
-	Emotion(context.Context, float32, int64, string, *os.File, string, string) (ImplResponse, error)
-	GetEmotion(context.Context, float32, string, int64) (ImplResponse, error)
-	Batch(context.Context, float32, int64, string, int32, string, *os.File, string, string) (ImplResponse, error)
-	GetBatch(context.Context, float32, string, int64) (ImplResponse, error)
-	AiFindImages(context.Context, float32, int64, string, string, string, string) (ImplResponse, error)
-	AiDocs(context.Context, float32, int64, string, bool, int32, int32) (ImplResponse, error)
-	AiTags(context.Context, float32, int64, string, string, int32, int32) (ImplResponse, error)
-	AiText(context.Context, float32, int64, string, string, int32, int32) (ImplResponse, error)
+	CreateInstantEpisode(context.Context, int64, string) (ImplResponse, error)
+	GetEpisodeStatus(context.Context, int64, int64) (ImplResponse, error)
+	StartVideoRender(context.Context, int64, string) (ImplResponse, error)
+	GetRenderStatus(context.Context, string, int64) (ImplResponse, error)
+	CreateVoiceCanvas(context.Context, int64, string, string, string, *os.File, string, bool, bool, string) (ImplResponse, error)
+	GetVoiceCanvas(context.Context, string, int64) (ImplResponse, error)
+	SummarizeTopics(context.Context, int64, string, string, *os.File, string, int32, int32, string) (ImplResponse, error)
+	GetTopics(context.Context, string, int64) (ImplResponse, error)
+	AddMovie(context.Context, int64, string, string, string, *os.File, string, string) (ImplResponse, error)
+	GetAddMovieResult(context.Context, string, int64) (ImplResponse, error)
+	Stt(context.Context, int64, string, string, string, *os.File, string, string) (ImplResponse, error)
+	GetSTT(context.Context, string, int64) (ImplResponse, error)
+	Tts(context.Context, int64, string, string, string, string, string) (ImplResponse, error)
+	GetTTS(context.Context, string, int64) (ImplResponse, error)
+	TechTune(context.Context, int64, int32, string, *os.File, string, string) (ImplResponse, error)
+	GetTechTune(context.Context, string, int64) (ImplResponse, error)
+	Emotion(context.Context, int64, string, *os.File, string, string) (ImplResponse, error)
+	GetEmotion(context.Context, string, int64) (ImplResponse, error)
+	Batch(context.Context, int64, string, int32, string, *os.File, string, string) (ImplResponse, error)
+	GetBatch(context.Context, string, int64) (ImplResponse, error)
+	AiFindImages(context.Context, int64, string, string, string, string) (ImplResponse, error)
+	AiDocs(context.Context, int64, string, bool, int32, int32) (ImplResponse, error)
+	AiTags(context.Context, int64, string, string, int32, int32) (ImplResponse, error)
+	AiText(context.Context, int64, string, string, int32, int32) (ImplResponse, error)
 }
 
 
@@ -1977,11 +1977,11 @@ type OrsonAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PackAPIServicer interface { 
-	CreatePack(context.Context, float32, int64, string, int64, int32, bool, bool, int64, string, string, bool, string, string, string, string, int64, int64, int64, int64, string, string, string, bool, string, int64) (ImplResponse, error)
-	DeletePack(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetPack(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	SearchPacks(context.Context, float32, int64, string, bool, string, string, int32, int32, bool, bool, string) (ImplResponse, error)
-	UpdatePack(context.Context, float32, int64, int64, bool, int64, string, string, string, bool, string, string, string, int64, string, int64, int64, int64, int64, string, int32, string, string, bool, bool, string, int64) (ImplResponse, error)
+	CreatePack(context.Context, int64, string, int64, int32, bool, bool, int64, string, string, bool, string, string, string, string, int64, int64, int64, int64, string, string, string, bool, string, int64) (ImplResponse, error)
+	DeletePack(context.Context, int64, int64) (ImplResponse, error)
+	GetPack(context.Context, int64, int64, bool) (ImplResponse, error)
+	SearchPacks(context.Context, int64, string, bool, string, string, int32, int32, bool, bool, string) (ImplResponse, error)
+	UpdatePack(context.Context, int64, int64, bool, int64, string, string, string, bool, string, string, string, int64, string, int64, int64, int64, int64, string, int32, string, string, bool, bool, string, int64) (ImplResponse, error)
 }
 
 
@@ -1990,8 +1990,8 @@ type PackAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ParticipantsAPIServicer interface { 
-	ProcessParticipants(context.Context, float32, int64, string, string, bool, *os.File) (ImplResponse, error)
-	ProcessAllParticipants(context.Context, float32, int64, string, bool) (ImplResponse, error)
+	ProcessParticipants(context.Context, int64, string, string, bool, *os.File) (ImplResponse, error)
+	ProcessAllParticipants(context.Context, int64, string, bool) (ImplResponse, error)
 }
 
 
@@ -2000,7 +2000,7 @@ type ParticipantsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PathingAPIServicer interface { 
-	ComputePath(context.Context, float32, string, string, bool, bool) (ImplResponse, error)
+	ComputePath(context.Context, string, string, bool, bool) (ImplResponse, error)
 }
 
 
@@ -2009,11 +2009,11 @@ type PathingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PostalCodeAPIServicer interface { 
-	CreatePostalCode(context.Context, float32, int64, string, float64, float64, string, string, bool) (ImplResponse, error)
-	DeletePostalCode(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetPostalCode(context.Context, float32, int64) (ImplResponse, error)
-	GetPostalCodes(context.Context, float32, string, bool, float64, float64, string, float64, int32, int32) (ImplResponse, error)
-	UpdatePostalCode(context.Context, float32, int64, int64, string, float64, float64, string, string, bool) (ImplResponse, error)
+	CreatePostalCode(context.Context, int64, string, float64, float64, string, string, bool) (ImplResponse, error)
+	DeletePostalCode(context.Context, int64, int64) (ImplResponse, error)
+	GetPostalCode(context.Context, int64) (ImplResponse, error)
+	GetPostalCodes(context.Context, string, bool, float64, float64, string, float64, int32, int32) (ImplResponse, error)
+	UpdatePostalCode(context.Context, int64, int64, string, float64, float64, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -2022,11 +2022,11 @@ type PostalCodeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PreviewPersonaAPIServicer interface { 
-	CreatePersona(context.Context, float32, int64, string, string, int64, int32, string, string, float64, float64) (ImplResponse, error)
-	DeletePersona(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetPersonaList(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchPersona(context.Context, float32, int64, int32, int32) (ImplResponse, error)
-	UpdatePersona(context.Context, float32, int64, int64, string, string, bool, int64, int32, string, string, float64, float64) (ImplResponse, error)
+	CreatePersona(context.Context, int64, string, string, int64, int32, string, string, float64, float64) (ImplResponse, error)
+	DeletePersona(context.Context, int64, int64) (ImplResponse, error)
+	GetPersonaList(context.Context, int64, int64) (ImplResponse, error)
+	SearchPersona(context.Context, int64, int32, int32) (ImplResponse, error)
+	UpdatePersona(context.Context, int64, int64, string, string, bool, int64, int32, string, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -2035,12 +2035,12 @@ type PreviewPersonaAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ProgramAPIServicer interface { 
-	SearchPrograms(context.Context, float32, string, bool, int32, int32, bool, string) (ImplResponse, error)
-	CreateProgram(context.Context, float32, Program) (ImplResponse, error)
-	GetProgram(context.Context, float32, int64) (ImplResponse, error)
-	PutProgram(context.Context, float32, int64, Program) (ImplResponse, error)
-	PostProgram(context.Context, float32, int64, Program) (ImplResponse, error)
-	DeleteProgram(context.Context, float32, int64) (ImplResponse, error)
+	SearchPrograms(context.Context, string, bool, int32, int32, bool, string) (ImplResponse, error)
+	CreateProgram(context.Context, Program) (ImplResponse, error)
+	GetProgram(context.Context, int64) (ImplResponse, error)
+	PutProgram(context.Context, int64, Program) (ImplResponse, error)
+	PostProgram(context.Context, int64, Program) (ImplResponse, error)
+	DeleteProgram(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -2049,11 +2049,11 @@ type ProgramAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PurchaseItemAPIServicer interface { 
-	CreatePurchaseItem(context.Context, float32, string, string, string, string, int64, string, int32, float32, string, string, int32, string, int64, int64, bool, bool, bool, string, int64, int64) (ImplResponse, error)
-	DeletePurchaseItem(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetPurchaseItem(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	SearchPurchaseItems(context.Context, float32, string, int64, string, bool, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
-	UpdatePurchaseItem(context.Context, float32, int64, string, int64, string, string, int32, float32, string, string, string, int32, string, int64, int64, bool, bool, bool, bool, string, int64, int64) (ImplResponse, error)
+	CreatePurchaseItem(context.Context, string, string, string, string, int64, string, int32, float32, string, string, int32, string, int64, int64, bool, bool, bool, string, int64, int64) (ImplResponse, error)
+	DeletePurchaseItem(context.Context, int64, string, int64) (ImplResponse, error)
+	GetPurchaseItem(context.Context, int64, string, int64) (ImplResponse, error)
+	SearchPurchaseItems(context.Context, string, int64, string, bool, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
+	UpdatePurchaseItem(context.Context, int64, string, int64, string, string, int32, float32, string, string, string, int32, string, int64, int64, bool, bool, bool, bool, string, int64, int64) (ImplResponse, error)
 }
 
 
@@ -2062,12 +2062,12 @@ type PurchaseItemAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type PurchaseOrderAPIServicer interface { 
-	CreateOrder(context.Context, float32, string, string, string, int64, string, string, int64, string, string, string, int64, string) (ImplResponse, error)
-	PreviewOrder(context.Context, float32, string, string, string, int64, string, string, int64, string, string, string, int64, string) (ImplResponse, error)
-	DeleteOrder(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetOrder(context.Context, float32, string, int64, int64, string) (ImplResponse, error)
-	SearchOrders(context.Context, float32, string, string, int64, int32, int32, bool, bool, bool, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, int64, int64, int64) (ImplResponse, error)
-	UpdateOrder(context.Context, float32, int64, string, string, string, int64, int64, string, string, int64, string, int64) (ImplResponse, error)
+	CreateOrder(context.Context, string, string, string, int64, string, string, int64, string, string, string, int64, string) (ImplResponse, error)
+	PreviewOrder(context.Context, string, string, string, int64, string, string, int64, string, string, string, int64, string) (ImplResponse, error)
+	DeleteOrder(context.Context, int64, string, int64) (ImplResponse, error)
+	GetOrder(context.Context, string, int64, int64, string) (ImplResponse, error)
+	SearchOrders(context.Context, string, string, int64, int32, int32, bool, bool, bool, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, int64, int64, int64) (ImplResponse, error)
+	UpdateOrder(context.Context, int64, string, string, string, int64, int64, string, string, int64, string, int64) (ImplResponse, error)
 }
 
 
@@ -2076,11 +2076,11 @@ type PurchaseOrderAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type QuestionAPIServicer interface { 
-	CreateQuestion(context.Context, float32, int64, string, string, bool, bool, int64, string, string, int64, string, int64) (ImplResponse, error)
-	DeleteQuestion(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetQuestion(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchQuestions(context.Context, float32, int64, string, bool, bool, int32, int32, string) (ImplResponse, error)
-	UpdateQuestion(context.Context, float32, int64, int64, int64, string, string, string, string, int64, bool, bool, string, int64) (ImplResponse, error)
+	CreateQuestion(context.Context, int64, string, string, bool, bool, int64, string, string, int64, string, int64) (ImplResponse, error)
+	DeleteQuestion(context.Context, int64, int64) (ImplResponse, error)
+	GetQuestion(context.Context, int64, int64) (ImplResponse, error)
+	SearchQuestions(context.Context, int64, string, bool, bool, int32, int32, string) (ImplResponse, error)
+	UpdateQuestion(context.Context, int64, int64, int64, string, string, string, string, int64, bool, bool, string, int64) (ImplResponse, error)
 }
 
 
@@ -2089,11 +2089,11 @@ type QuestionAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RankingAPIServicer interface { 
-	GetRankings(context.Context, float32, string, int64, string, string, string, string, string, string, string, bool, int64, int64, string, bool, int32, int32, int32, int32) (ImplResponse, error)
-	GetUserRank(context.Context, float32, string, int64, string, string, bool, string, string, string, bool, int32, int32) (ImplResponse, error)
-	UpdateRankings(context.Context, float32, int64, string, string, int64, int64, string, int64, int64, bool, bool) (ImplResponse, error)
-	GetHistoricalRankings(context.Context, float32, string, string, int64, int64, string, int64, string, bool, int32, int32) (ImplResponse, error)
-	OverrideUserRank(context.Context, float32, int64, int64, string, string, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64) (ImplResponse, error)
+	GetRankings(context.Context, string, int64, string, string, string, string, string, string, string, bool, int64, int64, string, bool, int32, int32, int32, int32) (ImplResponse, error)
+	GetUserRank(context.Context, string, int64, string, string, bool, string, string, string, bool, int32, int32) (ImplResponse, error)
+	UpdateRankings(context.Context, int64, string, string, int64, int64, string, int64, int64, bool, bool) (ImplResponse, error)
+	GetHistoricalRankings(context.Context, string, string, int64, int64, string, int64, string, bool, int32, int32) (ImplResponse, error)
+	OverrideUserRank(context.Context, int64, int64, string, string, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64) (ImplResponse, error)
 }
 
 
@@ -2102,12 +2102,12 @@ type RankingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RatingAPIServicer interface { 
-	CreateRating(context.Context, float32, string, int64, int32, string, int64, int64, string, string, string, float64, float64) (ImplResponse, error)
-	DeleteRating(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	SearchRatingIndexes(context.Context, float32, string, string, string, string, string, string, bool, int32, int32, float64, float64, bool, bool) (ImplResponse, error)
-	SearchRatings(context.Context, float32, string, int64, int64, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
-	UpdateRating(context.Context, float32, int64, string, int64, int32, int64, string, string, string, float64, float64) (ImplResponse, error)
-	SearchLocationRatingIndexes(context.Context, float32, string, string, string, string, bool, int32, int32, float64, float64, float64, bool, string, bool, bool, bool, bool, bool) (ImplResponse, error)
+	CreateRating(context.Context, string, int64, int32, string, int64, int64, string, string, string, float64, float64) (ImplResponse, error)
+	DeleteRating(context.Context, int64, string, int64) (ImplResponse, error)
+	SearchRatingIndexes(context.Context, string, string, string, string, string, string, bool, int32, int32, float64, float64, bool, bool) (ImplResponse, error)
+	SearchRatings(context.Context, string, int64, int64, string, int64, string, string, string, bool, int32, int32) (ImplResponse, error)
+	UpdateRating(context.Context, int64, string, int64, int32, int64, string, string, string, float64, float64) (ImplResponse, error)
+	SearchLocationRatingIndexes(context.Context, string, string, string, string, bool, int32, int32, float64, float64, float64, bool, string, bool, bool, bool, bool, bool) (ImplResponse, error)
 }
 
 
@@ -2116,11 +2116,11 @@ type RatingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RegionAPIServicer interface { 
-	CreateRegion(context.Context, float32, int64, string, string, string, string, string, string, string, int64, string, string, string, int64, int64, string, string, float64, float64, int32, bool, bool) (ImplResponse, error)
-	DeleteRegion(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetRegion(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchRegions(context.Context, float32, int64, string, string, float64, float64, float64, string, string, string, string, bool, bool, bool, bool, string, string, int32, bool, bool, int64, int32, int32) (ImplResponse, error)
-	UpdateRegion(context.Context, float32, int64, int64, string, string, string, string, string, string, string, int64, string, string, string, int64, int64, string, string, float64, float64, int32, bool, bool, bool) (ImplResponse, error)
+	CreateRegion(context.Context, int64, string, string, string, string, string, string, string, int64, string, string, string, int64, int64, string, string, float64, float64, int32, bool, bool) (ImplResponse, error)
+	DeleteRegion(context.Context, int64, int64) (ImplResponse, error)
+	GetRegion(context.Context, int64, int64) (ImplResponse, error)
+	SearchRegions(context.Context, int64, string, string, float64, float64, float64, string, string, string, string, bool, bool, bool, bool, string, string, int32, bool, bool, int64, int32, int32) (ImplResponse, error)
+	UpdateRegion(context.Context, int64, int64, string, string, string, string, string, string, string, int64, string, string, string, int64, int64, string, string, float64, float64, int32, bool, bool, bool) (ImplResponse, error)
 }
 
 
@@ -2129,12 +2129,12 @@ type RegionAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ReportingAPIServicer interface { 
-	CreateBatch(context.Context, float32, int64, string, int32, string, string, string, string, int64, int64, string, string) (ImplResponse, error)
-	DeleteBatch(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetReportBatch(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	SearchBatch(context.Context, float32, int64, int32, int32, string, string, string, bool, int64, int64) (ImplResponse, error)
-	CreateRegionLegSummaryBatch(context.Context, float32, []RegionLegSummary) (ImplResponse, error)
-	RunReport(context.Context, float32, bool, int64, string, string, string, int64, int64, string) (ImplResponse, error)
+	CreateBatch(context.Context, int64, string, int32, string, string, string, string, int64, int64, string, string) (ImplResponse, error)
+	DeleteBatch(context.Context, int64, int64) (ImplResponse, error)
+	GetReportBatch(context.Context, int64, int64, bool) (ImplResponse, error)
+	SearchBatch(context.Context, int64, int32, int32, string, string, string, bool, int64, int64) (ImplResponse, error)
+	CreateRegionLegSummaryBatch(context.Context, []RegionLegSummary) (ImplResponse, error)
+	RunReport(context.Context, bool, int64, string, string, string, int64, int64, string) (ImplResponse, error)
 }
 
 
@@ -2143,12 +2143,12 @@ type ReportingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ReservationAPIServicer interface { 
-	SearchAvailability(context.Context, float32, int64, string, string, int64, int64, int64, int32, int32) (ImplResponse, error)
-	ReservableAvailability(context.Context, float32, int64, string, string, int64, string, string) (ImplResponse, error)
-	SearchSchedule(context.Context, float32, int64, string, int64, int64, string, int64, int32) (ImplResponse, error)
-	SearchReservations(context.Context, float32, string, string, int64, int64, int64, string, string, int64, int64, int32, int32) (ImplResponse, error)
-	DeleteReservation(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	CreateReservation(context.Context, float32, string, int64, int64, int64, int64, int64, string, string) (ImplResponse, error)
+	SearchAvailability(context.Context, int64, string, string, int64, int64, int64, int32, int32) (ImplResponse, error)
+	ReservableAvailability(context.Context, int64, string, string, int64, string, string) (ImplResponse, error)
+	SearchSchedule(context.Context, int64, string, int64, int64, string, int64, int32) (ImplResponse, error)
+	SearchReservations(context.Context, string, string, int64, int64, int64, string, string, int64, int64, int32, int32) (ImplResponse, error)
+	DeleteReservation(context.Context, int64, string, int64) (ImplResponse, error)
+	CreateReservation(context.Context, string, int64, int64, int64, int64, int64, string, string) (ImplResponse, error)
 }
 
 
@@ -2157,12 +2157,12 @@ type ReservationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RetailerAPIServicer interface { 
-	CreateRetailer(context.Context, float32, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, string, string, float64, float64, string, string, string, string, bool, string) (ImplResponse, error)
-	DeleteRetailer(context.Context, float32, string, int64, int64) (ImplResponse, error)
-	GetRetailer(context.Context, float32, int64, string, int64, bool) (ImplResponse, error)
-	RetailerLoginCheck(context.Context, float32, string, string, string, float64, float64, string) (ImplResponse, error)
-	GetRetailers(context.Context, float32, string, string, bool, int32, int32, bool, string, int64, string, string, string, string, int32, int32) (ImplResponse, error)
-	UpdateRetailer(context.Context, float32, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, string, bool, string) (ImplResponse, error)
+	CreateRetailer(context.Context, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, string, string, float64, float64, string, string, string, string, bool, string) (ImplResponse, error)
+	DeleteRetailer(context.Context, string, int64, int64) (ImplResponse, error)
+	GetRetailer(context.Context, int64, string, int64, bool) (ImplResponse, error)
+	RetailerLoginCheck(context.Context, string, string, string, float64, float64, string) (ImplResponse, error)
+	GetRetailers(context.Context, string, string, bool, int32, int32, bool, string, int64, string, string, string, string, int32, int32) (ImplResponse, error)
+	UpdateRetailer(context.Context, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -2171,15 +2171,15 @@ type RetailerAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RetailerLocationAPIServicer interface { 
-	CreateRetailerLocations(context.Context, float32, int64, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, bool, bool, string, string, string, string, string, string) (ImplResponse, error)
-	DeleteRetailerLocation(context.Context, float32, string, int64, int64) (ImplResponse, error)
-	GetRetailerLocation(context.Context, float32, int64, string, int64, string) (ImplResponse, error)
-	IndexedRetailerLocationDistanceSearch(context.Context, float32, float64, float64, float64, int32, int32, int64, string, bool, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
-	IndexedRetailerLocationSearch(context.Context, float32, int64, int32, int32, bool, string, string, string, string, string, string, string, string, bool, string, string, string, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
-	SearchRetailerLocations(context.Context, float32, string, int64, string, string, string, string, string, string, bool, int32, int32, int32, int32, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
-	UpdateRetailerLocations(context.Context, float32, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, string, string, bool, bool, string, string, string, string, string, string) (ImplResponse, error)
-	CreateRetailerLocationConsumer(context.Context, float32, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, string, string, bool, bool, string, float64, float64) (ImplResponse, error)
-	GetRetailerLocationConsumer(context.Context, float32, int64, string, int64) (ImplResponse, error)
+	CreateRetailerLocations(context.Context, int64, string, string, string, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, bool, bool, string, string, string, string, string, string) (ImplResponse, error)
+	DeleteRetailerLocation(context.Context, string, int64, int64) (ImplResponse, error)
+	GetRetailerLocation(context.Context, int64, string, int64, string) (ImplResponse, error)
+	IndexedRetailerLocationDistanceSearch(context.Context, float64, float64, float64, int32, int32, int64, string, bool, string, string, string, string, string, string, string, string, bool, string, string, string, string, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
+	IndexedRetailerLocationSearch(context.Context, int64, int32, int32, bool, string, string, string, string, string, string, string, string, bool, string, string, string, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
+	SearchRetailerLocations(context.Context, string, int64, string, string, string, string, string, string, bool, int32, int32, int32, int32, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool) (ImplResponse, error)
+	UpdateRetailerLocations(context.Context, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, *os.File, int64, *os.File, int64, *os.File, int64, string, string, float64, float64, string, string, string, string, string, bool, bool, string, string, string, string, string, string) (ImplResponse, error)
+	CreateRetailerLocationConsumer(context.Context, string, string, string, int64, string, string, string, string, string, string, string, string, string, string, string, string, string, string, int64, int64, int64, string, string, string, bool, bool, string, float64, float64) (ImplResponse, error)
+	GetRetailerLocationConsumer(context.Context, int64, string, int64) (ImplResponse, error)
 }
 
 
@@ -2188,7 +2188,7 @@ type RetailerLocationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RetailerV2APIServicer interface { 
-	GetRetaokiler(context.Context, float32, int64, bool, string, string, int64, int64) (ImplResponse, error)
+	GetRetaokiler(context.Context, int64, bool, string, string, int64, int64) (ImplResponse, error)
 }
 
 
@@ -2197,27 +2197,27 @@ type RetailerV2APIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RouteAPIServicer interface { 
-	SearchRoutes(context.Context, float32, string, bool, int32, int32, bool, bool, bool, bool, int64, int64, int64, int64, int64, int64, bool, int32, bool, bool, bool, bool, int64) (ImplResponse, error)
-	CreateRoute(context.Context, float32, Route) (ImplResponse, error)
-	SetDriver(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetRoute(context.Context, float32, int64, bool) (ImplResponse, error)
-	UpdateRoute(context.Context, float32, int64, Route) (ImplResponse, error)
-	DeleteRoute(context.Context, float32, int64) (ImplResponse, error)
-	ApproveRoute(context.Context, float32, int64) (ImplResponse, error)
-	CopyRoute(context.Context, float32, int64, Route) (ImplResponse, error)
-	GetRouteDirections(context.Context, float32, int64) (ImplResponse, error)
-	CreateRouteDirections(context.Context, float32, int64) (ImplResponse, error)
-	DisapproveRoute(context.Context, float32, int64) (ImplResponse, error)
-	OptimizeRoute(context.Context, float32, int64) (ImplResponse, error)
-	CreateRoutePolyline(context.Context, float32, int64) (ImplResponse, error)
-	GetRouteShipments(context.Context, float32, int64) (ImplResponse, error)
-	GetRouteStop(context.Context, float32, int64, int64) (ImplResponse, error)
-	UpdateRouteStop(context.Context, float32, int64, int64, Stop) (ImplResponse, error)
-	RemoveStop(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetShipmentsAtStop(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetRouteStops(context.Context, float32, int64, bool) (ImplResponse, error)
-	ReorderRouteStopsPost(context.Context, float32, int64, []Stop) (ImplResponse, error)
-	ReorderRouteStopsPatch(context.Context, float32, int64, []Stop) (ImplResponse, error)
+	SearchRoutes(context.Context, string, bool, int32, int32, bool, bool, bool, bool, int64, int64, int64, int64, int64, int64, bool, int32, bool, bool, bool, bool, int64) (ImplResponse, error)
+	CreateRoute(context.Context, Route) (ImplResponse, error)
+	SetDriver(context.Context, int64, int64) (ImplResponse, error)
+	GetRoute(context.Context, int64, bool) (ImplResponse, error)
+	UpdateRoute(context.Context, int64, Route) (ImplResponse, error)
+	DeleteRoute(context.Context, int64) (ImplResponse, error)
+	ApproveRoute(context.Context, int64) (ImplResponse, error)
+	CopyRoute(context.Context, int64, Route) (ImplResponse, error)
+	GetRouteDirections(context.Context, int64) (ImplResponse, error)
+	CreateRouteDirections(context.Context, int64) (ImplResponse, error)
+	DisapproveRoute(context.Context, int64) (ImplResponse, error)
+	OptimizeRoute(context.Context, int64) (ImplResponse, error)
+	CreateRoutePolyline(context.Context, int64) (ImplResponse, error)
+	GetRouteShipments(context.Context, int64) (ImplResponse, error)
+	GetRouteStop(context.Context, int64, int64) (ImplResponse, error)
+	UpdateRouteStop(context.Context, int64, int64, Stop) (ImplResponse, error)
+	RemoveStop(context.Context, int64, int64) (ImplResponse, error)
+	GetShipmentsAtStop(context.Context, int64, int64) (ImplResponse, error)
+	GetRouteStops(context.Context, int64, bool) (ImplResponse, error)
+	ReorderRouteStopsPost(context.Context, int64, []Stop) (ImplResponse, error)
+	ReorderRouteStopsPatch(context.Context, int64, []Stop) (ImplResponse, error)
 }
 
 
@@ -2226,11 +2226,11 @@ type RouteAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RouteSettingAPIServicer interface { 
-	SearchRouteSettings(context.Context, float32, string, bool, int32, int32, bool, int64, int64, string) (ImplResponse, error)
-	CreateRouteSettings(context.Context, float32, RouteSettings) (ImplResponse, error)
-	GetRouteSettings(context.Context, float32, int64) (ImplResponse, error)
-	UpdateRouteSettings(context.Context, float32, int64, RouteSettings) (ImplResponse, error)
-	DeleteRouteSettings(context.Context, float32, int64) (ImplResponse, error)
+	SearchRouteSettings(context.Context, string, bool, int32, int32, bool, int64, int64, string) (ImplResponse, error)
+	CreateRouteSettings(context.Context, RouteSettings) (ImplResponse, error)
+	GetRouteSettings(context.Context, int64) (ImplResponse, error)
+	UpdateRouteSettings(context.Context, int64, RouteSettings) (ImplResponse, error)
+	DeleteRouteSettings(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -2239,7 +2239,7 @@ type RouteSettingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type RoutingAPIServicer interface { 
-	ComputeRouting(context.Context, float32, string) (ImplResponse, error)
+	ComputeRouting(context.Context, string) (ImplResponse, error)
 }
 
 
@@ -2248,12 +2248,12 @@ type RoutingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ScheduledNotificationAPIServicer interface { 
-	CreateScheduledNotification(context.Context, float32, int64, string, string, string, int64, string, string, int64, string, string, string, string, string, int64, string, string, int64, string, string, string, int64, int64, int64, string, string, string, string, string, string, bool, bool, string, string, bool) (ImplResponse, error)
-	DeleteScheduledNotification(context.Context, float32, int64, int64, bool) (ImplResponse, error)
-	ScheduleNotificationListings(context.Context, float32, int64, string, string, string, int32, int64, string, string) (ImplResponse, error)
-	GetScheduledNotification(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchScheduledNotifications(context.Context, float32, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, bool, int32, int32, bool, bool, bool) (ImplResponse, error)
-	UpdateScheduledNotification(context.Context, float32, int64, int64, string, string, string, string, int64, string, string, int64, string, string, string, string, string, int64, string, string, int64, string, string, int64, int64, int64, string, string, string, string, string, string, bool, string, string, bool, bool, string, string, bool) (ImplResponse, error)
+	CreateScheduledNotification(context.Context, int64, string, string, string, int64, string, string, int64, string, string, string, string, string, int64, string, string, int64, string, string, string, int64, int64, int64, string, string, string, string, string, string, bool, bool, string, string, bool) (ImplResponse, error)
+	DeleteScheduledNotification(context.Context, int64, int64, bool) (ImplResponse, error)
+	ScheduleNotificationListings(context.Context, int64, string, string, string, int32, int64, string, string) (ImplResponse, error)
+	GetScheduledNotification(context.Context, int64, int64) (ImplResponse, error)
+	SearchScheduledNotifications(context.Context, int64, string, int64, string, string, string, string, string, string, string, string, string, string, string, bool, int32, int32, bool, bool, bool) (ImplResponse, error)
+	UpdateScheduledNotification(context.Context, int64, int64, string, string, string, string, int64, string, string, int64, string, string, string, string, string, int64, string, string, int64, string, string, int64, int64, int64, string, string, string, string, string, string, bool, string, string, bool, bool, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -2262,9 +2262,9 @@ type ScheduledNotificationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ScoreAPIServicer interface { 
-	CreateScore(context.Context, float32, int64, string, int32, int64, int64, int64, int64, int64, int32, bool) (ImplResponse, error)
-	GetScore(context.Context, float32, int64, string, int64, int64, int64, int64, int64, string, string) (ImplResponse, error)
-	SearchScores(context.Context, float32, int64, string, int64, int64, int64, int64, int64) (ImplResponse, error)
+	CreateScore(context.Context, int64, string, int32, int64, int64, int64, int64, int64, int32, bool) (ImplResponse, error)
+	GetScore(context.Context, int64, string, int64, int64, int64, int64, int64, string, string) (ImplResponse, error)
+	SearchScores(context.Context, int64, string, int64, int64, int64, int64, int64) (ImplResponse, error)
 }
 
 
@@ -2273,12 +2273,12 @@ type ScoreAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type SecureAppAPIServicer interface { 
-	CreateSecureApplication(context.Context, float32, int64, string, *os.File, *os.File, string, string, bool, string, string, string) (ImplResponse, error)
-	DeleteSecureApplication(context.Context, float32, int64, string) (ImplResponse, error)
-	ResetSecure(context.Context, float32, int64, string) (ImplResponse, error)
-	UpdateSecureApplication(context.Context, float32, int64, string, bool, *os.File, *os.File, string, string, string, string, string) (ImplResponse, error)
-	LoginSecure(context.Context, float32, string, *os.File, string, *os.File, int32, bool, string, float64, float64) (ImplResponse, error)
-	PurchaseSecure(context.Context, float32, PaymentRequest) (ImplResponse, error)
+	CreateSecureApplication(context.Context, int64, string, *os.File, *os.File, string, string, bool, string, string, string) (ImplResponse, error)
+	DeleteSecureApplication(context.Context, int64, string) (ImplResponse, error)
+	ResetSecure(context.Context, int64, string) (ImplResponse, error)
+	UpdateSecureApplication(context.Context, int64, string, bool, *os.File, *os.File, string, string, string, string, string) (ImplResponse, error)
+	LoginSecure(context.Context, string, *os.File, string, *os.File, int32, bool, string, float64, float64) (ImplResponse, error)
+	PurchaseSecure(context.Context, PaymentRequest) (ImplResponse, error)
 }
 
 
@@ -2287,12 +2287,12 @@ type SecureAppAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ServiceHubAPIServicer interface { 
-	SearchServiceHubs(context.Context, float32, string, bool, int32, int32, bool, string, int64) (ImplResponse, error)
-	CreateServiceHub(context.Context, float32, ServiceHub) (ImplResponse, error)
-	GetServiceHub(context.Context, float32, int64) (ImplResponse, error)
-	PutServiceHub(context.Context, float32, int64, ServiceHub) (ImplResponse, error)
-	PostServiceHub(context.Context, float32, int64, ServiceHub) (ImplResponse, error)
-	DeleteServiceHub(context.Context, float32, int64) (ImplResponse, error)
+	SearchServiceHubs(context.Context, string, bool, int32, int32, bool, string, int64) (ImplResponse, error)
+	CreateServiceHub(context.Context, ServiceHub) (ImplResponse, error)
+	GetServiceHub(context.Context, int64) (ImplResponse, error)
+	PutServiceHub(context.Context, int64, ServiceHub) (ImplResponse, error)
+	PostServiceHub(context.Context, int64, ServiceHub) (ImplResponse, error)
+	DeleteServiceHub(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -2301,13 +2301,13 @@ type ServiceHubAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ShipmentAPIServicer interface { 
-	SearchShipments(context.Context, float32, string, bool, int32, int32, bool, int64, int64, int64) (ImplResponse, error)
-	CreateShipment(context.Context, float32, Shipment) (ImplResponse, error)
-	GetShipment(context.Context, float32, int64) (ImplResponse, error)
-	UpdateShipment(context.Context, float32, int64, Shipment) (ImplResponse, error)
-	DeleteShipment(context.Context, float32, int64) (ImplResponse, error)
-	CancelShipment(context.Context, float32, int64) (ImplResponse, error)
-	UpdateShipmentStatus(context.Context, float32, int64, map[string]bool) (ImplResponse, error)
+	SearchShipments(context.Context, string, bool, int32, int32, bool, int64, int64, int64) (ImplResponse, error)
+	CreateShipment(context.Context, Shipment) (ImplResponse, error)
+	GetShipment(context.Context, int64) (ImplResponse, error)
+	UpdateShipment(context.Context, int64, Shipment) (ImplResponse, error)
+	DeleteShipment(context.Context, int64) (ImplResponse, error)
+	CancelShipment(context.Context, int64) (ImplResponse, error)
+	UpdateShipmentStatus(context.Context, int64, map[string]bool) (ImplResponse, error)
 }
 
 
@@ -2316,11 +2316,11 @@ type ShipmentAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ShipmentBatchAPIServicer interface { 
-	SearchShipmentBatch(context.Context, float32, int64, string, bool, int32, int32) (ImplResponse, error)
-	CreateShipmentBatch(context.Context, float32, ShipmentBatch) (ImplResponse, error)
-	GetShipmentBatch(context.Context, float32, int64) (ImplResponse, error)
-	DeleteShipmentBatch(context.Context, float32, int64) (ImplResponse, error)
-	GetShipmentBatchStatus(context.Context, float32, int64, int64, string, bool, int32, int32, bool, bool, bool, bool, bool, string) (ImplResponse, error)
+	SearchShipmentBatch(context.Context, int64, string, bool, int32, int32) (ImplResponse, error)
+	CreateShipmentBatch(context.Context, ShipmentBatch) (ImplResponse, error)
+	GetShipmentBatch(context.Context, int64) (ImplResponse, error)
+	DeleteShipmentBatch(context.Context, int64) (ImplResponse, error)
+	GetShipmentBatchStatus(context.Context, int64, int64, string, bool, int32, int32, bool, bool, bool, bool, bool, string) (ImplResponse, error)
 }
 
 
@@ -2329,7 +2329,7 @@ type ShipmentBatchAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type SimulationAPIServicer interface { 
-	Simulation(context.Context, float32, string, bool) (ImplResponse, error)
+	Simulation(context.Context, string, bool) (ImplResponse, error)
 }
 
 
@@ -2338,8 +2338,8 @@ type SimulationAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type StopAPIServicer interface { 
-	GetStop(context.Context, float32, int64) (ImplResponse, error)
-	UpdateStop(context.Context, float32, int64, Stop) (ImplResponse, error)
+	GetStop(context.Context, int64) (ImplResponse, error)
+	UpdateStop(context.Context, int64, Stop) (ImplResponse, error)
 }
 
 
@@ -2348,7 +2348,7 @@ type StopAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type StripeAPIServicer interface { 
-	CreateStripeCheckoutSession(context.Context, float32, string, string) (ImplResponse, error)
+	CreateStripeCheckoutSession(context.Context, string, string) (ImplResponse, error)
 }
 
 
@@ -2357,13 +2357,13 @@ type StripeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type SubscriptionAPIServicer interface { 
-	CreateSubscription(context.Context, float32, int64, int64, string) (ImplResponse, error)
-	DeleteSubscription(context.Context, float32, int64) (ImplResponse, error)
-	GetSubscription(context.Context, float32, int64) (ImplResponse, error)
-	GetSubscriptionPlan(context.Context, float32, int64) (ImplResponse, error)
-	GetSubscriptionPlans(context.Context, float32, bool, string) (ImplResponse, error)
-	UpdateSubscription(context.Context, float32, int64, int64, string, bool) (ImplResponse, error)
-	GetSubscriptionUsage(context.Context, float32, int64, int64, int64, int64) (ImplResponse, error)
+	CreateSubscription(context.Context, int64, int64, string) (ImplResponse, error)
+	DeleteSubscription(context.Context, int64) (ImplResponse, error)
+	GetSubscription(context.Context, int64) (ImplResponse, error)
+	GetSubscriptionPlan(context.Context, int64) (ImplResponse, error)
+	GetSubscriptionPlans(context.Context, bool, string) (ImplResponse, error)
+	UpdateSubscription(context.Context, int64, int64, string, bool) (ImplResponse, error)
+	GetSubscriptionUsage(context.Context, int64, int64, int64, int64) (ImplResponse, error)
 }
 
 
@@ -2372,11 +2372,11 @@ type SubscriptionAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TaskAPIServicer interface { 
-	CreateTask(context.Context, float32, int64, string, string, string, string, string, int64, int64, int64, string, string, bool) (ImplResponse, error)
-	DeleteTask(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetTask(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchTasks(context.Context, float32, int64, string, string, string, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
-	UpdateTask(context.Context, float32, int64, int64, string, string, string, string, string, int64, int64, int64, string, string, bool) (ImplResponse, error)
+	CreateTask(context.Context, int64, string, string, string, string, string, int64, int64, int64, string, string, bool) (ImplResponse, error)
+	DeleteTask(context.Context, int64, int64) (ImplResponse, error)
+	GetTask(context.Context, int64, int64) (ImplResponse, error)
+	SearchTasks(context.Context, int64, string, string, string, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
+	UpdateTask(context.Context, int64, int64, string, string, string, string, string, int64, int64, int64, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -2385,11 +2385,11 @@ type TaskAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TerritoryAPIServicer interface { 
-	CreateTerritory(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	DeleteTerritory(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetTerritory(context.Context, float32, int64) (ImplResponse, error)
-	SearchTerritories(context.Context, float32, string, bool, string, int32, int32) (ImplResponse, error)
-	UpdateTerritory(context.Context, float32, int64, int64, string, bool) (ImplResponse, error)
+	CreateTerritory(context.Context, int64, string, bool) (ImplResponse, error)
+	DeleteTerritory(context.Context, int64, int64) (ImplResponse, error)
+	GetTerritory(context.Context, int64) (ImplResponse, error)
+	SearchTerritories(context.Context, string, bool, string, int32, int32) (ImplResponse, error)
+	UpdateTerritory(context.Context, int64, int64, string, bool) (ImplResponse, error)
 }
 
 
@@ -2398,10 +2398,10 @@ type TerritoryAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ThemeDescriptorAPIServicer interface { 
-	AddOrUpdateThemeDescriptor(context.Context, float32, bool, bool, bool, bool, string, bool, bool, string, int64, string, int64, string, string, string, string, string, string, string, string, *os.File, *os.File, *os.File, *os.File, string, string, float64, float64) (ImplResponse, error)
-	GetThemeDescriptor(context.Context, float32, int64, string, int64, string, float64, float64) (ImplResponse, error)
-	RemoveThemeDescriptor(context.Context, float32, int64, string, int64, string, float64, float64) (ImplResponse, error)
-	GetThemeDescriptors(context.Context, float32, string, string, bool, int32, int32, string, int64, string, string, int64, string, string, int32, int32, int64, string, float64, float64) (ImplResponse, error)
+	AddOrUpdateThemeDescriptor(context.Context, bool, bool, bool, bool, string, bool, bool, string, int64, string, int64, string, string, string, string, string, string, string, string, *os.File, *os.File, *os.File, *os.File, string, string, float64, float64) (ImplResponse, error)
+	GetThemeDescriptor(context.Context, int64, string, int64, string, float64, float64) (ImplResponse, error)
+	RemoveThemeDescriptor(context.Context, int64, string, int64, string, float64, float64) (ImplResponse, error)
+	GetThemeDescriptors(context.Context, string, string, bool, int32, int32, string, int64, string, string, int64, string, string, int32, int32, int64, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -2410,17 +2410,17 @@ type ThemeDescriptorAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ThirdPartyCredentialsAPIServicer interface { 
-	CreateCredential(context.Context, float32, string, string, string, string, int64, string, string, string, string, bool, string, float64, float64, string, string, string, string) (ImplResponse, error)
-	DeleteCredential(context.Context, float32, int64, string, string, string) (ImplResponse, error)
-	GetCredential(context.Context, float32, string, string, int64, string, string, int64, string, string, bool, string, float64, float64, string, string, int64) (ImplResponse, error)
-	SearchCredentials(context.Context, float32, int64, string, string, bool, int32, int32) (ImplResponse, error)
-	UpdateCredential(context.Context, float32, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
-	SendMFAChallenge(context.Context, float32, string, string, string, int64, string) (ImplResponse, error)
-	CreateNetwork(context.Context, float32, int64, string, bool, string, string, string, string, string, bool, int32, int32, string, *os.File, *os.File, string, string, string) (ImplResponse, error)
-	DeleteNetwork(context.Context, float32, int64, string) (ImplResponse, error)
-	GetNetwork(context.Context, float32, int64, string) (ImplResponse, error)
-	SearchNetworks(context.Context, float32, int64, string, bool, int32, int32, bool, string, bool) (ImplResponse, error)
-	UpdateNetwork(context.Context, float32, int64, string, string, string, bool, string, string, string, string, bool, int32, int32, string, *os.File, *os.File, string, string, string) (ImplResponse, error)
+	CreateCredential(context.Context, string, string, string, string, int64, string, string, string, string, bool, string, float64, float64, string, string, string, string) (ImplResponse, error)
+	DeleteCredential(context.Context, int64, string, string, string) (ImplResponse, error)
+	GetCredential(context.Context, string, string, int64, string, string, int64, string, string, bool, string, float64, float64, string, string, int64) (ImplResponse, error)
+	SearchCredentials(context.Context, int64, string, string, bool, int32, int32) (ImplResponse, error)
+	UpdateCredential(context.Context, string, string, string, string, string, string, string, string, string) (ImplResponse, error)
+	SendMFAChallenge(context.Context, string, string, string, int64, string) (ImplResponse, error)
+	CreateNetwork(context.Context, int64, string, bool, string, string, string, string, string, bool, int32, int32, string, *os.File, *os.File, string, string, string) (ImplResponse, error)
+	DeleteNetwork(context.Context, int64, string) (ImplResponse, error)
+	GetNetwork(context.Context, int64, string) (ImplResponse, error)
+	SearchNetworks(context.Context, int64, string, bool, int32, int32, bool, string, bool) (ImplResponse, error)
+	UpdateNetwork(context.Context, int64, string, string, string, bool, string, string, string, string, bool, int32, int32, string, *os.File, *os.File, string, string, string) (ImplResponse, error)
 }
 
 
@@ -2429,12 +2429,12 @@ type ThirdPartyCredentialsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TicketAPIServicer interface { 
-	GetTicketCount(context.Context, float32, string, int64, string, string, string) (ImplResponse, error)
-	GetTicketList(context.Context, float32, string, int64, string, string, string, string, string, string, string) (ImplResponse, error)
-	SaveTicket(context.Context, float32, string, string, bool, string, int64, string, string, int64, string, string, string, int64, string, string, string, bool, bool, string) (ImplResponse, error)
-	SaveTicketViaFileUpload(context.Context, float32, string, string, *os.File, bool, string, int64, string, string, int64, string, string, int64, string, string, string, bool, bool, string) (ImplResponse, error)
-	TicketOffers(context.Context, float32) (ImplResponse, error)
-	GiftPurchase(context.Context, float32, int64, int64, string, int64, int64, string, string, string) (ImplResponse, error)
+	GetTicketCount(context.Context, string, int64, string, string, string) (ImplResponse, error)
+	GetTicketList(context.Context, string, int64, string, string, string, string, string, string, string) (ImplResponse, error)
+	SaveTicket(context.Context, string, string, bool, string, int64, string, string, int64, string, string, string, int64, string, string, string, bool, bool, string) (ImplResponse, error)
+	SaveTicketViaFileUpload(context.Context, string, string, *os.File, bool, string, int64, string, string, int64, string, string, int64, string, string, string, bool, bool, string) (ImplResponse, error)
+	TicketOffers(context.Context) (ImplResponse, error)
+	GiftPurchase(context.Context, int64, int64, string, int64, int64, string, string, string) (ImplResponse, error)
 }
 
 
@@ -2443,16 +2443,16 @@ type TicketAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TournamentAPIServicer interface { 
-	CreateTournament(context.Context, float32, int64, string, string, int32, int64, string, int64, int32, int32, int32, int32, string, int32, int32, int32, string, string, string, bool, bool, string, int64, bool, string, bool, string, string, string, int32, string, bool, bool, bool, string, string) (ImplResponse, error)
-	DeleteTournament(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetTournament(context.Context, float32, int64, int64, string, string, int32) (ImplResponse, error)
-	SearchRounds(context.Context, float32, int64, string, string, string, bool, string, int32, int32) (ImplResponse, error)
-	SearchObjects(context.Context, float32, int64, int64, string, bool, int32, int32) (ImplResponse, error)
-	SubmitTournamentScore(context.Context, float32, int64, string, int64, int64, int64, string, int64) (ImplResponse, error)
-	SearchTournaments(context.Context, float32, int64, string, string, string, bool, string, string, string, bool, string, int32, int32) (ImplResponse, error)
-	SubstituteTournamentPlayer(context.Context, float32, int64, int64, int64, int64) (ImplResponse, error)
-	UpdateTournament(context.Context, float32, int64, int64, string, string, int64, int32, int32, int32, int32, int32, string, int32, int32, int32, string, string, int64, string, bool, bool, string, int64, bool, string, bool, string, string, int32, string, bool, bool, bool, string, string) (ImplResponse, error)
-	SubmitTournamentVote(context.Context, float32, int64, string, int64, int64, string, bool) (ImplResponse, error)
+	CreateTournament(context.Context, int64, string, string, int32, int64, string, int64, int32, int32, int32, int32, string, int32, int32, int32, string, string, string, bool, bool, string, int64, bool, string, bool, string, string, string, int32, string, bool, bool, bool, string, string) (ImplResponse, error)
+	DeleteTournament(context.Context, int64, int64) (ImplResponse, error)
+	GetTournament(context.Context, int64, int64, string, string, int32) (ImplResponse, error)
+	SearchRounds(context.Context, int64, string, string, string, bool, string, int32, int32) (ImplResponse, error)
+	SearchObjects(context.Context, int64, int64, string, bool, int32, int32) (ImplResponse, error)
+	SubmitTournamentScore(context.Context, int64, string, int64, int64, int64, string, int64) (ImplResponse, error)
+	SearchTournaments(context.Context, int64, string, string, string, bool, string, string, string, bool, string, int32, int32) (ImplResponse, error)
+	SubstituteTournamentPlayer(context.Context, int64, int64, int64, int64) (ImplResponse, error)
+	UpdateTournament(context.Context, int64, int64, string, string, int64, int32, int32, int32, int32, int32, string, int32, int32, int32, string, string, int64, string, bool, bool, string, int64, bool, string, bool, string, string, int32, string, bool, bool, bool, string, string) (ImplResponse, error)
+	SubmitTournamentVote(context.Context, int64, string, int64, int64, string, bool) (ImplResponse, error)
 }
 
 
@@ -2461,15 +2461,15 @@ type TournamentAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TrackingAPIServicer interface { 
-	BatchSaveTracking(context.Context, float32, string, string, int64, bool, bool, string, string) (ImplResponse, error)
-	SaveTrackingLeg(context.Context, float32, float64, float64, int64, float64, float64, int64, string, int64, float64, int64, string, string) (ImplResponse, error)
-	SearchAccountsWithTrackingLegs(context.Context, float32, int64, string, int64, int64, string, string, float64, float64, float64, string, bool, int32, int32, bool) (ImplResponse, error)
-	GetPredictedPath(context.Context, float32, int64, int64, int64) (ImplResponse, error)
-	GetPredictedLocations(context.Context, float32, int64, float64, float64, int64, string, int64, string, float64, string) (ImplResponse, error)
-	GetPreferredLocations(context.Context, float32, int64, float64, float64, int64, string, string, bool, int32, int32, float64, string) (ImplResponse, error)
-	GetTrackingLegs(context.Context, float32, string, int64, int64, string, int64, int64, string, bool) (ImplResponse, error)
-	SaveTrackingStep(context.Context, float32, int64, float64, float64, int64, float64, float64, int64, string, int64, float64, int64) (ImplResponse, error)
-	SearchTrackingLegs(context.Context, float32, int64, string, string, int64, int64, string, int32, int32) (ImplResponse, error)
+	BatchSaveTracking(context.Context, string, string, int64, bool, bool, string, string) (ImplResponse, error)
+	SaveTrackingLeg(context.Context, float64, float64, int64, float64, float64, int64, string, int64, float64, int64, string, string) (ImplResponse, error)
+	SearchAccountsWithTrackingLegs(context.Context, int64, string, int64, int64, string, string, float64, float64, float64, string, bool, int32, int32, bool) (ImplResponse, error)
+	GetPredictedPath(context.Context, int64, int64, int64) (ImplResponse, error)
+	GetPredictedLocations(context.Context, int64, float64, float64, int64, string, int64, string, float64, string) (ImplResponse, error)
+	GetPreferredLocations(context.Context, int64, float64, float64, int64, string, string, bool, int32, int32, float64, string) (ImplResponse, error)
+	GetTrackingLegs(context.Context, string, int64, int64, string, int64, int64, string, bool) (ImplResponse, error)
+	SaveTrackingStep(context.Context, int64, float64, float64, int64, float64, float64, int64, string, int64, float64, int64) (ImplResponse, error)
+	SearchTrackingLegs(context.Context, int64, string, string, int64, int64, string, int32, int32) (ImplResponse, error)
 }
 
 
@@ -2478,11 +2478,11 @@ type TrackingAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TriggerAPIServicer interface { 
-	CreateTrigger(context.Context, float32, int64, string, string, string, string, string, int64, int64, int64, string, string, string, bool) (ImplResponse, error)
-	DeleteTrigger(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetTrigger(context.Context, float32, int64, int64) (ImplResponse, error)
-	SearchTriggers(context.Context, float32, int64, string, string, string, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
-	UpdateTrigger(context.Context, float32, int64, int64, string, string, string, string, string, int64, int64, int64, string, string, string, bool) (ImplResponse, error)
+	CreateTrigger(context.Context, int64, string, string, string, string, string, int64, int64, int64, string, string, string, bool) (ImplResponse, error)
+	DeleteTrigger(context.Context, int64, int64) (ImplResponse, error)
+	GetTrigger(context.Context, int64, int64) (ImplResponse, error)
+	SearchTriggers(context.Context, int64, string, string, string, string, string, string, string, bool, int32, int32, bool) (ImplResponse, error)
+	UpdateTrigger(context.Context, int64, int64, string, string, string, string, string, int64, int64, int64, string, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -2491,22 +2491,22 @@ type TriggerAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TripAPIServicer interface { 
-	Search(context.Context, float32, int64, string, bool, int32, int32, bool, int64, int64, bool) (ImplResponse, error)
-	CreateTrip(context.Context, float32, Trip) (ImplResponse, error)
-	SearchTrips(context.Context, float32, int64, string, bool, int32, int32, bool, int64, int64, bool, bool) (ImplResponse, error)
-	ProcessTripMatches(context.Context, float32, int64, int64, int64) (ImplResponse, error)
-	UpdateTripNotifications(context.Context, float32, int64, string) (ImplResponse, error)
-	GetTrip(context.Context, float32, int64) (ImplResponse, error)
-	UpdateTrip(context.Context, float32, int64, Trip) (ImplResponse, error)
-	Delete(context.Context, float32, int64) (ImplResponse, error)
-	DriveTrip(context.Context, float32, int64, bool) (ImplResponse, error)
-	FlexibleTrip(context.Context, float32, int64, bool) (ImplResponse, error)
-	UpdateLocations(context.Context, float32, int64, Trip) (ImplResponse, error)
-	UpdateRecurrenceLocations(context.Context, float32, int64, Trip) (ImplResponse, error)
-	GetTripMatches(context.Context, float32, int64, string, bool, int32, int32, bool, bool, bool) (ImplResponse, error)
-	Ride(context.Context, float32, int64, bool) (ImplResponse, error)
-	UpdateShipments(context.Context, float32, int64, Trip) (ImplResponse, error)
-	UpdateRecurrenceShipments(context.Context, float32, int64, Trip) (ImplResponse, error)
+	Search(context.Context, int64, string, bool, int32, int32, bool, int64, int64, bool) (ImplResponse, error)
+	CreateTrip(context.Context, Trip) (ImplResponse, error)
+	SearchTrips(context.Context, int64, string, bool, int32, int32, bool, int64, int64, bool, bool) (ImplResponse, error)
+	ProcessTripMatches(context.Context, int64, int64, int64) (ImplResponse, error)
+	UpdateTripNotifications(context.Context, int64, string) (ImplResponse, error)
+	GetTrip(context.Context, int64) (ImplResponse, error)
+	UpdateTrip(context.Context, int64, Trip) (ImplResponse, error)
+	Delete(context.Context, int64) (ImplResponse, error)
+	DriveTrip(context.Context, int64, bool) (ImplResponse, error)
+	FlexibleTrip(context.Context, int64, bool) (ImplResponse, error)
+	UpdateLocations(context.Context, int64, Trip) (ImplResponse, error)
+	UpdateRecurrenceLocations(context.Context, int64, Trip) (ImplResponse, error)
+	GetTripMatches(context.Context, int64, string, bool, int32, int32, bool, bool, bool) (ImplResponse, error)
+	Ride(context.Context, int64, bool) (ImplResponse, error)
+	UpdateShipments(context.Context, int64, Trip) (ImplResponse, error)
+	UpdateRecurrenceShipments(context.Context, int64, Trip) (ImplResponse, error)
 }
 
 
@@ -2515,7 +2515,7 @@ type TripAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TwilioAPIServicer interface { 
-	SmsBuyOffer(context.Context, float32, string, string, string, string) (ImplResponse, error)
+	SmsBuyOffer(context.Context, string, string, string, string) (ImplResponse, error)
 }
 
 
@@ -2524,8 +2524,8 @@ type TwilioAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type TwitterAPIServicer interface { 
-	AuthorizeTwitter(context.Context, float32, string) (ImplResponse, error)
-	LoginTwitter(context.Context, float32, string, string, string, string, string, float64, float64) (ImplResponse, error)
+	AuthorizeTwitter(context.Context, string) (ImplResponse, error)
+	LoginTwitter(context.Context, string, string, string, string, string, float64, float64) (ImplResponse, error)
 }
 
 
@@ -2534,12 +2534,12 @@ type TwitterAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type UserPermissionsAPIServicer interface { 
-	AddUsersToPermissionable(context.Context, float32, string, int64, string, int64, bool, bool, bool, bool, string, string, string, bool, bool, bool, float64, float64, string) (ImplResponse, error)
-	LeaveFromPermissionable(context.Context, float32, string, int64, string, int64, float64, float64) (ImplResponse, error)
-	RemoveUsersFromPermissionable(context.Context, float32, string, int64, string, int64, string, string, string, bool, float64, float64, string) (ImplResponse, error)
-	ApprovePermissionable(context.Context, float32, string, int64, string, int64, string) (ImplResponse, error)
-	SearchPermissionables(context.Context, float32, string, int64, int64, string, string, int64, string, string, bool, bool, bool, int32, int32) (ImplResponse, error)
-	SearchPermissionablesFollowingDistance(context.Context, float32, float64, float64, string, int64, int64, string, string, int64, float64, string, bool, bool, int32, int32) (ImplResponse, error)
+	AddUsersToPermissionable(context.Context, string, int64, string, int64, bool, bool, bool, bool, string, string, string, bool, bool, bool, float64, float64, string) (ImplResponse, error)
+	LeaveFromPermissionable(context.Context, string, int64, string, int64, float64, float64) (ImplResponse, error)
+	RemoveUsersFromPermissionable(context.Context, string, int64, string, int64, string, string, string, bool, float64, float64, string) (ImplResponse, error)
+	ApprovePermissionable(context.Context, string, int64, string, int64, string) (ImplResponse, error)
+	SearchPermissionables(context.Context, string, int64, int64, string, string, int64, string, string, bool, bool, bool, int32, int32) (ImplResponse, error)
+	SearchPermissionablesFollowingDistance(context.Context, float64, float64, string, int64, int64, string, string, int64, float64, string, bool, bool, int32, int32) (ImplResponse, error)
 }
 
 
@@ -2548,60 +2548,60 @@ type UserPermissionsAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type VatomAPIServicer interface { 
-	GetUserProfile(context.Context, float32, int64, bool) (ImplResponse, error)
-	UpdateUserProfile(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	SearchIdentities(context.Context, float32, int64, bool) (ImplResponse, error)
-	GetUserInfo(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetMyFollowing(context.Context, float32, int64, bool) (ImplResponse, error)
-	CreateFollowing(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	DeleteFollowing(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetUserFollowers(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetUserFollowing(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetUserCoinsBalance(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	ListUserCoinTransactions(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	TransferUserCoins(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetBusinessCoinsBalance(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	UpdateBusinessCoins(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetUserCoinsAsBusiness(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	UpdateUserCoinsAsBusiness(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	ListUserCoinTransactionsAsBusiness(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	RedeemUserCoinsAsBusiness(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	GetBusinessIds(context.Context, float32, int64, bool) (ImplResponse, error)
-	GetInventory(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	SearchInventory(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	PerformActionOnNFT(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	ExecuteActionOnNFT(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GeomapSearch(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetVatomNFT(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	DeleteVatomNFT(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetBusinessInfo(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	SearchBusinesses(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetBusinessUsers(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetBusinessBehaviors(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetCampaignInfo(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	SearchCampaignGroups(context.Context, float32, int64, string, bool) (ImplResponse, error)
-	GetCampaignGroupStats(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetCampaignGroupEntities(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetCampaignGroupRules(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	SendNFT(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	RedeemNFT(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetPointsBalance(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetPointsBalanceAsBusiness(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	SetPointsBalanceAsBusiness(context.Context, float32, int64, string, string, string, string, bool) (ImplResponse, error)
-	DeletePointsBalance(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	ListCommunities(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	ListSpaces(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetSpace(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	CreateSpace(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	UpdateSpace(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	DeleteSpace(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	ListEvents(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetVatomEvent(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	CreateVatomEvent(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	UpdateVatomEvent(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
-	DeleteVatomEvent(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	GetEventGuestList(context.Context, float32, int64, string, string, bool) (ImplResponse, error)
-	UpdateEventGuestList(context.Context, float32, int64, string, string, string, bool) (ImplResponse, error)
+	GetUserProfile(context.Context, int64, bool) (ImplResponse, error)
+	UpdateUserProfile(context.Context, int64, string, bool) (ImplResponse, error)
+	SearchIdentities(context.Context, int64, bool) (ImplResponse, error)
+	GetUserInfo(context.Context, int64, string, bool) (ImplResponse, error)
+	GetMyFollowing(context.Context, int64, bool) (ImplResponse, error)
+	CreateFollowing(context.Context, int64, string, bool) (ImplResponse, error)
+	DeleteFollowing(context.Context, int64, string, bool) (ImplResponse, error)
+	GetUserFollowers(context.Context, int64, string, bool) (ImplResponse, error)
+	GetUserFollowing(context.Context, int64, string, bool) (ImplResponse, error)
+	GetUserCoinsBalance(context.Context, int64, string, string, bool) (ImplResponse, error)
+	ListUserCoinTransactions(context.Context, int64, string, string, bool) (ImplResponse, error)
+	TransferUserCoins(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetBusinessCoinsBalance(context.Context, int64, string, bool) (ImplResponse, error)
+	UpdateBusinessCoins(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetUserCoinsAsBusiness(context.Context, int64, string, string, bool) (ImplResponse, error)
+	UpdateUserCoinsAsBusiness(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	ListUserCoinTransactionsAsBusiness(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	RedeemUserCoinsAsBusiness(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	GetBusinessIds(context.Context, int64, bool) (ImplResponse, error)
+	GetInventory(context.Context, int64, string, bool) (ImplResponse, error)
+	SearchInventory(context.Context, int64, string, bool) (ImplResponse, error)
+	PerformActionOnNFT(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	ExecuteActionOnNFT(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GeomapSearch(context.Context, int64, string, bool) (ImplResponse, error)
+	GetVatomNFT(context.Context, int64, string, bool) (ImplResponse, error)
+	DeleteVatomNFT(context.Context, int64, string, bool) (ImplResponse, error)
+	GetBusinessInfo(context.Context, int64, string, string, bool) (ImplResponse, error)
+	SearchBusinesses(context.Context, int64, string, bool) (ImplResponse, error)
+	GetBusinessUsers(context.Context, int64, string, bool) (ImplResponse, error)
+	GetBusinessBehaviors(context.Context, int64, string, bool) (ImplResponse, error)
+	GetCampaignInfo(context.Context, int64, string, string, bool) (ImplResponse, error)
+	SearchCampaignGroups(context.Context, int64, string, bool) (ImplResponse, error)
+	GetCampaignGroupStats(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetCampaignGroupEntities(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetCampaignGroupRules(context.Context, int64, string, string, bool) (ImplResponse, error)
+	SendNFT(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	RedeemNFT(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetPointsBalance(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetPointsBalanceAsBusiness(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	SetPointsBalanceAsBusiness(context.Context, int64, string, string, string, string, bool) (ImplResponse, error)
+	DeletePointsBalance(context.Context, int64, string, string, bool) (ImplResponse, error)
+	ListCommunities(context.Context, int64, string, string, bool) (ImplResponse, error)
+	ListSpaces(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetSpace(context.Context, int64, string, string, bool) (ImplResponse, error)
+	CreateSpace(context.Context, int64, string, string, bool) (ImplResponse, error)
+	UpdateSpace(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	DeleteSpace(context.Context, int64, string, string, bool) (ImplResponse, error)
+	ListEvents(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetVatomEvent(context.Context, int64, string, string, bool) (ImplResponse, error)
+	CreateVatomEvent(context.Context, int64, string, string, bool) (ImplResponse, error)
+	UpdateVatomEvent(context.Context, int64, string, string, string, bool) (ImplResponse, error)
+	DeleteVatomEvent(context.Context, int64, string, string, bool) (ImplResponse, error)
+	GetEventGuestList(context.Context, int64, string, string, bool) (ImplResponse, error)
+	UpdateEventGuestList(context.Context, int64, string, string, string, bool) (ImplResponse, error)
 }
 
 
@@ -2610,11 +2610,11 @@ type VatomAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type VehicleAPIServicer interface { 
-	SearchVehicle(context.Context, float32, int64, string, bool, int32, int32, bool, string) (ImplResponse, error)
-	CreateVehicle(context.Context, float32, string, Vehicle) (ImplResponse, error)
-	GetVehicle(context.Context, float32, int64) (ImplResponse, error)
-	UpdateVehicle(context.Context, float32, int64, string, Vehicle) (ImplResponse, error)
-	DeleteVehicle(context.Context, float32, int64) (ImplResponse, error)
+	SearchVehicle(context.Context, int64, string, bool, int32, int32, bool, string) (ImplResponse, error)
+	CreateVehicle(context.Context, string, Vehicle) (ImplResponse, error)
+	GetVehicle(context.Context, int64) (ImplResponse, error)
+	UpdateVehicle(context.Context, int64, string, Vehicle) (ImplResponse, error)
+	DeleteVehicle(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -2623,11 +2623,11 @@ type VehicleAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type VehicleTypeAPIServicer interface { 
-	SearchVehicleTypes(context.Context, float32, string, bool, int32, int32, bool, int64, int64) (ImplResponse, error)
-	CreateVehicleType(context.Context, float32, string, VehicleType) (ImplResponse, error)
-	GetVehicleType(context.Context, float32, int64) (ImplResponse, error)
-	UpdateVehicleType(context.Context, float32, int64, string, VehicleType) (ImplResponse, error)
-	DeleteVehicleType(context.Context, float32, int64) (ImplResponse, error)
+	SearchVehicleTypes(context.Context, string, bool, int32, int32, bool, int64, int64) (ImplResponse, error)
+	CreateVehicleType(context.Context, string, VehicleType) (ImplResponse, error)
+	GetVehicleType(context.Context, int64) (ImplResponse, error)
+	UpdateVehicleType(context.Context, int64, string, VehicleType) (ImplResponse, error)
+	DeleteVehicleType(context.Context, int64) (ImplResponse, error)
 }
 
 
@@ -2636,12 +2636,12 @@ type VehicleTypeAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type WalletAPIServicer interface { 
-	CreateOfferTransaction(context.Context, float32, string, int64, int64, int64, string, string, string, bool, string, string, int32) (ImplResponse, error)
-	PreviewOfferTransaction(context.Context, float32, string, int64, int64, int64, string, string, string, bool, string, string) (ImplResponse, error)
-	DeleteOfferTransaction(context.Context, float32, int64, string, int64) (ImplResponse, error)
-	GetOfferTransaction(context.Context, float32, int64, string, int64, bool, float64, float64, bool) (ImplResponse, error)
-	SearchOfferTransactions(context.Context, float32, string, int64, string, int64, string, int64, string, string, int64, string, int64, string, string, string, string, string, string, string, string, string, bool, int32, int32, float64, float64, int64, int64, bool, int64, int64, int64, int64, bool, string, bool, bool, bool, int64, int64, int64, int64) (ImplResponse, error)
-	UpdateOfferTransaction(context.Context, float32, int64, int32, string, int64, int64, string, bool, string, float64, float64, string, bool, string) (ImplResponse, error)
+	CreateOfferTransaction(context.Context, string, int64, int64, int64, string, string, string, bool, string, string, int32) (ImplResponse, error)
+	PreviewOfferTransaction(context.Context, string, int64, int64, int64, string, string, string, bool, string, string) (ImplResponse, error)
+	DeleteOfferTransaction(context.Context, int64, string, int64) (ImplResponse, error)
+	GetOfferTransaction(context.Context, int64, string, int64, bool, float64, float64, bool) (ImplResponse, error)
+	SearchOfferTransactions(context.Context, string, int64, string, int64, string, int64, string, string, int64, string, int64, string, string, string, string, string, string, string, string, string, bool, int32, int32, float64, float64, int64, int64, bool, int64, int64, int64, int64, bool, string, bool, bool, bool, int64, int64, int64, int64) (ImplResponse, error)
+	UpdateOfferTransaction(context.Context, int64, int32, string, int64, int64, string, bool, string, float64, float64, string, bool, string) (ImplResponse, error)
 }
 
 
@@ -2650,7 +2650,7 @@ type WalletAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type WeatherAPIServicer interface { 
-	SearchWeather(context.Context, float32, int64, float64, float64, int64) (ImplResponse, error)
+	SearchWeather(context.Context, int64, float64, float64, int64) (ImplResponse, error)
 }
 
 
@@ -2659,11 +2659,11 @@ type WeatherAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type WordAPIServicer interface { 
-	CreateWord(context.Context, float32, int64, string, string, bool, bool, int64, int64, string, int64) (ImplResponse, error)
-	DeleteWord(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetWord(context.Context, float32, int64, int64) (ImplResponse, error)
-	GetWords(context.Context, float32, int64, string, bool, bool, int32, int32, string) (ImplResponse, error)
-	UpdateWord(context.Context, float32, int64, int64, int64, string, string, int64, bool, bool, string, int64) (ImplResponse, error)
+	CreateWord(context.Context, int64, string, string, bool, bool, int64, int64, string, int64) (ImplResponse, error)
+	DeleteWord(context.Context, int64, int64) (ImplResponse, error)
+	GetWord(context.Context, int64, int64) (ImplResponse, error)
+	GetWords(context.Context, int64, string, bool, bool, int32, int32, string) (ImplResponse, error)
+	UpdateWord(context.Context, int64, int64, int64, string, string, int64, bool, bool, string, int64) (ImplResponse, error)
 }
 
 
@@ -2672,5 +2672,5 @@ type WordAPIServicer interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type WorkflowAPIServicer interface { 
-	RunWorkflow(context.Context, float32, int64, int64, int64, int32, string) (ImplResponse, error)
+	RunWorkflow(context.Context, int64, int64, int64, int32, string) (ImplResponse, error)
 }

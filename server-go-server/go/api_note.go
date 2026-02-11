@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // NoteAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,37 +53,37 @@ func (c *NoteAPIController) Routes() Routes {
 		"BatchOperation": Route{
 			"BatchOperation",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/batch",
+			"/api/3.18/note/batch",
 			c.BatchOperation,
 		},
 		"CreateNote": Route{
 			"CreateNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/create",
+			"/api/3.18/note/create",
 			c.CreateNote,
 		},
 		"GetNote": Route{
 			"GetNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/get",
+			"/api/3.18/note/get",
 			c.GetNote,
 		},
 		"DeleteNote": Route{
 			"DeleteNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/delete",
+			"/api/3.18/note/delete",
 			c.DeleteNote,
 		},
 		"SearchNotes": Route{
 			"SearchNotes",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/search",
+			"/api/3.18/note/search",
 			c.SearchNotes,
 		},
 		"UpdateNote": Route{
 			"UpdateNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/update",
+			"/api/3.18/note/update",
 			c.UpdateNote,
 		},
 	}
@@ -97,37 +95,37 @@ func (c *NoteAPIController) OrderedRoutes() []Route {
 		Route{
 			"BatchOperation",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/batch",
+			"/api/3.18/note/batch",
 			c.BatchOperation,
 		},
 		Route{
 			"CreateNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/create",
+			"/api/3.18/note/create",
 			c.CreateNote,
 		},
 		Route{
 			"GetNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/get",
+			"/api/3.18/note/get",
 			c.GetNote,
 		},
 		Route{
 			"DeleteNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/delete",
+			"/api/3.18/note/delete",
 			c.DeleteNote,
 		},
 		Route{
 			"SearchNotes",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/search",
+			"/api/3.18/note/search",
 			c.SearchNotes,
 		},
 		Route{
 			"UpdateNote",
 			strings.ToUpper("Post"),
-			"/api/{version}/note/update",
+			"/api/3.18/note/update",
 			c.UpdateNote,
 		},
 	}
@@ -137,18 +135,9 @@ func (c *NoteAPIController) OrderedRoutes() []Route {
 
 // BatchOperation - Batch Note Operation
 func (c *NoteAPIController) BatchOperation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var notableIdParam int64
@@ -204,7 +193,7 @@ func (c *NoteAPIController) BatchOperation(w http.ResponseWriter, r *http.Reques
 		batchOperationParam = param
 	} else {
 	}
-	result, err := c.service.BatchOperation(r.Context(), versionParam, notableIdParam, notableTypeParam, deviceIdParam, accountIdParam, batchOperationParam)
+	result, err := c.service.BatchOperation(r.Context(), notableIdParam, notableTypeParam, deviceIdParam, accountIdParam, batchOperationParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -216,18 +205,9 @@ func (c *NoteAPIController) BatchOperation(w http.ResponseWriter, r *http.Reques
 
 // CreateNote - Create Note
 func (c *NoteAPIController) CreateNote(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var commentParam string
@@ -624,7 +604,7 @@ func (c *NoteAPIController) CreateNote(w http.ResponseWriter, r *http.Request) {
 		assetLongitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreateNote(r.Context(), versionParam, commentParam, deviceIdParam, accountIdParam, notableTypeParam, notableIdParam, noteTypeParam, assetIdsParam, tagsParam, permissionableTypeParam, permissionableIdParam, appKeyParam, locationDescriptionParam, latitudeParam, longitudeParam, metaDataParam, receiverAccountIdsParam, returnFullResponseParam, initializeAssetParam, assetReturnNullsParam, assetAlbumIdParam, assetCollectionIdParam, assetAddToDefaultAlbumParam, assetAddToMediaLibraryParam, assetVersionCodeParam, assetVersionNameParam, assetMetaDataParam, assetCaptionParam, assetMediaParam, assetMediaUrlParam, assetMediaStringParam, assetMediaStringFileNameParam, assetMediaStringContentTypeParam, assetAttachedMediaParam, assetAttachedMediaUrlParam, assetAttachedMediaStringParam, assetAttachedMediaStringFileNameParam, assetAttachedMediaStringContentTypeParam, assetLocationDescriptionParam, assetAppParam, assetSearchTagsParam, assetLatitudeParam, assetLongitudeParam)
+	result, err := c.service.CreateNote(r.Context(), commentParam, deviceIdParam, accountIdParam, notableTypeParam, notableIdParam, noteTypeParam, assetIdsParam, tagsParam, permissionableTypeParam, permissionableIdParam, appKeyParam, locationDescriptionParam, latitudeParam, longitudeParam, metaDataParam, receiverAccountIdsParam, returnFullResponseParam, initializeAssetParam, assetReturnNullsParam, assetAlbumIdParam, assetCollectionIdParam, assetAddToDefaultAlbumParam, assetAddToMediaLibraryParam, assetVersionCodeParam, assetVersionNameParam, assetMetaDataParam, assetCaptionParam, assetMediaParam, assetMediaUrlParam, assetMediaStringParam, assetMediaStringFileNameParam, assetMediaStringContentTypeParam, assetAttachedMediaParam, assetAttachedMediaUrlParam, assetAttachedMediaStringParam, assetAttachedMediaStringFileNameParam, assetAttachedMediaStringContentTypeParam, assetLocationDescriptionParam, assetAppParam, assetSearchTagsParam, assetLatitudeParam, assetLongitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -636,18 +616,9 @@ func (c *NoteAPIController) CreateNote(w http.ResponseWriter, r *http.Request) {
 
 // GetNote - Get Note
 func (c *NoteAPIController) GetNote(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var noteIdParam int64
@@ -701,7 +672,7 @@ func (c *NoteAPIController) GetNote(w http.ResponseWriter, r *http.Request) {
 		returnFullResponseParam = param
 	} else {
 	}
-	result, err := c.service.GetNote(r.Context(), versionParam, noteIdParam, deviceIdParam, accountIdParam, returnFullResponseParam)
+	result, err := c.service.GetNote(r.Context(), noteIdParam, deviceIdParam, accountIdParam, returnFullResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -713,18 +684,9 @@ func (c *NoteAPIController) GetNote(w http.ResponseWriter, r *http.Request) {
 
 // DeleteNote - Delete Note
 func (c *NoteAPIController) DeleteNote(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var noteIdParam int64
@@ -799,7 +761,7 @@ func (c *NoteAPIController) DeleteNote(w http.ResponseWriter, r *http.Request) {
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.DeleteNote(r.Context(), versionParam, noteIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, appKeyParam)
+	result, err := c.service.DeleteNote(r.Context(), noteIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -811,18 +773,9 @@ func (c *NoteAPIController) DeleteNote(w http.ResponseWriter, r *http.Request) {
 
 // SearchNotes - Search Notes
 func (c *NoteAPIController) SearchNotes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1021,7 +974,7 @@ func (c *NoteAPIController) SearchNotes(w http.ResponseWriter, r *http.Request) 
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchNotes(r.Context(), versionParam, deviceIdParam, accountIdParam, notableTypeParam, notableIdParam, noteTypesParam, appKeyParam, keywordParam, flagCountMinimumParam, flagsExceedThresholdParam, includeInactiveParam, sortFieldParam, descendingParam, returnFullResponseParam, updatedSinceParam, updatedBeforeParam, startParam, limitParam)
+	result, err := c.service.SearchNotes(r.Context(), deviceIdParam, accountIdParam, notableTypeParam, notableIdParam, noteTypesParam, appKeyParam, keywordParam, flagCountMinimumParam, flagsExceedThresholdParam, includeInactiveParam, sortFieldParam, descendingParam, returnFullResponseParam, updatedSinceParam, updatedBeforeParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1033,18 +986,9 @@ func (c *NoteAPIController) SearchNotes(w http.ResponseWriter, r *http.Request) 
 
 // UpdateNote - Update Note
 func (c *NoteAPIController) UpdateNote(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var noteIdParam int64
@@ -1441,7 +1385,7 @@ func (c *NoteAPIController) UpdateNote(w http.ResponseWriter, r *http.Request) {
 		assetLongitudeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateNote(r.Context(), versionParam, noteIdParam, deviceIdParam, accountIdParam, commentParam, noteTypeParam, assetIdsParam, tagsParam, permissionableTypeParam, permissionableIdParam, appKeyParam, locationDescriptionParam, latitudeParam, longitudeParam, metaDataParam, returnFullResponseParam, activeParam, updateAssetParam, assetReturnNullsParam, assetAlbumIdParam, assetCollectionIdParam, assetAddToDefaultAlbumParam, assetAddToMediaLibraryParam, assetVersionCodeParam, assetVersionNameParam, assetMetaDataParam, assetCaptionParam, assetMediaParam, assetMediaUrlParam, assetMediaStringParam, assetMediaStringFileNameParam, assetMediaStringContentTypeParam, assetAttachedMediaParam, assetAttachedMediaUrlParam, assetAttachedMediaStringParam, assetAttachedMediaStringFileNameParam, assetAttachedMediaStringContentTypeParam, assetLocationDescriptionParam, assetAppParam, assetSearchTagsParam, assetLatitudeParam, assetLongitudeParam)
+	result, err := c.service.UpdateNote(r.Context(), noteIdParam, deviceIdParam, accountIdParam, commentParam, noteTypeParam, assetIdsParam, tagsParam, permissionableTypeParam, permissionableIdParam, appKeyParam, locationDescriptionParam, latitudeParam, longitudeParam, metaDataParam, returnFullResponseParam, activeParam, updateAssetParam, assetReturnNullsParam, assetAlbumIdParam, assetCollectionIdParam, assetAddToDefaultAlbumParam, assetAddToMediaLibraryParam, assetVersionCodeParam, assetVersionNameParam, assetMetaDataParam, assetCaptionParam, assetMediaParam, assetMediaUrlParam, assetMediaStringParam, assetMediaStringFileNameParam, assetMediaStringContentTypeParam, assetAttachedMediaParam, assetAttachedMediaUrlParam, assetAttachedMediaStringParam, assetAttachedMediaStringFileNameParam, assetAttachedMediaStringContentTypeParam, assetLocationDescriptionParam, assetAppParam, assetSearchTagsParam, assetLatitudeParam, assetLongitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

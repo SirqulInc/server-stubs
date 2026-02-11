@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // RoutingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *RoutingAPIController) Routes() Routes {
 		"ComputeRouting": Route{
 			"ComputeRouting",
 			strings.ToUpper("Post"),
-			"/api/{version}/routing/compute",
+			"/api/3.18/routing/compute",
 			c.ComputeRouting,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *RoutingAPIController) OrderedRoutes() []Route {
 		Route{
 			"ComputeRouting",
 			strings.ToUpper("Post"),
-			"/api/{version}/routing/compute",
+			"/api/3.18/routing/compute",
 			c.ComputeRouting,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *RoutingAPIController) OrderedRoutes() []Route {
 
 // ComputeRouting - Compute Route
 func (c *RoutingAPIController) ComputeRouting(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var dataParam string
@@ -99,7 +88,7 @@ func (c *RoutingAPIController) ComputeRouting(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "data"}, nil)
 		return
 	}
-	result, err := c.service.ComputeRouting(r.Context(), versionParam, dataParam)
+	result, err := c.service.ComputeRouting(r.Context(), dataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

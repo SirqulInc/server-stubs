@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // LikeAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,19 +52,19 @@ func (c *LikeAPIController) Routes() Routes {
 		"RegisterLike": Route{
 			"RegisterLike",
 			strings.ToUpper("Post"),
-			"/api/{version}/like",
+			"/api/3.18/like",
 			c.RegisterLike,
 		},
 		"RemoveLike": Route{
 			"RemoveLike",
 			strings.ToUpper("Post"),
-			"/api/{version}/like/delete",
+			"/api/3.18/like/delete",
 			c.RemoveLike,
 		},
 		"SearchLikes": Route{
 			"SearchLikes",
 			strings.ToUpper("Get"),
-			"/api/{version}/like/search",
+			"/api/3.18/like/search",
 			c.SearchLikes,
 		},
 	}
@@ -78,19 +76,19 @@ func (c *LikeAPIController) OrderedRoutes() []Route {
 		Route{
 			"RegisterLike",
 			strings.ToUpper("Post"),
-			"/api/{version}/like",
+			"/api/3.18/like",
 			c.RegisterLike,
 		},
 		Route{
 			"RemoveLike",
 			strings.ToUpper("Post"),
-			"/api/{version}/like/delete",
+			"/api/3.18/like/delete",
 			c.RemoveLike,
 		},
 		Route{
 			"SearchLikes",
 			strings.ToUpper("Get"),
-			"/api/{version}/like/search",
+			"/api/3.18/like/search",
 			c.SearchLikes,
 		},
 	}
@@ -100,18 +98,9 @@ func (c *LikeAPIController) OrderedRoutes() []Route {
 
 // RegisterLike - Create Like
 func (c *LikeAPIController) RegisterLike(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var likableTypeParam string
@@ -244,7 +233,7 @@ func (c *LikeAPIController) RegisterLike(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RegisterLike(r.Context(), versionParam, likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, permissionableTypeParam, permissionableIdParam, likeParam, appParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
+	result, err := c.service.RegisterLike(r.Context(), likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, permissionableTypeParam, permissionableIdParam, likeParam, appParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -256,18 +245,9 @@ func (c *LikeAPIController) RegisterLike(w http.ResponseWriter, r *http.Request)
 
 // RemoveLike - Delete Like
 func (c *LikeAPIController) RemoveLike(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var likableTypeParam string
@@ -344,7 +324,7 @@ func (c *LikeAPIController) RemoveLike(w http.ResponseWriter, r *http.Request) {
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveLike(r.Context(), versionParam, likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveLike(r.Context(), likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -356,18 +336,9 @@ func (c *LikeAPIController) RemoveLike(w http.ResponseWriter, r *http.Request) {
 
 // SearchLikes - Search Likes
 func (c *LikeAPIController) SearchLikes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var likableTypeParam string
@@ -508,7 +479,7 @@ func (c *LikeAPIController) SearchLikes(w http.ResponseWriter, r *http.Request) 
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchLikes(r.Context(), versionParam, likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, connectionAccountIdsParam, sortFieldParam, descendingParam, updatedSinceParam, updatedBeforeParam, startParam, limitParam)
+	result, err := c.service.SearchLikes(r.Context(), likableTypeParam, likableIdParam, deviceIdParam, accountIdParam, connectionAccountIdsParam, sortFieldParam, descendingParam, updatedSinceParam, updatedBeforeParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

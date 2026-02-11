@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // EmployeeAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,49 +52,49 @@ func (c *EmployeeAPIController) Routes() Routes {
 		"AssignToLocationEmployee": Route{
 			"AssignToLocationEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/assignToLocation",
+			"/api/3.18/employee/assignToLocation",
 			c.AssignToLocationEmployee,
 		},
 		"CreateEmployee": Route{
 			"CreateEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/create",
+			"/api/3.18/employee/create",
 			c.CreateEmployee,
 		},
 		"DeleteEmployee": Route{
 			"DeleteEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/delete",
+			"/api/3.18/employee/delete",
 			c.DeleteEmployee,
 		},
 		"GetEmployee": Route{
 			"GetEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/get",
+			"/api/3.18/employee/get",
 			c.GetEmployee,
 		},
 		"SearchEmployees": Route{
 			"SearchEmployees",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/search",
+			"/api/3.18/employee/search",
 			c.SearchEmployees,
 		},
 		"UpdateEmployee": Route{
 			"UpdateEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/update",
+			"/api/3.18/employee/update",
 			c.UpdateEmployee,
 		},
 		"AssignEmployee": Route{
 			"AssignEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/assign",
+			"/api/3.18/employee/assign",
 			c.AssignEmployee,
 		},
 		"UnassignEmployee": Route{
 			"UnassignEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/unassign",
+			"/api/3.18/employee/unassign",
 			c.UnassignEmployee,
 		},
 	}
@@ -108,49 +106,49 @@ func (c *EmployeeAPIController) OrderedRoutes() []Route {
 		Route{
 			"AssignToLocationEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/assignToLocation",
+			"/api/3.18/employee/assignToLocation",
 			c.AssignToLocationEmployee,
 		},
 		Route{
 			"CreateEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/create",
+			"/api/3.18/employee/create",
 			c.CreateEmployee,
 		},
 		Route{
 			"DeleteEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/delete",
+			"/api/3.18/employee/delete",
 			c.DeleteEmployee,
 		},
 		Route{
 			"GetEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/get",
+			"/api/3.18/employee/get",
 			c.GetEmployee,
 		},
 		Route{
 			"SearchEmployees",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/search",
+			"/api/3.18/employee/search",
 			c.SearchEmployees,
 		},
 		Route{
 			"UpdateEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/update",
+			"/api/3.18/employee/update",
 			c.UpdateEmployee,
 		},
 		Route{
 			"AssignEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/assign",
+			"/api/3.18/employee/assign",
 			c.AssignEmployee,
 		},
 		Route{
 			"UnassignEmployee",
 			strings.ToUpper("Post"),
-			"/api/{version}/employee/unassign",
+			"/api/3.18/employee/unassign",
 			c.UnassignEmployee,
 		},
 	}
@@ -160,18 +158,9 @@ func (c *EmployeeAPIController) OrderedRoutes() []Route {
 
 // AssignToLocationEmployee - Assign Employee to Location
 func (c *EmployeeAPIController) AssignToLocationEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -236,7 +225,7 @@ func (c *EmployeeAPIController) AssignToLocationEmployee(w http.ResponseWriter, 
 		var param bool = true
 		assignParam = param
 	}
-	result, err := c.service.AssignToLocationEmployee(r.Context(), versionParam, accountIdParam, retailerLocationIdParam, employeeAccountIdParam, assignParam)
+	result, err := c.service.AssignToLocationEmployee(r.Context(), accountIdParam, retailerLocationIdParam, employeeAccountIdParam, assignParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -248,18 +237,9 @@ func (c *EmployeeAPIController) AssignToLocationEmployee(w http.ResponseWriter, 
 
 // CreateEmployee - Create Employee
 func (c *EmployeeAPIController) CreateEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -501,7 +481,7 @@ func (c *EmployeeAPIController) CreateEmployee(w http.ResponseWriter, r *http.Re
 		assignedDeviceIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateEmployee(r.Context(), versionParam, accountIdParam, managerAccountIdParam, usernameParam, passwordParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, aboutUsParam, assetIdParam, genderParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, roleParam, retailerLocationIdsParam, settingsAppKeyParam, appBlobParam, assignedDeviceIdParam)
+	result, err := c.service.CreateEmployee(r.Context(), accountIdParam, managerAccountIdParam, usernameParam, passwordParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, aboutUsParam, assetIdParam, genderParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, roleParam, retailerLocationIdsParam, settingsAppKeyParam, appBlobParam, assignedDeviceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -513,18 +493,9 @@ func (c *EmployeeAPIController) CreateEmployee(w http.ResponseWriter, r *http.Re
 
 // DeleteEmployee - Delete Employee
 func (c *EmployeeAPIController) DeleteEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -559,7 +530,7 @@ func (c *EmployeeAPIController) DeleteEmployee(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "employeeAccountId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteEmployee(r.Context(), versionParam, accountIdParam, employeeAccountIdParam)
+	result, err := c.service.DeleteEmployee(r.Context(), accountIdParam, employeeAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -571,18 +542,9 @@ func (c *EmployeeAPIController) DeleteEmployee(w http.ResponseWriter, r *http.Re
 
 // GetEmployee - Get Employee
 func (c *EmployeeAPIController) GetEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -624,7 +586,7 @@ func (c *EmployeeAPIController) GetEmployee(w http.ResponseWriter, r *http.Reque
 		settingsAppKeyParam = param
 	} else {
 	}
-	result, err := c.service.GetEmployee(r.Context(), versionParam, accountIdParam, employeeAccountIdParam, settingsAppKeyParam)
+	result, err := c.service.GetEmployee(r.Context(), accountIdParam, employeeAccountIdParam, settingsAppKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -636,18 +598,9 @@ func (c *EmployeeAPIController) GetEmployee(w http.ResponseWriter, r *http.Reque
 
 // SearchEmployees - Search Employees
 func (c *EmployeeAPIController) SearchEmployees(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -849,7 +802,7 @@ func (c *EmployeeAPIController) SearchEmployees(w http.ResponseWriter, r *http.R
 		queryParam = param
 	} else {
 	}
-	result, err := c.service.SearchEmployees(r.Context(), versionParam, accountIdParam, roleParam, retailerIdParam, retailerLocationIdParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam, activeOnlyParam, managedOnlyParam, settingsAppKeyParam, categoryIdsParam, queryParam)
+	result, err := c.service.SearchEmployees(r.Context(), accountIdParam, roleParam, retailerIdParam, retailerLocationIdParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam, activeOnlyParam, managedOnlyParam, settingsAppKeyParam, categoryIdsParam, queryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -861,18 +814,9 @@ func (c *EmployeeAPIController) SearchEmployees(w http.ResponseWriter, r *http.R
 
 // UpdateEmployee - Update Employee
 func (c *EmployeeAPIController) UpdateEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1124,7 +1068,7 @@ func (c *EmployeeAPIController) UpdateEmployee(w http.ResponseWriter, r *http.Re
 		assignedDeviceIdParam = param
 	} else {
 	}
-	result, err := c.service.UpdateEmployee(r.Context(), versionParam, accountIdParam, employeeAccountIdParam, managerAccountIdParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, assetIdParam, genderParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, roleParam, activeParam, passwordParam, retailerLocationIdsParam, settingsAppKeyParam, appBlobParam, assignedDeviceIdParam)
+	result, err := c.service.UpdateEmployee(r.Context(), accountIdParam, employeeAccountIdParam, managerAccountIdParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, assetIdParam, genderParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, roleParam, activeParam, passwordParam, retailerLocationIdsParam, settingsAppKeyParam, appBlobParam, assignedDeviceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1136,18 +1080,9 @@ func (c *EmployeeAPIController) UpdateEmployee(w http.ResponseWriter, r *http.Re
 
 // AssignEmployee - Assign Employee
 func (c *EmployeeAPIController) AssignEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1205,7 +1140,7 @@ func (c *EmployeeAPIController) AssignEmployee(w http.ResponseWriter, r *http.Re
 		roleParam = param
 	} else {
 	}
-	result, err := c.service.AssignEmployee(r.Context(), versionParam, accountIdParam, managerAccountIdParam, employeeAccountIdParam, roleParam)
+	result, err := c.service.AssignEmployee(r.Context(), accountIdParam, managerAccountIdParam, employeeAccountIdParam, roleParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1217,18 +1152,9 @@ func (c *EmployeeAPIController) AssignEmployee(w http.ResponseWriter, r *http.Re
 
 // UnassignEmployee - Unassign Employee
 func (c *EmployeeAPIController) UnassignEmployee(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1263,7 +1189,7 @@ func (c *EmployeeAPIController) UnassignEmployee(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "employeeAccountId"}, nil)
 		return
 	}
-	result, err := c.service.UnassignEmployee(r.Context(), versionParam, accountIdParam, employeeAccountIdParam)
+	result, err := c.service.UnassignEmployee(r.Context(), accountIdParam, employeeAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

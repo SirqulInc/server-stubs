@@ -29,7 +29,7 @@ func NewRouteSettingAPIService() *RouteSettingAPIService {
 }
 
 // SearchRouteSettings - Search Route Settings
-func (s *RouteSettingAPIService) SearchRouteSettings(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, hubId int64, programId int64, keyword string) (ImplResponse, error) {
+func (s *RouteSettingAPIService) SearchRouteSettings(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, hubId int64, programId int64, keyword string) (ImplResponse, error) {
 	// TODO - update SearchRouteSettings with the required logic for this service method.
 	// Add api_route_setting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *RouteSettingAPIService) SearchRouteSettings(ctx context.Context, versio
 }
 
 // CreateRouteSettings - Create Route Setting
-func (s *RouteSettingAPIService) CreateRouteSettings(ctx context.Context, version float32, body RouteSettings) (ImplResponse, error) {
+func (s *RouteSettingAPIService) CreateRouteSettings(ctx context.Context, body RouteSettings) (ImplResponse, error) {
 	// TODO - update CreateRouteSettings with the required logic for this service method.
 	// Add api_route_setting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *RouteSettingAPIService) CreateRouteSettings(ctx context.Context, versio
 }
 
 // GetRouteSettings - Get Route Setting
-func (s *RouteSettingAPIService) GetRouteSettings(ctx context.Context, version float32, routeSettingsId int64) (ImplResponse, error) {
+func (s *RouteSettingAPIService) GetRouteSettings(ctx context.Context, routeSettingsId int64) (ImplResponse, error) {
 	// TODO - update GetRouteSettings with the required logic for this service method.
 	// Add api_route_setting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *RouteSettingAPIService) GetRouteSettings(ctx context.Context, version f
 }
 
 // UpdateRouteSettings - Update Route Setting
-func (s *RouteSettingAPIService) UpdateRouteSettings(ctx context.Context, version float32, routeSettingsId int64, body RouteSettings) (ImplResponse, error) {
+func (s *RouteSettingAPIService) UpdateRouteSettings(ctx context.Context, routeSettingsId int64, body RouteSettings) (ImplResponse, error) {
 	// TODO - update UpdateRouteSettings with the required logic for this service method.
 	// Add api_route_setting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *RouteSettingAPIService) UpdateRouteSettings(ctx context.Context, versio
 }
 
 // DeleteRouteSettings - Delete Route Setting
-func (s *RouteSettingAPIService) DeleteRouteSettings(ctx context.Context, version float32, routeSettingsId int64) (ImplResponse, error) {
+func (s *RouteSettingAPIService) DeleteRouteSettings(ctx context.Context, routeSettingsId int64) (ImplResponse, error) {
 	// TODO - update DeleteRouteSettings with the required logic for this service method.
 	// Add api_route_setting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

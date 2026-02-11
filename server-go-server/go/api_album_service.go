@@ -30,7 +30,7 @@ func NewAlbumAPIService() *AlbumAPIService {
 }
 
 // ApproveAlbum - Approve Album
-func (s *AlbumAPIService) ApproveAlbum(ctx context.Context, version float32, albumId int64, deviceId string, accountId int64, approvalStatus string, verified bool) (ImplResponse, error) {
+func (s *AlbumAPIService) ApproveAlbum(ctx context.Context, albumId int64, deviceId string, accountId int64, approvalStatus string, verified bool) (ImplResponse, error) {
 	// TODO - update ApproveAlbum with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *AlbumAPIService) ApproveAlbum(ctx context.Context, version float32, alb
 }
 
 // AddAlbumCollection - Create Album
-func (s *AlbumAPIService) AddAlbumCollection(ctx context.Context, version float32, title string, coverAssetNullable bool, includeCoverInAssetList bool, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, anonymous bool, deviceId string, accountId int64, assetsToAdd string, media *os.File, mediaURL string, assetId int64, attachedMedia *os.File, attachedMediaURL string, startDate int64, endDate int64, tags string, description string, albumType string, albumTypeId int64, subType string, latitude float64, longitude float64, locationDescription string, visibility string, gameType string, appKey string, cellPhone string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, fullAddress string, metaData string, categoryIds string, categoryFilterIds string, audienceIds string, includeAllAppUsersAsMembers bool, includeAudiencesAsMembers bool, audienceOperator string, approvalStatus string, linkedObjectType string, linkedObjectId int64) (ImplResponse, error) {
+func (s *AlbumAPIService) AddAlbumCollection(ctx context.Context, title string, coverAssetNullable bool, includeCoverInAssetList bool, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, anonymous bool, deviceId string, accountId int64, assetsToAdd string, media *os.File, mediaURL string, assetId int64, attachedMedia *os.File, attachedMediaURL string, startDate int64, endDate int64, tags string, description string, albumType string, albumTypeId int64, subType string, latitude float64, longitude float64, locationDescription string, visibility string, gameType string, appKey string, cellPhone string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, fullAddress string, metaData string, categoryIds string, categoryFilterIds string, audienceIds string, includeAllAppUsersAsMembers bool, includeAudiencesAsMembers bool, audienceOperator string, approvalStatus string, linkedObjectType string, linkedObjectId int64) (ImplResponse, error) {
 	// TODO - update AddAlbumCollection with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *AlbumAPIService) AddAlbumCollection(ctx context.Context, version float3
 }
 
 // RemoveAlbum - Delete Album
-func (s *AlbumAPIService) RemoveAlbum(ctx context.Context, version float32, albumId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *AlbumAPIService) RemoveAlbum(ctx context.Context, albumId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update RemoveAlbum with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *AlbumAPIService) RemoveAlbum(ctx context.Context, version float32, albu
 }
 
 // GetAlbumCollection -  Get Album
-func (s *AlbumAPIService) GetAlbumCollection(ctx context.Context, version float32, returnNulls bool, albumId int64, deviceId string, accountId int64, likePreviewSize int32, assetPreviewSize int32, notePreviewSize int32, connectionPreviewSize int32, audiencePreviewSize int32) (ImplResponse, error) {
+func (s *AlbumAPIService) GetAlbumCollection(ctx context.Context, returnNulls bool, albumId int64, deviceId string, accountId int64, likePreviewSize int32, assetPreviewSize int32, notePreviewSize int32, connectionPreviewSize int32, audiencePreviewSize int32) (ImplResponse, error) {
 	// TODO - update GetAlbumCollection with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *AlbumAPIService) GetAlbumCollection(ctx context.Context, version float3
 }
 
 // SearchAlbums - Search Albums
-func (s *AlbumAPIService) SearchAlbums(ctx context.Context, version float32, filter string, albumTypeId int64, subType string, includeInactive bool, sortField string, descending bool, start int32, limit int32, range_ float64, includeLiked bool, includeFavorited bool, includePermissions bool, likePreviewSize int32, assetPreviewSize int32, notePreviewSize int32, connectionPreviewSize int32, audiencePreviewSize int32, deviceId string, accountId int64, connectionAccountId int64, ownerId int64, albumIds string, excludeAlbumIds string, mediaId int64, keyword string, albumType string, limitPerAlbumType int32, dateCreated int64, updatedSince int64, updatedBefore int64, createdSince int64, createdBefore int64, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64, latitude float64, longitude float64, appKey string, categoryIds string, categoryFilterIds string, audienceIds string, excludeAudienceIds string, includeCompletable bool, includeRating bool, searchMode string, stackSearch bool, stackWindowSize int32, minStackPerPage int32, stackPaginationIdentifier string, stackDetails bool, flagCountMinimum int64, removeFlaggedContent bool, verifiedFilter bool, linkedObjectType string, linkedObjectId int64, orderAudienceId int64, ignoreDefaultAppFilter bool, searchExpression string, generateAlbums bool) (ImplResponse, error) {
+func (s *AlbumAPIService) SearchAlbums(ctx context.Context, filter string, albumTypeId int64, subType string, includeInactive bool, sortField string, descending bool, start int32, limit int32, range_ float64, includeLiked bool, includeFavorited bool, includePermissions bool, likePreviewSize int32, assetPreviewSize int32, notePreviewSize int32, connectionPreviewSize int32, audiencePreviewSize int32, deviceId string, accountId int64, connectionAccountId int64, ownerId int64, albumIds string, excludeAlbumIds string, mediaId int64, keyword string, albumType string, limitPerAlbumType int32, dateCreated int64, updatedSince int64, updatedBefore int64, createdSince int64, createdBefore int64, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64, latitude float64, longitude float64, appKey string, categoryIds string, categoryFilterIds string, audienceIds string, excludeAudienceIds string, includeCompletable bool, includeRating bool, searchMode string, stackSearch bool, stackWindowSize int32, minStackPerPage int32, stackPaginationIdentifier string, stackDetails bool, flagCountMinimum int64, removeFlaggedContent bool, verifiedFilter bool, linkedObjectType string, linkedObjectId int64, orderAudienceId int64, ignoreDefaultAppFilter bool, searchExpression string, generateAlbums bool) (ImplResponse, error) {
 	// TODO - update SearchAlbums with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *AlbumAPIService) SearchAlbums(ctx context.Context, version float32, fil
 }
 
 // UpdateAlbumCollection - Update Album
-func (s *AlbumAPIService) UpdateAlbumCollection(ctx context.Context, version float32, albumId int64, deviceId string, accountId int64, assetsToAdd string, assetsToRemove string, assetId int64, media *os.File, mediaURL string, active bool, title string, startDate int64, endDate int64, tags string, description string, albumType string, albumTypeId int64, subType string, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, latitude float64, longitude float64, locationDescription string, visibility string, cellPhone string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, fullAddress string, anonymous bool, metaData string, categoryIds string, categoryFilterIds string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, includeAllAppUsersAsMembers bool, includeAudiencesAsMembers bool, audienceOperator string, linkedObjectType string, linkedObjectId int64, indexNow bool) (ImplResponse, error) {
+func (s *AlbumAPIService) UpdateAlbumCollection(ctx context.Context, albumId int64, deviceId string, accountId int64, assetsToAdd string, assetsToRemove string, assetId int64, media *os.File, mediaURL string, active bool, title string, startDate int64, endDate int64, tags string, description string, albumType string, albumTypeId int64, subType string, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, latitude float64, longitude float64, locationDescription string, visibility string, cellPhone string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, fullAddress string, anonymous bool, metaData string, categoryIds string, categoryFilterIds string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, includeAllAppUsersAsMembers bool, includeAudiencesAsMembers bool, audienceOperator string, linkedObjectType string, linkedObjectId int64, indexNow bool) (ImplResponse, error) {
 	// TODO - update UpdateAlbumCollection with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *AlbumAPIService) UpdateAlbumCollection(ctx context.Context, version flo
 }
 
 // AddAlbumUsers - Add Album Users
-func (s *AlbumAPIService) AddAlbumUsers(ctx context.Context, version float32, albumId int64, includeFriendGroup bool, deviceId string, accountId int64, read bool, write bool, delete bool, add bool, connections string, connectionGroups string) (ImplResponse, error) {
+func (s *AlbumAPIService) AddAlbumUsers(ctx context.Context, albumId int64, includeFriendGroup bool, deviceId string, accountId int64, read bool, write bool, delete bool, add bool, connections string, connectionGroups string) (ImplResponse, error) {
 	// TODO - update AddAlbumUsers with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *AlbumAPIService) AddAlbumUsers(ctx context.Context, version float32, al
 }
 
 // RemoveAlbumUsers - Remove Album Users
-func (s *AlbumAPIService) RemoveAlbumUsers(ctx context.Context, version float32, albumId int64, removeFriendGroup bool, deviceId string, accountId int64, connections string, connectionGroups string) (ImplResponse, error) {
+func (s *AlbumAPIService) RemoveAlbumUsers(ctx context.Context, albumId int64, removeFriendGroup bool, deviceId string, accountId int64, connections string, connectionGroups string) (ImplResponse, error) {
 	// TODO - update RemoveAlbumUsers with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *AlbumAPIService) RemoveAlbumUsers(ctx context.Context, version float32,
 }
 
 // LeaveAlbum - Leave Album
-func (s *AlbumAPIService) LeaveAlbum(ctx context.Context, version float32, albumId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *AlbumAPIService) LeaveAlbum(ctx context.Context, albumId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update LeaveAlbum with the required logic for this service method.
 	// Add api_album_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

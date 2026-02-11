@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // MediaAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *MediaAPIController) Routes() Routes {
 		"CreateMedia": Route{
 			"CreateMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/create",
+			"/api/3.18/media/create",
 			c.CreateMedia,
 		},
 		"DeleteMedia": Route{
 			"DeleteMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/delete",
+			"/api/3.18/media/delete",
 			c.DeleteMedia,
 		},
 		"GetMedia": Route{
 			"GetMedia",
 			strings.ToUpper("Get"),
-			"/api/{version}/media/get",
+			"/api/3.18/media/get",
 			c.GetMedia,
 		},
 		"SearchMedia": Route{
 			"SearchMedia",
 			strings.ToUpper("Get"),
-			"/api/{version}/media/search",
+			"/api/3.18/media/search",
 			c.SearchMedia,
 		},
 		"UpdateMedia": Route{
 			"UpdateMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/update",
+			"/api/3.18/media/update",
 			c.UpdateMedia,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *MediaAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/create",
+			"/api/3.18/media/create",
 			c.CreateMedia,
 		},
 		Route{
 			"DeleteMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/delete",
+			"/api/3.18/media/delete",
 			c.DeleteMedia,
 		},
 		Route{
 			"GetMedia",
 			strings.ToUpper("Get"),
-			"/api/{version}/media/get",
+			"/api/3.18/media/get",
 			c.GetMedia,
 		},
 		Route{
 			"SearchMedia",
 			strings.ToUpper("Get"),
-			"/api/{version}/media/search",
+			"/api/3.18/media/search",
 			c.SearchMedia,
 		},
 		Route{
 			"UpdateMedia",
 			strings.ToUpper("Post"),
-			"/api/{version}/media/update",
+			"/api/3.18/media/update",
 			c.UpdateMedia,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *MediaAPIController) OrderedRoutes() []Route {
 
 // CreateMedia - Create Media
 func (c *MediaAPIController) CreateMedia(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -777,7 +766,7 @@ func (c *MediaAPIController) CreateMedia(w http.ResponseWriter, r *http.Request)
 		availabilitySummaryParam = param
 	} else {
 	}
-	result, err := c.service.CreateMedia(r.Context(), versionParam, accountIdParam, titleParam, barcodeTypeParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceParam, fullPriceParam, discountPriceParam, specialOfferTypeParam, offerVisibilityParam, activeParam, retailerLocationIdsParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, ticketPriceTypeParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, categoryIdsParam, filterIdsParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, parentalRatingParam, availabilityDateParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, availabilityParam, availabilitySummaryParam)
+	result, err := c.service.CreateMedia(r.Context(), accountIdParam, titleParam, barcodeTypeParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceParam, fullPriceParam, discountPriceParam, specialOfferTypeParam, offerVisibilityParam, activeParam, retailerLocationIdsParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, ticketPriceTypeParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, categoryIdsParam, filterIdsParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, parentalRatingParam, availabilityDateParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, availabilityParam, availabilitySummaryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -789,18 +778,9 @@ func (c *MediaAPIController) CreateMedia(w http.ResponseWriter, r *http.Request)
 
 // DeleteMedia - Delete Media
 func (c *MediaAPIController) DeleteMedia(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -835,7 +815,7 @@ func (c *MediaAPIController) DeleteMedia(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &RequiredError{Field: "mediaId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteMedia(r.Context(), versionParam, accountIdParam, mediaIdParam)
+	result, err := c.service.DeleteMedia(r.Context(), accountIdParam, mediaIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -847,18 +827,9 @@ func (c *MediaAPIController) DeleteMedia(w http.ResponseWriter, r *http.Request)
 
 // GetMedia - Media Get
 func (c *MediaAPIController) GetMedia(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -893,7 +864,7 @@ func (c *MediaAPIController) GetMedia(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "mediaId"}, nil)
 		return
 	}
-	result, err := c.service.GetMedia(r.Context(), versionParam, accountIdParam, mediaIdParam)
+	result, err := c.service.GetMedia(r.Context(), accountIdParam, mediaIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -905,18 +876,9 @@ func (c *MediaAPIController) GetMedia(w http.ResponseWriter, r *http.Request) {
 
 // SearchMedia - Search Media
 func (c *MediaAPIController) SearchMedia(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1025,7 +987,7 @@ func (c *MediaAPIController) SearchMedia(w http.ResponseWriter, r *http.Request)
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchMedia(r.Context(), versionParam, accountIdParam, activeOnlyParam, sortFieldParam, descendingParam, keywordParam, categoryIdsParam, filterIdsParam, startParam, limitParam)
+	result, err := c.service.SearchMedia(r.Context(), accountIdParam, activeOnlyParam, sortFieldParam, descendingParam, keywordParam, categoryIdsParam, filterIdsParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1037,18 +999,9 @@ func (c *MediaAPIController) SearchMedia(w http.ResponseWriter, r *http.Request)
 
 // UpdateMedia - Update Media
 func (c *MediaAPIController) UpdateMedia(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1685,7 +1638,7 @@ func (c *MediaAPIController) UpdateMedia(w http.ResponseWriter, r *http.Request)
 		availabilitySummaryParam = param
 	} else {
 	}
-	result, err := c.service.UpdateMedia(r.Context(), versionParam, accountIdParam, mediaIdParam, retailerLocationIdsParam, offerLocationsParam, titleParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeTypeParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceTypeParam, ticketPriceParam, fullPriceParam, discountPriceParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, specialOfferTypeParam, offerVisibilityParam, categoryIdsParam, filterIdsParam, activeParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, availabilityDateParam, parentalRatingParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, availabilityParam, availabilitySummaryParam)
+	result, err := c.service.UpdateMedia(r.Context(), accountIdParam, mediaIdParam, retailerLocationIdsParam, offerLocationsParam, titleParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeTypeParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceTypeParam, ticketPriceParam, fullPriceParam, discountPriceParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, specialOfferTypeParam, offerVisibilityParam, categoryIdsParam, filterIdsParam, activeParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, availabilityDateParam, parentalRatingParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, availabilityParam, availabilitySummaryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

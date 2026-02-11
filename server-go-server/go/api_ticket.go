@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // TicketAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,37 +53,37 @@ func (c *TicketAPIController) Routes() Routes {
 		"GetTicketCount": Route{
 			"GetTicketCount",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/count",
+			"/api/3.18/ticket/count",
 			c.GetTicketCount,
 		},
 		"GetTicketList": Route{
 			"GetTicketList",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/getList",
+			"/api/3.18/ticket/getList",
 			c.GetTicketList,
 		},
 		"SaveTicket": Route{
 			"SaveTicket",
 			strings.ToUpper("Post"),
-			"/api/{version}/ticket/save",
+			"/api/3.18/ticket/save",
 			c.SaveTicket,
 		},
 		"SaveTicketViaFileUpload": Route{
 			"SaveTicketViaFileUpload",
 			strings.ToUpper("Post"),
-			"/api/{version}/ticket/save/fileUpload",
+			"/api/3.18/ticket/save/fileUpload",
 			c.SaveTicketViaFileUpload,
 		},
 		"TicketOffers": Route{
 			"TicketOffers",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/ticketoffers",
+			"/api/3.18/ticket/ticketoffers",
 			c.TicketOffers,
 		},
 		"GiftPurchase": Route{
 			"GiftPurchase",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/gift",
+			"/api/3.18/purchase/gift",
 			c.GiftPurchase,
 		},
 	}
@@ -97,37 +95,37 @@ func (c *TicketAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetTicketCount",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/count",
+			"/api/3.18/ticket/count",
 			c.GetTicketCount,
 		},
 		Route{
 			"GetTicketList",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/getList",
+			"/api/3.18/ticket/getList",
 			c.GetTicketList,
 		},
 		Route{
 			"SaveTicket",
 			strings.ToUpper("Post"),
-			"/api/{version}/ticket/save",
+			"/api/3.18/ticket/save",
 			c.SaveTicket,
 		},
 		Route{
 			"SaveTicketViaFileUpload",
 			strings.ToUpper("Post"),
-			"/api/{version}/ticket/save/fileUpload",
+			"/api/3.18/ticket/save/fileUpload",
 			c.SaveTicketViaFileUpload,
 		},
 		Route{
 			"TicketOffers",
 			strings.ToUpper("Get"),
-			"/api/{version}/ticket/ticketoffers",
+			"/api/3.18/ticket/ticketoffers",
 			c.TicketOffers,
 		},
 		Route{
 			"GiftPurchase",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/gift",
+			"/api/3.18/purchase/gift",
 			c.GiftPurchase,
 		},
 	}
@@ -137,18 +135,9 @@ func (c *TicketAPIController) OrderedRoutes() []Route {
 
 // GetTicketCount - Get Ticket Count
 func (c *TicketAPIController) GetTicketCount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -193,7 +182,7 @@ func (c *TicketAPIController) GetTicketCount(w http.ResponseWriter, r *http.Requ
 		ticketTypeParam = param
 	} else {
 	}
-	result, err := c.service.GetTicketCount(r.Context(), versionParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, ticketTypeParam)
+	result, err := c.service.GetTicketCount(r.Context(), deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, ticketTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -205,18 +194,9 @@ func (c *TicketAPIController) GetTicketCount(w http.ResponseWriter, r *http.Requ
 
 // GetTicketList - Get Ticket List
 func (c *TicketAPIController) GetTicketList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -289,7 +269,7 @@ func (c *TicketAPIController) GetTicketList(w http.ResponseWriter, r *http.Reque
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.GetTicketList(r.Context(), versionParam, deviceIdParam, accountIdParam, ticketObjectTypeParam, actionTypeParam, ticketIdsParam, objectIdsParam, receiptTokensParam, gameTypeParam, appKeyParam)
+	result, err := c.service.GetTicketList(r.Context(), deviceIdParam, accountIdParam, ticketObjectTypeParam, actionTypeParam, ticketIdsParam, objectIdsParam, receiptTokensParam, gameTypeParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -301,18 +281,9 @@ func (c *TicketAPIController) GetTicketList(w http.ResponseWriter, r *http.Reque
 
 // SaveTicket - Save Ticket
 func (c *TicketAPIController) SaveTicket(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var actionTypeParam string
@@ -487,7 +458,7 @@ func (c *TicketAPIController) SaveTicket(w http.ResponseWriter, r *http.Request)
 		appVersionParam = param
 	} else {
 	}
-	result, err := c.service.SaveTicket(r.Context(), versionParam, actionTypeParam, ticketObjectTypeParam, returnNullsParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, objectIdParam, purchaseCodeParam, receiptTokenParam, receiptDataParam, countParam, ticketTypeParam, purchaseProviderParam, purchaseTypeParam, returnProfileResponseParam, includeProfileResponseParam, appVersionParam)
+	result, err := c.service.SaveTicket(r.Context(), actionTypeParam, ticketObjectTypeParam, returnNullsParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, objectIdParam, purchaseCodeParam, receiptTokenParam, receiptDataParam, countParam, ticketTypeParam, purchaseProviderParam, purchaseTypeParam, returnProfileResponseParam, includeProfileResponseParam, appVersionParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -499,18 +470,9 @@ func (c *TicketAPIController) SaveTicket(w http.ResponseWriter, r *http.Request)
 
 // SaveTicketViaFileUpload - Save Ticket with Reciept
 func (c *TicketAPIController) SaveTicketViaFileUpload(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var actionTypeParam string
@@ -687,7 +649,7 @@ func (c *TicketAPIController) SaveTicketViaFileUpload(w http.ResponseWriter, r *
 		appVersionParam = param
 	} else {
 	}
-	result, err := c.service.SaveTicketViaFileUpload(r.Context(), versionParam, actionTypeParam, ticketObjectTypeParam, receiptDataParam, returnNullsParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, objectIdParam, purchaseCodeParam, receiptTokenParam, countParam, ticketTypeParam, purchaseProviderParam, purchaseTypeParam, returnProfileResponseParam, includeProfileResponseParam, appVersionParam)
+	result, err := c.service.SaveTicketViaFileUpload(r.Context(), actionTypeParam, ticketObjectTypeParam, receiptDataParam, returnNullsParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, objectIdParam, purchaseCodeParam, receiptTokenParam, countParam, ticketTypeParam, purchaseProviderParam, purchaseTypeParam, returnProfileResponseParam, includeProfileResponseParam, appVersionParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -699,16 +661,7 @@ func (c *TicketAPIController) SaveTicketViaFileUpload(w http.ResponseWriter, r *
 
 // TicketOffers - Get Ticket Offers
 func (c *TicketAPIController) TicketOffers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
-	result, err := c.service.TicketOffers(r.Context(), versionParam)
+	result, err := c.service.TicketOffers(r.Context())
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -720,18 +673,9 @@ func (c *TicketAPIController) TicketOffers(w http.ResponseWriter, r *http.Reques
 
 // GiftPurchase - Gift Tickets
 func (c *TicketAPIController) GiftPurchase(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var receiverAccountIdParam int64
@@ -822,7 +766,7 @@ func (c *TicketAPIController) GiftPurchase(w http.ResponseWriter, r *http.Reques
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.GiftPurchase(r.Context(), versionParam, receiverAccountIdParam, ticketIdParam, deviceIdParam, accountIdParam, assetIdParam, customMessageParam, gameTypeParam, appKeyParam)
+	result, err := c.service.GiftPurchase(r.Context(), receiverAccountIdParam, ticketIdParam, deviceIdParam, accountIdParam, assetIdParam, customMessageParam, gameTypeParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // RankingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *RankingAPIController) Routes() Routes {
 		"GetRankings": Route{
 			"GetRankings",
 			strings.ToUpper("Get"),
-			"/api/{version}/ranking/search",
+			"/api/3.18/ranking/search",
 			c.GetRankings,
 		},
 		"GetUserRank": Route{
 			"GetUserRank",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/personal/ranks",
+			"/api/3.18/ranking/personal/ranks",
 			c.GetUserRank,
 		},
 		"UpdateRankings": Route{
 			"UpdateRankings",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/update",
+			"/api/3.18/ranking/update",
 			c.UpdateRankings,
 		},
 		"GetHistoricalRankings": Route{
 			"GetHistoricalRankings",
 			strings.ToUpper("Get"),
-			"/api/{version}/ranking/historical/search",
+			"/api/3.18/ranking/historical/search",
 			c.GetHistoricalRankings,
 		},
 		"OverrideUserRank": Route{
 			"OverrideUserRank",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/override",
+			"/api/3.18/ranking/override",
 			c.OverrideUserRank,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *RankingAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetRankings",
 			strings.ToUpper("Get"),
-			"/api/{version}/ranking/search",
+			"/api/3.18/ranking/search",
 			c.GetRankings,
 		},
 		Route{
 			"GetUserRank",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/personal/ranks",
+			"/api/3.18/ranking/personal/ranks",
 			c.GetUserRank,
 		},
 		Route{
 			"UpdateRankings",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/update",
+			"/api/3.18/ranking/update",
 			c.UpdateRankings,
 		},
 		Route{
 			"GetHistoricalRankings",
 			strings.ToUpper("Get"),
-			"/api/{version}/ranking/historical/search",
+			"/api/3.18/ranking/historical/search",
 			c.GetHistoricalRankings,
 		},
 		Route{
 			"OverrideUserRank",
 			strings.ToUpper("Post"),
-			"/api/{version}/ranking/override",
+			"/api/3.18/ranking/override",
 			c.OverrideUserRank,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *RankingAPIController) OrderedRoutes() []Route {
 
 // GetRankings - Search Rankings
 func (c *RankingAPIController) GetRankings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -341,7 +330,7 @@ func (c *RankingAPIController) GetRankings(w http.ResponseWriter, r *http.Reques
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.GetRankings(r.Context(), versionParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, qParam, keywordParam, rankTypeParam, leaderboardModeParam, withinAccountIdsParam, returnUserRankParam, albumIdParam, audienceIdParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam)
+	result, err := c.service.GetRankings(r.Context(), deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, qParam, keywordParam, rankTypeParam, leaderboardModeParam, withinAccountIdsParam, returnUserRankParam, albumIdParam, audienceIdParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -353,18 +342,9 @@ func (c *RankingAPIController) GetRankings(w http.ResponseWriter, r *http.Reques
 
 // GetUserRank - Get Personal Rankings
 func (c *RankingAPIController) GetUserRank(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -491,7 +471,7 @@ func (c *RankingAPIController) GetUserRank(w http.ResponseWriter, r *http.Reques
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.GetUserRank(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, rankTypeParam, returnUserRankParam, leaderboardModeParam, sortFieldParam, keywordParam, descendingParam, startParam, limitParam)
+	result, err := c.service.GetUserRank(r.Context(), deviceIdParam, accountIdParam, appKeyParam, rankTypeParam, returnUserRankParam, leaderboardModeParam, sortFieldParam, keywordParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -503,18 +483,9 @@ func (c *RankingAPIController) GetUserRank(w http.ResponseWriter, r *http.Reques
 
 // UpdateRankings - Update Ranking
 func (c *RankingAPIController) UpdateRankings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -646,7 +617,7 @@ func (c *RankingAPIController) UpdateRankings(w http.ResponseWriter, r *http.Req
 		var param bool = false
 		createLeaderboardParam = param
 	}
-	result, err := c.service.UpdateRankings(r.Context(), versionParam, accountIdParam, appKeyParam, rankTypeParam, incrementParam, timeIncrementParam, tagParam, startDateParam, endDateParam, updateGlobalParam, createLeaderboardParam)
+	result, err := c.service.UpdateRankings(r.Context(), accountIdParam, appKeyParam, rankTypeParam, incrementParam, timeIncrementParam, tagParam, startDateParam, endDateParam, updateGlobalParam, createLeaderboardParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -658,18 +629,9 @@ func (c *RankingAPIController) UpdateRankings(w http.ResponseWriter, r *http.Req
 
 // GetHistoricalRankings - Search Historical Rankings
 func (c *RankingAPIController) GetHistoricalRankings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -800,7 +762,7 @@ func (c *RankingAPIController) GetHistoricalRankings(w http.ResponseWriter, r *h
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.GetHistoricalRankings(r.Context(), versionParam, appKeyParam, rankTypeParam, startDateParam, endDateParam, deviceIdParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.GetHistoricalRankings(r.Context(), appKeyParam, rankTypeParam, startDateParam, endDateParam, deviceIdParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -812,18 +774,9 @@ func (c *RankingAPIController) GetHistoricalRankings(w http.ResponseWriter, r *h
 
 // OverrideUserRank - Override User Rank
 func (c *RankingAPIController) OverrideUserRank(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1128,7 +1081,7 @@ func (c *RankingAPIController) OverrideUserRank(w http.ResponseWriter, r *http.R
 		endDateParam = param
 	} else {
 	}
-	result, err := c.service.OverrideUserRank(r.Context(), versionParam, accountIdParam, ownerAccountIdParam, appKeyParam, rankTypeParam, totalScoreParam, totalCountParam, totalTimeParam, dailyScoreParam, dailyCountParam, dailyTimeParam, weeklyScoreParam, weeklyCountParam, weeklyTimeParam, monthlyScoreParam, monthlyCountParam, monthlyTimeParam, topScoreParam, lowestScoreParam, streakCountParam, streakBestCountParam, startDateParam, endDateParam)
+	result, err := c.service.OverrideUserRank(r.Context(), accountIdParam, ownerAccountIdParam, appKeyParam, rankTypeParam, totalScoreParam, totalCountParam, totalTimeParam, dailyScoreParam, dailyCountParam, dailyTimeParam, weeklyScoreParam, weeklyCountParam, weeklyTimeParam, monthlyScoreParam, monthlyCountParam, monthlyTimeParam, topScoreParam, lowestScoreParam, streakCountParam, streakBestCountParam, startDateParam, endDateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

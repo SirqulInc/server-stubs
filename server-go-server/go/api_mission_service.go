@@ -29,7 +29,7 @@ func NewMissionAPIService() *MissionAPIService {
 }
 
 // CreateMission - Create Mission
-func (s *MissionAPIService) CreateMission(ctx context.Context, version float32, accountId int64, title string, description string, subType string, startDate int64, endDate int64, active bool, gameLevelIds string, creativeIds string, audienceIds string, missionTask string, formatType string, offerId int64, balance float64, advancedReporting bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, metaData string, applicationIds string, devices string, deviceIds string, deviceVersions string, locations string, radius string) (ImplResponse, error) {
+func (s *MissionAPIService) CreateMission(ctx context.Context, accountId int64, title string, description string, subType string, startDate int64, endDate int64, active bool, gameLevelIds string, creativeIds string, audienceIds string, missionTask string, formatType string, offerId int64, balance float64, advancedReporting bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, metaData string, applicationIds string, devices string, deviceIds string, deviceVersions string, locations string, radius string) (ImplResponse, error) {
 	// TODO - update CreateMission with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *MissionAPIService) CreateMission(ctx context.Context, version float32, 
 }
 
 // DeleteMission - Delete Mission
-func (s *MissionAPIService) DeleteMission(ctx context.Context, version float32, accountId int64, missionId int64) (ImplResponse, error) {
+func (s *MissionAPIService) DeleteMission(ctx context.Context, accountId int64, missionId int64) (ImplResponse, error) {
 	// TODO - update DeleteMission with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *MissionAPIService) DeleteMission(ctx context.Context, version float32, 
 }
 
 // FindMissions - Find Missions
-func (s *MissionAPIService) FindMissions(ctx context.Context, version float32, appKey string, suffix string, type_ string, accountId int64, appVersion string, latitude float64, longitude float64, device string, deviceIdentifier int64, deviceVersion string, start int32, limit int32, includeGameData bool, includeAudiences bool, allocatesTickets bool, randomize bool, targetedAdsOnly bool, missionIds string, audienceOperator string) (ImplResponse, error) {
+func (s *MissionAPIService) FindMissions(ctx context.Context, appKey string, suffix string, type_ string, accountId int64, appVersion string, latitude float64, longitude float64, device string, deviceIdentifier int64, deviceVersion string, start int32, limit int32, includeGameData bool, includeAudiences bool, allocatesTickets bool, randomize bool, targetedAdsOnly bool, missionIds string, audienceOperator string) (ImplResponse, error) {
 	// TODO - update FindMissions with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *MissionAPIService) FindMissions(ctx context.Context, version float32, a
 }
 
 // SearchMissionFormats - Search Mission Formats
-func (s *MissionAPIService) SearchMissionFormats(ctx context.Context, version float32, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *MissionAPIService) SearchMissionFormats(ctx context.Context, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchMissionFormats with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *MissionAPIService) SearchMissionFormats(ctx context.Context, version fl
 }
 
 // GetMission - Get Mission
-func (s *MissionAPIService) GetMission(ctx context.Context, version float32, accountId int64, missionId int64, returnCreative bool) (ImplResponse, error) {
+func (s *MissionAPIService) GetMission(ctx context.Context, accountId int64, missionId int64, returnCreative bool) (ImplResponse, error) {
 	// TODO - update GetMission with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *MissionAPIService) GetMission(ctx context.Context, version float32, acc
 }
 
 // ImportMission - Import Mission
-func (s *MissionAPIService) ImportMission(ctx context.Context, version float32, accountId int64, latitude float64, longitude float64, appKey string, keyword string, start int32, limit int32, adSize string) (ImplResponse, error) {
+func (s *MissionAPIService) ImportMission(ctx context.Context, accountId int64, latitude float64, longitude float64, appKey string, keyword string, start int32, limit int32, adSize string) (ImplResponse, error) {
 	// TODO - update ImportMission with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *MissionAPIService) ImportMission(ctx context.Context, version float32, 
 }
 
 // SearchMissions - Search Missions
-func (s *MissionAPIService) SearchMissions(ctx context.Context, version float32, accountId int64, keyword string, subType string, start int32, limit int32, includeGameData bool, includeAudiences bool, includeInactive bool, suffix string, sortField string, descending bool) (ImplResponse, error) {
+func (s *MissionAPIService) SearchMissions(ctx context.Context, accountId int64, keyword string, subType string, start int32, limit int32, includeGameData bool, includeAudiences bool, includeInactive bool, suffix string, sortField string, descending bool) (ImplResponse, error) {
 	// TODO - update SearchMissions with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *MissionAPIService) SearchMissions(ctx context.Context, version float32,
 }
 
 // SearchMissionsByBillableEntity - Search Missions by Billable Entity
-func (s *MissionAPIService) SearchMissionsByBillableEntity(ctx context.Context, version float32, accountId int64, keyword string, start int32, limit int32, includeGameData bool, includeAudiences bool, includeInactive bool, suffix string, sortField string, descending bool) (ImplResponse, error) {
+func (s *MissionAPIService) SearchMissionsByBillableEntity(ctx context.Context, accountId int64, keyword string, start int32, limit int32, includeGameData bool, includeAudiences bool, includeInactive bool, suffix string, sortField string, descending bool) (ImplResponse, error) {
 	// TODO - update SearchMissionsByBillableEntity with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *MissionAPIService) SearchMissionsByBillableEntity(ctx context.Context, 
 }
 
 // UpdateMission - Update Mission
-func (s *MissionAPIService) UpdateMission(ctx context.Context, version float32, accountId int64, missionId int64, title string, description string, subType string, metaData string, startDate int64, endDate int64, active bool, gameLevelIds string, creativeIds string, audienceIds string, offerId int64, balance float64, advancedReporting bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, applicationIds string, devices string, deviceIds string, deviceVersions string, locations string, radius string) (ImplResponse, error) {
+func (s *MissionAPIService) UpdateMission(ctx context.Context, accountId int64, missionId int64, title string, description string, subType string, metaData string, startDate int64, endDate int64, active bool, gameLevelIds string, creativeIds string, audienceIds string, offerId int64, balance float64, advancedReporting bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, applicationIds string, devices string, deviceIds string, deviceVersions string, locations string, radius string) (ImplResponse, error) {
 	// TODO - update UpdateMission with the required logic for this service method.
 	// Add api_mission_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

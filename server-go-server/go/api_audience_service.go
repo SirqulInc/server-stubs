@@ -29,7 +29,7 @@ func NewAudienceAPIService() *AudienceAPIService {
 }
 
 // GetAgeGroups - Get Age Groups
-func (s *AudienceAPIService) GetAgeGroups(ctx context.Context, version float32) (ImplResponse, error) {
+func (s *AudienceAPIService) GetAgeGroups(ctx context.Context) (ImplResponse, error) {
 	// TODO - update GetAgeGroups with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AudienceAPIService) GetAgeGroups(ctx context.Context, version float32) 
 }
 
 // CreateAudience - Create Audience
-func (s *AudienceAPIService) CreateAudience(ctx context.Context, version float32, accountId int64, name string, description string, searchTags string, gender string, ageGroups string, categoryIds string, applicationIds string, gameExperienceLevel string, devices string, deviceIds string, deviceVersions string, locations string, radius string, startTimeOffset int32, endTimeOffset int32, sendSuggestion bool, associateDescription string, associateType string, associateId int64, groupingId string, metaData string, visibility string, audienceType string, useOrder bool, cohortRegionsData string, appKey string, trilaterationTypes string, uniqueName bool) (ImplResponse, error) {
+func (s *AudienceAPIService) CreateAudience(ctx context.Context, accountId int64, name string, description string, searchTags string, gender string, ageGroups string, categoryIds string, applicationIds string, gameExperienceLevel string, devices string, deviceIds string, deviceVersions string, locations string, radius string, startTimeOffset int32, endTimeOffset int32, sendSuggestion bool, associateDescription string, associateType string, associateId int64, groupingId string, metaData string, visibility string, audienceType string, useOrder bool, cohortRegionsData string, appKey string, trilaterationTypes string, uniqueName bool) (ImplResponse, error) {
 	// TODO - update CreateAudience with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AudienceAPIService) CreateAudience(ctx context.Context, version float32
 }
 
 // DeleteAudience - Delete Audience
-func (s *AudienceAPIService) DeleteAudience(ctx context.Context, version float32, accountId int64, audienceId int64) (ImplResponse, error) {
+func (s *AudienceAPIService) DeleteAudience(ctx context.Context, accountId int64, audienceId int64) (ImplResponse, error) {
 	// TODO - update DeleteAudience with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *AudienceAPIService) DeleteAudience(ctx context.Context, version float32
 }
 
 // GetDevices - Get Devices
-func (s *AudienceAPIService) GetDevices(ctx context.Context, version float32, includeInactive bool) (ImplResponse, error) {
+func (s *AudienceAPIService) GetDevices(ctx context.Context, includeInactive bool) (ImplResponse, error) {
 	// TODO - update GetDevices with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *AudienceAPIService) GetDevices(ctx context.Context, version float32, in
 }
 
 // GetExperiences - Get Experiences
-func (s *AudienceAPIService) GetExperiences(ctx context.Context, version float32) (ImplResponse, error) {
+func (s *AudienceAPIService) GetExperiences(ctx context.Context) (ImplResponse, error) {
 	// TODO - update GetExperiences with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *AudienceAPIService) GetExperiences(ctx context.Context, version float32
 }
 
 // GetAudience - Get Audience
-func (s *AudienceAPIService) GetAudience(ctx context.Context, version float32, accountId int64, audienceId int64, appKey string, returnAccountCount bool, returnAlbumCount bool, albumTypesForCount string) (ImplResponse, error) {
+func (s *AudienceAPIService) GetAudience(ctx context.Context, accountId int64, audienceId int64, appKey string, returnAccountCount bool, returnAlbumCount bool, albumTypesForCount string) (ImplResponse, error) {
 	// TODO - update GetAudience with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *AudienceAPIService) GetAudience(ctx context.Context, version float32, a
 }
 
 // GetGroupedAudiences - Get GroupedAudiences
-func (s *AudienceAPIService) GetGroupedAudiences(ctx context.Context, version float32, accountId int64, audienceGroupingId string) (ImplResponse, error) {
+func (s *AudienceAPIService) GetGroupedAudiences(ctx context.Context, accountId int64, audienceGroupingId string) (ImplResponse, error) {
 	// TODO - update GetGroupedAudiences with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *AudienceAPIService) GetGroupedAudiences(ctx context.Context, version fl
 }
 
 // GetAudienceList - Search Audiences
-func (s *AudienceAPIService) GetAudienceList(ctx context.Context, version float32, accountId int64, albumIds string, keyword string, keywordFields string, sortField string, descending bool, start int32, limit int32, sendSuggestion bool, activeOnly bool, groupByGroupingId bool, appKey string, returnGlobal bool, exactKeyword bool, audienceType string, audienceTypes string, returnAccountCount bool, returnAlbumCount bool, albumTypesForCount string) (ImplResponse, error) {
+func (s *AudienceAPIService) GetAudienceList(ctx context.Context, accountId int64, albumIds string, keyword string, keywordFields string, sortField string, descending bool, start int32, limit int32, sendSuggestion bool, activeOnly bool, groupByGroupingId bool, appKey string, returnGlobal bool, exactKeyword bool, audienceType string, audienceTypes string, returnAccountCount bool, returnAlbumCount bool, albumTypesForCount string) (ImplResponse, error) {
 	// TODO - update GetAudienceList with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *AudienceAPIService) GetAudienceList(ctx context.Context, version float3
 }
 
 // ListLastestByAccount - List Sent Suggestions 
-func (s *AudienceAPIService) ListLastestByAccount(ctx context.Context, version float32, accountId int64, timeframe int32, suggestionType string) (ImplResponse, error) {
+func (s *AudienceAPIService) ListLastestByAccount(ctx context.Context, accountId int64, timeframe int32, suggestionType string) (ImplResponse, error) {
 	// TODO - update ListLastestByAccount with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *AudienceAPIService) ListLastestByAccount(ctx context.Context, version f
 }
 
 // ListByAccount - List Suggestions by Audience
-func (s *AudienceAPIService) ListByAccount(ctx context.Context, version float32, accountId int64, limit int32, suggestionType string) (ImplResponse, error) {
+func (s *AudienceAPIService) ListByAccount(ctx context.Context, accountId int64, limit int32, suggestionType string) (ImplResponse, error) {
 	// TODO - update ListByAccount with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *AudienceAPIService) ListByAccount(ctx context.Context, version float32,
 }
 
 // ListByAudience - List Offers by Audience
-func (s *AudienceAPIService) ListByAudience(ctx context.Context, version float32, limit int32, gender string, age int32, categoryIds string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AudienceAPIService) ListByAudience(ctx context.Context, limit int32, gender string, age int32, categoryIds string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update ListByAudience with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *AudienceAPIService) ListByAudience(ctx context.Context, version float32
 }
 
 // SendByAccount - Send Suggestions
-func (s *AudienceAPIService) SendByAccount(ctx context.Context, version float32, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AudienceAPIService) SendByAccount(ctx context.Context, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update SendByAccount with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *AudienceAPIService) SendByAccount(ctx context.Context, version float32,
 }
 
 // UpdateAudience - Update Audience
-func (s *AudienceAPIService) UpdateAudience(ctx context.Context, version float32, accountId int64, audienceId int64, name string, description string, searchTags string, gender string, ageGroups string, categoryIds string, applicationIds string, gameExperienceLevel string, devices string, deviceIds string, deviceVersions string, locations string, radius string, active bool, sendSuggestion bool, startTimeOffset int32, endTimeOffset int32, associateDescription string, associateType string, associateId int64, groupingId string, metaData string, visibility string, audienceType string, useOrder bool, cohortRegionsData string, appKey string, trilaterationTypes string, uniqueName bool) (ImplResponse, error) {
+func (s *AudienceAPIService) UpdateAudience(ctx context.Context, accountId int64, audienceId int64, name string, description string, searchTags string, gender string, ageGroups string, categoryIds string, applicationIds string, gameExperienceLevel string, devices string, deviceIds string, deviceVersions string, locations string, radius string, active bool, sendSuggestion bool, startTimeOffset int32, endTimeOffset int32, associateDescription string, associateType string, associateId int64, groupingId string, metaData string, visibility string, audienceType string, useOrder bool, cohortRegionsData string, appKey string, trilaterationTypes string, uniqueName bool) (ImplResponse, error) {
 	// TODO - update UpdateAudience with the required logic for this service method.
 	// Add api_audience_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

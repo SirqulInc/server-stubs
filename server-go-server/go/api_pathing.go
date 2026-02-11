@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PathingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *PathingAPIController) Routes() Routes {
 		"ComputePath": Route{
 			"ComputePath",
 			strings.ToUpper("Get"),
-			"/api/{version}/pathing/compute",
+			"/api/3.18/pathing/compute",
 			c.ComputePath,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *PathingAPIController) OrderedRoutes() []Route {
 		Route{
 			"ComputePath",
 			strings.ToUpper("Get"),
-			"/api/{version}/pathing/compute",
+			"/api/3.18/pathing/compute",
 			c.ComputePath,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *PathingAPIController) OrderedRoutes() []Route {
 
 // ComputePath - Calculate Path
 func (c *PathingAPIController) ComputePath(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var dataParam string
@@ -140,7 +129,7 @@ func (c *PathingAPIController) ComputePath(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "directions"}, nil)
 		return
 	}
-	result, err := c.service.ComputePath(r.Context(), versionParam, dataParam, unitsParam, reducePathParam, directionsParam)
+	result, err := c.service.ComputePath(r.Context(), dataParam, unitsParam, reducePathParam, directionsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

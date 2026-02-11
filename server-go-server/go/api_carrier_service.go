@@ -29,7 +29,7 @@ func NewCarrierAPIService() *CarrierAPIService {
 }
 
 // SearchCarriers - Search Carriers
-func (s *CarrierAPIService) SearchCarriers(ctx context.Context, version float32, keyword string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *CarrierAPIService) SearchCarriers(ctx context.Context, keyword string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchCarriers with the required logic for this service method.
 	// Add api_carrier_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

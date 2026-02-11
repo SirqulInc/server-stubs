@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // CSVImportAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,25 +53,25 @@ func (c *CSVImportAPIController) Routes() Routes {
 		"ListStatusCSV": Route{
 			"ListStatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/list",
+			"/api/3.18/csvimport/batch/list",
 			c.ListStatusCSV,
 		},
 		"StatusCSV": Route{
 			"StatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/status",
+			"/api/3.18/csvimport/batch/status",
 			c.StatusCSV,
 		},
 		"GetStatusCSV": Route{
 			"GetStatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/status/details",
+			"/api/3.18/csvimport/batch/status/details",
 			c.GetStatusCSV,
 		},
 		"UploadCSV": Route{
 			"UploadCSV",
 			strings.ToUpper("Post"),
-			"/api/{version}/csvimport/upload",
+			"/api/3.18/csvimport/upload",
 			c.UploadCSV,
 		},
 	}
@@ -85,25 +83,25 @@ func (c *CSVImportAPIController) OrderedRoutes() []Route {
 		Route{
 			"ListStatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/list",
+			"/api/3.18/csvimport/batch/list",
 			c.ListStatusCSV,
 		},
 		Route{
 			"StatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/status",
+			"/api/3.18/csvimport/batch/status",
 			c.StatusCSV,
 		},
 		Route{
 			"GetStatusCSV",
 			strings.ToUpper("Get"),
-			"/api/{version}/csvimport/batch/status/details",
+			"/api/3.18/csvimport/batch/status/details",
 			c.GetStatusCSV,
 		},
 		Route{
 			"UploadCSV",
 			strings.ToUpper("Post"),
-			"/api/{version}/csvimport/upload",
+			"/api/3.18/csvimport/upload",
 			c.UploadCSV,
 		},
 	}
@@ -113,18 +111,9 @@ func (c *CSVImportAPIController) OrderedRoutes() []Route {
 
 // ListStatusCSV - Search Status
 func (c *CSVImportAPIController) ListStatusCSV(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -175,7 +164,7 @@ func (c *CSVImportAPIController) ListStatusCSV(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "limit"}, nil)
 		return
 	}
-	result, err := c.service.ListStatusCSV(r.Context(), versionParam, accountIdParam, startParam, limitParam)
+	result, err := c.service.ListStatusCSV(r.Context(), accountIdParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -187,18 +176,9 @@ func (c *CSVImportAPIController) ListStatusCSV(w http.ResponseWriter, r *http.Re
 
 // StatusCSV - Batch Status
 func (c *CSVImportAPIController) StatusCSV(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -233,7 +213,7 @@ func (c *CSVImportAPIController) StatusCSV(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "batchId"}, nil)
 		return
 	}
-	result, err := c.service.StatusCSV(r.Context(), versionParam, accountIdParam, batchIdParam)
+	result, err := c.service.StatusCSV(r.Context(), accountIdParam, batchIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -245,18 +225,9 @@ func (c *CSVImportAPIController) StatusCSV(w http.ResponseWriter, r *http.Reques
 
 // GetStatusCSV - Detail Status
 func (c *CSVImportAPIController) GetStatusCSV(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -332,7 +303,7 @@ func (c *CSVImportAPIController) GetStatusCSV(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "limit"}, nil)
 		return
 	}
-	result, err := c.service.GetStatusCSV(r.Context(), versionParam, accountIdParam, batchIdParam, responseGroupParam, startParam, limitParam)
+	result, err := c.service.GetStatusCSV(r.Context(), accountIdParam, batchIdParam, responseGroupParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -344,18 +315,9 @@ func (c *CSVImportAPIController) GetStatusCSV(w http.ResponseWriter, r *http.Req
 
 // UploadCSV - Upload CSV
 func (c *CSVImportAPIController) UploadCSV(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -408,7 +370,7 @@ func (c *CSVImportAPIController) UploadCSV(w http.ResponseWriter, r *http.Reques
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.UploadCSV(r.Context(), versionParam, accountIdParam, uploadTypeParam, importFileParam, fileFormatParam, appKeyParam)
+	result, err := c.service.UploadCSV(r.Context(), accountIdParam, uploadTypeParam, importFileParam, fileFormatParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

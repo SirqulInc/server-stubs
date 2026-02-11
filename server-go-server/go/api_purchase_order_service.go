@@ -29,7 +29,7 @@ func NewPurchaseOrderAPIService() *PurchaseOrderAPIService {
 }
 
 // CreateOrder - Create Order
-func (s *PurchaseOrderAPIService) CreateOrder(ctx context.Context, version float32, appKey string, cart string, deviceId string, accountId int64, description string, currencyType string, paymentMethodId int64, externalOrderId string, externalPaymentId string, remoteRefType string, externalDate int64, promoCode string) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) CreateOrder(ctx context.Context, appKey string, cart string, deviceId string, accountId int64, description string, currencyType string, paymentMethodId int64, externalOrderId string, externalPaymentId string, remoteRefType string, externalDate int64, promoCode string) (ImplResponse, error) {
 	// TODO - update CreateOrder with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *PurchaseOrderAPIService) CreateOrder(ctx context.Context, version float
 }
 
 // PreviewOrder - Preview Order
-func (s *PurchaseOrderAPIService) PreviewOrder(ctx context.Context, version float32, appKey string, cart string, deviceId string, accountId int64, description string, currencyType string, paymentMethodId int64, externalOrderId string, externalPaymentId string, remoteRefType string, externalDate int64, promoCode string) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) PreviewOrder(ctx context.Context, appKey string, cart string, deviceId string, accountId int64, description string, currencyType string, paymentMethodId int64, externalOrderId string, externalPaymentId string, remoteRefType string, externalDate int64, promoCode string) (ImplResponse, error) {
 	// TODO - update PreviewOrder with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *PurchaseOrderAPIService) PreviewOrder(ctx context.Context, version floa
 }
 
 // DeleteOrder - Delete Order
-func (s *PurchaseOrderAPIService) DeleteOrder(ctx context.Context, version float32, orderId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) DeleteOrder(ctx context.Context, orderId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteOrder with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *PurchaseOrderAPIService) DeleteOrder(ctx context.Context, version float
 }
 
 // GetOrder - Get Order
-func (s *PurchaseOrderAPIService) GetOrder(ctx context.Context, version float32, deviceId string, accountId int64, orderId int64, externalOrderId string) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) GetOrder(ctx context.Context, deviceId string, accountId int64, orderId int64, externalOrderId string) (ImplResponse, error) {
 	// TODO - update GetOrder with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *PurchaseOrderAPIService) GetOrder(ctx context.Context, version float32,
 }
 
 // SearchOrders - Search Orders
-func (s *PurchaseOrderAPIService) SearchOrders(ctx context.Context, version float32, appKey string, deviceId string, accountId int64, start int32, limit int32, descending bool, activeOnly bool, ignoreCustomerFilter bool, orderItemTypes string, orderItemIds string, orderCustomTypes string, orderCustomIds string, sortField string, offerTypes string, specialOfferTypes string, categoryIds string, filterIds string, offerAudienceIds string, transactionAudienceIds string, offerIds string, offerLocationIds string, retailerIds string, retailerLocationIds string, statuses string, keyword string, redeemableStartDate int64, redeemableEndDate int64, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) SearchOrders(ctx context.Context, appKey string, deviceId string, accountId int64, start int32, limit int32, descending bool, activeOnly bool, ignoreCustomerFilter bool, orderItemTypes string, orderItemIds string, orderCustomTypes string, orderCustomIds string, sortField string, offerTypes string, specialOfferTypes string, categoryIds string, filterIds string, offerAudienceIds string, transactionAudienceIds string, offerIds string, offerLocationIds string, retailerIds string, retailerLocationIds string, statuses string, keyword string, redeemableStartDate int64, redeemableEndDate int64, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64) (ImplResponse, error) {
 	// TODO - update SearchOrders with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *PurchaseOrderAPIService) SearchOrders(ctx context.Context, version floa
 }
 
 // UpdateOrder - Update Order
-func (s *PurchaseOrderAPIService) UpdateOrder(ctx context.Context, version float32, orderId int64, appKey string, cart string, deviceId string, accountId int64, paymentTransactionId int64, description string, currencyType string, paymentMethodId int64, externalPaymentId string, externalDate int64) (ImplResponse, error) {
+func (s *PurchaseOrderAPIService) UpdateOrder(ctx context.Context, orderId int64, appKey string, cart string, deviceId string, accountId int64, paymentTransactionId int64, description string, currencyType string, paymentMethodId int64, externalPaymentId string, externalDate int64) (ImplResponse, error) {
 	// TODO - update UpdateOrder with the required logic for this service method.
 	// Add api_purchase_order_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -29,7 +29,7 @@ func NewRatingAPIService() *RatingAPIService {
 }
 
 // CreateRating - Create Rating
-func (s *RatingAPIService) CreateRating(ctx context.Context, version float32, ratableType string, ratableId int64, ratingValue int32, deviceId string, accountId int64, categoryId int64, display string, description string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *RatingAPIService) CreateRating(ctx context.Context, ratableType string, ratableId int64, ratingValue int32, deviceId string, accountId int64, categoryId int64, display string, description string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreateRating with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *RatingAPIService) CreateRating(ctx context.Context, version float32, ra
 }
 
 // DeleteRating - Delete Rating
-func (s *RatingAPIService) DeleteRating(ctx context.Context, version float32, ratingId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *RatingAPIService) DeleteRating(ctx context.Context, ratingId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteRating with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *RatingAPIService) DeleteRating(ctx context.Context, version float32, ra
 }
 
 // SearchRatingIndexes - Search Rating Indexes
-func (s *RatingAPIService) SearchRatingIndexes(ctx context.Context, version float32, ratableType string, ratableIds string, categoryIds string, secondaryType string, keyword string, sortField string, descending bool, start int32, limit int32, latitude float64, longitude float64, returnRatable bool, returnOverallRating bool) (ImplResponse, error) {
+func (s *RatingAPIService) SearchRatingIndexes(ctx context.Context, ratableType string, ratableIds string, categoryIds string, secondaryType string, keyword string, sortField string, descending bool, start int32, limit int32, latitude float64, longitude float64, returnRatable bool, returnOverallRating bool) (ImplResponse, error) {
 	// TODO - update SearchRatingIndexes with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *RatingAPIService) SearchRatingIndexes(ctx context.Context, version floa
 }
 
 // SearchRatings - Search Ratings
-func (s *RatingAPIService) SearchRatings(ctx context.Context, version float32, deviceId string, accountId int64, filterAccountId int64, ratableType string, ratableId int64, categoryIds string, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *RatingAPIService) SearchRatings(ctx context.Context, deviceId string, accountId int64, filterAccountId int64, ratableType string, ratableId int64, categoryIds string, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchRatings with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *RatingAPIService) SearchRatings(ctx context.Context, version float32, d
 }
 
 // UpdateRating - Update Rating
-func (s *RatingAPIService) UpdateRating(ctx context.Context, version float32, ratingId int64, deviceId string, accountId int64, ratingValue int32, categoryId int64, display string, description string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *RatingAPIService) UpdateRating(ctx context.Context, ratingId int64, deviceId string, accountId int64, ratingValue int32, categoryId int64, display string, description string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update UpdateRating with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *RatingAPIService) UpdateRating(ctx context.Context, version float32, ra
 }
 
 // SearchLocationRatingIndexes - Search Location Rating Indexes
-func (s *RatingAPIService) SearchLocationRatingIndexes(ctx context.Context, version float32, categoryIds string, keyword string, locationType string, sortField string, descending bool, start int32, limit int32, searchRange float64, latitude float64, longitude float64, returnOverallRating bool, distanceUnit string, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool) (ImplResponse, error) {
+func (s *RatingAPIService) SearchLocationRatingIndexes(ctx context.Context, categoryIds string, keyword string, locationType string, sortField string, descending bool, start int32, limit int32, searchRange float64, latitude float64, longitude float64, returnOverallRating bool, distanceUnit string, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool) (ImplResponse, error) {
 	// TODO - update SearchLocationRatingIndexes with the required logic for this service method.
 	// Add api_rating_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

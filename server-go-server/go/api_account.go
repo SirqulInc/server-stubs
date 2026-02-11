@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AccountAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,163 +52,163 @@ func (c *AccountAPIController) Routes() Routes {
 		"BlockAccount": Route{
 			"BlockAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/block",
+			"/api/3.18/account/block",
 			c.BlockAccount,
 		},
 		"EditUsername": Route{
 			"EditUsername",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/username/update",
+			"/api/3.18/account/username/update",
 			c.EditUsername,
 		},
 		"SetMatchToken": Route{
 			"SetMatchToken",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/profile/matchToken",
+			"/api/3.18/consumer/profile/matchToken",
 			c.SetMatchToken,
 		},
 		"MergeAccount": Route{
 			"MergeAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/merge",
+			"/api/3.18/account/merge",
 			c.MergeAccount,
 		},
 		"CreateAccount": Route{
 			"CreateAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/create",
+			"/api/3.18/account/create",
 			c.CreateAccount,
 		},
 		"UpdateActveStatus": Route{
 			"UpdateActveStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/active/update",
+			"/api/3.18/account/active/update",
 			c.UpdateActveStatus,
 		},
 		"SecureSignup": Route{
 			"SecureSignup",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/create/validate",
+			"/api/3.18/account/create/validate",
 			c.SecureSignup,
 		},
 		"LoginUsername": Route{
 			"LoginUsername",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/get",
+			"/api/3.18/account/get",
 			c.LoginUsername,
 		},
 		"UpdateLocation": Route{
 			"UpdateLocation",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/location/update",
+			"/api/3.18/account/location/update",
 			c.UpdateLocation,
 		},
 		"LoginGeneral": Route{
 			"LoginGeneral",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login",
+			"/api/3.18/account/login",
 			c.LoginGeneral,
 		},
 		"LoginDelegate": Route{
 			"LoginDelegate",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login/delegate",
+			"/api/3.18/account/login/delegate",
 			c.LoginDelegate,
 		},
 		"SecureLogin": Route{
 			"SecureLogin",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login/validate",
+			"/api/3.18/account/login/validate",
 			c.SecureLogin,
 		},
 		"Logout": Route{
 			"Logout",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/logout",
+			"/api/3.18/account/logout",
 			c.Logout,
 		},
 		"PasswordChange": Route{
 			"PasswordChange",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/passwordchange",
+			"/api/3.18/account/passwordchange",
 			c.PasswordChange,
 		},
 		"PasswordReset": Route{
 			"PasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/passwordreset",
+			"/api/3.18/account/passwordreset",
 			c.PasswordReset,
 		},
 		"GetProfileAssets": Route{
 			"GetProfileAssets",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/assets",
+			"/api/3.18/account/profile/assets",
 			c.GetProfileAssets,
 		},
 		"GetAccount": Route{
 			"GetAccount",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/get",
+			"/api/3.18/account/profile/get",
 			c.GetAccount,
 		},
 		"SearchAccounts": Route{
 			"SearchAccounts",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/search",
+			"/api/3.18/account/profile/search",
 			c.SearchAccounts,
 		},
 		"GetReferralList": Route{
 			"GetReferralList",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/referral/list",
+			"/api/3.18/account/referral/list",
 			c.GetReferralList,
 		},
 		"EditAccount": Route{
 			"EditAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/profile/update",
+			"/api/3.18/account/profile/update",
 			c.EditAccount,
 		},
 		"RequestValidateAccount": Route{
 			"RequestValidateAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/requestValidateAccount",
+			"/api/3.18/account/requestValidateAccount",
 			c.RequestValidateAccount,
 		},
 		"RequestPasswordReset": Route{
 			"RequestPasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/requestpasswordreset",
+			"/api/3.18/account/requestpasswordreset",
 			c.RequestPasswordReset,
 		},
 		"AccountLocationSearch": Route{
 			"AccountLocationSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/search",
+			"/api/3.18/account/search",
 			c.AccountLocationSearch,
 		},
 		"GetSettings": Route{
 			"GetSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/settings/get",
+			"/api/3.18/account/settings/get",
 			c.GetSettings,
 		},
 		"UpdateSettings": Route{
 			"UpdateSettings",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/settings/update",
+			"/api/3.18/account/settings/update",
 			c.UpdateSettings,
 		},
 		"ValidateAccountSignup": Route{
 			"ValidateAccountSignup",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/validateAccountSignup",
+			"/api/3.18/account/validateAccountSignup",
 			c.ValidateAccountSignup,
 		},
 		"ValidatePasswordReset": Route{
 			"ValidatePasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/validatepasswordreset",
+			"/api/3.18/account/validatepasswordreset",
 			c.ValidatePasswordReset,
 		},
 	}
@@ -222,163 +220,163 @@ func (c *AccountAPIController) OrderedRoutes() []Route {
 		Route{
 			"BlockAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/block",
+			"/api/3.18/account/block",
 			c.BlockAccount,
 		},
 		Route{
 			"EditUsername",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/username/update",
+			"/api/3.18/account/username/update",
 			c.EditUsername,
 		},
 		Route{
 			"SetMatchToken",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/profile/matchToken",
+			"/api/3.18/consumer/profile/matchToken",
 			c.SetMatchToken,
 		},
 		Route{
 			"MergeAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/merge",
+			"/api/3.18/account/merge",
 			c.MergeAccount,
 		},
 		Route{
 			"CreateAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/create",
+			"/api/3.18/account/create",
 			c.CreateAccount,
 		},
 		Route{
 			"UpdateActveStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/active/update",
+			"/api/3.18/account/active/update",
 			c.UpdateActveStatus,
 		},
 		Route{
 			"SecureSignup",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/create/validate",
+			"/api/3.18/account/create/validate",
 			c.SecureSignup,
 		},
 		Route{
 			"LoginUsername",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/get",
+			"/api/3.18/account/get",
 			c.LoginUsername,
 		},
 		Route{
 			"UpdateLocation",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/location/update",
+			"/api/3.18/account/location/update",
 			c.UpdateLocation,
 		},
 		Route{
 			"LoginGeneral",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login",
+			"/api/3.18/account/login",
 			c.LoginGeneral,
 		},
 		Route{
 			"LoginDelegate",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login/delegate",
+			"/api/3.18/account/login/delegate",
 			c.LoginDelegate,
 		},
 		Route{
 			"SecureLogin",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/login/validate",
+			"/api/3.18/account/login/validate",
 			c.SecureLogin,
 		},
 		Route{
 			"Logout",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/logout",
+			"/api/3.18/account/logout",
 			c.Logout,
 		},
 		Route{
 			"PasswordChange",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/passwordchange",
+			"/api/3.18/account/passwordchange",
 			c.PasswordChange,
 		},
 		Route{
 			"PasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/passwordreset",
+			"/api/3.18/account/passwordreset",
 			c.PasswordReset,
 		},
 		Route{
 			"GetProfileAssets",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/assets",
+			"/api/3.18/account/profile/assets",
 			c.GetProfileAssets,
 		},
 		Route{
 			"GetAccount",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/get",
+			"/api/3.18/account/profile/get",
 			c.GetAccount,
 		},
 		Route{
 			"SearchAccounts",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/profile/search",
+			"/api/3.18/account/profile/search",
 			c.SearchAccounts,
 		},
 		Route{
 			"GetReferralList",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/referral/list",
+			"/api/3.18/account/referral/list",
 			c.GetReferralList,
 		},
 		Route{
 			"EditAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/profile/update",
+			"/api/3.18/account/profile/update",
 			c.EditAccount,
 		},
 		Route{
 			"RequestValidateAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/requestValidateAccount",
+			"/api/3.18/account/requestValidateAccount",
 			c.RequestValidateAccount,
 		},
 		Route{
 			"RequestPasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/requestpasswordreset",
+			"/api/3.18/account/requestpasswordreset",
 			c.RequestPasswordReset,
 		},
 		Route{
 			"AccountLocationSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/search",
+			"/api/3.18/account/search",
 			c.AccountLocationSearch,
 		},
 		Route{
 			"GetSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/settings/get",
+			"/api/3.18/account/settings/get",
 			c.GetSettings,
 		},
 		Route{
 			"UpdateSettings",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/settings/update",
+			"/api/3.18/account/settings/update",
 			c.UpdateSettings,
 		},
 		Route{
 			"ValidateAccountSignup",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/validateAccountSignup",
+			"/api/3.18/account/validateAccountSignup",
 			c.ValidateAccountSignup,
 		},
 		Route{
 			"ValidatePasswordReset",
 			strings.ToUpper("Post"),
-			"/api/{version}/account/validatepasswordreset",
+			"/api/3.18/account/validatepasswordreset",
 			c.ValidatePasswordReset,
 		},
 	}
@@ -388,18 +386,9 @@ func (c *AccountAPIController) OrderedRoutes() []Route {
 
 // BlockAccount - Block Account
 func (c *AccountAPIController) BlockAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdBeingBlockedParam int64
@@ -499,7 +488,7 @@ func (c *AccountAPIController) BlockAccount(w http.ResponseWriter, r *http.Reque
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.BlockAccount(r.Context(), versionParam, accountIdBeingBlockedParam, deviceIdParam, accountIdParam, blockFlagValueParam, removeFromGroupsIfBlockedParam, latitudeParam, longitudeParam)
+	result, err := c.service.BlockAccount(r.Context(), accountIdBeingBlockedParam, deviceIdParam, accountIdParam, blockFlagValueParam, removeFromGroupsIfBlockedParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -511,18 +500,9 @@ func (c *AccountAPIController) BlockAccount(w http.ResponseWriter, r *http.Reque
 
 // EditUsername - Update Username and Email
 func (c *AccountAPIController) EditUsername(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -560,7 +540,7 @@ func (c *AccountAPIController) EditUsername(w http.ResponseWriter, r *http.Reque
 		usernameParam = param
 	} else {
 	}
-	result, err := c.service.EditUsername(r.Context(), versionParam, deviceIdParam, accountIdParam, emailAddressParam, usernameParam)
+	result, err := c.service.EditUsername(r.Context(), deviceIdParam, accountIdParam, emailAddressParam, usernameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -572,18 +552,9 @@ func (c *AccountAPIController) EditUsername(w http.ResponseWriter, r *http.Reque
 
 // SetMatchToken - Save Match Token
 func (c *AccountAPIController) SetMatchToken(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -658,7 +629,7 @@ func (c *AccountAPIController) SetMatchToken(w http.ResponseWriter, r *http.Requ
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.SetMatchToken(r.Context(), versionParam, deviceIdParam, accountIdParam, matchTokenParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
+	result, err := c.service.SetMatchToken(r.Context(), deviceIdParam, accountIdParam, matchTokenParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -670,18 +641,9 @@ func (c *AccountAPIController) SetMatchToken(w http.ResponseWriter, r *http.Requ
 
 // MergeAccount - Merge Account
 func (c *AccountAPIController) MergeAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var mergeAccountIdParam int64
@@ -730,7 +692,7 @@ func (c *AccountAPIController) MergeAccount(w http.ResponseWriter, r *http.Reque
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.MergeAccount(r.Context(), versionParam, mergeAccountIdParam, appKeyParam, deviceIdParam, accountIdParam)
+	result, err := c.service.MergeAccount(r.Context(), mergeAccountIdParam, appKeyParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -742,18 +704,9 @@ func (c *AccountAPIController) MergeAccount(w http.ResponseWriter, r *http.Reque
 
 // CreateAccount - Create Account
 func (c *AccountAPIController) CreateAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var usernameParam string
@@ -1418,7 +1371,7 @@ func (c *AccountAPIController) CreateAccount(w http.ResponseWriter, r *http.Requ
 		personalAudienceIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateAccount(r.Context(), versionParam, usernameParam, passwordParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, deviceIdParam, deviceIdTypeParam, emailAddressParam, assetIdParam, streetAddressParam, zipcodeParam, genderParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, roleParam, platformsParam, tagsParam, aboutUsParam, gameExperienceParam, categoryIdsParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, latitudeParam, longitudeParam, acceptedTermsParam, inviteTokenParam, referralAccountIdParam, sendValidationParam, gameTypeParam, appKeyParam, appVersionParam, responseTypeParam, audienceIdsToAddParam, appBlobParam, appEnablePushParam, appEnableSMSParam, appEnableEmailParam, locationVisibilityParam, homeLatitudeParam, homeLongitudeParam, appNicknameParam, personalAudienceIdParam)
+	result, err := c.service.CreateAccount(r.Context(), usernameParam, passwordParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, deviceIdParam, deviceIdTypeParam, emailAddressParam, assetIdParam, streetAddressParam, zipcodeParam, genderParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, roleParam, platformsParam, tagsParam, aboutUsParam, gameExperienceParam, categoryIdsParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, latitudeParam, longitudeParam, acceptedTermsParam, inviteTokenParam, referralAccountIdParam, sendValidationParam, gameTypeParam, appKeyParam, appVersionParam, responseTypeParam, audienceIdsToAddParam, appBlobParam, appEnablePushParam, appEnableSMSParam, appEnableEmailParam, locationVisibilityParam, homeLatitudeParam, homeLongitudeParam, appNicknameParam, personalAudienceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1430,18 +1383,9 @@ func (c *AccountAPIController) CreateAccount(w http.ResponseWriter, r *http.Requ
 
 // UpdateActveStatus - Update Account Active Status
 func (c *AccountAPIController) UpdateActveStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1506,7 +1450,7 @@ func (c *AccountAPIController) UpdateActveStatus(w http.ResponseWriter, r *http.
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.UpdateActveStatus(r.Context(), versionParam, accountIdParam, connectionAccountIdParam, activeParam, deviceIdParam, appKeyParam)
+	result, err := c.service.UpdateActveStatus(r.Context(), accountIdParam, connectionAccountIdParam, activeParam, deviceIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1518,18 +1462,9 @@ func (c *AccountAPIController) UpdateActveStatus(w http.ResponseWriter, r *http.
 
 // SecureSignup - Create Account (Encrypted Username)
 func (c *AccountAPIController) SecureSignup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -2069,7 +2004,7 @@ func (c *AccountAPIController) SecureSignup(w http.ResponseWriter, r *http.Reque
 		responseTypeParam = param
 	} else {
 	}
-	result, err := c.service.SecureSignup(r.Context(), versionParam, deviceIdParam, usernameParam, passwordParam, nameParam, inviteTokenParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, deviceIdTypeParam, emailAddressParam, assetIdParam, addressParam, zipcodeParam, genderParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, roleParam, platformsParam, tagsParam, aboutUsParam, gameExperienceParam, categoryIdsParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, latitudeParam, longitudeParam, acceptedTermsParam, charsetNameParam, gameTypeParam, appKeyParam, appVersionParam, responseTypeParam)
+	result, err := c.service.SecureSignup(r.Context(), deviceIdParam, usernameParam, passwordParam, nameParam, inviteTokenParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, deviceIdTypeParam, emailAddressParam, assetIdParam, addressParam, zipcodeParam, genderParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, roleParam, platformsParam, tagsParam, aboutUsParam, gameExperienceParam, categoryIdsParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, latitudeParam, longitudeParam, acceptedTermsParam, charsetNameParam, gameTypeParam, appKeyParam, appVersionParam, responseTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2081,18 +2016,9 @@ func (c *AccountAPIController) SecureSignup(w http.ResponseWriter, r *http.Reque
 
 // LoginUsername - Login Account (Username)
 func (c *AccountAPIController) LoginUsername(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var usernameParam string
@@ -2190,7 +2116,7 @@ func (c *AccountAPIController) LoginUsername(w http.ResponseWriter, r *http.Requ
 		responseFiltersParam = param
 	} else {
 	}
-	result, err := c.service.LoginUsername(r.Context(), versionParam, usernameParam, passwordParam, deviceIdParam, latitudeParam, longitudeParam, appParam, gameTypeParam, appKeyParam, returnProfileParam, responseFiltersParam)
+	result, err := c.service.LoginUsername(r.Context(), usernameParam, passwordParam, deviceIdParam, latitudeParam, longitudeParam, appParam, gameTypeParam, appKeyParam, returnProfileParam, responseFiltersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2202,18 +2128,9 @@ func (c *AccountAPIController) LoginUsername(w http.ResponseWriter, r *http.Requ
 
 // UpdateLocation - Update Location
 func (c *AccountAPIController) UpdateLocation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -2279,7 +2196,7 @@ func (c *AccountAPIController) UpdateLocation(w http.ResponseWriter, r *http.Req
 		clientTimeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateLocation(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, clientTimeParam)
+	result, err := c.service.UpdateLocation(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam, clientTimeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2291,18 +2208,9 @@ func (c *AccountAPIController) UpdateLocation(w http.ResponseWriter, r *http.Req
 
 // LoginGeneral - Login Account
 func (c *AccountAPIController) LoginGeneral(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accessTokenParam string
@@ -2454,7 +2362,7 @@ func (c *AccountAPIController) LoginGeneral(w http.ResponseWriter, r *http.Reque
 		var param int64 = 0
 		thirdPartyCredentialIdParam = param
 	}
-	result, err := c.service.LoginGeneral(r.Context(), versionParam, accessTokenParam, networkUIDParam, appKeyParam, deviceIdParam, deviceIdTypeParam, accessTokenSecretParam, ageRestrictionParam, responseFiltersParam, latitudeParam, longitudeParam, emailMatchParam, chosenAccountIdParam, thirdPartyCredentialIdParam)
+	result, err := c.service.LoginGeneral(r.Context(), accessTokenParam, networkUIDParam, appKeyParam, deviceIdParam, deviceIdTypeParam, accessTokenSecretParam, ageRestrictionParam, responseFiltersParam, latitudeParam, longitudeParam, emailMatchParam, chosenAccountIdParam, thirdPartyCredentialIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2466,18 +2374,9 @@ func (c *AccountAPIController) LoginGeneral(w http.ResponseWriter, r *http.Reque
 
 // LoginDelegate - Login as Account
 func (c *AccountAPIController) LoginDelegate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accessTokenParam string
@@ -2595,7 +2494,7 @@ func (c *AccountAPIController) LoginDelegate(w http.ResponseWriter, r *http.Requ
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.LoginDelegate(r.Context(), versionParam, accessTokenParam, appKeyParam, deviceIdParam, accessTokenSecretParam, delegatedAccountIdParam, delegatedUsernameParam, networkUIDParam, ageRestrictionParam, responseFiltersParam, latitudeParam, longitudeParam)
+	result, err := c.service.LoginDelegate(r.Context(), accessTokenParam, appKeyParam, deviceIdParam, accessTokenSecretParam, delegatedAccountIdParam, delegatedUsernameParam, networkUIDParam, ageRestrictionParam, responseFiltersParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2607,18 +2506,9 @@ func (c *AccountAPIController) LoginDelegate(w http.ResponseWriter, r *http.Requ
 
 // SecureLogin - Login Account (Encrypted Username)
 func (c *AccountAPIController) SecureLogin(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var usernameParam string
@@ -2717,7 +2607,7 @@ func (c *AccountAPIController) SecureLogin(w http.ResponseWriter, r *http.Reques
 		param := "PROFILE"
 		responseFiltersParam = param
 	}
-	result, err := c.service.SecureLogin(r.Context(), versionParam, usernameParam, passwordParam, gameTypeParam, deviceIdParam, charsetNameParam, latitudeParam, longitudeParam, returnProfileParam, responseFiltersParam)
+	result, err := c.service.SecureLogin(r.Context(), usernameParam, passwordParam, gameTypeParam, deviceIdParam, charsetNameParam, latitudeParam, longitudeParam, returnProfileParam, responseFiltersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2729,18 +2619,9 @@ func (c *AccountAPIController) SecureLogin(w http.ResponseWriter, r *http.Reques
 
 // Logout - Logout Account
 func (c *AccountAPIController) Logout(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -2799,7 +2680,7 @@ func (c *AccountAPIController) Logout(w http.ResponseWriter, r *http.Request) {
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.Logout(r.Context(), versionParam, deviceIdParam, deviceIdTypeParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.Logout(r.Context(), deviceIdParam, deviceIdTypeParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2811,18 +2692,9 @@ func (c *AccountAPIController) Logout(w http.ResponseWriter, r *http.Request) {
 
 // PasswordChange - Update Password
 func (c *AccountAPIController) PasswordChange(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -2868,7 +2740,7 @@ func (c *AccountAPIController) PasswordChange(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "confirmPassword"}, nil)
 		return
 	}
-	result, err := c.service.PasswordChange(r.Context(), versionParam, accountIdParam, oldPasswordParam, newPasswordParam, confirmPasswordParam)
+	result, err := c.service.PasswordChange(r.Context(), accountIdParam, oldPasswordParam, newPasswordParam, confirmPasswordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2880,18 +2752,9 @@ func (c *AccountAPIController) PasswordChange(w http.ResponseWriter, r *http.Req
 
 // PasswordReset - Reset Password
 func (c *AccountAPIController) PasswordReset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tokenParam string
@@ -2921,7 +2784,7 @@ func (c *AccountAPIController) PasswordReset(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "confirm"}, nil)
 		return
 	}
-	result, err := c.service.PasswordReset(r.Context(), versionParam, tokenParam, passwordParam, confirmParam)
+	result, err := c.service.PasswordReset(r.Context(), tokenParam, passwordParam, confirmParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2933,18 +2796,9 @@ func (c *AccountAPIController) PasswordReset(w http.ResponseWriter, r *http.Requ
 
 // GetProfileAssets - Get Profile Assets
 func (c *AccountAPIController) GetProfileAssets(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -3125,7 +2979,7 @@ func (c *AccountAPIController) GetProfileAssets(w http.ResponseWriter, r *http.R
 		var param int32 = 0
 		limitParam = param
 	}
-	result, err := c.service.GetProfileAssets(r.Context(), versionParam, returnNullsParam, deviceIdParam, accountIdParam, ownerIdParam, mediaTypesParam, mimeTypesParam, sortFieldParam, descendingParam, latitudeParam, longitudeParam, iParam, startParam, lParam, limitParam)
+	result, err := c.service.GetProfileAssets(r.Context(), returnNullsParam, deviceIdParam, accountIdParam, ownerIdParam, mediaTypesParam, mimeTypesParam, sortFieldParam, descendingParam, latitudeParam, longitudeParam, iParam, startParam, lParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3137,18 +2991,9 @@ func (c *AccountAPIController) GetProfileAssets(w http.ResponseWriter, r *http.R
 
 // GetAccount - Get Account
 func (c *AccountAPIController) GetAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -3287,7 +3132,7 @@ func (c *AccountAPIController) GetAccount(w http.ResponseWriter, r *http.Request
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetAccount(r.Context(), versionParam, returnNullsParam, deviceIdParam, accountIdParam, connectionAccountEmailParam, connectionAccountIdParam, responseFiltersParam, gameTypeParam, appKeyParam, purchaseTypeParam, updateViewedDateParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetAccount(r.Context(), returnNullsParam, deviceIdParam, accountIdParam, connectionAccountEmailParam, connectionAccountIdParam, responseFiltersParam, gameTypeParam, appKeyParam, purchaseTypeParam, updateViewedDateParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3299,18 +3144,9 @@ func (c *AccountAPIController) GetAccount(w http.ResponseWriter, r *http.Request
 
 // SearchAccounts - Search Accounts
 func (c *AccountAPIController) SearchAccounts(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3531,7 +3367,7 @@ func (c *AccountAPIController) SearchAccounts(w http.ResponseWriter, r *http.Req
 		var param bool = false
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchAccounts(r.Context(), versionParam, accountIdParam, appKeyParam, keywordParam, latitudeParam, longitudeParam, radiusParam, genderParam, gameExperienceParam, ageParam, categoryIdsParam, returnNullsParam, responseFiltersParam, purchaseTypeParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchAccounts(r.Context(), accountIdParam, appKeyParam, keywordParam, latitudeParam, longitudeParam, radiusParam, genderParam, gameExperienceParam, ageParam, categoryIdsParam, returnNullsParam, responseFiltersParam, purchaseTypeParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3543,18 +3379,9 @@ func (c *AccountAPIController) SearchAccounts(w http.ResponseWriter, r *http.Req
 
 // GetReferralList - Search Accounts
 func (c *AccountAPIController) GetReferralList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -3699,7 +3526,7 @@ func (c *AccountAPIController) GetReferralList(w http.ResponseWriter, r *http.Re
 		var param bool = true
 		childrenChildrenParam = param
 	}
-	result, err := c.service.GetReferralList(r.Context(), versionParam, accountIdParam, appKeyParam, retrieveTypeParam, levelLimitParam, ancestorLevelLimitParam, childrenLevelLimitParam, ancestorListStartParam, ancestorListLimitParam, childrenListStartParam, childrenListLimitParam, childrenChildrenParam)
+	result, err := c.service.GetReferralList(r.Context(), accountIdParam, appKeyParam, retrieveTypeParam, levelLimitParam, ancestorLevelLimitParam, childrenLevelLimitParam, ancestorListStartParam, ancestorListLimitParam, childrenListStartParam, childrenListLimitParam, childrenChildrenParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3711,18 +3538,9 @@ func (c *AccountAPIController) GetReferralList(w http.ResponseWriter, r *http.Re
 
 // EditAccount - Update Account
 func (c *AccountAPIController) EditAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -4504,7 +4322,7 @@ func (c *AccountAPIController) EditAccount(w http.ResponseWriter, r *http.Reques
 		nonGuestUsernameParam = param
 	} else {
 	}
-	result, err := c.service.EditAccount(r.Context(), versionParam, deviceIdParam, accountIdParam, connectionAccountIdParam, roleParam, assetIdParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, genderParam, ageParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, makeProfileInfoPublicParam, makeGameInfoPublicParam, makeFriendsInfoPublicParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, platformsParam, tagsParam, aboutUsParam, matchTokenParam, gameExperienceParam, categoriesParam, categoryIdsParam, responseFiltersParam, showAsZipcodeParam, showExactLocationParam, showOthersExactLocationParam, acceptedTermsParam, locationVisibilityParam, appBlobParam, appEnablePushParam, appEnableSMSParam, appEnableEmailParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam, returnProfileParam, audienceIdsToAddParam, audienceIdsToRemoveParam, referralAccountIdParam, appNicknameParam, personalAudienceIdParam, nonGuestUsernameParam)
+	result, err := c.service.EditAccount(r.Context(), deviceIdParam, accountIdParam, connectionAccountIdParam, roleParam, assetIdParam, nameParam, prefixNameParam, firstNameParam, middleNameParam, lastNameParam, suffixNameParam, titleParam, genderParam, ageParam, birthdayParam, homePhoneParam, cellPhoneParam, cellPhoneCarrierParam, businessPhoneParam, emailAddressParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, zipcodeParam, countryParam, makeProfileInfoPublicParam, makeGameInfoPublicParam, makeFriendsInfoPublicParam, hometownParam, heightParam, heightIndexParam, ethnicityParam, bodyTypeParam, maritalStatusParam, childrenParam, religionParam, educationParam, educationIndexParam, smokeParam, drinkParam, companionshipParam, companionshipIndexParam, preferredMinAgeParam, preferredMaxAgeParam, preferredMinHeightParam, preferredMaxHeightParam, preferredGenderParam, preferredEducationParam, preferredEducationIndexParam, preferredBodyTypeParam, preferredEthnicityParam, preferredLocationParam, preferredLocationRangeParam, platformsParam, tagsParam, aboutUsParam, matchTokenParam, gameExperienceParam, categoriesParam, categoryIdsParam, responseFiltersParam, showAsZipcodeParam, showExactLocationParam, showOthersExactLocationParam, acceptedTermsParam, locationVisibilityParam, appBlobParam, appEnablePushParam, appEnableSMSParam, appEnableEmailParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam, returnProfileParam, audienceIdsToAddParam, audienceIdsToRemoveParam, referralAccountIdParam, appNicknameParam, personalAudienceIdParam, nonGuestUsernameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4516,18 +4334,9 @@ func (c *AccountAPIController) EditAccount(w http.ResponseWriter, r *http.Reques
 
 // RequestValidateAccount - Send Validation Request
 func (c *AccountAPIController) RequestValidateAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -4546,7 +4355,7 @@ func (c *AccountAPIController) RequestValidateAccount(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.RequestValidateAccount(r.Context(), versionParam, accountIdParam)
+	result, err := c.service.RequestValidateAccount(r.Context(), accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4558,18 +4367,9 @@ func (c *AccountAPIController) RequestValidateAccount(w http.ResponseWriter, r *
 
 // RequestPasswordReset - Request Password Reset
 func (c *AccountAPIController) RequestPasswordReset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var emailParam string
@@ -4613,7 +4413,7 @@ func (c *AccountAPIController) RequestPasswordReset(w http.ResponseWriter, r *ht
 		param := "http://dev.sirqul.com/resetpassword"
 		refererParam = param
 	}
-	result, err := c.service.RequestPasswordReset(r.Context(), versionParam, emailParam, fromParam, domainParam, subUrlParam, refererParam)
+	result, err := c.service.RequestPasswordReset(r.Context(), emailParam, fromParam, domainParam, subUrlParam, refererParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -4625,18 +4425,9 @@ func (c *AccountAPIController) RequestPasswordReset(w http.ResponseWriter, r *ht
 
 // AccountLocationSearch - Search Accounts by Location
 func (c *AccountAPIController) AccountLocationSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -5033,7 +4824,7 @@ func (c *AccountAPIController) AccountLocationSearch(w http.ResponseWriter, r *h
 		contentAdminOnlyParam = param
 	} else {
 	}
-	result, err := c.service.AccountLocationSearch(r.Context(), versionParam, deviceIdParam, accountIdParam, qParam, keywordParam, postalCodeParam, latitudeParam, longitudeParam, appKeyParam, range_Param, locationLastUpdatedParam, genderParam, minAgeParam, maxAgeParam, companionshipIndexParam, iParam, startParam, lParam, limitParam, searchModeParam, sortFieldParam, descendingParam, rolesParam, tagsParam, experienceParam, categoryIdsParam, audienceIdsParam, audienceOperatorParam, updateCurrentLocationParam, updatePreferredSettingsParam, showExactLocationsParam, showConnectionToSearcherParam, flagCountMinimumParam, verifiedUserOnlyParam, contentAdminOnlyParam)
+	result, err := c.service.AccountLocationSearch(r.Context(), deviceIdParam, accountIdParam, qParam, keywordParam, postalCodeParam, latitudeParam, longitudeParam, appKeyParam, range_Param, locationLastUpdatedParam, genderParam, minAgeParam, maxAgeParam, companionshipIndexParam, iParam, startParam, lParam, limitParam, searchModeParam, sortFieldParam, descendingParam, rolesParam, tagsParam, experienceParam, categoryIdsParam, audienceIdsParam, audienceOperatorParam, updateCurrentLocationParam, updatePreferredSettingsParam, showExactLocationsParam, showConnectionToSearcherParam, flagCountMinimumParam, verifiedUserOnlyParam, contentAdminOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -5045,18 +4836,9 @@ func (c *AccountAPIController) AccountLocationSearch(w http.ResponseWriter, r *h
 
 // GetSettings - Get Account Settings
 func (c *AccountAPIController) GetSettings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -5108,7 +4890,7 @@ func (c *AccountAPIController) GetSettings(w http.ResponseWriter, r *http.Reques
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetSettings(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetSettings(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -5120,18 +4902,9 @@ func (c *AccountAPIController) GetSettings(w http.ResponseWriter, r *http.Reques
 
 // UpdateSettings - Update Account Settings
 func (c *AccountAPIController) UpdateSettings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -5274,7 +5047,7 @@ func (c *AccountAPIController) UpdateSettings(w http.ResponseWriter, r *http.Req
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateSettings(r.Context(), versionParam, deviceIdParam, accountIdParam, blockedNotificationsParam, suggestionMethodParam, suggestionCountParam, suggestionTimeFrameParam, showOthersExactLocationParam, showAsZipcodeParam, showExactLocationParam, favoriteVisibilityParam, latitudeParam, longitudeParam)
+	result, err := c.service.UpdateSettings(r.Context(), deviceIdParam, accountIdParam, blockedNotificationsParam, suggestionMethodParam, suggestionCountParam, suggestionTimeFrameParam, showOthersExactLocationParam, showAsZipcodeParam, showExactLocationParam, favoriteVisibilityParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -5286,18 +5059,9 @@ func (c *AccountAPIController) UpdateSettings(w http.ResponseWriter, r *http.Req
 
 // ValidateAccountSignup - Save Validation Status
 func (c *AccountAPIController) ValidateAccountSignup(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tokenParam string
@@ -5309,7 +5073,7 @@ func (c *AccountAPIController) ValidateAccountSignup(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "token"}, nil)
 		return
 	}
-	result, err := c.service.ValidateAccountSignup(r.Context(), versionParam, tokenParam)
+	result, err := c.service.ValidateAccountSignup(r.Context(), tokenParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -5321,18 +5085,9 @@ func (c *AccountAPIController) ValidateAccountSignup(w http.ResponseWriter, r *h
 
 // ValidatePasswordReset - Validate Password Reset Token
 func (c *AccountAPIController) ValidatePasswordReset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tokenParam string
@@ -5344,7 +5099,7 @@ func (c *AccountAPIController) ValidatePasswordReset(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "token"}, nil)
 		return
 	}
-	result, err := c.service.ValidatePasswordReset(r.Context(), versionParam, tokenParam)
+	result, err := c.service.ValidatePasswordReset(r.Context(), tokenParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

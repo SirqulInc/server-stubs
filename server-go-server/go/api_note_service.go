@@ -30,7 +30,7 @@ func NewNoteAPIService() *NoteAPIService {
 }
 
 // BatchOperation - Batch Note Operation
-func (s *NoteAPIService) BatchOperation(ctx context.Context, version float32, notableId int64, notableType string, deviceId string, accountId int64, batchOperation string) (ImplResponse, error) {
+func (s *NoteAPIService) BatchOperation(ctx context.Context, notableId int64, notableType string, deviceId string, accountId int64, batchOperation string) (ImplResponse, error) {
 	// TODO - update BatchOperation with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *NoteAPIService) BatchOperation(ctx context.Context, version float32, no
 }
 
 // CreateNote - Create Note
-func (s *NoteAPIService) CreateNote(ctx context.Context, version float32, comment string, deviceId string, accountId int64, notableType string, notableId int64, noteType string, assetIds string, tags string, permissionableType string, permissionableId int64, appKey string, locationDescription string, latitude float64, longitude float64, metaData string, receiverAccountIds string, returnFullResponse bool, initializeAsset bool, assetReturnNulls bool, assetAlbumId int64, assetCollectionId int64, assetAddToDefaultAlbum string, assetAddToMediaLibrary bool, assetVersionCode int32, assetVersionName string, assetMetaData string, assetCaption string, assetMedia *os.File, assetMediaUrl string, assetMediaString string, assetMediaStringFileName string, assetMediaStringContentType string, assetAttachedMedia *os.File, assetAttachedMediaUrl string, assetAttachedMediaString string, assetAttachedMediaStringFileName string, assetAttachedMediaStringContentType string, assetLocationDescription string, assetApp string, assetSearchTags string, assetLatitude float64, assetLongitude float32) (ImplResponse, error) {
+func (s *NoteAPIService) CreateNote(ctx context.Context, comment string, deviceId string, accountId int64, notableType string, notableId int64, noteType string, assetIds string, tags string, permissionableType string, permissionableId int64, appKey string, locationDescription string, latitude float64, longitude float64, metaData string, receiverAccountIds string, returnFullResponse bool, initializeAsset bool, assetReturnNulls bool, assetAlbumId int64, assetCollectionId int64, assetAddToDefaultAlbum string, assetAddToMediaLibrary bool, assetVersionCode int32, assetVersionName string, assetMetaData string, assetCaption string, assetMedia *os.File, assetMediaUrl string, assetMediaString string, assetMediaStringFileName string, assetMediaStringContentType string, assetAttachedMedia *os.File, assetAttachedMediaUrl string, assetAttachedMediaString string, assetAttachedMediaStringFileName string, assetAttachedMediaStringContentType string, assetLocationDescription string, assetApp string, assetSearchTags string, assetLatitude float64, assetLongitude float32) (ImplResponse, error) {
 	// TODO - update CreateNote with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *NoteAPIService) CreateNote(ctx context.Context, version float32, commen
 }
 
 // GetNote - Get Note
-func (s *NoteAPIService) GetNote(ctx context.Context, version float32, noteId int64, deviceId string, accountId int64, returnFullResponse bool) (ImplResponse, error) {
+func (s *NoteAPIService) GetNote(ctx context.Context, noteId int64, deviceId string, accountId int64, returnFullResponse bool) (ImplResponse, error) {
 	// TODO - update GetNote with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *NoteAPIService) GetNote(ctx context.Context, version float32, noteId in
 }
 
 // DeleteNote - Delete Note
-func (s *NoteAPIService) DeleteNote(ctx context.Context, version float32, noteId int64, deviceId string, accountId int64, latitude float64, longitude float64, appKey string) (ImplResponse, error) {
+func (s *NoteAPIService) DeleteNote(ctx context.Context, noteId int64, deviceId string, accountId int64, latitude float64, longitude float64, appKey string) (ImplResponse, error) {
 	// TODO - update DeleteNote with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *NoteAPIService) DeleteNote(ctx context.Context, version float32, noteId
 }
 
 // SearchNotes - Search Notes
-func (s *NoteAPIService) SearchNotes(ctx context.Context, version float32, deviceId string, accountId int64, notableType string, notableId int64, noteTypes string, appKey string, keyword string, flagCountMinimum int64, flagsExceedThreshold bool, includeInactive bool, sortField string, descending bool, returnFullResponse bool, updatedSince int64, updatedBefore int64, start int32, limit int32) (ImplResponse, error) {
+func (s *NoteAPIService) SearchNotes(ctx context.Context, deviceId string, accountId int64, notableType string, notableId int64, noteTypes string, appKey string, keyword string, flagCountMinimum int64, flagsExceedThreshold bool, includeInactive bool, sortField string, descending bool, returnFullResponse bool, updatedSince int64, updatedBefore int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchNotes with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *NoteAPIService) SearchNotes(ctx context.Context, version float32, devic
 }
 
 // UpdateNote - Update Note
-func (s *NoteAPIService) UpdateNote(ctx context.Context, version float32, noteId int64, deviceId string, accountId int64, comment string, noteType string, assetIds string, tags string, permissionableType string, permissionableId int64, appKey string, locationDescription string, latitude float64, longitude float64, metaData string, returnFullResponse bool, active bool, updateAsset bool, assetReturnNulls bool, assetAlbumId int64, assetCollectionId int64, assetAddToDefaultAlbum string, assetAddToMediaLibrary bool, assetVersionCode int32, assetVersionName string, assetMetaData string, assetCaption string, assetMedia *os.File, assetMediaUrl string, assetMediaString string, assetMediaStringFileName string, assetMediaStringContentType string, assetAttachedMedia *os.File, assetAttachedMediaUrl string, assetAttachedMediaString string, assetAttachedMediaStringFileName string, assetAttachedMediaStringContentType string, assetLocationDescription string, assetApp string, assetSearchTags string, assetLatitude float64, assetLongitude float64) (ImplResponse, error) {
+func (s *NoteAPIService) UpdateNote(ctx context.Context, noteId int64, deviceId string, accountId int64, comment string, noteType string, assetIds string, tags string, permissionableType string, permissionableId int64, appKey string, locationDescription string, latitude float64, longitude float64, metaData string, returnFullResponse bool, active bool, updateAsset bool, assetReturnNulls bool, assetAlbumId int64, assetCollectionId int64, assetAddToDefaultAlbum string, assetAddToMediaLibrary bool, assetVersionCode int32, assetVersionName string, assetMetaData string, assetCaption string, assetMedia *os.File, assetMediaUrl string, assetMediaString string, assetMediaStringFileName string, assetMediaStringContentType string, assetAttachedMedia *os.File, assetAttachedMediaUrl string, assetAttachedMediaString string, assetAttachedMediaStringFileName string, assetAttachedMediaStringContentType string, assetLocationDescription string, assetApp string, assetSearchTags string, assetLatitude float64, assetLongitude float64) (ImplResponse, error) {
 	// TODO - update UpdateNote with the required logic for this service method.
 	// Add api_note_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

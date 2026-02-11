@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // FilterAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *FilterAPIController) Routes() Routes {
 		"CreateFilter": Route{
 			"CreateFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/create",
+			"/api/3.18/filter/create",
 			c.CreateFilter,
 		},
 		"DeleteFilter": Route{
 			"DeleteFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/delete",
+			"/api/3.18/filter/delete",
 			c.DeleteFilter,
 		},
 		"GetFilter": Route{
 			"GetFilter",
 			strings.ToUpper("Get"),
-			"/api/{version}/filter/get",
+			"/api/3.18/filter/get",
 			c.GetFilter,
 		},
 		"SearchFilters": Route{
 			"SearchFilters",
 			strings.ToUpper("Get"),
-			"/api/{version}/filter/search",
+			"/api/3.18/filter/search",
 			c.SearchFilters,
 		},
 		"UpdateFilter": Route{
 			"UpdateFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/update",
+			"/api/3.18/filter/update",
 			c.UpdateFilter,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *FilterAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/create",
+			"/api/3.18/filter/create",
 			c.CreateFilter,
 		},
 		Route{
 			"DeleteFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/delete",
+			"/api/3.18/filter/delete",
 			c.DeleteFilter,
 		},
 		Route{
 			"GetFilter",
 			strings.ToUpper("Get"),
-			"/api/{version}/filter/get",
+			"/api/3.18/filter/get",
 			c.GetFilter,
 		},
 		Route{
 			"SearchFilters",
 			strings.ToUpper("Get"),
-			"/api/{version}/filter/search",
+			"/api/3.18/filter/search",
 			c.SearchFilters,
 		},
 		Route{
 			"UpdateFilter",
 			strings.ToUpper("Post"),
-			"/api/{version}/filter/update",
+			"/api/3.18/filter/update",
 			c.UpdateFilter,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *FilterAPIController) OrderedRoutes() []Route {
 
 // CreateFilter - Create Filter
 func (c *FilterAPIController) CreateFilter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -226,7 +215,7 @@ func (c *FilterAPIController) CreateFilter(w http.ResponseWriter, r *http.Reques
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateFilter(r.Context(), versionParam, accountIdParam, nameParam, appKeyParam, parentFilterIdParam, descriptionParam, externalIdParam, externalTypeParam, activeParam, metaDataParam)
+	result, err := c.service.CreateFilter(r.Context(), accountIdParam, nameParam, appKeyParam, parentFilterIdParam, descriptionParam, externalIdParam, externalTypeParam, activeParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -238,18 +227,9 @@ func (c *FilterAPIController) CreateFilter(w http.ResponseWriter, r *http.Reques
 
 // DeleteFilter - Delete Filter
 func (c *FilterAPIController) DeleteFilter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -284,7 +264,7 @@ func (c *FilterAPIController) DeleteFilter(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "filterId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteFilter(r.Context(), versionParam, accountIdParam, filterIdParam)
+	result, err := c.service.DeleteFilter(r.Context(), accountIdParam, filterIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -296,18 +276,9 @@ func (c *FilterAPIController) DeleteFilter(w http.ResponseWriter, r *http.Reques
 
 // GetFilter - Get Filter
 func (c *FilterAPIController) GetFilter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var filterIdParam int64
@@ -326,7 +297,7 @@ func (c *FilterAPIController) GetFilter(w http.ResponseWriter, r *http.Request) 
 		c.errorHandler(w, r, &RequiredError{Field: "filterId"}, nil)
 		return
 	}
-	result, err := c.service.GetFilter(r.Context(), versionParam, filterIdParam)
+	result, err := c.service.GetFilter(r.Context(), filterIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -338,18 +309,9 @@ func (c *FilterAPIController) GetFilter(w http.ResponseWriter, r *http.Request) 
 
 // SearchFilters - Search Filters
 func (c *FilterAPIController) SearchFilters(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -474,7 +436,7 @@ func (c *FilterAPIController) SearchFilters(w http.ResponseWriter, r *http.Reque
 		var param bool = true
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchFilters(r.Context(), versionParam, accountIdParam, keywordParam, appKeyParam, responseGroupParam, rootOnlyParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchFilters(r.Context(), accountIdParam, keywordParam, appKeyParam, responseGroupParam, rootOnlyParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -486,18 +448,9 @@ func (c *FilterAPIController) SearchFilters(w http.ResponseWriter, r *http.Reque
 
 // UpdateFilter - Update Filter
 func (c *FilterAPIController) UpdateFilter(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -595,7 +548,7 @@ func (c *FilterAPIController) UpdateFilter(w http.ResponseWriter, r *http.Reques
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateFilter(r.Context(), versionParam, accountIdParam, filterIdParam, parentFilterIdParam, nameParam, descriptionParam, externalIdParam, externalTypeParam, activeParam, metaDataParam)
+	result, err := c.service.UpdateFilter(r.Context(), accountIdParam, filterIdParam, parentFilterIdParam, nameParam, descriptionParam, externalIdParam, externalTypeParam, activeParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

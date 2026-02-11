@@ -30,7 +30,7 @@ func NewCSVImportAPIService() *CSVImportAPIService {
 }
 
 // ListStatusCSV - Search Status
-func (s *CSVImportAPIService) ListStatusCSV(ctx context.Context, version float32, accountId int64, start int32, limit int32) (ImplResponse, error) {
+func (s *CSVImportAPIService) ListStatusCSV(ctx context.Context, accountId int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update ListStatusCSV with the required logic for this service method.
 	// Add api_csv_import_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *CSVImportAPIService) ListStatusCSV(ctx context.Context, version float32
 }
 
 // StatusCSV - Batch Status
-func (s *CSVImportAPIService) StatusCSV(ctx context.Context, version float32, accountId int64, batchId int64) (ImplResponse, error) {
+func (s *CSVImportAPIService) StatusCSV(ctx context.Context, accountId int64, batchId int64) (ImplResponse, error) {
 	// TODO - update StatusCSV with the required logic for this service method.
 	// Add api_csv_import_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *CSVImportAPIService) StatusCSV(ctx context.Context, version float32, ac
 }
 
 // GetStatusCSV - Detail Status
-func (s *CSVImportAPIService) GetStatusCSV(ctx context.Context, version float32, accountId int64, batchId int64, responseGroup string, start int64, limit int64) (ImplResponse, error) {
+func (s *CSVImportAPIService) GetStatusCSV(ctx context.Context, accountId int64, batchId int64, responseGroup string, start int64, limit int64) (ImplResponse, error) {
 	// TODO - update GetStatusCSV with the required logic for this service method.
 	// Add api_csv_import_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *CSVImportAPIService) GetStatusCSV(ctx context.Context, version float32,
 }
 
 // UploadCSV - Upload CSV
-func (s *CSVImportAPIService) UploadCSV(ctx context.Context, version float32, accountId int64, uploadType string, importFile *os.File, fileFormat string, appKey string) (ImplResponse, error) {
+func (s *CSVImportAPIService) UploadCSV(ctx context.Context, accountId int64, uploadType string, importFile *os.File, fileFormat string, appKey string) (ImplResponse, error) {
 	// TODO - update UploadCSV with the required logic for this service method.
 	// Add api_csv_import_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

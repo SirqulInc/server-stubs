@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // MissionInviteAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *MissionInviteAPIController) Routes() Routes {
 		"CreateMissionInvite": Route{
 			"CreateMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/create",
+			"/api/3.18/mission/invite/create",
 			c.CreateMissionInvite,
 		},
 		"DeleteMissionInvite": Route{
 			"DeleteMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/delete",
+			"/api/3.18/mission/invite/delete",
 			c.DeleteMissionInvite,
 		},
 		"GetMissionInvite": Route{
 			"GetMissionInvite",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/invite/get",
+			"/api/3.18/mission/invite/get",
 			c.GetMissionInvite,
 		},
 		"SearchMissionInvites": Route{
 			"SearchMissionInvites",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/invite/search",
+			"/api/3.18/mission/invite/search",
 			c.SearchMissionInvites,
 		},
 		"UpdateMissionInvite": Route{
 			"UpdateMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/update",
+			"/api/3.18/mission/invite/update",
 			c.UpdateMissionInvite,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *MissionInviteAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/create",
+			"/api/3.18/mission/invite/create",
 			c.CreateMissionInvite,
 		},
 		Route{
 			"DeleteMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/delete",
+			"/api/3.18/mission/invite/delete",
 			c.DeleteMissionInvite,
 		},
 		Route{
 			"GetMissionInvite",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/invite/get",
+			"/api/3.18/mission/invite/get",
 			c.GetMissionInvite,
 		},
 		Route{
 			"SearchMissionInvites",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/invite/search",
+			"/api/3.18/mission/invite/search",
 			c.SearchMissionInvites,
 		},
 		Route{
 			"UpdateMissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/invite/update",
+			"/api/3.18/mission/invite/update",
 			c.UpdateMissionInvite,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *MissionInviteAPIController) OrderedRoutes() []Route {
 
 // CreateMissionInvite - Create Mission Invite
 func (c *MissionInviteAPIController) CreateMissionInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -194,7 +183,7 @@ func (c *MissionInviteAPIController) CreateMissionInvite(w http.ResponseWriter, 
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateMissionInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, missionIdParam, joinCodeParam, includeGameDataParam)
+	result, err := c.service.CreateMissionInvite(r.Context(), deviceIdParam, accountIdParam, missionIdParam, joinCodeParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -206,18 +195,9 @@ func (c *MissionInviteAPIController) CreateMissionInvite(w http.ResponseWriter, 
 
 // DeleteMissionInvite - Delete Mission Invite
 func (c *MissionInviteAPIController) DeleteMissionInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -283,7 +263,7 @@ func (c *MissionInviteAPIController) DeleteMissionInvite(w http.ResponseWriter, 
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.DeleteMissionInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, missionIdParam, missionInviteIdParam, includeGameDataParam)
+	result, err := c.service.DeleteMissionInvite(r.Context(), deviceIdParam, accountIdParam, missionIdParam, missionInviteIdParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -295,18 +275,9 @@ func (c *MissionInviteAPIController) DeleteMissionInvite(w http.ResponseWriter, 
 
 // GetMissionInvite - Get Mission Invite
 func (c *MissionInviteAPIController) GetMissionInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -379,7 +350,7 @@ func (c *MissionInviteAPIController) GetMissionInvite(w http.ResponseWriter, r *
 		includeScoresParam = param
 	} else {
 	}
-	result, err := c.service.GetMissionInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, missionIdParam, missionInviteIdParam, includeGameDataParam, includeScoresParam)
+	result, err := c.service.GetMissionInvite(r.Context(), deviceIdParam, accountIdParam, missionIdParam, missionInviteIdParam, includeGameDataParam, includeScoresParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -391,18 +362,9 @@ func (c *MissionInviteAPIController) GetMissionInvite(w http.ResponseWriter, r *
 
 // SearchMissionInvites - Search Mission Invites
 func (c *MissionInviteAPIController) SearchMissionInvites(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -545,7 +507,7 @@ func (c *MissionInviteAPIController) SearchMissionInvites(w http.ResponseWriter,
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.SearchMissionInvites(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, appVersionParam, missionIdParam, statusParam, lastUpdatedParam, startParam, limitParam, keywordParam, missionTypesParam, filterByBillableParam, includeGameDataParam)
+	result, err := c.service.SearchMissionInvites(r.Context(), deviceIdParam, accountIdParam, appKeyParam, appVersionParam, missionIdParam, statusParam, lastUpdatedParam, startParam, limitParam, keywordParam, missionTypesParam, filterByBillableParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -557,18 +519,9 @@ func (c *MissionInviteAPIController) SearchMissionInvites(w http.ResponseWriter,
 
 // UpdateMissionInvite - Update Mission Invite
 func (c *MissionInviteAPIController) UpdateMissionInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -697,7 +650,7 @@ func (c *MissionInviteAPIController) UpdateMissionInvite(w http.ResponseWriter, 
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateMissionInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, missionIdParam, missionInviteIdParam, packIdParam, gameLevelIdParam, statusParam, permissionableTypeParam, permissionableIdParam, includeGameDataParam)
+	result, err := c.service.UpdateMissionInvite(r.Context(), deviceIdParam, accountIdParam, appKeyParam, missionIdParam, missionInviteIdParam, packIdParam, gameLevelIdParam, statusParam, permissionableTypeParam, permissionableIdParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

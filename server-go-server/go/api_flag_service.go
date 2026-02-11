@@ -29,7 +29,7 @@ func NewFlagAPIService() *FlagAPIService {
 }
 
 // CreateFlag - Create Flag
-func (s *FlagAPIService) CreateFlag(ctx context.Context, version float32, flagableType string, flagableId int64, deviceId string, accountId int64, flagDescription string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FlagAPIService) CreateFlag(ctx context.Context, flagableType string, flagableId int64, deviceId string, accountId int64, flagDescription string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreateFlag with the required logic for this service method.
 	// Add api_flag_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *FlagAPIService) CreateFlag(ctx context.Context, version float32, flagab
 }
 
 // DeleteFlag - Delete Flag
-func (s *FlagAPIService) DeleteFlag(ctx context.Context, version float32, deviceId string, accountId int64, itemBeingFlaggedType string, itemBeingFlaggedId int64, flagableType string, flagableId int64) (ImplResponse, error) {
+func (s *FlagAPIService) DeleteFlag(ctx context.Context, deviceId string, accountId int64, itemBeingFlaggedType string, itemBeingFlaggedId int64, flagableType string, flagableId int64) (ImplResponse, error) {
 	// TODO - update DeleteFlag with the required logic for this service method.
 	// Add api_flag_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *FlagAPIService) DeleteFlag(ctx context.Context, version float32, device
 }
 
 // GetFlag - Get Flag
-func (s *FlagAPIService) GetFlag(ctx context.Context, version float32, flagableType string, flagableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FlagAPIService) GetFlag(ctx context.Context, flagableType string, flagableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetFlag with the required logic for this service method.
 	// Add api_flag_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *FlagAPIService) GetFlag(ctx context.Context, version float32, flagableT
 }
 
 // GetFlagThreshold - Get Flag Threshold
-func (s *FlagAPIService) GetFlagThreshold(ctx context.Context, version float32, itemBeingFlaggedType string, appKey string) (ImplResponse, error) {
+func (s *FlagAPIService) GetFlagThreshold(ctx context.Context, itemBeingFlaggedType string, appKey string) (ImplResponse, error) {
 	// TODO - update GetFlagThreshold with the required logic for this service method.
 	// Add api_flag_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *FlagAPIService) GetFlagThreshold(ctx context.Context, version float32, 
 }
 
 // UpdateFlagThreshold - Update Flag Threshold
-func (s *FlagAPIService) UpdateFlagThreshold(ctx context.Context, version float32, itemBeingFlaggedType string, threshold int64, appKey string, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *FlagAPIService) UpdateFlagThreshold(ctx context.Context, itemBeingFlaggedType string, threshold int64, appKey string, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update UpdateFlagThreshold with the required logic for this service method.
 	// Add api_flag_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

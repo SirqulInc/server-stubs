@@ -29,7 +29,7 @@ func NewEventAPIService() *EventAPIService {
 }
 
 // AttendEvent - Attend Event
-func (s *EventAPIService) AttendEvent(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, listingId int64, retailerLocationId int64, offerLocationId int64, transactionId int64, status int32, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *EventAPIService) AttendEvent(ctx context.Context, deviceId string, accountId int64, appKey string, listingId int64, retailerLocationId int64, offerLocationId int64, transactionId int64, status int32, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AttendEvent with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *EventAPIService) AttendEvent(ctx context.Context, version float32, devi
 }
 
 // SearchEventTransactions - Search Event Attendance
-func (s *EventAPIService) SearchEventTransactions(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, keyword string, retailerId int64, retailerLocationId int64, excludeRetailerLocationId int64, listingId int64, offerId int64, offerLocationId int64, customerAccountIds string, affiliatedCategoryIds string, startDate int64, endDate int64, statuses string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *EventAPIService) SearchEventTransactions(ctx context.Context, deviceId string, accountId int64, appKey string, keyword string, retailerId int64, retailerLocationId int64, excludeRetailerLocationId int64, listingId int64, offerId int64, offerLocationId int64, customerAccountIds string, affiliatedCategoryIds string, startDate int64, endDate int64, statuses string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchEventTransactions with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *EventAPIService) SearchEventTransactions(ctx context.Context, version f
 }
 
 // CreateEvent - Create Event
-func (s *EventAPIService) CreateEvent(ctx context.Context, version float32, accountId int64, title string, retailerLocationIds string, subTitle string, details string, categoryIds string, filterIds string, active bool, imageAssetId int64, redeemableStart int64, redeemableEnd int64, metaData string) (ImplResponse, error) {
+func (s *EventAPIService) CreateEvent(ctx context.Context, accountId int64, title string, retailerLocationIds string, subTitle string, details string, categoryIds string, filterIds string, active bool, imageAssetId int64, redeemableStart int64, redeemableEnd int64, metaData string) (ImplResponse, error) {
 	// TODO - update CreateEvent with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *EventAPIService) CreateEvent(ctx context.Context, version float32, acco
 }
 
 // DeleteEvent - Delete Event
-func (s *EventAPIService) DeleteEvent(ctx context.Context, version float32, accountId int64, eventId int64) (ImplResponse, error) {
+func (s *EventAPIService) DeleteEvent(ctx context.Context, accountId int64, eventId int64) (ImplResponse, error) {
 	// TODO - update DeleteEvent with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *EventAPIService) DeleteEvent(ctx context.Context, version float32, acco
 }
 
 // GetEvent - Get Event
-func (s *EventAPIService) GetEvent(ctx context.Context, version float32, accountId int64, eventId int64) (ImplResponse, error) {
+func (s *EventAPIService) GetEvent(ctx context.Context, accountId int64, eventId int64) (ImplResponse, error) {
 	// TODO - update GetEvent with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *EventAPIService) GetEvent(ctx context.Context, version float32, account
 }
 
 // SearchEvents - Search Events
-func (s *EventAPIService) SearchEvents(ctx context.Context, version float32, accountId int64, keyword string, activeOnly bool, categoryIds string, filterIds string, offerAudienceIds string, transactionAudienceIds string, sortField string, descending bool, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
+func (s *EventAPIService) SearchEvents(ctx context.Context, accountId int64, keyword string, activeOnly bool, categoryIds string, filterIds string, offerAudienceIds string, transactionAudienceIds string, sortField string, descending bool, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchEvents with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *EventAPIService) SearchEvents(ctx context.Context, version float32, acc
 }
 
 // UpdateEvent - Update Event
-func (s *EventAPIService) UpdateEvent(ctx context.Context, version float32, accountId int64, eventId int64, retailerLocationIds string, title string, subTitle string, details string, categoryIds string, filterIds string, active bool, imageAssetId int64, redeemableStart int64, redeemableEnd int64) (ImplResponse, error) {
+func (s *EventAPIService) UpdateEvent(ctx context.Context, accountId int64, eventId int64, retailerLocationIds string, title string, subTitle string, details string, categoryIds string, filterIds string, active bool, imageAssetId int64, redeemableStart int64, redeemableEnd int64) (ImplResponse, error) {
 	// TODO - update UpdateEvent with the required logic for this service method.
 	// Add api_event_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

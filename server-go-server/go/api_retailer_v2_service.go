@@ -29,7 +29,7 @@ func NewRetailerV2APIService() *RetailerV2APIService {
 }
 
 // GetRetaokiler - Get Retailer
-func (s *RetailerV2APIService) GetRetaokiler(ctx context.Context, version float32, retailerId int64, activeOnly bool, keyword string, sortField string, start int64, limit int64) (ImplResponse, error) {
+func (s *RetailerV2APIService) GetRetaokiler(ctx context.Context, retailerId int64, activeOnly bool, keyword string, sortField string, start int64, limit int64) (ImplResponse, error) {
 	// TODO - update GetRetaokiler with the required logic for this service method.
 	// Add api_retailer_v2_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -30,7 +30,7 @@ func NewSecureAppAPIService() *SecureAppAPIService {
 }
 
 // CreateSecureApplication - Create Secure Application
-func (s *SecureAppAPIService) CreateSecureApplication(ctx context.Context, version float32, accountId int64, appKey string, keyCert *os.File, trustStore *os.File, username string, password string, active bool, biometricType string, biometricPosition string, biometricPosition2 string) (ImplResponse, error) {
+func (s *SecureAppAPIService) CreateSecureApplication(ctx context.Context, accountId int64, appKey string, keyCert *os.File, trustStore *os.File, username string, password string, active bool, biometricType string, biometricPosition string, biometricPosition2 string) (ImplResponse, error) {
 	// TODO - update CreateSecureApplication with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *SecureAppAPIService) CreateSecureApplication(ctx context.Context, versi
 }
 
 // DeleteSecureApplication - Delete Secure Application
-func (s *SecureAppAPIService) DeleteSecureApplication(ctx context.Context, version float32, accountId int64, appKey string) (ImplResponse, error) {
+func (s *SecureAppAPIService) DeleteSecureApplication(ctx context.Context, accountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update DeleteSecureApplication with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *SecureAppAPIService) DeleteSecureApplication(ctx context.Context, versi
 }
 
 // ResetSecure - Rest Secure Application
-func (s *SecureAppAPIService) ResetSecure(ctx context.Context, version float32, accountId int64, appKey string) (ImplResponse, error) {
+func (s *SecureAppAPIService) ResetSecure(ctx context.Context, accountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update ResetSecure with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *SecureAppAPIService) ResetSecure(ctx context.Context, version float32, 
 }
 
 // UpdateSecureApplication - Update Secure Application
-func (s *SecureAppAPIService) UpdateSecureApplication(ctx context.Context, version float32, accountId int64, appKey string, active bool, keyCert *os.File, trustStore *os.File, username string, password string, biometricType string, biometricPosition string, biometricPosition2 string) (ImplResponse, error) {
+func (s *SecureAppAPIService) UpdateSecureApplication(ctx context.Context, accountId int64, appKey string, active bool, keyCert *os.File, trustStore *os.File, username string, password string, biometricType string, biometricPosition string, biometricPosition2 string) (ImplResponse, error) {
 	// TODO - update UpdateSecureApplication with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *SecureAppAPIService) UpdateSecureApplication(ctx context.Context, versi
 }
 
 // LoginSecure - Login Clear
-func (s *SecureAppAPIService) LoginSecure(ctx context.Context, version float32, appKey string, biometricFile *os.File, deviceId string, biometricFile2 *os.File, ageRestriction int32, returnProfile bool, responseFilters string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *SecureAppAPIService) LoginSecure(ctx context.Context, appKey string, biometricFile *os.File, deviceId string, biometricFile2 *os.File, ageRestriction int32, returnProfile bool, responseFilters string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update LoginSecure with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *SecureAppAPIService) LoginSecure(ctx context.Context, version float32, 
 }
 
 // PurchaseSecure - Purchase Clear
-func (s *SecureAppAPIService) PurchaseSecure(ctx context.Context, version float32, body PaymentRequest) (ImplResponse, error) {
+func (s *SecureAppAPIService) PurchaseSecure(ctx context.Context, body PaymentRequest) (ImplResponse, error) {
 	// TODO - update PurchaseSecure with the required logic for this service method.
 	// Add api_secure_app_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -29,7 +29,7 @@ func NewWeatherAPIService() *WeatherAPIService {
 }
 
 // SearchWeather - Search Weather
-func (s *WeatherAPIService) SearchWeather(ctx context.Context, version float32, regionId int64, latitude float64, longitude float64, timezoneOffset int64) (ImplResponse, error) {
+func (s *WeatherAPIService) SearchWeather(ctx context.Context, regionId int64, latitude float64, longitude float64, timezoneOffset int64) (ImplResponse, error) {
 	// TODO - update SearchWeather with the required logic for this service method.
 	// Add api_weather_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

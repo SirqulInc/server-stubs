@@ -29,7 +29,7 @@ func NewAMQPAPIService() *AMQPAPIService {
 }
 
 // ConsumerCreate - Create Consumer
-func (s *AMQPAPIService) ConsumerCreate(ctx context.Context, version float32, appKey string, name string, hostname string, username string, password string, dataMapping string, deviceId string, accountId int64, port int32, virtualHost string, exchanger string, exchangerType string, workers int32, useSSL bool) (ImplResponse, error) {
+func (s *AMQPAPIService) ConsumerCreate(ctx context.Context, appKey string, name string, hostname string, username string, password string, dataMapping string, deviceId string, accountId int64, port int32, virtualHost string, exchanger string, exchangerType string, workers int32, useSSL bool) (ImplResponse, error) {
 	// TODO - update ConsumerCreate with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AMQPAPIService) ConsumerCreate(ctx context.Context, version float32, ap
 }
 
 // ConsumerUpdate - Update Consumer
-func (s *AMQPAPIService) ConsumerUpdate(ctx context.Context, version float32, appKey string, queueId int64, dataMapping string, deviceId string, accountId int64, useSSL bool) (ImplResponse, error) {
+func (s *AMQPAPIService) ConsumerUpdate(ctx context.Context, appKey string, queueId int64, dataMapping string, deviceId string, accountId int64, useSSL bool) (ImplResponse, error) {
 	// TODO - update ConsumerUpdate with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AMQPAPIService) ConsumerUpdate(ctx context.Context, version float32, ap
 }
 
 // QueueCreate - Create Queue
-func (s *AMQPAPIService) QueueCreate(ctx context.Context, version float32, appKey string, name string, deviceId string, accountId int64, workers int32, analyticTags string, hostname string, port int32, username string, password string, virtualHost string, useSSL bool) (ImplResponse, error) {
+func (s *AMQPAPIService) QueueCreate(ctx context.Context, appKey string, name string, deviceId string, accountId int64, workers int32, analyticTags string, hostname string, port int32, username string, password string, virtualHost string, useSSL bool) (ImplResponse, error) {
 	// TODO - update QueueCreate with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *AMQPAPIService) QueueCreate(ctx context.Context, version float32, appKe
 }
 
 // QueueDelete - Delete Queue
-func (s *AMQPAPIService) QueueDelete(ctx context.Context, version float32, queueId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *AMQPAPIService) QueueDelete(ctx context.Context, queueId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update QueueDelete with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *AMQPAPIService) QueueDelete(ctx context.Context, version float32, queue
 }
 
 // QueueGet - Get Queue
-func (s *AMQPAPIService) QueueGet(ctx context.Context, version float32, deviceId string, accountId int64, queueId int64, appKey string, name string, hostname string, virtualHost string) (ImplResponse, error) {
+func (s *AMQPAPIService) QueueGet(ctx context.Context, deviceId string, accountId int64, queueId int64, appKey string, name string, hostname string, virtualHost string) (ImplResponse, error) {
 	// TODO - update QueueGet with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *AMQPAPIService) QueueGet(ctx context.Context, version float32, deviceId
 }
 
 // QueuePublish - Publish Queue
-func (s *AMQPAPIService) QueuePublish(ctx context.Context, version float32, message string, queueId int64, appKey string, name string, hostname string, virtualHost string) (ImplResponse, error) {
+func (s *AMQPAPIService) QueuePublish(ctx context.Context, message string, queueId int64, appKey string, name string, hostname string, virtualHost string) (ImplResponse, error) {
 	// TODO - update QueuePublish with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *AMQPAPIService) QueuePublish(ctx context.Context, version float32, mess
 }
 
 // QueueSearch - Search Queue
-func (s *AMQPAPIService) QueueSearch(ctx context.Context, version float32, queueId int64, deviceId string, accountId int64, name string, start int32, limit int32) (ImplResponse, error) {
+func (s *AMQPAPIService) QueueSearch(ctx context.Context, queueId int64, deviceId string, accountId int64, name string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update QueueSearch with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *AMQPAPIService) QueueSearch(ctx context.Context, version float32, queue
 }
 
 // QueueUpdate - Update Queue
-func (s *AMQPAPIService) QueueUpdate(ctx context.Context, version float32, queueId int64, deviceId string, accountId int64, appKey string, workers int32, analyticTags string, hostname string, port int32, username string, password string, virtualHost string, useSSL bool) (ImplResponse, error) {
+func (s *AMQPAPIService) QueueUpdate(ctx context.Context, queueId int64, deviceId string, accountId int64, appKey string, workers int32, analyticTags string, hostname string, port int32, username string, password string, virtualHost string, useSSL bool) (ImplResponse, error) {
 	// TODO - update QueueUpdate with the required logic for this service method.
 	// Add api_amqp_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

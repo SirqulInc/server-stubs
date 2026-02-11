@@ -30,7 +30,7 @@ func NewThemeDescriptorAPIService() *ThemeDescriptorAPIService {
 }
 
 // AddOrUpdateThemeDescriptor - Create/Update Theme
-func (s *ThemeDescriptorAPIService) AddOrUpdateThemeDescriptor(ctx context.Context, version float32, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, visibility string, includeFriendGroup bool, completeWithDefaultValues bool, deviceId string, accountId int64, gameType string, themeDescriptorId int64, title string, description string, connectionIdsToAdd string, connectionGroupIdsToAdd string, appVersion string, colorValueJson string, stringReplacerJson string, customJsonObjects string, iconImage *os.File, sceneAtlasImage *os.File, bgImage *os.File, bgSound *os.File, musicSelection string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ThemeDescriptorAPIService) AddOrUpdateThemeDescriptor(ctx context.Context, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, visibility string, includeFriendGroup bool, completeWithDefaultValues bool, deviceId string, accountId int64, gameType string, themeDescriptorId int64, title string, description string, connectionIdsToAdd string, connectionGroupIdsToAdd string, appVersion string, colorValueJson string, stringReplacerJson string, customJsonObjects string, iconImage *os.File, sceneAtlasImage *os.File, bgImage *os.File, bgSound *os.File, musicSelection string, locationDescription string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddOrUpdateThemeDescriptor with the required logic for this service method.
 	// Add api_theme_descriptor_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *ThemeDescriptorAPIService) AddOrUpdateThemeDescriptor(ctx context.Conte
 }
 
 // GetThemeDescriptor - Get Theme
-func (s *ThemeDescriptorAPIService) GetThemeDescriptor(ctx context.Context, version float32, themeDescriptorId int64, deviceId string, accountId int64, gameType string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ThemeDescriptorAPIService) GetThemeDescriptor(ctx context.Context, themeDescriptorId int64, deviceId string, accountId int64, gameType string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetThemeDescriptor with the required logic for this service method.
 	// Add api_theme_descriptor_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *ThemeDescriptorAPIService) GetThemeDescriptor(ctx context.Context, vers
 }
 
 // RemoveThemeDescriptor - Delete Theme
-func (s *ThemeDescriptorAPIService) RemoveThemeDescriptor(ctx context.Context, version float32, themeDescriptorId int64, deviceId string, accountId int64, gameType string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ThemeDescriptorAPIService) RemoveThemeDescriptor(ctx context.Context, themeDescriptorId int64, deviceId string, accountId int64, gameType string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveThemeDescriptor with the required logic for this service method.
 	// Add api_theme_descriptor_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *ThemeDescriptorAPIService) RemoveThemeDescriptor(ctx context.Context, v
 }
 
 // GetThemeDescriptors - Search Themes
-func (s *ThemeDescriptorAPIService) GetThemeDescriptors(ctx context.Context, version float32, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, gameType string, contestType string, ownerId int64, q string, keyword string, i int32, l int32, dateCreated int64, appVersion string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ThemeDescriptorAPIService) GetThemeDescriptors(ctx context.Context, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, gameType string, contestType string, ownerId int64, q string, keyword string, i int32, l int32, dateCreated int64, appVersion string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetThemeDescriptors with the required logic for this service method.
 	// Add api_theme_descriptor_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

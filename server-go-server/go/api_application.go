@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // ApplicationAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,97 +53,97 @@ func (c *ApplicationAPIController) Routes() Routes {
 		"UpdateApplicationActive": Route{
 			"UpdateApplicationActive",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/active",
+			"/api/3.18/application/active",
 			c.UpdateApplicationActive,
 		},
 		"UploadApplicationCertificate": Route{
 			"UploadApplicationCertificate",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/certificate/create",
+			"/api/3.18/application/certificate/create",
 			c.UploadApplicationCertificate,
 		},
 		"CreateApplication": Route{
 			"CreateApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/create",
+			"/api/3.18/application/create",
 			c.CreateApplication,
 		},
 		"DeleteApplication": Route{
 			"DeleteApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/delete",
+			"/api/3.18/application/delete",
 			c.DeleteApplication,
 		},
 		"GetApplication": Route{
 			"GetApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/get",
+			"/api/3.18/application/get",
 			c.GetApplication,
 		},
 		"ListApplications": Route{
 			"ListApplications",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/list",
+			"/api/3.18/application/list",
 			c.ListApplications,
 		},
 		"CreateApplicationPlacement": Route{
 			"CreateApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/create",
+			"/api/3.18/application/placement/create",
 			c.CreateApplicationPlacement,
 		},
 		"DeleteApplicationPlacement": Route{
 			"DeleteApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/delete",
+			"/api/3.18/application/placement/delete",
 			c.DeleteApplicationPlacement,
 		},
 		"GetApplicationPlacement": Route{
 			"GetApplicationPlacement",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/placement/get",
+			"/api/3.18/application/placement/get",
 			c.GetApplicationPlacement,
 		},
 		"SearchApplicationPlacement": Route{
 			"SearchApplicationPlacement",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/placement/search",
+			"/api/3.18/application/placement/search",
 			c.SearchApplicationPlacement,
 		},
 		"UpdateApplicationPlacement": Route{
 			"UpdateApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/update",
+			"/api/3.18/application/placement/update",
 			c.UpdateApplicationPlacement,
 		},
 		"SearchApplications": Route{
 			"SearchApplications",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/search",
+			"/api/3.18/application/search",
 			c.SearchApplications,
 		},
 		"SearchApplicationSettings": Route{
 			"SearchApplicationSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/settings/search",
+			"/api/3.18/application/settings/search",
 			c.SearchApplicationSettings,
 		},
 		"UpdateApplication": Route{
 			"UpdateApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/update",
+			"/api/3.18/application/update",
 			c.UpdateApplication,
 		},
 		"GetUniqueUsersByApp": Route{
 			"GetUniqueUsersByApp",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/users",
+			"/api/3.18/application/users",
 			c.GetUniqueUsersByApp,
 		},
 		"GetApplicationVersions": Route{
 			"GetApplicationVersions",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/versions",
+			"/api/3.18/application/versions",
 			c.GetApplicationVersions,
 		},
 	}
@@ -157,97 +155,97 @@ func (c *ApplicationAPIController) OrderedRoutes() []Route {
 		Route{
 			"UpdateApplicationActive",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/active",
+			"/api/3.18/application/active",
 			c.UpdateApplicationActive,
 		},
 		Route{
 			"UploadApplicationCertificate",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/certificate/create",
+			"/api/3.18/application/certificate/create",
 			c.UploadApplicationCertificate,
 		},
 		Route{
 			"CreateApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/create",
+			"/api/3.18/application/create",
 			c.CreateApplication,
 		},
 		Route{
 			"DeleteApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/delete",
+			"/api/3.18/application/delete",
 			c.DeleteApplication,
 		},
 		Route{
 			"GetApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/get",
+			"/api/3.18/application/get",
 			c.GetApplication,
 		},
 		Route{
 			"ListApplications",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/list",
+			"/api/3.18/application/list",
 			c.ListApplications,
 		},
 		Route{
 			"CreateApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/create",
+			"/api/3.18/application/placement/create",
 			c.CreateApplicationPlacement,
 		},
 		Route{
 			"DeleteApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/delete",
+			"/api/3.18/application/placement/delete",
 			c.DeleteApplicationPlacement,
 		},
 		Route{
 			"GetApplicationPlacement",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/placement/get",
+			"/api/3.18/application/placement/get",
 			c.GetApplicationPlacement,
 		},
 		Route{
 			"SearchApplicationPlacement",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/placement/search",
+			"/api/3.18/application/placement/search",
 			c.SearchApplicationPlacement,
 		},
 		Route{
 			"UpdateApplicationPlacement",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/placement/update",
+			"/api/3.18/application/placement/update",
 			c.UpdateApplicationPlacement,
 		},
 		Route{
 			"SearchApplications",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/search",
+			"/api/3.18/application/search",
 			c.SearchApplications,
 		},
 		Route{
 			"SearchApplicationSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/settings/search",
+			"/api/3.18/application/settings/search",
 			c.SearchApplicationSettings,
 		},
 		Route{
 			"UpdateApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/application/update",
+			"/api/3.18/application/update",
 			c.UpdateApplication,
 		},
 		Route{
 			"GetUniqueUsersByApp",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/users",
+			"/api/3.18/application/users",
 			c.GetUniqueUsersByApp,
 		},
 		Route{
 			"GetApplicationVersions",
 			strings.ToUpper("Get"),
-			"/api/{version}/application/versions",
+			"/api/3.18/application/versions",
 			c.GetApplicationVersions,
 		},
 	}
@@ -257,18 +255,9 @@ func (c *ApplicationAPIController) OrderedRoutes() []Route {
 
 // UpdateApplicationActive - Change Appliation Status
 func (c *ApplicationAPIController) UpdateApplicationActive(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -312,7 +301,7 @@ func (c *ApplicationAPIController) UpdateApplicationActive(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{Field: "active"}, nil)
 		return
 	}
-	result, err := c.service.UpdateApplicationActive(r.Context(), versionParam, accountIdParam, appKeyParam, activeParam)
+	result, err := c.service.UpdateApplicationActive(r.Context(), accountIdParam, appKeyParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -324,18 +313,9 @@ func (c *ApplicationAPIController) UpdateApplicationActive(w http.ResponseWriter
 
 // UploadApplicationCertificate - Create Application Certificate
 func (c *ApplicationAPIController) UploadApplicationCertificate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -375,7 +355,7 @@ func (c *ApplicationAPIController) UploadApplicationCertificate(w http.ResponseW
 		certificateParam = param
 	} else {
 	}
-	result, err := c.service.UploadApplicationCertificate(r.Context(), versionParam, appKeyParam, deviceIdParam, accountIdParam, certificateParam)
+	result, err := c.service.UploadApplicationCertificate(r.Context(), appKeyParam, deviceIdParam, accountIdParam, certificateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -387,18 +367,9 @@ func (c *ApplicationAPIController) UploadApplicationCertificate(w http.ResponseW
 
 // CreateApplication - Create Application
 func (c *ApplicationAPIController) CreateApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appNameParam string
@@ -1207,7 +1178,7 @@ func (c *ApplicationAPIController) CreateApplication(w http.ResponseWriter, r *h
 		openAISecretKeyParam = param
 	} else {
 	}
-	result, err := c.service.CreateApplication(r.Context(), versionParam, appNameParam, deviceIdParam, accountIdParam, aboutParam, bundleIdParam, appIconAssetIdParam, appLogoAssetIdParam, facebookAppIdParam, facebookAppSecretParam, googleApiKeyParam, updateEULADateParam, eulaVersionParam, landingPageUrlParam, showInActivitiesParam, activityDescriptionParam, inviteWelcomeTextParam, invitePageUrlParam, urlSchemeParam, platformsParam, downloadUrlsParam, categoryIdsParam, scoringTypeParam, hintCostParam, maxScoreParam, ticketsPerPointParam, hasGameDataParam, publicNotificationsParam, useMatchingAlgorithmParam, globalTicketsParam, buildVersionParam, apiVersionParam, placementNameParam, placementDescriptionParam, placementSizeParam, placementHeightParam, placementWidthParam, placementRefreshIntervalParam, createObjectStoreParam, publicContentApprovalParam, productionModeParam, minimumSessionLengthParam, sessionGapLengthParam, localAdsEnabledParam, sqootApiKeyParam, trilatProcessingTypeParam, maxSampleSizeParam, minRSSIParam, modulesParam, authorizedCountParam, authorizedServersParam, defaultTimezoneParam, smtpPassParam, metaDataParam, placementMetaDataParam, ipsFloorParam, enableAPNSBadgeParam, includeInReportParam, defaultAppFilterIdParam, enableWelcomeEmailParam, appleAppIdParam, appleTeamIdParam, appleAuthKeyIdParam, appleAuthKeyParam, appleIssuerIdParam, appStoreKeyIdParam, appStoreKeyParam, googlePrivateKeyFileParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam, emailSenderParam, smtpUserParam, smtpHostParam, vatomBusinessIdParam, vatomRestClientIdParam, vatomRestSecretKeyParam, twilioAccountSIDParam, twilioAuthTokenParam, twilioSenderPhoneNumberParam, openAISecretKeyParam)
+	result, err := c.service.CreateApplication(r.Context(), appNameParam, deviceIdParam, accountIdParam, aboutParam, bundleIdParam, appIconAssetIdParam, appLogoAssetIdParam, facebookAppIdParam, facebookAppSecretParam, googleApiKeyParam, updateEULADateParam, eulaVersionParam, landingPageUrlParam, showInActivitiesParam, activityDescriptionParam, inviteWelcomeTextParam, invitePageUrlParam, urlSchemeParam, platformsParam, downloadUrlsParam, categoryIdsParam, scoringTypeParam, hintCostParam, maxScoreParam, ticketsPerPointParam, hasGameDataParam, publicNotificationsParam, useMatchingAlgorithmParam, globalTicketsParam, buildVersionParam, apiVersionParam, placementNameParam, placementDescriptionParam, placementSizeParam, placementHeightParam, placementWidthParam, placementRefreshIntervalParam, createObjectStoreParam, publicContentApprovalParam, productionModeParam, minimumSessionLengthParam, sessionGapLengthParam, localAdsEnabledParam, sqootApiKeyParam, trilatProcessingTypeParam, maxSampleSizeParam, minRSSIParam, modulesParam, authorizedCountParam, authorizedServersParam, defaultTimezoneParam, smtpPassParam, metaDataParam, placementMetaDataParam, ipsFloorParam, enableAPNSBadgeParam, includeInReportParam, defaultAppFilterIdParam, enableWelcomeEmailParam, appleAppIdParam, appleTeamIdParam, appleAuthKeyIdParam, appleAuthKeyParam, appleIssuerIdParam, appStoreKeyIdParam, appStoreKeyParam, googlePrivateKeyFileParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam, emailSenderParam, smtpUserParam, smtpHostParam, vatomBusinessIdParam, vatomRestClientIdParam, vatomRestSecretKeyParam, twilioAccountSIDParam, twilioAuthTokenParam, twilioSenderPhoneNumberParam, openAISecretKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1219,18 +1190,9 @@ func (c *ApplicationAPIController) CreateApplication(w http.ResponseWriter, r *h
 
 // DeleteApplication - Delete Application
 func (c *ApplicationAPIController) DeleteApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1254,7 +1216,7 @@ func (c *ApplicationAPIController) DeleteApplication(w http.ResponseWriter, r *h
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.DeleteApplication(r.Context(), versionParam, accountIdParam, appKeyParam)
+	result, err := c.service.DeleteApplication(r.Context(), accountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1266,18 +1228,9 @@ func (c *ApplicationAPIController) DeleteApplication(w http.ResponseWriter, r *h
 
 // GetApplication - Get Application
 func (c *ApplicationAPIController) GetApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1301,7 +1254,7 @@ func (c *ApplicationAPIController) GetApplication(w http.ResponseWriter, r *http
 		applicationIdParam = param
 	} else {
 	}
-	result, err := c.service.GetApplication(r.Context(), versionParam, appKeyParam, applicationIdParam)
+	result, err := c.service.GetApplication(r.Context(), appKeyParam, applicationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1313,18 +1266,9 @@ func (c *ApplicationAPIController) GetApplication(w http.ResponseWriter, r *http
 
 // ListApplications - List Applications
 func (c *ApplicationAPIController) ListApplications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1563,7 +1507,7 @@ func (c *ApplicationAPIController) ListApplications(w http.ResponseWriter, r *ht
 		var param bool = true
 		activeOnlyParam = param
 	}
-	result, err := c.service.ListApplications(r.Context(), versionParam, accountIdParam, qParam, keywordParam, platformsParam, deviceIdsParam, deviceVersionsParam, categoryIdsParam, sortFieldParam, hasAdsParam, publicNotificationsParam, filterBillableParam, filterContentAdminParam, descendingParam, iParam, startParam, lParam, limitParam, applicationIdsParam, hasObjectStoreParam, activeOnlyParam)
+	result, err := c.service.ListApplications(r.Context(), accountIdParam, qParam, keywordParam, platformsParam, deviceIdsParam, deviceVersionsParam, categoryIdsParam, sortFieldParam, hasAdsParam, publicNotificationsParam, filterBillableParam, filterContentAdminParam, descendingParam, iParam, startParam, lParam, limitParam, applicationIdsParam, hasObjectStoreParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1575,18 +1519,9 @@ func (c *ApplicationAPIController) ListApplications(w http.ResponseWriter, r *ht
 
 // CreateApplicationPlacement - Create Ad Placement
 func (c *ApplicationAPIController) CreateApplicationPlacement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1712,7 +1647,7 @@ func (c *ApplicationAPIController) CreateApplicationPlacement(w http.ResponseWri
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.CreateApplicationPlacement(r.Context(), versionParam, appKeyParam, sizeParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, heightParam, widthParam, refreshIntervalParam, defaultImageIdParam, activeParam)
+	result, err := c.service.CreateApplicationPlacement(r.Context(), appKeyParam, sizeParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, heightParam, widthParam, refreshIntervalParam, defaultImageIdParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1724,18 +1659,9 @@ func (c *ApplicationAPIController) CreateApplicationPlacement(w http.ResponseWri
 
 // DeleteApplicationPlacement - Delete Ad Placement
 func (c *ApplicationAPIController) DeleteApplicationPlacement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var placementIdParam int64
@@ -1775,7 +1701,7 @@ func (c *ApplicationAPIController) DeleteApplicationPlacement(w http.ResponseWri
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteApplicationPlacement(r.Context(), versionParam, placementIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteApplicationPlacement(r.Context(), placementIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1787,18 +1713,9 @@ func (c *ApplicationAPIController) DeleteApplicationPlacement(w http.ResponseWri
 
 // GetApplicationPlacement - Get Ad Placement
 func (c *ApplicationAPIController) GetApplicationPlacement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var placementIdParam int64
@@ -1838,7 +1755,7 @@ func (c *ApplicationAPIController) GetApplicationPlacement(w http.ResponseWriter
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetApplicationPlacement(r.Context(), versionParam, placementIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.GetApplicationPlacement(r.Context(), placementIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1850,18 +1767,9 @@ func (c *ApplicationAPIController) GetApplicationPlacement(w http.ResponseWriter
 
 // SearchApplicationPlacement - Search for Ad Placements
 func (c *ApplicationAPIController) SearchApplicationPlacement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1926,7 +1834,7 @@ func (c *ApplicationAPIController) SearchApplicationPlacement(w http.ResponseWri
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.SearchApplicationPlacement(r.Context(), versionParam, appKeyParam, deviceIdParam, accountIdParam, startParam, limitParam)
+	result, err := c.service.SearchApplicationPlacement(r.Context(), appKeyParam, deviceIdParam, accountIdParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1938,18 +1846,9 @@ func (c *ApplicationAPIController) SearchApplicationPlacement(w http.ResponseWri
 
 // UpdateApplicationPlacement - Update Ad Placement
 func (c *ApplicationAPIController) UpdateApplicationPlacement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var placementIdParam int64
@@ -2080,7 +1979,7 @@ func (c *ApplicationAPIController) UpdateApplicationPlacement(w http.ResponseWri
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateApplicationPlacement(r.Context(), versionParam, placementIdParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, sizeParam, heightParam, widthParam, refreshIntervalParam, defaultImageIdParam, activeParam)
+	result, err := c.service.UpdateApplicationPlacement(r.Context(), placementIdParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, sizeParam, heightParam, widthParam, refreshIntervalParam, defaultImageIdParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2092,18 +1991,9 @@ func (c *ApplicationAPIController) UpdateApplicationPlacement(w http.ResponseWri
 
 // SearchApplications - Search Applications
 func (c *ApplicationAPIController) SearchApplications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -2307,7 +2197,7 @@ func (c *ApplicationAPIController) SearchApplications(w http.ResponseWriter, r *
 		var param bool = false
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchApplications(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, qParam, keywordParam, qSearchFieldsParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam, hasAdsParam, publicNotificationsParam, activeOnlyParam)
+	result, err := c.service.SearchApplications(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam, qParam, keywordParam, qSearchFieldsParam, sortFieldParam, descendingParam, iParam, startParam, lParam, limitParam, hasAdsParam, publicNotificationsParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2319,18 +2209,9 @@ func (c *ApplicationAPIController) SearchApplications(w http.ResponseWriter, r *
 
 // SearchApplicationSettings - Search for Application Settings
 func (c *ApplicationAPIController) SearchApplicationSettings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -2432,7 +2313,7 @@ func (c *ApplicationAPIController) SearchApplicationSettings(w http.ResponseWrit
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchApplicationSettings(r.Context(), versionParam, deviceIdParam, accountIdParam, connectionAccountIdParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchApplicationSettings(r.Context(), deviceIdParam, accountIdParam, connectionAccountIdParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2444,18 +2325,9 @@ func (c *ApplicationAPIController) SearchApplicationSettings(w http.ResponseWrit
 
 // UpdateApplication - Update Application
 func (c *ApplicationAPIController) UpdateApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -3273,7 +3145,7 @@ func (c *ApplicationAPIController) UpdateApplication(w http.ResponseWriter, r *h
 		openAISecretKeyParam = param
 	} else {
 	}
-	result, err := c.service.UpdateApplication(r.Context(), versionParam, appKeyParam, appNameParam, deviceIdParam, accountIdParam, aboutParam, bundleIdParam, appIconAssetIdParam, appLogoAssetIdParam, facebookAppIdParam, facebookAppSecretParam, googleApiKeyParam, updateEULADateParam, eulaVersionParam, landingPageUrlParam, showInActivitiesParam, activityDescriptionParam, inviteWelcomeTextParam, invitePageUrlParam, urlSchemeParam, platformsParam, downloadUrlsParam, categoryIdsParam, scoringTypeParam, hintCostParam, maxScoreParam, ticketsPerPointParam, hasGameDataParam, publicNotificationsParam, useMatchingAlgorithmParam, globalTicketsParam, buildVersionParam, apiVersionParam, placementNameParam, placementDescriptionParam, placementSizeParam, placementHeightParam, placementWidthParam, placementRefreshIntervalParam, createObjectStoreParam, publicContentApprovalParam, productionModeParam, minimumSessionLengthParam, sessionGapLengthParam, localAdsEnabledParam, sqootApiKeyParam, trilatProcessingTypeParam, maxSampleSizeParam, minRSSIParam, modulesParam, authorizedCountParam, authorizedServersParam, defaultTimezoneParam, smtpPassParam, metaDataParam, placementMetaDataParam, ipsFloorParam, enableAPNSBadgeParam, includeInReportParam, defaultAppFilterIdParam, enableWelcomeEmailParam, appleAppIdParam, appleTeamIdParam, appleAuthKeyIdParam, appleAuthKeyParam, appleIssuerIdParam, appStoreKeyIdParam, appStoreKeyParam, googlePrivateKeyFileParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam, emailSenderParam, smtpUserParam, smtpHostParam, vatomBusinessIdParam, vatomRestClientIdParam, vatomRestSecretKeyParam, twilioAccountSIDParam, twilioAuthTokenParam, twilioSenderPhoneNumberParam, openAISecretKeyParam)
+	result, err := c.service.UpdateApplication(r.Context(), appKeyParam, appNameParam, deviceIdParam, accountIdParam, aboutParam, bundleIdParam, appIconAssetIdParam, appLogoAssetIdParam, facebookAppIdParam, facebookAppSecretParam, googleApiKeyParam, updateEULADateParam, eulaVersionParam, landingPageUrlParam, showInActivitiesParam, activityDescriptionParam, inviteWelcomeTextParam, invitePageUrlParam, urlSchemeParam, platformsParam, downloadUrlsParam, categoryIdsParam, scoringTypeParam, hintCostParam, maxScoreParam, ticketsPerPointParam, hasGameDataParam, publicNotificationsParam, useMatchingAlgorithmParam, globalTicketsParam, buildVersionParam, apiVersionParam, placementNameParam, placementDescriptionParam, placementSizeParam, placementHeightParam, placementWidthParam, placementRefreshIntervalParam, createObjectStoreParam, publicContentApprovalParam, productionModeParam, minimumSessionLengthParam, sessionGapLengthParam, localAdsEnabledParam, sqootApiKeyParam, trilatProcessingTypeParam, maxSampleSizeParam, minRSSIParam, modulesParam, authorizedCountParam, authorizedServersParam, defaultTimezoneParam, smtpPassParam, metaDataParam, placementMetaDataParam, ipsFloorParam, enableAPNSBadgeParam, includeInReportParam, defaultAppFilterIdParam, enableWelcomeEmailParam, appleAppIdParam, appleTeamIdParam, appleAuthKeyIdParam, appleAuthKeyParam, appleIssuerIdParam, appStoreKeyIdParam, appStoreKeyParam, googlePrivateKeyFileParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam, emailSenderParam, smtpUserParam, smtpHostParam, vatomBusinessIdParam, vatomRestClientIdParam, vatomRestSecretKeyParam, twilioAccountSIDParam, twilioAuthTokenParam, twilioSenderPhoneNumberParam, openAISecretKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3285,18 +3157,9 @@ func (c *ApplicationAPIController) UpdateApplication(w http.ResponseWriter, r *h
 
 // GetUniqueUsersByApp - Search Application Users
 func (c *ApplicationAPIController) GetUniqueUsersByApp(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -3396,7 +3259,7 @@ func (c *ApplicationAPIController) GetUniqueUsersByApp(w http.ResponseWriter, r 
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.GetUniqueUsersByApp(r.Context(), versionParam, appKeyParam, qParam, keywordParam, sinceParam, iParam, startParam, lParam, limitParam)
+	result, err := c.service.GetUniqueUsersByApp(r.Context(), appKeyParam, qParam, keywordParam, sinceParam, iParam, startParam, lParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3408,16 +3271,7 @@ func (c *ApplicationAPIController) GetUniqueUsersByApp(w http.ResponseWriter, r 
 
 // GetApplicationVersions - Get API versions
 func (c *ApplicationAPIController) GetApplicationVersions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
-	result, err := c.service.GetApplicationVersions(r.Context(), versionParam)
+	result, err := c.service.GetApplicationVersions(r.Context())
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

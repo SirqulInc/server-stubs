@@ -29,7 +29,7 @@ func NewTwitterAPIService() *TwitterAPIService {
 }
 
 // AuthorizeTwitter - Authorize Twitter
-func (s *TwitterAPIService) AuthorizeTwitter(ctx context.Context, version float32, appKey string) (ImplResponse, error) {
+func (s *TwitterAPIService) AuthorizeTwitter(ctx context.Context, appKey string) (ImplResponse, error) {
 	// TODO - update AuthorizeTwitter with the required logic for this service method.
 	// Add api_twitter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TwitterAPIService) AuthorizeTwitter(ctx context.Context, version float3
 }
 
 // LoginTwitter - Login Twitter
-func (s *TwitterAPIService) LoginTwitter(ctx context.Context, version float32, accessToken string, accessTokenSecret string, appKey string, responseFilters string, deviceId string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *TwitterAPIService) LoginTwitter(ctx context.Context, accessToken string, accessTokenSecret string, appKey string, responseFilters string, deviceId string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update LoginTwitter with the required logic for this service method.
 	// Add api_twitter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -57,37 +57,37 @@ func (c *ServiceHubAPIController) Routes() Routes {
 		"SearchServiceHubs": Route{
 			"SearchServiceHubs",
 			strings.ToUpper("Get"),
-			"/api/{version}/hub",
+			"/api/3.18/hub",
 			c.SearchServiceHubs,
 		},
 		"CreateServiceHub": Route{
 			"CreateServiceHub",
 			strings.ToUpper("Post"),
-			"/api/{version}/hub",
+			"/api/3.18/hub",
 			c.CreateServiceHub,
 		},
 		"GetServiceHub": Route{
 			"GetServiceHub",
 			strings.ToUpper("Get"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.GetServiceHub,
 		},
 		"PutServiceHub": Route{
 			"PutServiceHub",
 			strings.ToUpper("Put"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.PutServiceHub,
 		},
 		"PostServiceHub": Route{
 			"PostServiceHub",
 			strings.ToUpper("Post"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.PostServiceHub,
 		},
 		"DeleteServiceHub": Route{
 			"DeleteServiceHub",
 			strings.ToUpper("Delete"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.DeleteServiceHub,
 		},
 	}
@@ -99,37 +99,37 @@ func (c *ServiceHubAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchServiceHubs",
 			strings.ToUpper("Get"),
-			"/api/{version}/hub",
+			"/api/3.18/hub",
 			c.SearchServiceHubs,
 		},
 		Route{
 			"CreateServiceHub",
 			strings.ToUpper("Post"),
-			"/api/{version}/hub",
+			"/api/3.18/hub",
 			c.CreateServiceHub,
 		},
 		Route{
 			"GetServiceHub",
 			strings.ToUpper("Get"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.GetServiceHub,
 		},
 		Route{
 			"PutServiceHub",
 			strings.ToUpper("Put"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.PutServiceHub,
 		},
 		Route{
 			"PostServiceHub",
 			strings.ToUpper("Post"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.PostServiceHub,
 		},
 		Route{
 			"DeleteServiceHub",
 			strings.ToUpper("Delete"),
-			"/api/{version}/hub/{id}",
+			"/api/3.18/hub/{id}",
 			c.DeleteServiceHub,
 		},
 	}
@@ -139,18 +139,9 @@ func (c *ServiceHubAPIController) OrderedRoutes() []Route {
 
 // SearchServiceHubs - Search Service Hubs
 func (c *ServiceHubAPIController) SearchServiceHubs(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -247,7 +238,7 @@ func (c *ServiceHubAPIController) SearchServiceHubs(w http.ResponseWriter, r *ht
 		retailerIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchServiceHubs(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam, retailerIdParam)
+	result, err := c.service.SearchServiceHubs(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam, retailerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -259,15 +250,6 @@ func (c *ServiceHubAPIController) SearchServiceHubs(w http.ResponseWriter, r *ht
 
 // CreateServiceHub - Create Service Hub
 func (c *ServiceHubAPIController) CreateServiceHub(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam ServiceHub
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -283,7 +265,7 @@ func (c *ServiceHubAPIController) CreateServiceHub(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateServiceHub(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateServiceHub(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -296,14 +278,6 @@ func (c *ServiceHubAPIController) CreateServiceHub(w http.ResponseWriter, r *htt
 // GetServiceHub - Get Service Hub
 func (c *ServiceHubAPIController) GetServiceHub(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -312,7 +286,7 @@ func (c *ServiceHubAPIController) GetServiceHub(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetServiceHub(r.Context(), versionParam, idParam)
+	result, err := c.service.GetServiceHub(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -325,14 +299,6 @@ func (c *ServiceHubAPIController) GetServiceHub(w http.ResponseWriter, r *http.R
 // PutServiceHub - Update Service Hub
 func (c *ServiceHubAPIController) PutServiceHub(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -356,7 +322,7 @@ func (c *ServiceHubAPIController) PutServiceHub(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.PutServiceHub(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.PutServiceHub(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -369,14 +335,6 @@ func (c *ServiceHubAPIController) PutServiceHub(w http.ResponseWriter, r *http.R
 // PostServiceHub - Update Service Hub
 func (c *ServiceHubAPIController) PostServiceHub(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -400,7 +358,7 @@ func (c *ServiceHubAPIController) PostServiceHub(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.PostServiceHub(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.PostServiceHub(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -413,14 +371,6 @@ func (c *ServiceHubAPIController) PostServiceHub(w http.ResponseWriter, r *http.
 // DeleteServiceHub - Delete Service Hub
 func (c *ServiceHubAPIController) DeleteServiceHub(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -429,7 +379,7 @@ func (c *ServiceHubAPIController) DeleteServiceHub(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteServiceHub(r.Context(), versionParam, idParam)
+	result, err := c.service.DeleteServiceHub(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

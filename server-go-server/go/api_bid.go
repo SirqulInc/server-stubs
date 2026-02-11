@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // BidAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,25 +52,25 @@ func (c *BidAPIController) Routes() Routes {
 		"CreateBid": Route{
 			"CreateBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/create",
+			"/api/3.18/bid/create",
 			c.CreateBid,
 		},
 		"DeleteBid": Route{
 			"DeleteBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/delete",
+			"/api/3.18/bid/delete",
 			c.DeleteBid,
 		},
 		"GetBid": Route{
 			"GetBid",
 			strings.ToUpper("Get"),
-			"/api/{version}/bid/get",
+			"/api/3.18/bid/get",
 			c.GetBid,
 		},
 		"UpdateBid": Route{
 			"UpdateBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/update",
+			"/api/3.18/bid/update",
 			c.UpdateBid,
 		},
 	}
@@ -84,25 +82,25 @@ func (c *BidAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/create",
+			"/api/3.18/bid/create",
 			c.CreateBid,
 		},
 		Route{
 			"DeleteBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/delete",
+			"/api/3.18/bid/delete",
 			c.DeleteBid,
 		},
 		Route{
 			"GetBid",
 			strings.ToUpper("Get"),
-			"/api/{version}/bid/get",
+			"/api/3.18/bid/get",
 			c.GetBid,
 		},
 		Route{
 			"UpdateBid",
 			strings.ToUpper("Post"),
-			"/api/{version}/bid/update",
+			"/api/3.18/bid/update",
 			c.UpdateBid,
 		},
 	}
@@ -112,18 +110,9 @@ func (c *BidAPIController) OrderedRoutes() []Route {
 
 // CreateBid - Create Bid
 func (c *BidAPIController) CreateBid(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var biddableTypeParam string
@@ -229,7 +218,7 @@ func (c *BidAPIController) CreateBid(w http.ResponseWriter, r *http.Request) {
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateBid(r.Context(), versionParam, biddableTypeParam, biddableIdParam, amountPerViewParam, amountPerActionParam, budgetAmountParam, budgetScheduleParam, deviceIdParam, accountIdParam)
+	result, err := c.service.CreateBid(r.Context(), biddableTypeParam, biddableIdParam, amountPerViewParam, amountPerActionParam, budgetAmountParam, budgetScheduleParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -241,18 +230,9 @@ func (c *BidAPIController) CreateBid(w http.ResponseWriter, r *http.Request) {
 
 // DeleteBid - Delete Bid
 func (c *BidAPIController) DeleteBid(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var bidIdParam int64
@@ -292,7 +272,7 @@ func (c *BidAPIController) DeleteBid(w http.ResponseWriter, r *http.Request) {
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteBid(r.Context(), versionParam, bidIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteBid(r.Context(), bidIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -304,18 +284,9 @@ func (c *BidAPIController) DeleteBid(w http.ResponseWriter, r *http.Request) {
 
 // GetBid - Get Bid
 func (c *BidAPIController) GetBid(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var bidIdParam int64
@@ -355,7 +326,7 @@ func (c *BidAPIController) GetBid(w http.ResponseWriter, r *http.Request) {
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetBid(r.Context(), versionParam, bidIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.GetBid(r.Context(), bidIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -367,18 +338,9 @@ func (c *BidAPIController) GetBid(w http.ResponseWriter, r *http.Request) {
 
 // UpdateBid - Update Bid
 func (c *BidAPIController) UpdateBid(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var bidIdParam int64
@@ -467,7 +429,7 @@ func (c *BidAPIController) UpdateBid(w http.ResponseWriter, r *http.Request) {
 		budgetScheduleParam = param
 	} else {
 	}
-	result, err := c.service.UpdateBid(r.Context(), versionParam, bidIdParam, deviceIdParam, accountIdParam, amountPerViewParam, amountPerActionParam, budgetAmountParam, budgetScheduleParam)
+	result, err := c.service.UpdateBid(r.Context(), bidIdParam, deviceIdParam, accountIdParam, amountPerViewParam, amountPerActionParam, budgetAmountParam, budgetScheduleParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

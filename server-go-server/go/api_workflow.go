@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // WorkflowAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *WorkflowAPIController) Routes() Routes {
 		"RunWorkflow": Route{
 			"RunWorkflow",
 			strings.ToUpper("Post"),
-			"/api/{version}/workflow/run",
+			"/api/3.18/workflow/run",
 			c.RunWorkflow,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *WorkflowAPIController) OrderedRoutes() []Route {
 		Route{
 			"RunWorkflow",
 			strings.ToUpper("Post"),
-			"/api/{version}/workflow/run",
+			"/api/3.18/workflow/run",
 			c.RunWorkflow,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *WorkflowAPIController) OrderedRoutes() []Route {
 
 // RunWorkflow - Run Workflow
 func (c *WorkflowAPIController) RunWorkflow(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -157,7 +146,7 @@ func (c *WorkflowAPIController) RunWorkflow(w http.ResponseWriter, r *http.Reque
 		parametersParam = param
 	} else {
 	}
-	result, err := c.service.RunWorkflow(r.Context(), versionParam, accountIdParam, workflowIdParam, skuIdParam, versionCodeParam, parametersParam)
+	result, err := c.service.RunWorkflow(r.Context(), accountIdParam, workflowIdParam, skuIdParam, versionCodeParam, parametersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

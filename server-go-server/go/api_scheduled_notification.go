@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ScheduledNotificationAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *ScheduledNotificationAPIController) Routes() Routes {
 		"CreateScheduledNotification": Route{
 			"CreateScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/create",
+			"/api/3.18/notification/schedule/create",
 			c.CreateScheduledNotification,
 		},
 		"DeleteScheduledNotification": Route{
 			"DeleteScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/delete",
+			"/api/3.18/notification/schedule/delete",
 			c.DeleteScheduledNotification,
 		},
 		"ScheduleNotificationListings": Route{
 			"ScheduleNotificationListings",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/generate",
+			"/api/3.18/notification/schedule/generate",
 			c.ScheduleNotificationListings,
 		},
 		"GetScheduledNotification": Route{
 			"GetScheduledNotification",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/schedule/get",
+			"/api/3.18/notification/schedule/get",
 			c.GetScheduledNotification,
 		},
 		"SearchScheduledNotifications": Route{
 			"SearchScheduledNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/schedule/search",
+			"/api/3.18/notification/schedule/search",
 			c.SearchScheduledNotifications,
 		},
 		"UpdateScheduledNotification": Route{
 			"UpdateScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/update",
+			"/api/3.18/notification/schedule/update",
 			c.UpdateScheduledNotification,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *ScheduledNotificationAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/create",
+			"/api/3.18/notification/schedule/create",
 			c.CreateScheduledNotification,
 		},
 		Route{
 			"DeleteScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/delete",
+			"/api/3.18/notification/schedule/delete",
 			c.DeleteScheduledNotification,
 		},
 		Route{
 			"ScheduleNotificationListings",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/generate",
+			"/api/3.18/notification/schedule/generate",
 			c.ScheduleNotificationListings,
 		},
 		Route{
 			"GetScheduledNotification",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/schedule/get",
+			"/api/3.18/notification/schedule/get",
 			c.GetScheduledNotification,
 		},
 		Route{
 			"SearchScheduledNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/schedule/search",
+			"/api/3.18/notification/schedule/search",
 			c.SearchScheduledNotifications,
 		},
 		Route{
 			"UpdateScheduledNotification",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/schedule/update",
+			"/api/3.18/notification/schedule/update",
 			c.UpdateScheduledNotification,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *ScheduledNotificationAPIController) OrderedRoutes() []Route {
 
 // CreateScheduledNotification - Create Scheduled Notification
 func (c *ScheduledNotificationAPIController) CreateScheduledNotification(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -475,7 +464,7 @@ func (c *ScheduledNotificationAPIController) CreateScheduledNotification(w http.
 		sendToAllParam = param
 	} else {
 	}
-	result, err := c.service.CreateScheduledNotification(r.Context(), versionParam, accountIdParam, nameParam, type_Param, messageParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, appKeyParam, groupingIdParam, connectionGroupIdsParam, connectionAccountIdsParam, audienceIdParam, audienceIdsParam, albumIdsParam, reportIdParam, reportParamsParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, cronTypeParam, metaDataParam, conditionalInputParam, templateTypeParam, visibilityParam, activeParam, sendNowParam, eventTypeParam, deepLinkURIParam, sendToAllParam)
+	result, err := c.service.CreateScheduledNotification(r.Context(), accountIdParam, nameParam, type_Param, messageParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, appKeyParam, groupingIdParam, connectionGroupIdsParam, connectionAccountIdsParam, audienceIdParam, audienceIdsParam, albumIdsParam, reportIdParam, reportParamsParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, cronTypeParam, metaDataParam, conditionalInputParam, templateTypeParam, visibilityParam, activeParam, sendNowParam, eventTypeParam, deepLinkURIParam, sendToAllParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -487,18 +476,9 @@ func (c *ScheduledNotificationAPIController) CreateScheduledNotification(w http.
 
 // DeleteScheduledNotification - Delete Scheduled Notification
 func (c *ScheduledNotificationAPIController) DeleteScheduledNotification(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -547,7 +527,7 @@ func (c *ScheduledNotificationAPIController) DeleteScheduledNotification(w http.
 		deleteByGroupingIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteScheduledNotification(r.Context(), versionParam, accountIdParam, scheduledNotificationIdParam, deleteByGroupingIdParam)
+	result, err := c.service.DeleteScheduledNotification(r.Context(), accountIdParam, scheduledNotificationIdParam, deleteByGroupingIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -559,18 +539,9 @@ func (c *ScheduledNotificationAPIController) DeleteScheduledNotification(w http.
 
 // ScheduleNotificationListings - Generate Schedule Notifications
 func (c *ScheduledNotificationAPIController) ScheduleNotificationListings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -662,7 +633,7 @@ func (c *ScheduledNotificationAPIController) ScheduleNotificationListings(w http
 		type_Param = param
 	} else {
 	}
-	result, err := c.service.ScheduleNotificationListings(r.Context(), versionParam, accountIdParam, appKeyParam, reportNameParam, messageParam, offsetParam, recipientReportIdParam, reportParamsParam, type_Param)
+	result, err := c.service.ScheduleNotificationListings(r.Context(), accountIdParam, appKeyParam, reportNameParam, messageParam, offsetParam, recipientReportIdParam, reportParamsParam, type_Param)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -674,18 +645,9 @@ func (c *ScheduledNotificationAPIController) ScheduleNotificationListings(w http
 
 // GetScheduledNotification - Get Scheduled Notification
 func (c *ScheduledNotificationAPIController) GetScheduledNotification(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -720,7 +682,7 @@ func (c *ScheduledNotificationAPIController) GetScheduledNotification(w http.Res
 		c.errorHandler(w, r, &RequiredError{Field: "scheduledNotificationId"}, nil)
 		return
 	}
-	result, err := c.service.GetScheduledNotification(r.Context(), versionParam, accountIdParam, scheduledNotificationIdParam)
+	result, err := c.service.GetScheduledNotification(r.Context(), accountIdParam, scheduledNotificationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -732,18 +694,9 @@ func (c *ScheduledNotificationAPIController) GetScheduledNotification(w http.Res
 
 // SearchScheduledNotifications - Search Scheduled Notifications
 func (c *ScheduledNotificationAPIController) SearchScheduledNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -944,7 +897,7 @@ func (c *ScheduledNotificationAPIController) SearchScheduledNotifications(w http
 		returnAudienceAccountCountParam = param
 	} else {
 	}
-	result, err := c.service.SearchScheduledNotifications(r.Context(), versionParam, accountIdParam, groupingIdParam, audienceIdParam, filterParam, typesParam, contentIdsParam, contentTypesParam, parentIdsParam, parentTypesParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, groupByGroupingIdParam, returnAudienceAccountCountParam)
+	result, err := c.service.SearchScheduledNotifications(r.Context(), accountIdParam, groupingIdParam, audienceIdParam, filterParam, typesParam, contentIdsParam, contentTypesParam, parentIdsParam, parentTypesParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, groupByGroupingIdParam, returnAudienceAccountCountParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -956,18 +909,9 @@ func (c *ScheduledNotificationAPIController) SearchScheduledNotifications(w http
 
 // UpdateScheduledNotification - Update Scheduled Notification
 func (c *ScheduledNotificationAPIController) UpdateScheduledNotification(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var scheduledNotificationIdParam int64
@@ -1333,7 +1277,7 @@ func (c *ScheduledNotificationAPIController) UpdateScheduledNotification(w http.
 		sendToAllParam = param
 	} else {
 	}
-	result, err := c.service.UpdateScheduledNotification(r.Context(), versionParam, scheduledNotificationIdParam, accountIdParam, nameParam, type_Param, messageParam, payloadParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, appKeyParam, groupingIdParam, connectionGroupIdsParam, connectionAccountIdsParam, audienceIdParam, audienceIdsParam, albumIdsParam, reportIdParam, reportParamsParam, endpointURLParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, cronTypeParam, metaDataParam, conditionalInputParam, templateTypeParam, visibilityParam, activeParam, errorMessageParam, statusParam, updateByGroupingIdParam, sendNowParam, eventTypeParam, deepLinkURIParam, sendToAllParam)
+	result, err := c.service.UpdateScheduledNotification(r.Context(), scheduledNotificationIdParam, accountIdParam, nameParam, type_Param, messageParam, payloadParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, appKeyParam, groupingIdParam, connectionGroupIdsParam, connectionAccountIdsParam, audienceIdParam, audienceIdsParam, albumIdsParam, reportIdParam, reportParamsParam, endpointURLParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, cronTypeParam, metaDataParam, conditionalInputParam, templateTypeParam, visibilityParam, activeParam, errorMessageParam, statusParam, updateByGroupingIdParam, sendNowParam, eventTypeParam, deepLinkURIParam, sendToAllParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

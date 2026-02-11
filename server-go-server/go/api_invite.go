@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // InviteAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,61 +52,61 @@ func (c *InviteAPIController) Routes() Routes {
 		"AcceptInvite": Route{
 			"AcceptInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/accept",
+			"/api/3.18/invite/accept",
 			c.AcceptInvite,
 		},
 		"AlbumInvite": Route{
 			"AlbumInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/album",
+			"/api/3.18/invite/album",
 			c.AlbumInvite,
 		},
 		"AlbumContestInvite": Route{
 			"AlbumContestInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/albumContest",
+			"/api/3.18/invite/albumContest",
 			c.AlbumContestInvite,
 		},
 		"EventInvite": Route{
 			"EventInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/event",
+			"/api/3.18/invite/event",
 			c.EventInvite,
 		},
 		"GameInvite": Route{
 			"GameInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/gameLevel",
+			"/api/3.18/invite/gameLevel",
 			c.GameInvite,
 		},
 		"GetInvite": Route{
 			"GetInvite",
 			strings.ToUpper("Get"),
-			"/api/{version}/invite/get",
+			"/api/3.18/invite/get",
 			c.GetInvite,
 		},
 		"MissionInvite": Route{
 			"MissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/mission",
+			"/api/3.18/invite/mission",
 			c.MissionInvite,
 		},
 		"OfferInvite": Route{
 			"OfferInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/offer",
+			"/api/3.18/invite/offer",
 			c.OfferInvite,
 		},
 		"OfferLocationInvite": Route{
 			"OfferLocationInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/offerLocation",
+			"/api/3.18/invite/offerLocation",
 			c.OfferLocationInvite,
 		},
 		"RetailerLocationInvite": Route{
 			"RetailerLocationInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/retailerLocation",
+			"/api/3.18/invite/retailerLocation",
 			c.RetailerLocationInvite,
 		},
 	}
@@ -120,61 +118,61 @@ func (c *InviteAPIController) OrderedRoutes() []Route {
 		Route{
 			"AcceptInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/accept",
+			"/api/3.18/invite/accept",
 			c.AcceptInvite,
 		},
 		Route{
 			"AlbumInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/album",
+			"/api/3.18/invite/album",
 			c.AlbumInvite,
 		},
 		Route{
 			"AlbumContestInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/albumContest",
+			"/api/3.18/invite/albumContest",
 			c.AlbumContestInvite,
 		},
 		Route{
 			"EventInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/event",
+			"/api/3.18/invite/event",
 			c.EventInvite,
 		},
 		Route{
 			"GameInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/gameLevel",
+			"/api/3.18/invite/gameLevel",
 			c.GameInvite,
 		},
 		Route{
 			"GetInvite",
 			strings.ToUpper("Get"),
-			"/api/{version}/invite/get",
+			"/api/3.18/invite/get",
 			c.GetInvite,
 		},
 		Route{
 			"MissionInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/mission",
+			"/api/3.18/invite/mission",
 			c.MissionInvite,
 		},
 		Route{
 			"OfferInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/offer",
+			"/api/3.18/invite/offer",
 			c.OfferInvite,
 		},
 		Route{
 			"OfferLocationInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/offerLocation",
+			"/api/3.18/invite/offerLocation",
 			c.OfferLocationInvite,
 		},
 		Route{
 			"RetailerLocationInvite",
 			strings.ToUpper("Post"),
-			"/api/{version}/invite/retailerLocation",
+			"/api/3.18/invite/retailerLocation",
 			c.RetailerLocationInvite,
 		},
 	}
@@ -184,18 +182,9 @@ func (c *InviteAPIController) OrderedRoutes() []Route {
 
 // AcceptInvite - Accept Invite
 func (c *InviteAPIController) AcceptInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tokenParam string
@@ -394,7 +383,7 @@ func (c *InviteAPIController) AcceptInvite(w http.ResponseWriter, r *http.Reques
 		var param bool = false
 		autoFavoriteRetailerLocationParam = param
 	}
-	result, err := c.service.AcceptInvite(r.Context(), versionParam, tokenParam, accountIdParam, albumIdParam, missionIdParam, albumContestIdParam, offerIdParam, offerLocationIdParam, retailerLocationIdParam, appKeyParam, autoFriendParam, autoAttendEventParam, autoFavoriteOfferParam, autoFavoriteOfferLocationParam, autoFavoriteRetailerLocationParam)
+	result, err := c.service.AcceptInvite(r.Context(), tokenParam, accountIdParam, albumIdParam, missionIdParam, albumContestIdParam, offerIdParam, offerLocationIdParam, retailerLocationIdParam, appKeyParam, autoFriendParam, autoAttendEventParam, autoFavoriteOfferParam, autoFavoriteOfferLocationParam, autoFavoriteRetailerLocationParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -406,18 +395,9 @@ func (c *InviteAPIController) AcceptInvite(w http.ResponseWriter, r *http.Reques
 
 // AlbumInvite - Invite to Collection
 func (c *InviteAPIController) AlbumInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -504,7 +484,7 @@ func (c *InviteAPIController) AlbumInvite(w http.ResponseWriter, r *http.Request
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AlbumInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, appIdParam, appKeyParam, albumIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.AlbumInvite(r.Context(), deviceIdParam, accountIdParam, appIdParam, appKeyParam, albumIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -516,18 +496,9 @@ func (c *InviteAPIController) AlbumInvite(w http.ResponseWriter, r *http.Request
 
 // AlbumContestInvite - Invite to Contest
 func (c *InviteAPIController) AlbumContestInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -614,7 +585,7 @@ func (c *InviteAPIController) AlbumContestInvite(w http.ResponseWriter, r *http.
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AlbumContestInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, appIdParam, appKeyParam, albumContestIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.AlbumContestInvite(r.Context(), deviceIdParam, accountIdParam, appIdParam, appKeyParam, albumContestIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -626,18 +597,9 @@ func (c *InviteAPIController) AlbumContestInvite(w http.ResponseWriter, r *http.
 
 // EventInvite - Invite to Event
 func (c *InviteAPIController) EventInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -702,7 +664,7 @@ func (c *InviteAPIController) EventInvite(w http.ResponseWriter, r *http.Request
 		retailerLocationIdParam = param
 	} else {
 	}
-	result, err := c.service.EventInvite(r.Context(), versionParam, accountIdParam, appKeyParam, listingIdParam, receiverAccountIdsParam, retailerLocationIdParam)
+	result, err := c.service.EventInvite(r.Context(), accountIdParam, appKeyParam, listingIdParam, receiverAccountIdsParam, retailerLocationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -714,18 +676,9 @@ func (c *InviteAPIController) EventInvite(w http.ResponseWriter, r *http.Request
 
 // GameInvite - Invite to Game Level
 func (c *InviteAPIController) GameInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -812,7 +765,7 @@ func (c *InviteAPIController) GameInvite(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GameInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, appIdParam, appKeyParam, gameLevelIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GameInvite(r.Context(), deviceIdParam, accountIdParam, appIdParam, appKeyParam, gameLevelIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -824,18 +777,9 @@ func (c *InviteAPIController) GameInvite(w http.ResponseWriter, r *http.Request)
 
 // GetInvite - Get Invite
 func (c *InviteAPIController) GetInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -950,7 +894,7 @@ func (c *InviteAPIController) GetInvite(w http.ResponseWriter, r *http.Request) 
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.GetInvite(r.Context(), versionParam, accountIdParam, tokenParam, albumIdParam, missionIdParam, albumContestIdParam, offerIdParam, offerLocationIdParam, retailerLocationIdParam, appKeyParam)
+	result, err := c.service.GetInvite(r.Context(), accountIdParam, tokenParam, albumIdParam, missionIdParam, albumContestIdParam, offerIdParam, offerLocationIdParam, retailerLocationIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -962,18 +906,9 @@ func (c *InviteAPIController) GetInvite(w http.ResponseWriter, r *http.Request) 
 
 // MissionInvite - Invite to Mission
 func (c *InviteAPIController) MissionInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1060,7 +995,7 @@ func (c *InviteAPIController) MissionInvite(w http.ResponseWriter, r *http.Reque
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.MissionInvite(r.Context(), versionParam, deviceIdParam, accountIdParam, appIdParam, appKeyParam, missionIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.MissionInvite(r.Context(), deviceIdParam, accountIdParam, appIdParam, appKeyParam, missionIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1072,18 +1007,9 @@ func (c *InviteAPIController) MissionInvite(w http.ResponseWriter, r *http.Reque
 
 // OfferInvite - Invite to Offer
 func (c *InviteAPIController) OfferInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1127,7 +1053,7 @@ func (c *InviteAPIController) OfferInvite(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &RequiredError{Field: "offerId"}, nil)
 		return
 	}
-	result, err := c.service.OfferInvite(r.Context(), versionParam, accountIdParam, appKeyParam, offerIdParam)
+	result, err := c.service.OfferInvite(r.Context(), accountIdParam, appKeyParam, offerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1139,18 +1065,9 @@ func (c *InviteAPIController) OfferInvite(w http.ResponseWriter, r *http.Request
 
 // OfferLocationInvite - Invite to Offer Location
 func (c *InviteAPIController) OfferLocationInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1194,7 +1111,7 @@ func (c *InviteAPIController) OfferLocationInvite(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{Field: "offerLocationId"}, nil)
 		return
 	}
-	result, err := c.service.OfferLocationInvite(r.Context(), versionParam, accountIdParam, appKeyParam, offerLocationIdParam)
+	result, err := c.service.OfferLocationInvite(r.Context(), accountIdParam, appKeyParam, offerLocationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1206,18 +1123,9 @@ func (c *InviteAPIController) OfferLocationInvite(w http.ResponseWriter, r *http
 
 // RetailerLocationInvite - Invite to Retailer Location
 func (c *InviteAPIController) RetailerLocationInvite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1275,7 +1183,7 @@ func (c *InviteAPIController) RetailerLocationInvite(w http.ResponseWriter, r *h
 		albumIdParam = param
 	} else {
 	}
-	result, err := c.service.RetailerLocationInvite(r.Context(), versionParam, accountIdParam, appKeyParam, retailerLocationIdParam, albumIdParam)
+	result, err := c.service.RetailerLocationInvite(r.Context(), accountIdParam, appKeyParam, retailerLocationIdParam, albumIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

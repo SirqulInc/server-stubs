@@ -29,7 +29,7 @@ func NewVatomAPIService() *VatomAPIService {
 }
 
 // GetUserProfile - Get Vatom User Profile
-func (s *VatomAPIService) GetUserProfile(ctx context.Context, version float32, accountId int64, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserProfile(ctx context.Context, accountId int64, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserProfile with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *VatomAPIService) GetUserProfile(ctx context.Context, version float32, a
 }
 
 // UpdateUserProfile - Update Vatom User Profile
-func (s *VatomAPIService) UpdateUserProfile(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateUserProfile(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateUserProfile with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *VatomAPIService) UpdateUserProfile(ctx context.Context, version float32
 }
 
 // SearchIdentities - Search User Identities
-func (s *VatomAPIService) SearchIdentities(ctx context.Context, version float32, accountId int64, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SearchIdentities(ctx context.Context, accountId int64, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SearchIdentities with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *VatomAPIService) SearchIdentities(ctx context.Context, version float32,
 }
 
 // GetUserInfo - Get User Info
-func (s *VatomAPIService) GetUserInfo(ctx context.Context, version float32, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserInfo(ctx context.Context, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserInfo with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *VatomAPIService) GetUserInfo(ctx context.Context, version float32, acco
 }
 
 // GetMyFollowing - Get following
-func (s *VatomAPIService) GetMyFollowing(ctx context.Context, version float32, accountId int64, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetMyFollowing(ctx context.Context, accountId int64, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetMyFollowing with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *VatomAPIService) GetMyFollowing(ctx context.Context, version float32, a
 }
 
 // CreateFollowing - Create following
-func (s *VatomAPIService) CreateFollowing(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) CreateFollowing(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update CreateFollowing with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *VatomAPIService) CreateFollowing(ctx context.Context, version float32, 
 }
 
 // DeleteFollowing - Delete following
-func (s *VatomAPIService) DeleteFollowing(ctx context.Context, version float32, accountId int64, vatomRelsKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) DeleteFollowing(ctx context.Context, accountId int64, vatomRelsKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update DeleteFollowing with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *VatomAPIService) DeleteFollowing(ctx context.Context, version float32, 
 }
 
 // GetUserFollowers - Get user followers
-func (s *VatomAPIService) GetUserFollowers(ctx context.Context, version float32, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserFollowers(ctx context.Context, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserFollowers with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *VatomAPIService) GetUserFollowers(ctx context.Context, version float32,
 }
 
 // GetUserFollowing - Get user following
-func (s *VatomAPIService) GetUserFollowing(ctx context.Context, version float32, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserFollowing(ctx context.Context, accountId int64, vatomUserId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserFollowing with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *VatomAPIService) GetUserFollowing(ctx context.Context, version float32,
 }
 
 // GetUserCoinsBalance - Gets the coins balance for a Vatom User
-func (s *VatomAPIService) GetUserCoinsBalance(ctx context.Context, version float32, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserCoinsBalance(ctx context.Context, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserCoinsBalance with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *VatomAPIService) GetUserCoinsBalance(ctx context.Context, version float
 }
 
 // ListUserCoinTransactions - List Coin Transactions for a Vatom User
-func (s *VatomAPIService) ListUserCoinTransactions(ctx context.Context, version float32, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ListUserCoinTransactions(ctx context.Context, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ListUserCoinTransactions with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *VatomAPIService) ListUserCoinTransactions(ctx context.Context, version 
 }
 
 // TransferUserCoins - Transfer coins from Vatom Users
-func (s *VatomAPIService) TransferUserCoins(ctx context.Context, version float32, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) TransferUserCoins(ctx context.Context, accountId int64, vatomUserId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update TransferUserCoins with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *VatomAPIService) TransferUserCoins(ctx context.Context, version float32
 }
 
 // GetBusinessCoinsBalance - Get the coins for a Business
-func (s *VatomAPIService) GetBusinessCoinsBalance(ctx context.Context, version float32, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetBusinessCoinsBalance(ctx context.Context, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetBusinessCoinsBalance with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *VatomAPIService) GetBusinessCoinsBalance(ctx context.Context, version f
 }
 
 // UpdateBusinessCoins - Fund coins for a Business
-func (s *VatomAPIService) UpdateBusinessCoins(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateBusinessCoins(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateBusinessCoins with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *VatomAPIService) UpdateBusinessCoins(ctx context.Context, version float
 }
 
 // GetUserCoinsAsBusiness - Get the coins for a user (as a Business)
-func (s *VatomAPIService) GetUserCoinsAsBusiness(ctx context.Context, version float32, accountId int64, vatomUserId string, appKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetUserCoinsAsBusiness(ctx context.Context, accountId int64, vatomUserId string, appKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetUserCoinsAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *VatomAPIService) GetUserCoinsAsBusiness(ctx context.Context, version fl
 }
 
 // UpdateUserCoinsAsBusiness - Update the coins for a user (as a Business)
-func (s *VatomAPIService) UpdateUserCoinsAsBusiness(ctx context.Context, version float32, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateUserCoinsAsBusiness(ctx context.Context, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateUserCoinsAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -205,7 +205,7 @@ func (s *VatomAPIService) UpdateUserCoinsAsBusiness(ctx context.Context, version
 }
 
 // ListUserCoinTransactionsAsBusiness - List coin transactions for a user (as a Business)
-func (s *VatomAPIService) ListUserCoinTransactionsAsBusiness(ctx context.Context, version float32, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ListUserCoinTransactionsAsBusiness(ctx context.Context, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ListUserCoinTransactionsAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -216,7 +216,7 @@ func (s *VatomAPIService) ListUserCoinTransactionsAsBusiness(ctx context.Context
 }
 
 // RedeemUserCoinsAsBusiness - Redeem the coins for a user (as a Business)
-func (s *VatomAPIService) RedeemUserCoinsAsBusiness(ctx context.Context, version float32, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) RedeemUserCoinsAsBusiness(ctx context.Context, accountId int64, vatomUserId string, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update RedeemUserCoinsAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -227,7 +227,7 @@ func (s *VatomAPIService) RedeemUserCoinsAsBusiness(ctx context.Context, version
 }
 
 // GetBusinessIds - Get the user business ids
-func (s *VatomAPIService) GetBusinessIds(ctx context.Context, version float32, accountId int64, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetBusinessIds(ctx context.Context, accountId int64, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetBusinessIds with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -238,7 +238,7 @@ func (s *VatomAPIService) GetBusinessIds(ctx context.Context, version float32, a
 }
 
 // GetInventory - Get Vatom User&#39;s Inventory
-func (s *VatomAPIService) GetInventory(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetInventory(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetInventory with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -249,7 +249,7 @@ func (s *VatomAPIService) GetInventory(ctx context.Context, version float32, acc
 }
 
 // SearchInventory - Search Vatom User&#39;s Inventory
-func (s *VatomAPIService) SearchInventory(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SearchInventory(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SearchInventory with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -260,7 +260,7 @@ func (s *VatomAPIService) SearchInventory(ctx context.Context, version float32, 
 }
 
 // PerformActionOnNFT - Perform Action on NFT
-func (s *VatomAPIService) PerformActionOnNFT(ctx context.Context, version float32, accountId int64, vatomId string, vatomAction string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) PerformActionOnNFT(ctx context.Context, accountId int64, vatomId string, vatomAction string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update PerformActionOnNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -271,7 +271,7 @@ func (s *VatomAPIService) PerformActionOnNFT(ctx context.Context, version float3
 }
 
 // ExecuteActionOnNFT - Execute Action on NFT
-func (s *VatomAPIService) ExecuteActionOnNFT(ctx context.Context, version float32, accountId int64, vatomId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ExecuteActionOnNFT(ctx context.Context, accountId int64, vatomId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ExecuteActionOnNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -282,7 +282,7 @@ func (s *VatomAPIService) ExecuteActionOnNFT(ctx context.Context, version float3
 }
 
 // GeomapSearch - Search Vatom Geo Map
-func (s *VatomAPIService) GeomapSearch(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GeomapSearch(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GeomapSearch with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -293,7 +293,7 @@ func (s *VatomAPIService) GeomapSearch(ctx context.Context, version float32, acc
 }
 
 // GetVatomNFT - Get Vatom NFT Details
-func (s *VatomAPIService) GetVatomNFT(ctx context.Context, version float32, accountId int64, vatomId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetVatomNFT(ctx context.Context, accountId int64, vatomId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetVatomNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -304,7 +304,7 @@ func (s *VatomAPIService) GetVatomNFT(ctx context.Context, version float32, acco
 }
 
 // DeleteVatomNFT - Delete Vatom NFT
-func (s *VatomAPIService) DeleteVatomNFT(ctx context.Context, version float32, accountId int64, vatomId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) DeleteVatomNFT(ctx context.Context, accountId int64, vatomId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update DeleteVatomNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -315,7 +315,7 @@ func (s *VatomAPIService) DeleteVatomNFT(ctx context.Context, version float32, a
 }
 
 // GetBusinessInfo - Get Vatom Business Info
-func (s *VatomAPIService) GetBusinessInfo(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetBusinessInfo(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetBusinessInfo with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -326,7 +326,7 @@ func (s *VatomAPIService) GetBusinessInfo(ctx context.Context, version float32, 
 }
 
 // SearchBusinesses - Search for Vatom Businesses
-func (s *VatomAPIService) SearchBusinesses(ctx context.Context, version float32, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SearchBusinesses(ctx context.Context, accountId int64, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SearchBusinesses with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -337,7 +337,7 @@ func (s *VatomAPIService) SearchBusinesses(ctx context.Context, version float32,
 }
 
 // GetBusinessUsers - Get Vatom Business Users
-func (s *VatomAPIService) GetBusinessUsers(ctx context.Context, version float32, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetBusinessUsers(ctx context.Context, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetBusinessUsers with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -348,7 +348,7 @@ func (s *VatomAPIService) GetBusinessUsers(ctx context.Context, version float32,
 }
 
 // GetBusinessBehaviors - Get Vatom Business Behaviors
-func (s *VatomAPIService) GetBusinessBehaviors(ctx context.Context, version float32, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetBusinessBehaviors(ctx context.Context, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetBusinessBehaviors with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -359,7 +359,7 @@ func (s *VatomAPIService) GetBusinessBehaviors(ctx context.Context, version floa
 }
 
 // GetCampaignInfo - Get Campaign Info
-func (s *VatomAPIService) GetCampaignInfo(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetCampaignInfo(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetCampaignInfo with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -370,7 +370,7 @@ func (s *VatomAPIService) GetCampaignInfo(ctx context.Context, version float32, 
 }
 
 // SearchCampaignGroups - Search Campaign Groups
-func (s *VatomAPIService) SearchCampaignGroups(ctx context.Context, version float32, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SearchCampaignGroups(ctx context.Context, accountId int64, appKey string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SearchCampaignGroups with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -381,7 +381,7 @@ func (s *VatomAPIService) SearchCampaignGroups(ctx context.Context, version floa
 }
 
 // GetCampaignGroupStats - Get Campaign Group Stats
-func (s *VatomAPIService) GetCampaignGroupStats(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetCampaignGroupStats(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetCampaignGroupStats with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -392,7 +392,7 @@ func (s *VatomAPIService) GetCampaignGroupStats(ctx context.Context, version flo
 }
 
 // GetCampaignGroupEntities - Get Campaign Group Entities
-func (s *VatomAPIService) GetCampaignGroupEntities(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetCampaignGroupEntities(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetCampaignGroupEntities with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -403,7 +403,7 @@ func (s *VatomAPIService) GetCampaignGroupEntities(ctx context.Context, version 
 }
 
 // GetCampaignGroupRules - Get Campaign Group Rules
-func (s *VatomAPIService) GetCampaignGroupRules(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetCampaignGroupRules(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetCampaignGroupRules with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -414,7 +414,7 @@ func (s *VatomAPIService) GetCampaignGroupRules(ctx context.Context, version flo
 }
 
 // SendNFT - Send NFT
-func (s *VatomAPIService) SendNFT(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SendNFT(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SendNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -425,7 +425,7 @@ func (s *VatomAPIService) SendNFT(ctx context.Context, version float32, accountI
 }
 
 // RedeemNFT - Redeem NFT
-func (s *VatomAPIService) RedeemNFT(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) RedeemNFT(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update RedeemNFT with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -436,7 +436,7 @@ func (s *VatomAPIService) RedeemNFT(ctx context.Context, version float32, accoun
 }
 
 // GetPointsBalance - Get Points Balance
-func (s *VatomAPIService) GetPointsBalance(ctx context.Context, version float32, accountId int64, vatomUserId string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetPointsBalance(ctx context.Context, accountId int64, vatomUserId string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetPointsBalance with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -447,7 +447,7 @@ func (s *VatomAPIService) GetPointsBalance(ctx context.Context, version float32,
 }
 
 // GetPointsBalanceAsBusiness - Get Points Balance as Business
-func (s *VatomAPIService) GetPointsBalanceAsBusiness(ctx context.Context, version float32, accountId int64, appKey string, vatomUserId string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetPointsBalanceAsBusiness(ctx context.Context, accountId int64, appKey string, vatomUserId string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetPointsBalanceAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -458,7 +458,7 @@ func (s *VatomAPIService) GetPointsBalanceAsBusiness(ctx context.Context, versio
 }
 
 // SetPointsBalanceAsBusiness - Set Points Balance as Business
-func (s *VatomAPIService) SetPointsBalanceAsBusiness(ctx context.Context, version float32, accountId int64, appKey string, vatomUserId string, vatomCampaignId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) SetPointsBalanceAsBusiness(ctx context.Context, accountId int64, appKey string, vatomUserId string, vatomCampaignId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update SetPointsBalanceAsBusiness with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -469,7 +469,7 @@ func (s *VatomAPIService) SetPointsBalanceAsBusiness(ctx context.Context, versio
 }
 
 // DeletePointsBalance - Reset All Points Balance
-func (s *VatomAPIService) DeletePointsBalance(ctx context.Context, version float32, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) DeletePointsBalance(ctx context.Context, accountId int64, appKey string, vatomCampaignId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update DeletePointsBalance with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -480,7 +480,7 @@ func (s *VatomAPIService) DeletePointsBalance(ctx context.Context, version float
 }
 
 // ListCommunities - List Vatom Communities
-func (s *VatomAPIService) ListCommunities(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ListCommunities(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ListCommunities with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -491,7 +491,7 @@ func (s *VatomAPIService) ListCommunities(ctx context.Context, version float32, 
 }
 
 // ListSpaces - List Vatom Spaces
-func (s *VatomAPIService) ListSpaces(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ListSpaces(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ListSpaces with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -502,7 +502,7 @@ func (s *VatomAPIService) ListSpaces(ctx context.Context, version float32, accou
 }
 
 // GetSpace - Get Vatom Space
-func (s *VatomAPIService) GetSpace(ctx context.Context, version float32, accountId int64, appKey string, vatomSpaceId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetSpace(ctx context.Context, accountId int64, appKey string, vatomSpaceId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetSpace with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -513,7 +513,7 @@ func (s *VatomAPIService) GetSpace(ctx context.Context, version float32, account
 }
 
 // CreateSpace - Create Vatom Space
-func (s *VatomAPIService) CreateSpace(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) CreateSpace(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update CreateSpace with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -524,7 +524,7 @@ func (s *VatomAPIService) CreateSpace(ctx context.Context, version float32, acco
 }
 
 // UpdateSpace - Update Vatom Space
-func (s *VatomAPIService) UpdateSpace(ctx context.Context, version float32, accountId int64, appKey string, vatomSpaceId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateSpace(ctx context.Context, accountId int64, appKey string, vatomSpaceId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateSpace with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -535,7 +535,7 @@ func (s *VatomAPIService) UpdateSpace(ctx context.Context, version float32, acco
 }
 
 // DeleteSpace - Delete Vatom Space
-func (s *VatomAPIService) DeleteSpace(ctx context.Context, version float32, accountId int64, appKey string, vatomSpaceId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) DeleteSpace(ctx context.Context, accountId int64, appKey string, vatomSpaceId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update DeleteSpace with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -546,7 +546,7 @@ func (s *VatomAPIService) DeleteSpace(ctx context.Context, version float32, acco
 }
 
 // ListEvents - List Vatom Events
-func (s *VatomAPIService) ListEvents(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) ListEvents(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ListEvents with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -557,7 +557,7 @@ func (s *VatomAPIService) ListEvents(ctx context.Context, version float32, accou
 }
 
 // GetVatomEvent - Get Vatom Event
-func (s *VatomAPIService) GetVatomEvent(ctx context.Context, version float32, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetVatomEvent(ctx context.Context, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetVatomEvent with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -568,7 +568,7 @@ func (s *VatomAPIService) GetVatomEvent(ctx context.Context, version float32, ac
 }
 
 // CreateVatomEvent - Create Vatom Event
-func (s *VatomAPIService) CreateVatomEvent(ctx context.Context, version float32, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) CreateVatomEvent(ctx context.Context, accountId int64, appKey string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update CreateVatomEvent with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -579,7 +579,7 @@ func (s *VatomAPIService) CreateVatomEvent(ctx context.Context, version float32,
 }
 
 // UpdateVatomEvent - Update Vatom Event
-func (s *VatomAPIService) UpdateVatomEvent(ctx context.Context, version float32, accountId int64, appKey string, vatomEventId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateVatomEvent(ctx context.Context, accountId int64, appKey string, vatomEventId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateVatomEvent with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -590,7 +590,7 @@ func (s *VatomAPIService) UpdateVatomEvent(ctx context.Context, version float32,
 }
 
 // DeleteVatomEvent - Delete Vatom Event
-func (s *VatomAPIService) DeleteVatomEvent(ctx context.Context, version float32, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) DeleteVatomEvent(ctx context.Context, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update DeleteVatomEvent with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -601,7 +601,7 @@ func (s *VatomAPIService) DeleteVatomEvent(ctx context.Context, version float32,
 }
 
 // GetEventGuestList - Get Vatom Event Guest List
-func (s *VatomAPIService) GetEventGuestList(ctx context.Context, version float32, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) GetEventGuestList(ctx context.Context, accountId int64, appKey string, vatomEventId string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update GetEventGuestList with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -612,7 +612,7 @@ func (s *VatomAPIService) GetEventGuestList(ctx context.Context, version float32
 }
 
 // UpdateEventGuestList - Update Vatom Event Guest List
-func (s *VatomAPIService) UpdateEventGuestList(ctx context.Context, version float32, accountId int64, appKey string, vatomEventId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
+func (s *VatomAPIService) UpdateEventGuestList(ctx context.Context, accountId int64, appKey string, vatomEventId string, vatomParameters string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update UpdateEventGuestList with the required logic for this service method.
 	// Add api_vatom_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

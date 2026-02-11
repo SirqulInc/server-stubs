@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TournamentAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,61 +52,61 @@ func (c *TournamentAPIController) Routes() Routes {
 		"CreateTournament": Route{
 			"CreateTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/create",
+			"/api/3.18/tournament/create",
 			c.CreateTournament,
 		},
 		"DeleteTournament": Route{
 			"DeleteTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/delete",
+			"/api/3.18/tournament/delete",
 			c.DeleteTournament,
 		},
 		"GetTournament": Route{
 			"GetTournament",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/get",
+			"/api/3.18/tournament/get",
 			c.GetTournament,
 		},
 		"SearchRounds": Route{
 			"SearchRounds",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/round/search",
+			"/api/3.18/tournament/round/search",
 			c.SearchRounds,
 		},
 		"SearchObjects": Route{
 			"SearchObjects",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/object/search",
+			"/api/3.18/tournament/object/search",
 			c.SearchObjects,
 		},
 		"SubmitTournamentScore": Route{
 			"SubmitTournamentScore",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/score",
+			"/api/3.18/tournament/score",
 			c.SubmitTournamentScore,
 		},
 		"SearchTournaments": Route{
 			"SearchTournaments",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/search",
+			"/api/3.18/tournament/search",
 			c.SearchTournaments,
 		},
 		"SubstituteTournamentPlayer": Route{
 			"SubstituteTournamentPlayer",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/substitute",
+			"/api/3.18/tournament/substitute",
 			c.SubstituteTournamentPlayer,
 		},
 		"UpdateTournament": Route{
 			"UpdateTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/update",
+			"/api/3.18/tournament/update",
 			c.UpdateTournament,
 		},
 		"SubmitTournamentVote": Route{
 			"SubmitTournamentVote",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/vote",
+			"/api/3.18/tournament/vote",
 			c.SubmitTournamentVote,
 		},
 	}
@@ -120,61 +118,61 @@ func (c *TournamentAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/create",
+			"/api/3.18/tournament/create",
 			c.CreateTournament,
 		},
 		Route{
 			"DeleteTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/delete",
+			"/api/3.18/tournament/delete",
 			c.DeleteTournament,
 		},
 		Route{
 			"GetTournament",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/get",
+			"/api/3.18/tournament/get",
 			c.GetTournament,
 		},
 		Route{
 			"SearchRounds",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/round/search",
+			"/api/3.18/tournament/round/search",
 			c.SearchRounds,
 		},
 		Route{
 			"SearchObjects",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/object/search",
+			"/api/3.18/tournament/object/search",
 			c.SearchObjects,
 		},
 		Route{
 			"SubmitTournamentScore",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/score",
+			"/api/3.18/tournament/score",
 			c.SubmitTournamentScore,
 		},
 		Route{
 			"SearchTournaments",
 			strings.ToUpper("Get"),
-			"/api/{version}/tournament/search",
+			"/api/3.18/tournament/search",
 			c.SearchTournaments,
 		},
 		Route{
 			"SubstituteTournamentPlayer",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/substitute",
+			"/api/3.18/tournament/substitute",
 			c.SubstituteTournamentPlayer,
 		},
 		Route{
 			"UpdateTournament",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/update",
+			"/api/3.18/tournament/update",
 			c.UpdateTournament,
 		},
 		Route{
 			"SubmitTournamentVote",
 			strings.ToUpper("Post"),
-			"/api/{version}/tournament/vote",
+			"/api/3.18/tournament/vote",
 			c.SubmitTournamentVote,
 		},
 	}
@@ -184,18 +182,9 @@ func (c *TournamentAPIController) OrderedRoutes() []Route {
 
 // CreateTournament - Create Tournament
 func (c *TournamentAPIController) CreateTournament(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -623,7 +612,7 @@ func (c *TournamentAPIController) CreateTournament(w http.ResponseWriter, r *htt
 		tieTagParam = param
 	} else {
 	}
-	result, err := c.service.CreateTournament(r.Context(), versionParam, accountIdParam, appKeyParam, titleParam, costToPlayParam, startDateParam, subTypeParam, imageAssetIdParam, secondsBetweenLevelsParam, secondsForTieBreakerParam, secondsBetweenPacksParam, maximumLevelLengthParam, costToPlayTypeParam, minimumToPlayParam, startingLimitParam, availableLimitParam, descriptionParam, metaDataParam, audienceIdsParam, activeParam, enableBuyBackParam, offerIdsParam, offerAssetIdParam, fixedRewardParam, splitRewardParam, allocateTicketsParam, tournamentDataParam, missionTypeParam, visibilityParam, preliminaryGroupsParam, preliminaryGroupAdvancementsParam, enableMultipleEntriesParam, enableMultipleVotesParam, featuredParam, winnerTagParam, tieTagParam)
+	result, err := c.service.CreateTournament(r.Context(), accountIdParam, appKeyParam, titleParam, costToPlayParam, startDateParam, subTypeParam, imageAssetIdParam, secondsBetweenLevelsParam, secondsForTieBreakerParam, secondsBetweenPacksParam, maximumLevelLengthParam, costToPlayTypeParam, minimumToPlayParam, startingLimitParam, availableLimitParam, descriptionParam, metaDataParam, audienceIdsParam, activeParam, enableBuyBackParam, offerIdsParam, offerAssetIdParam, fixedRewardParam, splitRewardParam, allocateTicketsParam, tournamentDataParam, missionTypeParam, visibilityParam, preliminaryGroupsParam, preliminaryGroupAdvancementsParam, enableMultipleEntriesParam, enableMultipleVotesParam, featuredParam, winnerTagParam, tieTagParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -635,18 +624,9 @@ func (c *TournamentAPIController) CreateTournament(w http.ResponseWriter, r *htt
 
 // DeleteTournament - Delete Tournament
 func (c *TournamentAPIController) DeleteTournament(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -681,7 +661,7 @@ func (c *TournamentAPIController) DeleteTournament(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{Field: "missionId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteTournament(r.Context(), versionParam, accountIdParam, missionIdParam)
+	result, err := c.service.DeleteTournament(r.Context(), accountIdParam, missionIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -693,18 +673,9 @@ func (c *TournamentAPIController) DeleteTournament(w http.ResponseWriter, r *htt
 
 // GetTournament - Get Tournament
 func (c *TournamentAPIController) GetTournament(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -767,7 +738,7 @@ func (c *TournamentAPIController) GetTournament(w http.ResponseWriter, r *http.R
 		var param int32 = 50
 		objectPreviewSizeParam = param
 	}
-	result, err := c.service.GetTournament(r.Context(), versionParam, accountIdParam, missionIdParam, joinCodeParam, includeScoresParam, objectPreviewSizeParam)
+	result, err := c.service.GetTournament(r.Context(), accountIdParam, missionIdParam, joinCodeParam, includeScoresParam, objectPreviewSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -779,18 +750,9 @@ func (c *TournamentAPIController) GetTournament(w http.ResponseWriter, r *http.R
 
 // SearchRounds - Search Tournament Rounds
 func (c *TournamentAPIController) SearchRounds(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -891,7 +853,7 @@ func (c *TournamentAPIController) SearchRounds(w http.ResponseWriter, r *http.Re
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchRounds(r.Context(), versionParam, accountIdParam, appKeyParam, statusParam, missionTypeParam, currentOnlyParam, visibilitiesParam, startParam, limitParam)
+	result, err := c.service.SearchRounds(r.Context(), accountIdParam, appKeyParam, statusParam, missionTypeParam, currentOnlyParam, visibilitiesParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -903,18 +865,9 @@ func (c *TournamentAPIController) SearchRounds(w http.ResponseWriter, r *http.Re
 
 // SearchObjects - Search Tournament Objects
 func (c *TournamentAPIController) SearchObjects(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1006,7 +959,7 @@ func (c *TournamentAPIController) SearchObjects(w http.ResponseWriter, r *http.R
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchObjects(r.Context(), versionParam, accountIdParam, gameLevelIdParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchObjects(r.Context(), accountIdParam, gameLevelIdParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1018,18 +971,9 @@ func (c *TournamentAPIController) SearchObjects(w http.ResponseWriter, r *http.R
 
 // SubmitTournamentScore - Submit Tournament Score
 func (c *TournamentAPIController) SubmitTournamentScore(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1128,7 +1072,7 @@ func (c *TournamentAPIController) SubmitTournamentScore(w http.ResponseWriter, r
 		gameLevelIdParam = param
 	} else {
 	}
-	result, err := c.service.SubmitTournamentScore(r.Context(), versionParam, accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, scoresParam, gameLevelIdParam)
+	result, err := c.service.SubmitTournamentScore(r.Context(), accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, scoresParam, gameLevelIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1140,18 +1084,9 @@ func (c *TournamentAPIController) SubmitTournamentScore(w http.ResponseWriter, r
 
 // SearchTournaments - Search Tournaments
 func (c *TournamentAPIController) SearchTournaments(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1291,7 +1226,7 @@ func (c *TournamentAPIController) SearchTournaments(w http.ResponseWriter, r *ht
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchTournaments(r.Context(), versionParam, accountIdParam, appKeyParam, keywordParam, subTypeParam, includeInactiveParam, missionTypesParam, filterParam, sortFieldParam, descendingParam, visibilityParam, startParam, limitParam)
+	result, err := c.service.SearchTournaments(r.Context(), accountIdParam, appKeyParam, keywordParam, subTypeParam, includeInactiveParam, missionTypesParam, filterParam, sortFieldParam, descendingParam, visibilityParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1303,18 +1238,9 @@ func (c *TournamentAPIController) SearchTournaments(w http.ResponseWriter, r *ht
 
 // SubstituteTournamentPlayer - Substitute Tournament Player
 func (c *TournamentAPIController) SubstituteTournamentPlayer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1381,7 +1307,7 @@ func (c *TournamentAPIController) SubstituteTournamentPlayer(w http.ResponseWrit
 		c.errorHandler(w, r, &RequiredError{Field: "gameLevelId"}, nil)
 		return
 	}
-	result, err := c.service.SubstituteTournamentPlayer(r.Context(), versionParam, accountIdParam, missionIdParam, packIdParam, gameLevelIdParam)
+	result, err := c.service.SubstituteTournamentPlayer(r.Context(), accountIdParam, missionIdParam, packIdParam, gameLevelIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1393,18 +1319,9 @@ func (c *TournamentAPIController) SubstituteTournamentPlayer(w http.ResponseWrit
 
 // UpdateTournament - Update Tournament
 func (c *TournamentAPIController) UpdateTournament(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1796,7 +1713,7 @@ func (c *TournamentAPIController) UpdateTournament(w http.ResponseWriter, r *htt
 		tieTagParam = param
 	} else {
 	}
-	result, err := c.service.UpdateTournament(r.Context(), versionParam, accountIdParam, missionIdParam, titleParam, subTypeParam, imageAssetIdParam, secondsBetweenLevelsParam, secondsForTieBreakerParam, secondsBetweenPacksParam, maximumLevelLengthParam, costToPlayParam, costToPlayTypeParam, minimumToPlayParam, startingLimitParam, availableLimitParam, descriptionParam, metaDataParam, startDateParam, audienceIdsParam, activeParam, enableBuyBackParam, offerIdsParam, offerAssetIdParam, fixedRewardParam, splitRewardParam, allocateTicketsParam, tournamentDataParam, visibilityParam, preliminaryGroupsParam, preliminaryGroupAdvancementsParam, enableMultipleEntriesParam, enableMultipleVotesParam, featuredParam, winnerTagParam, tieTagParam)
+	result, err := c.service.UpdateTournament(r.Context(), accountIdParam, missionIdParam, titleParam, subTypeParam, imageAssetIdParam, secondsBetweenLevelsParam, secondsForTieBreakerParam, secondsBetweenPacksParam, maximumLevelLengthParam, costToPlayParam, costToPlayTypeParam, minimumToPlayParam, startingLimitParam, availableLimitParam, descriptionParam, metaDataParam, startDateParam, audienceIdsParam, activeParam, enableBuyBackParam, offerIdsParam, offerAssetIdParam, fixedRewardParam, splitRewardParam, allocateTicketsParam, tournamentDataParam, visibilityParam, preliminaryGroupsParam, preliminaryGroupAdvancementsParam, enableMultipleEntriesParam, enableMultipleVotesParam, featuredParam, winnerTagParam, tieTagParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1808,18 +1725,9 @@ func (c *TournamentAPIController) UpdateTournament(w http.ResponseWriter, r *htt
 
 // SubmitTournamentVote - Submit a vote for a multi-stage album tournament.
 func (c *TournamentAPIController) SubmitTournamentVote(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1902,7 +1810,7 @@ func (c *TournamentAPIController) SubmitTournamentVote(w http.ResponseWriter, r 
 		var param bool = false
 		checkIfDeviceAlreadyVotedParam = param
 	}
-	result, err := c.service.SubmitTournamentVote(r.Context(), versionParam, accountIdParam, appKeyParam, missionIdParam, gameObjectIdParam, deviceIdParam, checkIfDeviceAlreadyVotedParam)
+	result, err := c.service.SubmitTournamentVote(r.Context(), accountIdParam, appKeyParam, missionIdParam, gameObjectIdParam, deviceIdParam, checkIfDeviceAlreadyVotedParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

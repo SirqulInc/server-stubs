@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // OfferAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,97 +52,97 @@ func (c *OfferAPIController) Routes() Routes {
 		"GetOfferDetails": Route{
 			"GetOfferDetails",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/get",
+			"/api/3.18/offer/get",
 			c.GetOfferDetails,
 		},
 		"SearchOffersForConsumer": Route{
 			"SearchOffersForConsumer",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/lists",
+			"/api/3.18/offer/lists",
 			c.SearchOffersForConsumer,
 		},
 		"GetOfferListCounts": Route{
 			"GetOfferListCounts",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/lists/count",
+			"/api/3.18/offer/lists/count",
 			c.GetOfferListCounts,
 		},
 		"GetOfferLocation": Route{
 			"GetOfferLocation",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/location/get",
+			"/api/3.18/offer/location/get",
 			c.GetOfferLocation,
 		},
 		"TopOfferTransactions": Route{
 			"TopOfferTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/top",
+			"/api/3.18/offer/top",
 			c.TopOfferTransactions,
 		},
 		"CreateOffer": Route{
 			"CreateOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/create",
+			"/api/3.18/retailer/offer/create",
 			c.CreateOffer,
 		},
 		"DeleteOffer": Route{
 			"DeleteOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/delete",
+			"/api/3.18/retailer/offer/delete",
 			c.DeleteOffer,
 		},
 		"GetOffer": Route{
 			"GetOffer",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/get",
+			"/api/3.18/retailer/offer/get",
 			c.GetOffer,
 		},
 		"BatchUpdateOfferLocations": Route{
 			"BatchUpdateOfferLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/location/batchUpdate",
+			"/api/3.18/retailer/offer/location/batchUpdate",
 			c.BatchUpdateOfferLocations,
 		},
 		"DeleteOfferLocation": Route{
 			"DeleteOfferLocation",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/location/delete",
+			"/api/3.18/retailer/offer/location/delete",
 			c.DeleteOfferLocation,
 		},
 		"GetOfferLocationsForRetailers": Route{
 			"GetOfferLocationsForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/location/search",
+			"/api/3.18/retailer/offer/location/search",
 			c.GetOfferLocationsForRetailers,
 		},
 		"GetOffersForRetailers": Route{
 			"GetOffersForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/search",
+			"/api/3.18/retailer/offer/search",
 			c.GetOffersForRetailers,
 		},
 		"UpdateOfferStatus": Route{
 			"UpdateOfferStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/status",
+			"/api/3.18/retailer/offer/status",
 			c.UpdateOfferStatus,
 		},
 		"SearchOfferTransactionsForRetailers": Route{
 			"SearchOfferTransactionsForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/transaction/search",
+			"/api/3.18/retailer/offer/transaction/search",
 			c.SearchOfferTransactionsForRetailers,
 		},
 		"RedeemOfferTransaction": Route{
 			"RedeemOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/transaction/update",
+			"/api/3.18/retailer/offer/transaction/update",
 			c.RedeemOfferTransaction,
 		},
 		"UpdateOffer": Route{
 			"UpdateOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/update",
+			"/api/3.18/retailer/offer/update",
 			c.UpdateOffer,
 		},
 	}
@@ -156,97 +154,97 @@ func (c *OfferAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetOfferDetails",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/get",
+			"/api/3.18/offer/get",
 			c.GetOfferDetails,
 		},
 		Route{
 			"SearchOffersForConsumer",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/lists",
+			"/api/3.18/offer/lists",
 			c.SearchOffersForConsumer,
 		},
 		Route{
 			"GetOfferListCounts",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/lists/count",
+			"/api/3.18/offer/lists/count",
 			c.GetOfferListCounts,
 		},
 		Route{
 			"GetOfferLocation",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/location/get",
+			"/api/3.18/offer/location/get",
 			c.GetOfferLocation,
 		},
 		Route{
 			"TopOfferTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/top",
+			"/api/3.18/offer/top",
 			c.TopOfferTransactions,
 		},
 		Route{
 			"CreateOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/create",
+			"/api/3.18/retailer/offer/create",
 			c.CreateOffer,
 		},
 		Route{
 			"DeleteOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/delete",
+			"/api/3.18/retailer/offer/delete",
 			c.DeleteOffer,
 		},
 		Route{
 			"GetOffer",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/get",
+			"/api/3.18/retailer/offer/get",
 			c.GetOffer,
 		},
 		Route{
 			"BatchUpdateOfferLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/location/batchUpdate",
+			"/api/3.18/retailer/offer/location/batchUpdate",
 			c.BatchUpdateOfferLocations,
 		},
 		Route{
 			"DeleteOfferLocation",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/location/delete",
+			"/api/3.18/retailer/offer/location/delete",
 			c.DeleteOfferLocation,
 		},
 		Route{
 			"GetOfferLocationsForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/location/search",
+			"/api/3.18/retailer/offer/location/search",
 			c.GetOfferLocationsForRetailers,
 		},
 		Route{
 			"GetOffersForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/search",
+			"/api/3.18/retailer/offer/search",
 			c.GetOffersForRetailers,
 		},
 		Route{
 			"UpdateOfferStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/status",
+			"/api/3.18/retailer/offer/status",
 			c.UpdateOfferStatus,
 		},
 		Route{
 			"SearchOfferTransactionsForRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/offer/transaction/search",
+			"/api/3.18/retailer/offer/transaction/search",
 			c.SearchOfferTransactionsForRetailers,
 		},
 		Route{
 			"RedeemOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/transaction/update",
+			"/api/3.18/retailer/offer/transaction/update",
 			c.RedeemOfferTransaction,
 		},
 		Route{
 			"UpdateOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/offer/update",
+			"/api/3.18/retailer/offer/update",
 			c.UpdateOffer,
 		},
 	}
@@ -256,18 +254,9 @@ func (c *OfferAPIController) OrderedRoutes() []Route {
 
 // GetOfferDetails - Get Offer
 func (c *OfferAPIController) GetOfferDetails(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -409,7 +398,7 @@ func (c *OfferAPIController) GetOfferDetails(w http.ResponseWriter, r *http.Requ
 		var param bool = false
 		includeChildOffersParam = param
 	}
-	result, err := c.service.GetOfferDetails(r.Context(), versionParam, deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, distanceParam, latitudeParam, longitudeParam, includeOfferLocationsParam, includeRetailerLocationsParam, includeChildOffersParam)
+	result, err := c.service.GetOfferDetails(r.Context(), deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, distanceParam, latitudeParam, longitudeParam, includeOfferLocationsParam, includeRetailerLocationsParam, includeChildOffersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -421,18 +410,9 @@ func (c *OfferAPIController) GetOfferDetails(w http.ResponseWriter, r *http.Requ
 
 // SearchOffersForConsumer - Search Offers
 func (c *OfferAPIController) SearchOffersForConsumer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var latitudeParam float64
@@ -777,7 +757,7 @@ func (c *OfferAPIController) SearchOffersForConsumer(w http.ResponseWriter, r *h
 		groupByParam = param
 	} else {
 	}
-	result, err := c.service.SearchOffersForConsumer(r.Context(), versionParam, latitudeParam, longitudeParam, recommendationTypeParam, locationIdParam, startParam, limitParam, maxRecommendationsParam, distanceUnitParam, appKeyParam, deviceIdParam, accountIdParam, searchRangeParam, tagsParam, supportedPostalCodesParam, keywordParam, categoriesParam, filtersParam, offerTypesParam, type_Param, sortFieldParam, recommendOfferIdsParam, retailerLocationIdsParam, offerIdParam, includeMissionParam, includeCategoriesParam, includeFiltersParam, includeExpiredParam, includeFavoriteParam, closestOfferOnlyParam, searchExpressionParam, groupByParam)
+	result, err := c.service.SearchOffersForConsumer(r.Context(), latitudeParam, longitudeParam, recommendationTypeParam, locationIdParam, startParam, limitParam, maxRecommendationsParam, distanceUnitParam, appKeyParam, deviceIdParam, accountIdParam, searchRangeParam, tagsParam, supportedPostalCodesParam, keywordParam, categoriesParam, filtersParam, offerTypesParam, type_Param, sortFieldParam, recommendOfferIdsParam, retailerLocationIdsParam, offerIdParam, includeMissionParam, includeCategoriesParam, includeFiltersParam, includeExpiredParam, includeFavoriteParam, closestOfferOnlyParam, searchExpressionParam, groupByParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -789,18 +769,9 @@ func (c *OfferAPIController) SearchOffersForConsumer(w http.ResponseWriter, r *h
 
 // GetOfferListCounts - Get Offers (Counts)
 func (c *OfferAPIController) GetOfferListCounts(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var latitudeParam float64
@@ -860,7 +831,7 @@ func (c *OfferAPIController) GetOfferListCounts(w http.ResponseWriter, r *http.R
 		param := "MILES"
 		distanceUnitParam = param
 	}
-	result, err := c.service.GetOfferListCounts(r.Context(), versionParam, latitudeParam, longitudeParam, searchRangeParam, distanceUnitParam)
+	result, err := c.service.GetOfferListCounts(r.Context(), latitudeParam, longitudeParam, searchRangeParam, distanceUnitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -872,18 +843,9 @@ func (c *OfferAPIController) GetOfferListCounts(w http.ResponseWriter, r *http.R
 
 // GetOfferLocation - Get Offer Location
 func (c *OfferAPIController) GetOfferLocation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerLocationIdParam int64
@@ -907,7 +869,7 @@ func (c *OfferAPIController) GetOfferLocation(w http.ResponseWriter, r *http.Req
 		udidParam = param
 	} else {
 	}
-	result, err := c.service.GetOfferLocation(r.Context(), versionParam, offerLocationIdParam, udidParam)
+	result, err := c.service.GetOfferLocation(r.Context(), offerLocationIdParam, udidParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -919,18 +881,9 @@ func (c *OfferAPIController) GetOfferLocation(w http.ResponseWriter, r *http.Req
 
 // TopOfferTransactions - Get Offers (Top)
 func (c *OfferAPIController) TopOfferTransactions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startParam int32
@@ -965,7 +918,7 @@ func (c *OfferAPIController) TopOfferTransactions(w http.ResponseWriter, r *http
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.TopOfferTransactions(r.Context(), versionParam, startParam, limitParam)
+	result, err := c.service.TopOfferTransactions(r.Context(), startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -977,18 +930,9 @@ func (c *OfferAPIController) TopOfferTransactions(w http.ResponseWriter, r *http
 
 // CreateOffer - Create Offer
 func (c *OfferAPIController) CreateOffer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var includeOfferLocationsParam bool
@@ -1940,7 +1884,7 @@ func (c *OfferAPIController) CreateOffer(w http.ResponseWriter, r *http.Request)
 		availabilitySummaryParam = param
 	} else {
 	}
-	result, err := c.service.CreateOffer(r.Context(), versionParam, includeOfferLocationsParam, titleParam, barcodeTypeParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceParam, fullPriceParam, discountPriceParam, offerTypeParam, specialOfferTypeParam, offerVisibilityParam, activeParam, deviceIdParam, accountIdParam, tagsParam, parentOfferIdParam, retailerLocationIdsParam, offerLocationsParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, externalIdParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, ticketPriceTypeParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, categoryIdsParam, filterIdsParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, brandParam, productTypeParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, departmentParam, featuresParam, minimumPriceParam, widthParam, heightParam, depthParam, weightParam, unitParam, studioParam, parentalRatingParam, publishDateParam, availabilityDateParam, sizeIdParam, listingIdParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, rebootTimeHourParam, rebootTimeMinuteParam, idleTimeoutInSecondParam, serialNumberParam, udidParam, deviceTypeParam, devicePowerParam, deviceInterferenceParam, availabilityParam, availabilitySummaryParam)
+	result, err := c.service.CreateOffer(r.Context(), includeOfferLocationsParam, titleParam, barcodeTypeParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceParam, fullPriceParam, discountPriceParam, offerTypeParam, specialOfferTypeParam, offerVisibilityParam, activeParam, deviceIdParam, accountIdParam, tagsParam, parentOfferIdParam, retailerLocationIdsParam, offerLocationsParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, externalIdParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, ticketPriceTypeParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, categoryIdsParam, filterIdsParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, brandParam, productTypeParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, departmentParam, featuresParam, minimumPriceParam, widthParam, heightParam, depthParam, weightParam, unitParam, studioParam, parentalRatingParam, publishDateParam, availabilityDateParam, sizeIdParam, listingIdParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, rebootTimeHourParam, rebootTimeMinuteParam, idleTimeoutInSecondParam, serialNumberParam, udidParam, deviceTypeParam, devicePowerParam, deviceInterferenceParam, availabilityParam, availabilitySummaryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1952,18 +1896,9 @@ func (c *OfferAPIController) CreateOffer(w http.ResponseWriter, r *http.Request)
 
 // DeleteOffer - Delete Offer
 func (c *OfferAPIController) DeleteOffer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerIdParam int64
@@ -2003,7 +1938,7 @@ func (c *OfferAPIController) DeleteOffer(w http.ResponseWriter, r *http.Request)
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteOffer(r.Context(), versionParam, offerIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteOffer(r.Context(), offerIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2015,18 +1950,9 @@ func (c *OfferAPIController) DeleteOffer(w http.ResponseWriter, r *http.Request)
 
 // GetOffer - Get Offer
 func (c *OfferAPIController) GetOffer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerIdParam int64
@@ -2082,7 +2008,7 @@ func (c *OfferAPIController) GetOffer(w http.ResponseWriter, r *http.Request) {
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetOffer(r.Context(), versionParam, offerIdParam, includeOfferLocationsParam, deviceIdParam, accountIdParam)
+	result, err := c.service.GetOffer(r.Context(), offerIdParam, includeOfferLocationsParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2094,18 +2020,9 @@ func (c *OfferAPIController) GetOffer(w http.ResponseWriter, r *http.Request) {
 
 // BatchUpdateOfferLocations - Update Offer Locations
 func (c *OfferAPIController) BatchUpdateOfferLocations(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var dataParam string
@@ -2138,7 +2055,7 @@ func (c *OfferAPIController) BatchUpdateOfferLocations(w http.ResponseWriter, r 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.BatchUpdateOfferLocations(r.Context(), versionParam, dataParam, deviceIdParam, accountIdParam)
+	result, err := c.service.BatchUpdateOfferLocations(r.Context(), dataParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2150,18 +2067,9 @@ func (c *OfferAPIController) BatchUpdateOfferLocations(w http.ResponseWriter, r 
 
 // DeleteOfferLocation - Delete Offer Location
 func (c *OfferAPIController) DeleteOfferLocation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerLocationIdParam int64
@@ -2201,7 +2109,7 @@ func (c *OfferAPIController) DeleteOfferLocation(w http.ResponseWriter, r *http.
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteOfferLocation(r.Context(), versionParam, offerLocationIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteOfferLocation(r.Context(), offerLocationIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2213,18 +2121,9 @@ func (c *OfferAPIController) DeleteOfferLocation(w http.ResponseWriter, r *http.
 
 // GetOfferLocationsForRetailers - Search Offer Locations
 func (c *OfferAPIController) GetOfferLocationsForRetailers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -2449,7 +2348,7 @@ func (c *OfferAPIController) GetOfferLocationsForRetailers(w http.ResponseWriter
 		lastNotificationSentParam = param
 	} else {
 	}
-	result, err := c.service.GetOfferLocationsForRetailers(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, includeRetailerLocationParam, deviceIdParam, accountIdParam, keywordParam, retailerIdParam, retailerLocationIdParam, offerTypeParam, specialOfferTypeParam, barcodeTypeParam, barcodeEntryParam, isbnParam, asinParam, deviceStatusParam, needsNotificationSentParam, lastNotificationSentParam)
+	result, err := c.service.GetOfferLocationsForRetailers(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, includeRetailerLocationParam, deviceIdParam, accountIdParam, keywordParam, retailerIdParam, retailerLocationIdParam, offerTypeParam, specialOfferTypeParam, barcodeTypeParam, barcodeEntryParam, isbnParam, asinParam, deviceStatusParam, needsNotificationSentParam, lastNotificationSentParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2461,18 +2360,9 @@ func (c *OfferAPIController) GetOfferLocationsForRetailers(w http.ResponseWriter
 
 // GetOffersForRetailers - Search Offers
 func (c *OfferAPIController) GetOffersForRetailers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerVisibilityParam string
@@ -2817,7 +2707,7 @@ func (c *OfferAPIController) GetOffersForRetailers(w http.ResponseWriter, r *htt
 		lastNotificationSentParam = param
 	} else {
 	}
-	result, err := c.service.GetOffersForRetailers(r.Context(), versionParam, offerVisibilityParam, sortFieldParam, descendingParam, startParam, limitParam, availableOnlyParam, activeOnlyParam, includeCategoriesParam, includeFiltersParam, includeOfferLocationsParam, deviceIdParam, accountIdParam, categoryIdsParam, filterIdsParam, qParam, keywordParam, retailerIdParam, retailerLocationIdParam, couponTypeParam, offerTypeParam, offerTypesParam, specialOfferTypeParam, iParam, lParam, barcodeTypeParam, barcodeEntryParam, isbnParam, asinParam, deviceStatusParam, needsNotificationSentParam, lastNotificationSentParam)
+	result, err := c.service.GetOffersForRetailers(r.Context(), offerVisibilityParam, sortFieldParam, descendingParam, startParam, limitParam, availableOnlyParam, activeOnlyParam, includeCategoriesParam, includeFiltersParam, includeOfferLocationsParam, deviceIdParam, accountIdParam, categoryIdsParam, filterIdsParam, qParam, keywordParam, retailerIdParam, retailerLocationIdParam, couponTypeParam, offerTypeParam, offerTypesParam, specialOfferTypeParam, iParam, lParam, barcodeTypeParam, barcodeEntryParam, isbnParam, asinParam, deviceStatusParam, needsNotificationSentParam, lastNotificationSentParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2829,18 +2719,9 @@ func (c *OfferAPIController) GetOffersForRetailers(w http.ResponseWriter, r *htt
 
 // UpdateOfferStatus - Activate Offer
 func (c *OfferAPIController) UpdateOfferStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerIdsParam string
@@ -2889,7 +2770,7 @@ func (c *OfferAPIController) UpdateOfferStatus(w http.ResponseWriter, r *http.Re
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.UpdateOfferStatus(r.Context(), versionParam, offerIdsParam, activeParam, deviceIdParam, accountIdParam)
+	result, err := c.service.UpdateOfferStatus(r.Context(), offerIdsParam, activeParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2901,18 +2782,9 @@ func (c *OfferAPIController) UpdateOfferStatus(w http.ResponseWriter, r *http.Re
 
 // SearchOfferTransactionsForRetailers - Search Offer Transactions
 func (c *OfferAPIController) SearchOfferTransactionsForRetailers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -3198,7 +3070,7 @@ func (c *OfferAPIController) SearchOfferTransactionsForRetailers(w http.Response
 		lParam = param
 	} else {
 	}
-	result, err := c.service.SearchOfferTransactionsForRetailers(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, qParam, keywordParam, retailerIdParam, retailerLocationIdParam, offerIdParam, offerLocationIdParam, redeemedParam, reservationsOnlyParam, couponTypeParam, offerTypeParam, specialOfferTypeParam, customerAccountIdsParam, categoryIdsParam, redeemableStartDateParam, redeemableEndDateParam, iParam, lParam)
+	result, err := c.service.SearchOfferTransactionsForRetailers(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, qParam, keywordParam, retailerIdParam, retailerLocationIdParam, offerIdParam, offerLocationIdParam, redeemedParam, reservationsOnlyParam, couponTypeParam, offerTypeParam, specialOfferTypeParam, customerAccountIdsParam, categoryIdsParam, redeemableStartDateParam, redeemableEndDateParam, iParam, lParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3210,18 +3082,9 @@ func (c *OfferAPIController) SearchOfferTransactionsForRetailers(w http.Response
 
 // RedeemOfferTransaction - Update Offer Transaction
 func (c *OfferAPIController) RedeemOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerTransactionIdParam int64
@@ -3291,7 +3154,7 @@ func (c *OfferAPIController) RedeemOfferTransaction(w http.ResponseWriter, r *ht
 		offerLocationIdParam = param
 	} else {
 	}
-	result, err := c.service.RedeemOfferTransaction(r.Context(), versionParam, offerTransactionIdParam, statusParam, deviceIdParam, accountIdParam, offerLocationIdParam)
+	result, err := c.service.RedeemOfferTransaction(r.Context(), offerTransactionIdParam, statusParam, deviceIdParam, accountIdParam, offerLocationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -3303,18 +3166,9 @@ func (c *OfferAPIController) RedeemOfferTransaction(w http.ResponseWriter, r *ht
 
 // UpdateOffer - Update Offer
 func (c *OfferAPIController) UpdateOffer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerIdParam int64
@@ -4252,7 +4106,7 @@ func (c *OfferAPIController) UpdateOffer(w http.ResponseWriter, r *http.Request)
 		availabilitySummaryParam = param
 	} else {
 	}
-	result, err := c.service.UpdateOffer(r.Context(), versionParam, offerIdParam, includeOfferLocationsParam, deviceIdParam, accountIdParam, parentOfferIdParam, retailerLocationIdsParam, offerLocationsParam, tagsParam, titleParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeTypeParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, externalIdParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceTypeParam, ticketPriceParam, fullPriceParam, discountPriceParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, offerTypeParam, specialOfferTypeParam, offerVisibilityParam, categoryIdsParam, filterIdsParam, activeParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, brandParam, productTypeParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, departmentParam, featuresParam, minimumPriceParam, widthParam, heightParam, depthParam, weightParam, unitParam, studioParam, parentalRatingParam, publishDateParam, availabilityDateParam, sizeIdParam, listingIdParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, rebootTimeHourParam, rebootTimeMinuteParam, idleTimeoutInSecondParam, serialNumberParam, udidParam, deviceTypeParam, devicePowerParam, deviceInterferenceParam, availabilityParam, availabilitySummaryParam)
+	result, err := c.service.UpdateOffer(r.Context(), offerIdParam, includeOfferLocationsParam, deviceIdParam, accountIdParam, parentOfferIdParam, retailerLocationIdsParam, offerLocationsParam, tagsParam, titleParam, subTitleParam, detailsParam, subDetailsParam, finePrintParam, barcodeTypeParam, barcodeEntryParam, externalRedeemOptionsParam, externalUrlParam, externalIdParam, ticketsRewardTypeParam, ticketsRewardParam, activatedParam, expiresParam, noExpirationParam, availableLimitParam, availableLimitPerUserParam, addedLimitParam, viewLimitParam, maxPrintsParam, ticketPriceTypeParam, ticketPriceParam, fullPriceParam, discountPriceParam, showRemainingParam, showRedeemedParam, replacedParam, featuredParam, offerTypeParam, specialOfferTypeParam, offerVisibilityParam, categoryIdsParam, filterIdsParam, activeParam, barcodeAssetIdParam, imageAssetIdParam, imageAssetId1Param, imageAssetId2Param, imageAssetId3Param, imageAssetId4Param, imageAssetId5Param, publisherParam, redeemableStartParam, redeemableEndParam, brandParam, productTypeParam, conditionTypeParam, isbnParam, asinParam, catalogNumbersParam, departmentParam, featuresParam, minimumPriceParam, widthParam, heightParam, depthParam, weightParam, unitParam, studioParam, parentalRatingParam, publishDateParam, availabilityDateParam, sizeIdParam, listingIdParam, mediaTypeParam, durationParam, authorParam, releaseDateParam, collectionIdsParam, rebootTimeHourParam, rebootTimeMinuteParam, idleTimeoutInSecondParam, serialNumberParam, udidParam, deviceTypeParam, devicePowerParam, deviceInterferenceParam, availabilityParam, availabilitySummaryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

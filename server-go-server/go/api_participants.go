@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // ParticipantsAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,13 +53,13 @@ func (c *ParticipantsAPIController) Routes() Routes {
 		"ProcessParticipants": Route{
 			"ProcessParticipants",
 			strings.ToUpper("Post"),
-			"/api/{version}/participant/process",
+			"/api/3.18/participant/process",
 			c.ProcessParticipants,
 		},
 		"ProcessAllParticipants": Route{
 			"ProcessAllParticipants",
 			strings.ToUpper("Post"),
-			"/api/{version}/participant/process/all",
+			"/api/3.18/participant/process/all",
 			c.ProcessAllParticipants,
 		},
 	}
@@ -73,13 +71,13 @@ func (c *ParticipantsAPIController) OrderedRoutes() []Route {
 		Route{
 			"ProcessParticipants",
 			strings.ToUpper("Post"),
-			"/api/{version}/participant/process",
+			"/api/3.18/participant/process",
 			c.ProcessParticipants,
 		},
 		Route{
 			"ProcessAllParticipants",
 			strings.ToUpper("Post"),
-			"/api/{version}/participant/process/all",
+			"/api/3.18/participant/process/all",
 			c.ProcessAllParticipants,
 		},
 	}
@@ -89,18 +87,9 @@ func (c *ParticipantsAPIController) OrderedRoutes() []Route {
 
 // ProcessParticipants - Process Participants Feed
 func (c *ParticipantsAPIController) ProcessParticipants(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -156,7 +145,7 @@ func (c *ParticipantsAPIController) ProcessParticipants(w http.ResponseWriter, r
 		fileParam = param
 	} else {
 	}
-	result, err := c.service.ProcessParticipants(r.Context(), versionParam, accountIdParam, leagueParam, appKeyParam, useShortNameAsIDParam, fileParam)
+	result, err := c.service.ProcessParticipants(r.Context(), accountIdParam, leagueParam, appKeyParam, useShortNameAsIDParam, fileParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -168,18 +157,9 @@ func (c *ParticipantsAPIController) ProcessParticipants(w http.ResponseWriter, r
 
 // ProcessAllParticipants - Process All Participant Feeds
 func (c *ParticipantsAPIController) ProcessAllParticipants(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -219,7 +199,7 @@ func (c *ParticipantsAPIController) ProcessAllParticipants(w http.ResponseWriter
 		useShortNameAsIDParam = param
 	} else {
 	}
-	result, err := c.service.ProcessAllParticipants(r.Context(), versionParam, accountIdParam, appKeyParam, useShortNameAsIDParam)
+	result, err := c.service.ProcessAllParticipants(r.Context(), accountIdParam, appKeyParam, useShortNameAsIDParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

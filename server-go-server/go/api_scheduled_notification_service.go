@@ -29,7 +29,7 @@ func NewScheduledNotificationAPIService() *ScheduledNotificationAPIService {
 }
 
 // CreateScheduledNotification - Create Scheduled Notification
-func (s *ScheduledNotificationAPIService) CreateScheduledNotification(ctx context.Context, version float32, accountId int64, name string, type_ string, message string, contentId int64, contentName string, contentType string, parentId int64, parentType string, appKey string, groupingId string, connectionGroupIds string, connectionAccountIds string, audienceId int64, audienceIds string, albumIds string, reportId int64, reportParams string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, cronType string, metaData string, conditionalInput string, templateType string, visibility string, active bool, sendNow bool, eventType string, deepLinkURI string, sendToAll bool) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) CreateScheduledNotification(ctx context.Context, accountId int64, name string, type_ string, message string, contentId int64, contentName string, contentType string, parentId int64, parentType string, appKey string, groupingId string, connectionGroupIds string, connectionAccountIds string, audienceId int64, audienceIds string, albumIds string, reportId int64, reportParams string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, cronType string, metaData string, conditionalInput string, templateType string, visibility string, active bool, sendNow bool, eventType string, deepLinkURI string, sendToAll bool) (ImplResponse, error) {
 	// TODO - update CreateScheduledNotification with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ScheduledNotificationAPIService) CreateScheduledNotification(ctx contex
 }
 
 // DeleteScheduledNotification - Delete Scheduled Notification
-func (s *ScheduledNotificationAPIService) DeleteScheduledNotification(ctx context.Context, version float32, accountId int64, scheduledNotificationId int64, deleteByGroupingId bool) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) DeleteScheduledNotification(ctx context.Context, accountId int64, scheduledNotificationId int64, deleteByGroupingId bool) (ImplResponse, error) {
 	// TODO - update DeleteScheduledNotification with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ScheduledNotificationAPIService) DeleteScheduledNotification(ctx contex
 }
 
 // ScheduleNotificationListings - Generate Schedule Notifications
-func (s *ScheduledNotificationAPIService) ScheduleNotificationListings(ctx context.Context, version float32, accountId int64, appKey string, reportName string, message string, offset int32, recipientReportId int64, reportParams string, type_ string) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) ScheduleNotificationListings(ctx context.Context, accountId int64, appKey string, reportName string, message string, offset int32, recipientReportId int64, reportParams string, type_ string) (ImplResponse, error) {
 	// TODO - update ScheduleNotificationListings with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ScheduledNotificationAPIService) ScheduleNotificationListings(ctx conte
 }
 
 // GetScheduledNotification - Get Scheduled Notification
-func (s *ScheduledNotificationAPIService) GetScheduledNotification(ctx context.Context, version float32, accountId int64, scheduledNotificationId int64) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) GetScheduledNotification(ctx context.Context, accountId int64, scheduledNotificationId int64) (ImplResponse, error) {
 	// TODO - update GetScheduledNotification with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ScheduledNotificationAPIService) GetScheduledNotification(ctx context.C
 }
 
 // SearchScheduledNotifications - Search Scheduled Notifications
-func (s *ScheduledNotificationAPIService) SearchScheduledNotifications(ctx context.Context, version float32, accountId int64, groupingId string, audienceId int64, filter string, types string, contentIds string, contentTypes string, parentIds string, parentTypes string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool, groupByGroupingId bool, returnAudienceAccountCount bool) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) SearchScheduledNotifications(ctx context.Context, accountId int64, groupingId string, audienceId int64, filter string, types string, contentIds string, contentTypes string, parentIds string, parentTypes string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool, groupByGroupingId bool, returnAudienceAccountCount bool) (ImplResponse, error) {
 	// TODO - update SearchScheduledNotifications with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ScheduledNotificationAPIService) SearchScheduledNotifications(ctx conte
 }
 
 // UpdateScheduledNotification - Update Scheduled Notification
-func (s *ScheduledNotificationAPIService) UpdateScheduledNotification(ctx context.Context, version float32, scheduledNotificationId int64, accountId int64, name string, type_ string, message string, payload string, contentId int64, contentName string, contentType string, parentId int64, parentType string, appKey string, groupingId string, connectionGroupIds string, connectionAccountIds string, audienceId int64, audienceIds string, albumIds string, reportId int64, reportParams string, endpointURL string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, cronType string, metaData string, conditionalInput string, templateType string, visibility string, active bool, errorMessage string, status string, updateByGroupingId bool, sendNow bool, eventType string, deepLinkURI string, sendToAll bool) (ImplResponse, error) {
+func (s *ScheduledNotificationAPIService) UpdateScheduledNotification(ctx context.Context, scheduledNotificationId int64, accountId int64, name string, type_ string, message string, payload string, contentId int64, contentName string, contentType string, parentId int64, parentType string, appKey string, groupingId string, connectionGroupIds string, connectionAccountIds string, audienceId int64, audienceIds string, albumIds string, reportId int64, reportParams string, endpointURL string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, cronType string, metaData string, conditionalInput string, templateType string, visibility string, active bool, errorMessage string, status string, updateByGroupingId bool, sendNow bool, eventType string, deepLinkURI string, sendToAll bool) (ImplResponse, error) {
 	// TODO - update UpdateScheduledNotification with the required logic for this service method.
 	// Add api_scheduled_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

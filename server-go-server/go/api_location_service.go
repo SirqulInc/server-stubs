@@ -30,7 +30,7 @@ func NewLocationAPIService() *LocationAPIService {
 }
 
 // GetLocationByIp - Get Location by IP
-func (s *LocationAPIService) GetLocationByIp(ctx context.Context, version float32, ip string) (ImplResponse, error) {
+func (s *LocationAPIService) GetLocationByIp(ctx context.Context, ip string) (ImplResponse, error) {
 	// TODO - update GetLocationByIp with the required logic for this service method.
 	// Add api_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *LocationAPIService) GetLocationByIp(ctx context.Context, version float3
 }
 
 // GetLocations - Search Regions or Postal Codes
-func (s *LocationAPIService) GetLocations(ctx context.Context, version float32, deviceId string, accountId int64, currentlatitude float64, currentlongitude float64, currentLatitude float64, currentLongitude float64, query string, zipcode string, zipCode string, selectedMaplatitude float64, selectedMaplongitude float64, selectedMapLatitude float64, selectedMapLongitude float64, searchRange float64, useGeocode bool, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
+func (s *LocationAPIService) GetLocations(ctx context.Context, deviceId string, accountId int64, currentlatitude float64, currentlongitude float64, currentLatitude float64, currentLongitude float64, query string, zipcode string, zipCode string, selectedMaplatitude float64, selectedMaplongitude float64, selectedMapLatitude float64, selectedMapLongitude float64, searchRange float64, useGeocode bool, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetLocations with the required logic for this service method.
 	// Add api_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *LocationAPIService) GetLocations(ctx context.Context, version float32, 
 }
 
 // CacheTrilaterationData - Create Trilateration Data with File
-func (s *LocationAPIService) CacheTrilaterationData(ctx context.Context, version float32, udid string, sourceTime int64, minimumSampleSize int32, data string, dataFile *os.File) (ImplResponse, error) {
+func (s *LocationAPIService) CacheTrilaterationData(ctx context.Context, udid string, sourceTime int64, minimumSampleSize int32, data string, dataFile *os.File) (ImplResponse, error) {
 	// TODO - update CacheTrilaterationData with the required logic for this service method.
 	// Add api_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *LocationAPIService) CacheTrilaterationData(ctx context.Context, version
 }
 
 // CacheTrilaterationDataGzip - Create Trilateration Data with Rest
-func (s *LocationAPIService) CacheTrilaterationDataGzip(ctx context.Context, version float32, body TrilatCacheRequest) (ImplResponse, error) {
+func (s *LocationAPIService) CacheTrilaterationDataGzip(ctx context.Context, body TrilatCacheRequest) (ImplResponse, error) {
 	// TODO - update CacheTrilaterationDataGzip with the required logic for this service method.
 	// Add api_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *LocationAPIService) CacheTrilaterationDataGzip(ctx context.Context, ver
 }
 
 // GetLocationByTrilateration - Get Location by Trilateration
-func (s *LocationAPIService) GetLocationByTrilateration(ctx context.Context, version float32, accountId int64, latitude float64, longitude float64, data string, responseFilters string) (ImplResponse, error) {
+func (s *LocationAPIService) GetLocationByTrilateration(ctx context.Context, accountId int64, latitude float64, longitude float64, data string, responseFilters string) (ImplResponse, error) {
 	// TODO - update GetLocationByTrilateration with the required logic for this service method.
 	// Add api_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

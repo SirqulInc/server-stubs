@@ -54,7 +54,7 @@ func (c *TwilioAPIController) Routes() Routes {
 		"SmsBuyOffer": Route{
 			"SmsBuyOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/sms/buyoffer/{appKey}",
+			"/api/3.18/sms/buyoffer/{appKey}",
 			c.SmsBuyOffer,
 		},
 	}
@@ -66,7 +66,7 @@ func (c *TwilioAPIController) OrderedRoutes() []Route {
 		Route{
 			"SmsBuyOffer",
 			strings.ToUpper("Post"),
-			"/api/{version}/sms/buyoffer/{appKey}",
+			"/api/3.18/sms/buyoffer/{appKey}",
 			c.SmsBuyOffer,
 		},
 	}
@@ -80,14 +80,6 @@ func (c *TwilioAPIController) SmsBuyOffer(w http.ResponseWriter, r *http.Request
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	appKeyParam := params["appKey"]
@@ -122,7 +114,7 @@ func (c *TwilioAPIController) SmsBuyOffer(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &RequiredError{Field: "currencyType"}, nil)
 		return
 	}
-	result, err := c.service.SmsBuyOffer(r.Context(), versionParam, appKeyParam, bodyParam, fromParam, currencyTypeParam)
+	result, err := c.service.SmsBuyOffer(r.Context(), appKeyParam, bodyParam, fromParam, currencyTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

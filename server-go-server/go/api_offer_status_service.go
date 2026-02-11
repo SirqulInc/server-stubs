@@ -29,7 +29,7 @@ func NewOfferStatusAPIService() *OfferStatusAPIService {
 }
 
 // CreateOfferTransactionStatus - Create Offer Status
-func (s *OfferStatusAPIService) CreateOfferTransactionStatus(ctx context.Context, version float32, name string, code int32, deviceId string, accountId int64, latitude float64, longitude float64, description string, role string, active bool, applicationIds string) (ImplResponse, error) {
+func (s *OfferStatusAPIService) CreateOfferTransactionStatus(ctx context.Context, name string, code int32, deviceId string, accountId int64, latitude float64, longitude float64, description string, role string, active bool, applicationIds string) (ImplResponse, error) {
 	// TODO - update CreateOfferTransactionStatus with the required logic for this service method.
 	// Add api_offer_status_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *OfferStatusAPIService) CreateOfferTransactionStatus(ctx context.Context
 }
 
 // DeleteOfferTransactionStatus - Delete Offer Status
-func (s *OfferStatusAPIService) DeleteOfferTransactionStatus(ctx context.Context, version float32, statusId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *OfferStatusAPIService) DeleteOfferTransactionStatus(ctx context.Context, statusId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update DeleteOfferTransactionStatus with the required logic for this service method.
 	// Add api_offer_status_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *OfferStatusAPIService) DeleteOfferTransactionStatus(ctx context.Context
 }
 
 // GetOfferTransactionStatus - Get Offer Status
-func (s *OfferStatusAPIService) GetOfferTransactionStatus(ctx context.Context, version float32, statusId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *OfferStatusAPIService) GetOfferTransactionStatus(ctx context.Context, statusId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetOfferTransactionStatus with the required logic for this service method.
 	// Add api_offer_status_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *OfferStatusAPIService) GetOfferTransactionStatus(ctx context.Context, v
 }
 
 // SearchOfferTransactionStatuses - Search Offer Status
-func (s *OfferStatusAPIService) SearchOfferTransactionStatuses(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64, keyword string, role string, appKey string, sortField string, descending bool, start int32, limit int32, includeInactive bool) (ImplResponse, error) {
+func (s *OfferStatusAPIService) SearchOfferTransactionStatuses(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64, keyword string, role string, appKey string, sortField string, descending bool, start int32, limit int32, includeInactive bool) (ImplResponse, error) {
 	// TODO - update SearchOfferTransactionStatuses with the required logic for this service method.
 	// Add api_offer_status_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *OfferStatusAPIService) SearchOfferTransactionStatuses(ctx context.Conte
 }
 
 // UpdateOfferTransactionStatus - Update Offer Status
-func (s *OfferStatusAPIService) UpdateOfferTransactionStatus(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64, statusId int64, name string, description string, code int32, role string, active bool, applicationIds string) (ImplResponse, error) {
+func (s *OfferStatusAPIService) UpdateOfferTransactionStatus(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64, statusId int64, name string, description string, code int32, role string, active bool, applicationIds string) (ImplResponse, error) {
 	// TODO - update UpdateOfferTransactionStatus with the required logic for this service method.
 	// Add api_offer_status_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

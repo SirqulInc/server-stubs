@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // OfferStatusAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *OfferStatusAPIController) Routes() Routes {
 		"CreateOfferTransactionStatus": Route{
 			"CreateOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/create",
+			"/api/3.18/offer/status/create",
 			c.CreateOfferTransactionStatus,
 		},
 		"DeleteOfferTransactionStatus": Route{
 			"DeleteOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/delete",
+			"/api/3.18/offer/status/delete",
 			c.DeleteOfferTransactionStatus,
 		},
 		"GetOfferTransactionStatus": Route{
 			"GetOfferTransactionStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/status/get",
+			"/api/3.18/offer/status/get",
 			c.GetOfferTransactionStatus,
 		},
 		"SearchOfferTransactionStatuses": Route{
 			"SearchOfferTransactionStatuses",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/status/search",
+			"/api/3.18/offer/status/search",
 			c.SearchOfferTransactionStatuses,
 		},
 		"UpdateOfferTransactionStatus": Route{
 			"UpdateOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/update",
+			"/api/3.18/offer/status/update",
 			c.UpdateOfferTransactionStatus,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *OfferStatusAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/create",
+			"/api/3.18/offer/status/create",
 			c.CreateOfferTransactionStatus,
 		},
 		Route{
 			"DeleteOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/delete",
+			"/api/3.18/offer/status/delete",
 			c.DeleteOfferTransactionStatus,
 		},
 		Route{
 			"GetOfferTransactionStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/status/get",
+			"/api/3.18/offer/status/get",
 			c.GetOfferTransactionStatus,
 		},
 		Route{
 			"SearchOfferTransactionStatuses",
 			strings.ToUpper("Get"),
-			"/api/{version}/offer/status/search",
+			"/api/3.18/offer/status/search",
 			c.SearchOfferTransactionStatuses,
 		},
 		Route{
 			"UpdateOfferTransactionStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/offer/status/update",
+			"/api/3.18/offer/status/update",
 			c.UpdateOfferTransactionStatus,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *OfferStatusAPIController) OrderedRoutes() []Route {
 
 // CreateOfferTransactionStatus - Create Offer Status
 func (c *OfferStatusAPIController) CreateOfferTransactionStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var nameParam string
@@ -251,7 +240,7 @@ func (c *OfferStatusAPIController) CreateOfferTransactionStatus(w http.ResponseW
 		applicationIdsParam = param
 	} else {
 	}
-	result, err := c.service.CreateOfferTransactionStatus(r.Context(), versionParam, nameParam, codeParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, descriptionParam, roleParam, activeParam, applicationIdsParam)
+	result, err := c.service.CreateOfferTransactionStatus(r.Context(), nameParam, codeParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, descriptionParam, roleParam, activeParam, applicationIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -263,18 +252,9 @@ func (c *OfferStatusAPIController) CreateOfferTransactionStatus(w http.ResponseW
 
 // DeleteOfferTransactionStatus - Delete Offer Status
 func (c *OfferStatusAPIController) DeleteOfferTransactionStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var statusIdParam int64
@@ -342,7 +322,7 @@ func (c *OfferStatusAPIController) DeleteOfferTransactionStatus(w http.ResponseW
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.DeleteOfferTransactionStatus(r.Context(), versionParam, statusIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.DeleteOfferTransactionStatus(r.Context(), statusIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -354,18 +334,9 @@ func (c *OfferStatusAPIController) DeleteOfferTransactionStatus(w http.ResponseW
 
 // GetOfferTransactionStatus - Get Offer Status
 func (c *OfferStatusAPIController) GetOfferTransactionStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var statusIdParam int64
@@ -433,7 +404,7 @@ func (c *OfferStatusAPIController) GetOfferTransactionStatus(w http.ResponseWrit
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetOfferTransactionStatus(r.Context(), versionParam, statusIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetOfferTransactionStatus(r.Context(), statusIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -445,18 +416,9 @@ func (c *OfferStatusAPIController) GetOfferTransactionStatus(w http.ResponseWrit
 
 // SearchOfferTransactionStatuses - Search Offer Status
 func (c *OfferStatusAPIController) SearchOfferTransactionStatuses(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -602,7 +564,7 @@ func (c *OfferStatusAPIController) SearchOfferTransactionStatuses(w http.Respons
 		var param bool = false
 		includeInactiveParam = param
 	}
-	result, err := c.service.SearchOfferTransactionStatuses(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam, roleParam, appKeyParam, sortFieldParam, descendingParam, startParam, limitParam, includeInactiveParam)
+	result, err := c.service.SearchOfferTransactionStatuses(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam, roleParam, appKeyParam, sortFieldParam, descendingParam, startParam, limitParam, includeInactiveParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -614,18 +576,9 @@ func (c *OfferStatusAPIController) SearchOfferTransactionStatuses(w http.Respons
 
 // UpdateOfferTransactionStatus - Update Offer Status
 func (c *OfferStatusAPIController) UpdateOfferTransactionStatus(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -747,7 +700,7 @@ func (c *OfferStatusAPIController) UpdateOfferTransactionStatus(w http.ResponseW
 		applicationIdsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateOfferTransactionStatus(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, statusIdParam, nameParam, descriptionParam, codeParam, roleParam, activeParam, applicationIdsParam)
+	result, err := c.service.UpdateOfferTransactionStatus(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam, statusIdParam, nameParam, descriptionParam, codeParam, roleParam, activeParam, applicationIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

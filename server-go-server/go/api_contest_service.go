@@ -29,7 +29,7 @@ func NewContestAPIService() *ContestAPIService {
 }
 
 // AddOrUpdateAlbumContest - Create or Update Contest
-func (s *ContestAPIService) AddOrUpdateAlbumContest(ctx context.Context, version float32, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, visibility string, includeFriendGroup bool, deviceId string, accountId int64, gameType string, appKey string, contestType string, albumContestId int64, title string, description string, albumId1 int64, removeAlbum1 bool, albumId2 int64, removeAlbum2 bool, startDate int64, endDate int64, locationDescription string, connectionIdsToAdd string, connectionGroupIdsToAdd string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ContestAPIService) AddOrUpdateAlbumContest(ctx context.Context, publicRead bool, publicWrite bool, publicDelete bool, publicAdd bool, visibility string, includeFriendGroup bool, deviceId string, accountId int64, gameType string, appKey string, contestType string, albumContestId int64, title string, description string, albumId1 int64, removeAlbum1 bool, albumId2 int64, removeAlbum2 bool, startDate int64, endDate int64, locationDescription string, connectionIdsToAdd string, connectionGroupIdsToAdd string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddOrUpdateAlbumContest with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ContestAPIService) AddOrUpdateAlbumContest(ctx context.Context, version
 }
 
 // ApproveAlbumContest - Approve Contest
-func (s *ContestAPIService) ApproveAlbumContest(ctx context.Context, version float32, albumContestId int64, approvalStatus string, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *ContestAPIService) ApproveAlbumContest(ctx context.Context, albumContestId int64, approvalStatus string, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update ApproveAlbumContest with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ContestAPIService) ApproveAlbumContest(ctx context.Context, version flo
 }
 
 // GetAlbumContest - Get Contest
-func (s *ContestAPIService) GetAlbumContest(ctx context.Context, version float32, albumContestId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ContestAPIService) GetAlbumContest(ctx context.Context, albumContestId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetAlbumContest with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ContestAPIService) GetAlbumContest(ctx context.Context, version float32
 }
 
 // DeleteContest - Delete Contest
-func (s *ContestAPIService) DeleteContest(ctx context.Context, version float32, albumContestId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ContestAPIService) DeleteContest(ctx context.Context, albumContestId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update DeleteContest with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ContestAPIService) DeleteContest(ctx context.Context, version float32, 
 }
 
 // GetAlbumContests - Search Contests
-func (s *ContestAPIService) GetAlbumContests(ctx context.Context, version float32, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, gameType string, appKey string, appType string, contestType string, ownerId int64, q string, keyword string, i int32, l int32, dateCreated int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ContestAPIService) GetAlbumContests(ctx context.Context, filter string, sortField string, descending bool, start int32, limit int32, deviceId string, accountId int64, gameType string, appKey string, appType string, contestType string, ownerId int64, q string, keyword string, i int32, l int32, dateCreated int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetAlbumContests with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ContestAPIService) GetAlbumContests(ctx context.Context, version float3
 }
 
 // VoteOnAlbumContest - Vote on Contest
-func (s *ContestAPIService) VoteOnAlbumContest(ctx context.Context, version float32, albumContestId int64, albumId int64, deviceId string, accountId int64, contestType string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *ContestAPIService) VoteOnAlbumContest(ctx context.Context, albumContestId int64, albumId int64, deviceId string, accountId int64, contestType string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update VoteOnAlbumContest with the required logic for this service method.
 	// Add api_contest_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

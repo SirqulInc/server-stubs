@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PreviewPersonaAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *PreviewPersonaAPIController) Routes() Routes {
 		"CreatePersona": Route{
 			"CreatePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/create",
+			"/api/3.18/persona/create",
 			c.CreatePersona,
 		},
 		"DeletePersona": Route{
 			"DeletePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/delete",
+			"/api/3.18/persona/delete",
 			c.DeletePersona,
 		},
 		"GetPersonaList": Route{
 			"GetPersonaList",
 			strings.ToUpper("Get"),
-			"/api/{version}/persona/get",
+			"/api/3.18/persona/get",
 			c.GetPersonaList,
 		},
 		"SearchPersona": Route{
 			"SearchPersona",
 			strings.ToUpper("Get"),
-			"/api/{version}/persona/search",
+			"/api/3.18/persona/search",
 			c.SearchPersona,
 		},
 		"UpdatePersona": Route{
 			"UpdatePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/update",
+			"/api/3.18/persona/update",
 			c.UpdatePersona,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *PreviewPersonaAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreatePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/create",
+			"/api/3.18/persona/create",
 			c.CreatePersona,
 		},
 		Route{
 			"DeletePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/delete",
+			"/api/3.18/persona/delete",
 			c.DeletePersona,
 		},
 		Route{
 			"GetPersonaList",
 			strings.ToUpper("Get"),
-			"/api/{version}/persona/get",
+			"/api/3.18/persona/get",
 			c.GetPersonaList,
 		},
 		Route{
 			"SearchPersona",
 			strings.ToUpper("Get"),
-			"/api/{version}/persona/search",
+			"/api/3.18/persona/search",
 			c.SearchPersona,
 		},
 		Route{
 			"UpdatePersona",
 			strings.ToUpper("Post"),
-			"/api/{version}/persona/update",
+			"/api/3.18/persona/update",
 			c.UpdatePersona,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *PreviewPersonaAPIController) OrderedRoutes() []Route {
 
 // CreatePersona - Create Persona
 func (c *PreviewPersonaAPIController) CreatePersona(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -240,7 +229,7 @@ func (c *PreviewPersonaAPIController) CreatePersona(w http.ResponseWriter, r *ht
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreatePersona(r.Context(), versionParam, accountIdParam, titleParam, previewAccountsParam, dateParam, ageParam, genderParam, gameExperienceLevelParam, latitudeParam, longitudeParam)
+	result, err := c.service.CreatePersona(r.Context(), accountIdParam, titleParam, previewAccountsParam, dateParam, ageParam, genderParam, gameExperienceLevelParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -252,18 +241,9 @@ func (c *PreviewPersonaAPIController) CreatePersona(w http.ResponseWriter, r *ht
 
 // DeletePersona - Delete Persona
 func (c *PreviewPersonaAPIController) DeletePersona(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -298,7 +278,7 @@ func (c *PreviewPersonaAPIController) DeletePersona(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "personaId"}, nil)
 		return
 	}
-	result, err := c.service.DeletePersona(r.Context(), versionParam, accountIdParam, personaIdParam)
+	result, err := c.service.DeletePersona(r.Context(), accountIdParam, personaIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -310,18 +290,9 @@ func (c *PreviewPersonaAPIController) DeletePersona(w http.ResponseWriter, r *ht
 
 // GetPersonaList - Get Persona
 func (c *PreviewPersonaAPIController) GetPersonaList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -356,7 +327,7 @@ func (c *PreviewPersonaAPIController) GetPersonaList(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "personaId"}, nil)
 		return
 	}
-	result, err := c.service.GetPersonaList(r.Context(), versionParam, accountIdParam, personaIdParam)
+	result, err := c.service.GetPersonaList(r.Context(), accountIdParam, personaIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -368,18 +339,9 @@ func (c *PreviewPersonaAPIController) GetPersonaList(w http.ResponseWriter, r *h
 
 // SearchPersona - Search Personas
 func (c *PreviewPersonaAPIController) SearchPersona(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -430,7 +392,7 @@ func (c *PreviewPersonaAPIController) SearchPersona(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "limit"}, nil)
 		return
 	}
-	result, err := c.service.SearchPersona(r.Context(), versionParam, accountIdParam, startParam, limitParam)
+	result, err := c.service.SearchPersona(r.Context(), accountIdParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -442,18 +404,9 @@ func (c *PreviewPersonaAPIController) SearchPersona(w http.ResponseWriter, r *ht
 
 // UpdatePersona - Update Persona
 func (c *PreviewPersonaAPIController) UpdatePersona(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -586,7 +539,7 @@ func (c *PreviewPersonaAPIController) UpdatePersona(w http.ResponseWriter, r *ht
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.UpdatePersona(r.Context(), versionParam, accountIdParam, personaIdParam, titleParam, previewAccountsParam, activeParam, dateParam, ageParam, genderParam, gameExperienceLevelParam, latitudeParam, longitudeParam)
+	result, err := c.service.UpdatePersona(r.Context(), accountIdParam, personaIdParam, titleParam, previewAccountsParam, activeParam, dateParam, ageParam, genderParam, gameExperienceLevelParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

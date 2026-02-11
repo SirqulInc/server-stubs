@@ -30,7 +30,7 @@ func NewRetailerAPIService() *RetailerAPIService {
 }
 
 // CreateRetailer - Create Retailer
-func (s *RetailerAPIService) CreateRetailer(ctx context.Context, version float32, name string, deviceId string, accountId int64, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, facebookUrl string, twitterUrl string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, categoryIdsToAdd string, categoryIdsToRemove string, filterIds string, latitude float64, longitude float64, metaData string, searchTags string, retailerType string, visibility string, createDefaultLocation bool, responseFormat string) (ImplResponse, error) {
+func (s *RetailerAPIService) CreateRetailer(ctx context.Context, name string, deviceId string, accountId int64, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, facebookUrl string, twitterUrl string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, categoryIdsToAdd string, categoryIdsToRemove string, filterIds string, latitude float64, longitude float64, metaData string, searchTags string, retailerType string, visibility string, createDefaultLocation bool, responseFormat string) (ImplResponse, error) {
 	// TODO - update CreateRetailer with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *RetailerAPIService) CreateRetailer(ctx context.Context, version float32
 }
 
 // DeleteRetailer - Delete Retailer
-func (s *RetailerAPIService) DeleteRetailer(ctx context.Context, version float32, deviceId string, accountId int64, retailerId int64) (ImplResponse, error) {
+func (s *RetailerAPIService) DeleteRetailer(ctx context.Context, deviceId string, accountId int64, retailerId int64) (ImplResponse, error) {
 	// TODO - update DeleteRetailer with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *RetailerAPIService) DeleteRetailer(ctx context.Context, version float32
 }
 
 // GetRetailer - Get Retailer
-func (s *RetailerAPIService) GetRetailer(ctx context.Context, version float32, retailerId int64, deviceId string, accountId int64, includeCounts bool) (ImplResponse, error) {
+func (s *RetailerAPIService) GetRetailer(ctx context.Context, retailerId int64, deviceId string, accountId int64, includeCounts bool) (ImplResponse, error) {
 	// TODO - update GetRetailer with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *RetailerAPIService) GetRetailer(ctx context.Context, version float32, r
 }
 
 // RetailerLoginCheck - Login Retailer
-func (s *RetailerAPIService) RetailerLoginCheck(ctx context.Context, version float32, username string, password string, deviceId string, latitude float64, longitude float64, appKey string) (ImplResponse, error) {
+func (s *RetailerAPIService) RetailerLoginCheck(ctx context.Context, username string, password string, deviceId string, latitude float64, longitude float64, appKey string) (ImplResponse, error) {
 	// TODO - update RetailerLoginCheck with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *RetailerAPIService) RetailerLoginCheck(ctx context.Context, version flo
 }
 
 // GetRetailers - Search Retailers
-func (s *RetailerAPIService) GetRetailers(ctx context.Context, version float32, visibility string, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, q string, keyword string, categoryIds string, filterIds string, i int32, l int32) (ImplResponse, error) {
+func (s *RetailerAPIService) GetRetailers(ctx context.Context, visibility string, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, q string, keyword string, categoryIds string, filterIds string, i int32, l int32) (ImplResponse, error) {
 	// TODO - update GetRetailers with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *RetailerAPIService) GetRetailers(ctx context.Context, version float32, 
 }
 
 // UpdateRetailer - Update Retailer
-func (s *RetailerAPIService) UpdateRetailer(ctx context.Context, version float32, retailerId int64, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, facebookUrl string, twitterUrl string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, metaData string, searchTags string, retailerType string, visibility string, active bool, responseFormat string) (ImplResponse, error) {
+func (s *RetailerAPIService) UpdateRetailer(ctx context.Context, retailerId int64, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, facebookUrl string, twitterUrl string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, metaData string, searchTags string, retailerType string, visibility string, active bool, responseFormat string) (ImplResponse, error) {
 	// TODO - update UpdateRetailer with the required logic for this service method.
 	// Add api_retailer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

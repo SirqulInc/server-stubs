@@ -55,49 +55,49 @@ func (c *AssetAPIController) Routes() Routes {
 		"CreateAsset": Route{
 			"CreateAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/create",
+			"/api/3.18/asset/create",
 			c.CreateAsset,
 		},
 		"DeleteAsset": Route{
 			"DeleteAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/delete",
+			"/api/3.18/asset/delete",
 			c.DeleteAsset,
 		},
 		"AssetDownload": Route{
 			"AssetDownload",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/download/{filename}",
+			"/api/3.18/asset/download/{filename}",
 			c.AssetDownload,
 		},
 		"GetAsset": Route{
 			"GetAsset",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/get",
+			"/api/3.18/asset/get",
 			c.GetAsset,
 		},
 		"AssetMorph": Route{
 			"AssetMorph",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/morph",
+			"/api/3.18/asset/morph",
 			c.AssetMorph,
 		},
 		"RemoveAsset": Route{
 			"RemoveAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/remove",
+			"/api/3.18/asset/remove",
 			c.RemoveAsset,
 		},
 		"SearchAssets": Route{
 			"SearchAssets",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/search",
+			"/api/3.18/asset/search",
 			c.SearchAssets,
 		},
 		"UpdateAsset": Route{
 			"UpdateAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/update",
+			"/api/3.18/asset/update",
 			c.UpdateAsset,
 		},
 	}
@@ -109,49 +109,49 @@ func (c *AssetAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/create",
+			"/api/3.18/asset/create",
 			c.CreateAsset,
 		},
 		Route{
 			"DeleteAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/delete",
+			"/api/3.18/asset/delete",
 			c.DeleteAsset,
 		},
 		Route{
 			"AssetDownload",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/download/{filename}",
+			"/api/3.18/asset/download/{filename}",
 			c.AssetDownload,
 		},
 		Route{
 			"GetAsset",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/get",
+			"/api/3.18/asset/get",
 			c.GetAsset,
 		},
 		Route{
 			"AssetMorph",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/morph",
+			"/api/3.18/asset/morph",
 			c.AssetMorph,
 		},
 		Route{
 			"RemoveAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/remove",
+			"/api/3.18/asset/remove",
 			c.RemoveAsset,
 		},
 		Route{
 			"SearchAssets",
 			strings.ToUpper("Get"),
-			"/api/{version}/asset/search",
+			"/api/3.18/asset/search",
 			c.SearchAssets,
 		},
 		Route{
 			"UpdateAsset",
 			strings.ToUpper("Post"),
-			"/api/{version}/asset/update",
+			"/api/3.18/asset/update",
 			c.UpdateAsset,
 		},
 	}
@@ -161,18 +161,9 @@ func (c *AssetAPIController) OrderedRoutes() []Route {
 
 // CreateAsset - Create Asset
 func (c *AssetAPIController) CreateAsset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -504,7 +495,7 @@ func (c *AssetAPIController) CreateAsset(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreateAsset(r.Context(), versionParam, returnNullsParam, deviceIdParam, accountIdParam, albumIdParam, collectionIdParam, addToDefaultAlbumParam, addToMediaLibraryParam, versionCodeParam, versionNameParam, metaDataParam, captionParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam, mediaParam, mediaUrlParam, mediaStringParam, mediaStringFileNameParam, mediaStringContentTypeParam, mediaHeightParam, mediaWidthParam, attachedMediaParam, attachedMediaUrlParam, attachedMediaStringParam, attachedMediaStringFileNameParam, attachedMediaStringContentTypeParam, attachedMediaHeightParam, attachedMediaWidthParam, locationDescriptionParam, appParam, appKeyParam, searchTagsParam, latitudeParam, longitudeParam)
+	result, err := c.service.CreateAsset(r.Context(), returnNullsParam, deviceIdParam, accountIdParam, albumIdParam, collectionIdParam, addToDefaultAlbumParam, addToMediaLibraryParam, versionCodeParam, versionNameParam, metaDataParam, captionParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam, mediaParam, mediaUrlParam, mediaStringParam, mediaStringFileNameParam, mediaStringContentTypeParam, mediaHeightParam, mediaWidthParam, attachedMediaParam, attachedMediaUrlParam, attachedMediaStringParam, attachedMediaStringFileNameParam, attachedMediaStringContentTypeParam, attachedMediaHeightParam, attachedMediaWidthParam, locationDescriptionParam, appParam, appKeyParam, searchTagsParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -516,18 +507,9 @@ func (c *AssetAPIController) CreateAsset(w http.ResponseWriter, r *http.Request)
 
 // DeleteAsset - Delete Asset
 func (c *AssetAPIController) DeleteAsset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var assetIdParam string
@@ -588,7 +570,7 @@ func (c *AssetAPIController) DeleteAsset(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.DeleteAsset(r.Context(), versionParam, assetIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.DeleteAsset(r.Context(), assetIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -601,20 +583,12 @@ func (c *AssetAPIController) DeleteAsset(w http.ResponseWriter, r *http.Request)
 // AssetDownload - Download Asset
 func (c *AssetAPIController) AssetDownload(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	filenameParam := params["filename"]
 	if filenameParam == "" {
 		c.errorHandler(w, r, &RequiredError{"filename"}, nil)
 		return
 	}
-	result, err := c.service.AssetDownload(r.Context(), versionParam, filenameParam)
+	result, err := c.service.AssetDownload(r.Context(), filenameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -626,18 +600,9 @@ func (c *AssetAPIController) AssetDownload(w http.ResponseWriter, r *http.Reques
 
 // GetAsset - Get Asset
 func (c *AssetAPIController) GetAsset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var assetIdParam int64
@@ -693,7 +658,7 @@ func (c *AssetAPIController) GetAsset(w http.ResponseWriter, r *http.Request) {
 		var param bool = false
 		noteDescendingParam = param
 	}
-	result, err := c.service.GetAsset(r.Context(), versionParam, assetIdParam, deviceIdParam, accountIdParam, noteDescendingParam)
+	result, err := c.service.GetAsset(r.Context(), assetIdParam, deviceIdParam, accountIdParam, noteDescendingParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -705,18 +670,9 @@ func (c *AssetAPIController) GetAsset(w http.ResponseWriter, r *http.Request) {
 
 // AssetMorph - Convert Offer to Creative
 func (c *AssetAPIController) AssetMorph(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var offerIdParam int64
@@ -800,7 +756,7 @@ func (c *AssetAPIController) AssetMorph(w http.ResponseWriter, r *http.Request) 
 		templateParam = param
 	} else {
 	}
-	result, err := c.service.AssetMorph(r.Context(), versionParam, offerIdParam, adSizeParam, creativeIdParam, widthParam, heightParam, backgroundSizeParam, templateParam)
+	result, err := c.service.AssetMorph(r.Context(), offerIdParam, adSizeParam, creativeIdParam, widthParam, heightParam, backgroundSizeParam, templateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -812,18 +768,9 @@ func (c *AssetAPIController) AssetMorph(w http.ResponseWriter, r *http.Request) 
 
 // RemoveAsset - Remove Asset from Collection
 func (c *AssetAPIController) RemoveAsset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var assetIdParam string
@@ -926,7 +873,7 @@ func (c *AssetAPIController) RemoveAsset(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveAsset(r.Context(), versionParam, assetIdParam, deviceIdParam, accountIdParam, albumIdParam, collectionIdParam, removeFromDefaultAlbumsParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveAsset(r.Context(), assetIdParam, deviceIdParam, accountIdParam, albumIdParam, collectionIdParam, removeFromDefaultAlbumsParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -938,18 +885,9 @@ func (c *AssetAPIController) RemoveAsset(w http.ResponseWriter, r *http.Request)
 
 // SearchAssets - Search Assets
 func (c *AssetAPIController) SearchAssets(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1204,7 +1142,7 @@ func (c *AssetAPIController) SearchAssets(w http.ResponseWriter, r *http.Request
 		assignedAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchAssets(r.Context(), versionParam, deviceIdParam, accountIdParam, albumIdsParam, assetIdsParam, appKeyParam, mediaTypeParam, mimeTypeParam, keywordParam, versionCodeParam, versionNameParam, updatedSinceParam, updatedBeforeParam, sortFieldParam, descendingParam, searchMediaLibraryParam, filterByBillableParam, activeOnlyParam, returnAppParam, startParam, limitParam, searchModeParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam)
+	result, err := c.service.SearchAssets(r.Context(), deviceIdParam, accountIdParam, albumIdsParam, assetIdsParam, appKeyParam, mediaTypeParam, mimeTypeParam, keywordParam, versionCodeParam, versionNameParam, updatedSinceParam, updatedBeforeParam, sortFieldParam, descendingParam, searchMediaLibraryParam, filterByBillableParam, activeOnlyParam, returnAppParam, startParam, limitParam, searchModeParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1216,18 +1154,9 @@ func (c *AssetAPIController) SearchAssets(w http.ResponseWriter, r *http.Request
 
 // UpdateAsset - Update Asset
 func (c *AssetAPIController) UpdateAsset(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var assetIdParam int64
@@ -1533,7 +1462,7 @@ func (c *AssetAPIController) UpdateAsset(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateAsset(r.Context(), versionParam, assetIdParam, deviceIdParam, accountIdParam, albumIdParam, attachedAssetIdParam, versionCodeParam, versionNameParam, metaDataParam, captionParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam, mediaParam, mediaUrlParam, mediaStringParam, mediaStringFileNameParam, mediaStringContentTypeParam, mediaHeightParam, mediaWidthParam, attachedMediaParam, attachedMediaUrlParam, attachedMediaStringParam, attachedMediaStringFileNameParam, attachedMediaStringContentTypeParam, attachedMediaHeightParam, attachedMediaWidthParam, locationDescriptionParam, searchTagsParam, appKeyParam, latitudeParam, longitudeParam)
+	result, err := c.service.UpdateAsset(r.Context(), assetIdParam, deviceIdParam, accountIdParam, albumIdParam, attachedAssetIdParam, versionCodeParam, versionNameParam, metaDataParam, captionParam, assetTypeParam, approvalStatusParam, assignedAccountIdParam, mediaParam, mediaUrlParam, mediaStringParam, mediaStringFileNameParam, mediaStringContentTypeParam, mediaHeightParam, mediaWidthParam, attachedMediaParam, attachedMediaUrlParam, attachedMediaStringParam, attachedMediaStringFileNameParam, attachedMediaStringContentTypeParam, attachedMediaHeightParam, attachedMediaWidthParam, locationDescriptionParam, searchTagsParam, appKeyParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -29,7 +29,7 @@ func NewWordAPIService() *WordAPIService {
 }
 
 // CreateWord - Create Word
-func (s *WordAPIService) CreateWord(ctx context.Context, version float32, accountId int64, word string, definition string, active bool, allocateTickets bool, ticketCount int64, assetId int64, ticketType string, points int64) (ImplResponse, error) {
+func (s *WordAPIService) CreateWord(ctx context.Context, accountId int64, word string, definition string, active bool, allocateTickets bool, ticketCount int64, assetId int64, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update CreateWord with the required logic for this service method.
 	// Add api_word_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *WordAPIService) CreateWord(ctx context.Context, version float32, accoun
 }
 
 // DeleteWord - Delete Word
-func (s *WordAPIService) DeleteWord(ctx context.Context, version float32, wordId int64, accountId int64) (ImplResponse, error) {
+func (s *WordAPIService) DeleteWord(ctx context.Context, wordId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteWord with the required logic for this service method.
 	// Add api_word_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *WordAPIService) DeleteWord(ctx context.Context, version float32, wordId
 }
 
 // GetWord - Get Word
-func (s *WordAPIService) GetWord(ctx context.Context, version float32, wordId int64, accountId int64) (ImplResponse, error) {
+func (s *WordAPIService) GetWord(ctx context.Context, wordId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetWord with the required logic for this service method.
 	// Add api_word_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *WordAPIService) GetWord(ctx context.Context, version float32, wordId in
 }
 
 // GetWords - Search Words
-func (s *WordAPIService) GetWords(ctx context.Context, version float32, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, keyword string) (ImplResponse, error) {
+func (s *WordAPIService) GetWords(ctx context.Context, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, keyword string) (ImplResponse, error) {
 	// TODO - update GetWords with the required logic for this service method.
 	// Add api_word_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *WordAPIService) GetWords(ctx context.Context, version float32, accountI
 }
 
 // UpdateWord - Update Word
-func (s *WordAPIService) UpdateWord(ctx context.Context, version float32, wordId int64, accountId int64, ticketCount int64, wordText string, definition string, assetId int64, active bool, allocateTickets bool, ticketType string, points int64) (ImplResponse, error) {
+func (s *WordAPIService) UpdateWord(ctx context.Context, wordId int64, accountId int64, ticketCount int64, wordText string, definition string, assetId int64, active bool, allocateTickets bool, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update UpdateWord with the required logic for this service method.
 	// Add api_word_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

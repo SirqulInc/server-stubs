@@ -29,7 +29,7 @@ func NewSubscriptionAPIService() *SubscriptionAPIService {
 }
 
 // CreateSubscription - Create Subscription
-func (s *SubscriptionAPIService) CreateSubscription(ctx context.Context, version float32, accountId int64, planId int64, promoCode string) (ImplResponse, error) {
+func (s *SubscriptionAPIService) CreateSubscription(ctx context.Context, accountId int64, planId int64, promoCode string) (ImplResponse, error) {
 	// TODO - update CreateSubscription with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *SubscriptionAPIService) CreateSubscription(ctx context.Context, version
 }
 
 // DeleteSubscription - Delete Subscription
-func (s *SubscriptionAPIService) DeleteSubscription(ctx context.Context, version float32, accountId int64) (ImplResponse, error) {
+func (s *SubscriptionAPIService) DeleteSubscription(ctx context.Context, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteSubscription with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *SubscriptionAPIService) DeleteSubscription(ctx context.Context, version
 }
 
 // GetSubscription - Get Subscription
-func (s *SubscriptionAPIService) GetSubscription(ctx context.Context, version float32, accountId int64) (ImplResponse, error) {
+func (s *SubscriptionAPIService) GetSubscription(ctx context.Context, accountId int64) (ImplResponse, error) {
 	// TODO - update GetSubscription with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *SubscriptionAPIService) GetSubscription(ctx context.Context, version fl
 }
 
 // GetSubscriptionPlan - Get Subscription Plan
-func (s *SubscriptionAPIService) GetSubscriptionPlan(ctx context.Context, version float32, planId int64) (ImplResponse, error) {
+func (s *SubscriptionAPIService) GetSubscriptionPlan(ctx context.Context, planId int64) (ImplResponse, error) {
 	// TODO - update GetSubscriptionPlan with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *SubscriptionAPIService) GetSubscriptionPlan(ctx context.Context, versio
 }
 
 // GetSubscriptionPlans - List Subscription Plans
-func (s *SubscriptionAPIService) GetSubscriptionPlans(ctx context.Context, version float32, visible bool, role string) (ImplResponse, error) {
+func (s *SubscriptionAPIService) GetSubscriptionPlans(ctx context.Context, visible bool, role string) (ImplResponse, error) {
 	// TODO - update GetSubscriptionPlans with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *SubscriptionAPIService) GetSubscriptionPlans(ctx context.Context, versi
 }
 
 // UpdateSubscription - Update Subscription
-func (s *SubscriptionAPIService) UpdateSubscription(ctx context.Context, version float32, accountId int64, planId int64, promoCode string, active bool) (ImplResponse, error) {
+func (s *SubscriptionAPIService) UpdateSubscription(ctx context.Context, accountId int64, planId int64, promoCode string, active bool) (ImplResponse, error) {
 	// TODO - update UpdateSubscription with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *SubscriptionAPIService) UpdateSubscription(ctx context.Context, version
 }
 
 // GetSubscriptionUsage - Get Subscription Usage
-func (s *SubscriptionAPIService) GetSubscriptionUsage(ctx context.Context, version float32, accountId int64, applicationId int64, start int64, end int64) (ImplResponse, error) {
+func (s *SubscriptionAPIService) GetSubscriptionUsage(ctx context.Context, accountId int64, applicationId int64, start int64, end int64) (ImplResponse, error) {
 	// TODO - update GetSubscriptionUsage with the required logic for this service method.
 	// Add api_subscription_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

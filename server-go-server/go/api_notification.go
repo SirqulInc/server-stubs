@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // NotificationAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,79 +52,79 @@ func (c *NotificationAPIController) Routes() Routes {
 		"SendBatchNotifications": Route{
 			"SendBatchNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/batch",
+			"/api/3.18/notification/batch",
 			c.SendBatchNotifications,
 		},
 		"SendCustomNotifications": Route{
 			"SendCustomNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/custom",
+			"/api/3.18/notification/custom",
 			c.SendCustomNotifications,
 		},
 		"SearchRecipients": Route{
 			"SearchRecipients",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/recipient/search",
+			"/api/3.18/notification/recipient/search",
 			c.SearchRecipients,
 		},
 		"SearchRecipientsCount": Route{
 			"SearchRecipientsCount",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/recipient/search/count",
+			"/api/3.18/notification/recipient/search/count",
 			c.SearchRecipientsCount,
 		},
 		"GetNotifications": Route{
 			"GetNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/search",
+			"/api/3.18/notification/search",
 			c.GetNotifications,
 		},
 		"CreateNotificationTemplate": Route{
 			"CreateNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/create",
+			"/api/3.18/notification/template/create",
 			c.CreateNotificationTemplate,
 		},
 		"DeleteNotificationTemplate": Route{
 			"DeleteNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/delete",
+			"/api/3.18/notification/template/delete",
 			c.DeleteNotificationTemplate,
 		},
 		"GetNotificationTemplate": Route{
 			"GetNotificationTemplate",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/template/get",
+			"/api/3.18/notification/template/get",
 			c.GetNotificationTemplate,
 		},
 		"SearchNotificationTemplate": Route{
 			"SearchNotificationTemplate",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/template/search",
+			"/api/3.18/notification/template/search",
 			c.SearchNotificationTemplate,
 		},
 		"UpdateNotificationTemplate": Route{
 			"UpdateNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/update",
+			"/api/3.18/notification/template/update",
 			c.UpdateNotificationTemplate,
 		},
 		"RegisterNotificationToken": Route{
 			"RegisterNotificationToken",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/token",
+			"/api/3.18/notification/token",
 			c.RegisterNotificationToken,
 		},
 		"SearchBlockedNotifications": Route{
 			"SearchBlockedNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/blocked/search",
+			"/api/3.18/notification/blocked/search",
 			c.SearchBlockedNotifications,
 		},
 		"CreateOrUpdateBlockedNotifications": Route{
 			"CreateOrUpdateBlockedNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/blocked/batch",
+			"/api/3.18/notification/blocked/batch",
 			c.CreateOrUpdateBlockedNotifications,
 		},
 	}
@@ -138,79 +136,79 @@ func (c *NotificationAPIController) OrderedRoutes() []Route {
 		Route{
 			"SendBatchNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/batch",
+			"/api/3.18/notification/batch",
 			c.SendBatchNotifications,
 		},
 		Route{
 			"SendCustomNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/custom",
+			"/api/3.18/notification/custom",
 			c.SendCustomNotifications,
 		},
 		Route{
 			"SearchRecipients",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/recipient/search",
+			"/api/3.18/notification/recipient/search",
 			c.SearchRecipients,
 		},
 		Route{
 			"SearchRecipientsCount",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/recipient/search/count",
+			"/api/3.18/notification/recipient/search/count",
 			c.SearchRecipientsCount,
 		},
 		Route{
 			"GetNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/search",
+			"/api/3.18/notification/search",
 			c.GetNotifications,
 		},
 		Route{
 			"CreateNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/create",
+			"/api/3.18/notification/template/create",
 			c.CreateNotificationTemplate,
 		},
 		Route{
 			"DeleteNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/delete",
+			"/api/3.18/notification/template/delete",
 			c.DeleteNotificationTemplate,
 		},
 		Route{
 			"GetNotificationTemplate",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/template/get",
+			"/api/3.18/notification/template/get",
 			c.GetNotificationTemplate,
 		},
 		Route{
 			"SearchNotificationTemplate",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/template/search",
+			"/api/3.18/notification/template/search",
 			c.SearchNotificationTemplate,
 		},
 		Route{
 			"UpdateNotificationTemplate",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/template/update",
+			"/api/3.18/notification/template/update",
 			c.UpdateNotificationTemplate,
 		},
 		Route{
 			"RegisterNotificationToken",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/token",
+			"/api/3.18/notification/token",
 			c.RegisterNotificationToken,
 		},
 		Route{
 			"SearchBlockedNotifications",
 			strings.ToUpper("Get"),
-			"/api/{version}/notification/blocked/search",
+			"/api/3.18/notification/blocked/search",
 			c.SearchBlockedNotifications,
 		},
 		Route{
 			"CreateOrUpdateBlockedNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/notification/blocked/batch",
+			"/api/3.18/notification/blocked/batch",
 			c.CreateOrUpdateBlockedNotifications,
 		},
 	}
@@ -220,18 +218,9 @@ func (c *NotificationAPIController) OrderedRoutes() []Route {
 
 // SendBatchNotifications - Send Batch Notifications
 func (c *NotificationAPIController) SendBatchNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -324,7 +313,7 @@ func (c *NotificationAPIController) SendBatchNotifications(w http.ResponseWriter
 		parentTypeParam = param
 	} else {
 	}
-	result, err := c.service.SendBatchNotifications(r.Context(), versionParam, accountIdParam, appKeyParam, customMessageParam, conduitParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam)
+	result, err := c.service.SendBatchNotifications(r.Context(), accountIdParam, appKeyParam, customMessageParam, conduitParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -336,18 +325,9 @@ func (c *NotificationAPIController) SendBatchNotifications(w http.ResponseWriter
 
 // SendCustomNotifications - Send Custom Notifications
 func (c *NotificationAPIController) SendCustomNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -525,7 +505,7 @@ func (c *NotificationAPIController) SendCustomNotifications(w http.ResponseWrite
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.SendCustomNotifications(r.Context(), versionParam, deviceIdParam, accountIdParam, receiverAccountIdsParam, includeFriendGroupParam, appKeyParam, gameTypeParam, conduitParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, actionCategoryParam, subjectParam, customMessageParam, friendOnlyAPNSParam, latitudeParam, longitudeParam)
+	result, err := c.service.SendCustomNotifications(r.Context(), deviceIdParam, accountIdParam, receiverAccountIdsParam, includeFriendGroupParam, appKeyParam, gameTypeParam, conduitParam, contentIdParam, contentNameParam, contentTypeParam, parentIdParam, parentTypeParam, actionCategoryParam, subjectParam, customMessageParam, friendOnlyAPNSParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -537,18 +517,9 @@ func (c *NotificationAPIController) SendCustomNotifications(w http.ResponseWrite
 
 // SearchRecipients - Search for Recipients
 func (c *NotificationAPIController) SearchRecipients(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -679,7 +650,7 @@ func (c *NotificationAPIController) SearchRecipients(w http.ResponseWriter, r *h
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchRecipients(r.Context(), versionParam, sortFieldParam, deviceIdParam, accountIdParam, appKeyParam, conduitParam, keywordParam, audienceIdParam, audienceIdsParam, connectionGroupIdsParam, recipientAccountIdsParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchRecipients(r.Context(), sortFieldParam, deviceIdParam, accountIdParam, appKeyParam, conduitParam, keywordParam, audienceIdParam, audienceIdsParam, connectionGroupIdsParam, recipientAccountIdsParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -691,18 +662,9 @@ func (c *NotificationAPIController) SearchRecipients(w http.ResponseWriter, r *h
 
 // SearchRecipientsCount - Search for Recipients (Counts/Grouped)
 func (c *NotificationAPIController) SearchRecipientsCount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -824,7 +786,7 @@ func (c *NotificationAPIController) SearchRecipientsCount(w http.ResponseWriter,
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchRecipientsCount(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, conduitParam, keywordParam, audienceIdParam, audienceIdsParam, connectionGroupIdsParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchRecipientsCount(r.Context(), deviceIdParam, accountIdParam, appKeyParam, conduitParam, keywordParam, audienceIdParam, audienceIdsParam, connectionGroupIdsParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -836,18 +798,9 @@ func (c *NotificationAPIController) SearchRecipientsCount(w http.ResponseWriter,
 
 // GetNotifications - Get Notifications
 func (c *NotificationAPIController) GetNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1074,7 +1027,7 @@ func (c *NotificationAPIController) GetNotifications(w http.ResponseWriter, r *h
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.GetNotifications(r.Context(), versionParam, deviceIdParam, accountIdParam, connectionAccountIdParam, appKeyParam, eventTypeParam, contentIdsParam, contentTypesParam, parentIdsParam, parentTypesParam, actionCategoryParam, conduitsParam, keywordParam, returnReadMessagesParam, markAsReadParam, fromDateParam, latitudeParam, longitudeParam, returnSentParam, ignoreFlaggedParam, startParam, limitParam)
+	result, err := c.service.GetNotifications(r.Context(), deviceIdParam, accountIdParam, connectionAccountIdParam, appKeyParam, eventTypeParam, contentIdsParam, contentTypesParam, parentIdsParam, parentTypesParam, actionCategoryParam, conduitsParam, keywordParam, returnReadMessagesParam, markAsReadParam, fromDateParam, latitudeParam, longitudeParam, returnSentParam, ignoreFlaggedParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1086,18 +1039,9 @@ func (c *NotificationAPIController) GetNotifications(w http.ResponseWriter, r *h
 
 // CreateNotificationTemplate - Create Notification Template
 func (c *NotificationAPIController) CreateNotificationTemplate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1164,7 +1108,7 @@ func (c *NotificationAPIController) CreateNotificationTemplate(w http.ResponseWr
 		tagsParam = param
 	} else {
 	}
-	result, err := c.service.CreateNotificationTemplate(r.Context(), versionParam, accountIdParam, conduitParam, titleParam, bodyParam, appKeyParam, eventParam, tagsParam)
+	result, err := c.service.CreateNotificationTemplate(r.Context(), accountIdParam, conduitParam, titleParam, bodyParam, appKeyParam, eventParam, tagsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1176,18 +1120,9 @@ func (c *NotificationAPIController) CreateNotificationTemplate(w http.ResponseWr
 
 // DeleteNotificationTemplate - Delete Notification Template
 func (c *NotificationAPIController) DeleteNotificationTemplate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1222,7 +1157,7 @@ func (c *NotificationAPIController) DeleteNotificationTemplate(w http.ResponseWr
 		c.errorHandler(w, r, &RequiredError{Field: "notificationTemplateId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteNotificationTemplate(r.Context(), versionParam, accountIdParam, notificationTemplateIdParam)
+	result, err := c.service.DeleteNotificationTemplate(r.Context(), accountIdParam, notificationTemplateIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1234,18 +1169,9 @@ func (c *NotificationAPIController) DeleteNotificationTemplate(w http.ResponseWr
 
 // GetNotificationTemplate - Get Notification Template
 func (c *NotificationAPIController) GetNotificationTemplate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1280,7 +1206,7 @@ func (c *NotificationAPIController) GetNotificationTemplate(w http.ResponseWrite
 		c.errorHandler(w, r, &RequiredError{Field: "notificationTemplateId"}, nil)
 		return
 	}
-	result, err := c.service.GetNotificationTemplate(r.Context(), versionParam, accountIdParam, notificationTemplateIdParam)
+	result, err := c.service.GetNotificationTemplate(r.Context(), accountIdParam, notificationTemplateIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1292,18 +1218,9 @@ func (c *NotificationAPIController) GetNotificationTemplate(w http.ResponseWrite
 
 // SearchNotificationTemplate - Search Notification Templates
 func (c *NotificationAPIController) SearchNotificationTemplate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1435,7 +1352,7 @@ func (c *NotificationAPIController) SearchNotificationTemplate(w http.ResponseWr
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchNotificationTemplate(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, appKeyParam, eventParam, conduitParam, globalOnlyParam, reservedOnlyParam, keywordParam)
+	result, err := c.service.SearchNotificationTemplate(r.Context(), accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, appKeyParam, eventParam, conduitParam, globalOnlyParam, reservedOnlyParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1447,18 +1364,9 @@ func (c *NotificationAPIController) SearchNotificationTemplate(w http.ResponseWr
 
 // UpdateNotificationTemplate - Update Notification Template
 func (c *NotificationAPIController) UpdateNotificationTemplate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1514,7 +1422,7 @@ func (c *NotificationAPIController) UpdateNotificationTemplate(w http.ResponseWr
 		tagsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateNotificationTemplate(r.Context(), versionParam, accountIdParam, notificationTemplateIdParam, titleParam, bodyParam, tagsParam)
+	result, err := c.service.UpdateNotificationTemplate(r.Context(), accountIdParam, notificationTemplateIdParam, titleParam, bodyParam, tagsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1526,18 +1434,9 @@ func (c *NotificationAPIController) UpdateNotificationTemplate(w http.ResponseWr
 
 // RegisterNotificationToken - Register Notification Token
 func (c *NotificationAPIController) RegisterNotificationToken(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tokenParam string
@@ -1642,7 +1541,7 @@ func (c *NotificationAPIController) RegisterNotificationToken(w http.ResponseWri
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RegisterNotificationToken(r.Context(), versionParam, tokenParam, pushTypeParam, deviceIdParam, accountIdParam, environmentParam, appKeyParam, gameTypeParam, activeParam, latitudeParam, longitudeParam)
+	result, err := c.service.RegisterNotificationToken(r.Context(), tokenParam, pushTypeParam, deviceIdParam, accountIdParam, environmentParam, appKeyParam, gameTypeParam, activeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1654,18 +1553,9 @@ func (c *NotificationAPIController) RegisterNotificationToken(w http.ResponseWri
 
 // SearchBlockedNotifications - Search on the user's blocked notification settings
 func (c *NotificationAPIController) SearchBlockedNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1782,7 +1672,7 @@ func (c *NotificationAPIController) SearchBlockedNotifications(w http.ResponseWr
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchBlockedNotifications(r.Context(), versionParam, appKeyParam, accountIdParam, searchTagsParam, eventsParam, conduitsParam, customTypesParam, contentTypesParam, contentIdsParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchBlockedNotifications(r.Context(), appKeyParam, accountIdParam, searchTagsParam, eventsParam, conduitsParam, customTypesParam, contentTypesParam, contentIdsParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1794,18 +1684,9 @@ func (c *NotificationAPIController) SearchBlockedNotifications(w http.ResponseWr
 
 // CreateOrUpdateBlockedNotifications - Create or update blocked notification settings
 func (c *NotificationAPIController) CreateOrUpdateBlockedNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1840,7 +1721,7 @@ func (c *NotificationAPIController) CreateOrUpdateBlockedNotifications(w http.Re
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateOrUpdateBlockedNotifications(r.Context(), versionParam, appKeyParam, dataParam, accountIdParam)
+	result, err := c.service.CreateOrUpdateBlockedNotifications(r.Context(), appKeyParam, dataParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

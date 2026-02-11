@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // ThemeDescriptorAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,25 +53,25 @@ func (c *ThemeDescriptorAPIController) Routes() Routes {
 		"AddOrUpdateThemeDescriptor": Route{
 			"AddOrUpdateThemeDescriptor",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/theme",
+			"/api/3.18/consumer/theme",
 			c.AddOrUpdateThemeDescriptor,
 		},
 		"GetThemeDescriptor": Route{
 			"GetThemeDescriptor",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/theme/get",
+			"/api/3.18/consumer/theme/get",
 			c.GetThemeDescriptor,
 		},
 		"RemoveThemeDescriptor": Route{
 			"RemoveThemeDescriptor",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/theme/remove",
+			"/api/3.18/consumer/theme/remove",
 			c.RemoveThemeDescriptor,
 		},
 		"GetThemeDescriptors": Route{
 			"GetThemeDescriptors",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/theme/search",
+			"/api/3.18/consumer/theme/search",
 			c.GetThemeDescriptors,
 		},
 	}
@@ -85,25 +83,25 @@ func (c *ThemeDescriptorAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddOrUpdateThemeDescriptor",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/theme",
+			"/api/3.18/consumer/theme",
 			c.AddOrUpdateThemeDescriptor,
 		},
 		Route{
 			"GetThemeDescriptor",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/theme/get",
+			"/api/3.18/consumer/theme/get",
 			c.GetThemeDescriptor,
 		},
 		Route{
 			"RemoveThemeDescriptor",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/theme/remove",
+			"/api/3.18/consumer/theme/remove",
 			c.RemoveThemeDescriptor,
 		},
 		Route{
 			"GetThemeDescriptors",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/theme/search",
+			"/api/3.18/consumer/theme/search",
 			c.GetThemeDescriptors,
 		},
 	}
@@ -113,18 +111,9 @@ func (c *ThemeDescriptorAPIController) OrderedRoutes() []Route {
 
 // AddOrUpdateThemeDescriptor - Create/Update Theme
 func (c *ThemeDescriptorAPIController) AddOrUpdateThemeDescriptor(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var publicReadParam bool
@@ -400,7 +389,7 @@ func (c *ThemeDescriptorAPIController) AddOrUpdateThemeDescriptor(w http.Respons
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddOrUpdateThemeDescriptor(r.Context(), versionParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, visibilityParam, includeFriendGroupParam, completeWithDefaultValuesParam, deviceIdParam, accountIdParam, gameTypeParam, themeDescriptorIdParam, titleParam, descriptionParam, connectionIdsToAddParam, connectionGroupIdsToAddParam, appVersionParam, colorValueJsonParam, stringReplacerJsonParam, customJsonObjectsParam, iconImageParam, sceneAtlasImageParam, bgImageParam, bgSoundParam, musicSelectionParam, locationDescriptionParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddOrUpdateThemeDescriptor(r.Context(), publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, visibilityParam, includeFriendGroupParam, completeWithDefaultValuesParam, deviceIdParam, accountIdParam, gameTypeParam, themeDescriptorIdParam, titleParam, descriptionParam, connectionIdsToAddParam, connectionGroupIdsToAddParam, appVersionParam, colorValueJsonParam, stringReplacerJsonParam, customJsonObjectsParam, iconImageParam, sceneAtlasImageParam, bgImageParam, bgSoundParam, musicSelectionParam, locationDescriptionParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -412,18 +401,9 @@ func (c *ThemeDescriptorAPIController) AddOrUpdateThemeDescriptor(w http.Respons
 
 // GetThemeDescriptor - Get Theme
 func (c *ThemeDescriptorAPIController) GetThemeDescriptor(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var themeDescriptorIdParam int64
@@ -498,7 +478,7 @@ func (c *ThemeDescriptorAPIController) GetThemeDescriptor(w http.ResponseWriter,
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetThemeDescriptor(r.Context(), versionParam, themeDescriptorIdParam, deviceIdParam, accountIdParam, gameTypeParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetThemeDescriptor(r.Context(), themeDescriptorIdParam, deviceIdParam, accountIdParam, gameTypeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -510,18 +490,9 @@ func (c *ThemeDescriptorAPIController) GetThemeDescriptor(w http.ResponseWriter,
 
 // RemoveThemeDescriptor - Delete Theme
 func (c *ThemeDescriptorAPIController) RemoveThemeDescriptor(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var themeDescriptorIdParam int64
@@ -596,7 +567,7 @@ func (c *ThemeDescriptorAPIController) RemoveThemeDescriptor(w http.ResponseWrit
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.RemoveThemeDescriptor(r.Context(), versionParam, themeDescriptorIdParam, deviceIdParam, accountIdParam, gameTypeParam, latitudeParam, longitudeParam)
+	result, err := c.service.RemoveThemeDescriptor(r.Context(), themeDescriptorIdParam, deviceIdParam, accountIdParam, gameTypeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -608,18 +579,9 @@ func (c *ThemeDescriptorAPIController) RemoveThemeDescriptor(w http.ResponseWrit
 
 // GetThemeDescriptors - Search Themes
 func (c *ThemeDescriptorAPIController) GetThemeDescriptors(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var filterParam string
@@ -828,7 +790,7 @@ func (c *ThemeDescriptorAPIController) GetThemeDescriptors(w http.ResponseWriter
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetThemeDescriptors(r.Context(), versionParam, filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, contestTypeParam, ownerIdParam, qParam, keywordParam, iParam, lParam, dateCreatedParam, appVersionParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetThemeDescriptors(r.Context(), filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, contestTypeParam, ownerIdParam, qParam, keywordParam, iParam, lParam, dateCreatedParam, appVersionParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

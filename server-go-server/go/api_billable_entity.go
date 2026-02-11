@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // BillableEntityAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,25 +52,25 @@ func (c *BillableEntityAPIController) Routes() Routes {
 		"CreateBillableEntity": Route{
 			"CreateBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/create",
+			"/api/3.18/billable/create",
 			c.CreateBillableEntity,
 		},
 		"DeleteBillableEntity": Route{
 			"DeleteBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/delete",
+			"/api/3.18/billable/delete",
 			c.DeleteBillableEntity,
 		},
 		"GetBillableEntity": Route{
 			"GetBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/billable/get",
+			"/api/3.18/billable/get",
 			c.GetBillableEntity,
 		},
 		"UpdateBillableEntity": Route{
 			"UpdateBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/update",
+			"/api/3.18/billable/update",
 			c.UpdateBillableEntity,
 		},
 	}
@@ -84,25 +82,25 @@ func (c *BillableEntityAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/create",
+			"/api/3.18/billable/create",
 			c.CreateBillableEntity,
 		},
 		Route{
 			"DeleteBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/delete",
+			"/api/3.18/billable/delete",
 			c.DeleteBillableEntity,
 		},
 		Route{
 			"GetBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/billable/get",
+			"/api/3.18/billable/get",
 			c.GetBillableEntity,
 		},
 		Route{
 			"UpdateBillableEntity",
 			strings.ToUpper("Post"),
-			"/api/{version}/billable/update",
+			"/api/3.18/billable/update",
 			c.UpdateBillableEntity,
 		},
 	}
@@ -112,18 +110,9 @@ func (c *BillableEntityAPIController) OrderedRoutes() []Route {
 
 // CreateBillableEntity - Create Billable
 func (c *BillableEntityAPIController) CreateBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -217,7 +206,7 @@ func (c *BillableEntityAPIController) CreateBillableEntity(w http.ResponseWriter
 		authorizeNetTransactionKeyParam = param
 	} else {
 	}
-	result, err := c.service.CreateBillableEntity(r.Context(), versionParam, deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, businessPhoneParam, businessPhoneExtParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam)
+	result, err := c.service.CreateBillableEntity(r.Context(), deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, businessPhoneParam, businessPhoneExtParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -229,18 +218,9 @@ func (c *BillableEntityAPIController) CreateBillableEntity(w http.ResponseWriter
 
 // DeleteBillableEntity - Delete Billable
 func (c *BillableEntityAPIController) DeleteBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -264,7 +244,7 @@ func (c *BillableEntityAPIController) DeleteBillableEntity(w http.ResponseWriter
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteBillableEntity(r.Context(), versionParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteBillableEntity(r.Context(), deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -276,18 +256,9 @@ func (c *BillableEntityAPIController) DeleteBillableEntity(w http.ResponseWriter
 
 // GetBillableEntity - Get Billable
 func (c *BillableEntityAPIController) GetBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -343,7 +314,7 @@ func (c *BillableEntityAPIController) GetBillableEntity(w http.ResponseWriter, r
 		var param bool = true
 		includePaymentsParam = param
 	}
-	result, err := c.service.GetBillableEntity(r.Context(), versionParam, deviceIdParam, accountIdParam, includeCountsParam, includePaymentsParam)
+	result, err := c.service.GetBillableEntity(r.Context(), deviceIdParam, accountIdParam, includeCountsParam, includePaymentsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -355,18 +326,9 @@ func (c *BillableEntityAPIController) GetBillableEntity(w http.ResponseWriter, r
 
 // UpdateBillableEntity - Update Billable
 func (c *BillableEntityAPIController) UpdateBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -460,7 +422,7 @@ func (c *BillableEntityAPIController) UpdateBillableEntity(w http.ResponseWriter
 		authorizeNetTransactionKeyParam = param
 	} else {
 	}
-	result, err := c.service.UpdateBillableEntity(r.Context(), versionParam, deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, businessPhoneParam, businessPhoneExtParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam)
+	result, err := c.service.UpdateBillableEntity(r.Context(), deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, businessPhoneParam, businessPhoneExtParam, authorizeNetApiKeyParam, authorizeNetTransactionKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // DisbursementAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *DisbursementAPIController) Routes() Routes {
 		"CheckDisbursements": Route{
 			"CheckDisbursements",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/check",
+			"/api/3.18/disbursement/check",
 			c.CheckDisbursements,
 		},
 		"CreateDisbursement": Route{
 			"CreateDisbursement",
 			strings.ToUpper("Post"),
-			"/api/{version}/disbursement/create",
+			"/api/3.18/disbursement/create",
 			c.CreateDisbursement,
 		},
 		"GetDisbursement": Route{
 			"GetDisbursement",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/get",
+			"/api/3.18/disbursement/get",
 			c.GetDisbursement,
 		},
 		"SearchDisbursements": Route{
 			"SearchDisbursements",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/search",
+			"/api/3.18/disbursement/search",
 			c.SearchDisbursements,
 		},
 		"UpdateDisbursement": Route{
 			"UpdateDisbursement",
 			strings.ToUpper("Post"),
-			"/api/{version}/disbursement/update",
+			"/api/3.18/disbursement/update",
 			c.UpdateDisbursement,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *DisbursementAPIController) OrderedRoutes() []Route {
 		Route{
 			"CheckDisbursements",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/check",
+			"/api/3.18/disbursement/check",
 			c.CheckDisbursements,
 		},
 		Route{
 			"CreateDisbursement",
 			strings.ToUpper("Post"),
-			"/api/{version}/disbursement/create",
+			"/api/3.18/disbursement/create",
 			c.CreateDisbursement,
 		},
 		Route{
 			"GetDisbursement",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/get",
+			"/api/3.18/disbursement/get",
 			c.GetDisbursement,
 		},
 		Route{
 			"SearchDisbursements",
 			strings.ToUpper("Get"),
-			"/api/{version}/disbursement/search",
+			"/api/3.18/disbursement/search",
 			c.SearchDisbursements,
 		},
 		Route{
 			"UpdateDisbursement",
 			strings.ToUpper("Post"),
-			"/api/{version}/disbursement/update",
+			"/api/3.18/disbursement/update",
 			c.UpdateDisbursement,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *DisbursementAPIController) OrderedRoutes() []Route {
 
 // CheckDisbursements - Check Disbursements
 func (c *DisbursementAPIController) CheckDisbursements(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var disbursementIdParam int64
@@ -154,7 +143,7 @@ func (c *DisbursementAPIController) CheckDisbursements(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &RequiredError{Field: "disbursementId"}, nil)
 		return
 	}
-	result, err := c.service.CheckDisbursements(r.Context(), versionParam, disbursementIdParam)
+	result, err := c.service.CheckDisbursements(r.Context(), disbursementIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -166,18 +155,9 @@ func (c *DisbursementAPIController) CheckDisbursements(w http.ResponseWriter, r 
 
 // CreateDisbursement - Create Disbursement
 func (c *DisbursementAPIController) CreateDisbursement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -295,7 +275,7 @@ func (c *DisbursementAPIController) CreateDisbursement(w http.ResponseWriter, r 
 		introspectionParamsParam = param
 	} else {
 	}
-	result, err := c.service.CreateDisbursement(r.Context(), versionParam, accountIdParam, receiverAccountIdParam, originalSenderAccountIdParam, amountParam, providerParam, scheduledDateParam, titleParam, commentParam, externalIdParam, introspectionParamsParam)
+	result, err := c.service.CreateDisbursement(r.Context(), accountIdParam, receiverAccountIdParam, originalSenderAccountIdParam, amountParam, providerParam, scheduledDateParam, titleParam, commentParam, externalIdParam, introspectionParamsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -307,18 +287,9 @@ func (c *DisbursementAPIController) CreateDisbursement(w http.ResponseWriter, r 
 
 // GetDisbursement - Get Disbursement
 func (c *DisbursementAPIController) GetDisbursement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -353,7 +324,7 @@ func (c *DisbursementAPIController) GetDisbursement(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "disbursementId"}, nil)
 		return
 	}
-	result, err := c.service.GetDisbursement(r.Context(), versionParam, accountIdParam, disbursementIdParam)
+	result, err := c.service.GetDisbursement(r.Context(), accountIdParam, disbursementIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -365,18 +336,9 @@ func (c *DisbursementAPIController) GetDisbursement(w http.ResponseWriter, r *ht
 
 // SearchDisbursements - Search Disbursements
 func (c *DisbursementAPIController) SearchDisbursements(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -506,7 +468,7 @@ func (c *DisbursementAPIController) SearchDisbursements(w http.ResponseWriter, r
 		externalIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchDisbursements(r.Context(), versionParam, accountIdParam, receiverAccountIdParam, statusesParam, providersParam, beforeDateParam, afterDateParam, startParam, limitParam, activeOnlyParam, externalIdParam)
+	result, err := c.service.SearchDisbursements(r.Context(), accountIdParam, receiverAccountIdParam, statusesParam, providersParam, beforeDateParam, afterDateParam, startParam, limitParam, activeOnlyParam, externalIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -518,18 +480,9 @@ func (c *DisbursementAPIController) SearchDisbursements(w http.ResponseWriter, r
 
 // UpdateDisbursement - Update Disbursement
 func (c *DisbursementAPIController) UpdateDisbursement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -641,7 +594,7 @@ func (c *DisbursementAPIController) UpdateDisbursement(w http.ResponseWriter, r 
 		introspectionParamsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateDisbursement(r.Context(), versionParam, accountIdParam, disbursementIdParam, amountParam, providerParam, scheduledDateParam, titleParam, commentParam, externalIdParam, retryParam, introspectionParamsParam)
+	result, err := c.service.UpdateDisbursement(r.Context(), accountIdParam, disbursementIdParam, amountParam, providerParam, scheduledDateParam, titleParam, commentParam, externalIdParam, retryParam, introspectionParamsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

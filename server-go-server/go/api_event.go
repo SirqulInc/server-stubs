@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // EventAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,43 +52,43 @@ func (c *EventAPIController) Routes() Routes {
 		"AttendEvent": Route{
 			"AttendEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/attend",
+			"/api/3.18/event/attend",
 			c.AttendEvent,
 		},
 		"SearchEventTransactions": Route{
 			"SearchEventTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/attendance/search",
+			"/api/3.18/event/attendance/search",
 			c.SearchEventTransactions,
 		},
 		"CreateEvent": Route{
 			"CreateEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/create",
+			"/api/3.18/event/create",
 			c.CreateEvent,
 		},
 		"DeleteEvent": Route{
 			"DeleteEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/delete",
+			"/api/3.18/event/delete",
 			c.DeleteEvent,
 		},
 		"GetEvent": Route{
 			"GetEvent",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/get",
+			"/api/3.18/event/get",
 			c.GetEvent,
 		},
 		"SearchEvents": Route{
 			"SearchEvents",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/search",
+			"/api/3.18/event/search",
 			c.SearchEvents,
 		},
 		"UpdateEvent": Route{
 			"UpdateEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/update",
+			"/api/3.18/event/update",
 			c.UpdateEvent,
 		},
 	}
@@ -102,43 +100,43 @@ func (c *EventAPIController) OrderedRoutes() []Route {
 		Route{
 			"AttendEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/attend",
+			"/api/3.18/event/attend",
 			c.AttendEvent,
 		},
 		Route{
 			"SearchEventTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/attendance/search",
+			"/api/3.18/event/attendance/search",
 			c.SearchEventTransactions,
 		},
 		Route{
 			"CreateEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/create",
+			"/api/3.18/event/create",
 			c.CreateEvent,
 		},
 		Route{
 			"DeleteEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/delete",
+			"/api/3.18/event/delete",
 			c.DeleteEvent,
 		},
 		Route{
 			"GetEvent",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/get",
+			"/api/3.18/event/get",
 			c.GetEvent,
 		},
 		Route{
 			"SearchEvents",
 			strings.ToUpper("Get"),
-			"/api/{version}/event/search",
+			"/api/3.18/event/search",
 			c.SearchEvents,
 		},
 		Route{
 			"UpdateEvent",
 			strings.ToUpper("Post"),
-			"/api/{version}/event/update",
+			"/api/3.18/event/update",
 			c.UpdateEvent,
 		},
 	}
@@ -148,18 +146,9 @@ func (c *EventAPIController) OrderedRoutes() []Route {
 
 // AttendEvent - Attend Event
 func (c *EventAPIController) AttendEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -288,7 +277,7 @@ func (c *EventAPIController) AttendEvent(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AttendEvent(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, listingIdParam, retailerLocationIdParam, offerLocationIdParam, transactionIdParam, statusParam, latitudeParam, longitudeParam)
+	result, err := c.service.AttendEvent(r.Context(), deviceIdParam, accountIdParam, appKeyParam, listingIdParam, retailerLocationIdParam, offerLocationIdParam, transactionIdParam, statusParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -300,18 +289,9 @@ func (c *EventAPIController) AttendEvent(w http.ResponseWriter, r *http.Request)
 
 // SearchEventTransactions - Search Event Attendance
 func (c *EventAPIController) SearchEventTransactions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -531,7 +511,7 @@ func (c *EventAPIController) SearchEventTransactions(w http.ResponseWriter, r *h
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchEventTransactions(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, keywordParam, retailerIdParam, retailerLocationIdParam, excludeRetailerLocationIdParam, listingIdParam, offerIdParam, offerLocationIdParam, customerAccountIdsParam, affiliatedCategoryIdsParam, startDateParam, endDateParam, statusesParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchEventTransactions(r.Context(), deviceIdParam, accountIdParam, appKeyParam, keywordParam, retailerIdParam, retailerLocationIdParam, excludeRetailerLocationIdParam, listingIdParam, offerIdParam, offerLocationIdParam, customerAccountIdsParam, affiliatedCategoryIdsParam, startDateParam, endDateParam, statusesParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -543,18 +523,9 @@ func (c *EventAPIController) SearchEventTransactions(w http.ResponseWriter, r *h
 
 // CreateEvent - Create Event
 func (c *EventAPIController) CreateEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -680,7 +651,7 @@ func (c *EventAPIController) CreateEvent(w http.ResponseWriter, r *http.Request)
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateEvent(r.Context(), versionParam, accountIdParam, titleParam, retailerLocationIdsParam, subTitleParam, detailsParam, categoryIdsParam, filterIdsParam, activeParam, imageAssetIdParam, redeemableStartParam, redeemableEndParam, metaDataParam)
+	result, err := c.service.CreateEvent(r.Context(), accountIdParam, titleParam, retailerLocationIdsParam, subTitleParam, detailsParam, categoryIdsParam, filterIdsParam, activeParam, imageAssetIdParam, redeemableStartParam, redeemableEndParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -692,18 +663,9 @@ func (c *EventAPIController) CreateEvent(w http.ResponseWriter, r *http.Request)
 
 // DeleteEvent - Delete Event
 func (c *EventAPIController) DeleteEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -738,7 +700,7 @@ func (c *EventAPIController) DeleteEvent(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &RequiredError{Field: "eventId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteEvent(r.Context(), versionParam, accountIdParam, eventIdParam)
+	result, err := c.service.DeleteEvent(r.Context(), accountIdParam, eventIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -750,18 +712,9 @@ func (c *EventAPIController) DeleteEvent(w http.ResponseWriter, r *http.Request)
 
 // GetEvent - Get Event
 func (c *EventAPIController) GetEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -796,7 +749,7 @@ func (c *EventAPIController) GetEvent(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "eventId"}, nil)
 		return
 	}
-	result, err := c.service.GetEvent(r.Context(), versionParam, accountIdParam, eventIdParam)
+	result, err := c.service.GetEvent(r.Context(), accountIdParam, eventIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -808,18 +761,9 @@ func (c *EventAPIController) GetEvent(w http.ResponseWriter, r *http.Request) {
 
 // SearchEvents - Search Events
 func (c *EventAPIController) SearchEvents(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -964,7 +908,7 @@ func (c *EventAPIController) SearchEvents(w http.ResponseWriter, r *http.Request
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchEvents(r.Context(), versionParam, accountIdParam, keywordParam, activeOnlyParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, transactionAudienceIdsParam, sortFieldParam, descendingParam, startDateParam, endDateParam, startParam, limitParam)
+	result, err := c.service.SearchEvents(r.Context(), accountIdParam, keywordParam, activeOnlyParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, transactionAudienceIdsParam, sortFieldParam, descendingParam, startDateParam, endDateParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -976,18 +920,9 @@ func (c *EventAPIController) SearchEvents(w http.ResponseWriter, r *http.Request
 
 // UpdateEvent - Update Event
 func (c *EventAPIController) UpdateEvent(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1120,7 +1055,7 @@ func (c *EventAPIController) UpdateEvent(w http.ResponseWriter, r *http.Request)
 		redeemableEndParam = param
 	} else {
 	}
-	result, err := c.service.UpdateEvent(r.Context(), versionParam, accountIdParam, eventIdParam, retailerLocationIdsParam, titleParam, subTitleParam, detailsParam, categoryIdsParam, filterIdsParam, activeParam, imageAssetIdParam, redeemableStartParam, redeemableEndParam)
+	result, err := c.service.UpdateEvent(r.Context(), accountIdParam, eventIdParam, retailerLocationIdsParam, titleParam, subTitleParam, detailsParam, categoryIdsParam, filterIdsParam, activeParam, imageAssetIdParam, redeemableStartParam, redeemableEndParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

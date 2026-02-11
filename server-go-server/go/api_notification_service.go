@@ -29,7 +29,7 @@ func NewNotificationAPIService() *NotificationAPIService {
 }
 
 // SendBatchNotifications - Send Batch Notifications
-func (s *NotificationAPIService) SendBatchNotifications(ctx context.Context, version float32, accountId int64, appKey string, customMessage string, conduit string, contentId int64, contentName string, contentType string, parentId int64, parentType string) (ImplResponse, error) {
+func (s *NotificationAPIService) SendBatchNotifications(ctx context.Context, accountId int64, appKey string, customMessage string, conduit string, contentId int64, contentName string, contentType string, parentId int64, parentType string) (ImplResponse, error) {
 	// TODO - update SendBatchNotifications with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *NotificationAPIService) SendBatchNotifications(ctx context.Context, ver
 }
 
 // SendCustomNotifications - Send Custom Notifications
-func (s *NotificationAPIService) SendCustomNotifications(ctx context.Context, version float32, deviceId string, accountId int64, receiverAccountIds string, includeFriendGroup bool, appKey string, gameType string, conduit string, contentId int64, contentName string, contentType string, parentId int64, parentType string, actionCategory string, subject string, customMessage string, friendOnlyAPNS bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *NotificationAPIService) SendCustomNotifications(ctx context.Context, deviceId string, accountId int64, receiverAccountIds string, includeFriendGroup bool, appKey string, gameType string, conduit string, contentId int64, contentName string, contentType string, parentId int64, parentType string, actionCategory string, subject string, customMessage string, friendOnlyAPNS bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update SendCustomNotifications with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *NotificationAPIService) SendCustomNotifications(ctx context.Context, ve
 }
 
 // SearchRecipients - Search for Recipients
-func (s *NotificationAPIService) SearchRecipients(ctx context.Context, version float32, sortField string, deviceId string, accountId int64, appKey string, conduit string, keyword string, audienceId int64, audienceIds string, connectionGroupIds string, recipientAccountIds string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *NotificationAPIService) SearchRecipients(ctx context.Context, sortField string, deviceId string, accountId int64, appKey string, conduit string, keyword string, audienceId int64, audienceIds string, connectionGroupIds string, recipientAccountIds string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchRecipients with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *NotificationAPIService) SearchRecipients(ctx context.Context, version f
 }
 
 // SearchRecipientsCount - Search for Recipients (Counts/Grouped)
-func (s *NotificationAPIService) SearchRecipientsCount(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, conduit string, keyword string, audienceId int64, audienceIds string, connectionGroupIds string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *NotificationAPIService) SearchRecipientsCount(ctx context.Context, deviceId string, accountId int64, appKey string, conduit string, keyword string, audienceId int64, audienceIds string, connectionGroupIds string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchRecipientsCount with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *NotificationAPIService) SearchRecipientsCount(ctx context.Context, vers
 }
 
 // GetNotifications - Get Notifications
-func (s *NotificationAPIService) GetNotifications(ctx context.Context, version float32, deviceId string, accountId int64, connectionAccountId int64, appKey string, eventType string, contentIds string, contentTypes string, parentIds string, parentTypes string, actionCategory string, conduits string, keyword string, returnReadMessages bool, markAsRead bool, fromDate int64, latitude float64, longitude float64, returnSent bool, ignoreFlagged bool, start int32, limit int32) (ImplResponse, error) {
+func (s *NotificationAPIService) GetNotifications(ctx context.Context, deviceId string, accountId int64, connectionAccountId int64, appKey string, eventType string, contentIds string, contentTypes string, parentIds string, parentTypes string, actionCategory string, conduits string, keyword string, returnReadMessages bool, markAsRead bool, fromDate int64, latitude float64, longitude float64, returnSent bool, ignoreFlagged bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetNotifications with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *NotificationAPIService) GetNotifications(ctx context.Context, version f
 }
 
 // CreateNotificationTemplate - Create Notification Template
-func (s *NotificationAPIService) CreateNotificationTemplate(ctx context.Context, version float32, accountId int64, conduit string, title string, body string, appKey string, event string, tags string) (ImplResponse, error) {
+func (s *NotificationAPIService) CreateNotificationTemplate(ctx context.Context, accountId int64, conduit string, title string, body string, appKey string, event string, tags string) (ImplResponse, error) {
 	// TODO - update CreateNotificationTemplate with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *NotificationAPIService) CreateNotificationTemplate(ctx context.Context,
 }
 
 // DeleteNotificationTemplate - Delete Notification Template
-func (s *NotificationAPIService) DeleteNotificationTemplate(ctx context.Context, version float32, accountId int64, notificationTemplateId int64) (ImplResponse, error) {
+func (s *NotificationAPIService) DeleteNotificationTemplate(ctx context.Context, accountId int64, notificationTemplateId int64) (ImplResponse, error) {
 	// TODO - update DeleteNotificationTemplate with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *NotificationAPIService) DeleteNotificationTemplate(ctx context.Context,
 }
 
 // GetNotificationTemplate - Get Notification Template
-func (s *NotificationAPIService) GetNotificationTemplate(ctx context.Context, version float32, accountId int64, notificationTemplateId int64) (ImplResponse, error) {
+func (s *NotificationAPIService) GetNotificationTemplate(ctx context.Context, accountId int64, notificationTemplateId int64) (ImplResponse, error) {
 	// TODO - update GetNotificationTemplate with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *NotificationAPIService) GetNotificationTemplate(ctx context.Context, ve
 }
 
 // SearchNotificationTemplate - Search Notification Templates
-func (s *NotificationAPIService) SearchNotificationTemplate(ctx context.Context, version float32, accountId int64, sortField string, descending bool, start int32, limit int32, appKey string, event string, conduit string, globalOnly bool, reservedOnly bool, keyword string) (ImplResponse, error) {
+func (s *NotificationAPIService) SearchNotificationTemplate(ctx context.Context, accountId int64, sortField string, descending bool, start int32, limit int32, appKey string, event string, conduit string, globalOnly bool, reservedOnly bool, keyword string) (ImplResponse, error) {
 	// TODO - update SearchNotificationTemplate with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *NotificationAPIService) SearchNotificationTemplate(ctx context.Context,
 }
 
 // UpdateNotificationTemplate - Update Notification Template
-func (s *NotificationAPIService) UpdateNotificationTemplate(ctx context.Context, version float32, accountId int64, notificationTemplateId int64, title string, body string, tags string) (ImplResponse, error) {
+func (s *NotificationAPIService) UpdateNotificationTemplate(ctx context.Context, accountId int64, notificationTemplateId int64, title string, body string, tags string) (ImplResponse, error) {
 	// TODO - update UpdateNotificationTemplate with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *NotificationAPIService) UpdateNotificationTemplate(ctx context.Context,
 }
 
 // RegisterNotificationToken - Register Notification Token
-func (s *NotificationAPIService) RegisterNotificationToken(ctx context.Context, version float32, token string, pushType string, deviceId string, accountId int64, environment string, appKey string, gameType string, active bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *NotificationAPIService) RegisterNotificationToken(ctx context.Context, token string, pushType string, deviceId string, accountId int64, environment string, appKey string, gameType string, active bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RegisterNotificationToken with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *NotificationAPIService) RegisterNotificationToken(ctx context.Context, 
 }
 
 // SearchBlockedNotifications - Search on the user&#39;s blocked notification settings
-func (s *NotificationAPIService) SearchBlockedNotifications(ctx context.Context, version float32, appKey string, accountId int64, searchTags string, events string, conduits string, customTypes string, contentTypes string, contentIds string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *NotificationAPIService) SearchBlockedNotifications(ctx context.Context, appKey string, accountId int64, searchTags string, events string, conduits string, customTypes string, contentTypes string, contentIds string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchBlockedNotifications with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *NotificationAPIService) SearchBlockedNotifications(ctx context.Context,
 }
 
 // CreateOrUpdateBlockedNotifications - Create or update blocked notification settings
-func (s *NotificationAPIService) CreateOrUpdateBlockedNotifications(ctx context.Context, version float32, appKey string, data string, accountId int64) (ImplResponse, error) {
+func (s *NotificationAPIService) CreateOrUpdateBlockedNotifications(ctx context.Context, appKey string, data string, accountId int64) (ImplResponse, error) {
 	// TODO - update CreateOrUpdateBlockedNotifications with the required logic for this service method.
 	// Add api_notification_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

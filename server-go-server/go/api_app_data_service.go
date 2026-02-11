@@ -29,7 +29,7 @@ func NewAppDataAPIService() *AppDataAPIService {
 }
 
 // GetAppData - Get App Data
-func (s *AppDataAPIService) GetAppData(ctx context.Context, version float32, start int32, limit int32, deviceId string, accountId int64, gameType string, includeGameData bool, q string, keyword string, sortField string, descending bool, i int32, l int32, gameObjectCount bool, filter string, dateCreated int64, ownerId int64, missionIds string, gameIds string, packIds string, gameLevelIds string, appVersion string, includeHigherVersionPacks bool, includeHigherVersionLevels bool, responseGroups string, purchaseType string) (ImplResponse, error) {
+func (s *AppDataAPIService) GetAppData(ctx context.Context, start int32, limit int32, deviceId string, accountId int64, gameType string, includeGameData bool, q string, keyword string, sortField string, descending bool, i int32, l int32, gameObjectCount bool, filter string, dateCreated int64, ownerId int64, missionIds string, gameIds string, packIds string, gameLevelIds string, appVersion string, includeHigherVersionPacks bool, includeHigherVersionLevels bool, responseGroups string, purchaseType string) (ImplResponse, error) {
 	// TODO - update GetAppData with the required logic for this service method.
 	// Add api_app_data_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AppDataAPIService) GetAppData(ctx context.Context, version float32, sta
 }
 
 // PostAppData - Create App Data
-func (s *AppDataAPIService) PostAppData(ctx context.Context, version float32, gameType string, start int32, limit int32, data string, deviceId string, accountId int64, includeGameData bool, q string, keyword string, sortField string, descending bool, i int32, l int32, gameObjectCount bool, filter string, dateCreated int64, ownerId int64, missionIds string, gameIds string, packIds string, gameLevelIds string, appVersion string, includeHigherVersionPacks bool, includeHigherVersionLevels bool, responseGroups string, purchaseType string) (ImplResponse, error) {
+func (s *AppDataAPIService) PostAppData(ctx context.Context, gameType string, start int32, limit int32, data string, deviceId string, accountId int64, includeGameData bool, q string, keyword string, sortField string, descending bool, i int32, l int32, gameObjectCount bool, filter string, dateCreated int64, ownerId int64, missionIds string, gameIds string, packIds string, gameLevelIds string, appVersion string, includeHigherVersionPacks bool, includeHigherVersionLevels bool, responseGroups string, purchaseType string) (ImplResponse, error) {
 	// TODO - update PostAppData with the required logic for this service method.
 	// Add api_app_data_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AppDataAPIService) PostAppData(ctx context.Context, version float32, ga
 }
 
 // RegenAppData - Regenerate App Data
-func (s *AppDataAPIService) RegenAppData(ctx context.Context, version float32, accountId int64, appKey string, buildVersion string, apiVersion string) (ImplResponse, error) {
+func (s *AppDataAPIService) RegenAppData(ctx context.Context, accountId int64, appKey string, buildVersion string, apiVersion string) (ImplResponse, error) {
 	// TODO - update RegenAppData with the required logic for this service method.
 	// Add api_app_data_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

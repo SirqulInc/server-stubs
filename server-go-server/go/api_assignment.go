@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AssignmentAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,67 +52,67 @@ func (c *AssignmentAPIController) Routes() Routes {
 		"AssigmentAssigneeAccountSearch": Route{
 			"AssigmentAssigneeAccountSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/assignee/search",
+			"/api/3.18/assignment/assignee/search",
 			c.AssigmentAssigneeAccountSearch,
 		},
 		"AssignmentCreate": Route{
 			"AssignmentCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/create",
+			"/api/3.18/assignment/create",
 			c.AssignmentCreate,
 		},
 		"AssignmentDelete": Route{
 			"AssignmentDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/delete",
+			"/api/3.18/assignment/delete",
 			c.AssignmentDelete,
 		},
 		"AssignmentGet": Route{
 			"AssignmentGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/get",
+			"/api/3.18/assignment/get",
 			c.AssignmentGet,
 		},
 		"AssignmentSearch": Route{
 			"AssignmentSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/search",
+			"/api/3.18/assignment/search",
 			c.AssignmentSearch,
 		},
 		"AssignmentStatusCreate": Route{
 			"AssignmentStatusCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/create",
+			"/api/3.18/assignment/status/create",
 			c.AssignmentStatusCreate,
 		},
 		"AssignmentStatusDelete": Route{
 			"AssignmentStatusDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/delete",
+			"/api/3.18/assignment/status/delete",
 			c.AssignmentStatusDelete,
 		},
 		"AssignmentStatusGet": Route{
 			"AssignmentStatusGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/status/get",
+			"/api/3.18/assignment/status/get",
 			c.AssignmentStatusGet,
 		},
 		"AssignmentStatusSearch": Route{
 			"AssignmentStatusSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/status/search",
+			"/api/3.18/assignment/status/search",
 			c.AssignmentStatusSearch,
 		},
 		"AssignmentStatusUpdate": Route{
 			"AssignmentStatusUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/update",
+			"/api/3.18/assignment/status/update",
 			c.AssignmentStatusUpdate,
 		},
 		"AssignmentUpdate": Route{
 			"AssignmentUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/update",
+			"/api/3.18/assignment/update",
 			c.AssignmentUpdate,
 		},
 	}
@@ -126,67 +124,67 @@ func (c *AssignmentAPIController) OrderedRoutes() []Route {
 		Route{
 			"AssigmentAssigneeAccountSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/assignee/search",
+			"/api/3.18/assignment/assignee/search",
 			c.AssigmentAssigneeAccountSearch,
 		},
 		Route{
 			"AssignmentCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/create",
+			"/api/3.18/assignment/create",
 			c.AssignmentCreate,
 		},
 		Route{
 			"AssignmentDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/delete",
+			"/api/3.18/assignment/delete",
 			c.AssignmentDelete,
 		},
 		Route{
 			"AssignmentGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/get",
+			"/api/3.18/assignment/get",
 			c.AssignmentGet,
 		},
 		Route{
 			"AssignmentSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/search",
+			"/api/3.18/assignment/search",
 			c.AssignmentSearch,
 		},
 		Route{
 			"AssignmentStatusCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/create",
+			"/api/3.18/assignment/status/create",
 			c.AssignmentStatusCreate,
 		},
 		Route{
 			"AssignmentStatusDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/delete",
+			"/api/3.18/assignment/status/delete",
 			c.AssignmentStatusDelete,
 		},
 		Route{
 			"AssignmentStatusGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/status/get",
+			"/api/3.18/assignment/status/get",
 			c.AssignmentStatusGet,
 		},
 		Route{
 			"AssignmentStatusSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/assignment/status/search",
+			"/api/3.18/assignment/status/search",
 			c.AssignmentStatusSearch,
 		},
 		Route{
 			"AssignmentStatusUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/status/update",
+			"/api/3.18/assignment/status/update",
 			c.AssignmentStatusUpdate,
 		},
 		Route{
 			"AssignmentUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/assignment/update",
+			"/api/3.18/assignment/update",
 			c.AssignmentUpdate,
 		},
 	}
@@ -196,18 +194,9 @@ func (c *AssignmentAPIController) OrderedRoutes() []Route {
 
 // AssigmentAssigneeAccountSearch - Search Assignment Assignees
 func (c *AssignmentAPIController) AssigmentAssigneeAccountSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -233,7 +222,7 @@ func (c *AssignmentAPIController) AssigmentAssigneeAccountSearch(w http.Response
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.AssigmentAssigneeAccountSearch(r.Context(), versionParam, accountIdParam, keywordParam)
+	result, err := c.service.AssigmentAssigneeAccountSearch(r.Context(), accountIdParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -245,18 +234,9 @@ func (c *AssignmentAPIController) AssigmentAssigneeAccountSearch(w http.Response
 
 // AssignmentCreate - Create Assignment
 func (c *AssignmentAPIController) AssignmentCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -342,7 +322,7 @@ func (c *AssignmentAPIController) AssignmentCreate(w http.ResponseWriter, r *htt
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentCreate(r.Context(), versionParam, accountIdParam, nameParam, assigneeAccountIdParam, descriptionParam, retailerLocationIdParam, tagsParam, activeParam)
+	result, err := c.service.AssignmentCreate(r.Context(), accountIdParam, nameParam, assigneeAccountIdParam, descriptionParam, retailerLocationIdParam, tagsParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -354,18 +334,9 @@ func (c *AssignmentAPIController) AssignmentCreate(w http.ResponseWriter, r *htt
 
 // AssignmentDelete - Delete Assignment
 func (c *AssignmentAPIController) AssignmentDelete(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -400,7 +371,7 @@ func (c *AssignmentAPIController) AssignmentDelete(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{Field: "assignmentId"}, nil)
 		return
 	}
-	result, err := c.service.AssignmentDelete(r.Context(), versionParam, accountIdParam, assignmentIdParam)
+	result, err := c.service.AssignmentDelete(r.Context(), accountIdParam, assignmentIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -412,18 +383,9 @@ func (c *AssignmentAPIController) AssignmentDelete(w http.ResponseWriter, r *htt
 
 // AssignmentGet - Get Assignment
 func (c *AssignmentAPIController) AssignmentGet(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -458,7 +420,7 @@ func (c *AssignmentAPIController) AssignmentGet(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "assignmentId"}, nil)
 		return
 	}
-	result, err := c.service.AssignmentGet(r.Context(), versionParam, accountIdParam, assignmentIdParam)
+	result, err := c.service.AssignmentGet(r.Context(), accountIdParam, assignmentIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -470,18 +432,9 @@ func (c *AssignmentAPIController) AssignmentGet(w http.ResponseWriter, r *http.R
 
 // AssignmentSearch - Search Assignments
 func (c *AssignmentAPIController) AssignmentSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -615,7 +568,7 @@ func (c *AssignmentAPIController) AssignmentSearch(w http.ResponseWriter, r *htt
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentSearch(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, creatorAccountIdParam, assigneeAccountIdsParam, retailerLocationIdsParam, currentStatusTypeParam, keywordParam)
+	result, err := c.service.AssignmentSearch(r.Context(), accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, creatorAccountIdParam, assigneeAccountIdsParam, retailerLocationIdsParam, currentStatusTypeParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -627,18 +580,9 @@ func (c *AssignmentAPIController) AssignmentSearch(w http.ResponseWriter, r *htt
 
 // AssignmentStatusCreate - Create Assignment Status
 func (c *AssignmentAPIController) AssignmentStatusCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -757,7 +701,7 @@ func (c *AssignmentAPIController) AssignmentStatusCreate(w http.ResponseWriter, 
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentStatusCreate(r.Context(), versionParam, accountIdParam, assignmentIdParam, scheduledNotificationIdParam, toDoParam, connectionParam, methodParam, statusParam, closureParam, messageParam, followUpParam, activeParam)
+	result, err := c.service.AssignmentStatusCreate(r.Context(), accountIdParam, assignmentIdParam, scheduledNotificationIdParam, toDoParam, connectionParam, methodParam, statusParam, closureParam, messageParam, followUpParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -769,18 +713,9 @@ func (c *AssignmentAPIController) AssignmentStatusCreate(w http.ResponseWriter, 
 
 // AssignmentStatusDelete - Deletes Assignment Status
 func (c *AssignmentAPIController) AssignmentStatusDelete(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -815,7 +750,7 @@ func (c *AssignmentAPIController) AssignmentStatusDelete(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{Field: "assignmentStatusId"}, nil)
 		return
 	}
-	result, err := c.service.AssignmentStatusDelete(r.Context(), versionParam, accountIdParam, assignmentStatusIdParam)
+	result, err := c.service.AssignmentStatusDelete(r.Context(), accountIdParam, assignmentStatusIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -827,18 +762,9 @@ func (c *AssignmentAPIController) AssignmentStatusDelete(w http.ResponseWriter, 
 
 // AssignmentStatusGet - Get Assignment Status
 func (c *AssignmentAPIController) AssignmentStatusGet(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -873,7 +799,7 @@ func (c *AssignmentAPIController) AssignmentStatusGet(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{Field: "assignmentStatusId"}, nil)
 		return
 	}
-	result, err := c.service.AssignmentStatusGet(r.Context(), versionParam, accountIdParam, assignmentStatusIdParam)
+	result, err := c.service.AssignmentStatusGet(r.Context(), accountIdParam, assignmentStatusIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -885,18 +811,9 @@ func (c *AssignmentAPIController) AssignmentStatusGet(w http.ResponseWriter, r *
 
 // AssignmentStatusSearch - Search Assignment Statuses
 func (c *AssignmentAPIController) AssignmentStatusSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1058,7 +975,7 @@ func (c *AssignmentAPIController) AssignmentStatusSearch(w http.ResponseWriter, 
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentStatusSearch(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, assignmentIdParam, creatorAccountIdParam, assigneeAccountIdParam, retailerLocationIdParam, statusTypeParam, keywordParam)
+	result, err := c.service.AssignmentStatusSearch(r.Context(), accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, assignmentIdParam, creatorAccountIdParam, assigneeAccountIdParam, retailerLocationIdParam, statusTypeParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1070,18 +987,9 @@ func (c *AssignmentAPIController) AssignmentStatusSearch(w http.ResponseWriter, 
 
 // AssignmentStatusUpdate - Update Assignment Status
 func (c *AssignmentAPIController) AssignmentStatusUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1200,7 +1108,7 @@ func (c *AssignmentAPIController) AssignmentStatusUpdate(w http.ResponseWriter, 
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentStatusUpdate(r.Context(), versionParam, accountIdParam, assignmentStatusIdParam, scheduledNotificationIdParam, toDoParam, connectionParam, methodParam, statusParam, closureParam, messageParam, followUpParam, activeParam)
+	result, err := c.service.AssignmentStatusUpdate(r.Context(), accountIdParam, assignmentStatusIdParam, scheduledNotificationIdParam, toDoParam, connectionParam, methodParam, statusParam, closureParam, messageParam, followUpParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1212,18 +1120,9 @@ func (c *AssignmentAPIController) AssignmentStatusUpdate(w http.ResponseWriter, 
 
 // AssignmentUpdate - Update Assignment
 func (c *AssignmentAPIController) AssignmentUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1321,7 +1220,7 @@ func (c *AssignmentAPIController) AssignmentUpdate(w http.ResponseWriter, r *htt
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.AssignmentUpdate(r.Context(), versionParam, accountIdParam, assignmentIdParam, nameParam, descriptionParam, assigneeAccountIdParam, retailerLocationIdParam, tagsParam, activeParam)
+	result, err := c.service.AssignmentUpdate(r.Context(), accountIdParam, assignmentIdParam, nameParam, descriptionParam, assigneeAccountIdParam, retailerLocationIdParam, tagsParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

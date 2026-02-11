@@ -29,7 +29,7 @@ func NewCargoTypeAPIService() *CargoTypeAPIService {
 }
 
 // SearchCargoTypes - Search Cargo Type
-func (s *CargoTypeAPIService) SearchCargoTypes(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, retailerId int64, hubId int64) (ImplResponse, error) {
+func (s *CargoTypeAPIService) SearchCargoTypes(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, retailerId int64, hubId int64) (ImplResponse, error) {
 	// TODO - update SearchCargoTypes with the required logic for this service method.
 	// Add api_cargo_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *CargoTypeAPIService) SearchCargoTypes(ctx context.Context, version floa
 }
 
 // CreateCargoType - Create Cargo Type
-func (s *CargoTypeAPIService) CreateCargoType(ctx context.Context, version float32, body CargoType) (ImplResponse, error) {
+func (s *CargoTypeAPIService) CreateCargoType(ctx context.Context, body CargoType) (ImplResponse, error) {
 	// TODO - update CreateCargoType with the required logic for this service method.
 	// Add api_cargo_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *CargoTypeAPIService) CreateCargoType(ctx context.Context, version float
 }
 
 // GetCargoType - Get Cargo Type
-func (s *CargoTypeAPIService) GetCargoType(ctx context.Context, version float32, cargoTypeId int64) (ImplResponse, error) {
+func (s *CargoTypeAPIService) GetCargoType(ctx context.Context, cargoTypeId int64) (ImplResponse, error) {
 	// TODO - update GetCargoType with the required logic for this service method.
 	// Add api_cargo_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *CargoTypeAPIService) GetCargoType(ctx context.Context, version float32,
 }
 
 // UpdateCargoType - Update Cargo Type
-func (s *CargoTypeAPIService) UpdateCargoType(ctx context.Context, version float32, cargoTypeId int64, body CargoType) (ImplResponse, error) {
+func (s *CargoTypeAPIService) UpdateCargoType(ctx context.Context, cargoTypeId int64, body CargoType) (ImplResponse, error) {
 	// TODO - update UpdateCargoType with the required logic for this service method.
 	// Add api_cargo_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *CargoTypeAPIService) UpdateCargoType(ctx context.Context, version float
 }
 
 // DeleteCargoType - Delete Cargo Type
-func (s *CargoTypeAPIService) DeleteCargoType(ctx context.Context, version float32, cargoTypeId int64) (ImplResponse, error) {
+func (s *CargoTypeAPIService) DeleteCargoType(ctx context.Context, cargoTypeId int64) (ImplResponse, error) {
 	// TODO - update DeleteCargoType with the required logic for this service method.
 	// Add api_cargo_type_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

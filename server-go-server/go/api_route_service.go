@@ -29,7 +29,7 @@ func NewRouteAPIService() *RouteAPIService {
 }
 
 // SearchRoutes - Search Routes
-func (s *RouteAPIService) SearchRoutes(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, includesEmpty bool, rootOnly bool, showInheritedProperties bool, hubId int64, programId int64, scheduledStart int64, scheduledEnd int64, updatedStart int64, updatedEnd int64, featured bool, seatCount int32, approved bool, started bool, completed bool, valid bool, parentId int64) (ImplResponse, error) {
+func (s *RouteAPIService) SearchRoutes(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, includesEmpty bool, rootOnly bool, showInheritedProperties bool, hubId int64, programId int64, scheduledStart int64, scheduledEnd int64, updatedStart int64, updatedEnd int64, featured bool, seatCount int32, approved bool, started bool, completed bool, valid bool, parentId int64) (ImplResponse, error) {
 	// TODO - update SearchRoutes with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *RouteAPIService) SearchRoutes(ctx context.Context, version float32, sor
 }
 
 // CreateRoute - Create Route
-func (s *RouteAPIService) CreateRoute(ctx context.Context, version float32, body Route) (ImplResponse, error) {
+func (s *RouteAPIService) CreateRoute(ctx context.Context, body Route) (ImplResponse, error) {
 	// TODO - update CreateRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *RouteAPIService) CreateRoute(ctx context.Context, version float32, body
 }
 
 // SetDriver - Set Driver
-func (s *RouteAPIService) SetDriver(ctx context.Context, version float32, id int64, driverId int64) (ImplResponse, error) {
+func (s *RouteAPIService) SetDriver(ctx context.Context, id int64, driverId int64) (ImplResponse, error) {
 	// TODO - update SetDriver with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *RouteAPIService) SetDriver(ctx context.Context, version float32, id int
 }
 
 // GetRoute - Get Route
-func (s *RouteAPIService) GetRoute(ctx context.Context, version float32, routeId int64, showInheritedProperties bool) (ImplResponse, error) {
+func (s *RouteAPIService) GetRoute(ctx context.Context, routeId int64, showInheritedProperties bool) (ImplResponse, error) {
 	// TODO - update GetRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *RouteAPIService) GetRoute(ctx context.Context, version float32, routeId
 }
 
 // UpdateRoute - Update Route
-func (s *RouteAPIService) UpdateRoute(ctx context.Context, version float32, routeId int64, body Route) (ImplResponse, error) {
+func (s *RouteAPIService) UpdateRoute(ctx context.Context, routeId int64, body Route) (ImplResponse, error) {
 	// TODO - update UpdateRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *RouteAPIService) UpdateRoute(ctx context.Context, version float32, rout
 }
 
 // DeleteRoute - Delete Route
-func (s *RouteAPIService) DeleteRoute(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) DeleteRoute(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update DeleteRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *RouteAPIService) DeleteRoute(ctx context.Context, version float32, rout
 }
 
 // ApproveRoute - Approve Route
-func (s *RouteAPIService) ApproveRoute(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) ApproveRoute(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update ApproveRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *RouteAPIService) ApproveRoute(ctx context.Context, version float32, rou
 }
 
 // CopyRoute - Copy Route
-func (s *RouteAPIService) CopyRoute(ctx context.Context, version float32, routeId int64, body Route) (ImplResponse, error) {
+func (s *RouteAPIService) CopyRoute(ctx context.Context, routeId int64, body Route) (ImplResponse, error) {
 	// TODO - update CopyRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *RouteAPIService) CopyRoute(ctx context.Context, version float32, routeI
 }
 
 // GetRouteDirections - Get Route Directions
-func (s *RouteAPIService) GetRouteDirections(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) GetRouteDirections(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update GetRouteDirections with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *RouteAPIService) GetRouteDirections(ctx context.Context, version float3
 }
 
 // CreateRouteDirections - Update Route Directions
-func (s *RouteAPIService) CreateRouteDirections(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) CreateRouteDirections(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update CreateRouteDirections with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *RouteAPIService) CreateRouteDirections(ctx context.Context, version flo
 }
 
 // DisapproveRoute - Disapprove Route
-func (s *RouteAPIService) DisapproveRoute(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) DisapproveRoute(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update DisapproveRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *RouteAPIService) DisapproveRoute(ctx context.Context, version float32, 
 }
 
 // OptimizeRoute - Optimize Route
-func (s *RouteAPIService) OptimizeRoute(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) OptimizeRoute(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update OptimizeRoute with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *RouteAPIService) OptimizeRoute(ctx context.Context, version float32, ro
 }
 
 // CreateRoutePolyline - Create Route Polyline
-func (s *RouteAPIService) CreateRoutePolyline(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) CreateRoutePolyline(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update CreateRoutePolyline with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *RouteAPIService) CreateRoutePolyline(ctx context.Context, version float
 }
 
 // GetRouteShipments - Get Route Shipments
-func (s *RouteAPIService) GetRouteShipments(ctx context.Context, version float32, routeId int64) (ImplResponse, error) {
+func (s *RouteAPIService) GetRouteShipments(ctx context.Context, routeId int64) (ImplResponse, error) {
 	// TODO - update GetRouteShipments with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *RouteAPIService) GetRouteShipments(ctx context.Context, version float32
 }
 
 // GetRouteStop - Get Route Stop
-func (s *RouteAPIService) GetRouteStop(ctx context.Context, version float32, routeId int64, stopId int64) (ImplResponse, error) {
+func (s *RouteAPIService) GetRouteStop(ctx context.Context, routeId int64, stopId int64) (ImplResponse, error) {
 	// TODO - update GetRouteStop with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *RouteAPIService) GetRouteStop(ctx context.Context, version float32, rou
 }
 
 // UpdateRouteStop - Update Route Stop
-func (s *RouteAPIService) UpdateRouteStop(ctx context.Context, version float32, routeId int64, stopId int64, body Stop) (ImplResponse, error) {
+func (s *RouteAPIService) UpdateRouteStop(ctx context.Context, routeId int64, stopId int64, body Stop) (ImplResponse, error) {
 	// TODO - update UpdateRouteStop with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -205,7 +205,7 @@ func (s *RouteAPIService) UpdateRouteStop(ctx context.Context, version float32, 
 }
 
 // RemoveStop - Delete Stop
-func (s *RouteAPIService) RemoveStop(ctx context.Context, version float32, routeId int64, stopId int64) (ImplResponse, error) {
+func (s *RouteAPIService) RemoveStop(ctx context.Context, routeId int64, stopId int64) (ImplResponse, error) {
 	// TODO - update RemoveStop with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -216,7 +216,7 @@ func (s *RouteAPIService) RemoveStop(ctx context.Context, version float32, route
 }
 
 // GetShipmentsAtStop - Get Shipments At Stop
-func (s *RouteAPIService) GetShipmentsAtStop(ctx context.Context, version float32, routeId int64, stopId int64) (ImplResponse, error) {
+func (s *RouteAPIService) GetShipmentsAtStop(ctx context.Context, routeId int64, stopId int64) (ImplResponse, error) {
 	// TODO - update GetShipmentsAtStop with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -227,7 +227,7 @@ func (s *RouteAPIService) GetShipmentsAtStop(ctx context.Context, version float3
 }
 
 // GetRouteStops - Get Route Stops
-func (s *RouteAPIService) GetRouteStops(ctx context.Context, version float32, routeId int64, confirmedOnly bool) (ImplResponse, error) {
+func (s *RouteAPIService) GetRouteStops(ctx context.Context, routeId int64, confirmedOnly bool) (ImplResponse, error) {
 	// TODO - update GetRouteStops with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -238,7 +238,7 @@ func (s *RouteAPIService) GetRouteStops(ctx context.Context, version float32, ro
 }
 
 // ReorderRouteStopsPost - Reorder Route Stops
-func (s *RouteAPIService) ReorderRouteStopsPost(ctx context.Context, version float32, routeId int64, body []Stop) (ImplResponse, error) {
+func (s *RouteAPIService) ReorderRouteStopsPost(ctx context.Context, routeId int64, body []Stop) (ImplResponse, error) {
 	// TODO - update ReorderRouteStopsPost with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -249,7 +249,7 @@ func (s *RouteAPIService) ReorderRouteStopsPost(ctx context.Context, version flo
 }
 
 // ReorderRouteStopsPatch - Reorder Route Stops
-func (s *RouteAPIService) ReorderRouteStopsPatch(ctx context.Context, version float32, routeId int64, body []Stop) (ImplResponse, error) {
+func (s *RouteAPIService) ReorderRouteStopsPatch(ctx context.Context, routeId int64, body []Stop) (ImplResponse, error) {
 	// TODO - update ReorderRouteStopsPatch with the required logic for this service method.
 	// Add api_route_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

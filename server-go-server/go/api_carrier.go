@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // CarrierAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *CarrierAPIController) Routes() Routes {
 		"SearchCarriers": Route{
 			"SearchCarriers",
 			strings.ToUpper("Get"),
-			"/api/{version}/carrier/search",
+			"/api/3.18/carrier/search",
 			c.SearchCarriers,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *CarrierAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchCarriers",
 			strings.ToUpper("Get"),
-			"/api/{version}/carrier/search",
+			"/api/3.18/carrier/search",
 			c.SearchCarriers,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *CarrierAPIController) OrderedRoutes() []Route {
 
 // SearchCarriers - Search Carriers
 func (c *CarrierAPIController) SearchCarriers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var keywordParam string
@@ -161,7 +150,7 @@ func (c *CarrierAPIController) SearchCarriers(w http.ResponseWriter, r *http.Req
 		var param bool = true
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchCarriers(r.Context(), versionParam, keywordParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchCarriers(r.Context(), keywordParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

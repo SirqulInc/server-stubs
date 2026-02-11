@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TrackingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,55 +52,55 @@ func (c *TrackingAPIController) Routes() Routes {
 		"BatchSaveTracking": Route{
 			"BatchSaveTracking",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/batch/create",
+			"/api/3.18/tracking/batch/create",
 			c.BatchSaveTracking,
 		},
 		"SaveTrackingLeg": Route{
 			"SaveTrackingLeg",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/leg/create",
+			"/api/3.18/tracking/leg/create",
 			c.SaveTrackingLeg,
 		},
 		"SearchAccountsWithTrackingLegs": Route{
 			"SearchAccountsWithTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/list",
+			"/api/3.18/tracking/list",
 			c.SearchAccountsWithTrackingLegs,
 		},
 		"GetPredictedPath": Route{
 			"GetPredictedPath",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/path/get",
+			"/api/3.18/tracking/path/get",
 			c.GetPredictedPath,
 		},
 		"GetPredictedLocations": Route{
 			"GetPredictedLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/predicted/get",
+			"/api/3.18/tracking/predicted/get",
 			c.GetPredictedLocations,
 		},
 		"GetPreferredLocations": Route{
 			"GetPreferredLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/preferred/search",
+			"/api/3.18/tracking/preferred/search",
 			c.GetPreferredLocations,
 		},
 		"GetTrackingLegs": Route{
 			"GetTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/search",
+			"/api/3.18/tracking/search",
 			c.GetTrackingLegs,
 		},
 		"SaveTrackingStep": Route{
 			"SaveTrackingStep",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/step/create",
+			"/api/3.18/tracking/step/create",
 			c.SaveTrackingStep,
 		},
 		"SearchTrackingLegs": Route{
 			"SearchTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/searchByBillable",
+			"/api/3.18/tracking/searchByBillable",
 			c.SearchTrackingLegs,
 		},
 	}
@@ -114,55 +112,55 @@ func (c *TrackingAPIController) OrderedRoutes() []Route {
 		Route{
 			"BatchSaveTracking",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/batch/create",
+			"/api/3.18/tracking/batch/create",
 			c.BatchSaveTracking,
 		},
 		Route{
 			"SaveTrackingLeg",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/leg/create",
+			"/api/3.18/tracking/leg/create",
 			c.SaveTrackingLeg,
 		},
 		Route{
 			"SearchAccountsWithTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/list",
+			"/api/3.18/tracking/list",
 			c.SearchAccountsWithTrackingLegs,
 		},
 		Route{
 			"GetPredictedPath",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/path/get",
+			"/api/3.18/tracking/path/get",
 			c.GetPredictedPath,
 		},
 		Route{
 			"GetPredictedLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/predicted/get",
+			"/api/3.18/tracking/predicted/get",
 			c.GetPredictedLocations,
 		},
 		Route{
 			"GetPreferredLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/preferred/search",
+			"/api/3.18/tracking/preferred/search",
 			c.GetPreferredLocations,
 		},
 		Route{
 			"GetTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/search",
+			"/api/3.18/tracking/search",
 			c.GetTrackingLegs,
 		},
 		Route{
 			"SaveTrackingStep",
 			strings.ToUpper("Post"),
-			"/api/{version}/tracking/step/create",
+			"/api/3.18/tracking/step/create",
 			c.SaveTrackingStep,
 		},
 		Route{
 			"SearchTrackingLegs",
 			strings.ToUpper("Get"),
-			"/api/{version}/tracking/searchByBillable",
+			"/api/3.18/tracking/searchByBillable",
 			c.SearchTrackingLegs,
 		},
 	}
@@ -172,18 +170,9 @@ func (c *TrackingAPIController) OrderedRoutes() []Route {
 
 // BatchSaveTracking - Create Batch Tracking
 func (c *TrackingAPIController) BatchSaveTracking(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var dataParam string
@@ -260,7 +249,7 @@ func (c *TrackingAPIController) BatchSaveTracking(w http.ResponseWriter, r *http
 		slaveUIDParam = param
 	} else {
 	}
-	result, err := c.service.BatchSaveTracking(r.Context(), versionParam, dataParam, deviceIdParam, accountIdParam, generateAccountsParam, updateAccountLocationsParam, defaultTagParam, slaveUIDParam)
+	result, err := c.service.BatchSaveTracking(r.Context(), dataParam, deviceIdParam, accountIdParam, generateAccountsParam, updateAccountLocationsParam, defaultTagParam, slaveUIDParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -272,18 +261,9 @@ func (c *TrackingAPIController) BatchSaveTracking(w http.ResponseWriter, r *http
 
 // SaveTrackingLeg - Create Tracking Leg
 func (c *TrackingAPIController) SaveTrackingLeg(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startLatParam float64
@@ -445,7 +425,7 @@ func (c *TrackingAPIController) SaveTrackingLeg(w http.ResponseWriter, r *http.R
 		tagsParam = param
 	} else {
 	}
-	result, err := c.service.SaveTrackingLeg(r.Context(), versionParam, startLatParam, startLngParam, startDateParam, endLatParam, endLngParam, endDateParam, deviceIdParam, accountIdParam, distanceParam, durationParam, stepsParam, tagsParam)
+	result, err := c.service.SaveTrackingLeg(r.Context(), startLatParam, startLngParam, startDateParam, endLatParam, endLngParam, endDateParam, deviceIdParam, accountIdParam, distanceParam, durationParam, stepsParam, tagsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -457,18 +437,9 @@ func (c *TrackingAPIController) SaveTrackingLeg(w http.ResponseWriter, r *http.R
 
 // SearchAccountsWithTrackingLegs - List Tracking
 func (c *TrackingAPIController) SearchAccountsWithTrackingLegs(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -653,7 +624,7 @@ func (c *TrackingAPIController) SearchAccountsWithTrackingLegs(w http.ResponseWr
 		var param bool = false
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchAccountsWithTrackingLegs(r.Context(), versionParam, accountIdParam, keywordParam, startDateParam, endDateParam, tagsParam, audienceIdsParam, latitudeParam, longitudeParam, range_Param, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchAccountsWithTrackingLegs(r.Context(), accountIdParam, keywordParam, startDateParam, endDateParam, tagsParam, audienceIdsParam, latitudeParam, longitudeParam, range_Param, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -665,18 +636,9 @@ func (c *TrackingAPIController) SearchAccountsWithTrackingLegs(w http.ResponseWr
 
 // GetPredictedPath - Get Tracking Path
 func (c *TrackingAPIController) GetPredictedPath(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -727,7 +689,7 @@ func (c *TrackingAPIController) GetPredictedPath(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "endStepId"}, nil)
 		return
 	}
-	result, err := c.service.GetPredictedPath(r.Context(), versionParam, accountIdParam, startStepIdParam, endStepIdParam)
+	result, err := c.service.GetPredictedPath(r.Context(), accountIdParam, startStepIdParam, endStepIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -739,18 +701,9 @@ func (c *TrackingAPIController) GetPredictedPath(w http.ResponseWriter, r *http.
 
 // GetPredictedLocations - Get Predicted Locations
 func (c *TrackingAPIController) GetPredictedLocations(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -868,7 +821,7 @@ func (c *TrackingAPIController) GetPredictedLocations(w http.ResponseWriter, r *
 		param := "MATCHES"
 		sortOrderParam = param
 	}
-	result, err := c.service.GetPredictedLocations(r.Context(), versionParam, accountIdParam, latitudeParam, longitudeParam, dateCheckParam, hourCheckParam, thresholdParam, distanceUnitParam, searchRangeParam, sortOrderParam)
+	result, err := c.service.GetPredictedLocations(r.Context(), accountIdParam, latitudeParam, longitudeParam, dateCheckParam, hourCheckParam, thresholdParam, distanceUnitParam, searchRangeParam, sortOrderParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -880,18 +833,9 @@ func (c *TrackingAPIController) GetPredictedLocations(w http.ResponseWriter, r *
 
 // GetPreferredLocations - Search Preferred Locations
 func (c *TrackingAPIController) GetPreferredLocations(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1041,7 +985,7 @@ func (c *TrackingAPIController) GetPreferredLocations(w http.ResponseWriter, r *
 		param := "MILES"
 		distanceUnitParam = param
 	}
-	result, err := c.service.GetPreferredLocations(r.Context(), versionParam, accountIdParam, latitudeParam, longitudeParam, dateCheckParam, hourCheckParam, sortFieldParam, descendingParam, startParam, limitParam, searchRangeParam, distanceUnitParam)
+	result, err := c.service.GetPreferredLocations(r.Context(), accountIdParam, latitudeParam, longitudeParam, dateCheckParam, hourCheckParam, sortFieldParam, descendingParam, startParam, limitParam, searchRangeParam, distanceUnitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1053,18 +997,9 @@ func (c *TrackingAPIController) GetPreferredLocations(w http.ResponseWriter, r *
 
 // GetTrackingLegs - Search Tracking
 func (c *TrackingAPIController) GetTrackingLegs(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1160,7 +1095,7 @@ func (c *TrackingAPIController) GetTrackingLegs(w http.ResponseWriter, r *http.R
 		var param bool = false
 		getLastPointParam = param
 	}
-	result, err := c.service.GetTrackingLegs(r.Context(), versionParam, deviceIdParam, accountIdParam, ownerIdParam, trackingDeviceIdParam, startDateParam, endDateParam, tagsParam, getLastPointParam)
+	result, err := c.service.GetTrackingLegs(r.Context(), deviceIdParam, accountIdParam, ownerIdParam, trackingDeviceIdParam, startDateParam, endDateParam, tagsParam, getLastPointParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1172,18 +1107,9 @@ func (c *TrackingAPIController) GetTrackingLegs(w http.ResponseWriter, r *http.R
 
 // SaveTrackingStep - Create Tracking Step
 func (c *TrackingAPIController) SaveTrackingStep(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var legIdParam int64
@@ -1347,7 +1273,7 @@ func (c *TrackingAPIController) SaveTrackingStep(w http.ResponseWriter, r *http.
 		durationParam = param
 	} else {
 	}
-	result, err := c.service.SaveTrackingStep(r.Context(), versionParam, legIdParam, startLatParam, startLngParam, startDateParam, endLatParam, endLngParam, endDateParam, deviceIdParam, accountIdParam, distanceParam, durationParam)
+	result, err := c.service.SaveTrackingStep(r.Context(), legIdParam, startLatParam, startLngParam, startDateParam, endLatParam, endLngParam, endDateParam, deviceIdParam, accountIdParam, distanceParam, durationParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1359,18 +1285,9 @@ func (c *TrackingAPIController) SaveTrackingStep(w http.ResponseWriter, r *http.
 
 // SearchTrackingLegs - Search Tracking (Billable)
 func (c *TrackingAPIController) SearchTrackingLegs(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1472,7 +1389,7 @@ func (c *TrackingAPIController) SearchTrackingLegs(w http.ResponseWriter, r *htt
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.SearchTrackingLegs(r.Context(), versionParam, accountIdParam, appKeyParam, trackingDeviceIdParam, startDateParam, endDateParam, tagsParam, startParam, limitParam)
+	result, err := c.service.SearchTrackingLegs(r.Context(), accountIdParam, appKeyParam, trackingDeviceIdParam, startDateParam, endDateParam, tagsParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

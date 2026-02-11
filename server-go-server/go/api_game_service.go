@@ -29,7 +29,7 @@ func NewGameAPIService() *GameAPIService {
 }
 
 // CreateGame - Create a Game
-func (s *GameAPIService) CreateGame(ctx context.Context, version float32, accountId int64, appKey string, title string, description string, metaData string, packIds string, includeGameData bool) (ImplResponse, error) {
+func (s *GameAPIService) CreateGame(ctx context.Context, accountId int64, appKey string, title string, description string, metaData string, packIds string, includeGameData bool) (ImplResponse, error) {
 	// TODO - update CreateGame with the required logic for this service method.
 	// Add api_game_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *GameAPIService) CreateGame(ctx context.Context, version float32, accoun
 }
 
 // UpdateGame - Update a Game
-func (s *GameAPIService) UpdateGame(ctx context.Context, version float32, accountId int64, gameId int64, appKey string, title string, description string, metaData string, packIds string, includeGameData bool) (ImplResponse, error) {
+func (s *GameAPIService) UpdateGame(ctx context.Context, accountId int64, gameId int64, appKey string, title string, description string, metaData string, packIds string, includeGameData bool) (ImplResponse, error) {
 	// TODO - update UpdateGame with the required logic for this service method.
 	// Add api_game_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *GameAPIService) UpdateGame(ctx context.Context, version float32, accoun
 }
 
 // GetGame - Get a Game by id
-func (s *GameAPIService) GetGame(ctx context.Context, version float32, accountId int64, gameId int64, includeGameData bool) (ImplResponse, error) {
+func (s *GameAPIService) GetGame(ctx context.Context, accountId int64, gameId int64, includeGameData bool) (ImplResponse, error) {
 	// TODO - update GetGame with the required logic for this service method.
 	// Add api_game_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *GameAPIService) GetGame(ctx context.Context, version float32, accountId
 }
 
 // DeleteGame - Delete a Game
-func (s *GameAPIService) DeleteGame(ctx context.Context, version float32, accountId int64, gameId int64) (ImplResponse, error) {
+func (s *GameAPIService) DeleteGame(ctx context.Context, accountId int64, gameId int64) (ImplResponse, error) {
 	// TODO - update DeleteGame with the required logic for this service method.
 	// Add api_game_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *GameAPIService) DeleteGame(ctx context.Context, version float32, accoun
 }
 
 // SearchGames - Search a Game
-func (s *GameAPIService) SearchGames(ctx context.Context, version float32, accountId int64, appKey string, start int32, limit int32, keyword string, appVersion string, includeGameData bool, includeInactive bool) (ImplResponse, error) {
+func (s *GameAPIService) SearchGames(ctx context.Context, accountId int64, appKey string, start int32, limit int32, keyword string, appVersion string, includeGameData bool, includeInactive bool) (ImplResponse, error) {
 	// TODO - update SearchGames with the required logic for this service method.
 	// Add api_game_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

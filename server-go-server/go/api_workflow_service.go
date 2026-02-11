@@ -29,7 +29,7 @@ func NewWorkflowAPIService() *WorkflowAPIService {
 }
 
 // RunWorkflow - Run Workflow
-func (s *WorkflowAPIService) RunWorkflow(ctx context.Context, version float32, accountId int64, workflowId int64, skuId int64, versionCode int32, parameters string) (ImplResponse, error) {
+func (s *WorkflowAPIService) RunWorkflow(ctx context.Context, accountId int64, workflowId int64, skuId int64, versionCode int32, parameters string) (ImplResponse, error) {
 	// TODO - update RunWorkflow with the required logic for this service method.
 	// Add api_workflow_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

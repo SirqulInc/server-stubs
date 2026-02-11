@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // CreativeAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,49 +52,49 @@ func (c *CreativeAPIController) Routes() Routes {
 		"AddPreview": Route{
 			"AddPreview",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/addpreview",
+			"/api/3.18/creative/addpreview",
 			c.AddPreview,
 		},
 		"CreateCreative": Route{
 			"CreateCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/create",
+			"/api/3.18/creative/create",
 			c.CreateCreative,
 		},
 		"DeleteCreative": Route{
 			"DeleteCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/delete",
+			"/api/3.18/creative/delete",
 			c.DeleteCreative,
 		},
 		"GetCreative": Route{
 			"GetCreative",
 			strings.ToUpper("Get"),
-			"/api/{version}/creative/get",
+			"/api/3.18/creative/get",
 			c.GetCreative,
 		},
 		"RemovePreview": Route{
 			"RemovePreview",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/removepreview",
+			"/api/3.18/creative/removepreview",
 			c.RemovePreview,
 		},
 		"GetCreativesByApplication": Route{
 			"GetCreativesByApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/creative/search",
+			"/api/3.18/creative/search",
 			c.GetCreativesByApplication,
 		},
 		"UpdateCreative": Route{
 			"UpdateCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/update",
+			"/api/3.18/creative/update",
 			c.UpdateCreative,
 		},
 		"AdsFind": Route{
 			"AdsFind",
 			strings.ToUpper("Get"),
-			"/api/{version}/ads/find",
+			"/api/3.18/ads/find",
 			c.AdsFind,
 		},
 	}
@@ -108,49 +106,49 @@ func (c *CreativeAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddPreview",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/addpreview",
+			"/api/3.18/creative/addpreview",
 			c.AddPreview,
 		},
 		Route{
 			"CreateCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/create",
+			"/api/3.18/creative/create",
 			c.CreateCreative,
 		},
 		Route{
 			"DeleteCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/delete",
+			"/api/3.18/creative/delete",
 			c.DeleteCreative,
 		},
 		Route{
 			"GetCreative",
 			strings.ToUpper("Get"),
-			"/api/{version}/creative/get",
+			"/api/3.18/creative/get",
 			c.GetCreative,
 		},
 		Route{
 			"RemovePreview",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/removepreview",
+			"/api/3.18/creative/removepreview",
 			c.RemovePreview,
 		},
 		Route{
 			"GetCreativesByApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/creative/search",
+			"/api/3.18/creative/search",
 			c.GetCreativesByApplication,
 		},
 		Route{
 			"UpdateCreative",
 			strings.ToUpper("Post"),
-			"/api/{version}/creative/update",
+			"/api/3.18/creative/update",
 			c.UpdateCreative,
 		},
 		Route{
 			"AdsFind",
 			strings.ToUpper("Get"),
-			"/api/{version}/ads/find",
+			"/api/3.18/ads/find",
 			c.AdsFind,
 		},
 	}
@@ -160,18 +158,9 @@ func (c *CreativeAPIController) OrderedRoutes() []Route {
 
 // AddPreview - Add Preview
 func (c *CreativeAPIController) AddPreview(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -206,7 +195,7 @@ func (c *CreativeAPIController) AddPreview(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "creativeId"}, nil)
 		return
 	}
-	result, err := c.service.AddPreview(r.Context(), versionParam, accountIdParam, creativeIdParam)
+	result, err := c.service.AddPreview(r.Context(), accountIdParam, creativeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -218,18 +207,9 @@ func (c *CreativeAPIController) AddPreview(w http.ResponseWriter, r *http.Reques
 
 // CreateCreative - Create Creative
 func (c *CreativeAPIController) CreateCreative(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -401,7 +381,7 @@ func (c *CreativeAPIController) CreateCreative(w http.ResponseWriter, r *http.Re
 		offerIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateCreative(r.Context(), versionParam, accountIdParam, nameParam, activeParam, waitForAssetParam, descriptionParam, assetImageIdParam, actionParam, dataParam, suffixParam, type_Param, balanceParam, referenceIdParam, appVersionParam, missionIdParam, offerIdParam)
+	result, err := c.service.CreateCreative(r.Context(), accountIdParam, nameParam, activeParam, waitForAssetParam, descriptionParam, assetImageIdParam, actionParam, dataParam, suffixParam, type_Param, balanceParam, referenceIdParam, appVersionParam, missionIdParam, offerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -413,18 +393,9 @@ func (c *CreativeAPIController) CreateCreative(w http.ResponseWriter, r *http.Re
 
 // DeleteCreative - Delete Creative
 func (c *CreativeAPIController) DeleteCreative(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -459,7 +430,7 @@ func (c *CreativeAPIController) DeleteCreative(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "creativeId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteCreative(r.Context(), versionParam, accountIdParam, creativeIdParam)
+	result, err := c.service.DeleteCreative(r.Context(), accountIdParam, creativeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -471,18 +442,9 @@ func (c *CreativeAPIController) DeleteCreative(w http.ResponseWriter, r *http.Re
 
 // GetCreative - Get Creative
 func (c *CreativeAPIController) GetCreative(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -517,7 +479,7 @@ func (c *CreativeAPIController) GetCreative(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{Field: "creativeId"}, nil)
 		return
 	}
-	result, err := c.service.GetCreative(r.Context(), versionParam, accountIdParam, creativeIdParam)
+	result, err := c.service.GetCreative(r.Context(), accountIdParam, creativeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -529,18 +491,9 @@ func (c *CreativeAPIController) GetCreative(w http.ResponseWriter, r *http.Reque
 
 // RemovePreview - Remove Preview
 func (c *CreativeAPIController) RemovePreview(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -575,7 +528,7 @@ func (c *CreativeAPIController) RemovePreview(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "creativeId"}, nil)
 		return
 	}
-	result, err := c.service.RemovePreview(r.Context(), versionParam, accountIdParam, creativeIdParam)
+	result, err := c.service.RemovePreview(r.Context(), accountIdParam, creativeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -587,18 +540,9 @@ func (c *CreativeAPIController) RemovePreview(w http.ResponseWriter, r *http.Req
 
 // GetCreativesByApplication - Search Creatives
 func (c *CreativeAPIController) GetCreativesByApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -679,7 +623,7 @@ func (c *CreativeAPIController) GetCreativesByApplication(w http.ResponseWriter,
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.GetCreativesByApplication(r.Context(), versionParam, accountIdParam, appKeyParam, startParam, limitParam, missionIdParam, keywordParam)
+	result, err := c.service.GetCreativesByApplication(r.Context(), accountIdParam, appKeyParam, startParam, limitParam, missionIdParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -691,18 +635,9 @@ func (c *CreativeAPIController) GetCreativesByApplication(w http.ResponseWriter,
 
 // UpdateCreative - Update Creative
 func (c *CreativeAPIController) UpdateCreative(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -856,7 +791,7 @@ func (c *CreativeAPIController) UpdateCreative(w http.ResponseWriter, r *http.Re
 		missionIdParam = param
 	} else {
 	}
-	result, err := c.service.UpdateCreative(r.Context(), versionParam, accountIdParam, creativeIdParam, nameParam, descriptionParam, assetImageIdParam, actionParam, dataParam, suffixParam, type_Param, balanceParam, activeParam, referenceIdParam, appVersionParam, missionIdParam)
+	result, err := c.service.UpdateCreative(r.Context(), accountIdParam, creativeIdParam, nameParam, descriptionParam, assetImageIdParam, actionParam, dataParam, suffixParam, type_Param, balanceParam, activeParam, referenceIdParam, appVersionParam, missionIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -868,18 +803,9 @@ func (c *CreativeAPIController) UpdateCreative(w http.ResponseWriter, r *http.Re
 
 // AdsFind - Find Missions
 func (c *CreativeAPIController) AdsFind(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1070,7 +996,7 @@ func (c *CreativeAPIController) AdsFind(w http.ResponseWriter, r *http.Request) 
 		missionIdsParam = param
 	} else {
 	}
-	result, err := c.service.AdsFind(r.Context(), versionParam, appKeyParam, randomizeParam, targetedAdsOnlyParam, type_Param, accountIdParam, appVersionParam, latitudeParam, longitudeParam, deviceParam, deviceIdentifierParam, deviceVersionParam, startParam, limitParam, includeAudiencesParam, allocatesTicketsParam, missionIdsParam)
+	result, err := c.service.AdsFind(r.Context(), appKeyParam, randomizeParam, targetedAdsOnlyParam, type_Param, accountIdParam, appVersionParam, latitudeParam, longitudeParam, deviceParam, deviceIdentifierParam, deviceVersionParam, startParam, limitParam, includeAudiencesParam, allocatesTicketsParam, missionIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

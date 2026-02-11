@@ -29,7 +29,7 @@ func NewStopAPIService() *StopAPIService {
 }
 
 // GetStop - Get Stop
-func (s *StopAPIService) GetStop(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *StopAPIService) GetStop(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update GetStop with the required logic for this service method.
 	// Add api_stop_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *StopAPIService) GetStop(ctx context.Context, version float32, id int64)
 }
 
 // UpdateStop - Update Stop
-func (s *StopAPIService) UpdateStop(ctx context.Context, version float32, id int64, body Stop) (ImplResponse, error) {
+func (s *StopAPIService) UpdateStop(ctx context.Context, id int64, body Stop) (ImplResponse, error) {
 	// TODO - update UpdateStop with the required logic for this service method.
 	// Add api_stop_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

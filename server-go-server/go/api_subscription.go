@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // SubscriptionAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,43 +52,43 @@ func (c *SubscriptionAPIController) Routes() Routes {
 		"CreateSubscription": Route{
 			"CreateSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/create",
+			"/api/3.18/subscription/create",
 			c.CreateSubscription,
 		},
 		"DeleteSubscription": Route{
 			"DeleteSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/delete",
+			"/api/3.18/subscription/delete",
 			c.DeleteSubscription,
 		},
 		"GetSubscription": Route{
 			"GetSubscription",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/get",
+			"/api/3.18/subscription/get",
 			c.GetSubscription,
 		},
 		"GetSubscriptionPlan": Route{
 			"GetSubscriptionPlan",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/plan/get",
+			"/api/3.18/subscription/plan/get",
 			c.GetSubscriptionPlan,
 		},
 		"GetSubscriptionPlans": Route{
 			"GetSubscriptionPlans",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/plan/list",
+			"/api/3.18/subscription/plan/list",
 			c.GetSubscriptionPlans,
 		},
 		"UpdateSubscription": Route{
 			"UpdateSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/update",
+			"/api/3.18/subscription/update",
 			c.UpdateSubscription,
 		},
 		"GetSubscriptionUsage": Route{
 			"GetSubscriptionUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/usage/get",
+			"/api/3.18/subscription/usage/get",
 			c.GetSubscriptionUsage,
 		},
 	}
@@ -102,43 +100,43 @@ func (c *SubscriptionAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/create",
+			"/api/3.18/subscription/create",
 			c.CreateSubscription,
 		},
 		Route{
 			"DeleteSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/delete",
+			"/api/3.18/subscription/delete",
 			c.DeleteSubscription,
 		},
 		Route{
 			"GetSubscription",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/get",
+			"/api/3.18/subscription/get",
 			c.GetSubscription,
 		},
 		Route{
 			"GetSubscriptionPlan",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/plan/get",
+			"/api/3.18/subscription/plan/get",
 			c.GetSubscriptionPlan,
 		},
 		Route{
 			"GetSubscriptionPlans",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/plan/list",
+			"/api/3.18/subscription/plan/list",
 			c.GetSubscriptionPlans,
 		},
 		Route{
 			"UpdateSubscription",
 			strings.ToUpper("Post"),
-			"/api/{version}/subscription/update",
+			"/api/3.18/subscription/update",
 			c.UpdateSubscription,
 		},
 		Route{
 			"GetSubscriptionUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/subscription/usage/get",
+			"/api/3.18/subscription/usage/get",
 			c.GetSubscriptionUsage,
 		},
 	}
@@ -148,18 +146,9 @@ func (c *SubscriptionAPIController) OrderedRoutes() []Route {
 
 // CreateSubscription - Create Subscription
 func (c *SubscriptionAPIController) CreateSubscription(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -199,7 +188,7 @@ func (c *SubscriptionAPIController) CreateSubscription(w http.ResponseWriter, r 
 		promoCodeParam = param
 	} else {
 	}
-	result, err := c.service.CreateSubscription(r.Context(), versionParam, accountIdParam, planIdParam, promoCodeParam)
+	result, err := c.service.CreateSubscription(r.Context(), accountIdParam, planIdParam, promoCodeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -211,18 +200,9 @@ func (c *SubscriptionAPIController) CreateSubscription(w http.ResponseWriter, r 
 
 // DeleteSubscription - Delete Subscription
 func (c *SubscriptionAPIController) DeleteSubscription(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -241,7 +221,7 @@ func (c *SubscriptionAPIController) DeleteSubscription(w http.ResponseWriter, r 
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteSubscription(r.Context(), versionParam, accountIdParam)
+	result, err := c.service.DeleteSubscription(r.Context(), accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -253,18 +233,9 @@ func (c *SubscriptionAPIController) DeleteSubscription(w http.ResponseWriter, r 
 
 // GetSubscription - Get Subscription
 func (c *SubscriptionAPIController) GetSubscription(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -283,7 +254,7 @@ func (c *SubscriptionAPIController) GetSubscription(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetSubscription(r.Context(), versionParam, accountIdParam)
+	result, err := c.service.GetSubscription(r.Context(), accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -295,18 +266,9 @@ func (c *SubscriptionAPIController) GetSubscription(w http.ResponseWriter, r *ht
 
 // GetSubscriptionPlan - Get Subscription Plan
 func (c *SubscriptionAPIController) GetSubscriptionPlan(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var planIdParam int64
@@ -325,7 +287,7 @@ func (c *SubscriptionAPIController) GetSubscriptionPlan(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{Field: "planId"}, nil)
 		return
 	}
-	result, err := c.service.GetSubscriptionPlan(r.Context(), versionParam, planIdParam)
+	result, err := c.service.GetSubscriptionPlan(r.Context(), planIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -337,18 +299,9 @@ func (c *SubscriptionAPIController) GetSubscriptionPlan(w http.ResponseWriter, r
 
 // GetSubscriptionPlans - List Subscription Plans
 func (c *SubscriptionAPIController) GetSubscriptionPlans(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var visibleParam bool
@@ -372,7 +325,7 @@ func (c *SubscriptionAPIController) GetSubscriptionPlans(w http.ResponseWriter, 
 		roleParam = param
 	} else {
 	}
-	result, err := c.service.GetSubscriptionPlans(r.Context(), versionParam, visibleParam, roleParam)
+	result, err := c.service.GetSubscriptionPlans(r.Context(), visibleParam, roleParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -384,18 +337,9 @@ func (c *SubscriptionAPIController) GetSubscriptionPlans(w http.ResponseWriter, 
 
 // UpdateSubscription - Update Subscription
 func (c *SubscriptionAPIController) UpdateSubscription(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -449,7 +393,7 @@ func (c *SubscriptionAPIController) UpdateSubscription(w http.ResponseWriter, r 
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateSubscription(r.Context(), versionParam, accountIdParam, planIdParam, promoCodeParam, activeParam)
+	result, err := c.service.UpdateSubscription(r.Context(), accountIdParam, planIdParam, promoCodeParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -461,18 +405,9 @@ func (c *SubscriptionAPIController) UpdateSubscription(w http.ResponseWriter, r 
 
 // GetSubscriptionUsage - Get Subscription Usage
 func (c *SubscriptionAPIController) GetSubscriptionUsage(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -533,7 +468,7 @@ func (c *SubscriptionAPIController) GetSubscriptionUsage(w http.ResponseWriter, 
 		endParam = param
 	} else {
 	}
-	result, err := c.service.GetSubscriptionUsage(r.Context(), versionParam, accountIdParam, applicationIdParam, startParam, endParam)
+	result, err := c.service.GetSubscriptionUsage(r.Context(), accountIdParam, applicationIdParam, startParam, endParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

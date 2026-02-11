@@ -30,7 +30,7 @@ func NewAssetAPIService() *AssetAPIService {
 }
 
 // CreateAsset - Create Asset
-func (s *AssetAPIService) CreateAsset(ctx context.Context, version float32, returnNulls bool, deviceId string, accountId int64, albumId int64, collectionId int64, addToDefaultAlbum string, addToMediaLibrary bool, versionCode int32, versionName string, metaData string, caption string, assetType string, approvalStatus string, assignedAccountId int64, media *os.File, mediaUrl string, mediaString string, mediaStringFileName string, mediaStringContentType string, mediaHeight int32, mediaWidth int32, attachedMedia *os.File, attachedMediaUrl string, attachedMediaString string, attachedMediaStringFileName string, attachedMediaStringContentType string, attachedMediaHeight int32, attachedMediaWidth int32, locationDescription string, app string, appKey string, searchTags string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AssetAPIService) CreateAsset(ctx context.Context, returnNulls bool, deviceId string, accountId int64, albumId int64, collectionId int64, addToDefaultAlbum string, addToMediaLibrary bool, versionCode int32, versionName string, metaData string, caption string, assetType string, approvalStatus string, assignedAccountId int64, media *os.File, mediaUrl string, mediaString string, mediaStringFileName string, mediaStringContentType string, mediaHeight int32, mediaWidth int32, attachedMedia *os.File, attachedMediaUrl string, attachedMediaString string, attachedMediaStringFileName string, attachedMediaStringContentType string, attachedMediaHeight int32, attachedMediaWidth int32, locationDescription string, app string, appKey string, searchTags string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreateAsset with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *AssetAPIService) CreateAsset(ctx context.Context, version float32, retu
 }
 
 // DeleteAsset - Delete Asset
-func (s *AssetAPIService) DeleteAsset(ctx context.Context, version float32, assetId string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AssetAPIService) DeleteAsset(ctx context.Context, assetId string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update DeleteAsset with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *AssetAPIService) DeleteAsset(ctx context.Context, version float32, asse
 }
 
 // AssetDownload - Download Asset
-func (s *AssetAPIService) AssetDownload(ctx context.Context, version float32, filename string) (ImplResponse, error) {
+func (s *AssetAPIService) AssetDownload(ctx context.Context, filename string) (ImplResponse, error) {
 	// TODO - update AssetDownload with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *AssetAPIService) AssetDownload(ctx context.Context, version float32, fi
 }
 
 // GetAsset - Get Asset
-func (s *AssetAPIService) GetAsset(ctx context.Context, version float32, assetId int64, deviceId string, accountId int64, noteDescending bool) (ImplResponse, error) {
+func (s *AssetAPIService) GetAsset(ctx context.Context, assetId int64, deviceId string, accountId int64, noteDescending bool) (ImplResponse, error) {
 	// TODO - update GetAsset with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *AssetAPIService) GetAsset(ctx context.Context, version float32, assetId
 }
 
 // AssetMorph - Convert Offer to Creative
-func (s *AssetAPIService) AssetMorph(ctx context.Context, version float32, offerId int64, adSize string, creativeId int64, width int32, height int32, backgroundSize string, template string) (ImplResponse, error) {
+func (s *AssetAPIService) AssetMorph(ctx context.Context, offerId int64, adSize string, creativeId int64, width int32, height int32, backgroundSize string, template string) (ImplResponse, error) {
 	// TODO - update AssetMorph with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *AssetAPIService) AssetMorph(ctx context.Context, version float32, offer
 }
 
 // RemoveAsset - Remove Asset from Collection
-func (s *AssetAPIService) RemoveAsset(ctx context.Context, version float32, assetId string, deviceId string, accountId int64, albumId int64, collectionId int64, removeFromDefaultAlbums bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AssetAPIService) RemoveAsset(ctx context.Context, assetId string, deviceId string, accountId int64, albumId int64, collectionId int64, removeFromDefaultAlbums bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update RemoveAsset with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *AssetAPIService) RemoveAsset(ctx context.Context, version float32, asse
 }
 
 // SearchAssets - Search Assets
-func (s *AssetAPIService) SearchAssets(ctx context.Context, version float32, deviceId string, accountId int64, albumIds string, assetIds string, appKey string, mediaType string, mimeType string, keyword string, versionCode int32, versionName string, updatedSince int64, updatedBefore int64, sortField string, descending bool, searchMediaLibrary bool, filterByBillable bool, activeOnly bool, returnApp bool, start int32, limit int32, searchMode string, assetType string, approvalStatus string, assignedAccountId int64) (ImplResponse, error) {
+func (s *AssetAPIService) SearchAssets(ctx context.Context, deviceId string, accountId int64, albumIds string, assetIds string, appKey string, mediaType string, mimeType string, keyword string, versionCode int32, versionName string, updatedSince int64, updatedBefore int64, sortField string, descending bool, searchMediaLibrary bool, filterByBillable bool, activeOnly bool, returnApp bool, start int32, limit int32, searchMode string, assetType string, approvalStatus string, assignedAccountId int64) (ImplResponse, error) {
 	// TODO - update SearchAssets with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *AssetAPIService) SearchAssets(ctx context.Context, version float32, dev
 }
 
 // UpdateAsset - Update Asset
-func (s *AssetAPIService) UpdateAsset(ctx context.Context, version float32, assetId int64, deviceId string, accountId int64, albumId int64, attachedAssetId int64, versionCode int32, versionName string, metaData string, caption string, assetType string, approvalStatus string, assignedAccountId int64, media *os.File, mediaUrl string, mediaString string, mediaStringFileName string, mediaStringContentType string, mediaHeight int32, mediaWidth int32, attachedMedia *os.File, attachedMediaUrl string, attachedMediaString string, attachedMediaStringFileName string, attachedMediaStringContentType string, attachedMediaHeight int32, attachedMediaWidth int32, locationDescription string, searchTags string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AssetAPIService) UpdateAsset(ctx context.Context, assetId int64, deviceId string, accountId int64, albumId int64, attachedAssetId int64, versionCode int32, versionName string, metaData string, caption string, assetType string, approvalStatus string, assignedAccountId int64, media *os.File, mediaUrl string, mediaString string, mediaStringFileName string, mediaStringContentType string, mediaHeight int32, mediaWidth int32, attachedMedia *os.File, attachedMediaUrl string, attachedMediaString string, attachedMediaStringFileName string, attachedMediaStringContentType string, attachedMediaHeight int32, attachedMediaWidth int32, locationDescription string, searchTags string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update UpdateAsset with the required logic for this service method.
 	// Add api_asset_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

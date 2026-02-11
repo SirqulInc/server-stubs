@@ -29,7 +29,7 @@ func NewOfferAPIService() *OfferAPIService {
 }
 
 // GetOfferDetails - Get Offer
-func (s *OfferAPIService) GetOfferDetails(ctx context.Context, version float32, deviceId string, accountId int64, offerId int64, offerLocationId int64, distance float64, latitude float64, longitude float64, includeOfferLocations bool, includeRetailerLocations bool, includeChildOffers bool) (ImplResponse, error) {
+func (s *OfferAPIService) GetOfferDetails(ctx context.Context, deviceId string, accountId int64, offerId int64, offerLocationId int64, distance float64, latitude float64, longitude float64, includeOfferLocations bool, includeRetailerLocations bool, includeChildOffers bool) (ImplResponse, error) {
 	// TODO - update GetOfferDetails with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *OfferAPIService) GetOfferDetails(ctx context.Context, version float32, 
 }
 
 // SearchOffersForConsumer - Search Offers
-func (s *OfferAPIService) SearchOffersForConsumer(ctx context.Context, version float32, latitude float64, longitude float64, recommendationType string, locationId int64, start int32, limit int32, maxRecommendations int32, distanceUnit string, appKey string, deviceId string, accountId int64, searchRange float64, tags string, supportedPostalCodes string, keyword string, categories string, filters string, offerTypes string, type_ string, sortField string, recommendOfferIds string, retailerLocationIds string, offerId int64, includeMission bool, includeCategories bool, includeFilters bool, includeExpired bool, includeFavorite bool, closestOfferOnly bool, searchExpression string, groupBy string) (ImplResponse, error) {
+func (s *OfferAPIService) SearchOffersForConsumer(ctx context.Context, latitude float64, longitude float64, recommendationType string, locationId int64, start int32, limit int32, maxRecommendations int32, distanceUnit string, appKey string, deviceId string, accountId int64, searchRange float64, tags string, supportedPostalCodes string, keyword string, categories string, filters string, offerTypes string, type_ string, sortField string, recommendOfferIds string, retailerLocationIds string, offerId int64, includeMission bool, includeCategories bool, includeFilters bool, includeExpired bool, includeFavorite bool, closestOfferOnly bool, searchExpression string, groupBy string) (ImplResponse, error) {
 	// TODO - update SearchOffersForConsumer with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *OfferAPIService) SearchOffersForConsumer(ctx context.Context, version f
 }
 
 // GetOfferListCounts - Get Offers (Counts)
-func (s *OfferAPIService) GetOfferListCounts(ctx context.Context, version float32, latitude float64, longitude float64, searchRange float32, distanceUnit string) (ImplResponse, error) {
+func (s *OfferAPIService) GetOfferListCounts(ctx context.Context, latitude float64, longitude float64, searchRange float32, distanceUnit string) (ImplResponse, error) {
 	// TODO - update GetOfferListCounts with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *OfferAPIService) GetOfferListCounts(ctx context.Context, version float3
 }
 
 // GetOfferLocation - Get Offer Location
-func (s *OfferAPIService) GetOfferLocation(ctx context.Context, version float32, offerLocationId int64, udid string) (ImplResponse, error) {
+func (s *OfferAPIService) GetOfferLocation(ctx context.Context, offerLocationId int64, udid string) (ImplResponse, error) {
 	// TODO - update GetOfferLocation with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *OfferAPIService) GetOfferLocation(ctx context.Context, version float32,
 }
 
 // TopOfferTransactions - Get Offers (Top)
-func (s *OfferAPIService) TopOfferTransactions(ctx context.Context, version float32, start int32, limit int32) (ImplResponse, error) {
+func (s *OfferAPIService) TopOfferTransactions(ctx context.Context, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update TopOfferTransactions with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *OfferAPIService) TopOfferTransactions(ctx context.Context, version floa
 }
 
 // CreateOffer - Create Offer
-func (s *OfferAPIService) CreateOffer(ctx context.Context, version float32, includeOfferLocations bool, title string, barcodeType string, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPrice int64, fullPrice float64, discountPrice float64, offerType string, specialOfferType string, offerVisibility string, active bool, deviceId string, accountId int64, tags string, parentOfferId int64, retailerLocationIds string, offerLocations string, subTitle string, details string, subDetails string, finePrint string, barcodeEntry string, externalRedeemOptions string, externalUrl string, externalId string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, ticketPriceType string, showRemaining bool, showRedeemed bool, replaced bool, featured bool, categoryIds string, filterIds string, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, brand string, productType string, conditionType string, isbn string, asin string, catalogNumbers string, department string, features string, minimumPrice float64, width float64, height float64, depth float64, weight float64, unit string, studio string, parentalRating string, publishDate int64, availabilityDate int64, sizeId int64, listingId int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, rebootTimeHour int32, rebootTimeMinute int32, idleTimeoutInSecond int32, serialNumber string, udid string, deviceType string, devicePower float64, deviceInterference float64, availability string, availabilitySummary string) (ImplResponse, error) {
+func (s *OfferAPIService) CreateOffer(ctx context.Context, includeOfferLocations bool, title string, barcodeType string, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPrice int64, fullPrice float64, discountPrice float64, offerType string, specialOfferType string, offerVisibility string, active bool, deviceId string, accountId int64, tags string, parentOfferId int64, retailerLocationIds string, offerLocations string, subTitle string, details string, subDetails string, finePrint string, barcodeEntry string, externalRedeemOptions string, externalUrl string, externalId string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, ticketPriceType string, showRemaining bool, showRedeemed bool, replaced bool, featured bool, categoryIds string, filterIds string, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, brand string, productType string, conditionType string, isbn string, asin string, catalogNumbers string, department string, features string, minimumPrice float64, width float64, height float64, depth float64, weight float64, unit string, studio string, parentalRating string, publishDate int64, availabilityDate int64, sizeId int64, listingId int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, rebootTimeHour int32, rebootTimeMinute int32, idleTimeoutInSecond int32, serialNumber string, udid string, deviceType string, devicePower float64, deviceInterference float64, availability string, availabilitySummary string) (ImplResponse, error) {
 	// TODO - update CreateOffer with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *OfferAPIService) CreateOffer(ctx context.Context, version float32, incl
 }
 
 // DeleteOffer - Delete Offer
-func (s *OfferAPIService) DeleteOffer(ctx context.Context, version float32, offerId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *OfferAPIService) DeleteOffer(ctx context.Context, offerId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteOffer with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *OfferAPIService) DeleteOffer(ctx context.Context, version float32, offe
 }
 
 // GetOffer - Get Offer
-func (s *OfferAPIService) GetOffer(ctx context.Context, version float32, offerId int64, includeOfferLocations bool, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *OfferAPIService) GetOffer(ctx context.Context, offerId int64, includeOfferLocations bool, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetOffer with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *OfferAPIService) GetOffer(ctx context.Context, version float32, offerId
 }
 
 // BatchUpdateOfferLocations - Update Offer Locations
-func (s *OfferAPIService) BatchUpdateOfferLocations(ctx context.Context, version float32, data string, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *OfferAPIService) BatchUpdateOfferLocations(ctx context.Context, data string, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update BatchUpdateOfferLocations with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *OfferAPIService) BatchUpdateOfferLocations(ctx context.Context, version
 }
 
 // DeleteOfferLocation - Delete Offer Location
-func (s *OfferAPIService) DeleteOfferLocation(ctx context.Context, version float32, offerLocationId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *OfferAPIService) DeleteOfferLocation(ctx context.Context, offerLocationId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteOfferLocation with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *OfferAPIService) DeleteOfferLocation(ctx context.Context, version float
 }
 
 // GetOfferLocationsForRetailers - Search Offer Locations
-func (s *OfferAPIService) GetOfferLocationsForRetailers(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, includeRetailerLocation bool, deviceId string, accountId int64, keyword string, retailerId int64, retailerLocationId int64, offerType string, specialOfferType string, barcodeType string, barcodeEntry string, isbn string, asin string, deviceStatus string, needsNotificationSent bool, lastNotificationSent int64) (ImplResponse, error) {
+func (s *OfferAPIService) GetOfferLocationsForRetailers(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, includeRetailerLocation bool, deviceId string, accountId int64, keyword string, retailerId int64, retailerLocationId int64, offerType string, specialOfferType string, barcodeType string, barcodeEntry string, isbn string, asin string, deviceStatus string, needsNotificationSent bool, lastNotificationSent int64) (ImplResponse, error) {
 	// TODO - update GetOfferLocationsForRetailers with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *OfferAPIService) GetOfferLocationsForRetailers(ctx context.Context, ver
 }
 
 // GetOffersForRetailers - Search Offers
-func (s *OfferAPIService) GetOffersForRetailers(ctx context.Context, version float32, offerVisibility string, sortField string, descending bool, start int32, limit int32, availableOnly bool, activeOnly bool, includeCategories bool, includeFilters bool, includeOfferLocations bool, deviceId string, accountId int64, categoryIds string, filterIds string, q string, keyword string, retailerId int64, retailerLocationId int64, couponType string, offerType string, offerTypes string, specialOfferType string, i int32, l int32, barcodeType string, barcodeEntry string, isbn string, asin string, deviceStatus string, needsNotificationSent bool, lastNotificationSent int64) (ImplResponse, error) {
+func (s *OfferAPIService) GetOffersForRetailers(ctx context.Context, offerVisibility string, sortField string, descending bool, start int32, limit int32, availableOnly bool, activeOnly bool, includeCategories bool, includeFilters bool, includeOfferLocations bool, deviceId string, accountId int64, categoryIds string, filterIds string, q string, keyword string, retailerId int64, retailerLocationId int64, couponType string, offerType string, offerTypes string, specialOfferType string, i int32, l int32, barcodeType string, barcodeEntry string, isbn string, asin string, deviceStatus string, needsNotificationSent bool, lastNotificationSent int64) (ImplResponse, error) {
 	// TODO - update GetOffersForRetailers with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *OfferAPIService) GetOffersForRetailers(ctx context.Context, version flo
 }
 
 // UpdateOfferStatus - Activate Offer
-func (s *OfferAPIService) UpdateOfferStatus(ctx context.Context, version float32, offerIds string, active bool, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *OfferAPIService) UpdateOfferStatus(ctx context.Context, offerIds string, active bool, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update UpdateOfferStatus with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *OfferAPIService) UpdateOfferStatus(ctx context.Context, version float32
 }
 
 // SearchOfferTransactionsForRetailers - Search Offer Transactions
-func (s *OfferAPIService) SearchOfferTransactionsForRetailers(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, q string, keyword string, retailerId int64, retailerLocationId int64, offerId int64, offerLocationId int64, redeemed bool, reservationsOnly bool, couponType string, offerType string, specialOfferType string, customerAccountIds string, categoryIds string, redeemableStartDate int64, redeemableEndDate int64, i int32, l int32) (ImplResponse, error) {
+func (s *OfferAPIService) SearchOfferTransactionsForRetailers(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, q string, keyword string, retailerId int64, retailerLocationId int64, offerId int64, offerLocationId int64, redeemed bool, reservationsOnly bool, couponType string, offerType string, specialOfferType string, customerAccountIds string, categoryIds string, redeemableStartDate int64, redeemableEndDate int64, i int32, l int32) (ImplResponse, error) {
 	// TODO - update SearchOfferTransactionsForRetailers with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *OfferAPIService) SearchOfferTransactionsForRetailers(ctx context.Contex
 }
 
 // RedeemOfferTransaction - Update Offer Transaction
-func (s *OfferAPIService) RedeemOfferTransaction(ctx context.Context, version float32, offerTransactionId int64, status int32, deviceId string, accountId int64, offerLocationId int64) (ImplResponse, error) {
+func (s *OfferAPIService) RedeemOfferTransaction(ctx context.Context, offerTransactionId int64, status int32, deviceId string, accountId int64, offerLocationId int64) (ImplResponse, error) {
 	// TODO - update RedeemOfferTransaction with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *OfferAPIService) RedeemOfferTransaction(ctx context.Context, version fl
 }
 
 // UpdateOffer - Update Offer
-func (s *OfferAPIService) UpdateOffer(ctx context.Context, version float32, offerId int64, includeOfferLocations bool, deviceId string, accountId int64, parentOfferId int64, retailerLocationIds string, offerLocations string, tags string, title string, subTitle string, details string, subDetails string, finePrint string, barcodeType string, barcodeEntry string, externalRedeemOptions string, externalUrl string, externalId string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPriceType string, ticketPrice int64, fullPrice float64, discountPrice float64, showRemaining bool, showRedeemed bool, replaced bool, featured bool, offerType string, specialOfferType string, offerVisibility string, categoryIds string, filterIds string, active bool, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, brand string, productType string, conditionType string, isbn string, asin string, catalogNumbers string, department string, features string, minimumPrice float64, width float64, height float64, depth float64, weight float64, unit string, studio string, parentalRating string, publishDate int64, availabilityDate int64, sizeId int64, listingId int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, rebootTimeHour int32, rebootTimeMinute int32, idleTimeoutInSecond int32, serialNumber string, udid string, deviceType string, devicePower float64, deviceInterference float64, availability string, availabilitySummary string) (ImplResponse, error) {
+func (s *OfferAPIService) UpdateOffer(ctx context.Context, offerId int64, includeOfferLocations bool, deviceId string, accountId int64, parentOfferId int64, retailerLocationIds string, offerLocations string, tags string, title string, subTitle string, details string, subDetails string, finePrint string, barcodeType string, barcodeEntry string, externalRedeemOptions string, externalUrl string, externalId string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPriceType string, ticketPrice int64, fullPrice float64, discountPrice float64, showRemaining bool, showRedeemed bool, replaced bool, featured bool, offerType string, specialOfferType string, offerVisibility string, categoryIds string, filterIds string, active bool, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, brand string, productType string, conditionType string, isbn string, asin string, catalogNumbers string, department string, features string, minimumPrice float64, width float64, height float64, depth float64, weight float64, unit string, studio string, parentalRating string, publishDate int64, availabilityDate int64, sizeId int64, listingId int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, rebootTimeHour int32, rebootTimeMinute int32, idleTimeoutInSecond int32, serialNumber string, udid string, deviceType string, devicePower float64, deviceInterference float64, availability string, availabilitySummary string) (ImplResponse, error) {
 	// TODO - update UpdateOffer with the required logic for this service method.
 	// Add api_offer_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

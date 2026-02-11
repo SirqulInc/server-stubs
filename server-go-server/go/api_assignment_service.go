@@ -29,7 +29,7 @@ func NewAssignmentAPIService() *AssignmentAPIService {
 }
 
 // AssigmentAssigneeAccountSearch - Search Assignment Assignees
-func (s *AssignmentAPIService) AssigmentAssigneeAccountSearch(ctx context.Context, version float32, accountId int64, keyword string) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssigmentAssigneeAccountSearch(ctx context.Context, accountId int64, keyword string) (ImplResponse, error) {
 	// TODO - update AssigmentAssigneeAccountSearch with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AssignmentAPIService) AssigmentAssigneeAccountSearch(ctx context.Contex
 }
 
 // AssignmentCreate - Create Assignment
-func (s *AssignmentAPIService) AssignmentCreate(ctx context.Context, version float32, accountId int64, name string, assigneeAccountId int64, description string, retailerLocationId int64, tags string, active bool) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentCreate(ctx context.Context, accountId int64, name string, assigneeAccountId int64, description string, retailerLocationId int64, tags string, active bool) (ImplResponse, error) {
 	// TODO - update AssignmentCreate with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AssignmentAPIService) AssignmentCreate(ctx context.Context, version flo
 }
 
 // AssignmentDelete - Delete Assignment
-func (s *AssignmentAPIService) AssignmentDelete(ctx context.Context, version float32, accountId int64, assignmentId int64) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentDelete(ctx context.Context, accountId int64, assignmentId int64) (ImplResponse, error) {
 	// TODO - update AssignmentDelete with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *AssignmentAPIService) AssignmentDelete(ctx context.Context, version flo
 }
 
 // AssignmentGet - Get Assignment
-func (s *AssignmentAPIService) AssignmentGet(ctx context.Context, version float32, accountId int64, assignmentId int64) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentGet(ctx context.Context, accountId int64, assignmentId int64) (ImplResponse, error) {
 	// TODO - update AssignmentGet with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *AssignmentAPIService) AssignmentGet(ctx context.Context, version float3
 }
 
 // AssignmentSearch - Search Assignments
-func (s *AssignmentAPIService) AssignmentSearch(ctx context.Context, version float32, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, creatorAccountId int64, assigneeAccountIds string, retailerLocationIds string, currentStatusType string, keyword string) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentSearch(ctx context.Context, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, creatorAccountId int64, assigneeAccountIds string, retailerLocationIds string, currentStatusType string, keyword string) (ImplResponse, error) {
 	// TODO - update AssignmentSearch with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *AssignmentAPIService) AssignmentSearch(ctx context.Context, version flo
 }
 
 // AssignmentStatusCreate - Create Assignment Status
-func (s *AssignmentAPIService) AssignmentStatusCreate(ctx context.Context, version float32, accountId int64, assignmentId int64, scheduledNotificationId int64, toDo string, connection string, method string, status string, closure string, message string, followUp int64, active bool) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentStatusCreate(ctx context.Context, accountId int64, assignmentId int64, scheduledNotificationId int64, toDo string, connection string, method string, status string, closure string, message string, followUp int64, active bool) (ImplResponse, error) {
 	// TODO - update AssignmentStatusCreate with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *AssignmentAPIService) AssignmentStatusCreate(ctx context.Context, versi
 }
 
 // AssignmentStatusDelete - Deletes Assignment Status
-func (s *AssignmentAPIService) AssignmentStatusDelete(ctx context.Context, version float32, accountId int64, assignmentStatusId int64) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentStatusDelete(ctx context.Context, accountId int64, assignmentStatusId int64) (ImplResponse, error) {
 	// TODO - update AssignmentStatusDelete with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *AssignmentAPIService) AssignmentStatusDelete(ctx context.Context, versi
 }
 
 // AssignmentStatusGet - Get Assignment Status
-func (s *AssignmentAPIService) AssignmentStatusGet(ctx context.Context, version float32, accountId int64, assignmentStatusId int64) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentStatusGet(ctx context.Context, accountId int64, assignmentStatusId int64) (ImplResponse, error) {
 	// TODO - update AssignmentStatusGet with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *AssignmentAPIService) AssignmentStatusGet(ctx context.Context, version 
 }
 
 // AssignmentStatusSearch - Search Assignment Statuses
-func (s *AssignmentAPIService) AssignmentStatusSearch(ctx context.Context, version float32, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, assignmentId int64, creatorAccountId int64, assigneeAccountId int64, retailerLocationId int64, statusType string, keyword string) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentStatusSearch(ctx context.Context, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, assignmentId int64, creatorAccountId int64, assigneeAccountId int64, retailerLocationId int64, statusType string, keyword string) (ImplResponse, error) {
 	// TODO - update AssignmentStatusSearch with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *AssignmentAPIService) AssignmentStatusSearch(ctx context.Context, versi
 }
 
 // AssignmentStatusUpdate - Update Assignment Status
-func (s *AssignmentAPIService) AssignmentStatusUpdate(ctx context.Context, version float32, accountId int64, assignmentStatusId int64, scheduledNotificationId int64, toDo string, connection string, method string, status string, closure string, message string, followUp int64, active bool) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentStatusUpdate(ctx context.Context, accountId int64, assignmentStatusId int64, scheduledNotificationId int64, toDo string, connection string, method string, status string, closure string, message string, followUp int64, active bool) (ImplResponse, error) {
 	// TODO - update AssignmentStatusUpdate with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *AssignmentAPIService) AssignmentStatusUpdate(ctx context.Context, versi
 }
 
 // AssignmentUpdate - Update Assignment
-func (s *AssignmentAPIService) AssignmentUpdate(ctx context.Context, version float32, accountId int64, assignmentId int64, name string, description string, assigneeAccountId int64, retailerLocationId int64, tags string, active bool) (ImplResponse, error) {
+func (s *AssignmentAPIService) AssignmentUpdate(ctx context.Context, accountId int64, assignmentId int64, name string, description string, assigneeAccountId int64, retailerLocationId int64, tags string, active bool) (ImplResponse, error) {
 	// TODO - update AssignmentUpdate with the required logic for this service method.
 	// Add api_assignment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

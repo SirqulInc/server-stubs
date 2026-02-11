@@ -29,7 +29,7 @@ func NewInviteAPIService() *InviteAPIService {
 }
 
 // AcceptInvite - Accept Invite
-func (s *InviteAPIService) AcceptInvite(ctx context.Context, version float32, token string, accountId int64, albumId int64, missionId int64, albumContestId int64, offerId int64, offerLocationId int64, retailerLocationId int64, appKey string, autoFriend bool, autoAttendEvent bool, autoFavoriteOffer bool, autoFavoriteOfferLocation bool, autoFavoriteRetailerLocation bool) (ImplResponse, error) {
+func (s *InviteAPIService) AcceptInvite(ctx context.Context, token string, accountId int64, albumId int64, missionId int64, albumContestId int64, offerId int64, offerLocationId int64, retailerLocationId int64, appKey string, autoFriend bool, autoAttendEvent bool, autoFavoriteOffer bool, autoFavoriteOfferLocation bool, autoFavoriteRetailerLocation bool) (ImplResponse, error) {
 	// TODO - update AcceptInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *InviteAPIService) AcceptInvite(ctx context.Context, version float32, to
 }
 
 // AlbumInvite - Invite to Collection
-func (s *InviteAPIService) AlbumInvite(ctx context.Context, version float32, deviceId string, accountId int64, appId int64, appKey string, albumId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *InviteAPIService) AlbumInvite(ctx context.Context, deviceId string, accountId int64, appId int64, appKey string, albumId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AlbumInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *InviteAPIService) AlbumInvite(ctx context.Context, version float32, dev
 }
 
 // AlbumContestInvite - Invite to Contest
-func (s *InviteAPIService) AlbumContestInvite(ctx context.Context, version float32, deviceId string, accountId int64, appId int64, appKey string, albumContestId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *InviteAPIService) AlbumContestInvite(ctx context.Context, deviceId string, accountId int64, appId int64, appKey string, albumContestId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AlbumContestInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *InviteAPIService) AlbumContestInvite(ctx context.Context, version float
 }
 
 // EventInvite - Invite to Event
-func (s *InviteAPIService) EventInvite(ctx context.Context, version float32, accountId int64, appKey string, listingId int64, receiverAccountIds string, retailerLocationId int64) (ImplResponse, error) {
+func (s *InviteAPIService) EventInvite(ctx context.Context, accountId int64, appKey string, listingId int64, receiverAccountIds string, retailerLocationId int64) (ImplResponse, error) {
 	// TODO - update EventInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *InviteAPIService) EventInvite(ctx context.Context, version float32, acc
 }
 
 // GameInvite - Invite to Game Level
-func (s *InviteAPIService) GameInvite(ctx context.Context, version float32, deviceId string, accountId int64, appId int64, appKey string, gameLevelId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *InviteAPIService) GameInvite(ctx context.Context, deviceId string, accountId int64, appId int64, appKey string, gameLevelId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GameInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *InviteAPIService) GameInvite(ctx context.Context, version float32, devi
 }
 
 // GetInvite - Get Invite
-func (s *InviteAPIService) GetInvite(ctx context.Context, version float32, accountId int64, token string, albumId int64, missionId int64, albumContestId int64, offerId int64, offerLocationId int64, retailerLocationId int64, appKey string) (ImplResponse, error) {
+func (s *InviteAPIService) GetInvite(ctx context.Context, accountId int64, token string, albumId int64, missionId int64, albumContestId int64, offerId int64, offerLocationId int64, retailerLocationId int64, appKey string) (ImplResponse, error) {
 	// TODO - update GetInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *InviteAPIService) GetInvite(ctx context.Context, version float32, accou
 }
 
 // MissionInvite - Invite to Mission
-func (s *InviteAPIService) MissionInvite(ctx context.Context, version float32, deviceId string, accountId int64, appId int64, appKey string, missionId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *InviteAPIService) MissionInvite(ctx context.Context, deviceId string, accountId int64, appId int64, appKey string, missionId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update MissionInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *InviteAPIService) MissionInvite(ctx context.Context, version float32, d
 }
 
 // OfferInvite - Invite to Offer
-func (s *InviteAPIService) OfferInvite(ctx context.Context, version float32, accountId int64, appKey string, offerId int64) (ImplResponse, error) {
+func (s *InviteAPIService) OfferInvite(ctx context.Context, accountId int64, appKey string, offerId int64) (ImplResponse, error) {
 	// TODO - update OfferInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *InviteAPIService) OfferInvite(ctx context.Context, version float32, acc
 }
 
 // OfferLocationInvite - Invite to Offer Location
-func (s *InviteAPIService) OfferLocationInvite(ctx context.Context, version float32, accountId int64, appKey string, offerLocationId int64) (ImplResponse, error) {
+func (s *InviteAPIService) OfferLocationInvite(ctx context.Context, accountId int64, appKey string, offerLocationId int64) (ImplResponse, error) {
 	// TODO - update OfferLocationInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *InviteAPIService) OfferLocationInvite(ctx context.Context, version floa
 }
 
 // RetailerLocationInvite - Invite to Retailer Location
-func (s *InviteAPIService) RetailerLocationInvite(ctx context.Context, version float32, accountId int64, appKey string, retailerLocationId int64, albumId int64) (ImplResponse, error) {
+func (s *InviteAPIService) RetailerLocationInvite(ctx context.Context, accountId int64, appKey string, retailerLocationId int64, albumId int64) (ImplResponse, error) {
 	// TODO - update RetailerLocationInvite with the required logic for this service method.
 	// Add api_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

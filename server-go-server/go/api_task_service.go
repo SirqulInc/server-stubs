@@ -29,7 +29,7 @@ func NewTaskAPIService() *TaskAPIService {
 }
 
 // CreateTask - Create Task
-func (s *TaskAPIService) CreateTask(ctx context.Context, version float32, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, visibility string, active bool) (ImplResponse, error) {
+func (s *TaskAPIService) CreateTask(ctx context.Context, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, visibility string, active bool) (ImplResponse, error) {
 	// TODO - update CreateTask with the required logic for this service method.
 	// Add api_task_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TaskAPIService) CreateTask(ctx context.Context, version float32, accoun
 }
 
 // DeleteTask - Delete Task
-func (s *TaskAPIService) DeleteTask(ctx context.Context, version float32, accountId int64, taskId int64) (ImplResponse, error) {
+func (s *TaskAPIService) DeleteTask(ctx context.Context, accountId int64, taskId int64) (ImplResponse, error) {
 	// TODO - update DeleteTask with the required logic for this service method.
 	// Add api_task_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TaskAPIService) DeleteTask(ctx context.Context, version float32, accoun
 }
 
 // GetTask - Get Task
-func (s *TaskAPIService) GetTask(ctx context.Context, version float32, accountId int64, taskId int64) (ImplResponse, error) {
+func (s *TaskAPIService) GetTask(ctx context.Context, accountId int64, taskId int64) (ImplResponse, error) {
 	// TODO - update GetTask with the required logic for this service method.
 	// Add api_task_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TaskAPIService) GetTask(ctx context.Context, version float32, accountId
 }
 
 // SearchTasks - Search Tasks
-func (s *TaskAPIService) SearchTasks(ctx context.Context, version float32, accountId int64, groupingId string, filter string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *TaskAPIService) SearchTasks(ctx context.Context, accountId int64, groupingId string, filter string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchTasks with the required logic for this service method.
 	// Add api_task_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TaskAPIService) SearchTasks(ctx context.Context, version float32, accou
 }
 
 // UpdateTask - Update Task
-func (s *TaskAPIService) UpdateTask(ctx context.Context, version float32, taskId int64, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, visibility string, active bool) (ImplResponse, error) {
+func (s *TaskAPIService) UpdateTask(ctx context.Context, taskId int64, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, visibility string, active bool) (ImplResponse, error) {
 	// TODO - update UpdateTask with the required logic for this service method.
 	// Add api_task_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

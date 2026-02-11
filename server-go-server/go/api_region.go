@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // RegionAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *RegionAPIController) Routes() Routes {
 		"CreateRegion": Route{
 			"CreateRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/create",
+			"/api/3.18/region/create",
 			c.CreateRegion,
 		},
 		"DeleteRegion": Route{
 			"DeleteRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/delete",
+			"/api/3.18/region/delete",
 			c.DeleteRegion,
 		},
 		"GetRegion": Route{
 			"GetRegion",
 			strings.ToUpper("Get"),
-			"/api/{version}/region/get",
+			"/api/3.18/region/get",
 			c.GetRegion,
 		},
 		"SearchRegions": Route{
 			"SearchRegions",
 			strings.ToUpper("Get"),
-			"/api/{version}/region/search",
+			"/api/3.18/region/search",
 			c.SearchRegions,
 		},
 		"UpdateRegion": Route{
 			"UpdateRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/update",
+			"/api/3.18/region/update",
 			c.UpdateRegion,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *RegionAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/create",
+			"/api/3.18/region/create",
 			c.CreateRegion,
 		},
 		Route{
 			"DeleteRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/delete",
+			"/api/3.18/region/delete",
 			c.DeleteRegion,
 		},
 		Route{
 			"GetRegion",
 			strings.ToUpper("Get"),
-			"/api/{version}/region/get",
+			"/api/3.18/region/get",
 			c.GetRegion,
 		},
 		Route{
 			"SearchRegions",
 			strings.ToUpper("Get"),
-			"/api/{version}/region/search",
+			"/api/3.18/region/search",
 			c.SearchRegions,
 		},
 		Route{
 			"UpdateRegion",
 			strings.ToUpper("Post"),
-			"/api/{version}/region/update",
+			"/api/3.18/region/update",
 			c.UpdateRegion,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *RegionAPIController) OrderedRoutes() []Route {
 
 // CreateRegion - Create Region
 func (c *RegionAPIController) CreateRegion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -354,7 +343,7 @@ func (c *RegionAPIController) CreateRegion(w http.ResponseWriter, r *http.Reques
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.CreateRegion(r.Context(), versionParam, accountIdParam, regionClassParam, shortNameParam, fullNameParam, parentIdsParam, childrenIdsParam, postalCodeIdsParam, locationsParam, retailerLocationIdParam, visibilityParam, categoryIdsParam, filterIdsParam, startParam, endParam, polygonParam, metaDataParam, latitudeParam, longitudeParam, versionCodeParam, rootParam, activeParam)
+	result, err := c.service.CreateRegion(r.Context(), accountIdParam, regionClassParam, shortNameParam, fullNameParam, parentIdsParam, childrenIdsParam, postalCodeIdsParam, locationsParam, retailerLocationIdParam, visibilityParam, categoryIdsParam, filterIdsParam, startParam, endParam, polygonParam, metaDataParam, latitudeParam, longitudeParam, versionCodeParam, rootParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -366,18 +355,9 @@ func (c *RegionAPIController) CreateRegion(w http.ResponseWriter, r *http.Reques
 
 // DeleteRegion - Delete Region
 func (c *RegionAPIController) DeleteRegion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -412,7 +392,7 @@ func (c *RegionAPIController) DeleteRegion(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "regionId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteRegion(r.Context(), versionParam, accountIdParam, regionIdParam)
+	result, err := c.service.DeleteRegion(r.Context(), accountIdParam, regionIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -424,18 +404,9 @@ func (c *RegionAPIController) DeleteRegion(w http.ResponseWriter, r *http.Reques
 
 // GetRegion - Get Region
 func (c *RegionAPIController) GetRegion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var regionIdParam int64
@@ -468,7 +439,7 @@ func (c *RegionAPIController) GetRegion(w http.ResponseWriter, r *http.Request) 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetRegion(r.Context(), versionParam, regionIdParam, accountIdParam)
+	result, err := c.service.GetRegion(r.Context(), regionIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -480,18 +451,9 @@ func (c *RegionAPIController) GetRegion(w http.ResponseWriter, r *http.Request) 
 
 // SearchRegions - Search Regions
 func (c *RegionAPIController) SearchRegions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -746,7 +708,7 @@ func (c *RegionAPIController) SearchRegions(w http.ResponseWriter, r *http.Reque
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchRegions(r.Context(), versionParam, accountIdParam, queryParam, keywordParam, latitudeParam, longitudeParam, range_Param, regionClassParam, visibilityParam, searchModeParam, sortFieldParam, descendingParam, includeParentParam, includeChildrenParam, includePostalCodesParam, categoryIdsParam, filterIdsParam, versionCodeParam, activeOnlyParam, showDeletedParam, lastUpdatedSinceParam, startParam, limitParam)
+	result, err := c.service.SearchRegions(r.Context(), accountIdParam, queryParam, keywordParam, latitudeParam, longitudeParam, range_Param, regionClassParam, visibilityParam, searchModeParam, sortFieldParam, descendingParam, includeParentParam, includeChildrenParam, includePostalCodesParam, categoryIdsParam, filterIdsParam, versionCodeParam, activeOnlyParam, showDeletedParam, lastUpdatedSinceParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -758,18 +720,9 @@ func (c *RegionAPIController) SearchRegions(w http.ResponseWriter, r *http.Reque
 
 // UpdateRegion - Update Region
 func (c *RegionAPIController) UpdateRegion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1014,7 +967,7 @@ func (c *RegionAPIController) UpdateRegion(w http.ResponseWriter, r *http.Reques
 		clearListsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateRegion(r.Context(), versionParam, accountIdParam, regionIdParam, regionClassParam, shortNameParam, fullNameParam, parentIdsParam, childrenIdsParam, postalCodeIdsParam, locationsParam, retailerLocationIdParam, visibilityParam, categoryIdsParam, filterIdsParam, startParam, endParam, polygonParam, metaDataParam, latitudeParam, longitudeParam, versionCodeParam, rootParam, activeParam, clearListsParam)
+	result, err := c.service.UpdateRegion(r.Context(), accountIdParam, regionIdParam, regionClassParam, shortNameParam, fullNameParam, parentIdsParam, childrenIdsParam, postalCodeIdsParam, locationsParam, retailerLocationIdParam, visibilityParam, categoryIdsParam, filterIdsParam, startParam, endParam, polygonParam, metaDataParam, latitudeParam, longitudeParam, versionCodeParam, rootParam, activeParam, clearListsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

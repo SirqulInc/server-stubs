@@ -57,97 +57,97 @@ func (c *TripAPIController) Routes() Routes {
 		"Search": Route{
 			"Search",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip",
+			"/api/3.18/trip",
 			c.Search,
 		},
 		"CreateTrip": Route{
 			"CreateTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip",
+			"/api/3.18/trip",
 			c.CreateTrip,
 		},
 		"SearchTrips": Route{
 			"SearchTrips",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/match",
+			"/api/3.18/trip/match",
 			c.SearchTrips,
 		},
 		"ProcessTripMatches": Route{
 			"ProcessTripMatches",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/match/process",
+			"/api/3.18/trip/match/process",
 			c.ProcessTripMatches,
 		},
 		"UpdateTripNotifications": Route{
 			"UpdateTripNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/notifications",
+			"/api/3.18/trip/notifications",
 			c.UpdateTripNotifications,
 		},
 		"GetTrip": Route{
 			"GetTrip",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.GetTrip,
 		},
 		"UpdateTrip": Route{
 			"UpdateTrip",
 			strings.ToUpper("Put"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.UpdateTrip,
 		},
 		"Delete": Route{
 			"Delete",
 			strings.ToUpper("Delete"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.Delete,
 		},
 		"DriveTrip": Route{
 			"DriveTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/drive",
+			"/api/3.18/trip/{id}/drive",
 			c.DriveTrip,
 		},
 		"FlexibleTrip": Route{
 			"FlexibleTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/flexible",
+			"/api/3.18/trip/{id}/flexible",
 			c.FlexibleTrip,
 		},
 		"UpdateLocations": Route{
 			"UpdateLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/locations",
+			"/api/3.18/trip/{id}/locations",
 			c.UpdateLocations,
 		},
 		"UpdateRecurrenceLocations": Route{
 			"UpdateRecurrenceLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/locations/recurrence",
+			"/api/3.18/trip/{id}/locations/recurrence",
 			c.UpdateRecurrenceLocations,
 		},
 		"GetTripMatches": Route{
 			"GetTripMatches",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/{id}/match",
+			"/api/3.18/trip/{id}/match",
 			c.GetTripMatches,
 		},
 		"Ride": Route{
 			"Ride",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/ride",
+			"/api/3.18/trip/{id}/ride",
 			c.Ride,
 		},
 		"UpdateShipments": Route{
 			"UpdateShipments",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/shipments",
+			"/api/3.18/trip/{id}/shipments",
 			c.UpdateShipments,
 		},
 		"UpdateRecurrenceShipments": Route{
 			"UpdateRecurrenceShipments",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/shipments/recurrence",
+			"/api/3.18/trip/{id}/shipments/recurrence",
 			c.UpdateRecurrenceShipments,
 		},
 	}
@@ -159,97 +159,97 @@ func (c *TripAPIController) OrderedRoutes() []Route {
 		Route{
 			"Search",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip",
+			"/api/3.18/trip",
 			c.Search,
 		},
 		Route{
 			"CreateTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip",
+			"/api/3.18/trip",
 			c.CreateTrip,
 		},
 		Route{
 			"SearchTrips",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/match",
+			"/api/3.18/trip/match",
 			c.SearchTrips,
 		},
 		Route{
 			"ProcessTripMatches",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/match/process",
+			"/api/3.18/trip/match/process",
 			c.ProcessTripMatches,
 		},
 		Route{
 			"UpdateTripNotifications",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/notifications",
+			"/api/3.18/trip/notifications",
 			c.UpdateTripNotifications,
 		},
 		Route{
 			"GetTrip",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.GetTrip,
 		},
 		Route{
 			"UpdateTrip",
 			strings.ToUpper("Put"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.UpdateTrip,
 		},
 		Route{
 			"Delete",
 			strings.ToUpper("Delete"),
-			"/api/{version}/trip/{id}",
+			"/api/3.18/trip/{id}",
 			c.Delete,
 		},
 		Route{
 			"DriveTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/drive",
+			"/api/3.18/trip/{id}/drive",
 			c.DriveTrip,
 		},
 		Route{
 			"FlexibleTrip",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/flexible",
+			"/api/3.18/trip/{id}/flexible",
 			c.FlexibleTrip,
 		},
 		Route{
 			"UpdateLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/locations",
+			"/api/3.18/trip/{id}/locations",
 			c.UpdateLocations,
 		},
 		Route{
 			"UpdateRecurrenceLocations",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/locations/recurrence",
+			"/api/3.18/trip/{id}/locations/recurrence",
 			c.UpdateRecurrenceLocations,
 		},
 		Route{
 			"GetTripMatches",
 			strings.ToUpper("Get"),
-			"/api/{version}/trip/{id}/match",
+			"/api/3.18/trip/{id}/match",
 			c.GetTripMatches,
 		},
 		Route{
 			"Ride",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/ride",
+			"/api/3.18/trip/{id}/ride",
 			c.Ride,
 		},
 		Route{
 			"UpdateShipments",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/shipments",
+			"/api/3.18/trip/{id}/shipments",
 			c.UpdateShipments,
 		},
 		Route{
 			"UpdateRecurrenceShipments",
 			strings.ToUpper("Post"),
-			"/api/{version}/trip/{id}/shipments/recurrence",
+			"/api/3.18/trip/{id}/shipments/recurrence",
 			c.UpdateRecurrenceShipments,
 		},
 	}
@@ -259,18 +259,9 @@ func (c *TripAPIController) OrderedRoutes() []Route {
 
 // Search - Search Trips
 func (c *TripAPIController) Search(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -404,7 +395,7 @@ func (c *TripAPIController) Search(w http.ResponseWriter, r *http.Request) {
 		hasNotificationsParam = param
 	} else {
 	}
-	result, err := c.service.Search(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, startDateParam, endDateParam, hasNotificationsParam)
+	result, err := c.service.Search(r.Context(), accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, startDateParam, endDateParam, hasNotificationsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -416,15 +407,6 @@ func (c *TripAPIController) Search(w http.ResponseWriter, r *http.Request) {
 
 // CreateTrip - Create Trip
 func (c *TripAPIController) CreateTrip(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Trip
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -440,7 +422,7 @@ func (c *TripAPIController) CreateTrip(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateTrip(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateTrip(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -452,18 +434,9 @@ func (c *TripAPIController) CreateTrip(w http.ResponseWriter, r *http.Request) {
 
 // SearchTrips - Search Trips
 func (c *TripAPIController) SearchTrips(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -611,7 +584,7 @@ func (c *TripAPIController) SearchTrips(w http.ResponseWriter, r *http.Request) 
 		matchedHasDriverParam = param
 	} else {
 	}
-	result, err := c.service.SearchTrips(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, startDateParam, endDateParam, matchedHasRouteParam, matchedHasDriverParam)
+	result, err := c.service.SearchTrips(r.Context(), accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, startDateParam, endDateParam, matchedHasRouteParam, matchedHasDriverParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -623,18 +596,9 @@ func (c *TripAPIController) SearchTrips(w http.ResponseWriter, r *http.Request) 
 
 // ProcessTripMatches - Process Trip Matches
 func (c *TripAPIController) ProcessTripMatches(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startDateParam int64
@@ -679,7 +643,7 @@ func (c *TripAPIController) ProcessTripMatches(w http.ResponseWriter, r *http.Re
 		tripIdParam = param
 	} else {
 	}
-	result, err := c.service.ProcessTripMatches(r.Context(), versionParam, startDateParam, endDateParam, tripIdParam)
+	result, err := c.service.ProcessTripMatches(r.Context(), startDateParam, endDateParam, tripIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -691,18 +655,9 @@ func (c *TripAPIController) ProcessTripMatches(w http.ResponseWriter, r *http.Re
 
 // UpdateTripNotifications - Trip Notifications
 func (c *TripAPIController) UpdateTripNotifications(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var idParam int64
@@ -728,7 +683,7 @@ func (c *TripAPIController) UpdateTripNotifications(w http.ResponseWriter, r *ht
 		notificationsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateTripNotifications(r.Context(), versionParam, idParam, notificationsParam)
+	result, err := c.service.UpdateTripNotifications(r.Context(), idParam, notificationsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -741,14 +696,6 @@ func (c *TripAPIController) UpdateTripNotifications(w http.ResponseWriter, r *ht
 // GetTrip - Get Trip
 func (c *TripAPIController) GetTrip(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -757,7 +704,7 @@ func (c *TripAPIController) GetTrip(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetTrip(r.Context(), versionParam, idParam)
+	result, err := c.service.GetTrip(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -770,14 +717,6 @@ func (c *TripAPIController) GetTrip(w http.ResponseWriter, r *http.Request) {
 // UpdateTrip - Update Trip
 func (c *TripAPIController) UpdateTrip(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -801,7 +740,7 @@ func (c *TripAPIController) UpdateTrip(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateTrip(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateTrip(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -814,14 +753,6 @@ func (c *TripAPIController) UpdateTrip(w http.ResponseWriter, r *http.Request) {
 // Delete - Delete Trip
 func (c *TripAPIController) Delete(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -830,7 +761,7 @@ func (c *TripAPIController) Delete(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.Delete(r.Context(), versionParam, idParam)
+	result, err := c.service.Delete(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -848,14 +779,6 @@ func (c *TripAPIController) DriveTrip(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -880,7 +803,7 @@ func (c *TripAPIController) DriveTrip(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "recurrence"}, nil)
 		return
 	}
-	result, err := c.service.DriveTrip(r.Context(), versionParam, idParam, recurrenceParam)
+	result, err := c.service.DriveTrip(r.Context(), idParam, recurrenceParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -898,14 +821,6 @@ func (c *TripAPIController) FlexibleTrip(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -930,7 +845,7 @@ func (c *TripAPIController) FlexibleTrip(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &RequiredError{Field: "recurrence"}, nil)
 		return
 	}
-	result, err := c.service.FlexibleTrip(r.Context(), versionParam, idParam, recurrenceParam)
+	result, err := c.service.FlexibleTrip(r.Context(), idParam, recurrenceParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -943,14 +858,6 @@ func (c *TripAPIController) FlexibleTrip(w http.ResponseWriter, r *http.Request)
 // UpdateLocations - Update Trip Locations
 func (c *TripAPIController) UpdateLocations(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -974,7 +881,7 @@ func (c *TripAPIController) UpdateLocations(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateLocations(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateLocations(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -987,14 +894,6 @@ func (c *TripAPIController) UpdateLocations(w http.ResponseWriter, r *http.Reque
 // UpdateRecurrenceLocations - Update Recurrence Locations
 func (c *TripAPIController) UpdateRecurrenceLocations(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -1018,7 +917,7 @@ func (c *TripAPIController) UpdateRecurrenceLocations(w http.ResponseWriter, r *
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateRecurrenceLocations(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateRecurrenceLocations(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1034,14 +933,6 @@ func (c *TripAPIController) GetTripMatches(w http.ResponseWriter, r *http.Reques
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	idParam, err := parseNumericParameter[int64](
@@ -1153,7 +1044,7 @@ func (c *TripAPIController) GetTripMatches(w http.ResponseWriter, r *http.Reques
 		matchedHasDriverParam = param
 	} else {
 	}
-	result, err := c.service.GetTripMatches(r.Context(), versionParam, idParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, matchedHasRouteParam, matchedHasDriverParam)
+	result, err := c.service.GetTripMatches(r.Context(), idParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, matchedHasRouteParam, matchedHasDriverParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1169,14 +1060,6 @@ func (c *TripAPIController) Ride(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	idParam, err := parseNumericParameter[int64](
@@ -1203,7 +1086,7 @@ func (c *TripAPIController) Ride(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "recurrence"}, nil)
 		return
 	}
-	result, err := c.service.Ride(r.Context(), versionParam, idParam, recurrenceParam)
+	result, err := c.service.Ride(r.Context(), idParam, recurrenceParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1216,14 +1099,6 @@ func (c *TripAPIController) Ride(w http.ResponseWriter, r *http.Request) {
 // UpdateShipments - Update Trip Shipments
 func (c *TripAPIController) UpdateShipments(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -1247,7 +1122,7 @@ func (c *TripAPIController) UpdateShipments(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateShipments(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateShipments(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1260,14 +1135,6 @@ func (c *TripAPIController) UpdateShipments(w http.ResponseWriter, r *http.Reque
 // UpdateRecurrenceShipments - Update Recurrence Shipments
 func (c *TripAPIController) UpdateRecurrenceShipments(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -1291,7 +1158,7 @@ func (c *TripAPIController) UpdateRecurrenceShipments(w http.ResponseWriter, r *
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateRecurrenceShipments(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateRecurrenceShipments(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

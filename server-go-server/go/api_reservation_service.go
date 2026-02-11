@@ -29,7 +29,7 @@ func NewReservationAPIService() *ReservationAPIService {
 }
 
 // SearchAvailability - Search Availability
-func (s *ReservationAPIService) SearchAvailability(ctx context.Context, version float32, reservableId int64, reservableType string, deviceId string, accountId int64, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
+func (s *ReservationAPIService) SearchAvailability(ctx context.Context, reservableId int64, reservableType string, deviceId string, accountId int64, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchAvailability with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ReservationAPIService) SearchAvailability(ctx context.Context, version 
 }
 
 // ReservableAvailability - Update Availability
-func (s *ReservationAPIService) ReservableAvailability(ctx context.Context, version float32, reservableId int64, reservableType string, deviceId string, accountId int64, availability string, availabilitySummary string) (ImplResponse, error) {
+func (s *ReservationAPIService) ReservableAvailability(ctx context.Context, reservableId int64, reservableType string, deviceId string, accountId int64, availability string, availabilitySummary string) (ImplResponse, error) {
 	// TODO - update ReservableAvailability with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ReservationAPIService) ReservableAvailability(ctx context.Context, vers
 }
 
 // SearchSchedule - Search Schedule
-func (s *ReservationAPIService) SearchSchedule(ctx context.Context, version float32, reservableId int64, reservableType string, startDate int64, endDate int64, deviceId string, accountId int64, timeBucketMins int32) (ImplResponse, error) {
+func (s *ReservationAPIService) SearchSchedule(ctx context.Context, reservableId int64, reservableType string, startDate int64, endDate int64, deviceId string, accountId int64, timeBucketMins int32) (ImplResponse, error) {
 	// TODO - update SearchSchedule with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ReservationAPIService) SearchSchedule(ctx context.Context, version floa
 }
 
 // SearchReservations - Search Reservations
-func (s *ReservationAPIService) SearchReservations(ctx context.Context, version float32, deviceId string, appKey string, accountId int64, filterAccountId int64, reservableId int64, reservableType string, keyword string, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
+func (s *ReservationAPIService) SearchReservations(ctx context.Context, deviceId string, appKey string, accountId int64, filterAccountId int64, reservableId int64, reservableType string, keyword string, startDate int64, endDate int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchReservations with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ReservationAPIService) SearchReservations(ctx context.Context, version 
 }
 
 // DeleteReservation - Delete Reservation
-func (s *ReservationAPIService) DeleteReservation(ctx context.Context, version float32, reservationId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *ReservationAPIService) DeleteReservation(ctx context.Context, reservationId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteReservation with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ReservationAPIService) DeleteReservation(ctx context.Context, version f
 }
 
 // CreateReservation - Create Reservation
-func (s *ReservationAPIService) CreateReservation(ctx context.Context, version float32, deviceId string, accountId int64, startDate int64, endDate int64, offerId int64, offerLocationId int64, appKey string, metaData string) (ImplResponse, error) {
+func (s *ReservationAPIService) CreateReservation(ctx context.Context, deviceId string, accountId int64, startDate int64, endDate int64, offerId int64, offerLocationId int64, appKey string, metaData string) (ImplResponse, error) {
 	// TODO - update CreateReservation with the required logic for this service method.
 	// Add api_reservation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

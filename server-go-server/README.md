@@ -16,7 +16,7 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: 3.16
-- Build date: 2026-02-09T20:47:22.698194659Z[Etc/UTC]
+- Build date: 2026-02-11T19:24:30.112418100Z[Etc/UTC]
 - Generator version: 7.20.0-SNAPSHOT
 For more information, please visit [https://corp.sirqul.com/contact-us/](https://corp.sirqul.com/contact-us/)
 

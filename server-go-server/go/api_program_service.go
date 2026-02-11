@@ -29,7 +29,7 @@ func NewProgramAPIService() *ProgramAPIService {
 }
 
 // SearchPrograms - Search Programs
-func (s *ProgramAPIService) SearchPrograms(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string) (ImplResponse, error) {
+func (s *ProgramAPIService) SearchPrograms(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string) (ImplResponse, error) {
 	// TODO - update SearchPrograms with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ProgramAPIService) SearchPrograms(ctx context.Context, version float32,
 }
 
 // CreateProgram - Create Program
-func (s *ProgramAPIService) CreateProgram(ctx context.Context, version float32, body Program) (ImplResponse, error) {
+func (s *ProgramAPIService) CreateProgram(ctx context.Context, body Program) (ImplResponse, error) {
 	// TODO - update CreateProgram with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ProgramAPIService) CreateProgram(ctx context.Context, version float32, 
 }
 
 // GetProgram - Get Program
-func (s *ProgramAPIService) GetProgram(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ProgramAPIService) GetProgram(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update GetProgram with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ProgramAPIService) GetProgram(ctx context.Context, version float32, id 
 }
 
 // PutProgram - Update Program
-func (s *ProgramAPIService) PutProgram(ctx context.Context, version float32, id int64, body Program) (ImplResponse, error) {
+func (s *ProgramAPIService) PutProgram(ctx context.Context, id int64, body Program) (ImplResponse, error) {
 	// TODO - update PutProgram with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ProgramAPIService) PutProgram(ctx context.Context, version float32, id 
 }
 
 // PostProgram - Update Program
-func (s *ProgramAPIService) PostProgram(ctx context.Context, version float32, id int64, body Program) (ImplResponse, error) {
+func (s *ProgramAPIService) PostProgram(ctx context.Context, id int64, body Program) (ImplResponse, error) {
 	// TODO - update PostProgram with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ProgramAPIService) PostProgram(ctx context.Context, version float32, id
 }
 
 // DeleteProgram - Delete Program
-func (s *ProgramAPIService) DeleteProgram(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ProgramAPIService) DeleteProgram(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update DeleteProgram with the required logic for this service method.
 	// Add api_program_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

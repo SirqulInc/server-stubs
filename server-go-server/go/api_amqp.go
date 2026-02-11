@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AMQPAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,49 +52,49 @@ func (c *AMQPAPIController) Routes() Routes {
 		"ConsumerCreate": Route{
 			"ConsumerCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/consumer/create",
+			"/api/3.18/queue/consumer/create",
 			c.ConsumerCreate,
 		},
 		"ConsumerUpdate": Route{
 			"ConsumerUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/consumer/update",
+			"/api/3.18/queue/consumer/update",
 			c.ConsumerUpdate,
 		},
 		"QueueCreate": Route{
 			"QueueCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/create",
+			"/api/3.18/queue/create",
 			c.QueueCreate,
 		},
 		"QueueDelete": Route{
 			"QueueDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/delete",
+			"/api/3.18/queue/delete",
 			c.QueueDelete,
 		},
 		"QueueGet": Route{
 			"QueueGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/queue/get",
+			"/api/3.18/queue/get",
 			c.QueueGet,
 		},
 		"QueuePublish": Route{
 			"QueuePublish",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/publish",
+			"/api/3.18/queue/publish",
 			c.QueuePublish,
 		},
 		"QueueSearch": Route{
 			"QueueSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/queue/search",
+			"/api/3.18/queue/search",
 			c.QueueSearch,
 		},
 		"QueueUpdate": Route{
 			"QueueUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/update",
+			"/api/3.18/queue/update",
 			c.QueueUpdate,
 		},
 	}
@@ -108,49 +106,49 @@ func (c *AMQPAPIController) OrderedRoutes() []Route {
 		Route{
 			"ConsumerCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/consumer/create",
+			"/api/3.18/queue/consumer/create",
 			c.ConsumerCreate,
 		},
 		Route{
 			"ConsumerUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/consumer/update",
+			"/api/3.18/queue/consumer/update",
 			c.ConsumerUpdate,
 		},
 		Route{
 			"QueueCreate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/create",
+			"/api/3.18/queue/create",
 			c.QueueCreate,
 		},
 		Route{
 			"QueueDelete",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/delete",
+			"/api/3.18/queue/delete",
 			c.QueueDelete,
 		},
 		Route{
 			"QueueGet",
 			strings.ToUpper("Get"),
-			"/api/{version}/queue/get",
+			"/api/3.18/queue/get",
 			c.QueueGet,
 		},
 		Route{
 			"QueuePublish",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/publish",
+			"/api/3.18/queue/publish",
 			c.QueuePublish,
 		},
 		Route{
 			"QueueSearch",
 			strings.ToUpper("Get"),
-			"/api/{version}/queue/search",
+			"/api/3.18/queue/search",
 			c.QueueSearch,
 		},
 		Route{
 			"QueueUpdate",
 			strings.ToUpper("Post"),
-			"/api/{version}/queue/update",
+			"/api/3.18/queue/update",
 			c.QueueUpdate,
 		},
 	}
@@ -160,18 +158,9 @@ func (c *AMQPAPIController) OrderedRoutes() []Route {
 
 // ConsumerCreate - Create Consumer
 func (c *AMQPAPIController) ConsumerCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -316,7 +305,7 @@ func (c *AMQPAPIController) ConsumerCreate(w http.ResponseWriter, r *http.Reques
 		useSSLParam = param
 	} else {
 	}
-	result, err := c.service.ConsumerCreate(r.Context(), versionParam, appKeyParam, nameParam, hostnameParam, usernameParam, passwordParam, dataMappingParam, deviceIdParam, accountIdParam, portParam, virtualHostParam, exchangerParam, exchangerTypeParam, workersParam, useSSLParam)
+	result, err := c.service.ConsumerCreate(r.Context(), appKeyParam, nameParam, hostnameParam, usernameParam, passwordParam, dataMappingParam, deviceIdParam, accountIdParam, portParam, virtualHostParam, exchangerParam, exchangerTypeParam, workersParam, useSSLParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -328,18 +317,9 @@ func (c *AMQPAPIController) ConsumerCreate(w http.ResponseWriter, r *http.Reques
 
 // ConsumerUpdate - Update Consumer
 func (c *AMQPAPIController) ConsumerUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -411,7 +391,7 @@ func (c *AMQPAPIController) ConsumerUpdate(w http.ResponseWriter, r *http.Reques
 		useSSLParam = param
 	} else {
 	}
-	result, err := c.service.ConsumerUpdate(r.Context(), versionParam, appKeyParam, queueIdParam, dataMappingParam, deviceIdParam, accountIdParam, useSSLParam)
+	result, err := c.service.ConsumerUpdate(r.Context(), appKeyParam, queueIdParam, dataMappingParam, deviceIdParam, accountIdParam, useSSLParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -423,18 +403,9 @@ func (c *AMQPAPIController) ConsumerUpdate(w http.ResponseWriter, r *http.Reques
 
 // QueueCreate - Create Queue
 func (c *AMQPAPIController) QueueCreate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -555,7 +526,7 @@ func (c *AMQPAPIController) QueueCreate(w http.ResponseWriter, r *http.Request) 
 		useSSLParam = param
 	} else {
 	}
-	result, err := c.service.QueueCreate(r.Context(), versionParam, appKeyParam, nameParam, deviceIdParam, accountIdParam, workersParam, analyticTagsParam, hostnameParam, portParam, usernameParam, passwordParam, virtualHostParam, useSSLParam)
+	result, err := c.service.QueueCreate(r.Context(), appKeyParam, nameParam, deviceIdParam, accountIdParam, workersParam, analyticTagsParam, hostnameParam, portParam, usernameParam, passwordParam, virtualHostParam, useSSLParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -567,18 +538,9 @@ func (c *AMQPAPIController) QueueCreate(w http.ResponseWriter, r *http.Request) 
 
 // QueueDelete - Delete Queue
 func (c *AMQPAPIController) QueueDelete(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var queueIdParam int64
@@ -618,7 +580,7 @@ func (c *AMQPAPIController) QueueDelete(w http.ResponseWriter, r *http.Request) 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.QueueDelete(r.Context(), versionParam, queueIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.QueueDelete(r.Context(), queueIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -630,18 +592,9 @@ func (c *AMQPAPIController) QueueDelete(w http.ResponseWriter, r *http.Request) 
 
 // QueueGet - Get Queue
 func (c *AMQPAPIController) QueueGet(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -707,7 +660,7 @@ func (c *AMQPAPIController) QueueGet(w http.ResponseWriter, r *http.Request) {
 		virtualHostParam = param
 	} else {
 	}
-	result, err := c.service.QueueGet(r.Context(), versionParam, deviceIdParam, accountIdParam, queueIdParam, appKeyParam, nameParam, hostnameParam, virtualHostParam)
+	result, err := c.service.QueueGet(r.Context(), deviceIdParam, accountIdParam, queueIdParam, appKeyParam, nameParam, hostnameParam, virtualHostParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -719,18 +672,9 @@ func (c *AMQPAPIController) QueueGet(w http.ResponseWriter, r *http.Request) {
 
 // QueuePublish - Publish Queue
 func (c *AMQPAPIController) QueuePublish(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var messageParam string
@@ -784,7 +728,7 @@ func (c *AMQPAPIController) QueuePublish(w http.ResponseWriter, r *http.Request)
 		virtualHostParam = param
 	} else {
 	}
-	result, err := c.service.QueuePublish(r.Context(), versionParam, messageParam, queueIdParam, appKeyParam, nameParam, hostnameParam, virtualHostParam)
+	result, err := c.service.QueuePublish(r.Context(), messageParam, queueIdParam, appKeyParam, nameParam, hostnameParam, virtualHostParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -796,18 +740,9 @@ func (c *AMQPAPIController) QueuePublish(w http.ResponseWriter, r *http.Request)
 
 // QueueSearch - Search Queue
 func (c *AMQPAPIController) QueueSearch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var queueIdParam int64
@@ -884,7 +819,7 @@ func (c *AMQPAPIController) QueueSearch(w http.ResponseWriter, r *http.Request) 
 		var param int32 = 10
 		limitParam = param
 	}
-	result, err := c.service.QueueSearch(r.Context(), versionParam, queueIdParam, deviceIdParam, accountIdParam, nameParam, startParam, limitParam)
+	result, err := c.service.QueueSearch(r.Context(), queueIdParam, deviceIdParam, accountIdParam, nameParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -896,18 +831,9 @@ func (c *AMQPAPIController) QueueSearch(w http.ResponseWriter, r *http.Request) 
 
 // QueueUpdate - Update Queue
 func (c *AMQPAPIController) QueueUpdate(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var queueIdParam int64
@@ -1031,7 +957,7 @@ func (c *AMQPAPIController) QueueUpdate(w http.ResponseWriter, r *http.Request) 
 		useSSLParam = param
 	} else {
 	}
-	result, err := c.service.QueueUpdate(r.Context(), versionParam, queueIdParam, deviceIdParam, accountIdParam, appKeyParam, workersParam, analyticTagsParam, hostnameParam, portParam, usernameParam, passwordParam, virtualHostParam, useSSLParam)
+	result, err := c.service.QueueUpdate(r.Context(), queueIdParam, deviceIdParam, accountIdParam, appKeyParam, workersParam, analyticTagsParam, hostnameParam, portParam, usernameParam, passwordParam, virtualHostParam, useSSLParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

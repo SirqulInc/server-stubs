@@ -29,7 +29,7 @@ func NewShipmentAPIService() *ShipmentAPIService {
 }
 
 // SearchShipments - Search Shipments
-func (s *ShipmentAPIService) SearchShipments(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, ownerId int64, riderId int64, routeId int64) (ImplResponse, error) {
+func (s *ShipmentAPIService) SearchShipments(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, ownerId int64, riderId int64, routeId int64) (ImplResponse, error) {
 	// TODO - update SearchShipments with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ShipmentAPIService) SearchShipments(ctx context.Context, version float3
 }
 
 // CreateShipment - Create Shipment
-func (s *ShipmentAPIService) CreateShipment(ctx context.Context, version float32, body Shipment) (ImplResponse, error) {
+func (s *ShipmentAPIService) CreateShipment(ctx context.Context, body Shipment) (ImplResponse, error) {
 	// TODO - update CreateShipment with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ShipmentAPIService) CreateShipment(ctx context.Context, version float32
 }
 
 // GetShipment - Get Shipment
-func (s *ShipmentAPIService) GetShipment(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ShipmentAPIService) GetShipment(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update GetShipment with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ShipmentAPIService) GetShipment(ctx context.Context, version float32, i
 }
 
 // UpdateShipment - Update Shipment
-func (s *ShipmentAPIService) UpdateShipment(ctx context.Context, version float32, id int64, body Shipment) (ImplResponse, error) {
+func (s *ShipmentAPIService) UpdateShipment(ctx context.Context, id int64, body Shipment) (ImplResponse, error) {
 	// TODO - update UpdateShipment with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ShipmentAPIService) UpdateShipment(ctx context.Context, version float32
 }
 
 // DeleteShipment - Delete Shipment
-func (s *ShipmentAPIService) DeleteShipment(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ShipmentAPIService) DeleteShipment(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update DeleteShipment with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ShipmentAPIService) DeleteShipment(ctx context.Context, version float32
 }
 
 // CancelShipment - Cancel Shipment
-func (s *ShipmentAPIService) CancelShipment(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ShipmentAPIService) CancelShipment(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update CancelShipment with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *ShipmentAPIService) CancelShipment(ctx context.Context, version float32
 }
 
 // UpdateShipmentStatus - Uupdate Shipment Status
-func (s *ShipmentAPIService) UpdateShipmentStatus(ctx context.Context, version float32, id int64, body map[string]bool) (ImplResponse, error) {
+func (s *ShipmentAPIService) UpdateShipmentStatus(ctx context.Context, id int64, body map[string]bool) (ImplResponse, error) {
 	// TODO - update UpdateShipmentStatus with the required logic for this service method.
 	// Add api_shipment_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

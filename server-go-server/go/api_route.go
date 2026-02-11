@@ -57,127 +57,127 @@ func (c *RouteAPIController) Routes() Routes {
 		"SearchRoutes": Route{
 			"SearchRoutes",
 			strings.ToUpper("Get"),
-			"/api/{version}/route",
+			"/api/3.18/route",
 			c.SearchRoutes,
 		},
 		"CreateRoute": Route{
 			"CreateRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route",
+			"/api/3.18/route",
 			c.CreateRoute,
 		},
 		"SetDriver": Route{
 			"SetDriver",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{id}/driver/{driverId}",
+			"/api/3.18/route/{id}/driver/{driverId}",
 			c.SetDriver,
 		},
 		"GetRoute": Route{
 			"GetRoute",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.GetRoute,
 		},
 		"UpdateRoute": Route{
 			"UpdateRoute",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.UpdateRoute,
 		},
 		"DeleteRoute": Route{
 			"DeleteRoute",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.DeleteRoute,
 		},
 		"ApproveRoute": Route{
 			"ApproveRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/approve",
+			"/api/3.18/route/{routeId}/approve",
 			c.ApproveRoute,
 		},
 		"CopyRoute": Route{
 			"CopyRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/copy",
+			"/api/3.18/route/{routeId}/copy",
 			c.CopyRoute,
 		},
 		"GetRouteDirections": Route{
 			"GetRouteDirections",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/directions",
+			"/api/3.18/route/{routeId}/directions",
 			c.GetRouteDirections,
 		},
 		"CreateRouteDirections": Route{
 			"CreateRouteDirections",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/directions",
+			"/api/3.18/route/{routeId}/directions",
 			c.CreateRouteDirections,
 		},
 		"DisapproveRoute": Route{
 			"DisapproveRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/disapprove",
+			"/api/3.18/route/{routeId}/disapprove",
 			c.DisapproveRoute,
 		},
 		"OptimizeRoute": Route{
 			"OptimizeRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/optimize",
+			"/api/3.18/route/{routeId}/optimize",
 			c.OptimizeRoute,
 		},
 		"CreateRoutePolyline": Route{
 			"CreateRoutePolyline",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/polyline",
+			"/api/3.18/route/{routeId}/polyline",
 			c.CreateRoutePolyline,
 		},
 		"GetRouteShipments": Route{
 			"GetRouteShipments",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/shipments",
+			"/api/3.18/route/{routeId}/shipments",
 			c.GetRouteShipments,
 		},
 		"GetRouteStop": Route{
 			"GetRouteStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.GetRouteStop,
 		},
 		"UpdateRouteStop": Route{
 			"UpdateRouteStop",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.UpdateRouteStop,
 		},
 		"RemoveStop": Route{
 			"RemoveStop",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.RemoveStop,
 		},
 		"GetShipmentsAtStop": Route{
 			"GetShipmentsAtStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stop/{stopId}/shipments",
+			"/api/3.18/route/{routeId}/stop/{stopId}/shipments",
 			c.GetShipmentsAtStop,
 		},
 		"GetRouteStops": Route{
 			"GetRouteStops",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stops",
+			"/api/3.18/route/{routeId}/stops",
 			c.GetRouteStops,
 		},
 		"ReorderRouteStopsPost": Route{
 			"ReorderRouteStopsPost",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/stops/reorder",
+			"/api/3.18/route/{routeId}/stops/reorder",
 			c.ReorderRouteStopsPost,
 		},
 		"ReorderRouteStopsPatch": Route{
 			"ReorderRouteStopsPatch",
 			strings.ToUpper("Patch"),
-			"/api/{version}/route/{routeId}/stops/reorder",
+			"/api/3.18/route/{routeId}/stops/reorder",
 			c.ReorderRouteStopsPatch,
 		},
 	}
@@ -189,127 +189,127 @@ func (c *RouteAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchRoutes",
 			strings.ToUpper("Get"),
-			"/api/{version}/route",
+			"/api/3.18/route",
 			c.SearchRoutes,
 		},
 		Route{
 			"CreateRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route",
+			"/api/3.18/route",
 			c.CreateRoute,
 		},
 		Route{
 			"SetDriver",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{id}/driver/{driverId}",
+			"/api/3.18/route/{id}/driver/{driverId}",
 			c.SetDriver,
 		},
 		Route{
 			"GetRoute",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.GetRoute,
 		},
 		Route{
 			"UpdateRoute",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.UpdateRoute,
 		},
 		Route{
 			"DeleteRoute",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/{routeId}",
+			"/api/3.18/route/{routeId}",
 			c.DeleteRoute,
 		},
 		Route{
 			"ApproveRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/approve",
+			"/api/3.18/route/{routeId}/approve",
 			c.ApproveRoute,
 		},
 		Route{
 			"CopyRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/copy",
+			"/api/3.18/route/{routeId}/copy",
 			c.CopyRoute,
 		},
 		Route{
 			"GetRouteDirections",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/directions",
+			"/api/3.18/route/{routeId}/directions",
 			c.GetRouteDirections,
 		},
 		Route{
 			"CreateRouteDirections",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/directions",
+			"/api/3.18/route/{routeId}/directions",
 			c.CreateRouteDirections,
 		},
 		Route{
 			"DisapproveRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/disapprove",
+			"/api/3.18/route/{routeId}/disapprove",
 			c.DisapproveRoute,
 		},
 		Route{
 			"OptimizeRoute",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/optimize",
+			"/api/3.18/route/{routeId}/optimize",
 			c.OptimizeRoute,
 		},
 		Route{
 			"CreateRoutePolyline",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/polyline",
+			"/api/3.18/route/{routeId}/polyline",
 			c.CreateRoutePolyline,
 		},
 		Route{
 			"GetRouteShipments",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/shipments",
+			"/api/3.18/route/{routeId}/shipments",
 			c.GetRouteShipments,
 		},
 		Route{
 			"GetRouteStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.GetRouteStop,
 		},
 		Route{
 			"UpdateRouteStop",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.UpdateRouteStop,
 		},
 		Route{
 			"RemoveStop",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/{routeId}/stop/{stopId}",
+			"/api/3.18/route/{routeId}/stop/{stopId}",
 			c.RemoveStop,
 		},
 		Route{
 			"GetShipmentsAtStop",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stop/{stopId}/shipments",
+			"/api/3.18/route/{routeId}/stop/{stopId}/shipments",
 			c.GetShipmentsAtStop,
 		},
 		Route{
 			"GetRouteStops",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/{routeId}/stops",
+			"/api/3.18/route/{routeId}/stops",
 			c.GetRouteStops,
 		},
 		Route{
 			"ReorderRouteStopsPost",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/{routeId}/stops/reorder",
+			"/api/3.18/route/{routeId}/stops/reorder",
 			c.ReorderRouteStopsPost,
 		},
 		Route{
 			"ReorderRouteStopsPatch",
 			strings.ToUpper("Patch"),
-			"/api/{version}/route/{routeId}/stops/reorder",
+			"/api/3.18/route/{routeId}/stops/reorder",
 			c.ReorderRouteStopsPatch,
 		},
 	}
@@ -319,18 +319,9 @@ func (c *RouteAPIController) OrderedRoutes() []Route {
 
 // SearchRoutes - Search Routes
 func (c *RouteAPIController) SearchRoutes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -636,7 +627,7 @@ func (c *RouteAPIController) SearchRoutes(w http.ResponseWriter, r *http.Request
 		parentIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchRoutes(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, includesEmptyParam, rootOnlyParam, showInheritedPropertiesParam, hubIdParam, programIdParam, scheduledStartParam, scheduledEndParam, updatedStartParam, updatedEndParam, featuredParam, seatCountParam, approvedParam, startedParam, completedParam, validParam, parentIdParam)
+	result, err := c.service.SearchRoutes(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, includesEmptyParam, rootOnlyParam, showInheritedPropertiesParam, hubIdParam, programIdParam, scheduledStartParam, scheduledEndParam, updatedStartParam, updatedEndParam, featuredParam, seatCountParam, approvedParam, startedParam, completedParam, validParam, parentIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -648,15 +639,6 @@ func (c *RouteAPIController) SearchRoutes(w http.ResponseWriter, r *http.Request
 
 // CreateRoute - Create Route
 func (c *RouteAPIController) CreateRoute(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Route
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -672,7 +654,7 @@ func (c *RouteAPIController) CreateRoute(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateRoute(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateRoute(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -685,14 +667,6 @@ func (c *RouteAPIController) CreateRoute(w http.ResponseWriter, r *http.Request)
 // SetDriver - Set Driver
 func (c *RouteAPIController) SetDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -709,7 +683,7 @@ func (c *RouteAPIController) SetDriver(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &ParsingError{Param: "driverId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.SetDriver(r.Context(), versionParam, idParam, driverIdParam)
+	result, err := c.service.SetDriver(r.Context(), idParam, driverIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -725,14 +699,6 @@ func (c *RouteAPIController) GetRoute(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	routeIdParam, err := parseNumericParameter[int64](
@@ -759,7 +725,7 @@ func (c *RouteAPIController) GetRoute(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "showInheritedProperties"}, nil)
 		return
 	}
-	result, err := c.service.GetRoute(r.Context(), versionParam, routeIdParam, showInheritedPropertiesParam)
+	result, err := c.service.GetRoute(r.Context(), routeIdParam, showInheritedPropertiesParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -772,14 +738,6 @@ func (c *RouteAPIController) GetRoute(w http.ResponseWriter, r *http.Request) {
 // UpdateRoute - Update Route
 func (c *RouteAPIController) UpdateRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -803,7 +761,7 @@ func (c *RouteAPIController) UpdateRoute(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateRoute(r.Context(), versionParam, routeIdParam, bodyParam)
+	result, err := c.service.UpdateRoute(r.Context(), routeIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -816,14 +774,6 @@ func (c *RouteAPIController) UpdateRoute(w http.ResponseWriter, r *http.Request)
 // DeleteRoute - Delete Route
 func (c *RouteAPIController) DeleteRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -832,7 +782,7 @@ func (c *RouteAPIController) DeleteRoute(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteRoute(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.DeleteRoute(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -845,14 +795,6 @@ func (c *RouteAPIController) DeleteRoute(w http.ResponseWriter, r *http.Request)
 // ApproveRoute - Approve Route
 func (c *RouteAPIController) ApproveRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -861,7 +803,7 @@ func (c *RouteAPIController) ApproveRoute(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.ApproveRoute(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.ApproveRoute(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -874,14 +816,6 @@ func (c *RouteAPIController) ApproveRoute(w http.ResponseWriter, r *http.Request
 // CopyRoute - Copy Route
 func (c *RouteAPIController) CopyRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -905,7 +839,7 @@ func (c *RouteAPIController) CopyRoute(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CopyRoute(r.Context(), versionParam, routeIdParam, bodyParam)
+	result, err := c.service.CopyRoute(r.Context(), routeIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -918,14 +852,6 @@ func (c *RouteAPIController) CopyRoute(w http.ResponseWriter, r *http.Request) {
 // GetRouteDirections - Get Route Directions
 func (c *RouteAPIController) GetRouteDirections(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -934,7 +860,7 @@ func (c *RouteAPIController) GetRouteDirections(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetRouteDirections(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.GetRouteDirections(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -947,14 +873,6 @@ func (c *RouteAPIController) GetRouteDirections(w http.ResponseWriter, r *http.R
 // CreateRouteDirections - Update Route Directions
 func (c *RouteAPIController) CreateRouteDirections(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -963,7 +881,7 @@ func (c *RouteAPIController) CreateRouteDirections(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.CreateRouteDirections(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.CreateRouteDirections(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -976,14 +894,6 @@ func (c *RouteAPIController) CreateRouteDirections(w http.ResponseWriter, r *htt
 // DisapproveRoute - Disapprove Route
 func (c *RouteAPIController) DisapproveRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -992,7 +902,7 @@ func (c *RouteAPIController) DisapproveRoute(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DisapproveRoute(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.DisapproveRoute(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1005,14 +915,6 @@ func (c *RouteAPIController) DisapproveRoute(w http.ResponseWriter, r *http.Requ
 // OptimizeRoute - Optimize Route
 func (c *RouteAPIController) OptimizeRoute(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1021,7 +923,7 @@ func (c *RouteAPIController) OptimizeRoute(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.OptimizeRoute(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.OptimizeRoute(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1034,14 +936,6 @@ func (c *RouteAPIController) OptimizeRoute(w http.ResponseWriter, r *http.Reques
 // CreateRoutePolyline - Create Route Polyline
 func (c *RouteAPIController) CreateRoutePolyline(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1050,7 +944,7 @@ func (c *RouteAPIController) CreateRoutePolyline(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.CreateRoutePolyline(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.CreateRoutePolyline(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1063,14 +957,6 @@ func (c *RouteAPIController) CreateRoutePolyline(w http.ResponseWriter, r *http.
 // GetRouteShipments - Get Route Shipments
 func (c *RouteAPIController) GetRouteShipments(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1079,7 +965,7 @@ func (c *RouteAPIController) GetRouteShipments(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Param: "routeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetRouteShipments(r.Context(), versionParam, routeIdParam)
+	result, err := c.service.GetRouteShipments(r.Context(), routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1092,14 +978,6 @@ func (c *RouteAPIController) GetRouteShipments(w http.ResponseWriter, r *http.Re
 // GetRouteStop - Get Route Stop
 func (c *RouteAPIController) GetRouteStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1116,7 +994,7 @@ func (c *RouteAPIController) GetRouteStop(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &ParsingError{Param: "stopId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetRouteStop(r.Context(), versionParam, routeIdParam, stopIdParam)
+	result, err := c.service.GetRouteStop(r.Context(), routeIdParam, stopIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1129,14 +1007,6 @@ func (c *RouteAPIController) GetRouteStop(w http.ResponseWriter, r *http.Request
 // UpdateRouteStop - Update Route Stop
 func (c *RouteAPIController) UpdateRouteStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1168,7 +1038,7 @@ func (c *RouteAPIController) UpdateRouteStop(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateRouteStop(r.Context(), versionParam, routeIdParam, stopIdParam, bodyParam)
+	result, err := c.service.UpdateRouteStop(r.Context(), routeIdParam, stopIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1181,14 +1051,6 @@ func (c *RouteAPIController) UpdateRouteStop(w http.ResponseWriter, r *http.Requ
 // RemoveStop - Delete Stop
 func (c *RouteAPIController) RemoveStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1205,7 +1067,7 @@ func (c *RouteAPIController) RemoveStop(w http.ResponseWriter, r *http.Request) 
 		c.errorHandler(w, r, &ParsingError{Param: "stopId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.RemoveStop(r.Context(), versionParam, routeIdParam, stopIdParam)
+	result, err := c.service.RemoveStop(r.Context(), routeIdParam, stopIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1218,14 +1080,6 @@ func (c *RouteAPIController) RemoveStop(w http.ResponseWriter, r *http.Request) 
 // GetShipmentsAtStop - Get Shipments At Stop
 func (c *RouteAPIController) GetShipmentsAtStop(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1242,7 +1096,7 @@ func (c *RouteAPIController) GetShipmentsAtStop(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &ParsingError{Param: "stopId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetShipmentsAtStop(r.Context(), versionParam, routeIdParam, stopIdParam)
+	result, err := c.service.GetShipmentsAtStop(r.Context(), routeIdParam, stopIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1258,14 +1112,6 @@ func (c *RouteAPIController) GetRouteStops(w http.ResponseWriter, r *http.Reques
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	routeIdParam, err := parseNumericParameter[int64](
@@ -1292,7 +1138,7 @@ func (c *RouteAPIController) GetRouteStops(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "confirmedOnly"}, nil)
 		return
 	}
-	result, err := c.service.GetRouteStops(r.Context(), versionParam, routeIdParam, confirmedOnlyParam)
+	result, err := c.service.GetRouteStops(r.Context(), routeIdParam, confirmedOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1305,14 +1151,6 @@ func (c *RouteAPIController) GetRouteStops(w http.ResponseWriter, r *http.Reques
 // ReorderRouteStopsPost - Reorder Route Stops
 func (c *RouteAPIController) ReorderRouteStopsPost(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1334,7 +1172,7 @@ func (c *RouteAPIController) ReorderRouteStopsPost(w http.ResponseWriter, r *htt
 			return
 		}
 	}
-	result, err := c.service.ReorderRouteStopsPost(r.Context(), versionParam, routeIdParam, bodyParam)
+	result, err := c.service.ReorderRouteStopsPost(r.Context(), routeIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1347,14 +1185,6 @@ func (c *RouteAPIController) ReorderRouteStopsPost(w http.ResponseWriter, r *htt
 // ReorderRouteStopsPatch - Reorder Route Stops
 func (c *RouteAPIController) ReorderRouteStopsPatch(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeIdParam, err := parseNumericParameter[int64](
 		params["routeId"],
 		WithRequire[int64](parseInt64),
@@ -1376,7 +1206,7 @@ func (c *RouteAPIController) ReorderRouteStopsPatch(w http.ResponseWriter, r *ht
 			return
 		}
 	}
-	result, err := c.service.ReorderRouteStopsPatch(r.Context(), versionParam, routeIdParam, bodyParam)
+	result, err := c.service.ReorderRouteStopsPatch(r.Context(), routeIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

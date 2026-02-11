@@ -18,8 +18,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // LocationAPIController binds http requests to an api service and writes the service results to the http response
@@ -58,31 +56,31 @@ func (c *LocationAPIController) Routes() Routes {
 		"GetLocationByIp": Route{
 			"GetLocationByIp",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/ip",
+			"/api/3.18/location/ip",
 			c.GetLocationByIp,
 		},
 		"GetLocations": Route{
 			"GetLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/search",
+			"/api/3.18/location/search",
 			c.GetLocations,
 		},
 		"CacheTrilaterationData": Route{
 			"CacheTrilaterationData",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/trilaterate/cache",
+			"/api/3.18/location/trilaterate/cache",
 			c.CacheTrilaterationData,
 		},
 		"CacheTrilaterationDataGzip": Route{
 			"CacheTrilaterationDataGzip",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/trilaterate/cache/submit",
+			"/api/3.18/location/trilaterate/cache/submit",
 			c.CacheTrilaterationDataGzip,
 		},
 		"GetLocationByTrilateration": Route{
 			"GetLocationByTrilateration",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/location/trilaterate",
+			"/api/3.18/account/location/trilaterate",
 			c.GetLocationByTrilateration,
 		},
 	}
@@ -94,31 +92,31 @@ func (c *LocationAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetLocationByIp",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/ip",
+			"/api/3.18/location/ip",
 			c.GetLocationByIp,
 		},
 		Route{
 			"GetLocations",
 			strings.ToUpper("Get"),
-			"/api/{version}/location/search",
+			"/api/3.18/location/search",
 			c.GetLocations,
 		},
 		Route{
 			"CacheTrilaterationData",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/trilaterate/cache",
+			"/api/3.18/location/trilaterate/cache",
 			c.CacheTrilaterationData,
 		},
 		Route{
 			"CacheTrilaterationDataGzip",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/trilaterate/cache/submit",
+			"/api/3.18/location/trilaterate/cache/submit",
 			c.CacheTrilaterationDataGzip,
 		},
 		Route{
 			"GetLocationByTrilateration",
 			strings.ToUpper("Get"),
-			"/api/{version}/account/location/trilaterate",
+			"/api/3.18/account/location/trilaterate",
 			c.GetLocationByTrilateration,
 		},
 	}
@@ -128,18 +126,9 @@ func (c *LocationAPIController) OrderedRoutes() []Route {
 
 // GetLocationByIp - Get Location by IP
 func (c *LocationAPIController) GetLocationByIp(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var ipParam string
@@ -149,7 +138,7 @@ func (c *LocationAPIController) GetLocationByIp(w http.ResponseWriter, r *http.R
 		ipParam = param
 	} else {
 	}
-	result, err := c.service.GetLocationByIp(r.Context(), versionParam, ipParam)
+	result, err := c.service.GetLocationByIp(r.Context(), ipParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -161,18 +150,9 @@ func (c *LocationAPIController) GetLocationByIp(w http.ResponseWriter, r *http.R
 
 // GetLocations - Search Regions or Postal Codes
 func (c *LocationAPIController) GetLocations(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -421,7 +401,7 @@ func (c *LocationAPIController) GetLocations(w http.ResponseWriter, r *http.Requ
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.GetLocations(r.Context(), versionParam, deviceIdParam, accountIdParam, currentlatitudeParam, currentlongitudeParam, currentLatitudeParam, currentLongitudeParam, queryParam, zipcodeParam, zipCodeParam, selectedMaplatitudeParam, selectedMaplongitudeParam, selectedMapLatitudeParam, selectedMapLongitudeParam, searchRangeParam, useGeocodeParam, iParam, startParam, lParam, limitParam)
+	result, err := c.service.GetLocations(r.Context(), deviceIdParam, accountIdParam, currentlatitudeParam, currentlongitudeParam, currentLatitudeParam, currentLongitudeParam, queryParam, zipcodeParam, zipCodeParam, selectedMaplatitudeParam, selectedMaplongitudeParam, selectedMapLatitudeParam, selectedMapLongitudeParam, searchRangeParam, useGeocodeParam, iParam, startParam, lParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -433,18 +413,9 @@ func (c *LocationAPIController) GetLocations(w http.ResponseWriter, r *http.Requ
 
 // CacheTrilaterationData - Create Trilateration Data with File
 func (c *LocationAPIController) CacheTrilaterationData(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var udidParam string
@@ -498,7 +469,7 @@ func (c *LocationAPIController) CacheTrilaterationData(w http.ResponseWriter, r 
 		dataFileParam = param
 	} else {
 	}
-	result, err := c.service.CacheTrilaterationData(r.Context(), versionParam, udidParam, sourceTimeParam, minimumSampleSizeParam, dataParam, dataFileParam)
+	result, err := c.service.CacheTrilaterationData(r.Context(), udidParam, sourceTimeParam, minimumSampleSizeParam, dataParam, dataFileParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -510,15 +481,6 @@ func (c *LocationAPIController) CacheTrilaterationData(w http.ResponseWriter, r 
 
 // CacheTrilaterationDataGzip - Create Trilateration Data with Rest
 func (c *LocationAPIController) CacheTrilaterationDataGzip(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam TrilatCacheRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -534,7 +496,7 @@ func (c *LocationAPIController) CacheTrilaterationDataGzip(w http.ResponseWriter
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CacheTrilaterationDataGzip(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CacheTrilaterationDataGzip(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -546,18 +508,9 @@ func (c *LocationAPIController) CacheTrilaterationDataGzip(w http.ResponseWriter
 
 // GetLocationByTrilateration - Get Location by Trilateration
 func (c *LocationAPIController) GetLocationByTrilateration(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -616,7 +569,7 @@ func (c *LocationAPIController) GetLocationByTrilateration(w http.ResponseWriter
 		responseFiltersParam = param
 	} else {
 	}
-	result, err := c.service.GetLocationByTrilateration(r.Context(), versionParam, accountIdParam, latitudeParam, longitudeParam, dataParam, responseFiltersParam)
+	result, err := c.service.GetLocationByTrilateration(r.Context(), accountIdParam, latitudeParam, longitudeParam, dataParam, responseFiltersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

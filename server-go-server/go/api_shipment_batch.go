@@ -57,31 +57,31 @@ func (c *ShipmentBatchAPIController) Routes() Routes {
 		"SearchShipmentBatch": Route{
 			"SearchShipmentBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch",
+			"/api/3.18/shipment/batch",
 			c.SearchShipmentBatch,
 		},
 		"CreateShipmentBatch": Route{
 			"CreateShipmentBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/batch",
+			"/api/3.18/shipment/batch",
 			c.CreateShipmentBatch,
 		},
 		"GetShipmentBatch": Route{
 			"GetShipmentBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch/{batchId}",
+			"/api/3.18/shipment/batch/{batchId}",
 			c.GetShipmentBatch,
 		},
 		"DeleteShipmentBatch": Route{
 			"DeleteShipmentBatch",
 			strings.ToUpper("Delete"),
-			"/api/{version}/shipment/batch/{batchId}",
+			"/api/3.18/shipment/batch/{batchId}",
 			c.DeleteShipmentBatch,
 		},
 		"GetShipmentBatchStatus": Route{
 			"GetShipmentBatchStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch/{batchId}/status",
+			"/api/3.18/shipment/batch/{batchId}/status",
 			c.GetShipmentBatchStatus,
 		},
 	}
@@ -93,31 +93,31 @@ func (c *ShipmentBatchAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchShipmentBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch",
+			"/api/3.18/shipment/batch",
 			c.SearchShipmentBatch,
 		},
 		Route{
 			"CreateShipmentBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/batch",
+			"/api/3.18/shipment/batch",
 			c.CreateShipmentBatch,
 		},
 		Route{
 			"GetShipmentBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch/{batchId}",
+			"/api/3.18/shipment/batch/{batchId}",
 			c.GetShipmentBatch,
 		},
 		Route{
 			"DeleteShipmentBatch",
 			strings.ToUpper("Delete"),
-			"/api/{version}/shipment/batch/{batchId}",
+			"/api/3.18/shipment/batch/{batchId}",
 			c.DeleteShipmentBatch,
 		},
 		Route{
 			"GetShipmentBatchStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/batch/{batchId}/status",
+			"/api/3.18/shipment/batch/{batchId}/status",
 			c.GetShipmentBatchStatus,
 		},
 	}
@@ -127,18 +127,9 @@ func (c *ShipmentBatchAPIController) OrderedRoutes() []Route {
 
 // SearchShipmentBatch - Search Shipment Batch
 func (c *ShipmentBatchAPIController) SearchShipmentBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var hubIdParam int64
@@ -214,7 +205,7 @@ func (c *ShipmentBatchAPIController) SearchShipmentBatch(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{Field: "limit"}, nil)
 		return
 	}
-	result, err := c.service.SearchShipmentBatch(r.Context(), versionParam, hubIdParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchShipmentBatch(r.Context(), hubIdParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -226,15 +217,6 @@ func (c *ShipmentBatchAPIController) SearchShipmentBatch(w http.ResponseWriter, 
 
 // CreateShipmentBatch - Create Shipment Batch
 func (c *ShipmentBatchAPIController) CreateShipmentBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam ShipmentBatch
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -250,7 +232,7 @@ func (c *ShipmentBatchAPIController) CreateShipmentBatch(w http.ResponseWriter, 
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateShipmentBatch(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateShipmentBatch(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -263,14 +245,6 @@ func (c *ShipmentBatchAPIController) CreateShipmentBatch(w http.ResponseWriter, 
 // GetShipmentBatch - Get Shipment Batch
 func (c *ShipmentBatchAPIController) GetShipmentBatch(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	batchIdParam, err := parseNumericParameter[int64](
 		params["batchId"],
 		WithRequire[int64](parseInt64),
@@ -279,7 +253,7 @@ func (c *ShipmentBatchAPIController) GetShipmentBatch(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &ParsingError{Param: "batchId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetShipmentBatch(r.Context(), versionParam, batchIdParam)
+	result, err := c.service.GetShipmentBatch(r.Context(), batchIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -292,14 +266,6 @@ func (c *ShipmentBatchAPIController) GetShipmentBatch(w http.ResponseWriter, r *
 // DeleteShipmentBatch - Delete Shipment Batch
 func (c *ShipmentBatchAPIController) DeleteShipmentBatch(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	batchIdParam, err := parseNumericParameter[int64](
 		params["batchId"],
 		WithRequire[int64](parseInt64),
@@ -308,7 +274,7 @@ func (c *ShipmentBatchAPIController) DeleteShipmentBatch(w http.ResponseWriter, 
 		c.errorHandler(w, r, &ParsingError{Param: "batchId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteShipmentBatch(r.Context(), versionParam, batchIdParam)
+	result, err := c.service.DeleteShipmentBatch(r.Context(), batchIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -324,14 +290,6 @@ func (c *ShipmentBatchAPIController) GetShipmentBatchStatus(w http.ResponseWrite
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	batchIdParam, err := parseNumericParameter[int64](
@@ -492,7 +450,7 @@ func (c *ShipmentBatchAPIController) GetShipmentBatchStatus(w http.ResponseWrite
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.GetShipmentBatchStatus(r.Context(), versionParam, batchIdParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, validParam, startedParam, completedParam, hasShipmentParam, hasRouteParam, keywordParam)
+	result, err := c.service.GetShipmentBatchStatus(r.Context(), batchIdParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, validParam, startedParam, completedParam, hasShipmentParam, hasRouteParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

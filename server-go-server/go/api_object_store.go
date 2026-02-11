@@ -57,67 +57,67 @@ func (c *ObjectStoreAPIController) Routes() Routes {
 		"CreateObject": Route{
 			"CreateObject",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/create",
+			"/api/3.18/object/create",
 			c.CreateObject,
 		},
 		"SearchData": Route{
 			"SearchData",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/data/{objectName}",
+			"/api/3.18/object/data/{objectName}",
 			c.SearchData,
 		},
 		"CreateData": Route{
 			"CreateData",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/data/{objectName}",
+			"/api/3.18/object/data/{objectName}",
 			c.CreateData,
 		},
 		"GetData": Route{
 			"GetData",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.GetData,
 		},
 		"UpdateData": Route{
 			"UpdateData",
 			strings.ToUpper("Put"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.UpdateData,
 		},
 		"DeleteData": Route{
 			"DeleteData",
 			strings.ToUpper("Delete"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.DeleteData,
 		},
 		"DeleteObject": Route{
 			"DeleteObject",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/delete",
+			"/api/3.18/object/delete",
 			c.DeleteObject,
 		},
 		"AddField": Route{
 			"AddField",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/field/add",
+			"/api/3.18/object/field/add",
 			c.AddField,
 		},
 		"DeleteField": Route{
 			"DeleteField",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/field/delete",
+			"/api/3.18/object/field/delete",
 			c.DeleteField,
 		},
 		"GetObject": Route{
 			"GetObject",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/get",
+			"/api/3.18/object/get",
 			c.GetObject,
 		},
 		"SearchObject": Route{
 			"SearchObject",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/search",
+			"/api/3.18/object/search",
 			c.SearchObject,
 		},
 	}
@@ -129,67 +129,67 @@ func (c *ObjectStoreAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateObject",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/create",
+			"/api/3.18/object/create",
 			c.CreateObject,
 		},
 		Route{
 			"SearchData",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/data/{objectName}",
+			"/api/3.18/object/data/{objectName}",
 			c.SearchData,
 		},
 		Route{
 			"CreateData",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/data/{objectName}",
+			"/api/3.18/object/data/{objectName}",
 			c.CreateData,
 		},
 		Route{
 			"GetData",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.GetData,
 		},
 		Route{
 			"UpdateData",
 			strings.ToUpper("Put"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.UpdateData,
 		},
 		Route{
 			"DeleteData",
 			strings.ToUpper("Delete"),
-			"/api/{version}/object/data/{objectName}/{objectId}",
+			"/api/3.18/object/data/{objectName}/{objectId}",
 			c.DeleteData,
 		},
 		Route{
 			"DeleteObject",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/delete",
+			"/api/3.18/object/delete",
 			c.DeleteObject,
 		},
 		Route{
 			"AddField",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/field/add",
+			"/api/3.18/object/field/add",
 			c.AddField,
 		},
 		Route{
 			"DeleteField",
 			strings.ToUpper("Post"),
-			"/api/{version}/object/field/delete",
+			"/api/3.18/object/field/delete",
 			c.DeleteField,
 		},
 		Route{
 			"GetObject",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/get",
+			"/api/3.18/object/get",
 			c.GetObject,
 		},
 		Route{
 			"SearchObject",
 			strings.ToUpper("Get"),
-			"/api/{version}/object/search",
+			"/api/3.18/object/search",
 			c.SearchObject,
 		},
 	}
@@ -199,18 +199,9 @@ func (c *ObjectStoreAPIController) OrderedRoutes() []Route {
 
 // CreateObject - Create Object
 func (c *ObjectStoreAPIController) CreateObject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -247,7 +238,7 @@ func (c *ObjectStoreAPIController) CreateObject(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "objectName"}, nil)
 		return
 	}
-	result, err := c.service.CreateObject(r.Context(), versionParam, accountIdParam, appKeyParam, objectNameParam)
+	result, err := c.service.CreateObject(r.Context(), accountIdParam, appKeyParam, objectNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -263,14 +254,6 @@ func (c *ObjectStoreAPIController) SearchData(w http.ResponseWriter, r *http.Req
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	objectNameParam := params["objectName"]
@@ -361,7 +344,7 @@ func (c *ObjectStoreAPIController) SearchData(w http.ResponseWriter, r *http.Req
 		includeParam = param
 	} else {
 	}
-	result, err := c.service.SearchData(r.Context(), versionParam, objectNameParam, countParam, startParam, limitParam, accountIdParam, criteriaParam, orderParam, includeParam)
+	result, err := c.service.SearchData(r.Context(), objectNameParam, countParam, startParam, limitParam, accountIdParam, criteriaParam, orderParam, includeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -377,14 +360,6 @@ func (c *ObjectStoreAPIController) CreateData(w http.ResponseWriter, r *http.Req
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	objectNameParam := params["objectName"]
@@ -413,7 +388,7 @@ func (c *ObjectStoreAPIController) CreateData(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	result, err := c.service.CreateData(r.Context(), versionParam, objectNameParam, accountIdParam, bodyParam)
+	result, err := c.service.CreateData(r.Context(), objectNameParam, accountIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -429,14 +404,6 @@ func (c *ObjectStoreAPIController) GetData(w http.ResponseWriter, r *http.Reques
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	objectNameParam := params["objectName"]
@@ -470,7 +437,7 @@ func (c *ObjectStoreAPIController) GetData(w http.ResponseWriter, r *http.Reques
 		includeParam = param
 	} else {
 	}
-	result, err := c.service.GetData(r.Context(), versionParam, objectNameParam, objectIdParam, accountIdParam, includeParam)
+	result, err := c.service.GetData(r.Context(), objectNameParam, objectIdParam, accountIdParam, includeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -486,14 +453,6 @@ func (c *ObjectStoreAPIController) UpdateData(w http.ResponseWriter, r *http.Req
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	objectNameParam := params["objectName"]
@@ -527,7 +486,7 @@ func (c *ObjectStoreAPIController) UpdateData(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	result, err := c.service.UpdateData(r.Context(), versionParam, objectNameParam, objectIdParam, accountIdParam, bodyParam)
+	result, err := c.service.UpdateData(r.Context(), objectNameParam, objectIdParam, accountIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -543,14 +502,6 @@ func (c *ObjectStoreAPIController) DeleteData(w http.ResponseWriter, r *http.Req
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	objectNameParam := params["objectName"]
@@ -577,7 +528,7 @@ func (c *ObjectStoreAPIController) DeleteData(w http.ResponseWriter, r *http.Req
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteData(r.Context(), versionParam, objectNameParam, objectIdParam, accountIdParam)
+	result, err := c.service.DeleteData(r.Context(), objectNameParam, objectIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -589,18 +540,9 @@ func (c *ObjectStoreAPIController) DeleteData(w http.ResponseWriter, r *http.Req
 
 // DeleteObject - Delete Object
 func (c *ObjectStoreAPIController) DeleteObject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -637,7 +579,7 @@ func (c *ObjectStoreAPIController) DeleteObject(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "objectName"}, nil)
 		return
 	}
-	result, err := c.service.DeleteObject(r.Context(), versionParam, accountIdParam, appKeyParam, objectNameParam)
+	result, err := c.service.DeleteObject(r.Context(), accountIdParam, appKeyParam, objectNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -649,18 +591,9 @@ func (c *ObjectStoreAPIController) DeleteObject(w http.ResponseWriter, r *http.R
 
 // AddField - Create Field
 func (c *ObjectStoreAPIController) AddField(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -715,7 +648,7 @@ func (c *ObjectStoreAPIController) AddField(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{Field: "fieldType"}, nil)
 		return
 	}
-	result, err := c.service.AddField(r.Context(), versionParam, accountIdParam, appKeyParam, objectNameParam, fieldNameParam, fieldTypeParam)
+	result, err := c.service.AddField(r.Context(), accountIdParam, appKeyParam, objectNameParam, fieldNameParam, fieldTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -727,18 +660,9 @@ func (c *ObjectStoreAPIController) AddField(w http.ResponseWriter, r *http.Reque
 
 // DeleteField - Delete Field
 func (c *ObjectStoreAPIController) DeleteField(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -784,7 +708,7 @@ func (c *ObjectStoreAPIController) DeleteField(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "fieldName"}, nil)
 		return
 	}
-	result, err := c.service.DeleteField(r.Context(), versionParam, accountIdParam, appKeyParam, objectNameParam, fieldNameParam)
+	result, err := c.service.DeleteField(r.Context(), accountIdParam, appKeyParam, objectNameParam, fieldNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -796,18 +720,9 @@ func (c *ObjectStoreAPIController) DeleteField(w http.ResponseWriter, r *http.Re
 
 // GetObject - Get Object
 func (c *ObjectStoreAPIController) GetObject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -844,7 +759,7 @@ func (c *ObjectStoreAPIController) GetObject(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "objectName"}, nil)
 		return
 	}
-	result, err := c.service.GetObject(r.Context(), versionParam, accountIdParam, appKeyParam, objectNameParam)
+	result, err := c.service.GetObject(r.Context(), accountIdParam, appKeyParam, objectNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -856,18 +771,9 @@ func (c *ObjectStoreAPIController) GetObject(w http.ResponseWriter, r *http.Requ
 
 // SearchObject - Search Objects
 func (c *ObjectStoreAPIController) SearchObject(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -934,7 +840,7 @@ func (c *ObjectStoreAPIController) SearchObject(w http.ResponseWriter, r *http.R
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchObject(r.Context(), versionParam, accountIdParam, appKeyParam, startParam, limitParam, keywordParam)
+	result, err := c.service.SearchObject(r.Context(), accountIdParam, appKeyParam, startParam, limitParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

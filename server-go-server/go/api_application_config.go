@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ApplicationConfigAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *ApplicationConfigAPIController) Routes() Routes {
 		"CreateApplicationConfig": Route{
 			"CreateApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/create",
+			"/api/3.18/appconfig/create",
 			c.CreateApplicationConfig,
 		},
 		"DeleteApplicationConfig": Route{
 			"DeleteApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/delete",
+			"/api/3.18/appconfig/delete",
 			c.DeleteApplicationConfig,
 		},
 		"GetApplicationConfig": Route{
 			"GetApplicationConfig",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/get",
+			"/api/3.18/appconfig/get",
 			c.GetApplicationConfig,
 		},
 		"GetApplicationConfigByConfigVersion": Route{
 			"GetApplicationConfigByConfigVersion",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/getbyversion",
+			"/api/3.18/appconfig/getbyversion",
 			c.GetApplicationConfigByConfigVersion,
 		},
 		"SearchApplicationConfig": Route{
 			"SearchApplicationConfig",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/search",
+			"/api/3.18/appconfig/search",
 			c.SearchApplicationConfig,
 		},
 		"UpdateApplicationConfig": Route{
 			"UpdateApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/update",
+			"/api/3.18/appconfig/update",
 			c.UpdateApplicationConfig,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *ApplicationConfigAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/create",
+			"/api/3.18/appconfig/create",
 			c.CreateApplicationConfig,
 		},
 		Route{
 			"DeleteApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/delete",
+			"/api/3.18/appconfig/delete",
 			c.DeleteApplicationConfig,
 		},
 		Route{
 			"GetApplicationConfig",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/get",
+			"/api/3.18/appconfig/get",
 			c.GetApplicationConfig,
 		},
 		Route{
 			"GetApplicationConfigByConfigVersion",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/getbyversion",
+			"/api/3.18/appconfig/getbyversion",
 			c.GetApplicationConfigByConfigVersion,
 		},
 		Route{
 			"SearchApplicationConfig",
 			strings.ToUpper("Get"),
-			"/api/{version}/appconfig/search",
+			"/api/3.18/appconfig/search",
 			c.SearchApplicationConfig,
 		},
 		Route{
 			"UpdateApplicationConfig",
 			strings.ToUpper("Post"),
-			"/api/{version}/appconfig/update",
+			"/api/3.18/appconfig/update",
 			c.UpdateApplicationConfig,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *ApplicationConfigAPIController) OrderedRoutes() []Route {
 
 // CreateApplicationConfig - Create AppConfig
 func (c *ApplicationConfigAPIController) CreateApplicationConfig(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -235,7 +224,7 @@ func (c *ApplicationConfigAPIController) CreateApplicationConfig(w http.Response
 		udidParam = param
 	} else {
 	}
-	result, err := c.service.CreateApplicationConfig(r.Context(), versionParam, accountIdParam, appKeyParam, configVersionParam, assetIdParam, retailerIdParam, retailerLocationIdParam, udidParam)
+	result, err := c.service.CreateApplicationConfig(r.Context(), accountIdParam, appKeyParam, configVersionParam, assetIdParam, retailerIdParam, retailerLocationIdParam, udidParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -247,18 +236,9 @@ func (c *ApplicationConfigAPIController) CreateApplicationConfig(w http.Response
 
 // DeleteApplicationConfig - Delete AppConfig
 func (c *ApplicationConfigAPIController) DeleteApplicationConfig(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -293,7 +273,7 @@ func (c *ApplicationConfigAPIController) DeleteApplicationConfig(w http.Response
 		c.errorHandler(w, r, &RequiredError{Field: "configId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteApplicationConfig(r.Context(), versionParam, accountIdParam, configIdParam)
+	result, err := c.service.DeleteApplicationConfig(r.Context(), accountIdParam, configIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -305,18 +285,9 @@ func (c *ApplicationConfigAPIController) DeleteApplicationConfig(w http.Response
 
 // GetApplicationConfig - Get AppConfig
 func (c *ApplicationConfigAPIController) GetApplicationConfig(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -351,7 +322,7 @@ func (c *ApplicationConfigAPIController) GetApplicationConfig(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{Field: "configId"}, nil)
 		return
 	}
-	result, err := c.service.GetApplicationConfig(r.Context(), versionParam, accountIdParam, configIdParam)
+	result, err := c.service.GetApplicationConfig(r.Context(), accountIdParam, configIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -363,18 +334,9 @@ func (c *ApplicationConfigAPIController) GetApplicationConfig(w http.ResponseWri
 
 // GetApplicationConfigByConfigVersion - Get AppConfig by Version
 func (c *ApplicationConfigAPIController) GetApplicationConfigByConfigVersion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -446,7 +408,7 @@ func (c *ApplicationConfigAPIController) GetApplicationConfigByConfigVersion(w h
 		var param bool = false
 		allowOlderVersionsParam = param
 	}
-	result, err := c.service.GetApplicationConfigByConfigVersion(r.Context(), versionParam, appKeyParam, configVersionParam, retailerIdParam, retailerLocationIdParam, udidParam, allowOlderVersionsParam)
+	result, err := c.service.GetApplicationConfigByConfigVersion(r.Context(), appKeyParam, configVersionParam, retailerIdParam, retailerLocationIdParam, udidParam, allowOlderVersionsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -458,18 +420,9 @@ func (c *ApplicationConfigAPIController) GetApplicationConfigByConfigVersion(w h
 
 // SearchApplicationConfig - Search AppConfigs
 func (c *ApplicationConfigAPIController) SearchApplicationConfig(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -594,7 +547,7 @@ func (c *ApplicationConfigAPIController) SearchApplicationConfig(w http.Response
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchApplicationConfig(r.Context(), versionParam, accountIdParam, appKeyParam, retailerIdParam, retailerLocationIdParam, udidParam, configVersionParam, sortFieldParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchApplicationConfig(r.Context(), accountIdParam, appKeyParam, retailerIdParam, retailerLocationIdParam, udidParam, configVersionParam, sortFieldParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -606,18 +559,9 @@ func (c *ApplicationConfigAPIController) SearchApplicationConfig(w http.Response
 
 // UpdateApplicationConfig - Update AppConfig
 func (c *ApplicationConfigAPIController) UpdateApplicationConfig(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -715,7 +659,7 @@ func (c *ApplicationConfigAPIController) UpdateApplicationConfig(w http.Response
 		udidParam = param
 	} else {
 	}
-	result, err := c.service.UpdateApplicationConfig(r.Context(), versionParam, accountIdParam, configIdParam, appKeyParam, configVersionParam, assetIdParam, retailerIdParam, retailerLocationIdParam, udidParam)
+	result, err := c.service.UpdateApplicationConfig(r.Context(), accountIdParam, configIdParam, appKeyParam, configVersionParam, assetIdParam, retailerIdParam, retailerLocationIdParam, udidParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -29,7 +29,7 @@ func NewCreativeAPIService() *CreativeAPIService {
 }
 
 // AddPreview - Add Preview
-func (s *CreativeAPIService) AddPreview(ctx context.Context, version float32, accountId int64, creativeId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) AddPreview(ctx context.Context, accountId int64, creativeId int64) (ImplResponse, error) {
 	// TODO - update AddPreview with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *CreativeAPIService) AddPreview(ctx context.Context, version float32, ac
 }
 
 // CreateCreative - Create Creative
-func (s *CreativeAPIService) CreateCreative(ctx context.Context, version float32, accountId int64, name string, active bool, waitForAsset bool, description string, assetImageId int64, action string, data string, suffix string, type_ string, balance float64, referenceId int64, appVersion string, missionId int64, offerId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) CreateCreative(ctx context.Context, accountId int64, name string, active bool, waitForAsset bool, description string, assetImageId int64, action string, data string, suffix string, type_ string, balance float64, referenceId int64, appVersion string, missionId int64, offerId int64) (ImplResponse, error) {
 	// TODO - update CreateCreative with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *CreativeAPIService) CreateCreative(ctx context.Context, version float32
 }
 
 // DeleteCreative - Delete Creative
-func (s *CreativeAPIService) DeleteCreative(ctx context.Context, version float32, accountId int64, creativeId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) DeleteCreative(ctx context.Context, accountId int64, creativeId int64) (ImplResponse, error) {
 	// TODO - update DeleteCreative with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *CreativeAPIService) DeleteCreative(ctx context.Context, version float32
 }
 
 // GetCreative - Get Creative
-func (s *CreativeAPIService) GetCreative(ctx context.Context, version float32, accountId int64, creativeId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) GetCreative(ctx context.Context, accountId int64, creativeId int64) (ImplResponse, error) {
 	// TODO - update GetCreative with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *CreativeAPIService) GetCreative(ctx context.Context, version float32, a
 }
 
 // RemovePreview - Remove Preview
-func (s *CreativeAPIService) RemovePreview(ctx context.Context, version float32, accountId int64, creativeId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) RemovePreview(ctx context.Context, accountId int64, creativeId int64) (ImplResponse, error) {
 	// TODO - update RemovePreview with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *CreativeAPIService) RemovePreview(ctx context.Context, version float32,
 }
 
 // GetCreativesByApplication - Search Creatives
-func (s *CreativeAPIService) GetCreativesByApplication(ctx context.Context, version float32, accountId int64, appKey string, start int32, limit int32, missionId int64, keyword string) (ImplResponse, error) {
+func (s *CreativeAPIService) GetCreativesByApplication(ctx context.Context, accountId int64, appKey string, start int32, limit int32, missionId int64, keyword string) (ImplResponse, error) {
 	// TODO - update GetCreativesByApplication with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *CreativeAPIService) GetCreativesByApplication(ctx context.Context, vers
 }
 
 // UpdateCreative - Update Creative
-func (s *CreativeAPIService) UpdateCreative(ctx context.Context, version float32, accountId int64, creativeId int64, name string, description string, assetImageId int64, action string, data string, suffix string, type_ string, balance float64, active bool, referenceId int64, appVersion string, missionId int64) (ImplResponse, error) {
+func (s *CreativeAPIService) UpdateCreative(ctx context.Context, accountId int64, creativeId int64, name string, description string, assetImageId int64, action string, data string, suffix string, type_ string, balance float64, active bool, referenceId int64, appVersion string, missionId int64) (ImplResponse, error) {
 	// TODO - update UpdateCreative with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *CreativeAPIService) UpdateCreative(ctx context.Context, version float32
 }
 
 // AdsFind - Find Missions
-func (s *CreativeAPIService) AdsFind(ctx context.Context, version float32, appKey string, randomize bool, targetedAdsOnly bool, type_ string, accountId int64, appVersion string, latitude float64, longitude float64, device string, deviceIdentifier int64, deviceVersion string, start int32, limit int32, includeAudiences bool, allocatesTickets bool, missionIds string) (ImplResponse, error) {
+func (s *CreativeAPIService) AdsFind(ctx context.Context, appKey string, randomize bool, targetedAdsOnly bool, type_ string, accountId int64, appVersion string, latitude float64, longitude float64, device string, deviceIdentifier int64, deviceVersion string, start int32, limit int32, includeAudiences bool, allocatesTickets bool, missionIds string) (ImplResponse, error) {
 	// TODO - update AdsFind with the required logic for this service method.
 	// Add api_creative_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

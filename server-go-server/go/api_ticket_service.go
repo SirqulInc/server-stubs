@@ -30,7 +30,7 @@ func NewTicketAPIService() *TicketAPIService {
 }
 
 // GetTicketCount - Get Ticket Count
-func (s *TicketAPIService) GetTicketCount(ctx context.Context, version float32, deviceId string, accountId int64, gameType string, appKey string, ticketType string) (ImplResponse, error) {
+func (s *TicketAPIService) GetTicketCount(ctx context.Context, deviceId string, accountId int64, gameType string, appKey string, ticketType string) (ImplResponse, error) {
 	// TODO - update GetTicketCount with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *TicketAPIService) GetTicketCount(ctx context.Context, version float32, 
 }
 
 // GetTicketList - Get Ticket List
-func (s *TicketAPIService) GetTicketList(ctx context.Context, version float32, deviceId string, accountId int64, ticketObjectType string, actionType string, ticketIds string, objectIds string, receiptTokens string, gameType string, appKey string) (ImplResponse, error) {
+func (s *TicketAPIService) GetTicketList(ctx context.Context, deviceId string, accountId int64, ticketObjectType string, actionType string, ticketIds string, objectIds string, receiptTokens string, gameType string, appKey string) (ImplResponse, error) {
 	// TODO - update GetTicketList with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *TicketAPIService) GetTicketList(ctx context.Context, version float32, d
 }
 
 // SaveTicket - Save Ticket
-func (s *TicketAPIService) SaveTicket(ctx context.Context, version float32, actionType string, ticketObjectType string, returnNulls bool, deviceId string, accountId int64, gameType string, appKey string, objectId int64, purchaseCode string, receiptToken string, receiptData string, count int64, ticketType string, purchaseProvider string, purchaseType string, returnProfileResponse bool, includeProfileResponse bool, appVersion string) (ImplResponse, error) {
+func (s *TicketAPIService) SaveTicket(ctx context.Context, actionType string, ticketObjectType string, returnNulls bool, deviceId string, accountId int64, gameType string, appKey string, objectId int64, purchaseCode string, receiptToken string, receiptData string, count int64, ticketType string, purchaseProvider string, purchaseType string, returnProfileResponse bool, includeProfileResponse bool, appVersion string) (ImplResponse, error) {
 	// TODO - update SaveTicket with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *TicketAPIService) SaveTicket(ctx context.Context, version float32, acti
 }
 
 // SaveTicketViaFileUpload - Save Ticket with Reciept
-func (s *TicketAPIService) SaveTicketViaFileUpload(ctx context.Context, version float32, actionType string, ticketObjectType string, receiptData *os.File, returnNulls bool, deviceId string, accountId int64, gameType string, appKey string, objectId int64, purchaseCode string, receiptToken string, count int64, ticketType string, purchaseProvider string, purchaseType string, returnProfileResponse bool, includeProfileResponse bool, appVersion string) (ImplResponse, error) {
+func (s *TicketAPIService) SaveTicketViaFileUpload(ctx context.Context, actionType string, ticketObjectType string, receiptData *os.File, returnNulls bool, deviceId string, accountId int64, gameType string, appKey string, objectId int64, purchaseCode string, receiptToken string, count int64, ticketType string, purchaseProvider string, purchaseType string, returnProfileResponse bool, includeProfileResponse bool, appVersion string) (ImplResponse, error) {
 	// TODO - update SaveTicketViaFileUpload with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *TicketAPIService) SaveTicketViaFileUpload(ctx context.Context, version 
 }
 
 // TicketOffers - Get Ticket Offers
-func (s *TicketAPIService) TicketOffers(ctx context.Context, version float32) (ImplResponse, error) {
+func (s *TicketAPIService) TicketOffers(ctx context.Context) (ImplResponse, error) {
 	// TODO - update TicketOffers with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *TicketAPIService) TicketOffers(ctx context.Context, version float32) (I
 }
 
 // GiftPurchase - Gift Tickets
-func (s *TicketAPIService) GiftPurchase(ctx context.Context, version float32, receiverAccountId int64, ticketId int64, deviceId string, accountId int64, assetId int64, customMessage string, gameType string, appKey string) (ImplResponse, error) {
+func (s *TicketAPIService) GiftPurchase(ctx context.Context, receiverAccountId int64, ticketId int64, deviceId string, accountId int64, assetId int64, customMessage string, gameType string, appKey string) (ImplResponse, error) {
 	// TODO - update GiftPurchase with the required logic for this service method.
 	// Add api_ticket_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

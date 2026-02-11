@@ -29,7 +29,7 @@ func NewCategoryAPIService() *CategoryAPIService {
 }
 
 // CreateCategory - Create Category
-func (s *CategoryAPIService) CreateCategory(ctx context.Context, version float32, accountId int64, name string, appKey string, parentCategoryId int64, description string, type_ string, assetId int64, externalId string, externalType string, externalCategorySlug string, sqootSlug string, active bool, metaData string, searchTags string) (ImplResponse, error) {
+func (s *CategoryAPIService) CreateCategory(ctx context.Context, accountId int64, name string, appKey string, parentCategoryId int64, description string, type_ string, assetId int64, externalId string, externalType string, externalCategorySlug string, sqootSlug string, active bool, metaData string, searchTags string) (ImplResponse, error) {
 	// TODO - update CreateCategory with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *CategoryAPIService) CreateCategory(ctx context.Context, version float32
 }
 
 // DeleteCategory - Delete Category
-func (s *CategoryAPIService) DeleteCategory(ctx context.Context, version float32, accountId int64, categoryId int64) (ImplResponse, error) {
+func (s *CategoryAPIService) DeleteCategory(ctx context.Context, accountId int64, categoryId int64) (ImplResponse, error) {
 	// TODO - update DeleteCategory with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *CategoryAPIService) DeleteCategory(ctx context.Context, version float32
 }
 
 // DuplicateCategory - Duplicate Category
-func (s *CategoryAPIService) DuplicateCategory(ctx context.Context, version float32, accountId int64, categoryId int64, appKey string, parentCategoryId int64) (ImplResponse, error) {
+func (s *CategoryAPIService) DuplicateCategory(ctx context.Context, accountId int64, categoryId int64, appKey string, parentCategoryId int64) (ImplResponse, error) {
 	// TODO - update DuplicateCategory with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *CategoryAPIService) DuplicateCategory(ctx context.Context, version floa
 }
 
 // GetCategory - Get Category
-func (s *CategoryAPIService) GetCategory(ctx context.Context, version float32, categoryId int64, returnExternal bool) (ImplResponse, error) {
+func (s *CategoryAPIService) GetCategory(ctx context.Context, categoryId int64, returnExternal bool) (ImplResponse, error) {
 	// TODO - update GetCategory with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *CategoryAPIService) GetCategory(ctx context.Context, version float32, c
 }
 
 // SearchCategories - Search Categories
-func (s *CategoryAPIService) SearchCategories(ctx context.Context, version float32, accountId int64, keyword string, appKey string, categoryId string, categoryIds string, parentCategoryIds string, rootOnly bool, sortField string, responseGroup string, descending bool, start int32, limit int32, activeOnly bool, returnExternal bool, exactMatch bool, type_ string, externalType string, excludeExternalType bool, minOfferCount int32, searchDepth int32, searchMode string) (ImplResponse, error) {
+func (s *CategoryAPIService) SearchCategories(ctx context.Context, accountId int64, keyword string, appKey string, categoryId string, categoryIds string, parentCategoryIds string, rootOnly bool, sortField string, responseGroup string, descending bool, start int32, limit int32, activeOnly bool, returnExternal bool, exactMatch bool, type_ string, externalType string, excludeExternalType bool, minOfferCount int32, searchDepth int32, searchMode string) (ImplResponse, error) {
 	// TODO - update SearchCategories with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *CategoryAPIService) SearchCategories(ctx context.Context, version float
 }
 
 // CategoryDistanceSearch - Search Categories by Distance
-func (s *CategoryAPIService) CategoryDistanceSearch(ctx context.Context, version float32, accountId int64, keyword string, appKey string, categoryIds string, parentCategoryIds string, rootOnly bool, sortField string, responseGroup string, descending bool, start int32, limit int32, activeOnly bool, returnExternal bool, exactMatch bool, type_ string, externalType string, minOfferCount int32, latitude float64, longitude float64, range_ float64) (ImplResponse, error) {
+func (s *CategoryAPIService) CategoryDistanceSearch(ctx context.Context, accountId int64, keyword string, appKey string, categoryIds string, parentCategoryIds string, rootOnly bool, sortField string, responseGroup string, descending bool, start int32, limit int32, activeOnly bool, returnExternal bool, exactMatch bool, type_ string, externalType string, minOfferCount int32, latitude float64, longitude float64, range_ float64) (ImplResponse, error) {
 	// TODO - update CategoryDistanceSearch with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *CategoryAPIService) CategoryDistanceSearch(ctx context.Context, version
 }
 
 // UpdateCategory - Update Category
-func (s *CategoryAPIService) UpdateCategory(ctx context.Context, version float32, accountId int64, categoryId int64, parentCategoryId int64, name string, description string, type_ string, assetId int64, externalId string, externalType string, externalCategorySlug string, sqootSlug string, active bool, metaData string, searchTags string) (ImplResponse, error) {
+func (s *CategoryAPIService) UpdateCategory(ctx context.Context, accountId int64, categoryId int64, parentCategoryId int64, name string, description string, type_ string, assetId int64, externalId string, externalType string, externalCategorySlug string, sqootSlug string, active bool, metaData string, searchTags string) (ImplResponse, error) {
 	// TODO - update UpdateCategory with the required logic for this service method.
 	// Add api_category_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

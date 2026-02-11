@@ -29,7 +29,7 @@ func NewTriggerAPIService() *TriggerAPIService {
 }
 
 // CreateTrigger - Create Trigger
-func (s *TriggerAPIService) CreateTrigger(ctx context.Context, version float32, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, conditionalInput string, visibility string, active bool) (ImplResponse, error) {
+func (s *TriggerAPIService) CreateTrigger(ctx context.Context, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, conditionalInput string, visibility string, active bool) (ImplResponse, error) {
 	// TODO - update CreateTrigger with the required logic for this service method.
 	// Add api_trigger_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TriggerAPIService) CreateTrigger(ctx context.Context, version float32, 
 }
 
 // DeleteTrigger - Delete Trigger
-func (s *TriggerAPIService) DeleteTrigger(ctx context.Context, version float32, accountId int64, triggerId int64) (ImplResponse, error) {
+func (s *TriggerAPIService) DeleteTrigger(ctx context.Context, accountId int64, triggerId int64) (ImplResponse, error) {
 	// TODO - update DeleteTrigger with the required logic for this service method.
 	// Add api_trigger_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TriggerAPIService) DeleteTrigger(ctx context.Context, version float32, 
 }
 
 // GetTrigger - Get Trigger
-func (s *TriggerAPIService) GetTrigger(ctx context.Context, version float32, accountId int64, triggerId int64) (ImplResponse, error) {
+func (s *TriggerAPIService) GetTrigger(ctx context.Context, accountId int64, triggerId int64) (ImplResponse, error) {
 	// TODO - update GetTrigger with the required logic for this service method.
 	// Add api_trigger_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TriggerAPIService) GetTrigger(ctx context.Context, version float32, acc
 }
 
 // SearchTriggers - Search Triggers
-func (s *TriggerAPIService) SearchTriggers(ctx context.Context, version float32, accountId int64, groupingId string, filter string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *TriggerAPIService) SearchTriggers(ctx context.Context, accountId int64, groupingId string, filter string, statuses string, templateTypes string, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchTriggers with the required logic for this service method.
 	// Add api_trigger_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TriggerAPIService) SearchTriggers(ctx context.Context, version float32,
 }
 
 // UpdateTrigger - Update Trigger
-func (s *TriggerAPIService) UpdateTrigger(ctx context.Context, version float32, triggerId int64, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, conditionalInput string, visibility string, active bool) (ImplResponse, error) {
+func (s *TriggerAPIService) UpdateTrigger(ctx context.Context, triggerId int64, accountId int64, name string, appKey string, groupingId string, endpointURL string, payload string, scheduledDate int64, startDate int64, endDate int64, cronExpression string, conditionalInput string, visibility string, active bool) (ImplResponse, error) {
 	// TODO - update UpdateTrigger with the required logic for this service method.
 	// Add api_trigger_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ReservationAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *ReservationAPIController) Routes() Routes {
 		"SearchAvailability": Route{
 			"SearchAvailability",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservable/availability/search",
+			"/api/3.18/reservable/availability/search",
 			c.SearchAvailability,
 		},
 		"ReservableAvailability": Route{
 			"ReservableAvailability",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservable/availability/update",
+			"/api/3.18/reservable/availability/update",
 			c.ReservableAvailability,
 		},
 		"SearchSchedule": Route{
 			"SearchSchedule",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservable/schedule/search",
+			"/api/3.18/reservable/schedule/search",
 			c.SearchSchedule,
 		},
 		"SearchReservations": Route{
 			"SearchReservations",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservation/search",
+			"/api/3.18/reservation/search",
 			c.SearchReservations,
 		},
 		"DeleteReservation": Route{
 			"DeleteReservation",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservation/delete",
+			"/api/3.18/reservation/delete",
 			c.DeleteReservation,
 		},
 		"CreateReservation": Route{
 			"CreateReservation",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservation/create",
+			"/api/3.18/reservation/create",
 			c.CreateReservation,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *ReservationAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchAvailability",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservable/availability/search",
+			"/api/3.18/reservable/availability/search",
 			c.SearchAvailability,
 		},
 		Route{
 			"ReservableAvailability",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservable/availability/update",
+			"/api/3.18/reservable/availability/update",
 			c.ReservableAvailability,
 		},
 		Route{
 			"SearchSchedule",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservable/schedule/search",
+			"/api/3.18/reservable/schedule/search",
 			c.SearchSchedule,
 		},
 		Route{
 			"SearchReservations",
 			strings.ToUpper("Get"),
-			"/api/{version}/reservation/search",
+			"/api/3.18/reservation/search",
 			c.SearchReservations,
 		},
 		Route{
 			"DeleteReservation",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservation/delete",
+			"/api/3.18/reservation/delete",
 			c.DeleteReservation,
 		},
 		Route{
 			"CreateReservation",
 			strings.ToUpper("Post"),
-			"/api/{version}/reservation/create",
+			"/api/3.18/reservation/create",
 			c.CreateReservation,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *ReservationAPIController) OrderedRoutes() []Route {
 
 // SearchAvailability - Search Availability
 func (c *ReservationAPIController) SearchAvailability(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var reservableIdParam int64
@@ -256,7 +245,7 @@ func (c *ReservationAPIController) SearchAvailability(w http.ResponseWriter, r *
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.SearchAvailability(r.Context(), versionParam, reservableIdParam, reservableTypeParam, deviceIdParam, accountIdParam, startDateParam, endDateParam, startParam, limitParam)
+	result, err := c.service.SearchAvailability(r.Context(), reservableIdParam, reservableTypeParam, deviceIdParam, accountIdParam, startDateParam, endDateParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -268,18 +257,9 @@ func (c *ReservationAPIController) SearchAvailability(w http.ResponseWriter, r *
 
 // ReservableAvailability - Update Availability
 func (c *ReservationAPIController) ReservableAvailability(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var reservableIdParam int64
@@ -342,7 +322,7 @@ func (c *ReservationAPIController) ReservableAvailability(w http.ResponseWriter,
 		availabilitySummaryParam = param
 	} else {
 	}
-	result, err := c.service.ReservableAvailability(r.Context(), versionParam, reservableIdParam, reservableTypeParam, deviceIdParam, accountIdParam, availabilityParam, availabilitySummaryParam)
+	result, err := c.service.ReservableAvailability(r.Context(), reservableIdParam, reservableTypeParam, deviceIdParam, accountIdParam, availabilityParam, availabilitySummaryParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -354,18 +334,9 @@ func (c *ReservationAPIController) ReservableAvailability(w http.ResponseWriter,
 
 // SearchSchedule - Search Schedule
 func (c *ReservationAPIController) SearchSchedule(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var reservableIdParam int64
@@ -462,7 +433,7 @@ func (c *ReservationAPIController) SearchSchedule(w http.ResponseWriter, r *http
 		var param int32 = 30
 		timeBucketMinsParam = param
 	}
-	result, err := c.service.SearchSchedule(r.Context(), versionParam, reservableIdParam, reservableTypeParam, startDateParam, endDateParam, deviceIdParam, accountIdParam, timeBucketMinsParam)
+	result, err := c.service.SearchSchedule(r.Context(), reservableIdParam, reservableTypeParam, startDateParam, endDateParam, deviceIdParam, accountIdParam, timeBucketMinsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -474,18 +445,9 @@ func (c *ReservationAPIController) SearchSchedule(w http.ResponseWriter, r *http
 
 // SearchReservations - Search Reservations
 func (c *ReservationAPIController) SearchReservations(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -618,7 +580,7 @@ func (c *ReservationAPIController) SearchReservations(w http.ResponseWriter, r *
 		var param int32 = 100
 		limitParam = param
 	}
-	result, err := c.service.SearchReservations(r.Context(), versionParam, deviceIdParam, appKeyParam, accountIdParam, filterAccountIdParam, reservableIdParam, reservableTypeParam, keywordParam, startDateParam, endDateParam, startParam, limitParam)
+	result, err := c.service.SearchReservations(r.Context(), deviceIdParam, appKeyParam, accountIdParam, filterAccountIdParam, reservableIdParam, reservableTypeParam, keywordParam, startDateParam, endDateParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -630,18 +592,9 @@ func (c *ReservationAPIController) SearchReservations(w http.ResponseWriter, r *
 
 // DeleteReservation - Delete Reservation
 func (c *ReservationAPIController) DeleteReservation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var reservationIdParam int64
@@ -681,7 +634,7 @@ func (c *ReservationAPIController) DeleteReservation(w http.ResponseWriter, r *h
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteReservation(r.Context(), versionParam, reservationIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteReservation(r.Context(), reservationIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -693,18 +646,9 @@ func (c *ReservationAPIController) DeleteReservation(w http.ResponseWriter, r *h
 
 // CreateReservation - Create Reservation
 func (c *ReservationAPIController) CreateReservation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -798,7 +742,7 @@ func (c *ReservationAPIController) CreateReservation(w http.ResponseWriter, r *h
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateReservation(r.Context(), versionParam, deviceIdParam, accountIdParam, startDateParam, endDateParam, offerIdParam, offerLocationIdParam, appKeyParam, metaDataParam)
+	result, err := c.service.CreateReservation(r.Context(), deviceIdParam, accountIdParam, startDateParam, endDateParam, offerIdParam, offerLocationIdParam, appKeyParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

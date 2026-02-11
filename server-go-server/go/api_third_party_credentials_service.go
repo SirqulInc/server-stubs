@@ -30,7 +30,7 @@ func NewThirdPartyCredentialsAPIService() *ThirdPartyCredentialsAPIService {
 }
 
 // CreateCredential - Create Credential
-func (s *ThirdPartyCredentialsAPIService) CreateCredential(ctx context.Context, version float32, thirdPartyId string, thirdPartyToken string, networkUID string, appKey string, accountId int64, deviceId string, sessionId string, thirdPartyName string, emailAddress string, signinOnlyMode bool, responseFilters string, latitude float64, longitude float64, metaData string, thirdPartyRefreshToken string, audienceIdsToAdd string, audienceIdsToRemove string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) CreateCredential(ctx context.Context, thirdPartyId string, thirdPartyToken string, networkUID string, appKey string, accountId int64, deviceId string, sessionId string, thirdPartyName string, emailAddress string, signinOnlyMode bool, responseFilters string, latitude float64, longitude float64, metaData string, thirdPartyRefreshToken string, audienceIdsToAdd string, audienceIdsToRemove string) (ImplResponse, error) {
 	// TODO - update CreateCredential with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *ThirdPartyCredentialsAPIService) CreateCredential(ctx context.Context, 
 }
 
 // DeleteCredential - Delete Credential
-func (s *ThirdPartyCredentialsAPIService) DeleteCredential(ctx context.Context, version float32, accountId int64, networkUID string, thirdPartyId string, appKey string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) DeleteCredential(ctx context.Context, accountId int64, networkUID string, thirdPartyId string, appKey string) (ImplResponse, error) {
 	// TODO - update DeleteCredential with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *ThirdPartyCredentialsAPIService) DeleteCredential(ctx context.Context, 
 }
 
 // GetCredential - Get Credential
-func (s *ThirdPartyCredentialsAPIService) GetCredential(ctx context.Context, version float32, networkUID string, appKey string, accountId int64, deviceId string, sessionId string, thirdPartyCredentialId int64, thirdPartyToken string, thirdPartySecret string, createNewAccount bool, responseFilters string, latitude float64, longitude float64, audienceIdsToAdd string, audienceIdsToRemove string, referralAccountId int64) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) GetCredential(ctx context.Context, networkUID string, appKey string, accountId int64, deviceId string, sessionId string, thirdPartyCredentialId int64, thirdPartyToken string, thirdPartySecret string, createNewAccount bool, responseFilters string, latitude float64, longitude float64, audienceIdsToAdd string, audienceIdsToRemove string, referralAccountId int64) (ImplResponse, error) {
 	// TODO - update GetCredential with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *ThirdPartyCredentialsAPIService) GetCredential(ctx context.Context, ver
 }
 
 // SearchCredentials - Search Credentials
-func (s *ThirdPartyCredentialsAPIService) SearchCredentials(ctx context.Context, version float32, accountId int64, keyword string, networkUID string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) SearchCredentials(ctx context.Context, accountId int64, keyword string, networkUID string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchCredentials with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *ThirdPartyCredentialsAPIService) SearchCredentials(ctx context.Context,
 }
 
 // UpdateCredential - Update Credential
-func (s *ThirdPartyCredentialsAPIService) UpdateCredential(ctx context.Context, version float32, networkUID string, thirdPartyId string, appKey string, deviceId string, thirdPartyName string, thirdPartyToken string, responseFilters string, metaData string, thirdPartyRefreshToken string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) UpdateCredential(ctx context.Context, networkUID string, thirdPartyId string, appKey string, deviceId string, thirdPartyName string, thirdPartyToken string, responseFilters string, metaData string, thirdPartyRefreshToken string) (ImplResponse, error) {
 	// TODO - update UpdateCredential with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *ThirdPartyCredentialsAPIService) UpdateCredential(ctx context.Context, 
 }
 
 // SendMFAChallenge - Send MFA Challenge
-func (s *ThirdPartyCredentialsAPIService) SendMFAChallenge(ctx context.Context, version float32, networkUID string, appKey string, thirdPartyToken string, thirdPartyCredentialId int64, deviceId string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) SendMFAChallenge(ctx context.Context, networkUID string, appKey string, thirdPartyToken string, thirdPartyCredentialId int64, deviceId string) (ImplResponse, error) {
 	// TODO - update SendMFAChallenge with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *ThirdPartyCredentialsAPIService) SendMFAChallenge(ctx context.Context, 
 }
 
 // CreateNetwork - Create Network
-func (s *ThirdPartyCredentialsAPIService) CreateNetwork(ctx context.Context, version float32, accountId int64, name string, enableIntrospection bool, description string, introspectionMethod string, introspectionURL string, introspectionParams string, requiredRootField string, enableMFA bool, sizeMFA int32, shelfLifeMFA int32, oauthTokenURL string, oauthPrivateKey *os.File, oauthPublicKey *os.File, oauthClientId string, oauthSecretKey string, body string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) CreateNetwork(ctx context.Context, accountId int64, name string, enableIntrospection bool, description string, introspectionMethod string, introspectionURL string, introspectionParams string, requiredRootField string, enableMFA bool, sizeMFA int32, shelfLifeMFA int32, oauthTokenURL string, oauthPrivateKey *os.File, oauthPublicKey *os.File, oauthClientId string, oauthSecretKey string, body string) (ImplResponse, error) {
 	// TODO - update CreateNetwork with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *ThirdPartyCredentialsAPIService) CreateNetwork(ctx context.Context, ver
 }
 
 // DeleteNetwork - Delete Network
-func (s *ThirdPartyCredentialsAPIService) DeleteNetwork(ctx context.Context, version float32, accountId int64, networkUID string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) DeleteNetwork(ctx context.Context, accountId int64, networkUID string) (ImplResponse, error) {
 	// TODO - update DeleteNetwork with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *ThirdPartyCredentialsAPIService) DeleteNetwork(ctx context.Context, ver
 }
 
 // GetNetwork - Get Network
-func (s *ThirdPartyCredentialsAPIService) GetNetwork(ctx context.Context, version float32, accountId int64, networkUID string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) GetNetwork(ctx context.Context, accountId int64, networkUID string) (ImplResponse, error) {
 	// TODO - update GetNetwork with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -129,7 +129,7 @@ func (s *ThirdPartyCredentialsAPIService) GetNetwork(ctx context.Context, versio
 }
 
 // SearchNetworks - Search Networks
-func (s *ThirdPartyCredentialsAPIService) SearchNetworks(ctx context.Context, version float32, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string, filterBillable bool) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) SearchNetworks(ctx context.Context, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string, filterBillable bool) (ImplResponse, error) {
 	// TODO - update SearchNetworks with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -140,7 +140,7 @@ func (s *ThirdPartyCredentialsAPIService) SearchNetworks(ctx context.Context, ve
 }
 
 // UpdateNetwork - Update Network
-func (s *ThirdPartyCredentialsAPIService) UpdateNetwork(ctx context.Context, version float32, accountId int64, networkUID string, name string, description string, enableIntrospection bool, introspectionMethod string, introspectionURL string, introspectionParams string, requiredRootField string, enableMFA bool, sizeMFA int32, shelfLifeMFA int32, oauthTokenURL string, oauthPrivateKey *os.File, oauthPublicKey *os.File, oauthClientId string, oauthSecretKey string, body string) (ImplResponse, error) {
+func (s *ThirdPartyCredentialsAPIService) UpdateNetwork(ctx context.Context, accountId int64, networkUID string, name string, description string, enableIntrospection bool, introspectionMethod string, introspectionURL string, introspectionParams string, requiredRootField string, enableMFA bool, sizeMFA int32, shelfLifeMFA int32, oauthTokenURL string, oauthPrivateKey *os.File, oauthPublicKey *os.File, oauthClientId string, oauthSecretKey string, body string) (ImplResponse, error) {
 	// TODO - update UpdateNetwork with the required logic for this service method.
 	// Add api_third_party_credentials_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

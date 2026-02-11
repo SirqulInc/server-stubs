@@ -30,7 +30,7 @@ func NewOrsonAPIService() *OrsonAPIService {
 }
 
 // CreateInstantEpisode - Creates an instant episode
-func (s *OrsonAPIService) CreateInstantEpisode(ctx context.Context, version float32, accountId int64, data string) (ImplResponse, error) {
+func (s *OrsonAPIService) CreateInstantEpisode(ctx context.Context, accountId int64, data string) (ImplResponse, error) {
 	// TODO - update CreateInstantEpisode with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *OrsonAPIService) CreateInstantEpisode(ctx context.Context, version floa
 }
 
 // GetEpisodeStatus - Check episode status
-func (s *OrsonAPIService) GetEpisodeStatus(ctx context.Context, version float32, episodeId int64, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetEpisodeStatus(ctx context.Context, episodeId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetEpisodeStatus with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *OrsonAPIService) GetEpisodeStatus(ctx context.Context, version float32,
 }
 
 // StartVideoRender - Starts a StoryStitch video render
-func (s *OrsonAPIService) StartVideoRender(ctx context.Context, version float32, accountId int64, data string) (ImplResponse, error) {
+func (s *OrsonAPIService) StartVideoRender(ctx context.Context, accountId int64, data string) (ImplResponse, error) {
 	// TODO - update StartVideoRender with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *OrsonAPIService) StartVideoRender(ctx context.Context, version float32,
 }
 
 // GetRenderStatus - Check episode status
-func (s *OrsonAPIService) GetRenderStatus(ctx context.Context, version float32, renderId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetRenderStatus(ctx context.Context, renderId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetRenderStatus with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *OrsonAPIService) GetRenderStatus(ctx context.Context, version float32, 
 }
 
 // CreateVoiceCanvas - Create VoiceCanvas images
-func (s *OrsonAPIService) CreateVoiceCanvas(ctx context.Context, version float32, accountId int64, dimensions string, thirdPartyAccountId string, text string, file *os.File, url string, parseFlag bool, fetchFlag bool, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) CreateVoiceCanvas(ctx context.Context, accountId int64, dimensions string, thirdPartyAccountId string, text string, file *os.File, url string, parseFlag bool, fetchFlag bool, callback string) (ImplResponse, error) {
 	// TODO - update CreateVoiceCanvas with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *OrsonAPIService) CreateVoiceCanvas(ctx context.Context, version float32
 }
 
 // GetVoiceCanvas - Get VoiceCanvas images
-func (s *OrsonAPIService) GetVoiceCanvas(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetVoiceCanvas(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetVoiceCanvas with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *OrsonAPIService) GetVoiceCanvas(ctx context.Context, version float32, r
 }
 
 // SummarizeTopics - Summarize Topics
-func (s *OrsonAPIService) SummarizeTopics(ctx context.Context, version float32, accountId int64, thirdPartyAccountId string, doc string, file *os.File, url string, limit int32, offset int32, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) SummarizeTopics(ctx context.Context, accountId int64, thirdPartyAccountId string, doc string, file *os.File, url string, limit int32, offset int32, callback string) (ImplResponse, error) {
 	// TODO - update SummarizeTopics with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *OrsonAPIService) SummarizeTopics(ctx context.Context, version float32, 
 }
 
 // GetTopics - Get Topics
-func (s *OrsonAPIService) GetTopics(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetTopics(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetTopics with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *OrsonAPIService) GetTopics(ctx context.Context, version float32, reques
 }
 
 // AddMovie - Add Movie
-func (s *OrsonAPIService) AddMovie(ctx context.Context, version float32, accountId int64, movieName string, thirdPartyAccountId string, tags string, file *os.File, url string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) AddMovie(ctx context.Context, accountId int64, movieName string, thirdPartyAccountId string, tags string, file *os.File, url string, callback string) (ImplResponse, error) {
 	// TODO - update AddMovie with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -129,7 +129,7 @@ func (s *OrsonAPIService) AddMovie(ctx context.Context, version float32, account
 }
 
 // GetAddMovieResult - Get Add Movie Result
-func (s *OrsonAPIService) GetAddMovieResult(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetAddMovieResult(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetAddMovieResult with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -140,7 +140,7 @@ func (s *OrsonAPIService) GetAddMovieResult(ctx context.Context, version float32
 }
 
 // Stt - Speach to Text
-func (s *OrsonAPIService) Stt(ctx context.Context, version float32, accountId int64, thirdPartyAccountId string, sourceLanguage string, targetLanguage string, file *os.File, url string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) Stt(ctx context.Context, accountId int64, thirdPartyAccountId string, sourceLanguage string, targetLanguage string, file *os.File, url string, callback string) (ImplResponse, error) {
 	// TODO - update Stt with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -151,7 +151,7 @@ func (s *OrsonAPIService) Stt(ctx context.Context, version float32, accountId in
 }
 
 // GetSTT - Get Speach to Text Result
-func (s *OrsonAPIService) GetSTT(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetSTT(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetSTT with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -162,7 +162,7 @@ func (s *OrsonAPIService) GetSTT(ctx context.Context, version float32, requestId
 }
 
 // Tts - Text to Speach
-func (s *OrsonAPIService) Tts(ctx context.Context, version float32, accountId int64, text string, thirdPartyAccountId string, language string, voice string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) Tts(ctx context.Context, accountId int64, text string, thirdPartyAccountId string, language string, voice string, callback string) (ImplResponse, error) {
 	// TODO - update Tts with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -173,7 +173,7 @@ func (s *OrsonAPIService) Tts(ctx context.Context, version float32, accountId in
 }
 
 // GetTTS - Get Text to Speach Result
-func (s *OrsonAPIService) GetTTS(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetTTS(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetTTS with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -184,7 +184,7 @@ func (s *OrsonAPIService) GetTTS(ctx context.Context, version float32, requestId
 }
 
 // TechTune - Detect Technical Issues
-func (s *OrsonAPIService) TechTune(ctx context.Context, version float32, accountId int64, numFacesExpected int32, thirdPartyAccountId string, file *os.File, url string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) TechTune(ctx context.Context, accountId int64, numFacesExpected int32, thirdPartyAccountId string, file *os.File, url string, callback string) (ImplResponse, error) {
 	// TODO - update TechTune with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -195,7 +195,7 @@ func (s *OrsonAPIService) TechTune(ctx context.Context, version float32, account
 }
 
 // GetTechTune - Get TechTune Results
-func (s *OrsonAPIService) GetTechTune(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetTechTune(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetTechTune with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -206,7 +206,7 @@ func (s *OrsonAPIService) GetTechTune(ctx context.Context, version float32, requ
 }
 
 // Emotion - Detect emotions
-func (s *OrsonAPIService) Emotion(ctx context.Context, version float32, accountId int64, thirdPartyAccountId string, file *os.File, url string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) Emotion(ctx context.Context, accountId int64, thirdPartyAccountId string, file *os.File, url string, callback string) (ImplResponse, error) {
 	// TODO - update Emotion with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -217,7 +217,7 @@ func (s *OrsonAPIService) Emotion(ctx context.Context, version float32, accountI
 }
 
 // GetEmotion - Get Emotion Results
-func (s *OrsonAPIService) GetEmotion(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetEmotion(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetEmotion with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -228,7 +228,7 @@ func (s *OrsonAPIService) GetEmotion(ctx context.Context, version float32, reque
 }
 
 // Batch - Batch Analysis
-func (s *OrsonAPIService) Batch(ctx context.Context, version float32, accountId int64, thirdPartyAccountId string, limit int32, operations string, file *os.File, url string, callback string) (ImplResponse, error) {
+func (s *OrsonAPIService) Batch(ctx context.Context, accountId int64, thirdPartyAccountId string, limit int32, operations string, file *os.File, url string, callback string) (ImplResponse, error) {
 	// TODO - update Batch with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -239,7 +239,7 @@ func (s *OrsonAPIService) Batch(ctx context.Context, version float32, accountId 
 }
 
 // GetBatch - Get Batch Analysis Results
-func (s *OrsonAPIService) GetBatch(ctx context.Context, version float32, requestId string, accountId int64) (ImplResponse, error) {
+func (s *OrsonAPIService) GetBatch(ctx context.Context, requestId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetBatch with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -250,7 +250,7 @@ func (s *OrsonAPIService) GetBatch(ctx context.Context, version float32, request
 }
 
 // AiFindImages - Find images
-func (s *OrsonAPIService) AiFindImages(ctx context.Context, version float32, accountId int64, text string, parseFlag string, fetchFlag string, size string) (ImplResponse, error) {
+func (s *OrsonAPIService) AiFindImages(ctx context.Context, accountId int64, text string, parseFlag string, fetchFlag string, size string) (ImplResponse, error) {
 	// TODO - update AiFindImages with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -261,7 +261,7 @@ func (s *OrsonAPIService) AiFindImages(ctx context.Context, version float32, acc
 }
 
 // AiDocs - Search Docs
-func (s *OrsonAPIService) AiDocs(ctx context.Context, version float32, accountId int64, doc string, returnTopics bool, limit int32, offset int32) (ImplResponse, error) {
+func (s *OrsonAPIService) AiDocs(ctx context.Context, accountId int64, doc string, returnTopics bool, limit int32, offset int32) (ImplResponse, error) {
 	// TODO - update AiDocs with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -272,7 +272,7 @@ func (s *OrsonAPIService) AiDocs(ctx context.Context, version float32, accountId
 }
 
 // AiTags - Search Tags
-func (s *OrsonAPIService) AiTags(ctx context.Context, version float32, accountId int64, tags string, conditional string, limit int32, offset int32) (ImplResponse, error) {
+func (s *OrsonAPIService) AiTags(ctx context.Context, accountId int64, tags string, conditional string, limit int32, offset int32) (ImplResponse, error) {
 	// TODO - update AiTags with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -283,7 +283,7 @@ func (s *OrsonAPIService) AiTags(ctx context.Context, version float32, accountId
 }
 
 // AiText - Search Text
-func (s *OrsonAPIService) AiText(ctx context.Context, version float32, accountId int64, terms string, conditional string, limit int32, offset int32) (ImplResponse, error) {
+func (s *OrsonAPIService) AiText(ctx context.Context, accountId int64, terms string, conditional string, limit int32, offset int32) (ImplResponse, error) {
 	// TODO - update AiText with the required logic for this service method.
 	// Add api_orson_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -29,7 +29,7 @@ func NewTerritoryAPIService() *TerritoryAPIService {
 }
 
 // CreateTerritory - Create Territory
-func (s *TerritoryAPIService) CreateTerritory(ctx context.Context, version float32, accountId int64, name string, active bool) (ImplResponse, error) {
+func (s *TerritoryAPIService) CreateTerritory(ctx context.Context, accountId int64, name string, active bool) (ImplResponse, error) {
 	// TODO - update CreateTerritory with the required logic for this service method.
 	// Add api_territory_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TerritoryAPIService) CreateTerritory(ctx context.Context, version float
 }
 
 // DeleteTerritory - Delete Territory
-func (s *TerritoryAPIService) DeleteTerritory(ctx context.Context, version float32, accountId int64, territoryId int64) (ImplResponse, error) {
+func (s *TerritoryAPIService) DeleteTerritory(ctx context.Context, accountId int64, territoryId int64) (ImplResponse, error) {
 	// TODO - update DeleteTerritory with the required logic for this service method.
 	// Add api_territory_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TerritoryAPIService) DeleteTerritory(ctx context.Context, version float
 }
 
 // GetTerritory - Get Territory
-func (s *TerritoryAPIService) GetTerritory(ctx context.Context, version float32, territoryId int64) (ImplResponse, error) {
+func (s *TerritoryAPIService) GetTerritory(ctx context.Context, territoryId int64) (ImplResponse, error) {
 	// TODO - update GetTerritory with the required logic for this service method.
 	// Add api_territory_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TerritoryAPIService) GetTerritory(ctx context.Context, version float32,
 }
 
 // SearchTerritories - Search Territories
-func (s *TerritoryAPIService) SearchTerritories(ctx context.Context, version float32, sortField string, descending bool, keyword string, start int32, limit int32) (ImplResponse, error) {
+func (s *TerritoryAPIService) SearchTerritories(ctx context.Context, sortField string, descending bool, keyword string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchTerritories with the required logic for this service method.
 	// Add api_territory_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TerritoryAPIService) SearchTerritories(ctx context.Context, version flo
 }
 
 // UpdateTerritory - Update Territory
-func (s *TerritoryAPIService) UpdateTerritory(ctx context.Context, version float32, accountId int64, territoryId int64, name string, active bool) (ImplResponse, error) {
+func (s *TerritoryAPIService) UpdateTerritory(ctx context.Context, accountId int64, territoryId int64, name string, active bool) (ImplResponse, error) {
 	// TODO - update UpdateTerritory with the required logic for this service method.
 	// Add api_territory_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

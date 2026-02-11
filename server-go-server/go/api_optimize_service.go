@@ -29,7 +29,7 @@ func NewOptimizeAPIService() *OptimizeAPIService {
 }
 
 // RequestOptimization - Request Optimization
-func (s *OptimizeAPIService) RequestOptimization(ctx context.Context, version float32, body Orders) (ImplResponse, error) {
+func (s *OptimizeAPIService) RequestOptimization(ctx context.Context, body Orders) (ImplResponse, error) {
 	// TODO - update RequestOptimization with the required logic for this service method.
 	// Add api_optimize_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *OptimizeAPIService) RequestOptimization(ctx context.Context, version fl
 }
 
 // GetOptimizationResult - Get Optimization Result
-func (s *OptimizeAPIService) GetOptimizationResult(ctx context.Context, version float32, batchID string, start int32, limit int32) (ImplResponse, error) {
+func (s *OptimizeAPIService) GetOptimizationResult(ctx context.Context, batchID string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetOptimizationResult with the required logic for this service method.
 	// Add api_optimize_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

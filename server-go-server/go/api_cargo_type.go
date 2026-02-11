@@ -57,31 +57,31 @@ func (c *CargoTypeAPIController) Routes() Routes {
 		"SearchCargoTypes": Route{
 			"SearchCargoTypes",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/type",
+			"/api/3.18/cargo/type",
 			c.SearchCargoTypes,
 		},
 		"CreateCargoType": Route{
 			"CreateCargoType",
 			strings.ToUpper("Post"),
-			"/api/{version}/cargo/type",
+			"/api/3.18/cargo/type",
 			c.CreateCargoType,
 		},
 		"GetCargoType": Route{
 			"GetCargoType",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.GetCargoType,
 		},
 		"UpdateCargoType": Route{
 			"UpdateCargoType",
 			strings.ToUpper("Put"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.UpdateCargoType,
 		},
 		"DeleteCargoType": Route{
 			"DeleteCargoType",
 			strings.ToUpper("Delete"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.DeleteCargoType,
 		},
 	}
@@ -93,31 +93,31 @@ func (c *CargoTypeAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchCargoTypes",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/type",
+			"/api/3.18/cargo/type",
 			c.SearchCargoTypes,
 		},
 		Route{
 			"CreateCargoType",
 			strings.ToUpper("Post"),
-			"/api/{version}/cargo/type",
+			"/api/3.18/cargo/type",
 			c.CreateCargoType,
 		},
 		Route{
 			"GetCargoType",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.GetCargoType,
 		},
 		Route{
 			"UpdateCargoType",
 			strings.ToUpper("Put"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.UpdateCargoType,
 		},
 		Route{
 			"DeleteCargoType",
 			strings.ToUpper("Delete"),
-			"/api/{version}/cargo/type/{cargoTypeId}",
+			"/api/3.18/cargo/type/{cargoTypeId}",
 			c.DeleteCargoType,
 		},
 	}
@@ -127,18 +127,9 @@ func (c *CargoTypeAPIController) OrderedRoutes() []Route {
 
 // SearchCargoTypes - Search Cargo Type
 func (c *CargoTypeAPIController) SearchCargoTypes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -242,7 +233,7 @@ func (c *CargoTypeAPIController) SearchCargoTypes(w http.ResponseWriter, r *http
 		hubIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchCargoTypes(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, retailerIdParam, hubIdParam)
+	result, err := c.service.SearchCargoTypes(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, retailerIdParam, hubIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -254,15 +245,6 @@ func (c *CargoTypeAPIController) SearchCargoTypes(w http.ResponseWriter, r *http
 
 // CreateCargoType - Create Cargo Type
 func (c *CargoTypeAPIController) CreateCargoType(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam CargoType
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -278,7 +260,7 @@ func (c *CargoTypeAPIController) CreateCargoType(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateCargoType(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateCargoType(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -291,14 +273,6 @@ func (c *CargoTypeAPIController) CreateCargoType(w http.ResponseWriter, r *http.
 // GetCargoType - Get Cargo Type
 func (c *CargoTypeAPIController) GetCargoType(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	cargoTypeIdParam, err := parseNumericParameter[int64](
 		params["cargoTypeId"],
 		WithRequire[int64](parseInt64),
@@ -307,7 +281,7 @@ func (c *CargoTypeAPIController) GetCargoType(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &ParsingError{Param: "cargoTypeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetCargoType(r.Context(), versionParam, cargoTypeIdParam)
+	result, err := c.service.GetCargoType(r.Context(), cargoTypeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -320,14 +294,6 @@ func (c *CargoTypeAPIController) GetCargoType(w http.ResponseWriter, r *http.Req
 // UpdateCargoType - Update Cargo Type
 func (c *CargoTypeAPIController) UpdateCargoType(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	cargoTypeIdParam, err := parseNumericParameter[int64](
 		params["cargoTypeId"],
 		WithRequire[int64](parseInt64),
@@ -351,7 +317,7 @@ func (c *CargoTypeAPIController) UpdateCargoType(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateCargoType(r.Context(), versionParam, cargoTypeIdParam, bodyParam)
+	result, err := c.service.UpdateCargoType(r.Context(), cargoTypeIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -364,14 +330,6 @@ func (c *CargoTypeAPIController) UpdateCargoType(w http.ResponseWriter, r *http.
 // DeleteCargoType - Delete Cargo Type
 func (c *CargoTypeAPIController) DeleteCargoType(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	cargoTypeIdParam, err := parseNumericParameter[int64](
 		params["cargoTypeId"],
 		WithRequire[int64](parseInt64),
@@ -380,7 +338,7 @@ func (c *CargoTypeAPIController) DeleteCargoType(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &ParsingError{Param: "cargoTypeId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteCargoType(r.Context(), versionParam, cargoTypeIdParam)
+	result, err := c.service.DeleteCargoType(r.Context(), cargoTypeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

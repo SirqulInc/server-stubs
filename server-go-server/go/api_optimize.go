@@ -57,13 +57,13 @@ func (c *OptimizeAPIController) Routes() Routes {
 		"RequestOptimization": Route{
 			"RequestOptimization",
 			strings.ToUpper("Post"),
-			"/api/{version}/optimize/request",
+			"/api/3.18/optimize/request",
 			c.RequestOptimization,
 		},
 		"GetOptimizationResult": Route{
 			"GetOptimizationResult",
 			strings.ToUpper("Get"),
-			"/api/{version}/optimize/result/{batchID}",
+			"/api/3.18/optimize/result/{batchID}",
 			c.GetOptimizationResult,
 		},
 	}
@@ -75,13 +75,13 @@ func (c *OptimizeAPIController) OrderedRoutes() []Route {
 		Route{
 			"RequestOptimization",
 			strings.ToUpper("Post"),
-			"/api/{version}/optimize/request",
+			"/api/3.18/optimize/request",
 			c.RequestOptimization,
 		},
 		Route{
 			"GetOptimizationResult",
 			strings.ToUpper("Get"),
-			"/api/{version}/optimize/result/{batchID}",
+			"/api/3.18/optimize/result/{batchID}",
 			c.GetOptimizationResult,
 		},
 	}
@@ -91,15 +91,6 @@ func (c *OptimizeAPIController) OrderedRoutes() []Route {
 
 // RequestOptimization - Request Optimization
 func (c *OptimizeAPIController) RequestOptimization(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Orders
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -115,7 +106,7 @@ func (c *OptimizeAPIController) RequestOptimization(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.RequestOptimization(r.Context(), versionParam, bodyParam)
+	result, err := c.service.RequestOptimization(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -131,14 +122,6 @@ func (c *OptimizeAPIController) GetOptimizationResult(w http.ResponseWriter, r *
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	batchIDParam := params["batchID"]
@@ -178,7 +161,7 @@ func (c *OptimizeAPIController) GetOptimizationResult(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{Field: "limit"}, nil)
 		return
 	}
-	result, err := c.service.GetOptimizationResult(r.Context(), versionParam, batchIDParam, startParam, limitParam)
+	result, err := c.service.GetOptimizationResult(r.Context(), batchIDParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -29,7 +29,7 @@ func NewUserPermissionsAPIService() *UserPermissionsAPIService {
 }
 
 // AddUsersToPermissionable - Add User
-func (s *UserPermissionsAPIService) AddUsersToPermissionable(ctx context.Context, version float32, permissionableType string, permissionableId int64, deviceId string, accountId int64, read bool, write bool, delete bool, add bool, connectionIds string, connectionAccountIds string, connectionGroupIds string, pending bool, admin bool, includeFriendGroup bool, latitude float64, longitude float64, audienceIds string) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) AddUsersToPermissionable(ctx context.Context, permissionableType string, permissionableId int64, deviceId string, accountId int64, read bool, write bool, delete bool, add bool, connectionIds string, connectionAccountIds string, connectionGroupIds string, pending bool, admin bool, includeFriendGroup bool, latitude float64, longitude float64, audienceIds string) (ImplResponse, error) {
 	// TODO - update AddUsersToPermissionable with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *UserPermissionsAPIService) AddUsersToPermissionable(ctx context.Context
 }
 
 // LeaveFromPermissionable - Leave
-func (s *UserPermissionsAPIService) LeaveFromPermissionable(ctx context.Context, version float32, permissionableType string, permissionableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) LeaveFromPermissionable(ctx context.Context, permissionableType string, permissionableId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update LeaveFromPermissionable with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *UserPermissionsAPIService) LeaveFromPermissionable(ctx context.Context,
 }
 
 // RemoveUsersFromPermissionable - Remove User
-func (s *UserPermissionsAPIService) RemoveUsersFromPermissionable(ctx context.Context, version float32, permissionableType string, permissionableId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, connectionGroupIds string, removeFriendGroup bool, latitude float64, longitude float64, audienceIds string) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) RemoveUsersFromPermissionable(ctx context.Context, permissionableType string, permissionableId int64, deviceId string, accountId int64, connectionIds string, connectionAccountIds string, connectionGroupIds string, removeFriendGroup bool, latitude float64, longitude float64, audienceIds string) (ImplResponse, error) {
 	// TODO - update RemoveUsersFromPermissionable with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *UserPermissionsAPIService) RemoveUsersFromPermissionable(ctx context.Co
 }
 
 // ApprovePermissionable - Approve Permissionable
-func (s *UserPermissionsAPIService) ApprovePermissionable(ctx context.Context, version float32, permissionableType string, permissionableId int64, deviceId string, accountId int64, approvalStatus string) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) ApprovePermissionable(ctx context.Context, permissionableType string, permissionableId int64, deviceId string, accountId int64, approvalStatus string) (ImplResponse, error) {
 	// TODO - update ApprovePermissionable with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *UserPermissionsAPIService) ApprovePermissionable(ctx context.Context, v
 }
 
 // SearchPermissionables - Search Permissionables
-func (s *UserPermissionsAPIService) SearchPermissionables(ctx context.Context, version float32, deviceId string, accountId int64, connectionAccountId int64, connectionAccountIds string, permissionableType string, permissionableId int64, keyword string, sortField string, descending bool, pending bool, admin bool, start int32, limit int32) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) SearchPermissionables(ctx context.Context, deviceId string, accountId int64, connectionAccountId int64, connectionAccountIds string, permissionableType string, permissionableId int64, keyword string, sortField string, descending bool, pending bool, admin bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchPermissionables with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *UserPermissionsAPIService) SearchPermissionables(ctx context.Context, v
 }
 
 // SearchPermissionablesFollowingDistance - Search Permissionables by Distnace
-func (s *UserPermissionsAPIService) SearchPermissionablesFollowingDistance(ctx context.Context, version float32, latitude float64, longitude float64, deviceId string, accountId int64, connectionAccountId int64, connectionAccountIds string, permissionableType string, permissionableId int64, searchRange float64, keyword string, pending bool, admin bool, start int32, limit int32) (ImplResponse, error) {
+func (s *UserPermissionsAPIService) SearchPermissionablesFollowingDistance(ctx context.Context, latitude float64, longitude float64, deviceId string, accountId int64, connectionAccountId int64, connectionAccountIds string, permissionableType string, permissionableId int64, searchRange float64, keyword string, pending bool, admin bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchPermissionablesFollowingDistance with the required logic for this service method.
 	// Add api_user_permissions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

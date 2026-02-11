@@ -29,7 +29,7 @@ func NewTripAPIService() *TripAPIService {
 }
 
 // Search - Search Trips
-func (s *TripAPIService) Search(ctx context.Context, version float32, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, startDate int64, endDate int64, hasNotifications bool) (ImplResponse, error) {
+func (s *TripAPIService) Search(ctx context.Context, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, startDate int64, endDate int64, hasNotifications bool) (ImplResponse, error) {
 	// TODO - update Search with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TripAPIService) Search(ctx context.Context, version float32, accountId 
 }
 
 // CreateTrip - Create Trip
-func (s *TripAPIService) CreateTrip(ctx context.Context, version float32, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) CreateTrip(ctx context.Context, body Trip) (ImplResponse, error) {
 	// TODO - update CreateTrip with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TripAPIService) CreateTrip(ctx context.Context, version float32, body T
 }
 
 // SearchTrips - Search Trips
-func (s *TripAPIService) SearchTrips(ctx context.Context, version float32, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, startDate int64, endDate int64, matchedHasRoute bool, matchedHasDriver bool) (ImplResponse, error) {
+func (s *TripAPIService) SearchTrips(ctx context.Context, accountId int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, startDate int64, endDate int64, matchedHasRoute bool, matchedHasDriver bool) (ImplResponse, error) {
 	// TODO - update SearchTrips with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TripAPIService) SearchTrips(ctx context.Context, version float32, accou
 }
 
 // ProcessTripMatches - Process Trip Matches
-func (s *TripAPIService) ProcessTripMatches(ctx context.Context, version float32, startDate int64, endDate int64, tripId int64) (ImplResponse, error) {
+func (s *TripAPIService) ProcessTripMatches(ctx context.Context, startDate int64, endDate int64, tripId int64) (ImplResponse, error) {
 	// TODO - update ProcessTripMatches with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TripAPIService) ProcessTripMatches(ctx context.Context, version float32
 }
 
 // UpdateTripNotifications - Trip Notifications
-func (s *TripAPIService) UpdateTripNotifications(ctx context.Context, version float32, id int64, notifications string) (ImplResponse, error) {
+func (s *TripAPIService) UpdateTripNotifications(ctx context.Context, id int64, notifications string) (ImplResponse, error) {
 	// TODO - update UpdateTripNotifications with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *TripAPIService) UpdateTripNotifications(ctx context.Context, version fl
 }
 
 // GetTrip - Get Trip
-func (s *TripAPIService) GetTrip(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *TripAPIService) GetTrip(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update GetTrip with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *TripAPIService) GetTrip(ctx context.Context, version float32, id int64)
 }
 
 // UpdateTrip - Update Trip
-func (s *TripAPIService) UpdateTrip(ctx context.Context, version float32, id int64, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) UpdateTrip(ctx context.Context, id int64, body Trip) (ImplResponse, error) {
 	// TODO - update UpdateTrip with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *TripAPIService) UpdateTrip(ctx context.Context, version float32, id int
 }
 
 // Delete - Delete Trip
-func (s *TripAPIService) Delete(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *TripAPIService) Delete(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update Delete with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *TripAPIService) Delete(ctx context.Context, version float32, id int64) 
 }
 
 // DriveTrip - Set Trip Preference Driver
-func (s *TripAPIService) DriveTrip(ctx context.Context, version float32, id int64, recurrence bool) (ImplResponse, error) {
+func (s *TripAPIService) DriveTrip(ctx context.Context, id int64, recurrence bool) (ImplResponse, error) {
 	// TODO - update DriveTrip with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *TripAPIService) DriveTrip(ctx context.Context, version float32, id int6
 }
 
 // FlexibleTrip - Set Trip Preference Flexible
-func (s *TripAPIService) FlexibleTrip(ctx context.Context, version float32, id int64, recurrence bool) (ImplResponse, error) {
+func (s *TripAPIService) FlexibleTrip(ctx context.Context, id int64, recurrence bool) (ImplResponse, error) {
 	// TODO - update FlexibleTrip with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *TripAPIService) FlexibleTrip(ctx context.Context, version float32, id i
 }
 
 // UpdateLocations - Update Trip Locations
-func (s *TripAPIService) UpdateLocations(ctx context.Context, version float32, id int64, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) UpdateLocations(ctx context.Context, id int64, body Trip) (ImplResponse, error) {
 	// TODO - update UpdateLocations with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *TripAPIService) UpdateLocations(ctx context.Context, version float32, i
 }
 
 // UpdateRecurrenceLocations - Update Recurrence Locations
-func (s *TripAPIService) UpdateRecurrenceLocations(ctx context.Context, version float32, id int64, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) UpdateRecurrenceLocations(ctx context.Context, id int64, body Trip) (ImplResponse, error) {
 	// TODO - update UpdateRecurrenceLocations with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *TripAPIService) UpdateRecurrenceLocations(ctx context.Context, version 
 }
 
 // GetTripMatches - Get Trip Matches
-func (s *TripAPIService) GetTripMatches(ctx context.Context, version float32, id int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, matchedHasRoute bool, matchedHasDriver bool) (ImplResponse, error) {
+func (s *TripAPIService) GetTripMatches(ctx context.Context, id int64, sortField string, descending bool, start int32, limit int32, activeOnly bool, matchedHasRoute bool, matchedHasDriver bool) (ImplResponse, error) {
 	// TODO - update GetTripMatches with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *TripAPIService) GetTripMatches(ctx context.Context, version float32, id
 }
 
 // Ride - Set Trip Preference Rider
-func (s *TripAPIService) Ride(ctx context.Context, version float32, id int64, recurrence bool) (ImplResponse, error) {
+func (s *TripAPIService) Ride(ctx context.Context, id int64, recurrence bool) (ImplResponse, error) {
 	// TODO - update Ride with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *TripAPIService) Ride(ctx context.Context, version float32, id int64, re
 }
 
 // UpdateShipments - Update Trip Shipments
-func (s *TripAPIService) UpdateShipments(ctx context.Context, version float32, id int64, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) UpdateShipments(ctx context.Context, id int64, body Trip) (ImplResponse, error) {
 	// TODO - update UpdateShipments with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *TripAPIService) UpdateShipments(ctx context.Context, version float32, i
 }
 
 // UpdateRecurrenceShipments - Update Recurrence Shipments
-func (s *TripAPIService) UpdateRecurrenceShipments(ctx context.Context, version float32, id int64, body Trip) (ImplResponse, error) {
+func (s *TripAPIService) UpdateRecurrenceShipments(ctx context.Context, id int64, body Trip) (ImplResponse, error) {
 	// TODO - update UpdateRecurrenceShipments with the required logic for this service method.
 	// Add api_trip_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

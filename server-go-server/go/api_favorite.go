@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // FavoriteAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *FavoriteAPIController) Routes() Routes {
 		"AddFavorite": Route{
 			"AddFavorite",
 			strings.ToUpper("Post"),
-			"/api/{version}/favorite/create",
+			"/api/3.18/favorite/create",
 			c.AddFavorite,
 		},
 		"DeleteFavorite": Route{
 			"DeleteFavorite",
 			strings.ToUpper("Post"),
-			"/api/{version}/favorite/delete",
+			"/api/3.18/favorite/delete",
 			c.DeleteFavorite,
 		},
 		"GetFavorite": Route{
 			"GetFavorite",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/get",
+			"/api/3.18/favorite/get",
 			c.GetFavorite,
 		},
 		"SearchFavorites": Route{
 			"SearchFavorites",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/search",
+			"/api/3.18/favorite/search",
 			c.SearchFavorites,
 		},
 		"WhoHasFavorited": Route{
 			"WhoHasFavorited",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/whois",
+			"/api/3.18/favorite/whois",
 			c.WhoHasFavorited,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *FavoriteAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddFavorite",
 			strings.ToUpper("Post"),
-			"/api/{version}/favorite/create",
+			"/api/3.18/favorite/create",
 			c.AddFavorite,
 		},
 		Route{
 			"DeleteFavorite",
 			strings.ToUpper("Post"),
-			"/api/{version}/favorite/delete",
+			"/api/3.18/favorite/delete",
 			c.DeleteFavorite,
 		},
 		Route{
 			"GetFavorite",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/get",
+			"/api/3.18/favorite/get",
 			c.GetFavorite,
 		},
 		Route{
 			"SearchFavorites",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/search",
+			"/api/3.18/favorite/search",
 			c.SearchFavorites,
 		},
 		Route{
 			"WhoHasFavorited",
 			strings.ToUpper("Get"),
-			"/api/{version}/favorite/whois",
+			"/api/3.18/favorite/whois",
 			c.WhoHasFavorited,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *FavoriteAPIController) OrderedRoutes() []Route {
 
 // AddFavorite - Create Favorite
 func (c *FavoriteAPIController) AddFavorite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var favoritableIdParam int64
@@ -212,7 +201,7 @@ func (c *FavoriteAPIController) AddFavorite(w http.ResponseWriter, r *http.Reque
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddFavorite(r.Context(), versionParam, favoritableIdParam, favoritableTypeParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddFavorite(r.Context(), favoritableIdParam, favoritableTypeParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -224,18 +213,9 @@ func (c *FavoriteAPIController) AddFavorite(w http.ResponseWriter, r *http.Reque
 
 // DeleteFavorite - Delete Favorite
 func (c *FavoriteAPIController) DeleteFavorite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -294,7 +274,7 @@ func (c *FavoriteAPIController) DeleteFavorite(w http.ResponseWriter, r *http.Re
 		favoritableTypeParam = param
 	} else {
 	}
-	result, err := c.service.DeleteFavorite(r.Context(), versionParam, deviceIdParam, accountIdParam, favoriteIdParam, favoritableIdParam, favoritableTypeParam)
+	result, err := c.service.DeleteFavorite(r.Context(), deviceIdParam, accountIdParam, favoriteIdParam, favoritableIdParam, favoritableTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -306,18 +286,9 @@ func (c *FavoriteAPIController) DeleteFavorite(w http.ResponseWriter, r *http.Re
 
 // GetFavorite - Get Favorite
 func (c *FavoriteAPIController) GetFavorite(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var favoriteIdParam int64
@@ -385,7 +356,7 @@ func (c *FavoriteAPIController) GetFavorite(w http.ResponseWriter, r *http.Reque
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetFavorite(r.Context(), versionParam, favoriteIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetFavorite(r.Context(), favoriteIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -397,18 +368,9 @@ func (c *FavoriteAPIController) GetFavorite(w http.ResponseWriter, r *http.Reque
 
 // SearchFavorites - Search Favorites
 func (c *FavoriteAPIController) SearchFavorites(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var favoritableTypeParam string
@@ -586,7 +548,7 @@ func (c *FavoriteAPIController) SearchFavorites(w http.ResponseWriter, r *http.R
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.SearchFavorites(r.Context(), versionParam, favoritableTypeParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, returnFullResponseParam, deviceIdParam, accountIdParam, connectionAccountIdParam, secondaryTypeParam, keywordParam, latitudeParam, longitudeParam)
+	result, err := c.service.SearchFavorites(r.Context(), favoritableTypeParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, returnFullResponseParam, deviceIdParam, accountIdParam, connectionAccountIdParam, secondaryTypeParam, keywordParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -598,18 +560,9 @@ func (c *FavoriteAPIController) SearchFavorites(w http.ResponseWriter, r *http.R
 
 // WhoHasFavorited - Who has Favorited
 func (c *FavoriteAPIController) WhoHasFavorited(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var favoritableIdParam int64
@@ -725,7 +678,7 @@ func (c *FavoriteAPIController) WhoHasFavorited(w http.ResponseWriter, r *http.R
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.WhoHasFavorited(r.Context(), versionParam, favoritableIdParam, favoritableTypeParam, startParam, limitParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam)
+	result, err := c.service.WhoHasFavorited(r.Context(), favoritableIdParam, favoritableTypeParam, startParam, limitParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

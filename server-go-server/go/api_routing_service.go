@@ -29,7 +29,7 @@ func NewRoutingAPIService() *RoutingAPIService {
 }
 
 // ComputeRouting - Compute Route
-func (s *RoutingAPIService) ComputeRouting(ctx context.Context, version float32, data string) (ImplResponse, error) {
+func (s *RoutingAPIService) ComputeRouting(ctx context.Context, data string) (ImplResponse, error) {
 	// TODO - update ComputeRouting with the required logic for this service method.
 	// Add api_routing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

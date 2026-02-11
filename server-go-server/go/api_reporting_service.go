@@ -29,7 +29,7 @@ func NewReportingAPIService() *ReportingAPIService {
 }
 
 // CreateBatch - Create Offline Report
-func (s *ReportingAPIService) CreateBatch(ctx context.Context, version float32, accountId int64, status string, previewLimit int32, appKey string, endpoint string, parameters string, name string, startDate int64, endDate int64, description string, pageUrl string) (ImplResponse, error) {
+func (s *ReportingAPIService) CreateBatch(ctx context.Context, accountId int64, status string, previewLimit int32, appKey string, endpoint string, parameters string, name string, startDate int64, endDate int64, description string, pageUrl string) (ImplResponse, error) {
 	// TODO - update CreateBatch with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ReportingAPIService) CreateBatch(ctx context.Context, version float32, 
 }
 
 // DeleteBatch - Delete Offline Report
-func (s *ReportingAPIService) DeleteBatch(ctx context.Context, version float32, accountId int64, batchId int64) (ImplResponse, error) {
+func (s *ReportingAPIService) DeleteBatch(ctx context.Context, accountId int64, batchId int64) (ImplResponse, error) {
 	// TODO - update DeleteBatch with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ReportingAPIService) DeleteBatch(ctx context.Context, version float32, 
 }
 
 // GetReportBatch - Get Offline Report
-func (s *ReportingAPIService) GetReportBatch(ctx context.Context, version float32, accountId int64, batchId int64, allResults bool) (ImplResponse, error) {
+func (s *ReportingAPIService) GetReportBatch(ctx context.Context, accountId int64, batchId int64, allResults bool) (ImplResponse, error) {
 	// TODO - update GetReportBatch with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ReportingAPIService) GetReportBatch(ctx context.Context, version float3
 }
 
 // SearchBatch - Search Offline Reports
-func (s *ReportingAPIService) SearchBatch(ctx context.Context, version float32, accountId int64, start int32, limit int32, names string, appKey string, status string, globalAppSearch bool, startDate int64, endDate int64) (ImplResponse, error) {
+func (s *ReportingAPIService) SearchBatch(ctx context.Context, accountId int64, start int32, limit int32, names string, appKey string, status string, globalAppSearch bool, startDate int64, endDate int64) (ImplResponse, error) {
 	// TODO - update SearchBatch with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ReportingAPIService) SearchBatch(ctx context.Context, version float32, 
 }
 
 // CreateRegionLegSummaryBatch - Create Offline Report
-func (s *ReportingAPIService) CreateRegionLegSummaryBatch(ctx context.Context, version float32, body []RegionLegSummary) (ImplResponse, error) {
+func (s *ReportingAPIService) CreateRegionLegSummaryBatch(ctx context.Context, body []RegionLegSummary) (ImplResponse, error) {
 	// TODO - update CreateRegionLegSummaryBatch with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ReportingAPIService) CreateRegionLegSummaryBatch(ctx context.Context, v
 }
 
 // RunReport - Run Report
-func (s *ReportingAPIService) RunReport(ctx context.Context, version float32, desc bool, accountId int64, query string, parameters string, order string, start int64, limit int64, responseFormat string) (ImplResponse, error) {
+func (s *ReportingAPIService) RunReport(ctx context.Context, desc bool, accountId int64, query string, parameters string, order string, start int64, limit int64, responseFormat string) (ImplResponse, error) {
 	// TODO - update RunReport with the required logic for this service method.
 	// Add api_reporting_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

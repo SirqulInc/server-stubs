@@ -29,7 +29,7 @@ func NewOpenAIAPIService() *OpenAIAPIService {
 }
 
 // ImageGeneration - Generate images with OpenAI
-func (s *OpenAIAPIService) ImageGeneration(ctx context.Context, version float32, accountId int64, postBody string, returnRawResponse bool) (ImplResponse, error) {
+func (s *OpenAIAPIService) ImageGeneration(ctx context.Context, accountId int64, postBody string, returnRawResponse bool) (ImplResponse, error) {
 	// TODO - update ImageGeneration with the required logic for this service method.
 	// Add api_open_ai_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

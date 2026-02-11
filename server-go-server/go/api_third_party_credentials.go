@@ -18,8 +18,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // ThirdPartyCredentialsAPIController binds http requests to an api service and writes the service results to the http response
@@ -58,67 +56,67 @@ func (c *ThirdPartyCredentialsAPIController) Routes() Routes {
 		"CreateCredential": Route{
 			"CreateCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/create",
+			"/api/3.18/thirdparty/credential/create",
 			c.CreateCredential,
 		},
 		"DeleteCredential": Route{
 			"DeleteCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/delete",
+			"/api/3.18/thirdparty/credential/delete",
 			c.DeleteCredential,
 		},
 		"GetCredential": Route{
 			"GetCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/get",
+			"/api/3.18/thirdparty/credential/get",
 			c.GetCredential,
 		},
 		"SearchCredentials": Route{
 			"SearchCredentials",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/credential/search",
+			"/api/3.18/thirdparty/credential/search",
 			c.SearchCredentials,
 		},
 		"UpdateCredential": Route{
 			"UpdateCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/update",
+			"/api/3.18/thirdparty/credential/update",
 			c.UpdateCredential,
 		},
 		"SendMFAChallenge": Route{
 			"SendMFAChallenge",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/mfa/send",
+			"/api/3.18/thirdparty/credential/mfa/send",
 			c.SendMFAChallenge,
 		},
 		"CreateNetwork": Route{
 			"CreateNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/create",
+			"/api/3.18/thirdparty/network/create",
 			c.CreateNetwork,
 		},
 		"DeleteNetwork": Route{
 			"DeleteNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/delete",
+			"/api/3.18/thirdparty/network/delete",
 			c.DeleteNetwork,
 		},
 		"GetNetwork": Route{
 			"GetNetwork",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/network/get",
+			"/api/3.18/thirdparty/network/get",
 			c.GetNetwork,
 		},
 		"SearchNetworks": Route{
 			"SearchNetworks",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/network/search",
+			"/api/3.18/thirdparty/network/search",
 			c.SearchNetworks,
 		},
 		"UpdateNetwork": Route{
 			"UpdateNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/update",
+			"/api/3.18/thirdparty/network/update",
 			c.UpdateNetwork,
 		},
 	}
@@ -130,67 +128,67 @@ func (c *ThirdPartyCredentialsAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/create",
+			"/api/3.18/thirdparty/credential/create",
 			c.CreateCredential,
 		},
 		Route{
 			"DeleteCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/delete",
+			"/api/3.18/thirdparty/credential/delete",
 			c.DeleteCredential,
 		},
 		Route{
 			"GetCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/get",
+			"/api/3.18/thirdparty/credential/get",
 			c.GetCredential,
 		},
 		Route{
 			"SearchCredentials",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/credential/search",
+			"/api/3.18/thirdparty/credential/search",
 			c.SearchCredentials,
 		},
 		Route{
 			"UpdateCredential",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/update",
+			"/api/3.18/thirdparty/credential/update",
 			c.UpdateCredential,
 		},
 		Route{
 			"SendMFAChallenge",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/credential/mfa/send",
+			"/api/3.18/thirdparty/credential/mfa/send",
 			c.SendMFAChallenge,
 		},
 		Route{
 			"CreateNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/create",
+			"/api/3.18/thirdparty/network/create",
 			c.CreateNetwork,
 		},
 		Route{
 			"DeleteNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/delete",
+			"/api/3.18/thirdparty/network/delete",
 			c.DeleteNetwork,
 		},
 		Route{
 			"GetNetwork",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/network/get",
+			"/api/3.18/thirdparty/network/get",
 			c.GetNetwork,
 		},
 		Route{
 			"SearchNetworks",
 			strings.ToUpper("Get"),
-			"/api/{version}/thirdparty/network/search",
+			"/api/3.18/thirdparty/network/search",
 			c.SearchNetworks,
 		},
 		Route{
 			"UpdateNetwork",
 			strings.ToUpper("Post"),
-			"/api/{version}/thirdparty/network/update",
+			"/api/3.18/thirdparty/network/update",
 			c.UpdateNetwork,
 		},
 	}
@@ -200,18 +198,9 @@ func (c *ThirdPartyCredentialsAPIController) OrderedRoutes() []Route {
 
 // CreateCredential - Create Credential
 func (c *ThirdPartyCredentialsAPIController) CreateCredential(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var thirdPartyIdParam string
@@ -371,7 +360,7 @@ func (c *ThirdPartyCredentialsAPIController) CreateCredential(w http.ResponseWri
 		audienceIdsToRemoveParam = param
 	} else {
 	}
-	result, err := c.service.CreateCredential(r.Context(), versionParam, thirdPartyIdParam, thirdPartyTokenParam, networkUIDParam, appKeyParam, accountIdParam, deviceIdParam, sessionIdParam, thirdPartyNameParam, emailAddressParam, signinOnlyModeParam, responseFiltersParam, latitudeParam, longitudeParam, metaDataParam, thirdPartyRefreshTokenParam, audienceIdsToAddParam, audienceIdsToRemoveParam)
+	result, err := c.service.CreateCredential(r.Context(), thirdPartyIdParam, thirdPartyTokenParam, networkUIDParam, appKeyParam, accountIdParam, deviceIdParam, sessionIdParam, thirdPartyNameParam, emailAddressParam, signinOnlyModeParam, responseFiltersParam, latitudeParam, longitudeParam, metaDataParam, thirdPartyRefreshTokenParam, audienceIdsToAddParam, audienceIdsToRemoveParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -383,18 +372,9 @@ func (c *ThirdPartyCredentialsAPIController) CreateCredential(w http.ResponseWri
 
 // DeleteCredential - Delete Credential
 func (c *ThirdPartyCredentialsAPIController) DeleteCredential(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -440,7 +420,7 @@ func (c *ThirdPartyCredentialsAPIController) DeleteCredential(w http.ResponseWri
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.DeleteCredential(r.Context(), versionParam, accountIdParam, networkUIDParam, thirdPartyIdParam, appKeyParam)
+	result, err := c.service.DeleteCredential(r.Context(), accountIdParam, networkUIDParam, thirdPartyIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -452,18 +432,9 @@ func (c *ThirdPartyCredentialsAPIController) DeleteCredential(w http.ResponseWri
 
 // GetCredential - Get Credential
 func (c *ThirdPartyCredentialsAPIController) GetCredential(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var networkUIDParam string
@@ -619,7 +590,7 @@ func (c *ThirdPartyCredentialsAPIController) GetCredential(w http.ResponseWriter
 		referralAccountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetCredential(r.Context(), versionParam, networkUIDParam, appKeyParam, accountIdParam, deviceIdParam, sessionIdParam, thirdPartyCredentialIdParam, thirdPartyTokenParam, thirdPartySecretParam, createNewAccountParam, responseFiltersParam, latitudeParam, longitudeParam, audienceIdsToAddParam, audienceIdsToRemoveParam, referralAccountIdParam)
+	result, err := c.service.GetCredential(r.Context(), networkUIDParam, appKeyParam, accountIdParam, deviceIdParam, sessionIdParam, thirdPartyCredentialIdParam, thirdPartyTokenParam, thirdPartySecretParam, createNewAccountParam, responseFiltersParam, latitudeParam, longitudeParam, audienceIdsToAddParam, audienceIdsToRemoveParam, referralAccountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -631,18 +602,9 @@ func (c *ThirdPartyCredentialsAPIController) GetCredential(w http.ResponseWriter
 
 // SearchCredentials - Search Credentials
 func (c *ThirdPartyCredentialsAPIController) SearchCredentials(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -721,7 +683,7 @@ func (c *ThirdPartyCredentialsAPIController) SearchCredentials(w http.ResponseWr
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchCredentials(r.Context(), versionParam, accountIdParam, keywordParam, networkUIDParam, descendingParam, startParam, limitParam)
+	result, err := c.service.SearchCredentials(r.Context(), accountIdParam, keywordParam, networkUIDParam, descendingParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -733,18 +695,9 @@ func (c *ThirdPartyCredentialsAPIController) SearchCredentials(w http.ResponseWr
 
 // UpdateCredential - Update Credential
 func (c *ThirdPartyCredentialsAPIController) UpdateCredential(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var networkUIDParam string
@@ -816,7 +769,7 @@ func (c *ThirdPartyCredentialsAPIController) UpdateCredential(w http.ResponseWri
 		thirdPartyRefreshTokenParam = param
 	} else {
 	}
-	result, err := c.service.UpdateCredential(r.Context(), versionParam, networkUIDParam, thirdPartyIdParam, appKeyParam, deviceIdParam, thirdPartyNameParam, thirdPartyTokenParam, responseFiltersParam, metaDataParam, thirdPartyRefreshTokenParam)
+	result, err := c.service.UpdateCredential(r.Context(), networkUIDParam, thirdPartyIdParam, appKeyParam, deviceIdParam, thirdPartyNameParam, thirdPartyTokenParam, responseFiltersParam, metaDataParam, thirdPartyRefreshTokenParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -828,18 +781,9 @@ func (c *ThirdPartyCredentialsAPIController) UpdateCredential(w http.ResponseWri
 
 // SendMFAChallenge - Send MFA Challenge
 func (c *ThirdPartyCredentialsAPIController) SendMFAChallenge(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var networkUIDParam string
@@ -888,7 +832,7 @@ func (c *ThirdPartyCredentialsAPIController) SendMFAChallenge(w http.ResponseWri
 		deviceIdParam = param
 	} else {
 	}
-	result, err := c.service.SendMFAChallenge(r.Context(), versionParam, networkUIDParam, appKeyParam, thirdPartyTokenParam, thirdPartyCredentialIdParam, deviceIdParam)
+	result, err := c.service.SendMFAChallenge(r.Context(), networkUIDParam, appKeyParam, thirdPartyTokenParam, thirdPartyCredentialIdParam, deviceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -900,18 +844,9 @@ func (c *ThirdPartyCredentialsAPIController) SendMFAChallenge(w http.ResponseWri
 
 // CreateNetwork - Create Network
 func (c *ThirdPartyCredentialsAPIController) CreateNetwork(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1074,7 +1009,7 @@ func (c *ThirdPartyCredentialsAPIController) CreateNetwork(w http.ResponseWriter
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	result, err := c.service.CreateNetwork(r.Context(), versionParam, accountIdParam, nameParam, enableIntrospectionParam, descriptionParam, introspectionMethodParam, introspectionURLParam, introspectionParamsParam, requiredRootFieldParam, enableMFAParam, sizeMFAParam, shelfLifeMFAParam, oauthTokenURLParam, oauthPrivateKeyParam, oauthPublicKeyParam, oauthClientIdParam, oauthSecretKeyParam, bodyParam)
+	result, err := c.service.CreateNetwork(r.Context(), accountIdParam, nameParam, enableIntrospectionParam, descriptionParam, introspectionMethodParam, introspectionURLParam, introspectionParamsParam, requiredRootFieldParam, enableMFAParam, sizeMFAParam, shelfLifeMFAParam, oauthTokenURLParam, oauthPrivateKeyParam, oauthPublicKeyParam, oauthClientIdParam, oauthSecretKeyParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1086,18 +1021,9 @@ func (c *ThirdPartyCredentialsAPIController) CreateNetwork(w http.ResponseWriter
 
 // DeleteNetwork - Delete Network
 func (c *ThirdPartyCredentialsAPIController) DeleteNetwork(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1125,7 +1051,7 @@ func (c *ThirdPartyCredentialsAPIController) DeleteNetwork(w http.ResponseWriter
 		c.errorHandler(w, r, &RequiredError{Field: "networkUID"}, nil)
 		return
 	}
-	result, err := c.service.DeleteNetwork(r.Context(), versionParam, accountIdParam, networkUIDParam)
+	result, err := c.service.DeleteNetwork(r.Context(), accountIdParam, networkUIDParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1137,18 +1063,9 @@ func (c *ThirdPartyCredentialsAPIController) DeleteNetwork(w http.ResponseWriter
 
 // GetNetwork - Get Network
 func (c *ThirdPartyCredentialsAPIController) GetNetwork(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1176,7 +1093,7 @@ func (c *ThirdPartyCredentialsAPIController) GetNetwork(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{Field: "networkUID"}, nil)
 		return
 	}
-	result, err := c.service.GetNetwork(r.Context(), versionParam, accountIdParam, networkUIDParam)
+	result, err := c.service.GetNetwork(r.Context(), accountIdParam, networkUIDParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1188,18 +1105,9 @@ func (c *ThirdPartyCredentialsAPIController) GetNetwork(w http.ResponseWriter, r
 
 // SearchNetworks - Search Networks
 func (c *ThirdPartyCredentialsAPIController) SearchNetworks(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1312,7 +1220,7 @@ func (c *ThirdPartyCredentialsAPIController) SearchNetworks(w http.ResponseWrite
 		filterBillableParam = param
 	} else {
 	}
-	result, err := c.service.SearchNetworks(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam, filterBillableParam)
+	result, err := c.service.SearchNetworks(r.Context(), accountIdParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam, filterBillableParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1324,18 +1232,9 @@ func (c *ThirdPartyCredentialsAPIController) SearchNetworks(w http.ResponseWrite
 
 // UpdateNetwork - Update Network
 func (c *ThirdPartyCredentialsAPIController) UpdateNetwork(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1503,7 +1402,7 @@ func (c *ThirdPartyCredentialsAPIController) UpdateNetwork(w http.ResponseWriter
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	result, err := c.service.UpdateNetwork(r.Context(), versionParam, accountIdParam, networkUIDParam, nameParam, descriptionParam, enableIntrospectionParam, introspectionMethodParam, introspectionURLParam, introspectionParamsParam, requiredRootFieldParam, enableMFAParam, sizeMFAParam, shelfLifeMFAParam, oauthTokenURLParam, oauthPrivateKeyParam, oauthPublicKeyParam, oauthClientIdParam, oauthSecretKeyParam, bodyParam)
+	result, err := c.service.UpdateNetwork(r.Context(), accountIdParam, networkUIDParam, nameParam, descriptionParam, enableIntrospectionParam, introspectionMethodParam, introspectionURLParam, introspectionParamsParam, requiredRootFieldParam, enableMFAParam, sizeMFAParam, shelfLifeMFAParam, oauthTokenURLParam, oauthPrivateKeyParam, oauthPublicKeyParam, oauthClientIdParam, oauthSecretKeyParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

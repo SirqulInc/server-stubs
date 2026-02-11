@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // WalletAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *WalletAPIController) Routes() Routes {
 		"CreateOfferTransaction": Route{
 			"CreateOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/create",
+			"/api/3.18/wallet/create",
 			c.CreateOfferTransaction,
 		},
 		"PreviewOfferTransaction": Route{
 			"PreviewOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/preview",
+			"/api/3.18/wallet/preview",
 			c.PreviewOfferTransaction,
 		},
 		"DeleteOfferTransaction": Route{
 			"DeleteOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/delete",
+			"/api/3.18/wallet/delete",
 			c.DeleteOfferTransaction,
 		},
 		"GetOfferTransaction": Route{
 			"GetOfferTransaction",
 			strings.ToUpper("Get"),
-			"/api/{version}/wallet/get",
+			"/api/3.18/wallet/get",
 			c.GetOfferTransaction,
 		},
 		"SearchOfferTransactions": Route{
 			"SearchOfferTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/wallet/search",
+			"/api/3.18/wallet/search",
 			c.SearchOfferTransactions,
 		},
 		"UpdateOfferTransaction": Route{
 			"UpdateOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/update",
+			"/api/3.18/wallet/update",
 			c.UpdateOfferTransaction,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *WalletAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/create",
+			"/api/3.18/wallet/create",
 			c.CreateOfferTransaction,
 		},
 		Route{
 			"PreviewOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/preview",
+			"/api/3.18/wallet/preview",
 			c.PreviewOfferTransaction,
 		},
 		Route{
 			"DeleteOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/delete",
+			"/api/3.18/wallet/delete",
 			c.DeleteOfferTransaction,
 		},
 		Route{
 			"GetOfferTransaction",
 			strings.ToUpper("Get"),
-			"/api/{version}/wallet/get",
+			"/api/3.18/wallet/get",
 			c.GetOfferTransaction,
 		},
 		Route{
 			"SearchOfferTransactions",
 			strings.ToUpper("Get"),
-			"/api/{version}/wallet/search",
+			"/api/3.18/wallet/search",
 			c.SearchOfferTransactions,
 		},
 		Route{
 			"UpdateOfferTransaction",
 			strings.ToUpper("Post"),
-			"/api/{version}/wallet/update",
+			"/api/3.18/wallet/update",
 			c.UpdateOfferTransaction,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *WalletAPIController) OrderedRoutes() []Route {
 
 // CreateOfferTransaction - Create Wallet Offers
 func (c *WalletAPIController) CreateOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -264,7 +253,7 @@ func (c *WalletAPIController) CreateOfferTransaction(w http.ResponseWriter, r *h
 		statusParam = param
 	} else {
 	}
-	result, err := c.service.CreateOfferTransaction(r.Context(), versionParam, deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, offerCartParam, promoCodeParam, currencyTypeParam, usePointsParam, metaDataParam, appKeyParam, statusParam)
+	result, err := c.service.CreateOfferTransaction(r.Context(), deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, offerCartParam, promoCodeParam, currencyTypeParam, usePointsParam, metaDataParam, appKeyParam, statusParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -276,18 +265,9 @@ func (c *WalletAPIController) CreateOfferTransaction(w http.ResponseWriter, r *h
 
 // PreviewOfferTransaction - Preview Wallet Offers
 func (c *WalletAPIController) PreviewOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -390,7 +370,7 @@ func (c *WalletAPIController) PreviewOfferTransaction(w http.ResponseWriter, r *
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.PreviewOfferTransaction(r.Context(), versionParam, deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, offerCartParam, promoCodeParam, currencyTypeParam, usePointsParam, metaDataParam, appKeyParam)
+	result, err := c.service.PreviewOfferTransaction(r.Context(), deviceIdParam, accountIdParam, offerIdParam, offerLocationIdParam, offerCartParam, promoCodeParam, currencyTypeParam, usePointsParam, metaDataParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -402,18 +382,9 @@ func (c *WalletAPIController) PreviewOfferTransaction(w http.ResponseWriter, r *
 
 // DeleteOfferTransaction - Delete Wallet Offer
 func (c *WalletAPIController) DeleteOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var transactionIdParam int64
@@ -453,7 +424,7 @@ func (c *WalletAPIController) DeleteOfferTransaction(w http.ResponseWriter, r *h
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteOfferTransaction(r.Context(), versionParam, transactionIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteOfferTransaction(r.Context(), transactionIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -465,18 +436,9 @@ func (c *WalletAPIController) DeleteOfferTransaction(w http.ResponseWriter, r *h
 
 // GetOfferTransaction - Get Wallet Offer
 func (c *WalletAPIController) GetOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var transactionIdParam int64
@@ -576,7 +538,7 @@ func (c *WalletAPIController) GetOfferTransaction(w http.ResponseWriter, r *http
 		var param bool = true
 		returnFullResponseParam = param
 	}
-	result, err := c.service.GetOfferTransaction(r.Context(), versionParam, transactionIdParam, deviceIdParam, accountIdParam, includeMissionParam, latitudeParam, longitudeParam, returnFullResponseParam)
+	result, err := c.service.GetOfferTransaction(r.Context(), transactionIdParam, deviceIdParam, accountIdParam, includeMissionParam, latitudeParam, longitudeParam, returnFullResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -588,18 +550,9 @@ func (c *WalletAPIController) GetOfferTransaction(w http.ResponseWriter, r *http
 
 // SearchOfferTransactions - Search Wallet Offers
 func (c *WalletAPIController) SearchOfferTransactions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1082,7 +1035,7 @@ func (c *WalletAPIController) SearchOfferTransactions(w http.ResponseWriter, r *
 		recurringExpirationBeforeParam = param
 	} else {
 	}
-	result, err := c.service.SearchOfferTransactions(r.Context(), versionParam, deviceIdParam, accountIdParam, keywordParam, retailerIdParam, retailerIdsParam, retailerLocationIdParam, retailerLocationIdsParam, excludeRetailerLocationIdsParam, offerIdParam, offerIdsParam, offerLocationIdParam, offerLocationIdsParam, offerTypeParam, offerTypesParam, specialOfferTypeParam, specialOfferTypesParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, sortFieldParam, descendingParam, startParam, limitParam, latitudeParam, longitudeParam, redeemableStartDateParam, redeemableEndDateParam, filterByParentOfferParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam, redeemedParam, statusesParam, reservationsOnlyParam, activeOnlyParam, returnFullResponseParam, recurringStartedSinceParam, recurringStartedBeforeParam, recurringExpirationSinceParam, recurringExpirationBeforeParam)
+	result, err := c.service.SearchOfferTransactions(r.Context(), deviceIdParam, accountIdParam, keywordParam, retailerIdParam, retailerIdsParam, retailerLocationIdParam, retailerLocationIdsParam, excludeRetailerLocationIdsParam, offerIdParam, offerIdsParam, offerLocationIdParam, offerLocationIdsParam, offerTypeParam, offerTypesParam, specialOfferTypeParam, specialOfferTypesParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, sortFieldParam, descendingParam, startParam, limitParam, latitudeParam, longitudeParam, redeemableStartDateParam, redeemableEndDateParam, filterByParentOfferParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam, redeemedParam, statusesParam, reservationsOnlyParam, activeOnlyParam, returnFullResponseParam, recurringStartedSinceParam, recurringStartedBeforeParam, recurringExpirationSinceParam, recurringExpirationBeforeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1094,18 +1047,9 @@ func (c *WalletAPIController) SearchOfferTransactions(w http.ResponseWriter, r *
 
 // UpdateOfferTransaction - Update Wallet Offer
 func (c *WalletAPIController) UpdateOfferTransaction(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var transactionIdParam int64
@@ -1263,7 +1207,7 @@ func (c *WalletAPIController) UpdateOfferTransaction(w http.ResponseWriter, r *h
 		exceptionMembershipOfferIdsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateOfferTransaction(r.Context(), versionParam, transactionIdParam, statusParam, deviceIdParam, accountIdParam, offerLocationIdParam, currencyTypeParam, usePointsParam, appKeyParam, latitudeParam, longitudeParam, metaDataParam, returnFullResponseParam, exceptionMembershipOfferIdsParam)
+	result, err := c.service.UpdateOfferTransaction(r.Context(), transactionIdParam, statusParam, deviceIdParam, accountIdParam, offerLocationIdParam, currencyTypeParam, usePointsParam, appKeyParam, latitudeParam, longitudeParam, metaDataParam, returnFullResponseParam, exceptionMembershipOfferIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

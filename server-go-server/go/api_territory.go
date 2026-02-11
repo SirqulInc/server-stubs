@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TerritoryAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *TerritoryAPIController) Routes() Routes {
 		"CreateTerritory": Route{
 			"CreateTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/create",
+			"/api/3.18/territory/create",
 			c.CreateTerritory,
 		},
 		"DeleteTerritory": Route{
 			"DeleteTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/delete",
+			"/api/3.18/territory/delete",
 			c.DeleteTerritory,
 		},
 		"GetTerritory": Route{
 			"GetTerritory",
 			strings.ToUpper("Get"),
-			"/api/{version}/territory/get",
+			"/api/3.18/territory/get",
 			c.GetTerritory,
 		},
 		"SearchTerritories": Route{
 			"SearchTerritories",
 			strings.ToUpper("Get"),
-			"/api/{version}/territory/search",
+			"/api/3.18/territory/search",
 			c.SearchTerritories,
 		},
 		"UpdateTerritory": Route{
 			"UpdateTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/update",
+			"/api/3.18/territory/update",
 			c.UpdateTerritory,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *TerritoryAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/create",
+			"/api/3.18/territory/create",
 			c.CreateTerritory,
 		},
 		Route{
 			"DeleteTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/delete",
+			"/api/3.18/territory/delete",
 			c.DeleteTerritory,
 		},
 		Route{
 			"GetTerritory",
 			strings.ToUpper("Get"),
-			"/api/{version}/territory/get",
+			"/api/3.18/territory/get",
 			c.GetTerritory,
 		},
 		Route{
 			"SearchTerritories",
 			strings.ToUpper("Get"),
-			"/api/{version}/territory/search",
+			"/api/3.18/territory/search",
 			c.SearchTerritories,
 		},
 		Route{
 			"UpdateTerritory",
 			strings.ToUpper("Post"),
-			"/api/{version}/territory/update",
+			"/api/3.18/territory/update",
 			c.UpdateTerritory,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *TerritoryAPIController) OrderedRoutes() []Route {
 
 // CreateTerritory - Create Territory
 func (c *TerritoryAPIController) CreateTerritory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -177,7 +166,7 @@ func (c *TerritoryAPIController) CreateTerritory(w http.ResponseWriter, r *http.
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.CreateTerritory(r.Context(), versionParam, accountIdParam, nameParam, activeParam)
+	result, err := c.service.CreateTerritory(r.Context(), accountIdParam, nameParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -189,18 +178,9 @@ func (c *TerritoryAPIController) CreateTerritory(w http.ResponseWriter, r *http.
 
 // DeleteTerritory - Delete Territory
 func (c *TerritoryAPIController) DeleteTerritory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -235,7 +215,7 @@ func (c *TerritoryAPIController) DeleteTerritory(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "territoryId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteTerritory(r.Context(), versionParam, accountIdParam, territoryIdParam)
+	result, err := c.service.DeleteTerritory(r.Context(), accountIdParam, territoryIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -247,18 +227,9 @@ func (c *TerritoryAPIController) DeleteTerritory(w http.ResponseWriter, r *http.
 
 // GetTerritory - Get Territory
 func (c *TerritoryAPIController) GetTerritory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var territoryIdParam int64
@@ -277,7 +248,7 @@ func (c *TerritoryAPIController) GetTerritory(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "territoryId"}, nil)
 		return
 	}
-	result, err := c.service.GetTerritory(r.Context(), versionParam, territoryIdParam)
+	result, err := c.service.GetTerritory(r.Context(), territoryIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -289,18 +260,9 @@ func (c *TerritoryAPIController) GetTerritory(w http.ResponseWriter, r *http.Req
 
 // SearchTerritories - Search Territories
 func (c *TerritoryAPIController) SearchTerritories(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -363,7 +325,7 @@ func (c *TerritoryAPIController) SearchTerritories(w http.ResponseWriter, r *htt
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchTerritories(r.Context(), versionParam, sortFieldParam, descendingParam, keywordParam, startParam, limitParam)
+	result, err := c.service.SearchTerritories(r.Context(), sortFieldParam, descendingParam, keywordParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -375,18 +337,9 @@ func (c *TerritoryAPIController) SearchTerritories(w http.ResponseWriter, r *htt
 
 // UpdateTerritory - Update Territory
 func (c *TerritoryAPIController) UpdateTerritory(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -442,7 +395,7 @@ func (c *TerritoryAPIController) UpdateTerritory(w http.ResponseWriter, r *http.
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateTerritory(r.Context(), versionParam, accountIdParam, territoryIdParam, nameParam, activeParam)
+	result, err := c.service.UpdateTerritory(r.Context(), accountIdParam, territoryIdParam, nameParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -29,7 +29,7 @@ func NewBillableEntityAPIService() *BillableEntityAPIService {
 }
 
 // CreateBillableEntity - Create Billable
-func (s *BillableEntityAPIService) CreateBillableEntity(ctx context.Context, version float32, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, businessPhone string, businessPhoneExt string, authorizeNetApiKey string, authorizeNetTransactionKey string) (ImplResponse, error) {
+func (s *BillableEntityAPIService) CreateBillableEntity(ctx context.Context, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, businessPhone string, businessPhoneExt string, authorizeNetApiKey string, authorizeNetTransactionKey string) (ImplResponse, error) {
 	// TODO - update CreateBillableEntity with the required logic for this service method.
 	// Add api_billable_entity_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *BillableEntityAPIService) CreateBillableEntity(ctx context.Context, ver
 }
 
 // DeleteBillableEntity - Delete Billable
-func (s *BillableEntityAPIService) DeleteBillableEntity(ctx context.Context, version float32, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *BillableEntityAPIService) DeleteBillableEntity(ctx context.Context, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteBillableEntity with the required logic for this service method.
 	// Add api_billable_entity_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *BillableEntityAPIService) DeleteBillableEntity(ctx context.Context, ver
 }
 
 // GetBillableEntity - Get Billable
-func (s *BillableEntityAPIService) GetBillableEntity(ctx context.Context, version float32, deviceId string, accountId int64, includeCounts bool, includePayments bool) (ImplResponse, error) {
+func (s *BillableEntityAPIService) GetBillableEntity(ctx context.Context, deviceId string, accountId int64, includeCounts bool, includePayments bool) (ImplResponse, error) {
 	// TODO - update GetBillableEntity with the required logic for this service method.
 	// Add api_billable_entity_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *BillableEntityAPIService) GetBillableEntity(ctx context.Context, versio
 }
 
 // UpdateBillableEntity - Update Billable
-func (s *BillableEntityAPIService) UpdateBillableEntity(ctx context.Context, version float32, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, businessPhone string, businessPhoneExt string, authorizeNetApiKey string, authorizeNetTransactionKey string) (ImplResponse, error) {
+func (s *BillableEntityAPIService) UpdateBillableEntity(ctx context.Context, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, businessPhone string, businessPhoneExt string, authorizeNetApiKey string, authorizeNetTransactionKey string) (ImplResponse, error) {
 	// TODO - update UpdateBillableEntity with the required logic for this service method.
 	// Add api_billable_entity_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

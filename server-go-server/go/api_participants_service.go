@@ -30,7 +30,7 @@ func NewParticipantsAPIService() *ParticipantsAPIService {
 }
 
 // ProcessParticipants - Process Participants Feed
-func (s *ParticipantsAPIService) ProcessParticipants(ctx context.Context, version float32, accountId int64, league string, appKey string, useShortNameAsID bool, file *os.File) (ImplResponse, error) {
+func (s *ParticipantsAPIService) ProcessParticipants(ctx context.Context, accountId int64, league string, appKey string, useShortNameAsID bool, file *os.File) (ImplResponse, error) {
 	// TODO - update ProcessParticipants with the required logic for this service method.
 	// Add api_participants_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *ParticipantsAPIService) ProcessParticipants(ctx context.Context, versio
 }
 
 // ProcessAllParticipants - Process All Participant Feeds
-func (s *ParticipantsAPIService) ProcessAllParticipants(ctx context.Context, version float32, accountId int64, appKey string, useShortNameAsID bool) (ImplResponse, error) {
+func (s *ParticipantsAPIService) ProcessAllParticipants(ctx context.Context, accountId int64, appKey string, useShortNameAsID bool) (ImplResponse, error) {
 	// TODO - update ProcessAllParticipants with the required logic for this service method.
 	// Add api_participants_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

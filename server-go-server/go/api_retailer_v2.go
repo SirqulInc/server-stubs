@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // RetailerV2APIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *RetailerV2APIController) Routes() Routes {
 		"GetRetaokiler": Route{
 			"GetRetaokiler",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer",
+			"/api/3.18/retailer",
 			c.GetRetaokiler,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *RetailerV2APIController) OrderedRoutes() []Route {
 		Route{
 			"GetRetaokiler",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer",
+			"/api/3.18/retailer",
 			c.GetRetaokiler,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *RetailerV2APIController) OrderedRoutes() []Route {
 
 // GetRetaokiler - Get Retailer
 func (c *RetailerV2APIController) GetRetaokiler(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var retailerIdParam int64
@@ -170,7 +159,7 @@ func (c *RetailerV2APIController) GetRetaokiler(w http.ResponseWriter, r *http.R
 		var param int64 = 20
 		limitParam = param
 	}
-	result, err := c.service.GetRetaokiler(r.Context(), versionParam, retailerIdParam, activeOnlyParam, keywordParam, sortFieldParam, startParam, limitParam)
+	result, err := c.service.GetRetaokiler(r.Context(), retailerIdParam, activeOnlyParam, keywordParam, sortFieldParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

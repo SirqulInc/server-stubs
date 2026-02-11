@@ -57,43 +57,43 @@ func (c *ShipmentAPIController) Routes() Routes {
 		"SearchShipments": Route{
 			"SearchShipments",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment",
+			"/api/3.18/shipment",
 			c.SearchShipments,
 		},
 		"CreateShipment": Route{
 			"CreateShipment",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment",
+			"/api/3.18/shipment",
 			c.CreateShipment,
 		},
 		"GetShipment": Route{
 			"GetShipment",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.GetShipment,
 		},
 		"UpdateShipment": Route{
 			"UpdateShipment",
 			strings.ToUpper("Put"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.UpdateShipment,
 		},
 		"DeleteShipment": Route{
 			"DeleteShipment",
 			strings.ToUpper("Delete"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.DeleteShipment,
 		},
 		"CancelShipment": Route{
 			"CancelShipment",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/{id}/cancel",
+			"/api/3.18/shipment/{id}/cancel",
 			c.CancelShipment,
 		},
 		"UpdateShipmentStatus": Route{
 			"UpdateShipmentStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/{id}/status",
+			"/api/3.18/shipment/{id}/status",
 			c.UpdateShipmentStatus,
 		},
 	}
@@ -105,43 +105,43 @@ func (c *ShipmentAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchShipments",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment",
+			"/api/3.18/shipment",
 			c.SearchShipments,
 		},
 		Route{
 			"CreateShipment",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment",
+			"/api/3.18/shipment",
 			c.CreateShipment,
 		},
 		Route{
 			"GetShipment",
 			strings.ToUpper("Get"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.GetShipment,
 		},
 		Route{
 			"UpdateShipment",
 			strings.ToUpper("Put"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.UpdateShipment,
 		},
 		Route{
 			"DeleteShipment",
 			strings.ToUpper("Delete"),
-			"/api/{version}/shipment/{id}",
+			"/api/3.18/shipment/{id}",
 			c.DeleteShipment,
 		},
 		Route{
 			"CancelShipment",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/{id}/cancel",
+			"/api/3.18/shipment/{id}/cancel",
 			c.CancelShipment,
 		},
 		Route{
 			"UpdateShipmentStatus",
 			strings.ToUpper("Post"),
-			"/api/{version}/shipment/{id}/status",
+			"/api/3.18/shipment/{id}/status",
 			c.UpdateShipmentStatus,
 		},
 	}
@@ -151,18 +151,9 @@ func (c *ShipmentAPIController) OrderedRoutes() []Route {
 
 // SearchShipments - Search Shipments
 func (c *ShipmentAPIController) SearchShipments(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -280,7 +271,7 @@ func (c *ShipmentAPIController) SearchShipments(w http.ResponseWriter, r *http.R
 		routeIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchShipments(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, ownerIdParam, riderIdParam, routeIdParam)
+	result, err := c.service.SearchShipments(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, ownerIdParam, riderIdParam, routeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -292,15 +283,6 @@ func (c *ShipmentAPIController) SearchShipments(w http.ResponseWriter, r *http.R
 
 // CreateShipment - Create Shipment
 func (c *ShipmentAPIController) CreateShipment(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Shipment
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -316,7 +298,7 @@ func (c *ShipmentAPIController) CreateShipment(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateShipment(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateShipment(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -329,14 +311,6 @@ func (c *ShipmentAPIController) CreateShipment(w http.ResponseWriter, r *http.Re
 // GetShipment - Get Shipment
 func (c *ShipmentAPIController) GetShipment(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -345,7 +319,7 @@ func (c *ShipmentAPIController) GetShipment(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetShipment(r.Context(), versionParam, idParam)
+	result, err := c.service.GetShipment(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -358,14 +332,6 @@ func (c *ShipmentAPIController) GetShipment(w http.ResponseWriter, r *http.Reque
 // UpdateShipment - Update Shipment
 func (c *ShipmentAPIController) UpdateShipment(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -389,7 +355,7 @@ func (c *ShipmentAPIController) UpdateShipment(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateShipment(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateShipment(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -402,14 +368,6 @@ func (c *ShipmentAPIController) UpdateShipment(w http.ResponseWriter, r *http.Re
 // DeleteShipment - Delete Shipment
 func (c *ShipmentAPIController) DeleteShipment(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -418,7 +376,7 @@ func (c *ShipmentAPIController) DeleteShipment(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteShipment(r.Context(), versionParam, idParam)
+	result, err := c.service.DeleteShipment(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -431,14 +389,6 @@ func (c *ShipmentAPIController) DeleteShipment(w http.ResponseWriter, r *http.Re
 // CancelShipment - Cancel Shipment
 func (c *ShipmentAPIController) CancelShipment(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -447,7 +397,7 @@ func (c *ShipmentAPIController) CancelShipment(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.CancelShipment(r.Context(), versionParam, idParam)
+	result, err := c.service.CancelShipment(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -460,14 +410,6 @@ func (c *ShipmentAPIController) CancelShipment(w http.ResponseWriter, r *http.Re
 // UpdateShipmentStatus - Uupdate Shipment Status
 func (c *ShipmentAPIController) UpdateShipmentStatus(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -483,7 +425,7 @@ func (c *ShipmentAPIController) UpdateShipmentStatus(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	result, err := c.service.UpdateShipmentStatus(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateShipmentStatus(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

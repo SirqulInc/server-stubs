@@ -29,7 +29,7 @@ func NewGameLevelAPIService() *GameLevelAPIService {
 }
 
 // CreateGameLevel - Create Game Level
-func (s *GameLevelAPIService) CreateGameLevel(ctx context.Context, version float32, accountId int64, name string, gameData string, gameDataSuffix string, appKey string, description string, difficulty string, appVersion string, assetImageId int64, assetIconId int64, visibility string, friendGroup bool, connectionIds string, connectionGroupIds string, balance float64, active bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, tutorialTitle string, tutorialMessage string, tutorialAlignment string, tutorialImageAssetId int64, offerId int64, metaData string) (ImplResponse, error) {
+func (s *GameLevelAPIService) CreateGameLevel(ctx context.Context, accountId int64, name string, gameData string, gameDataSuffix string, appKey string, description string, difficulty string, appVersion string, assetImageId int64, assetIconId int64, visibility string, friendGroup bool, connectionIds string, connectionGroupIds string, balance float64, active bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, tutorialTitle string, tutorialMessage string, tutorialAlignment string, tutorialImageAssetId int64, offerId int64, metaData string) (ImplResponse, error) {
 	// TODO - update CreateGameLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *GameLevelAPIService) CreateGameLevel(ctx context.Context, version float
 }
 
 // DeleteGameLevel - Delete Game Level
-func (s *GameLevelAPIService) DeleteGameLevel(ctx context.Context, version float32, accountId int64, levelId int64) (ImplResponse, error) {
+func (s *GameLevelAPIService) DeleteGameLevel(ctx context.Context, accountId int64, levelId int64) (ImplResponse, error) {
 	// TODO - update DeleteGameLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *GameLevelAPIService) DeleteGameLevel(ctx context.Context, version float
 }
 
 // GetGameLevel - Get Game Level
-func (s *GameLevelAPIService) GetGameLevel(ctx context.Context, version float32, accountId int64, levelId int64, includeGameData bool) (ImplResponse, error) {
+func (s *GameLevelAPIService) GetGameLevel(ctx context.Context, accountId int64, levelId int64, includeGameData bool) (ImplResponse, error) {
 	// TODO - update GetGameLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *GameLevelAPIService) GetGameLevel(ctx context.Context, version float32,
 }
 
 // GetQuestionsInLevel - Get Level Questions
-func (s *GameLevelAPIService) GetQuestionsInLevel(ctx context.Context, version float32, levelId int64, accountId int64) (ImplResponse, error) {
+func (s *GameLevelAPIService) GetQuestionsInLevel(ctx context.Context, levelId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetQuestionsInLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *GameLevelAPIService) GetQuestionsInLevel(ctx context.Context, version f
 }
 
 // UpdateQuestionsInLevel - Update Level Questions
-func (s *GameLevelAPIService) UpdateQuestionsInLevel(ctx context.Context, version float32, levelId int64, accountId int64, questionIds string) (ImplResponse, error) {
+func (s *GameLevelAPIService) UpdateQuestionsInLevel(ctx context.Context, levelId int64, accountId int64, questionIds string) (ImplResponse, error) {
 	// TODO - update UpdateQuestionsInLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *GameLevelAPIService) UpdateQuestionsInLevel(ctx context.Context, versio
 }
 
 // GetGameLevelsByApplication - Search Game Levels
-func (s *GameLevelAPIService) GetGameLevelsByApplication(ctx context.Context, version float32, accountId int64, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, appVersion string, includeGameData bool, filters string) (ImplResponse, error) {
+func (s *GameLevelAPIService) GetGameLevelsByApplication(ctx context.Context, accountId int64, appKey string, keyword string, sortField string, descending bool, start int32, limit int32, appVersion string, includeGameData bool, filters string) (ImplResponse, error) {
 	// TODO - update GetGameLevelsByApplication with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *GameLevelAPIService) GetGameLevelsByApplication(ctx context.Context, ve
 }
 
 // GetGameLevelsByBillableEntity - Search Game Level by Billable Entity
-func (s *GameLevelAPIService) GetGameLevelsByBillableEntity(ctx context.Context, version float32, accountId int64, appKey string, keyword string, sortField string, descending bool, activeOnly bool, start int64, limit int64) (ImplResponse, error) {
+func (s *GameLevelAPIService) GetGameLevelsByBillableEntity(ctx context.Context, accountId int64, appKey string, keyword string, sortField string, descending bool, activeOnly bool, start int64, limit int64) (ImplResponse, error) {
 	// TODO - update GetGameLevelsByBillableEntity with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *GameLevelAPIService) GetGameLevelsByBillableEntity(ctx context.Context,
 }
 
 // UpdateGameLevel - Update Game Level
-func (s *GameLevelAPIService) UpdateGameLevel(ctx context.Context, version float32, accountId int64, levelId int64, appKey string, name string, description string, difficulty string, appVersion string, assetImageId int64, assetIconId int64, gameData string, gameDataSuffix string, visibility string, friendGroup bool, connectionIds string, connectionGroupIds string, balance float64, active bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, tutorialTitle string, tutorialMessage string, tutorialAlignment string, tutorialImageAssetId int64, offerId int64, metaData string) (ImplResponse, error) {
+func (s *GameLevelAPIService) UpdateGameLevel(ctx context.Context, accountId int64, levelId int64, appKey string, name string, description string, difficulty string, appVersion string, assetImageId int64, assetIconId int64, gameData string, gameDataSuffix string, visibility string, friendGroup bool, connectionIds string, connectionGroupIds string, balance float64, active bool, allocateTickets bool, ticketCount int64, ticketType string, points int64, tutorialTitle string, tutorialMessage string, tutorialAlignment string, tutorialImageAssetId int64, offerId int64, metaData string) (ImplResponse, error) {
 	// TODO - update UpdateGameLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *GameLevelAPIService) UpdateGameLevel(ctx context.Context, version float
 }
 
 // GetWordsInLevel - Get Level Words
-func (s *GameLevelAPIService) GetWordsInLevel(ctx context.Context, version float32, levelId int64, accountId int64) (ImplResponse, error) {
+func (s *GameLevelAPIService) GetWordsInLevel(ctx context.Context, levelId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetWordsInLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *GameLevelAPIService) GetWordsInLevel(ctx context.Context, version float
 }
 
 // UpdateWordsInLevel - Update Level Words
-func (s *GameLevelAPIService) UpdateWordsInLevel(ctx context.Context, version float32, levelId int64, accountId int64, wordIds string) (ImplResponse, error) {
+func (s *GameLevelAPIService) UpdateWordsInLevel(ctx context.Context, levelId int64, accountId int64, wordIds string) (ImplResponse, error) {
 	// TODO - update UpdateWordsInLevel with the required logic for this service method.
 	// Add api_game_level_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

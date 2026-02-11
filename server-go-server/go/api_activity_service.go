@@ -29,7 +29,7 @@ func NewActivityAPIService() *ActivityAPIService {
 }
 
 // CreateEntityReference - Create an entity reference.
-func (s *ActivityAPIService) CreateEntityReference(ctx context.Context, version float32, body EntityReference) (ImplResponse, error) {
+func (s *ActivityAPIService) CreateEntityReference(ctx context.Context, body EntityReference) (ImplResponse, error) {
 	// TODO - update CreateEntityReference with the required logic for this service method.
 	// Add api_activity_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PurchaseOrderAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *PurchaseOrderAPIController) Routes() Routes {
 		"CreateOrder": Route{
 			"CreateOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/create",
+			"/api/3.18/order/create",
 			c.CreateOrder,
 		},
 		"PreviewOrder": Route{
 			"PreviewOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/preview",
+			"/api/3.18/order/preview",
 			c.PreviewOrder,
 		},
 		"DeleteOrder": Route{
 			"DeleteOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/delete",
+			"/api/3.18/order/delete",
 			c.DeleteOrder,
 		},
 		"GetOrder": Route{
 			"GetOrder",
 			strings.ToUpper("Get"),
-			"/api/{version}/order/get",
+			"/api/3.18/order/get",
 			c.GetOrder,
 		},
 		"SearchOrders": Route{
 			"SearchOrders",
 			strings.ToUpper("Get"),
-			"/api/{version}/order/search",
+			"/api/3.18/order/search",
 			c.SearchOrders,
 		},
 		"UpdateOrder": Route{
 			"UpdateOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/update",
+			"/api/3.18/order/update",
 			c.UpdateOrder,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *PurchaseOrderAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/create",
+			"/api/3.18/order/create",
 			c.CreateOrder,
 		},
 		Route{
 			"PreviewOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/preview",
+			"/api/3.18/order/preview",
 			c.PreviewOrder,
 		},
 		Route{
 			"DeleteOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/delete",
+			"/api/3.18/order/delete",
 			c.DeleteOrder,
 		},
 		Route{
 			"GetOrder",
 			strings.ToUpper("Get"),
-			"/api/{version}/order/get",
+			"/api/3.18/order/get",
 			c.GetOrder,
 		},
 		Route{
 			"SearchOrders",
 			strings.ToUpper("Get"),
-			"/api/{version}/order/search",
+			"/api/3.18/order/search",
 			c.SearchOrders,
 		},
 		Route{
 			"UpdateOrder",
 			strings.ToUpper("Post"),
-			"/api/{version}/order/update",
+			"/api/3.18/order/update",
 			c.UpdateOrder,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *PurchaseOrderAPIController) OrderedRoutes() []Route {
 
 // CreateOrder - Create Order
 func (c *PurchaseOrderAPIController) CreateOrder(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -261,7 +250,7 @@ func (c *PurchaseOrderAPIController) CreateOrder(w http.ResponseWriter, r *http.
 		promoCodeParam = param
 	} else {
 	}
-	result, err := c.service.CreateOrder(r.Context(), versionParam, appKeyParam, cartParam, deviceIdParam, accountIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalOrderIdParam, externalPaymentIdParam, remoteRefTypeParam, externalDateParam, promoCodeParam)
+	result, err := c.service.CreateOrder(r.Context(), appKeyParam, cartParam, deviceIdParam, accountIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalOrderIdParam, externalPaymentIdParam, remoteRefTypeParam, externalDateParam, promoCodeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -273,18 +262,9 @@ func (c *PurchaseOrderAPIController) CreateOrder(w http.ResponseWriter, r *http.
 
 // PreviewOrder - Preview Order
 func (c *PurchaseOrderAPIController) PreviewOrder(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -398,7 +378,7 @@ func (c *PurchaseOrderAPIController) PreviewOrder(w http.ResponseWriter, r *http
 		promoCodeParam = param
 	} else {
 	}
-	result, err := c.service.PreviewOrder(r.Context(), versionParam, appKeyParam, cartParam, deviceIdParam, accountIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalOrderIdParam, externalPaymentIdParam, remoteRefTypeParam, externalDateParam, promoCodeParam)
+	result, err := c.service.PreviewOrder(r.Context(), appKeyParam, cartParam, deviceIdParam, accountIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalOrderIdParam, externalPaymentIdParam, remoteRefTypeParam, externalDateParam, promoCodeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -410,18 +390,9 @@ func (c *PurchaseOrderAPIController) PreviewOrder(w http.ResponseWriter, r *http
 
 // DeleteOrder - Delete Order
 func (c *PurchaseOrderAPIController) DeleteOrder(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var orderIdParam int64
@@ -461,7 +432,7 @@ func (c *PurchaseOrderAPIController) DeleteOrder(w http.ResponseWriter, r *http.
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteOrder(r.Context(), versionParam, orderIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeleteOrder(r.Context(), orderIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -473,18 +444,9 @@ func (c *PurchaseOrderAPIController) DeleteOrder(w http.ResponseWriter, r *http.
 
 // GetOrder - Get Order
 func (c *PurchaseOrderAPIController) GetOrder(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -529,7 +491,7 @@ func (c *PurchaseOrderAPIController) GetOrder(w http.ResponseWriter, r *http.Req
 		externalOrderIdParam = param
 	} else {
 	}
-	result, err := c.service.GetOrder(r.Context(), versionParam, deviceIdParam, accountIdParam, orderIdParam, externalOrderIdParam)
+	result, err := c.service.GetOrder(r.Context(), deviceIdParam, accountIdParam, orderIdParam, externalOrderIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -541,18 +503,9 @@ func (c *PurchaseOrderAPIController) GetOrder(w http.ResponseWriter, r *http.Req
 
 // SearchOrders - Search Orders
 func (c *PurchaseOrderAPIController) SearchOrders(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -870,7 +823,7 @@ func (c *PurchaseOrderAPIController) SearchOrders(w http.ResponseWriter, r *http
 		endedBeforeParam = param
 	} else {
 	}
-	result, err := c.service.SearchOrders(r.Context(), versionParam, appKeyParam, deviceIdParam, accountIdParam, startParam, limitParam, descendingParam, activeOnlyParam, ignoreCustomerFilterParam, orderItemTypesParam, orderItemIdsParam, orderCustomTypesParam, orderCustomIdsParam, sortFieldParam, offerTypesParam, specialOfferTypesParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, transactionAudienceIdsParam, offerIdsParam, offerLocationIdsParam, retailerIdsParam, retailerLocationIdsParam, statusesParam, keywordParam, redeemableStartDateParam, redeemableEndDateParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam)
+	result, err := c.service.SearchOrders(r.Context(), appKeyParam, deviceIdParam, accountIdParam, startParam, limitParam, descendingParam, activeOnlyParam, ignoreCustomerFilterParam, orderItemTypesParam, orderItemIdsParam, orderCustomTypesParam, orderCustomIdsParam, sortFieldParam, offerTypesParam, specialOfferTypesParam, categoryIdsParam, filterIdsParam, offerAudienceIdsParam, transactionAudienceIdsParam, offerIdsParam, offerLocationIdsParam, retailerIdsParam, retailerLocationIdsParam, statusesParam, keywordParam, redeemableStartDateParam, redeemableEndDateParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -882,18 +835,9 @@ func (c *PurchaseOrderAPIController) SearchOrders(w http.ResponseWriter, r *http
 
 // UpdateOrder - Update Order
 func (c *PurchaseOrderAPIController) UpdateOrder(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var orderIdParam int64
@@ -1016,7 +960,7 @@ func (c *PurchaseOrderAPIController) UpdateOrder(w http.ResponseWriter, r *http.
 		externalDateParam = param
 	} else {
 	}
-	result, err := c.service.UpdateOrder(r.Context(), versionParam, orderIdParam, appKeyParam, cartParam, deviceIdParam, accountIdParam, paymentTransactionIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalPaymentIdParam, externalDateParam)
+	result, err := c.service.UpdateOrder(r.Context(), orderIdParam, appKeyParam, cartParam, deviceIdParam, accountIdParam, paymentTransactionIdParam, descriptionParam, currencyTypeParam, paymentMethodIdParam, externalPaymentIdParam, externalDateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

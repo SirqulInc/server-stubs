@@ -29,7 +29,7 @@ func NewDependentAPIService() *DependentAPIService {
 }
 
 // GetDependents - Get dependent list of an account
-func (s *DependentAPIService) GetDependents(ctx context.Context, version float32, accountId int64) (ImplResponse, error) {
+func (s *DependentAPIService) GetDependents(ctx context.Context, accountId int64) (ImplResponse, error) {
 	// TODO - update GetDependents with the required logic for this service method.
 	// Add api_dependent_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *DependentAPIService) GetDependents(ctx context.Context, version float32
 }
 
 // Create - Create Dependent
-func (s *DependentAPIService) Create(ctx context.Context, version float32, accountId int64, body Account) (ImplResponse, error) {
+func (s *DependentAPIService) Create(ctx context.Context, accountId int64, body Account) (ImplResponse, error) {
 	// TODO - update Create with the required logic for this service method.
 	// Add api_dependent_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *DependentAPIService) Create(ctx context.Context, version float32, accou
 }
 
 // RemoveDependent - Delete Dependent
-func (s *DependentAPIService) RemoveDependent(ctx context.Context, version float32, accountId int64, dependentId int64) (ImplResponse, error) {
+func (s *DependentAPIService) RemoveDependent(ctx context.Context, accountId int64, dependentId int64) (ImplResponse, error) {
 	// TODO - update RemoveDependent with the required logic for this service method.
 	// Add api_dependent_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

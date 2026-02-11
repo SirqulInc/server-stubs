@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AudienceAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,79 +52,79 @@ func (c *AudienceAPIController) Routes() Routes {
 		"GetAgeGroups": Route{
 			"GetAgeGroups",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/ageGroups",
+			"/api/3.18/audience/ageGroups",
 			c.GetAgeGroups,
 		},
 		"CreateAudience": Route{
 			"CreateAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/create",
+			"/api/3.18/audience/create",
 			c.CreateAudience,
 		},
 		"DeleteAudience": Route{
 			"DeleteAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/delete",
+			"/api/3.18/audience/delete",
 			c.DeleteAudience,
 		},
 		"GetDevices": Route{
 			"GetDevices",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/devices",
+			"/api/3.18/audience/devices",
 			c.GetDevices,
 		},
 		"GetExperiences": Route{
 			"GetExperiences",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/experiences",
+			"/api/3.18/audience/experiences",
 			c.GetExperiences,
 		},
 		"GetAudience": Route{
 			"GetAudience",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/get",
+			"/api/3.18/audience/get",
 			c.GetAudience,
 		},
 		"GetGroupedAudiences": Route{
 			"GetGroupedAudiences",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/grouped/get",
+			"/api/3.18/audience/grouped/get",
 			c.GetGroupedAudiences,
 		},
 		"GetAudienceList": Route{
 			"GetAudienceList",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/search",
+			"/api/3.18/audience/search",
 			c.GetAudienceList,
 		},
 		"ListLastestByAccount": Route{
 			"ListLastestByAccount",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/suggestion/latest",
+			"/api/3.18/audience/suggestion/latest",
 			c.ListLastestByAccount,
 		},
 		"ListByAccount": Route{
 			"ListByAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/suggestion/list",
+			"/api/3.18/audience/suggestion/list",
 			c.ListByAccount,
 		},
 		"ListByAudience": Route{
 			"ListByAudience",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/suggestion/offersByAudience",
+			"/api/3.18/audience/suggestion/offersByAudience",
 			c.ListByAudience,
 		},
 		"SendByAccount": Route{
 			"SendByAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/suggestion/send",
+			"/api/3.18/audience/suggestion/send",
 			c.SendByAccount,
 		},
 		"UpdateAudience": Route{
 			"UpdateAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/update",
+			"/api/3.18/audience/update",
 			c.UpdateAudience,
 		},
 	}
@@ -138,79 +136,79 @@ func (c *AudienceAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetAgeGroups",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/ageGroups",
+			"/api/3.18/audience/ageGroups",
 			c.GetAgeGroups,
 		},
 		Route{
 			"CreateAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/create",
+			"/api/3.18/audience/create",
 			c.CreateAudience,
 		},
 		Route{
 			"DeleteAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/delete",
+			"/api/3.18/audience/delete",
 			c.DeleteAudience,
 		},
 		Route{
 			"GetDevices",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/devices",
+			"/api/3.18/audience/devices",
 			c.GetDevices,
 		},
 		Route{
 			"GetExperiences",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/experiences",
+			"/api/3.18/audience/experiences",
 			c.GetExperiences,
 		},
 		Route{
 			"GetAudience",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/get",
+			"/api/3.18/audience/get",
 			c.GetAudience,
 		},
 		Route{
 			"GetGroupedAudiences",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/grouped/get",
+			"/api/3.18/audience/grouped/get",
 			c.GetGroupedAudiences,
 		},
 		Route{
 			"GetAudienceList",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/search",
+			"/api/3.18/audience/search",
 			c.GetAudienceList,
 		},
 		Route{
 			"ListLastestByAccount",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/suggestion/latest",
+			"/api/3.18/audience/suggestion/latest",
 			c.ListLastestByAccount,
 		},
 		Route{
 			"ListByAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/suggestion/list",
+			"/api/3.18/audience/suggestion/list",
 			c.ListByAccount,
 		},
 		Route{
 			"ListByAudience",
 			strings.ToUpper("Get"),
-			"/api/{version}/audience/suggestion/offersByAudience",
+			"/api/3.18/audience/suggestion/offersByAudience",
 			c.ListByAudience,
 		},
 		Route{
 			"SendByAccount",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/suggestion/send",
+			"/api/3.18/audience/suggestion/send",
 			c.SendByAccount,
 		},
 		Route{
 			"UpdateAudience",
 			strings.ToUpper("Post"),
-			"/api/{version}/audience/update",
+			"/api/3.18/audience/update",
 			c.UpdateAudience,
 		},
 	}
@@ -220,16 +218,7 @@ func (c *AudienceAPIController) OrderedRoutes() []Route {
 
 // GetAgeGroups - Get Age Groups
 func (c *AudienceAPIController) GetAgeGroups(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
-	result, err := c.service.GetAgeGroups(r.Context(), versionParam)
+	result, err := c.service.GetAgeGroups(r.Context())
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -241,18 +230,9 @@ func (c *AudienceAPIController) GetAgeGroups(w http.ResponseWriter, r *http.Requ
 
 // CreateAudience - Create Audience
 func (c *AudienceAPIController) CreateAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -513,7 +493,7 @@ func (c *AudienceAPIController) CreateAudience(w http.ResponseWriter, r *http.Re
 		uniqueNameParam = param
 	} else {
 	}
-	result, err := c.service.CreateAudience(r.Context(), versionParam, accountIdParam, nameParam, descriptionParam, searchTagsParam, genderParam, ageGroupsParam, categoryIdsParam, applicationIdsParam, gameExperienceLevelParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam, startTimeOffsetParam, endTimeOffsetParam, sendSuggestionParam, associateDescriptionParam, associateTypeParam, associateIdParam, groupingIdParam, metaDataParam, visibilityParam, audienceTypeParam, useOrderParam, cohortRegionsDataParam, appKeyParam, trilaterationTypesParam, uniqueNameParam)
+	result, err := c.service.CreateAudience(r.Context(), accountIdParam, nameParam, descriptionParam, searchTagsParam, genderParam, ageGroupsParam, categoryIdsParam, applicationIdsParam, gameExperienceLevelParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam, startTimeOffsetParam, endTimeOffsetParam, sendSuggestionParam, associateDescriptionParam, associateTypeParam, associateIdParam, groupingIdParam, metaDataParam, visibilityParam, audienceTypeParam, useOrderParam, cohortRegionsDataParam, appKeyParam, trilaterationTypesParam, uniqueNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -525,18 +505,9 @@ func (c *AudienceAPIController) CreateAudience(w http.ResponseWriter, r *http.Re
 
 // DeleteAudience - Delete Audience
 func (c *AudienceAPIController) DeleteAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -571,7 +542,7 @@ func (c *AudienceAPIController) DeleteAudience(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "audienceId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteAudience(r.Context(), versionParam, accountIdParam, audienceIdParam)
+	result, err := c.service.DeleteAudience(r.Context(), accountIdParam, audienceIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -583,18 +554,9 @@ func (c *AudienceAPIController) DeleteAudience(w http.ResponseWriter, r *http.Re
 
 // GetDevices - Get Devices
 func (c *AudienceAPIController) GetDevices(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var includeInactiveParam bool
@@ -613,7 +575,7 @@ func (c *AudienceAPIController) GetDevices(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, &RequiredError{Field: "includeInactive"}, nil)
 		return
 	}
-	result, err := c.service.GetDevices(r.Context(), versionParam, includeInactiveParam)
+	result, err := c.service.GetDevices(r.Context(), includeInactiveParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -625,16 +587,7 @@ func (c *AudienceAPIController) GetDevices(w http.ResponseWriter, r *http.Reques
 
 // GetExperiences - Get Experiences
 func (c *AudienceAPIController) GetExperiences(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
-	result, err := c.service.GetExperiences(r.Context(), versionParam)
+	result, err := c.service.GetExperiences(r.Context())
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -646,18 +599,9 @@ func (c *AudienceAPIController) GetExperiences(w http.ResponseWriter, r *http.Re
 
 // GetAudience - Get Audience
 func (c *AudienceAPIController) GetAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -738,7 +682,7 @@ func (c *AudienceAPIController) GetAudience(w http.ResponseWriter, r *http.Reque
 		albumTypesForCountParam = param
 	} else {
 	}
-	result, err := c.service.GetAudience(r.Context(), versionParam, accountIdParam, audienceIdParam, appKeyParam, returnAccountCountParam, returnAlbumCountParam, albumTypesForCountParam)
+	result, err := c.service.GetAudience(r.Context(), accountIdParam, audienceIdParam, appKeyParam, returnAccountCountParam, returnAlbumCountParam, albumTypesForCountParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -750,18 +694,9 @@ func (c *AudienceAPIController) GetAudience(w http.ResponseWriter, r *http.Reque
 
 // GetGroupedAudiences - Get GroupedAudiences
 func (c *AudienceAPIController) GetGroupedAudiences(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -789,7 +724,7 @@ func (c *AudienceAPIController) GetGroupedAudiences(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "audienceGroupingId"}, nil)
 		return
 	}
-	result, err := c.service.GetGroupedAudiences(r.Context(), versionParam, accountIdParam, audienceGroupingIdParam)
+	result, err := c.service.GetGroupedAudiences(r.Context(), accountIdParam, audienceGroupingIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -801,18 +736,9 @@ func (c *AudienceAPIController) GetGroupedAudiences(w http.ResponseWriter, r *ht
 
 // GetAudienceList - Search Audiences
 func (c *AudienceAPIController) GetAudienceList(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1039,7 +965,7 @@ func (c *AudienceAPIController) GetAudienceList(w http.ResponseWriter, r *http.R
 		albumTypesForCountParam = param
 	} else {
 	}
-	result, err := c.service.GetAudienceList(r.Context(), versionParam, accountIdParam, albumIdsParam, keywordParam, keywordFieldsParam, sortFieldParam, descendingParam, startParam, limitParam, sendSuggestionParam, activeOnlyParam, groupByGroupingIdParam, appKeyParam, returnGlobalParam, exactKeywordParam, audienceTypeParam, audienceTypesParam, returnAccountCountParam, returnAlbumCountParam, albumTypesForCountParam)
+	result, err := c.service.GetAudienceList(r.Context(), accountIdParam, albumIdsParam, keywordParam, keywordFieldsParam, sortFieldParam, descendingParam, startParam, limitParam, sendSuggestionParam, activeOnlyParam, groupByGroupingIdParam, appKeyParam, returnGlobalParam, exactKeywordParam, audienceTypeParam, audienceTypesParam, returnAccountCountParam, returnAlbumCountParam, albumTypesForCountParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1051,18 +977,9 @@ func (c *AudienceAPIController) GetAudienceList(w http.ResponseWriter, r *http.R
 
 // ListLastestByAccount - List Sent Suggestions 
 func (c *AudienceAPIController) ListLastestByAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1106,7 +1023,7 @@ func (c *AudienceAPIController) ListLastestByAccount(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "suggestionType"}, nil)
 		return
 	}
-	result, err := c.service.ListLastestByAccount(r.Context(), versionParam, accountIdParam, timeframeParam, suggestionTypeParam)
+	result, err := c.service.ListLastestByAccount(r.Context(), accountIdParam, timeframeParam, suggestionTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1118,18 +1035,9 @@ func (c *AudienceAPIController) ListLastestByAccount(w http.ResponseWriter, r *h
 
 // ListByAccount - List Suggestions by Audience
 func (c *AudienceAPIController) ListByAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1173,7 +1081,7 @@ func (c *AudienceAPIController) ListByAccount(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "suggestionType"}, nil)
 		return
 	}
-	result, err := c.service.ListByAccount(r.Context(), versionParam, accountIdParam, limitParam, suggestionTypeParam)
+	result, err := c.service.ListByAccount(r.Context(), accountIdParam, limitParam, suggestionTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1185,18 +1093,9 @@ func (c *AudienceAPIController) ListByAccount(w http.ResponseWriter, r *http.Req
 
 // ListByAudience - List Offers by Audience
 func (c *AudienceAPIController) ListByAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var limitParam int32
@@ -1271,7 +1170,7 @@ func (c *AudienceAPIController) ListByAudience(w http.ResponseWriter, r *http.Re
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.ListByAudience(r.Context(), versionParam, limitParam, genderParam, ageParam, categoryIdsParam, latitudeParam, longitudeParam)
+	result, err := c.service.ListByAudience(r.Context(), limitParam, genderParam, ageParam, categoryIdsParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1283,18 +1182,9 @@ func (c *AudienceAPIController) ListByAudience(w http.ResponseWriter, r *http.Re
 
 // SendByAccount - Send Suggestions
 func (c *AudienceAPIController) SendByAccount(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1345,7 +1235,7 @@ func (c *AudienceAPIController) SendByAccount(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "longitude"}, nil)
 		return
 	}
-	result, err := c.service.SendByAccount(r.Context(), versionParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.SendByAccount(r.Context(), accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1357,18 +1247,9 @@ func (c *AudienceAPIController) SendByAccount(w http.ResponseWriter, r *http.Req
 
 // UpdateAudience - Update Audience
 func (c *AudienceAPIController) UpdateAudience(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1655,7 +1536,7 @@ func (c *AudienceAPIController) UpdateAudience(w http.ResponseWriter, r *http.Re
 		uniqueNameParam = param
 	} else {
 	}
-	result, err := c.service.UpdateAudience(r.Context(), versionParam, accountIdParam, audienceIdParam, nameParam, descriptionParam, searchTagsParam, genderParam, ageGroupsParam, categoryIdsParam, applicationIdsParam, gameExperienceLevelParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam, activeParam, sendSuggestionParam, startTimeOffsetParam, endTimeOffsetParam, associateDescriptionParam, associateTypeParam, associateIdParam, groupingIdParam, metaDataParam, visibilityParam, audienceTypeParam, useOrderParam, cohortRegionsDataParam, appKeyParam, trilaterationTypesParam, uniqueNameParam)
+	result, err := c.service.UpdateAudience(r.Context(), accountIdParam, audienceIdParam, nameParam, descriptionParam, searchTagsParam, genderParam, ageGroupsParam, categoryIdsParam, applicationIdsParam, gameExperienceLevelParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam, activeParam, sendSuggestionParam, startTimeOffsetParam, endTimeOffsetParam, associateDescriptionParam, associateTypeParam, associateIdParam, groupingIdParam, metaDataParam, visibilityParam, audienceTypeParam, useOrderParam, cohortRegionsDataParam, appKeyParam, trilaterationTypesParam, uniqueNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

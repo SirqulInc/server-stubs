@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PackAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *PackAPIController) Routes() Routes {
 		"CreatePack": Route{
 			"CreatePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/create",
+			"/api/3.18/pack/create",
 			c.CreatePack,
 		},
 		"DeletePack": Route{
 			"DeletePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/delete",
+			"/api/3.18/pack/delete",
 			c.DeletePack,
 		},
 		"GetPack": Route{
 			"GetPack",
 			strings.ToUpper("Get"),
-			"/api/{version}/pack/get",
+			"/api/3.18/pack/get",
 			c.GetPack,
 		},
 		"SearchPacks": Route{
 			"SearchPacks",
 			strings.ToUpper("Get"),
-			"/api/{version}/pack/search",
+			"/api/3.18/pack/search",
 			c.SearchPacks,
 		},
 		"UpdatePack": Route{
 			"UpdatePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/update",
+			"/api/3.18/pack/update",
 			c.UpdatePack,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *PackAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreatePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/create",
+			"/api/3.18/pack/create",
 			c.CreatePack,
 		},
 		Route{
 			"DeletePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/delete",
+			"/api/3.18/pack/delete",
 			c.DeletePack,
 		},
 		Route{
 			"GetPack",
 			strings.ToUpper("Get"),
-			"/api/{version}/pack/get",
+			"/api/3.18/pack/get",
 			c.GetPack,
 		},
 		Route{
 			"SearchPacks",
 			strings.ToUpper("Get"),
-			"/api/{version}/pack/search",
+			"/api/3.18/pack/search",
 			c.SearchPacks,
 		},
 		Route{
 			"UpdatePack",
 			strings.ToUpper("Post"),
-			"/api/{version}/pack/update",
+			"/api/3.18/pack/update",
 			c.UpdatePack,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *PackAPIController) OrderedRoutes() []Route {
 
 // CreatePack - Create Pack
 func (c *PackAPIController) CreatePack(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -411,7 +400,7 @@ func (c *PackAPIController) CreatePack(w http.ResponseWriter, r *http.Request) {
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.CreatePack(r.Context(), versionParam, accountIdParam, titleParam, packOrderParam, priceParam, highestParam, allocateTicketsParam, ticketCountParam, descriptionParam, searchTagsParam, activeParam, gameTypeParam, appKeyParam, packTypeParam, sequenceTypeParam, backgroundIdParam, imageIdParam, startDateParam, endDateParam, authorOverrideParam, priceTypeParam, gameLevelIdsParam, inGameParam, ticketTypeParam, pointsParam)
+	result, err := c.service.CreatePack(r.Context(), accountIdParam, titleParam, packOrderParam, priceParam, highestParam, allocateTicketsParam, ticketCountParam, descriptionParam, searchTagsParam, activeParam, gameTypeParam, appKeyParam, packTypeParam, sequenceTypeParam, backgroundIdParam, imageIdParam, startDateParam, endDateParam, authorOverrideParam, priceTypeParam, gameLevelIdsParam, inGameParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -423,18 +412,9 @@ func (c *PackAPIController) CreatePack(w http.ResponseWriter, r *http.Request) {
 
 // DeletePack - Delete Pack
 func (c *PackAPIController) DeletePack(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -469,7 +449,7 @@ func (c *PackAPIController) DeletePack(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "packId"}, nil)
 		return
 	}
-	result, err := c.service.DeletePack(r.Context(), versionParam, accountIdParam, packIdParam)
+	result, err := c.service.DeletePack(r.Context(), accountIdParam, packIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -481,18 +461,9 @@ func (c *PackAPIController) DeletePack(w http.ResponseWriter, r *http.Request) {
 
 // GetPack - Get Pack
 func (c *PackAPIController) GetPack(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -543,7 +514,7 @@ func (c *PackAPIController) GetPack(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "includeGameData"}, nil)
 		return
 	}
-	result, err := c.service.GetPack(r.Context(), versionParam, accountIdParam, packIdParam, includeGameDataParam)
+	result, err := c.service.GetPack(r.Context(), accountIdParam, packIdParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -555,18 +526,9 @@ func (c *PackAPIController) GetPack(w http.ResponseWriter, r *http.Request) {
 
 // SearchPacks - Search Packs
 func (c *PackAPIController) SearchPacks(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -687,7 +649,7 @@ func (c *PackAPIController) SearchPacks(w http.ResponseWriter, r *http.Request) 
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.SearchPacks(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, keywordParam, packTypeParam, startParam, limitParam, includeGameDataParam, includeInactiveParam, appKeyParam)
+	result, err := c.service.SearchPacks(r.Context(), accountIdParam, sortFieldParam, descendingParam, keywordParam, packTypeParam, startParam, limitParam, includeGameDataParam, includeInactiveParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -699,18 +661,9 @@ func (c *PackAPIController) SearchPacks(w http.ResponseWriter, r *http.Request) 
 
 // UpdatePack - Update Pack
 func (c *PackAPIController) UpdatePack(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -994,7 +947,7 @@ func (c *PackAPIController) UpdatePack(w http.ResponseWriter, r *http.Request) {
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.UpdatePack(r.Context(), versionParam, accountIdParam, packIdParam, allocateTicketsParam, ticketCountParam, titleParam, descriptionParam, searchTagsParam, activeParam, gameTypeParam, appKeyParam, packTypeParam, packOrderParam, sequenceTypeParam, backgroundIdParam, imageIdParam, startDateParam, endDateParam, authorOverrideParam, priceParam, priceTypeParam, gameLevelIdsParam, inGameParam, highestParam, ticketTypeParam, pointsParam)
+	result, err := c.service.UpdatePack(r.Context(), accountIdParam, packIdParam, allocateTicketsParam, ticketCountParam, titleParam, descriptionParam, searchTagsParam, activeParam, gameTypeParam, appKeyParam, packTypeParam, packOrderParam, sequenceTypeParam, backgroundIdParam, imageIdParam, startDateParam, endDateParam, authorOverrideParam, priceParam, priceTypeParam, gameLevelIdsParam, inGameParam, highestParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

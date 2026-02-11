@@ -29,7 +29,7 @@ func NewFavoriteAPIService() *FavoriteAPIService {
 }
 
 // AddFavorite - Create Favorite
-func (s *FavoriteAPIService) AddFavorite(ctx context.Context, version float32, favoritableId int64, favoritableType string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FavoriteAPIService) AddFavorite(ctx context.Context, favoritableId int64, favoritableType string, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AddFavorite with the required logic for this service method.
 	// Add api_favorite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *FavoriteAPIService) AddFavorite(ctx context.Context, version float32, f
 }
 
 // DeleteFavorite - Delete Favorite
-func (s *FavoriteAPIService) DeleteFavorite(ctx context.Context, version float32, deviceId string, accountId int64, favoriteId int64, favoritableId int64, favoritableType string) (ImplResponse, error) {
+func (s *FavoriteAPIService) DeleteFavorite(ctx context.Context, deviceId string, accountId int64, favoriteId int64, favoritableId int64, favoritableType string) (ImplResponse, error) {
 	// TODO - update DeleteFavorite with the required logic for this service method.
 	// Add api_favorite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *FavoriteAPIService) DeleteFavorite(ctx context.Context, version float32
 }
 
 // GetFavorite - Get Favorite
-func (s *FavoriteAPIService) GetFavorite(ctx context.Context, version float32, favoriteId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FavoriteAPIService) GetFavorite(ctx context.Context, favoriteId int64, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetFavorite with the required logic for this service method.
 	// Add api_favorite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *FavoriteAPIService) GetFavorite(ctx context.Context, version float32, f
 }
 
 // SearchFavorites - Search Favorites
-func (s *FavoriteAPIService) SearchFavorites(ctx context.Context, version float32, favoritableType string, sortField string, descending bool, start int32, limit int32, activeOnly bool, returnFullResponse bool, deviceId string, accountId int64, connectionAccountId int64, secondaryType string, keyword string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *FavoriteAPIService) SearchFavorites(ctx context.Context, favoritableType string, sortField string, descending bool, start int32, limit int32, activeOnly bool, returnFullResponse bool, deviceId string, accountId int64, connectionAccountId int64, secondaryType string, keyword string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update SearchFavorites with the required logic for this service method.
 	// Add api_favorite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *FavoriteAPIService) SearchFavorites(ctx context.Context, version float3
 }
 
 // WhoHasFavorited - Who has Favorited
-func (s *FavoriteAPIService) WhoHasFavorited(ctx context.Context, version float32, favoritableId int64, favoritableType string, start int32, limit int32, deviceId string, accountId int64, latitude float64, longitude float64, keyword string) (ImplResponse, error) {
+func (s *FavoriteAPIService) WhoHasFavorited(ctx context.Context, favoritableId int64, favoritableType string, start int32, limit int32, deviceId string, accountId int64, latitude float64, longitude float64, keyword string) (ImplResponse, error) {
 	// TODO - update WhoHasFavorited with the required logic for this service method.
 	// Add api_favorite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

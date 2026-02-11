@@ -29,7 +29,7 @@ func NewPreviewPersonaAPIService() *PreviewPersonaAPIService {
 }
 
 // CreatePersona - Create Persona
-func (s *PreviewPersonaAPIService) CreatePersona(ctx context.Context, version float32, accountId int64, title string, previewAccounts string, date int64, age int32, gender string, gameExperienceLevel string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *PreviewPersonaAPIService) CreatePersona(ctx context.Context, accountId int64, title string, previewAccounts string, date int64, age int32, gender string, gameExperienceLevel string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreatePersona with the required logic for this service method.
 	// Add api_preview_persona_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *PreviewPersonaAPIService) CreatePersona(ctx context.Context, version fl
 }
 
 // DeletePersona - Delete Persona
-func (s *PreviewPersonaAPIService) DeletePersona(ctx context.Context, version float32, accountId int64, personaId int64) (ImplResponse, error) {
+func (s *PreviewPersonaAPIService) DeletePersona(ctx context.Context, accountId int64, personaId int64) (ImplResponse, error) {
 	// TODO - update DeletePersona with the required logic for this service method.
 	// Add api_preview_persona_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *PreviewPersonaAPIService) DeletePersona(ctx context.Context, version fl
 }
 
 // GetPersonaList - Get Persona
-func (s *PreviewPersonaAPIService) GetPersonaList(ctx context.Context, version float32, accountId int64, personaId int64) (ImplResponse, error) {
+func (s *PreviewPersonaAPIService) GetPersonaList(ctx context.Context, accountId int64, personaId int64) (ImplResponse, error) {
 	// TODO - update GetPersonaList with the required logic for this service method.
 	// Add api_preview_persona_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *PreviewPersonaAPIService) GetPersonaList(ctx context.Context, version f
 }
 
 // SearchPersona - Search Personas
-func (s *PreviewPersonaAPIService) SearchPersona(ctx context.Context, version float32, accountId int64, start int32, limit int32) (ImplResponse, error) {
+func (s *PreviewPersonaAPIService) SearchPersona(ctx context.Context, accountId int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchPersona with the required logic for this service method.
 	// Add api_preview_persona_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *PreviewPersonaAPIService) SearchPersona(ctx context.Context, version fl
 }
 
 // UpdatePersona - Update Persona
-func (s *PreviewPersonaAPIService) UpdatePersona(ctx context.Context, version float32, accountId int64, personaId int64, title string, previewAccounts string, active bool, date int64, age int32, gender string, gameExperienceLevel string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *PreviewPersonaAPIService) UpdatePersona(ctx context.Context, accountId int64, personaId int64, title string, previewAccounts string, active bool, date int64, age int32, gender string, gameExperienceLevel string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update UpdatePersona with the required logic for this service method.
 	// Add api_preview_persona_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

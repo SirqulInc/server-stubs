@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // QuestionAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *QuestionAPIController) Routes() Routes {
 		"CreateQuestion": Route{
 			"CreateQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/create",
+			"/api/3.18/game/question/create",
 			c.CreateQuestion,
 		},
 		"DeleteQuestion": Route{
 			"DeleteQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/delete",
+			"/api/3.18/game/question/delete",
 			c.DeleteQuestion,
 		},
 		"GetQuestion": Route{
 			"GetQuestion",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/question/get",
+			"/api/3.18/game/question/get",
 			c.GetQuestion,
 		},
 		"SearchQuestions": Route{
 			"SearchQuestions",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/question/search",
+			"/api/3.18/game/question/search",
 			c.SearchQuestions,
 		},
 		"UpdateQuestion": Route{
 			"UpdateQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/update",
+			"/api/3.18/game/question/update",
 			c.UpdateQuestion,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *QuestionAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/create",
+			"/api/3.18/game/question/create",
 			c.CreateQuestion,
 		},
 		Route{
 			"DeleteQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/delete",
+			"/api/3.18/game/question/delete",
 			c.DeleteQuestion,
 		},
 		Route{
 			"GetQuestion",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/question/get",
+			"/api/3.18/game/question/get",
 			c.GetQuestion,
 		},
 		Route{
 			"SearchQuestions",
 			strings.ToUpper("Get"),
-			"/api/{version}/game/question/search",
+			"/api/3.18/game/question/search",
 			c.SearchQuestions,
 		},
 		Route{
 			"UpdateQuestion",
 			strings.ToUpper("Post"),
-			"/api/{version}/game/question/update",
+			"/api/3.18/game/question/update",
 			c.UpdateQuestion,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *QuestionAPIController) OrderedRoutes() []Route {
 
 // CreateQuestion - Create Question
 func (c *QuestionAPIController) CreateQuestion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -269,7 +258,7 @@ func (c *QuestionAPIController) CreateQuestion(w http.ResponseWriter, r *http.Re
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.CreateQuestion(r.Context(), versionParam, accountIdParam, questionParam, answersParam, activeParam, allocateTicketsParam, ticketCountParam, tagsParam, videoURLParam, assetIdParam, ticketTypeParam, pointsParam)
+	result, err := c.service.CreateQuestion(r.Context(), accountIdParam, questionParam, answersParam, activeParam, allocateTicketsParam, ticketCountParam, tagsParam, videoURLParam, assetIdParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -281,18 +270,9 @@ func (c *QuestionAPIController) CreateQuestion(w http.ResponseWriter, r *http.Re
 
 // DeleteQuestion - Delete Question
 func (c *QuestionAPIController) DeleteQuestion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var questionIdParam int64
@@ -327,7 +307,7 @@ func (c *QuestionAPIController) DeleteQuestion(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteQuestion(r.Context(), versionParam, questionIdParam, accountIdParam)
+	result, err := c.service.DeleteQuestion(r.Context(), questionIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -339,18 +319,9 @@ func (c *QuestionAPIController) DeleteQuestion(w http.ResponseWriter, r *http.Re
 
 // GetQuestion - Get Question
 func (c *QuestionAPIController) GetQuestion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var questionIdParam int64
@@ -385,7 +356,7 @@ func (c *QuestionAPIController) GetQuestion(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetQuestion(r.Context(), versionParam, questionIdParam, accountIdParam)
+	result, err := c.service.GetQuestion(r.Context(), questionIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -397,18 +368,9 @@ func (c *QuestionAPIController) GetQuestion(w http.ResponseWriter, r *http.Reque
 
 // SearchQuestions - Search Questions
 func (c *QuestionAPIController) SearchQuestions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -507,7 +469,7 @@ func (c *QuestionAPIController) SearchQuestions(w http.ResponseWriter, r *http.R
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchQuestions(r.Context(), versionParam, accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, keywordParam)
+	result, err := c.service.SearchQuestions(r.Context(), accountIdParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -519,18 +481,9 @@ func (c *QuestionAPIController) SearchQuestions(w http.ResponseWriter, r *http.R
 
 // UpdateQuestion - Update Question
 func (c *QuestionAPIController) UpdateQuestion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var questionIdParam int64
@@ -672,7 +625,7 @@ func (c *QuestionAPIController) UpdateQuestion(w http.ResponseWriter, r *http.Re
 		pointsParam = param
 	} else {
 	}
-	result, err := c.service.UpdateQuestion(r.Context(), versionParam, questionIdParam, accountIdParam, ticketCountParam, questionParam, answersParam, tagsParam, videoURLParam, assetIdParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam)
+	result, err := c.service.UpdateQuestion(r.Context(), questionIdParam, accountIdParam, ticketCountParam, questionParam, answersParam, tagsParam, videoURLParam, assetIdParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

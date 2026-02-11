@@ -29,7 +29,7 @@ func NewDisbursementAPIService() *DisbursementAPIService {
 }
 
 // CheckDisbursements - Check Disbursements
-func (s *DisbursementAPIService) CheckDisbursements(ctx context.Context, version float32, disbursementId int64) (ImplResponse, error) {
+func (s *DisbursementAPIService) CheckDisbursements(ctx context.Context, disbursementId int64) (ImplResponse, error) {
 	// TODO - update CheckDisbursements with the required logic for this service method.
 	// Add api_disbursement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *DisbursementAPIService) CheckDisbursements(ctx context.Context, version
 }
 
 // CreateDisbursement - Create Disbursement
-func (s *DisbursementAPIService) CreateDisbursement(ctx context.Context, version float32, accountId int64, receiverAccountId int64, originalSenderAccountId int64, amount float32, provider string, scheduledDate int64, title string, comment string, externalId string, introspectionParams string) (ImplResponse, error) {
+func (s *DisbursementAPIService) CreateDisbursement(ctx context.Context, accountId int64, receiverAccountId int64, originalSenderAccountId int64, amount float32, provider string, scheduledDate int64, title string, comment string, externalId string, introspectionParams string) (ImplResponse, error) {
 	// TODO - update CreateDisbursement with the required logic for this service method.
 	// Add api_disbursement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *DisbursementAPIService) CreateDisbursement(ctx context.Context, version
 }
 
 // GetDisbursement - Get Disbursement
-func (s *DisbursementAPIService) GetDisbursement(ctx context.Context, version float32, accountId int64, disbursementId int64) (ImplResponse, error) {
+func (s *DisbursementAPIService) GetDisbursement(ctx context.Context, accountId int64, disbursementId int64) (ImplResponse, error) {
 	// TODO - update GetDisbursement with the required logic for this service method.
 	// Add api_disbursement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *DisbursementAPIService) GetDisbursement(ctx context.Context, version fl
 }
 
 // SearchDisbursements - Search Disbursements
-func (s *DisbursementAPIService) SearchDisbursements(ctx context.Context, version float32, accountId int64, receiverAccountId int64, statuses string, providers string, beforeDate int64, afterDate int64, start int32, limit int32, activeOnly bool, externalId string) (ImplResponse, error) {
+func (s *DisbursementAPIService) SearchDisbursements(ctx context.Context, accountId int64, receiverAccountId int64, statuses string, providers string, beforeDate int64, afterDate int64, start int32, limit int32, activeOnly bool, externalId string) (ImplResponse, error) {
 	// TODO - update SearchDisbursements with the required logic for this service method.
 	// Add api_disbursement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *DisbursementAPIService) SearchDisbursements(ctx context.Context, versio
 }
 
 // UpdateDisbursement - Update Disbursement
-func (s *DisbursementAPIService) UpdateDisbursement(ctx context.Context, version float32, accountId int64, disbursementId int64, amount float32, provider string, scheduledDate int64, title string, comment string, externalId string, retry bool, introspectionParams string) (ImplResponse, error) {
+func (s *DisbursementAPIService) UpdateDisbursement(ctx context.Context, accountId int64, disbursementId int64, amount float32, provider string, scheduledDate int64, title string, comment string, externalId string, retry bool, introspectionParams string) (ImplResponse, error) {
 	// TODO - update UpdateDisbursement with the required logic for this service method.
 	// Add api_disbursement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

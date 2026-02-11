@@ -15,8 +15,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ActivityAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,7 +53,7 @@ func (c *ActivityAPIController) Routes() Routes {
 		"CreateEntityReference": Route{
 			"CreateEntityReference",
 			strings.ToUpper("Post"),
-			"/api/{version}/entity/reference",
+			"/api/3.18/entity/reference",
 			c.CreateEntityReference,
 		},
 	}
@@ -67,7 +65,7 @@ func (c *ActivityAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateEntityReference",
 			strings.ToUpper("Post"),
-			"/api/{version}/entity/reference",
+			"/api/3.18/entity/reference",
 			c.CreateEntityReference,
 		},
 	}
@@ -77,15 +75,6 @@ func (c *ActivityAPIController) OrderedRoutes() []Route {
 
 // CreateEntityReference - Create an entity reference.
 func (c *ActivityAPIController) CreateEntityReference(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam EntityReference
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -101,7 +90,7 @@ func (c *ActivityAPIController) CreateEntityReference(w http.ResponseWriter, r *
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateEntityReference(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateEntityReference(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

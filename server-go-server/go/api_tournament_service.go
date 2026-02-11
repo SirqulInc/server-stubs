@@ -29,7 +29,7 @@ func NewTournamentAPIService() *TournamentAPIService {
 }
 
 // CreateTournament - Create Tournament
-func (s *TournamentAPIService) CreateTournament(ctx context.Context, version float32, accountId int64, appKey string, title string, costToPlay int32, startDate int64, subType string, imageAssetId int64, secondsBetweenLevels int32, secondsForTieBreaker int32, secondsBetweenPacks int32, maximumLevelLength int32, costToPlayType string, minimumToPlay int32, startingLimit int32, availableLimit int32, description string, metaData string, audienceIds string, active bool, enableBuyBack bool, offerIds string, offerAssetId int64, fixedReward bool, splitReward string, allocateTickets bool, tournamentData string, missionType string, visibility string, preliminaryGroups int32, preliminaryGroupAdvancements string, enableMultipleEntries bool, enableMultipleVotes bool, featured bool, winnerTag string, tieTag string) (ImplResponse, error) {
+func (s *TournamentAPIService) CreateTournament(ctx context.Context, accountId int64, appKey string, title string, costToPlay int32, startDate int64, subType string, imageAssetId int64, secondsBetweenLevels int32, secondsForTieBreaker int32, secondsBetweenPacks int32, maximumLevelLength int32, costToPlayType string, minimumToPlay int32, startingLimit int32, availableLimit int32, description string, metaData string, audienceIds string, active bool, enableBuyBack bool, offerIds string, offerAssetId int64, fixedReward bool, splitReward string, allocateTickets bool, tournamentData string, missionType string, visibility string, preliminaryGroups int32, preliminaryGroupAdvancements string, enableMultipleEntries bool, enableMultipleVotes bool, featured bool, winnerTag string, tieTag string) (ImplResponse, error) {
 	// TODO - update CreateTournament with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TournamentAPIService) CreateTournament(ctx context.Context, version flo
 }
 
 // DeleteTournament - Delete Tournament
-func (s *TournamentAPIService) DeleteTournament(ctx context.Context, version float32, accountId int64, missionId int64) (ImplResponse, error) {
+func (s *TournamentAPIService) DeleteTournament(ctx context.Context, accountId int64, missionId int64) (ImplResponse, error) {
 	// TODO - update DeleteTournament with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TournamentAPIService) DeleteTournament(ctx context.Context, version flo
 }
 
 // GetTournament - Get Tournament
-func (s *TournamentAPIService) GetTournament(ctx context.Context, version float32, accountId int64, missionId int64, joinCode string, includeScores string, objectPreviewSize int32) (ImplResponse, error) {
+func (s *TournamentAPIService) GetTournament(ctx context.Context, accountId int64, missionId int64, joinCode string, includeScores string, objectPreviewSize int32) (ImplResponse, error) {
 	// TODO - update GetTournament with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TournamentAPIService) GetTournament(ctx context.Context, version float3
 }
 
 // SearchRounds - Search Tournament Rounds
-func (s *TournamentAPIService) SearchRounds(ctx context.Context, version float32, accountId int64, appKey string, status string, missionType string, currentOnly bool, visibilities string, start int32, limit int32) (ImplResponse, error) {
+func (s *TournamentAPIService) SearchRounds(ctx context.Context, accountId int64, appKey string, status string, missionType string, currentOnly bool, visibilities string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchRounds with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TournamentAPIService) SearchRounds(ctx context.Context, version float32
 }
 
 // SearchObjects - Search Tournament Objects
-func (s *TournamentAPIService) SearchObjects(ctx context.Context, version float32, accountId int64, gameLevelId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *TournamentAPIService) SearchObjects(ctx context.Context, accountId int64, gameLevelId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchObjects with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *TournamentAPIService) SearchObjects(ctx context.Context, version float3
 }
 
 // SubmitTournamentScore - Submit Tournament Score
-func (s *TournamentAPIService) SubmitTournamentScore(ctx context.Context, version float32, accountId int64, appKey string, missionId int64, gameId int64, packId int64, scores string, gameLevelId int64) (ImplResponse, error) {
+func (s *TournamentAPIService) SubmitTournamentScore(ctx context.Context, accountId int64, appKey string, missionId int64, gameId int64, packId int64, scores string, gameLevelId int64) (ImplResponse, error) {
 	// TODO - update SubmitTournamentScore with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *TournamentAPIService) SubmitTournamentScore(ctx context.Context, versio
 }
 
 // SearchTournaments - Search Tournaments
-func (s *TournamentAPIService) SearchTournaments(ctx context.Context, version float32, accountId int64, appKey string, keyword string, subType string, includeInactive bool, missionTypes string, filter string, sortField string, descending bool, visibility string, start int32, limit int32) (ImplResponse, error) {
+func (s *TournamentAPIService) SearchTournaments(ctx context.Context, accountId int64, appKey string, keyword string, subType string, includeInactive bool, missionTypes string, filter string, sortField string, descending bool, visibility string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchTournaments with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *TournamentAPIService) SearchTournaments(ctx context.Context, version fl
 }
 
 // SubstituteTournamentPlayer - Substitute Tournament Player
-func (s *TournamentAPIService) SubstituteTournamentPlayer(ctx context.Context, version float32, accountId int64, missionId int64, packId int64, gameLevelId int64) (ImplResponse, error) {
+func (s *TournamentAPIService) SubstituteTournamentPlayer(ctx context.Context, accountId int64, missionId int64, packId int64, gameLevelId int64) (ImplResponse, error) {
 	// TODO - update SubstituteTournamentPlayer with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *TournamentAPIService) SubstituteTournamentPlayer(ctx context.Context, v
 }
 
 // UpdateTournament - Update Tournament
-func (s *TournamentAPIService) UpdateTournament(ctx context.Context, version float32, accountId int64, missionId int64, title string, subType string, imageAssetId int64, secondsBetweenLevels int32, secondsForTieBreaker int32, secondsBetweenPacks int32, maximumLevelLength int32, costToPlay int32, costToPlayType string, minimumToPlay int32, startingLimit int32, availableLimit int32, description string, metaData string, startDate int64, audienceIds string, active bool, enableBuyBack bool, offerIds string, offerAssetId int64, fixedReward bool, splitReward string, allocateTickets bool, tournamentData string, visibility string, preliminaryGroups int32, preliminaryGroupAdvancements string, enableMultipleEntries bool, enableMultipleVotes bool, featured bool, winnerTag string, tieTag string) (ImplResponse, error) {
+func (s *TournamentAPIService) UpdateTournament(ctx context.Context, accountId int64, missionId int64, title string, subType string, imageAssetId int64, secondsBetweenLevels int32, secondsForTieBreaker int32, secondsBetweenPacks int32, maximumLevelLength int32, costToPlay int32, costToPlayType string, minimumToPlay int32, startingLimit int32, availableLimit int32, description string, metaData string, startDate int64, audienceIds string, active bool, enableBuyBack bool, offerIds string, offerAssetId int64, fixedReward bool, splitReward string, allocateTickets bool, tournamentData string, visibility string, preliminaryGroups int32, preliminaryGroupAdvancements string, enableMultipleEntries bool, enableMultipleVotes bool, featured bool, winnerTag string, tieTag string) (ImplResponse, error) {
 	// TODO - update UpdateTournament with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *TournamentAPIService) UpdateTournament(ctx context.Context, version flo
 }
 
 // SubmitTournamentVote - Submit a vote for a multi-stage album tournament.
-func (s *TournamentAPIService) SubmitTournamentVote(ctx context.Context, version float32, accountId int64, appKey string, missionId int64, gameObjectId int64, deviceId string, checkIfDeviceAlreadyVoted bool) (ImplResponse, error) {
+func (s *TournamentAPIService) SubmitTournamentVote(ctx context.Context, accountId int64, appKey string, missionId int64, gameObjectId int64, deviceId string, checkIfDeviceAlreadyVoted bool) (ImplResponse, error) {
 	// TODO - update SubmitTournamentVote with the required logic for this service method.
 	// Add api_tournament_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

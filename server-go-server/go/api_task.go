@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TaskAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *TaskAPIController) Routes() Routes {
 		"CreateTask": Route{
 			"CreateTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/create",
+			"/api/3.18/task/create",
 			c.CreateTask,
 		},
 		"DeleteTask": Route{
 			"DeleteTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/delete",
+			"/api/3.18/task/delete",
 			c.DeleteTask,
 		},
 		"GetTask": Route{
 			"GetTask",
 			strings.ToUpper("Get"),
-			"/api/{version}/task/get",
+			"/api/3.18/task/get",
 			c.GetTask,
 		},
 		"SearchTasks": Route{
 			"SearchTasks",
 			strings.ToUpper("Get"),
-			"/api/{version}/task/search",
+			"/api/3.18/task/search",
 			c.SearchTasks,
 		},
 		"UpdateTask": Route{
 			"UpdateTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/update",
+			"/api/3.18/task/update",
 			c.UpdateTask,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *TaskAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/create",
+			"/api/3.18/task/create",
 			c.CreateTask,
 		},
 		Route{
 			"DeleteTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/delete",
+			"/api/3.18/task/delete",
 			c.DeleteTask,
 		},
 		Route{
 			"GetTask",
 			strings.ToUpper("Get"),
-			"/api/{version}/task/get",
+			"/api/3.18/task/get",
 			c.GetTask,
 		},
 		Route{
 			"SearchTasks",
 			strings.ToUpper("Get"),
-			"/api/{version}/task/search",
+			"/api/3.18/task/search",
 			c.SearchTasks,
 		},
 		Route{
 			"UpdateTask",
 			strings.ToUpper("Post"),
-			"/api/{version}/task/update",
+			"/api/3.18/task/update",
 			c.UpdateTask,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *TaskAPIController) OrderedRoutes() []Route {
 
 // CreateTask - Create Task
 func (c *TaskAPIController) CreateTask(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -263,7 +252,7 @@ func (c *TaskAPIController) CreateTask(w http.ResponseWriter, r *http.Request) {
 		var param bool = true
 		activeParam = param
 	}
-	result, err := c.service.CreateTask(r.Context(), versionParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, visibilityParam, activeParam)
+	result, err := c.service.CreateTask(r.Context(), accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, visibilityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -275,18 +264,9 @@ func (c *TaskAPIController) CreateTask(w http.ResponseWriter, r *http.Request) {
 
 // DeleteTask - Delete Task
 func (c *TaskAPIController) DeleteTask(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -321,7 +301,7 @@ func (c *TaskAPIController) DeleteTask(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "taskId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteTask(r.Context(), versionParam, accountIdParam, taskIdParam)
+	result, err := c.service.DeleteTask(r.Context(), accountIdParam, taskIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -333,18 +313,9 @@ func (c *TaskAPIController) DeleteTask(w http.ResponseWriter, r *http.Request) {
 
 // GetTask - Get Task
 func (c *TaskAPIController) GetTask(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -379,7 +350,7 @@ func (c *TaskAPIController) GetTask(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "taskId"}, nil)
 		return
 	}
-	result, err := c.service.GetTask(r.Context(), versionParam, accountIdParam, taskIdParam)
+	result, err := c.service.GetTask(r.Context(), accountIdParam, taskIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -391,18 +362,9 @@ func (c *TaskAPIController) GetTask(w http.ResponseWriter, r *http.Request) {
 
 // SearchTasks - Search Tasks
 func (c *TaskAPIController) SearchTasks(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -540,7 +502,7 @@ func (c *TaskAPIController) SearchTasks(w http.ResponseWriter, r *http.Request) 
 		var param bool = true
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchTasks(r.Context(), versionParam, accountIdParam, groupingIdParam, filterParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchTasks(r.Context(), accountIdParam, groupingIdParam, filterParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -552,18 +514,9 @@ func (c *TaskAPIController) SearchTasks(w http.ResponseWriter, r *http.Request) 
 
 // UpdateTask - Update Task
 func (c *TaskAPIController) UpdateTask(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var taskIdParam int64
@@ -703,7 +656,7 @@ func (c *TaskAPIController) UpdateTask(w http.ResponseWriter, r *http.Request) {
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateTask(r.Context(), versionParam, taskIdParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, visibilityParam, activeParam)
+	result, err := c.service.UpdateTask(r.Context(), taskIdParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, visibilityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

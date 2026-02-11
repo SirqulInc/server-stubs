@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PurchaseItemAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *PurchaseItemAPIController) Routes() Routes {
 		"CreatePurchaseItem": Route{
 			"CreatePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/create",
+			"/api/3.18/purchase/create",
 			c.CreatePurchaseItem,
 		},
 		"DeletePurchaseItem": Route{
 			"DeletePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/delete",
+			"/api/3.18/purchase/delete",
 			c.DeletePurchaseItem,
 		},
 		"GetPurchaseItem": Route{
 			"GetPurchaseItem",
 			strings.ToUpper("Get"),
-			"/api/{version}/purchase/get",
+			"/api/3.18/purchase/get",
 			c.GetPurchaseItem,
 		},
 		"SearchPurchaseItems": Route{
 			"SearchPurchaseItems",
 			strings.ToUpper("Get"),
-			"/api/{version}/purchase/search",
+			"/api/3.18/purchase/search",
 			c.SearchPurchaseItems,
 		},
 		"UpdatePurchaseItem": Route{
 			"UpdatePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/update",
+			"/api/3.18/purchase/update",
 			c.UpdatePurchaseItem,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *PurchaseItemAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreatePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/create",
+			"/api/3.18/purchase/create",
 			c.CreatePurchaseItem,
 		},
 		Route{
 			"DeletePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/delete",
+			"/api/3.18/purchase/delete",
 			c.DeletePurchaseItem,
 		},
 		Route{
 			"GetPurchaseItem",
 			strings.ToUpper("Get"),
-			"/api/{version}/purchase/get",
+			"/api/3.18/purchase/get",
 			c.GetPurchaseItem,
 		},
 		Route{
 			"SearchPurchaseItems",
 			strings.ToUpper("Get"),
-			"/api/{version}/purchase/search",
+			"/api/3.18/purchase/search",
 			c.SearchPurchaseItems,
 		},
 		Route{
 			"UpdatePurchaseItem",
 			strings.ToUpper("Post"),
-			"/api/{version}/purchase/update",
+			"/api/3.18/purchase/update",
 			c.UpdatePurchaseItem,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *PurchaseItemAPIController) OrderedRoutes() []Route {
 
 // CreatePurchaseItem - Create Purchase
 func (c *PurchaseItemAPIController) CreatePurchaseItem(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -365,7 +354,7 @@ func (c *PurchaseItemAPIController) CreatePurchaseItem(w http.ResponseWriter, r 
 		offerLocationIdParam = param
 	} else {
 	}
-	result, err := c.service.CreatePurchaseItem(r.Context(), versionParam, appKeyParam, nameParam, purchaseTypeParam, deviceIdParam, accountIdParam, descriptionParam, ticketsParam, priceParam, purchaseCodeParam, secretKeyParam, purchaseLimitParam, serviceActionParam, coverAssetIdParam, promoAssetIdParam, giftableParam, assetableParam, allocateTicketsParam, ticketTypeParam, pointsParam, offerLocationIdParam)
+	result, err := c.service.CreatePurchaseItem(r.Context(), appKeyParam, nameParam, purchaseTypeParam, deviceIdParam, accountIdParam, descriptionParam, ticketsParam, priceParam, purchaseCodeParam, secretKeyParam, purchaseLimitParam, serviceActionParam, coverAssetIdParam, promoAssetIdParam, giftableParam, assetableParam, allocateTicketsParam, ticketTypeParam, pointsParam, offerLocationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -377,18 +366,9 @@ func (c *PurchaseItemAPIController) CreatePurchaseItem(w http.ResponseWriter, r 
 
 // DeletePurchaseItem - Delete Purchase
 func (c *PurchaseItemAPIController) DeletePurchaseItem(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var purchaseItemIdParam int64
@@ -428,7 +408,7 @@ func (c *PurchaseItemAPIController) DeletePurchaseItem(w http.ResponseWriter, r 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeletePurchaseItem(r.Context(), versionParam, purchaseItemIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.DeletePurchaseItem(r.Context(), purchaseItemIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -440,18 +420,9 @@ func (c *PurchaseItemAPIController) DeletePurchaseItem(w http.ResponseWriter, r 
 
 // GetPurchaseItem - Get Purchase
 func (c *PurchaseItemAPIController) GetPurchaseItem(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var purchaseItemIdParam int64
@@ -491,7 +462,7 @@ func (c *PurchaseItemAPIController) GetPurchaseItem(w http.ResponseWriter, r *ht
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.GetPurchaseItem(r.Context(), versionParam, purchaseItemIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.GetPurchaseItem(r.Context(), purchaseItemIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -503,18 +474,9 @@ func (c *PurchaseItemAPIController) GetPurchaseItem(w http.ResponseWriter, r *ht
 
 // SearchPurchaseItems - Search Purchases
 func (c *PurchaseItemAPIController) SearchPurchaseItems(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -655,7 +617,7 @@ func (c *PurchaseItemAPIController) SearchPurchaseItems(w http.ResponseWriter, r
 		var param bool = false
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchPurchaseItems(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, filterByBillableParam, purchaseTypeParam, serviceActionParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchPurchaseItems(r.Context(), deviceIdParam, accountIdParam, appKeyParam, filterByBillableParam, purchaseTypeParam, serviceActionParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -667,18 +629,9 @@ func (c *PurchaseItemAPIController) SearchPurchaseItems(w http.ResponseWriter, r
 
 // UpdatePurchaseItem - Update Purchase
 func (c *PurchaseItemAPIController) UpdatePurchaseItem(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var purchaseItemIdParam int64
@@ -923,7 +876,7 @@ func (c *PurchaseItemAPIController) UpdatePurchaseItem(w http.ResponseWriter, r 
 		offerLocationIdParam = param
 	} else {
 	}
-	result, err := c.service.UpdatePurchaseItem(r.Context(), versionParam, purchaseItemIdParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, ticketsParam, priceParam, purchaseTypeParam, purchaseCodeParam, secretKeyParam, purchaseLimitParam, serviceActionParam, coverAssetIdParam, promoAssetIdParam, giftableParam, assetableParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam, offerLocationIdParam)
+	result, err := c.service.UpdatePurchaseItem(r.Context(), purchaseItemIdParam, deviceIdParam, accountIdParam, nameParam, descriptionParam, ticketsParam, priceParam, purchaseTypeParam, purchaseCodeParam, secretKeyParam, purchaseLimitParam, serviceActionParam, coverAssetIdParam, promoAssetIdParam, giftableParam, assetableParam, activeParam, allocateTicketsParam, ticketTypeParam, pointsParam, offerLocationIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

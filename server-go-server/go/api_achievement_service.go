@@ -30,7 +30,7 @@ func NewAchievementAPIService() *AchievementAPIService {
 }
 
 // CreateAchievement - Create Achievement
-func (s *AchievementAPIService) CreateAchievement(ctx context.Context, version float32, appKey string, title string, deviceId string, accountId int64, analyticsTag string, description string, rankType string, rankIncrement int32, minIncrement int32, maxIncrement int32, validate bool, active bool, triggerDefinition string) (ImplResponse, error) {
+func (s *AchievementAPIService) CreateAchievement(ctx context.Context, appKey string, title string, deviceId string, accountId int64, analyticsTag string, description string, rankType string, rankIncrement int32, minIncrement int32, maxIncrement int32, validate bool, active bool, triggerDefinition string) (ImplResponse, error) {
 	// TODO - update CreateAchievement with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *AchievementAPIService) CreateAchievement(ctx context.Context, version f
 }
 
 // DeleteAchievement - Delete Achievement
-func (s *AchievementAPIService) DeleteAchievement(ctx context.Context, version float32, achievementId int64, accountId int64) (ImplResponse, error) {
+func (s *AchievementAPIService) DeleteAchievement(ctx context.Context, achievementId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteAchievement with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *AchievementAPIService) DeleteAchievement(ctx context.Context, version f
 }
 
 // GetAchievement - Get Achievement
-func (s *AchievementAPIService) GetAchievement(ctx context.Context, version float32, achievementId int64, deviceId string, accountId int64, achievementType string) (ImplResponse, error) {
+func (s *AchievementAPIService) GetAchievement(ctx context.Context, achievementId int64, deviceId string, accountId int64, achievementType string) (ImplResponse, error) {
 	// TODO - update GetAchievement with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *AchievementAPIService) GetAchievement(ctx context.Context, version floa
 }
 
 // ListAchievements - List Achievements
-func (s *AchievementAPIService) ListAchievements(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, appKey string, keyword string, achievementType string, rankType string) (ImplResponse, error) {
+func (s *AchievementAPIService) ListAchievements(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, deviceId string, accountId int64, appKey string, keyword string, achievementType string, rankType string) (ImplResponse, error) {
 	// TODO - update ListAchievements with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *AchievementAPIService) ListAchievements(ctx context.Context, version fl
 }
 
 // GetUserAchievements - Get Achievement Progress
-func (s *AchievementAPIService) GetUserAchievements(ctx context.Context, version float32, returnNulls bool, appKey string, includeUndiscovered bool, deviceId string, accountId int64, connectionAccountEmail string, connectionAccountId int64, rankType string, achievementType string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AchievementAPIService) GetUserAchievements(ctx context.Context, returnNulls bool, appKey string, includeUndiscovered bool, deviceId string, accountId int64, connectionAccountEmail string, connectionAccountId int64, rankType string, achievementType string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetUserAchievements with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *AchievementAPIService) GetUserAchievements(ctx context.Context, version
 }
 
 // UpdateUserAchievement - Update Achievement Progress
-func (s *AchievementAPIService) UpdateUserAchievement(ctx context.Context, version float32, accountId int64, achievementId int64, tag string, customId int64, increment int64, startDate int64, endDate int64, returnProgress bool) (ImplResponse, error) {
+func (s *AchievementAPIService) UpdateUserAchievement(ctx context.Context, accountId int64, achievementId int64, tag string, customId int64, increment int64, startDate int64, endDate int64, returnProgress bool) (ImplResponse, error) {
 	// TODO - update UpdateUserAchievement with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *AchievementAPIService) UpdateUserAchievement(ctx context.Context, versi
 }
 
 // SearchAchievements - Search Achievements
-func (s *AchievementAPIService) SearchAchievements(ctx context.Context, version float32, appKey string, sortField string, descending bool, includeTiers bool, includeInactiveTiers bool, start int32, limit int32, deviceId string, accountId int64, keyword string, achievementType string, rankType string) (ImplResponse, error) {
+func (s *AchievementAPIService) SearchAchievements(ctx context.Context, appKey string, sortField string, descending bool, includeTiers bool, includeInactiveTiers bool, start int32, limit int32, deviceId string, accountId int64, keyword string, achievementType string, rankType string) (ImplResponse, error) {
 	// TODO - update SearchAchievements with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *AchievementAPIService) SearchAchievements(ctx context.Context, version 
 }
 
 // ListAchievementTags - List Achievement Tags
-func (s *AchievementAPIService) ListAchievementTags(ctx context.Context, version float32, appKey string) (ImplResponse, error) {
+func (s *AchievementAPIService) ListAchievementTags(ctx context.Context, appKey string) (ImplResponse, error) {
 	// TODO - update ListAchievementTags with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *AchievementAPIService) ListAchievementTags(ctx context.Context, version
 }
 
 // CreateAchievementTier - Create Achievement Tier
-func (s *AchievementAPIService) CreateAchievementTier(ctx context.Context, version float32, achievementId int64, scoreAllInstances bool, deviceId string, accountId int64, icon *os.File, iconAssetId int64, title string, description string, goalCount int64, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int32) (ImplResponse, error) {
+func (s *AchievementAPIService) CreateAchievementTier(ctx context.Context, achievementId int64, scoreAllInstances bool, deviceId string, accountId int64, icon *os.File, iconAssetId int64, title string, description string, goalCount int64, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int32) (ImplResponse, error) {
 	// TODO - update CreateAchievementTier with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -129,7 +129,7 @@ func (s *AchievementAPIService) CreateAchievementTier(ctx context.Context, versi
 }
 
 // DeleteAchievementTier - Delete Achievement Tier
-func (s *AchievementAPIService) DeleteAchievementTier(ctx context.Context, version float32, achievementTierId int64, accountId int64) (ImplResponse, error) {
+func (s *AchievementAPIService) DeleteAchievementTier(ctx context.Context, achievementTierId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteAchievementTier with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -140,7 +140,7 @@ func (s *AchievementAPIService) DeleteAchievementTier(ctx context.Context, versi
 }
 
 // UpdateAchievementTier - Update Achievement Tier
-func (s *AchievementAPIService) UpdateAchievementTier(ctx context.Context, version float32, achievementTierId int64, deviceId string, accountId int64, icon *os.File, iconAssetId int64, title string, description string, goalCount int64, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, scoreAllInstances bool) (ImplResponse, error) {
+func (s *AchievementAPIService) UpdateAchievementTier(ctx context.Context, achievementTierId int64, deviceId string, accountId int64, icon *os.File, iconAssetId int64, title string, description string, goalCount int64, missionId int64, gameId int64, packId int64, gameLevelId int64, gameObjectId int64, scoreAllInstances bool) (ImplResponse, error) {
 	// TODO - update UpdateAchievementTier with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -151,7 +151,7 @@ func (s *AchievementAPIService) UpdateAchievementTier(ctx context.Context, versi
 }
 
 // GetAchievementTier - Gets an achievement tier
-func (s *AchievementAPIService) GetAchievementTier(ctx context.Context, version float32, accountId int64, achievementTierId int64) (ImplResponse, error) {
+func (s *AchievementAPIService) GetAchievementTier(ctx context.Context, accountId int64, achievementTierId int64) (ImplResponse, error) {
 	// TODO - update GetAchievementTier with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,19 +161,19 @@ func (s *AchievementAPIService) GetAchievementTier(ctx context.Context, version 
 	return Response(http.StatusNotImplemented, nil), errors.New("GetAchievementTier method not implemented")
 }
 
-// ApiVersionAchievementTierSearchPost - Searches an Achievement Tier
-func (s *AchievementAPIService) ApiVersionAchievementTierSearchPost(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, keyword string, achievementType int64, rankType string, sortField string, descending bool, descendingGoal bool, start int64, limit int64) (ImplResponse, error) {
-	// TODO - update ApiVersionAchievementTierSearchPost with the required logic for this service method.
+// AchievementTierSearchPost - Searches an Achievement Tier
+func (s *AchievementAPIService) AchievementTierSearchPost(ctx context.Context, deviceId string, accountId int64, appKey string, keyword string, achievementType int64, rankType string, sortField string, descending bool, descendingGoal bool, start int64, limit int64) (ImplResponse, error) {
+	// TODO - update AchievementTierSearchPost with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, AchievementTierResponse{}) or use other options such as http.Ok ...
 	// return Response(200, AchievementTierResponse{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("ApiVersionAchievementTierSearchPost method not implemented")
+	return Response(http.StatusNotImplemented, nil), errors.New("AchievementTierSearchPost method not implemented")
 }
 
 // UpdateAchievement - Update Achievement
-func (s *AchievementAPIService) UpdateAchievement(ctx context.Context, version float32, deviceId string, accountId int64, achievementId int64, analyticsTag string, title string, description string, rankType string, rankIncrement int32, minIncrement int32, nullMinIncrement bool, maxIncrement int32, nullMaxIncrement bool, validate bool, active bool, triggerDefinition string) (ImplResponse, error) {
+func (s *AchievementAPIService) UpdateAchievement(ctx context.Context, deviceId string, accountId int64, achievementId int64, analyticsTag string, title string, description string, rankType string, rankIncrement int32, minIncrement int32, nullMinIncrement bool, maxIncrement int32, nullMaxIncrement bool, validate bool, active bool, triggerDefinition string) (ImplResponse, error) {
 	// TODO - update UpdateAchievement with the required logic for this service method.
 	// Add api_achievement_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

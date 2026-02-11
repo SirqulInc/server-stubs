@@ -29,7 +29,7 @@ func NewSimulationAPIService() *SimulationAPIService {
 }
 
 // Simulation - Routing Simulation
-func (s *SimulationAPIService) Simulation(ctx context.Context, version float32, data string, realTime bool) (ImplResponse, error) {
+func (s *SimulationAPIService) Simulation(ctx context.Context, data string, realTime bool) (ImplResponse, error) {
 	// TODO - update Simulation with the required logic for this service method.
 	// Add api_simulation_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

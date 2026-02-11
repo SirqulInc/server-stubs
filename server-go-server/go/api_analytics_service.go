@@ -29,7 +29,7 @@ func NewAnalyticsAPIService() *AnalyticsAPIService {
 }
 
 // AggregatedFilteredUsage - Get Aggregated Filtered Usage
-func (s *AnalyticsAPIService) AggregatedFilteredUsage(ctx context.Context, version float32, deviceId string, accountId int64, applicationId int64, appKey string, startDate int64, endDate int64, deviceType string, device string, deviceOS string, gender string, ageGroup string, country string, state string, city string, zip string, model string, tag string, userAccountId int64, userAccountDisplay string, userAccountUsername string, groupByRoot string, groupBy string, distinctCount string, sortField string, descending bool, hideUnknown bool, responseFormat string, l int32, limit int32, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AnalyticsAPIService) AggregatedFilteredUsage(ctx context.Context, deviceId string, accountId int64, applicationId int64, appKey string, startDate int64, endDate int64, deviceType string, device string, deviceOS string, gender string, ageGroup string, country string, state string, city string, zip string, model string, tag string, userAccountId int64, userAccountDisplay string, userAccountUsername string, groupByRoot string, groupBy string, distinctCount string, sortField string, descending bool, hideUnknown bool, responseFormat string, l int32, limit int32, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update AggregatedFilteredUsage with the required logic for this service method.
 	// Add api_analytics_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AnalyticsAPIService) AggregatedFilteredUsage(ctx context.Context, versi
 }
 
 // FilteredUsage - Get Filtered Usage
-func (s *AnalyticsAPIService) FilteredUsage(ctx context.Context, version float32, deviceId string, accountId int64, applicationId int64, appKey string, startDate int64, endDate int64, deviceType string, device string, deviceOS string, gender string, ageGroup string, country string, state string, city string, zip string, model string, tag string, userAccountId int64, userAccountDisplay string, userAccountUsername string, customId int64, customType string, customValue float64, customValue2 float64, customLong int64, customLong2 int64, customMessage string, customMessage2 string, groupBy string, distinctCount string, sumColumn string, sortField string, descending bool, hideUnknown bool, responseFormat string, l int32, limit int32, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AnalyticsAPIService) FilteredUsage(ctx context.Context, deviceId string, accountId int64, applicationId int64, appKey string, startDate int64, endDate int64, deviceType string, device string, deviceOS string, gender string, ageGroup string, country string, state string, city string, zip string, model string, tag string, userAccountId int64, userAccountDisplay string, userAccountUsername string, customId int64, customType string, customValue float64, customValue2 float64, customLong int64, customLong2 int64, customMessage string, customMessage2 string, groupBy string, distinctCount string, sumColumn string, sortField string, descending bool, hideUnknown bool, responseFormat string, l int32, limit int32, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update FilteredUsage with the required logic for this service method.
 	// Add api_analytics_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AnalyticsAPIService) FilteredUsage(ctx context.Context, version float32
 }
 
 // Usage - Create Usage Record
-func (s *AnalyticsAPIService) Usage(ctx context.Context, version float32, tag string, deviceId string, accountId int64, applicationId int64, appKey string, appVersion string, device string, deviceType string, deviceOS string, model string, latitude float64, longitude float64, customId int64, customType string, achievementIncrement int64, city string, state string, country string, zip string, locationDescription string, clientTime int64, errorMessage string, ip string, userAgent string, backgroundEvent bool, customMessage string, customMessage2 string, customValue float64, customValue2 float64, customLong int64, customLong2 int64) (ImplResponse, error) {
+func (s *AnalyticsAPIService) Usage(ctx context.Context, tag string, deviceId string, accountId int64, applicationId int64, appKey string, appVersion string, device string, deviceType string, deviceOS string, model string, latitude float64, longitude float64, customId int64, customType string, achievementIncrement int64, city string, state string, country string, zip string, locationDescription string, clientTime int64, errorMessage string, ip string, userAgent string, backgroundEvent bool, customMessage string, customMessage2 string, customValue float64, customValue2 float64, customLong int64, customLong2 int64) (ImplResponse, error) {
 	// TODO - update Usage with the required logic for this service method.
 	// Add api_analytics_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *AnalyticsAPIService) Usage(ctx context.Context, version float32, tag st
 }
 
 // UsageBatch - Create Multiple Usage Records
-func (s *AnalyticsAPIService) UsageBatch(ctx context.Context, version float32, appKey string, device string, data string, deviceId string, accountId int64, appVersion string, deviceType string, deviceOS string, model string, updateRanking bool, returnSummaryResponse bool) (ImplResponse, error) {
+func (s *AnalyticsAPIService) UsageBatch(ctx context.Context, appKey string, device string, data string, deviceId string, accountId int64, appVersion string, deviceType string, deviceOS string, model string, updateRanking bool, returnSummaryResponse bool) (ImplResponse, error) {
 	// TODO - update UsageBatch with the required logic for this service method.
 	// Add api_analytics_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *AnalyticsAPIService) UsageBatch(ctx context.Context, version float32, a
 }
 
 // Activities - Get User Activity
-func (s *AnalyticsAPIService) Activities(ctx context.Context, version float32, start int32, limit int32, accountId int64) (ImplResponse, error) {
+func (s *AnalyticsAPIService) Activities(ctx context.Context, start int32, limit int32, accountId int64) (ImplResponse, error) {
 	// TODO - update Activities with the required logic for this service method.
 	// Add api_analytics_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

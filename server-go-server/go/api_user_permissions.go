@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // UserPermissionsAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *UserPermissionsAPIController) Routes() Routes {
 		"AddUsersToPermissionable": Route{
 			"AddUsersToPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/add",
+			"/api/3.18/consumer/permissions/add",
 			c.AddUsersToPermissionable,
 		},
 		"LeaveFromPermissionable": Route{
 			"LeaveFromPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/leave",
+			"/api/3.18/consumer/permissions/leave",
 			c.LeaveFromPermissionable,
 		},
 		"RemoveUsersFromPermissionable": Route{
 			"RemoveUsersFromPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/remove",
+			"/api/3.18/consumer/permissions/remove",
 			c.RemoveUsersFromPermissionable,
 		},
 		"ApprovePermissionable": Route{
 			"ApprovePermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/permissionable/approve",
+			"/api/3.18/permissionable/approve",
 			c.ApprovePermissionable,
 		},
 		"SearchPermissionables": Route{
 			"SearchPermissionables",
 			strings.ToUpper("Get"),
-			"/api/{version}/permissions/search",
+			"/api/3.18/permissions/search",
 			c.SearchPermissionables,
 		},
 		"SearchPermissionablesFollowingDistance": Route{
 			"SearchPermissionablesFollowingDistance",
 			strings.ToUpper("Get"),
-			"/api/{version}/permissions/distancesearch",
+			"/api/3.18/permissions/distancesearch",
 			c.SearchPermissionablesFollowingDistance,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *UserPermissionsAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddUsersToPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/add",
+			"/api/3.18/consumer/permissions/add",
 			c.AddUsersToPermissionable,
 		},
 		Route{
 			"LeaveFromPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/leave",
+			"/api/3.18/consumer/permissions/leave",
 			c.LeaveFromPermissionable,
 		},
 		Route{
 			"RemoveUsersFromPermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/permissions/remove",
+			"/api/3.18/consumer/permissions/remove",
 			c.RemoveUsersFromPermissionable,
 		},
 		Route{
 			"ApprovePermissionable",
 			strings.ToUpper("Post"),
-			"/api/{version}/permissionable/approve",
+			"/api/3.18/permissionable/approve",
 			c.ApprovePermissionable,
 		},
 		Route{
 			"SearchPermissionables",
 			strings.ToUpper("Get"),
-			"/api/{version}/permissions/search",
+			"/api/3.18/permissions/search",
 			c.SearchPermissionables,
 		},
 		Route{
 			"SearchPermissionablesFollowingDistance",
 			strings.ToUpper("Get"),
-			"/api/{version}/permissions/distancesearch",
+			"/api/3.18/permissions/distancesearch",
 			c.SearchPermissionablesFollowingDistance,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *UserPermissionsAPIController) OrderedRoutes() []Route {
 
 // AddUsersToPermissionable - Add User
 func (c *UserPermissionsAPIController) AddUsersToPermissionable(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var permissionableTypeParam string
@@ -362,7 +351,7 @@ func (c *UserPermissionsAPIController) AddUsersToPermissionable(w http.ResponseW
 		audienceIdsParam = param
 	} else {
 	}
-	result, err := c.service.AddUsersToPermissionable(r.Context(), versionParam, permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, readParam, writeParam, deleteParam, addParam, connectionIdsParam, connectionAccountIdsParam, connectionGroupIdsParam, pendingParam, adminParam, includeFriendGroupParam, latitudeParam, longitudeParam, audienceIdsParam)
+	result, err := c.service.AddUsersToPermissionable(r.Context(), permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, readParam, writeParam, deleteParam, addParam, connectionIdsParam, connectionAccountIdsParam, connectionGroupIdsParam, pendingParam, adminParam, includeFriendGroupParam, latitudeParam, longitudeParam, audienceIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -374,18 +363,9 @@ func (c *UserPermissionsAPIController) AddUsersToPermissionable(w http.ResponseW
 
 // LeaveFromPermissionable - Leave
 func (c *UserPermissionsAPIController) LeaveFromPermissionable(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var permissionableTypeParam string
@@ -462,7 +442,7 @@ func (c *UserPermissionsAPIController) LeaveFromPermissionable(w http.ResponseWr
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.LeaveFromPermissionable(r.Context(), versionParam, permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.LeaveFromPermissionable(r.Context(), permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -474,18 +454,9 @@ func (c *UserPermissionsAPIController) LeaveFromPermissionable(w http.ResponseWr
 
 // RemoveUsersFromPermissionable - Remove User
 func (c *UserPermissionsAPIController) RemoveUsersFromPermissionable(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var permissionableTypeParam string
@@ -606,7 +577,7 @@ func (c *UserPermissionsAPIController) RemoveUsersFromPermissionable(w http.Resp
 		audienceIdsParam = param
 	} else {
 	}
-	result, err := c.service.RemoveUsersFromPermissionable(r.Context(), versionParam, permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, connectionGroupIdsParam, removeFriendGroupParam, latitudeParam, longitudeParam, audienceIdsParam)
+	result, err := c.service.RemoveUsersFromPermissionable(r.Context(), permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, connectionIdsParam, connectionAccountIdsParam, connectionGroupIdsParam, removeFriendGroupParam, latitudeParam, longitudeParam, audienceIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -618,18 +589,9 @@ func (c *UserPermissionsAPIController) RemoveUsersFromPermissionable(w http.Resp
 
 // ApprovePermissionable - Approve Permissionable
 func (c *UserPermissionsAPIController) ApprovePermissionable(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var permissionableTypeParam string
@@ -687,7 +649,7 @@ func (c *UserPermissionsAPIController) ApprovePermissionable(w http.ResponseWrit
 		param := "APPROVED"
 		approvalStatusParam = param
 	}
-	result, err := c.service.ApprovePermissionable(r.Context(), versionParam, permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, approvalStatusParam)
+	result, err := c.service.ApprovePermissionable(r.Context(), permissionableTypeParam, permissionableIdParam, deviceIdParam, accountIdParam, approvalStatusParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -699,18 +661,9 @@ func (c *UserPermissionsAPIController) ApprovePermissionable(w http.ResponseWrit
 
 // SearchPermissionables - Search Permissionables
 func (c *UserPermissionsAPIController) SearchPermissionables(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -864,7 +817,7 @@ func (c *UserPermissionsAPIController) SearchPermissionables(w http.ResponseWrit
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchPermissionables(r.Context(), versionParam, deviceIdParam, accountIdParam, connectionAccountIdParam, connectionAccountIdsParam, permissionableTypeParam, permissionableIdParam, keywordParam, sortFieldParam, descendingParam, pendingParam, adminParam, startParam, limitParam)
+	result, err := c.service.SearchPermissionables(r.Context(), deviceIdParam, accountIdParam, connectionAccountIdParam, connectionAccountIdsParam, permissionableTypeParam, permissionableIdParam, keywordParam, sortFieldParam, descendingParam, pendingParam, adminParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -876,18 +829,9 @@ func (c *UserPermissionsAPIController) SearchPermissionables(w http.ResponseWrit
 
 // SearchPermissionablesFollowingDistance - Search Permissionables by Distnace
 func (c *UserPermissionsAPIController) SearchPermissionablesFollowingDistance(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var latitudeParam float64
@@ -1068,7 +1012,7 @@ func (c *UserPermissionsAPIController) SearchPermissionablesFollowingDistance(w 
 		var param int32 = 20
 		limitParam = param
 	}
-	result, err := c.service.SearchPermissionablesFollowingDistance(r.Context(), versionParam, latitudeParam, longitudeParam, deviceIdParam, accountIdParam, connectionAccountIdParam, connectionAccountIdsParam, permissionableTypeParam, permissionableIdParam, searchRangeParam, keywordParam, pendingParam, adminParam, startParam, limitParam)
+	result, err := c.service.SearchPermissionablesFollowingDistance(r.Context(), latitudeParam, longitudeParam, deviceIdParam, accountIdParam, connectionAccountIdParam, connectionAccountIdsParam, permissionableTypeParam, permissionableIdParam, searchRangeParam, keywordParam, pendingParam, adminParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

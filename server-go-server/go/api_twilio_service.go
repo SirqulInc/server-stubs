@@ -29,7 +29,7 @@ func NewTwilioAPIService() *TwilioAPIService {
 }
 
 // SmsBuyOffer - Buy Offer by SMS
-func (s *TwilioAPIService) SmsBuyOffer(ctx context.Context, version float32, appKey string, body string, from string, currencyType string) (ImplResponse, error) {
+func (s *TwilioAPIService) SmsBuyOffer(ctx context.Context, appKey string, body string, from string, currencyType string) (ImplResponse, error) {
 	// TODO - update SmsBuyOffer with the required logic for this service method.
 	// Add api_twilio_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

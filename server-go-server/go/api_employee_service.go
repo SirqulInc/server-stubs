@@ -29,7 +29,7 @@ func NewEmployeeAPIService() *EmployeeAPIService {
 }
 
 // AssignToLocationEmployee - Assign Employee to Location
-func (s *EmployeeAPIService) AssignToLocationEmployee(ctx context.Context, version float32, accountId int64, retailerLocationId int64, employeeAccountId int64, assign bool) (ImplResponse, error) {
+func (s *EmployeeAPIService) AssignToLocationEmployee(ctx context.Context, accountId int64, retailerLocationId int64, employeeAccountId int64, assign bool) (ImplResponse, error) {
 	// TODO - update AssignToLocationEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *EmployeeAPIService) AssignToLocationEmployee(ctx context.Context, versi
 }
 
 // CreateEmployee - Create Employee
-func (s *EmployeeAPIService) CreateEmployee(ctx context.Context, version float32, accountId int64, managerAccountId int64, username string, password string, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, aboutUs string, assetId int64, gender string, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, role string, retailerLocationIds string, settingsAppKey string, appBlob string, assignedDeviceId string) (ImplResponse, error) {
+func (s *EmployeeAPIService) CreateEmployee(ctx context.Context, accountId int64, managerAccountId int64, username string, password string, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, aboutUs string, assetId int64, gender string, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, role string, retailerLocationIds string, settingsAppKey string, appBlob string, assignedDeviceId string) (ImplResponse, error) {
 	// TODO - update CreateEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *EmployeeAPIService) CreateEmployee(ctx context.Context, version float32
 }
 
 // DeleteEmployee - Delete Employee
-func (s *EmployeeAPIService) DeleteEmployee(ctx context.Context, version float32, accountId int64, employeeAccountId int64) (ImplResponse, error) {
+func (s *EmployeeAPIService) DeleteEmployee(ctx context.Context, accountId int64, employeeAccountId int64) (ImplResponse, error) {
 	// TODO - update DeleteEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *EmployeeAPIService) DeleteEmployee(ctx context.Context, version float32
 }
 
 // GetEmployee - Get Employee
-func (s *EmployeeAPIService) GetEmployee(ctx context.Context, version float32, accountId int64, employeeAccountId int64, settingsAppKey string) (ImplResponse, error) {
+func (s *EmployeeAPIService) GetEmployee(ctx context.Context, accountId int64, employeeAccountId int64, settingsAppKey string) (ImplResponse, error) {
 	// TODO - update GetEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *EmployeeAPIService) GetEmployee(ctx context.Context, version float32, a
 }
 
 // SearchEmployees - Search Employees
-func (s *EmployeeAPIService) SearchEmployees(ctx context.Context, version float32, accountId int64, role string, retailerId int64, retailerLocationId int64, q string, keyword string, sortField string, descending bool, i int32, start int32, l int32, limit int32, activeOnly bool, managedOnly bool, settingsAppKey string, categoryIds string, query string) (ImplResponse, error) {
+func (s *EmployeeAPIService) SearchEmployees(ctx context.Context, accountId int64, role string, retailerId int64, retailerLocationId int64, q string, keyword string, sortField string, descending bool, i int32, start int32, l int32, limit int32, activeOnly bool, managedOnly bool, settingsAppKey string, categoryIds string, query string) (ImplResponse, error) {
 	// TODO - update SearchEmployees with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *EmployeeAPIService) SearchEmployees(ctx context.Context, version float3
 }
 
 // UpdateEmployee - Update Employee
-func (s *EmployeeAPIService) UpdateEmployee(ctx context.Context, version float32, accountId int64, employeeAccountId int64, managerAccountId int64, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, assetId int64, gender string, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, role string, active bool, password string, retailerLocationIds string, settingsAppKey string, appBlob string, assignedDeviceId string) (ImplResponse, error) {
+func (s *EmployeeAPIService) UpdateEmployee(ctx context.Context, accountId int64, employeeAccountId int64, managerAccountId int64, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, assetId int64, gender string, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, role string, active bool, password string, retailerLocationIds string, settingsAppKey string, appBlob string, assignedDeviceId string) (ImplResponse, error) {
 	// TODO - update UpdateEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *EmployeeAPIService) UpdateEmployee(ctx context.Context, version float32
 }
 
 // AssignEmployee - Assign Employee
-func (s *EmployeeAPIService) AssignEmployee(ctx context.Context, version float32, accountId int64, managerAccountId int64, employeeAccountId int64, role string) (ImplResponse, error) {
+func (s *EmployeeAPIService) AssignEmployee(ctx context.Context, accountId int64, managerAccountId int64, employeeAccountId int64, role string) (ImplResponse, error) {
 	// TODO - update AssignEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *EmployeeAPIService) AssignEmployee(ctx context.Context, version float32
 }
 
 // UnassignEmployee - Unassign Employee
-func (s *EmployeeAPIService) UnassignEmployee(ctx context.Context, version float32, accountId int64, employeeAccountId int64) (ImplResponse, error) {
+func (s *EmployeeAPIService) UnassignEmployee(ctx context.Context, accountId int64, employeeAccountId int64) (ImplResponse, error) {
 	// TODO - update UnassignEmployee with the required logic for this service method.
 	// Add api_employee_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

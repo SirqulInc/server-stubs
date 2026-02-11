@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AppDataAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,19 +52,19 @@ func (c *AppDataAPIController) Routes() Routes {
 		"GetAppData": Route{
 			"GetAppData",
 			strings.ToUpper("Get"),
-			"/api/{version}/app/get",
+			"/api/3.18/app/get",
 			c.GetAppData,
 		},
 		"PostAppData": Route{
 			"PostAppData",
 			strings.ToUpper("Post"),
-			"/api/{version}/app/post",
+			"/api/3.18/app/post",
 			c.PostAppData,
 		},
 		"RegenAppData": Route{
 			"RegenAppData",
 			strings.ToUpper("Post"),
-			"/api/{version}/app/regen",
+			"/api/3.18/app/regen",
 			c.RegenAppData,
 		},
 	}
@@ -78,19 +76,19 @@ func (c *AppDataAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetAppData",
 			strings.ToUpper("Get"),
-			"/api/{version}/app/get",
+			"/api/3.18/app/get",
 			c.GetAppData,
 		},
 		Route{
 			"PostAppData",
 			strings.ToUpper("Post"),
-			"/api/{version}/app/post",
+			"/api/3.18/app/post",
 			c.PostAppData,
 		},
 		Route{
 			"RegenAppData",
 			strings.ToUpper("Post"),
-			"/api/{version}/app/regen",
+			"/api/3.18/app/regen",
 			c.RegenAppData,
 		},
 	}
@@ -100,18 +98,9 @@ func (c *AppDataAPIController) OrderedRoutes() []Route {
 
 // GetAppData - Get App Data
 func (c *AppDataAPIController) GetAppData(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startParam int32
@@ -377,7 +366,7 @@ func (c *AppDataAPIController) GetAppData(w http.ResponseWriter, r *http.Request
 		purchaseTypeParam = param
 	} else {
 	}
-	result, err := c.service.GetAppData(r.Context(), versionParam, startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, includeGameDataParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, lParam, gameObjectCountParam, filterParam, dateCreatedParam, ownerIdParam, missionIdsParam, gameIdsParam, packIdsParam, gameLevelIdsParam, appVersionParam, includeHigherVersionPacksParam, includeHigherVersionLevelsParam, responseGroupsParam, purchaseTypeParam)
+	result, err := c.service.GetAppData(r.Context(), startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, includeGameDataParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, lParam, gameObjectCountParam, filterParam, dateCreatedParam, ownerIdParam, missionIdsParam, gameIdsParam, packIdsParam, gameLevelIdsParam, appVersionParam, includeHigherVersionPacksParam, includeHigherVersionLevelsParam, responseGroupsParam, purchaseTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -389,18 +378,9 @@ func (c *AppDataAPIController) GetAppData(w http.ResponseWriter, r *http.Request
 
 // PostAppData - Create App Data
 func (c *AppDataAPIController) PostAppData(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var gameTypeParam string
@@ -677,7 +657,7 @@ func (c *AppDataAPIController) PostAppData(w http.ResponseWriter, r *http.Reques
 		purchaseTypeParam = param
 	} else {
 	}
-	result, err := c.service.PostAppData(r.Context(), versionParam, gameTypeParam, startParam, limitParam, dataParam, deviceIdParam, accountIdParam, includeGameDataParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, lParam, gameObjectCountParam, filterParam, dateCreatedParam, ownerIdParam, missionIdsParam, gameIdsParam, packIdsParam, gameLevelIdsParam, appVersionParam, includeHigherVersionPacksParam, includeHigherVersionLevelsParam, responseGroupsParam, purchaseTypeParam)
+	result, err := c.service.PostAppData(r.Context(), gameTypeParam, startParam, limitParam, dataParam, deviceIdParam, accountIdParam, includeGameDataParam, qParam, keywordParam, sortFieldParam, descendingParam, iParam, lParam, gameObjectCountParam, filterParam, dateCreatedParam, ownerIdParam, missionIdsParam, gameIdsParam, packIdsParam, gameLevelIdsParam, appVersionParam, includeHigherVersionPacksParam, includeHigherVersionLevelsParam, responseGroupsParam, purchaseTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -689,18 +669,9 @@ func (c *AppDataAPIController) PostAppData(w http.ResponseWriter, r *http.Reques
 
 // RegenAppData - Regenerate App Data
 func (c *AppDataAPIController) RegenAppData(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -738,7 +709,7 @@ func (c *AppDataAPIController) RegenAppData(w http.ResponseWriter, r *http.Reque
 		apiVersionParam = param
 	} else {
 	}
-	result, err := c.service.RegenAppData(r.Context(), versionParam, accountIdParam, appKeyParam, buildVersionParam, apiVersionParam)
+	result, err := c.service.RegenAppData(r.Context(), accountIdParam, appKeyParam, buildVersionParam, apiVersionParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

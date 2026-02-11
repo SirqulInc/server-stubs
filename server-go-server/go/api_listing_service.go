@@ -29,7 +29,7 @@ func NewListingAPIService() *ListingAPIService {
 }
 
 // CreateListing - Create Listing
-func (s *ListingAPIService) CreateListing(ctx context.Context, version float32, accountId int64, name string, filterIds string, description string, start int64, end int64, locationName string, locationDescription string, isPrivate bool, externalId string, externalId2 string, externalGroupId string, active bool, metaData string) (ImplResponse, error) {
+func (s *ListingAPIService) CreateListing(ctx context.Context, accountId int64, name string, filterIds string, description string, start int64, end int64, locationName string, locationDescription string, isPrivate bool, externalId string, externalId2 string, externalGroupId string, active bool, metaData string) (ImplResponse, error) {
 	// TODO - update CreateListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ListingAPIService) CreateListing(ctx context.Context, version float32, 
 }
 
 // DeleteListing - Delete Listing
-func (s *ListingAPIService) DeleteListing(ctx context.Context, version float32, accountId int64, listingId int64) (ImplResponse, error) {
+func (s *ListingAPIService) DeleteListing(ctx context.Context, accountId int64, listingId int64) (ImplResponse, error) {
 	// TODO - update DeleteListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ListingAPIService) DeleteListing(ctx context.Context, version float32, 
 }
 
 // GetListing - Get Listing
-func (s *ListingAPIService) GetListing(ctx context.Context, version float32, listingId int64) (ImplResponse, error) {
+func (s *ListingAPIService) GetListing(ctx context.Context, listingId int64) (ImplResponse, error) {
 	// TODO - update GetListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ListingAPIService) GetListing(ctx context.Context, version float32, lis
 }
 
 // SearchListing - Search Listings
-func (s *ListingAPIService) SearchListing(ctx context.Context, version float32, accountId int64, keyword string, start int32, limit int32, activeOnly bool, latitude float64, longitude float64, startDate int64, endDate int64, categoryIds string, filterIds string, useListingOrderIds bool, externalId string, externalId2 string, externalGroupId string) (ImplResponse, error) {
+func (s *ListingAPIService) SearchListing(ctx context.Context, accountId int64, keyword string, start int32, limit int32, activeOnly bool, latitude float64, longitude float64, startDate int64, endDate int64, categoryIds string, filterIds string, useListingOrderIds bool, externalId string, externalId2 string, externalGroupId string) (ImplResponse, error) {
 	// TODO - update SearchListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ListingAPIService) SearchListing(ctx context.Context, version float32, 
 }
 
 // SummaryListing - Summary Listing
-func (s *ListingAPIService) SummaryListing(ctx context.Context, version float32, accountId int64, startDate int64, categoryIds string, daysToInclude int32, useListingOrderIds bool) (ImplResponse, error) {
+func (s *ListingAPIService) SummaryListing(ctx context.Context, accountId int64, startDate int64, categoryIds string, daysToInclude int32, useListingOrderIds bool) (ImplResponse, error) {
 	// TODO - update SummaryListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ListingAPIService) SummaryListing(ctx context.Context, version float32,
 }
 
 // UpdateListing - Update Listing
-func (s *ListingAPIService) UpdateListing(ctx context.Context, version float32, accountId int64, listingId int64, filterIds string, name string, description string, start int64, end int64, locationName string, locationDescription string, isPrivate bool, externalId string, externalId2 string, externalGroupId string, active bool, metaData string) (ImplResponse, error) {
+func (s *ListingAPIService) UpdateListing(ctx context.Context, accountId int64, listingId int64, filterIds string, name string, description string, start int64, end int64, locationName string, locationDescription string, isPrivate bool, externalId string, externalId2 string, externalGroupId string, active bool, metaData string) (ImplResponse, error) {
 	// TODO - update UpdateListing with the required logic for this service method.
 	// Add api_listing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

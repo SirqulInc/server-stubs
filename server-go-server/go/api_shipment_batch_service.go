@@ -29,7 +29,7 @@ func NewShipmentBatchAPIService() *ShipmentBatchAPIService {
 }
 
 // SearchShipmentBatch - Search Shipment Batch
-func (s *ShipmentBatchAPIService) SearchShipmentBatch(ctx context.Context, version float32, hubId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *ShipmentBatchAPIService) SearchShipmentBatch(ctx context.Context, hubId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchShipmentBatch with the required logic for this service method.
 	// Add api_shipment_batch_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ShipmentBatchAPIService) SearchShipmentBatch(ctx context.Context, versi
 }
 
 // CreateShipmentBatch - Create Shipment Batch
-func (s *ShipmentBatchAPIService) CreateShipmentBatch(ctx context.Context, version float32, body ShipmentBatch) (ImplResponse, error) {
+func (s *ShipmentBatchAPIService) CreateShipmentBatch(ctx context.Context, body ShipmentBatch) (ImplResponse, error) {
 	// TODO - update CreateShipmentBatch with the required logic for this service method.
 	// Add api_shipment_batch_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ShipmentBatchAPIService) CreateShipmentBatch(ctx context.Context, versi
 }
 
 // GetShipmentBatch - Get Shipment Batch
-func (s *ShipmentBatchAPIService) GetShipmentBatch(ctx context.Context, version float32, batchId int64) (ImplResponse, error) {
+func (s *ShipmentBatchAPIService) GetShipmentBatch(ctx context.Context, batchId int64) (ImplResponse, error) {
 	// TODO - update GetShipmentBatch with the required logic for this service method.
 	// Add api_shipment_batch_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ShipmentBatchAPIService) GetShipmentBatch(ctx context.Context, version 
 }
 
 // DeleteShipmentBatch - Delete Shipment Batch
-func (s *ShipmentBatchAPIService) DeleteShipmentBatch(ctx context.Context, version float32, batchId int64) (ImplResponse, error) {
+func (s *ShipmentBatchAPIService) DeleteShipmentBatch(ctx context.Context, batchId int64) (ImplResponse, error) {
 	// TODO - update DeleteShipmentBatch with the required logic for this service method.
 	// Add api_shipment_batch_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ShipmentBatchAPIService) DeleteShipmentBatch(ctx context.Context, versi
 }
 
 // GetShipmentBatchStatus - Get Shipment Batch Status
-func (s *ShipmentBatchAPIService) GetShipmentBatchStatus(ctx context.Context, version float32, batchId int64, accountId int64, sortField string, descending bool, start int32, limit int32, valid bool, started bool, completed bool, hasShipment bool, hasRoute bool, keyword string) (ImplResponse, error) {
+func (s *ShipmentBatchAPIService) GetShipmentBatchStatus(ctx context.Context, batchId int64, accountId int64, sortField string, descending bool, start int32, limit int32, valid bool, started bool, completed bool, hasShipment bool, hasRoute bool, keyword string) (ImplResponse, error) {
 	// TODO - update GetShipmentBatchStatus with the required logic for this service method.
 	// Add api_shipment_batch_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

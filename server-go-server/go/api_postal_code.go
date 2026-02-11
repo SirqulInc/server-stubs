@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // PostalCodeAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *PostalCodeAPIController) Routes() Routes {
 		"CreatePostalCode": Route{
 			"CreatePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/create",
+			"/api/3.18/postalCode/create",
 			c.CreatePostalCode,
 		},
 		"DeletePostalCode": Route{
 			"DeletePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/delete",
+			"/api/3.18/postalCode/delete",
 			c.DeletePostalCode,
 		},
 		"GetPostalCode": Route{
 			"GetPostalCode",
 			strings.ToUpper("Get"),
-			"/api/{version}/postalCode/get",
+			"/api/3.18/postalCode/get",
 			c.GetPostalCode,
 		},
 		"GetPostalCodes": Route{
 			"GetPostalCodes",
 			strings.ToUpper("Get"),
-			"/api/{version}/postalCode/search",
+			"/api/3.18/postalCode/search",
 			c.GetPostalCodes,
 		},
 		"UpdatePostalCode": Route{
 			"UpdatePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/update",
+			"/api/3.18/postalCode/update",
 			c.UpdatePostalCode,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *PostalCodeAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreatePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/create",
+			"/api/3.18/postalCode/create",
 			c.CreatePostalCode,
 		},
 		Route{
 			"DeletePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/delete",
+			"/api/3.18/postalCode/delete",
 			c.DeletePostalCode,
 		},
 		Route{
 			"GetPostalCode",
 			strings.ToUpper("Get"),
-			"/api/{version}/postalCode/get",
+			"/api/3.18/postalCode/get",
 			c.GetPostalCode,
 		},
 		Route{
 			"GetPostalCodes",
 			strings.ToUpper("Get"),
-			"/api/{version}/postalCode/search",
+			"/api/3.18/postalCode/search",
 			c.GetPostalCodes,
 		},
 		Route{
 			"UpdatePostalCode",
 			strings.ToUpper("Post"),
-			"/api/{version}/postalCode/update",
+			"/api/3.18/postalCode/update",
 			c.UpdatePostalCode,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *PostalCodeAPIController) OrderedRoutes() []Route {
 
 // CreatePostalCode - Create Postal Code
 func (c *PostalCodeAPIController) CreatePostalCode(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -223,7 +212,7 @@ func (c *PostalCodeAPIController) CreatePostalCode(w http.ResponseWriter, r *htt
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.CreatePostalCode(r.Context(), versionParam, accountIdParam, codeParam, latitudeParam, longitudeParam, stateCodeParam, cityParam, activeParam)
+	result, err := c.service.CreatePostalCode(r.Context(), accountIdParam, codeParam, latitudeParam, longitudeParam, stateCodeParam, cityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -235,18 +224,9 @@ func (c *PostalCodeAPIController) CreatePostalCode(w http.ResponseWriter, r *htt
 
 // DeletePostalCode - Delete Postal Code
 func (c *PostalCodeAPIController) DeletePostalCode(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -281,7 +261,7 @@ func (c *PostalCodeAPIController) DeletePostalCode(w http.ResponseWriter, r *htt
 		c.errorHandler(w, r, &RequiredError{Field: "postalCodeId"}, nil)
 		return
 	}
-	result, err := c.service.DeletePostalCode(r.Context(), versionParam, accountIdParam, postalCodeIdParam)
+	result, err := c.service.DeletePostalCode(r.Context(), accountIdParam, postalCodeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -293,18 +273,9 @@ func (c *PostalCodeAPIController) DeletePostalCode(w http.ResponseWriter, r *htt
 
 // GetPostalCode - Get Postal Code
 func (c *PostalCodeAPIController) GetPostalCode(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var postalCodeIdParam int64
@@ -323,7 +294,7 @@ func (c *PostalCodeAPIController) GetPostalCode(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, &RequiredError{Field: "postalCodeId"}, nil)
 		return
 	}
-	result, err := c.service.GetPostalCode(r.Context(), versionParam, postalCodeIdParam)
+	result, err := c.service.GetPostalCode(r.Context(), postalCodeIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -335,18 +306,9 @@ func (c *PostalCodeAPIController) GetPostalCode(w http.ResponseWriter, r *http.R
 
 // GetPostalCodes - Search Postal Codes
 func (c *PostalCodeAPIController) GetPostalCodes(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -451,7 +413,7 @@ func (c *PostalCodeAPIController) GetPostalCodes(w http.ResponseWriter, r *http.
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.GetPostalCodes(r.Context(), versionParam, sortFieldParam, descendingParam, latitudeParam, longitudeParam, keywordParam, milesParam, startParam, limitParam)
+	result, err := c.service.GetPostalCodes(r.Context(), sortFieldParam, descendingParam, latitudeParam, longitudeParam, keywordParam, milesParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -463,18 +425,9 @@ func (c *PostalCodeAPIController) GetPostalCodes(w http.ResponseWriter, r *http.
 
 // UpdatePostalCode - Update Postal Code
 func (c *PostalCodeAPIController) UpdatePostalCode(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -572,7 +525,7 @@ func (c *PostalCodeAPIController) UpdatePostalCode(w http.ResponseWriter, r *htt
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdatePostalCode(r.Context(), versionParam, accountIdParam, postalCodeIdParam, codeParam, latitudeParam, longitudeParam, stateCodeParam, cityParam, activeParam)
+	result, err := c.service.UpdatePostalCode(r.Context(), accountIdParam, postalCodeIdParam, codeParam, latitudeParam, longitudeParam, stateCodeParam, cityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

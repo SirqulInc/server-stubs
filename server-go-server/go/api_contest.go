@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ContestAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *ContestAPIController) Routes() Routes {
 		"AddOrUpdateAlbumContest": Route{
 			"AddOrUpdateAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest",
+			"/api/3.18/consumer/album/contest",
 			c.AddOrUpdateAlbumContest,
 		},
 		"ApproveAlbumContest": Route{
 			"ApproveAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/approve",
+			"/api/3.18/consumer/album/contest/approve",
 			c.ApproveAlbumContest,
 		},
 		"GetAlbumContest": Route{
 			"GetAlbumContest",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/album/contest/get",
+			"/api/3.18/consumer/album/contest/get",
 			c.GetAlbumContest,
 		},
 		"DeleteContest": Route{
 			"DeleteContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/remove",
+			"/api/3.18/consumer/album/contest/remove",
 			c.DeleteContest,
 		},
 		"GetAlbumContests": Route{
 			"GetAlbumContests",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/album/contest/search",
+			"/api/3.18/consumer/album/contest/search",
 			c.GetAlbumContests,
 		},
 		"VoteOnAlbumContest": Route{
 			"VoteOnAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/vote",
+			"/api/3.18/consumer/album/contest/vote",
 			c.VoteOnAlbumContest,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *ContestAPIController) OrderedRoutes() []Route {
 		Route{
 			"AddOrUpdateAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest",
+			"/api/3.18/consumer/album/contest",
 			c.AddOrUpdateAlbumContest,
 		},
 		Route{
 			"ApproveAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/approve",
+			"/api/3.18/consumer/album/contest/approve",
 			c.ApproveAlbumContest,
 		},
 		Route{
 			"GetAlbumContest",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/album/contest/get",
+			"/api/3.18/consumer/album/contest/get",
 			c.GetAlbumContest,
 		},
 		Route{
 			"DeleteContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/remove",
+			"/api/3.18/consumer/album/contest/remove",
 			c.DeleteContest,
 		},
 		Route{
 			"GetAlbumContests",
 			strings.ToUpper("Get"),
-			"/api/{version}/consumer/album/contest/search",
+			"/api/3.18/consumer/album/contest/search",
 			c.GetAlbumContests,
 		},
 		Route{
 			"VoteOnAlbumContest",
 			strings.ToUpper("Post"),
-			"/api/{version}/consumer/album/contest/vote",
+			"/api/3.18/consumer/album/contest/vote",
 			c.VoteOnAlbumContest,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *ContestAPIController) OrderedRoutes() []Route {
 
 // AddOrUpdateAlbumContest - Create or Update Contest
 func (c *ContestAPIController) AddOrUpdateAlbumContest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var publicReadParam bool
@@ -442,7 +431,7 @@ func (c *ContestAPIController) AddOrUpdateAlbumContest(w http.ResponseWriter, r 
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AddOrUpdateAlbumContest(r.Context(), versionParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, visibilityParam, includeFriendGroupParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, contestTypeParam, albumContestIdParam, titleParam, descriptionParam, albumId1Param, removeAlbum1Param, albumId2Param, removeAlbum2Param, startDateParam, endDateParam, locationDescriptionParam, connectionIdsToAddParam, connectionGroupIdsToAddParam, latitudeParam, longitudeParam)
+	result, err := c.service.AddOrUpdateAlbumContest(r.Context(), publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, visibilityParam, includeFriendGroupParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, contestTypeParam, albumContestIdParam, titleParam, descriptionParam, albumId1Param, removeAlbum1Param, albumId2Param, removeAlbum2Param, startDateParam, endDateParam, locationDescriptionParam, connectionIdsToAddParam, connectionGroupIdsToAddParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -454,18 +443,9 @@ func (c *ContestAPIController) AddOrUpdateAlbumContest(w http.ResponseWriter, r 
 
 // ApproveAlbumContest - Approve Contest
 func (c *ContestAPIController) ApproveAlbumContest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumContestIdParam int64
@@ -514,7 +494,7 @@ func (c *ContestAPIController) ApproveAlbumContest(w http.ResponseWriter, r *htt
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.ApproveAlbumContest(r.Context(), versionParam, albumContestIdParam, approvalStatusParam, deviceIdParam, accountIdParam)
+	result, err := c.service.ApproveAlbumContest(r.Context(), albumContestIdParam, approvalStatusParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -526,18 +506,9 @@ func (c *ContestAPIController) ApproveAlbumContest(w http.ResponseWriter, r *htt
 
 // GetAlbumContest - Get Contest
 func (c *ContestAPIController) GetAlbumContest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumContestIdParam int64
@@ -605,7 +576,7 @@ func (c *ContestAPIController) GetAlbumContest(w http.ResponseWriter, r *http.Re
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetAlbumContest(r.Context(), versionParam, albumContestIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetAlbumContest(r.Context(), albumContestIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -617,18 +588,9 @@ func (c *ContestAPIController) GetAlbumContest(w http.ResponseWriter, r *http.Re
 
 // DeleteContest - Delete Contest
 func (c *ContestAPIController) DeleteContest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumContestIdParam int64
@@ -696,7 +658,7 @@ func (c *ContestAPIController) DeleteContest(w http.ResponseWriter, r *http.Requ
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.DeleteContest(r.Context(), versionParam, albumContestIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.DeleteContest(r.Context(), albumContestIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -708,18 +670,9 @@ func (c *ContestAPIController) DeleteContest(w http.ResponseWriter, r *http.Requ
 
 // GetAlbumContests - Search Contests
 func (c *ContestAPIController) GetAlbumContests(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var filterParam string
@@ -935,7 +888,7 @@ func (c *ContestAPIController) GetAlbumContests(w http.ResponseWriter, r *http.R
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetAlbumContests(r.Context(), versionParam, filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, appTypeParam, contestTypeParam, ownerIdParam, qParam, keywordParam, iParam, lParam, dateCreatedParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetAlbumContests(r.Context(), filterParam, sortFieldParam, descendingParam, startParam, limitParam, deviceIdParam, accountIdParam, gameTypeParam, appKeyParam, appTypeParam, contestTypeParam, ownerIdParam, qParam, keywordParam, iParam, lParam, dateCreatedParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -947,18 +900,9 @@ func (c *ContestAPIController) GetAlbumContests(w http.ResponseWriter, r *http.R
 
 // VoteOnAlbumContest - Vote on Contest
 func (c *ContestAPIController) VoteOnAlbumContest(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumContestIdParam int64
@@ -1049,7 +993,7 @@ func (c *ContestAPIController) VoteOnAlbumContest(w http.ResponseWriter, r *http
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.VoteOnAlbumContest(r.Context(), versionParam, albumContestIdParam, albumIdParam, deviceIdParam, accountIdParam, contestTypeParam, latitudeParam, longitudeParam)
+	result, err := c.service.VoteOnAlbumContest(r.Context(), albumContestIdParam, albumIdParam, deviceIdParam, accountIdParam, contestTypeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

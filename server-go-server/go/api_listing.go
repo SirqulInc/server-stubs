@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ListingAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,37 +52,37 @@ func (c *ListingAPIController) Routes() Routes {
 		"CreateListing": Route{
 			"CreateListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/create",
+			"/api/3.18/listing/create",
 			c.CreateListing,
 		},
 		"DeleteListing": Route{
 			"DeleteListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/delete",
+			"/api/3.18/listing/delete",
 			c.DeleteListing,
 		},
 		"GetListing": Route{
 			"GetListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/get",
+			"/api/3.18/listing/get",
 			c.GetListing,
 		},
 		"SearchListing": Route{
 			"SearchListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/search",
+			"/api/3.18/listing/search",
 			c.SearchListing,
 		},
 		"SummaryListing": Route{
 			"SummaryListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/summary",
+			"/api/3.18/listing/summary",
 			c.SummaryListing,
 		},
 		"UpdateListing": Route{
 			"UpdateListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/update",
+			"/api/3.18/listing/update",
 			c.UpdateListing,
 		},
 	}
@@ -96,37 +94,37 @@ func (c *ListingAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/create",
+			"/api/3.18/listing/create",
 			c.CreateListing,
 		},
 		Route{
 			"DeleteListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/delete",
+			"/api/3.18/listing/delete",
 			c.DeleteListing,
 		},
 		Route{
 			"GetListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/get",
+			"/api/3.18/listing/get",
 			c.GetListing,
 		},
 		Route{
 			"SearchListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/search",
+			"/api/3.18/listing/search",
 			c.SearchListing,
 		},
 		Route{
 			"SummaryListing",
 			strings.ToUpper("Get"),
-			"/api/{version}/listing/summary",
+			"/api/3.18/listing/summary",
 			c.SummaryListing,
 		},
 		Route{
 			"UpdateListing",
 			strings.ToUpper("Post"),
-			"/api/{version}/listing/update",
+			"/api/3.18/listing/update",
 			c.UpdateListing,
 		},
 	}
@@ -136,18 +134,9 @@ func (c *ListingAPIController) OrderedRoutes() []Route {
 
 // CreateListing - Create Listing
 func (c *ListingAPIController) CreateListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -289,7 +278,7 @@ func (c *ListingAPIController) CreateListing(w http.ResponseWriter, r *http.Requ
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateListing(r.Context(), versionParam, accountIdParam, nameParam, filterIdsParam, descriptionParam, startParam, endParam, locationNameParam, locationDescriptionParam, isPrivateParam, externalIdParam, externalId2Param, externalGroupIdParam, activeParam, metaDataParam)
+	result, err := c.service.CreateListing(r.Context(), accountIdParam, nameParam, filterIdsParam, descriptionParam, startParam, endParam, locationNameParam, locationDescriptionParam, isPrivateParam, externalIdParam, externalId2Param, externalGroupIdParam, activeParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -301,18 +290,9 @@ func (c *ListingAPIController) CreateListing(w http.ResponseWriter, r *http.Requ
 
 // DeleteListing - Delete Listing
 func (c *ListingAPIController) DeleteListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -347,7 +327,7 @@ func (c *ListingAPIController) DeleteListing(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "listingId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteListing(r.Context(), versionParam, accountIdParam, listingIdParam)
+	result, err := c.service.DeleteListing(r.Context(), accountIdParam, listingIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -359,18 +339,9 @@ func (c *ListingAPIController) DeleteListing(w http.ResponseWriter, r *http.Requ
 
 // GetListing - Get Listing
 func (c *ListingAPIController) GetListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var listingIdParam int64
@@ -389,7 +360,7 @@ func (c *ListingAPIController) GetListing(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &RequiredError{Field: "listingId"}, nil)
 		return
 	}
-	result, err := c.service.GetListing(r.Context(), versionParam, listingIdParam)
+	result, err := c.service.GetListing(r.Context(), listingIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -401,18 +372,9 @@ func (c *ListingAPIController) GetListing(w http.ResponseWriter, r *http.Request
 
 // SearchListing - Search Listings
 func (c *ListingAPIController) SearchListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -591,7 +553,7 @@ func (c *ListingAPIController) SearchListing(w http.ResponseWriter, r *http.Requ
 		externalGroupIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchListing(r.Context(), versionParam, accountIdParam, keywordParam, startParam, limitParam, activeOnlyParam, latitudeParam, longitudeParam, startDateParam, endDateParam, categoryIdsParam, filterIdsParam, useListingOrderIdsParam, externalIdParam, externalId2Param, externalGroupIdParam)
+	result, err := c.service.SearchListing(r.Context(), accountIdParam, keywordParam, startParam, limitParam, activeOnlyParam, latitudeParam, longitudeParam, startDateParam, endDateParam, categoryIdsParam, filterIdsParam, useListingOrderIdsParam, externalIdParam, externalId2Param, externalGroupIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -603,18 +565,9 @@ func (c *ListingAPIController) SearchListing(w http.ResponseWriter, r *http.Requ
 
 // SummaryListing - Summary Listing
 func (c *ListingAPIController) SummaryListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -684,7 +637,7 @@ func (c *ListingAPIController) SummaryListing(w http.ResponseWriter, r *http.Req
 		var param bool = true
 		useListingOrderIdsParam = param
 	}
-	result, err := c.service.SummaryListing(r.Context(), versionParam, accountIdParam, startDateParam, categoryIdsParam, daysToIncludeParam, useListingOrderIdsParam)
+	result, err := c.service.SummaryListing(r.Context(), accountIdParam, startDateParam, categoryIdsParam, daysToIncludeParam, useListingOrderIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -696,18 +649,9 @@ func (c *ListingAPIController) SummaryListing(w http.ResponseWriter, r *http.Req
 
 // UpdateListing - Update Listing
 func (c *ListingAPIController) UpdateListing(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -861,7 +805,7 @@ func (c *ListingAPIController) UpdateListing(w http.ResponseWriter, r *http.Requ
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateListing(r.Context(), versionParam, accountIdParam, listingIdParam, filterIdsParam, nameParam, descriptionParam, startParam, endParam, locationNameParam, locationDescriptionParam, isPrivateParam, externalIdParam, externalId2Param, externalGroupIdParam, activeParam, metaDataParam)
+	result, err := c.service.UpdateListing(r.Context(), accountIdParam, listingIdParam, filterIdsParam, nameParam, descriptionParam, startParam, endParam, locationNameParam, locationDescriptionParam, isPrivateParam, externalIdParam, externalId2Param, externalGroupIdParam, activeParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

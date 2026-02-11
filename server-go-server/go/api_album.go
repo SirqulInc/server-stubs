@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // AlbumAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,55 +53,55 @@ func (c *AlbumAPIController) Routes() Routes {
 		"ApproveAlbum": Route{
 			"ApproveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/approve",
+			"/api/3.18/album/approve",
 			c.ApproveAlbum,
 		},
 		"AddAlbumCollection": Route{
 			"AddAlbumCollection",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/create",
+			"/api/3.18/album/create",
 			c.AddAlbumCollection,
 		},
 		"RemoveAlbum": Route{
 			"RemoveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/delete",
+			"/api/3.18/album/delete",
 			c.RemoveAlbum,
 		},
 		"GetAlbumCollection": Route{
 			"GetAlbumCollection",
 			strings.ToUpper("Get"),
-			"/api/{version}/album/get",
+			"/api/3.18/album/get",
 			c.GetAlbumCollection,
 		},
 		"SearchAlbums": Route{
 			"SearchAlbums",
 			strings.ToUpper("Get"),
-			"/api/{version}/album/search",
+			"/api/3.18/album/search",
 			c.SearchAlbums,
 		},
 		"UpdateAlbumCollection": Route{
 			"UpdateAlbumCollection",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/update",
+			"/api/3.18/album/update",
 			c.UpdateAlbumCollection,
 		},
 		"AddAlbumUsers": Route{
 			"AddAlbumUsers",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/add",
+			"/api/3.18/album/user/add",
 			c.AddAlbumUsers,
 		},
 		"RemoveAlbumUsers": Route{
 			"RemoveAlbumUsers",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/delete",
+			"/api/3.18/album/user/delete",
 			c.RemoveAlbumUsers,
 		},
 		"LeaveAlbum": Route{
 			"LeaveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/leave",
+			"/api/3.18/album/user/leave",
 			c.LeaveAlbum,
 		},
 	}
@@ -115,55 +113,55 @@ func (c *AlbumAPIController) OrderedRoutes() []Route {
 		Route{
 			"ApproveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/approve",
+			"/api/3.18/album/approve",
 			c.ApproveAlbum,
 		},
 		Route{
 			"AddAlbumCollection",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/create",
+			"/api/3.18/album/create",
 			c.AddAlbumCollection,
 		},
 		Route{
 			"RemoveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/delete",
+			"/api/3.18/album/delete",
 			c.RemoveAlbum,
 		},
 		Route{
 			"GetAlbumCollection",
 			strings.ToUpper("Get"),
-			"/api/{version}/album/get",
+			"/api/3.18/album/get",
 			c.GetAlbumCollection,
 		},
 		Route{
 			"SearchAlbums",
 			strings.ToUpper("Get"),
-			"/api/{version}/album/search",
+			"/api/3.18/album/search",
 			c.SearchAlbums,
 		},
 		Route{
 			"UpdateAlbumCollection",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/update",
+			"/api/3.18/album/update",
 			c.UpdateAlbumCollection,
 		},
 		Route{
 			"AddAlbumUsers",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/add",
+			"/api/3.18/album/user/add",
 			c.AddAlbumUsers,
 		},
 		Route{
 			"RemoveAlbumUsers",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/delete",
+			"/api/3.18/album/user/delete",
 			c.RemoveAlbumUsers,
 		},
 		Route{
 			"LeaveAlbum",
 			strings.ToUpper("Post"),
-			"/api/{version}/album/user/leave",
+			"/api/3.18/album/user/leave",
 			c.LeaveAlbum,
 		},
 	}
@@ -173,18 +171,9 @@ func (c *AlbumAPIController) OrderedRoutes() []Route {
 
 // ApproveAlbum - Approve Album
 func (c *AlbumAPIController) ApproveAlbum(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -245,7 +234,7 @@ func (c *AlbumAPIController) ApproveAlbum(w http.ResponseWriter, r *http.Request
 		verifiedParam = param
 	} else {
 	}
-	result, err := c.service.ApproveAlbum(r.Context(), versionParam, albumIdParam, deviceIdParam, accountIdParam, approvalStatusParam, verifiedParam)
+	result, err := c.service.ApproveAlbum(r.Context(), albumIdParam, deviceIdParam, accountIdParam, approvalStatusParam, verifiedParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -257,18 +246,9 @@ func (c *AlbumAPIController) ApproveAlbum(w http.ResponseWriter, r *http.Request
 
 // AddAlbumCollection - Create Album
 func (c *AlbumAPIController) AddAlbumCollection(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var titleParam string
@@ -728,7 +708,7 @@ func (c *AlbumAPIController) AddAlbumCollection(w http.ResponseWriter, r *http.R
 		linkedObjectIdParam = param
 	} else {
 	}
-	result, err := c.service.AddAlbumCollection(r.Context(), versionParam, titleParam, coverAssetNullableParam, includeCoverInAssetListParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, anonymousParam, deviceIdParam, accountIdParam, assetsToAddParam, mediaParam, mediaURLParam, assetIdParam, attachedMediaParam, attachedMediaURLParam, startDateParam, endDateParam, tagsParam, descriptionParam, albumTypeParam, albumTypeIdParam, subTypeParam, latitudeParam, longitudeParam, locationDescriptionParam, visibilityParam, gameTypeParam, appKeyParam, cellPhoneParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, fullAddressParam, metaDataParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, includeAllAppUsersAsMembersParam, includeAudiencesAsMembersParam, audienceOperatorParam, approvalStatusParam, linkedObjectTypeParam, linkedObjectIdParam)
+	result, err := c.service.AddAlbumCollection(r.Context(), titleParam, coverAssetNullableParam, includeCoverInAssetListParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, anonymousParam, deviceIdParam, accountIdParam, assetsToAddParam, mediaParam, mediaURLParam, assetIdParam, attachedMediaParam, attachedMediaURLParam, startDateParam, endDateParam, tagsParam, descriptionParam, albumTypeParam, albumTypeIdParam, subTypeParam, latitudeParam, longitudeParam, locationDescriptionParam, visibilityParam, gameTypeParam, appKeyParam, cellPhoneParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, fullAddressParam, metaDataParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, includeAllAppUsersAsMembersParam, includeAudiencesAsMembersParam, audienceOperatorParam, approvalStatusParam, linkedObjectTypeParam, linkedObjectIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -740,18 +720,9 @@ func (c *AlbumAPIController) AddAlbumCollection(w http.ResponseWriter, r *http.R
 
 // RemoveAlbum - Delete Album
 func (c *AlbumAPIController) RemoveAlbum(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -791,7 +762,7 @@ func (c *AlbumAPIController) RemoveAlbum(w http.ResponseWriter, r *http.Request)
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.RemoveAlbum(r.Context(), versionParam, albumIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.RemoveAlbum(r.Context(), albumIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -803,18 +774,9 @@ func (c *AlbumAPIController) RemoveAlbum(w http.ResponseWriter, r *http.Request)
 
 // GetAlbumCollection -  Get Album
 func (c *AlbumAPIController) GetAlbumCollection(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -940,7 +902,7 @@ func (c *AlbumAPIController) GetAlbumCollection(w http.ResponseWriter, r *http.R
 		audiencePreviewSizeParam = param
 	} else {
 	}
-	result, err := c.service.GetAlbumCollection(r.Context(), versionParam, returnNullsParam, albumIdParam, deviceIdParam, accountIdParam, likePreviewSizeParam, assetPreviewSizeParam, notePreviewSizeParam, connectionPreviewSizeParam, audiencePreviewSizeParam)
+	result, err := c.service.GetAlbumCollection(r.Context(), returnNullsParam, albumIdParam, deviceIdParam, accountIdParam, likePreviewSizeParam, assetPreviewSizeParam, notePreviewSizeParam, connectionPreviewSizeParam, audiencePreviewSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -952,18 +914,9 @@ func (c *AlbumAPIController) GetAlbumCollection(w http.ResponseWriter, r *http.R
 
 // SearchAlbums - Search Albums
 func (c *AlbumAPIController) SearchAlbums(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var filterParam string
@@ -1723,7 +1676,7 @@ func (c *AlbumAPIController) SearchAlbums(w http.ResponseWriter, r *http.Request
 		generateAlbumsParam = param
 	} else {
 	}
-	result, err := c.service.SearchAlbums(r.Context(), versionParam, filterParam, albumTypeIdParam, subTypeParam, includeInactiveParam, sortFieldParam, descendingParam, startParam, limitParam, range_Param, includeLikedParam, includeFavoritedParam, includePermissionsParam, likePreviewSizeParam, assetPreviewSizeParam, notePreviewSizeParam, connectionPreviewSizeParam, audiencePreviewSizeParam, deviceIdParam, accountIdParam, connectionAccountIdParam, ownerIdParam, albumIdsParam, excludeAlbumIdsParam, mediaIdParam, keywordParam, albumTypeParam, limitPerAlbumTypeParam, dateCreatedParam, updatedSinceParam, updatedBeforeParam, createdSinceParam, createdBeforeParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam, latitudeParam, longitudeParam, appKeyParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, excludeAudienceIdsParam, includeCompletableParam, includeRatingParam, searchModeParam, stackSearchParam, stackWindowSizeParam, minStackPerPageParam, stackPaginationIdentifierParam, stackDetailsParam, flagCountMinimumParam, removeFlaggedContentParam, verifiedFilterParam, linkedObjectTypeParam, linkedObjectIdParam, orderAudienceIdParam, ignoreDefaultAppFilterParam, searchExpressionParam, generateAlbumsParam)
+	result, err := c.service.SearchAlbums(r.Context(), filterParam, albumTypeIdParam, subTypeParam, includeInactiveParam, sortFieldParam, descendingParam, startParam, limitParam, range_Param, includeLikedParam, includeFavoritedParam, includePermissionsParam, likePreviewSizeParam, assetPreviewSizeParam, notePreviewSizeParam, connectionPreviewSizeParam, audiencePreviewSizeParam, deviceIdParam, accountIdParam, connectionAccountIdParam, ownerIdParam, albumIdsParam, excludeAlbumIdsParam, mediaIdParam, keywordParam, albumTypeParam, limitPerAlbumTypeParam, dateCreatedParam, updatedSinceParam, updatedBeforeParam, createdSinceParam, createdBeforeParam, startedSinceParam, startedBeforeParam, endedSinceParam, endedBeforeParam, latitudeParam, longitudeParam, appKeyParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, excludeAudienceIdsParam, includeCompletableParam, includeRatingParam, searchModeParam, stackSearchParam, stackWindowSizeParam, minStackPerPageParam, stackPaginationIdentifierParam, stackDetailsParam, flagCountMinimumParam, removeFlaggedContentParam, verifiedFilterParam, linkedObjectTypeParam, linkedObjectIdParam, orderAudienceIdParam, ignoreDefaultAppFilterParam, searchExpressionParam, generateAlbumsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1735,18 +1688,9 @@ func (c *AlbumAPIController) SearchAlbums(w http.ResponseWriter, r *http.Request
 
 // UpdateAlbumCollection - Update Album
 func (c *AlbumAPIController) UpdateAlbumCollection(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -2192,7 +2136,7 @@ func (c *AlbumAPIController) UpdateAlbumCollection(w http.ResponseWriter, r *htt
 		indexNowParam = param
 	} else {
 	}
-	result, err := c.service.UpdateAlbumCollection(r.Context(), versionParam, albumIdParam, deviceIdParam, accountIdParam, assetsToAddParam, assetsToRemoveParam, assetIdParam, mediaParam, mediaURLParam, activeParam, titleParam, startDateParam, endDateParam, tagsParam, descriptionParam, albumTypeParam, albumTypeIdParam, subTypeParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, latitudeParam, longitudeParam, locationDescriptionParam, visibilityParam, cellPhoneParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, fullAddressParam, anonymousParam, metaDataParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, audienceIdsToAddParam, audienceIdsToRemoveParam, includeAllAppUsersAsMembersParam, includeAudiencesAsMembersParam, audienceOperatorParam, linkedObjectTypeParam, linkedObjectIdParam, indexNowParam)
+	result, err := c.service.UpdateAlbumCollection(r.Context(), albumIdParam, deviceIdParam, accountIdParam, assetsToAddParam, assetsToRemoveParam, assetIdParam, mediaParam, mediaURLParam, activeParam, titleParam, startDateParam, endDateParam, tagsParam, descriptionParam, albumTypeParam, albumTypeIdParam, subTypeParam, publicReadParam, publicWriteParam, publicDeleteParam, publicAddParam, latitudeParam, longitudeParam, locationDescriptionParam, visibilityParam, cellPhoneParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, fullAddressParam, anonymousParam, metaDataParam, categoryIdsParam, categoryFilterIdsParam, audienceIdsParam, audienceIdsToAddParam, audienceIdsToRemoveParam, includeAllAppUsersAsMembersParam, includeAudiencesAsMembersParam, audienceOperatorParam, linkedObjectTypeParam, linkedObjectIdParam, indexNowParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2204,18 +2148,9 @@ func (c *AlbumAPIController) UpdateAlbumCollection(w http.ResponseWriter, r *htt
 
 // AddAlbumUsers - Add Album Users
 func (c *AlbumAPIController) AddAlbumUsers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -2341,7 +2276,7 @@ func (c *AlbumAPIController) AddAlbumUsers(w http.ResponseWriter, r *http.Reques
 		connectionGroupsParam = param
 	} else {
 	}
-	result, err := c.service.AddAlbumUsers(r.Context(), versionParam, albumIdParam, includeFriendGroupParam, deviceIdParam, accountIdParam, readParam, writeParam, deleteParam, addParam, connectionsParam, connectionGroupsParam)
+	result, err := c.service.AddAlbumUsers(r.Context(), albumIdParam, includeFriendGroupParam, deviceIdParam, accountIdParam, readParam, writeParam, deleteParam, addParam, connectionsParam, connectionGroupsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2353,18 +2288,9 @@ func (c *AlbumAPIController) AddAlbumUsers(w http.ResponseWriter, r *http.Reques
 
 // RemoveAlbumUsers - Remove Album Users
 func (c *AlbumAPIController) RemoveAlbumUsers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -2434,7 +2360,7 @@ func (c *AlbumAPIController) RemoveAlbumUsers(w http.ResponseWriter, r *http.Req
 		connectionGroupsParam = param
 	} else {
 	}
-	result, err := c.service.RemoveAlbumUsers(r.Context(), versionParam, albumIdParam, removeFriendGroupParam, deviceIdParam, accountIdParam, connectionsParam, connectionGroupsParam)
+	result, err := c.service.RemoveAlbumUsers(r.Context(), albumIdParam, removeFriendGroupParam, deviceIdParam, accountIdParam, connectionsParam, connectionGroupsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -2446,18 +2372,9 @@ func (c *AlbumAPIController) RemoveAlbumUsers(w http.ResponseWriter, r *http.Req
 
 // LeaveAlbum - Leave Album
 func (c *AlbumAPIController) LeaveAlbum(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var albumIdParam int64
@@ -2497,7 +2414,7 @@ func (c *AlbumAPIController) LeaveAlbum(w http.ResponseWriter, r *http.Request) 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.LeaveAlbum(r.Context(), versionParam, albumIdParam, deviceIdParam, accountIdParam)
+	result, err := c.service.LeaveAlbum(r.Context(), albumIdParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -29,7 +29,7 @@ func NewMediaAPIService() *MediaAPIService {
 }
 
 // CreateMedia - Create Media
-func (s *MediaAPIService) CreateMedia(ctx context.Context, version float32, accountId int64, title string, barcodeType string, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPrice int64, fullPrice float64, discountPrice float64, specialOfferType string, offerVisibility string, active bool, retailerLocationIds string, subTitle string, details string, subDetails string, finePrint string, barcodeEntry string, externalRedeemOptions string, externalUrl string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, ticketPriceType string, showRemaining bool, showRedeemed bool, replaced bool, featured bool, categoryIds string, filterIds string, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, conditionType string, isbn string, asin string, catalogNumbers string, parentalRating string, availabilityDate int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, availability string, availabilitySummary string) (ImplResponse, error) {
+func (s *MediaAPIService) CreateMedia(ctx context.Context, accountId int64, title string, barcodeType string, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPrice int64, fullPrice float64, discountPrice float64, specialOfferType string, offerVisibility string, active bool, retailerLocationIds string, subTitle string, details string, subDetails string, finePrint string, barcodeEntry string, externalRedeemOptions string, externalUrl string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, ticketPriceType string, showRemaining bool, showRedeemed bool, replaced bool, featured bool, categoryIds string, filterIds string, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, conditionType string, isbn string, asin string, catalogNumbers string, parentalRating string, availabilityDate int64, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, availability string, availabilitySummary string) (ImplResponse, error) {
 	// TODO - update CreateMedia with the required logic for this service method.
 	// Add api_media_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *MediaAPIService) CreateMedia(ctx context.Context, version float32, acco
 }
 
 // DeleteMedia - Delete Media
-func (s *MediaAPIService) DeleteMedia(ctx context.Context, version float32, accountId int64, mediaId int64) (ImplResponse, error) {
+func (s *MediaAPIService) DeleteMedia(ctx context.Context, accountId int64, mediaId int64) (ImplResponse, error) {
 	// TODO - update DeleteMedia with the required logic for this service method.
 	// Add api_media_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *MediaAPIService) DeleteMedia(ctx context.Context, version float32, acco
 }
 
 // GetMedia - Media Get
-func (s *MediaAPIService) GetMedia(ctx context.Context, version float32, accountId int64, mediaId int64) (ImplResponse, error) {
+func (s *MediaAPIService) GetMedia(ctx context.Context, accountId int64, mediaId int64) (ImplResponse, error) {
 	// TODO - update GetMedia with the required logic for this service method.
 	// Add api_media_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *MediaAPIService) GetMedia(ctx context.Context, version float32, account
 }
 
 // SearchMedia - Search Media
-func (s *MediaAPIService) SearchMedia(ctx context.Context, version float32, accountId int64, activeOnly bool, sortField string, descending bool, keyword string, categoryIds string, filterIds string, start int32, limit int32) (ImplResponse, error) {
+func (s *MediaAPIService) SearchMedia(ctx context.Context, accountId int64, activeOnly bool, sortField string, descending bool, keyword string, categoryIds string, filterIds string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchMedia with the required logic for this service method.
 	// Add api_media_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *MediaAPIService) SearchMedia(ctx context.Context, version float32, acco
 }
 
 // UpdateMedia - Update Media
-func (s *MediaAPIService) UpdateMedia(ctx context.Context, version float32, accountId int64, mediaId int64, retailerLocationIds string, offerLocations string, title string, subTitle string, details string, subDetails string, finePrint string, barcodeType string, barcodeEntry string, externalRedeemOptions string, externalUrl string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPriceType string, ticketPrice int64, fullPrice float64, discountPrice float64, showRemaining bool, showRedeemed bool, replaced bool, featured bool, specialOfferType string, offerVisibility string, categoryIds string, filterIds string, active bool, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, conditionType string, isbn string, asin string, catalogNumbers string, availabilityDate int64, parentalRating string, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, availability string, availabilitySummary string) (ImplResponse, error) {
+func (s *MediaAPIService) UpdateMedia(ctx context.Context, accountId int64, mediaId int64, retailerLocationIds string, offerLocations string, title string, subTitle string, details string, subDetails string, finePrint string, barcodeType string, barcodeEntry string, externalRedeemOptions string, externalUrl string, ticketsRewardType string, ticketsReward int64, activated int64, expires int64, noExpiration bool, availableLimit int32, availableLimitPerUser int32, addedLimit int32, viewLimit int32, maxPrints int32, ticketPriceType string, ticketPrice int64, fullPrice float64, discountPrice float64, showRemaining bool, showRedeemed bool, replaced bool, featured bool, specialOfferType string, offerVisibility string, categoryIds string, filterIds string, active bool, barcodeAssetId int64, imageAssetId int64, imageAssetId1 int64, imageAssetId2 int64, imageAssetId3 int64, imageAssetId4 int64, imageAssetId5 int64, publisher string, redeemableStart int64, redeemableEnd int64, conditionType string, isbn string, asin string, catalogNumbers string, availabilityDate int64, parentalRating string, mediaType string, duration int32, author string, releaseDate int64, collectionIds string, availability string, availabilitySummary string) (ImplResponse, error) {
 	// TODO - update UpdateMedia with the required logic for this service method.
 	// Add api_media_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

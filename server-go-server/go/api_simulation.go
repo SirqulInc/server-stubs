@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // SimulationAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *SimulationAPIController) Routes() Routes {
 		"Simulation": Route{
 			"Simulation",
 			strings.ToUpper("Post"),
-			"/api/{version}/simulation/routing",
+			"/api/3.18/simulation/routing",
 			c.Simulation,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *SimulationAPIController) OrderedRoutes() []Route {
 		Route{
 			"Simulation",
 			strings.ToUpper("Post"),
-			"/api/{version}/simulation/routing",
+			"/api/3.18/simulation/routing",
 			c.Simulation,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *SimulationAPIController) OrderedRoutes() []Route {
 
 // Simulation - Routing Simulation
 func (c *SimulationAPIController) Simulation(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var dataParam string
@@ -115,7 +104,7 @@ func (c *SimulationAPIController) Simulation(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "realTime"}, nil)
 		return
 	}
-	result, err := c.service.Simulation(r.Context(), versionParam, dataParam, realTimeParam)
+	result, err := c.service.Simulation(r.Context(), dataParam, realTimeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

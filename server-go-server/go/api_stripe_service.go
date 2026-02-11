@@ -29,7 +29,7 @@ func NewStripeAPIService() *StripeAPIService {
 }
 
 // CreateStripeCheckoutSession - Create Stripe Checkout Session
-func (s *StripeAPIService) CreateStripeCheckoutSession(ctx context.Context, version float32, appKey string, stripeParameters string) (ImplResponse, error) {
+func (s *StripeAPIService) CreateStripeCheckoutSession(ctx context.Context, appKey string, stripeParameters string) (ImplResponse, error) {
 	// TODO - update CreateStripeCheckoutSession with the required logic for this service method.
 	// Add api_stripe_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

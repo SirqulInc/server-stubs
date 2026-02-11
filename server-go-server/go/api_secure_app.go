@@ -16,8 +16,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // SecureAppAPIController binds http requests to an api service and writes the service results to the http response
@@ -56,37 +54,37 @@ func (c *SecureAppAPIController) Routes() Routes {
 		"CreateSecureApplication": Route{
 			"CreateSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/create",
+			"/api/3.18/secure/application/create",
 			c.CreateSecureApplication,
 		},
 		"DeleteSecureApplication": Route{
 			"DeleteSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/delete",
+			"/api/3.18/secure/application/delete",
 			c.DeleteSecureApplication,
 		},
 		"ResetSecure": Route{
 			"ResetSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/reset",
+			"/api/3.18/secure/application/reset",
 			c.ResetSecure,
 		},
 		"UpdateSecureApplication": Route{
 			"UpdateSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/update",
+			"/api/3.18/secure/application/update",
 			c.UpdateSecureApplication,
 		},
 		"LoginSecure": Route{
 			"LoginSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/login",
+			"/api/3.18/secure/login",
 			c.LoginSecure,
 		},
 		"PurchaseSecure": Route{
 			"PurchaseSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/purchase",
+			"/api/3.18/secure/purchase",
 			c.PurchaseSecure,
 		},
 	}
@@ -98,37 +96,37 @@ func (c *SecureAppAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/create",
+			"/api/3.18/secure/application/create",
 			c.CreateSecureApplication,
 		},
 		Route{
 			"DeleteSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/delete",
+			"/api/3.18/secure/application/delete",
 			c.DeleteSecureApplication,
 		},
 		Route{
 			"ResetSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/reset",
+			"/api/3.18/secure/application/reset",
 			c.ResetSecure,
 		},
 		Route{
 			"UpdateSecureApplication",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/application/update",
+			"/api/3.18/secure/application/update",
 			c.UpdateSecureApplication,
 		},
 		Route{
 			"LoginSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/login",
+			"/api/3.18/secure/login",
 			c.LoginSecure,
 		},
 		Route{
 			"PurchaseSecure",
 			strings.ToUpper("Post"),
-			"/api/{version}/secure/purchase",
+			"/api/3.18/secure/purchase",
 			c.PurchaseSecure,
 		},
 	}
@@ -138,18 +136,9 @@ func (c *SecureAppAPIController) OrderedRoutes() []Route {
 
 // CreateSecureApplication - Create Secure Application
 func (c *SecureAppAPIController) CreateSecureApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -256,7 +245,7 @@ func (c *SecureAppAPIController) CreateSecureApplication(w http.ResponseWriter, 
 		param := "UNKNOWN"
 		biometricPosition2Param = param
 	}
-	result, err := c.service.CreateSecureApplication(r.Context(), versionParam, accountIdParam, appKeyParam, keyCertParam, trustStoreParam, usernameParam, passwordParam, activeParam, biometricTypeParam, biometricPositionParam, biometricPosition2Param)
+	result, err := c.service.CreateSecureApplication(r.Context(), accountIdParam, appKeyParam, keyCertParam, trustStoreParam, usernameParam, passwordParam, activeParam, biometricTypeParam, biometricPositionParam, biometricPosition2Param)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -268,18 +257,9 @@ func (c *SecureAppAPIController) CreateSecureApplication(w http.ResponseWriter, 
 
 // DeleteSecureApplication - Delete Secure Application
 func (c *SecureAppAPIController) DeleteSecureApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -307,7 +287,7 @@ func (c *SecureAppAPIController) DeleteSecureApplication(w http.ResponseWriter, 
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.DeleteSecureApplication(r.Context(), versionParam, accountIdParam, appKeyParam)
+	result, err := c.service.DeleteSecureApplication(r.Context(), accountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -319,18 +299,9 @@ func (c *SecureAppAPIController) DeleteSecureApplication(w http.ResponseWriter, 
 
 // ResetSecure - Rest Secure Application
 func (c *SecureAppAPIController) ResetSecure(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -358,7 +329,7 @@ func (c *SecureAppAPIController) ResetSecure(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.ResetSecure(r.Context(), versionParam, accountIdParam, appKeyParam)
+	result, err := c.service.ResetSecure(r.Context(), accountIdParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -370,18 +341,9 @@ func (c *SecureAppAPIController) ResetSecure(w http.ResponseWriter, r *http.Requ
 
 // UpdateSecureApplication - Update Secure Application
 func (c *SecureAppAPIController) UpdateSecureApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -472,7 +434,7 @@ func (c *SecureAppAPIController) UpdateSecureApplication(w http.ResponseWriter, 
 		biometricPosition2Param = param
 	} else {
 	}
-	result, err := c.service.UpdateSecureApplication(r.Context(), versionParam, accountIdParam, appKeyParam, activeParam, keyCertParam, trustStoreParam, usernameParam, passwordParam, biometricTypeParam, biometricPositionParam, biometricPosition2Param)
+	result, err := c.service.UpdateSecureApplication(r.Context(), accountIdParam, appKeyParam, activeParam, keyCertParam, trustStoreParam, usernameParam, passwordParam, biometricTypeParam, biometricPositionParam, biometricPosition2Param)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -484,18 +446,9 @@ func (c *SecureAppAPIController) UpdateSecureApplication(w http.ResponseWriter, 
 
 // LoginSecure - Login Clear
 func (c *SecureAppAPIController) LoginSecure(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -599,7 +552,7 @@ func (c *SecureAppAPIController) LoginSecure(w http.ResponseWriter, r *http.Requ
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.LoginSecure(r.Context(), versionParam, appKeyParam, biometricFileParam, deviceIdParam, biometricFile2Param, ageRestrictionParam, returnProfileParam, responseFiltersParam, latitudeParam, longitudeParam)
+	result, err := c.service.LoginSecure(r.Context(), appKeyParam, biometricFileParam, deviceIdParam, biometricFile2Param, ageRestrictionParam, returnProfileParam, responseFiltersParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -611,15 +564,6 @@ func (c *SecureAppAPIController) LoginSecure(w http.ResponseWriter, r *http.Requ
 
 // PurchaseSecure - Purchase Clear
 func (c *SecureAppAPIController) PurchaseSecure(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam PaymentRequest
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -635,7 +579,7 @@ func (c *SecureAppAPIController) PurchaseSecure(w http.ResponseWriter, r *http.R
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.PurchaseSecure(r.Context(), versionParam, bodyParam)
+	result, err := c.service.PurchaseSecure(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

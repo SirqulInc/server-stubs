@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // LeaderboardAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,31 +53,31 @@ func (c *LeaderboardAPIController) Routes() Routes {
 		"CreateLeaderboard": Route{
 			"CreateLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/create",
+			"/api/3.18/leaderboard/create",
 			c.CreateLeaderboard,
 		},
 		"DeleteLeaderboard": Route{
 			"DeleteLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/delete",
+			"/api/3.18/leaderboard/delete",
 			c.DeleteLeaderboard,
 		},
 		"GetLeaderboard": Route{
 			"GetLeaderboard",
 			strings.ToUpper("Get"),
-			"/api/{version}/leaderboard/get",
+			"/api/3.18/leaderboard/get",
 			c.GetLeaderboard,
 		},
 		"SearchLeaderboards": Route{
 			"SearchLeaderboards",
 			strings.ToUpper("Get"),
-			"/api/{version}/leaderboard/search",
+			"/api/3.18/leaderboard/search",
 			c.SearchLeaderboards,
 		},
 		"UpdateLeaderboard": Route{
 			"UpdateLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/update",
+			"/api/3.18/leaderboard/update",
 			c.UpdateLeaderboard,
 		},
 	}
@@ -91,31 +89,31 @@ func (c *LeaderboardAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/create",
+			"/api/3.18/leaderboard/create",
 			c.CreateLeaderboard,
 		},
 		Route{
 			"DeleteLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/delete",
+			"/api/3.18/leaderboard/delete",
 			c.DeleteLeaderboard,
 		},
 		Route{
 			"GetLeaderboard",
 			strings.ToUpper("Get"),
-			"/api/{version}/leaderboard/get",
+			"/api/3.18/leaderboard/get",
 			c.GetLeaderboard,
 		},
 		Route{
 			"SearchLeaderboards",
 			strings.ToUpper("Get"),
-			"/api/{version}/leaderboard/search",
+			"/api/3.18/leaderboard/search",
 			c.SearchLeaderboards,
 		},
 		Route{
 			"UpdateLeaderboard",
 			strings.ToUpper("Post"),
-			"/api/{version}/leaderboard/update",
+			"/api/3.18/leaderboard/update",
 			c.UpdateLeaderboard,
 		},
 	}
@@ -125,18 +123,9 @@ func (c *LeaderboardAPIController) OrderedRoutes() []Route {
 
 // CreateLeaderboard - Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 func (c *LeaderboardAPIController) CreateLeaderboard(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -258,7 +247,7 @@ func (c *LeaderboardAPIController) CreateLeaderboard(w http.ResponseWriter, r *h
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateLeaderboard(r.Context(), versionParam, accountIdParam, appKeyParam, rankTypeParam, leaderboardModeParam, iconMediaParam, iconAssetIdParam, bannerMediaParam, bannerAssetIdParam, limitationParam, sortFieldParam, titleParam, descriptionParam, metaDataParam)
+	result, err := c.service.CreateLeaderboard(r.Context(), accountIdParam, appKeyParam, rankTypeParam, leaderboardModeParam, iconMediaParam, iconAssetIdParam, bannerMediaParam, bannerAssetIdParam, limitationParam, sortFieldParam, titleParam, descriptionParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -270,18 +259,9 @@ func (c *LeaderboardAPIController) CreateLeaderboard(w http.ResponseWriter, r *h
 
 // DeleteLeaderboard - Delete the Leader Board
 func (c *LeaderboardAPIController) DeleteLeaderboard(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var leaderboardIdParam int64
@@ -314,7 +294,7 @@ func (c *LeaderboardAPIController) DeleteLeaderboard(w http.ResponseWriter, r *h
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteLeaderboard(r.Context(), versionParam, leaderboardIdParam, accountIdParam)
+	result, err := c.service.DeleteLeaderboard(r.Context(), leaderboardIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -326,18 +306,9 @@ func (c *LeaderboardAPIController) DeleteLeaderboard(w http.ResponseWriter, r *h
 
 // GetLeaderboard - Read a leaderboard by id and retrieve the matching ranking list
 func (c *LeaderboardAPIController) GetLeaderboard(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var leaderboardIdParam int64
@@ -384,7 +355,7 @@ func (c *LeaderboardAPIController) GetLeaderboard(w http.ResponseWriter, r *http
 		includeFullRankingListParam = param
 	} else {
 	}
-	result, err := c.service.GetLeaderboard(r.Context(), versionParam, leaderboardIdParam, accountIdParam, includeFullRankingListParam)
+	result, err := c.service.GetLeaderboard(r.Context(), leaderboardIdParam, accountIdParam, includeFullRankingListParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -396,18 +367,9 @@ func (c *LeaderboardAPIController) GetLeaderboard(w http.ResponseWriter, r *http
 
 // SearchLeaderboards - Search leaderboard and retrieve the matching ranking list
 func (c *LeaderboardAPIController) SearchLeaderboards(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -543,7 +505,7 @@ func (c *LeaderboardAPIController) SearchLeaderboards(w http.ResponseWriter, r *
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.SearchLeaderboards(r.Context(), versionParam, accountIdParam, appKeyParam, globalOnlyParam, keywordParam, leaderboardIdsParam, rankTypesParam, sortFieldParam, descendingParam, includeInactiveParam, includeAppResponseParam, startParam, limitParam)
+	result, err := c.service.SearchLeaderboards(r.Context(), accountIdParam, appKeyParam, globalOnlyParam, keywordParam, leaderboardIdsParam, rankTypesParam, sortFieldParam, descendingParam, includeInactiveParam, includeAppResponseParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -555,18 +517,9 @@ func (c *LeaderboardAPIController) SearchLeaderboards(w http.ResponseWriter, r *
 
 // UpdateLeaderboard - Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
 func (c *LeaderboardAPIController) UpdateLeaderboard(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var leaderboardIdParam int64
@@ -718,7 +671,7 @@ func (c *LeaderboardAPIController) UpdateLeaderboard(w http.ResponseWriter, r *h
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateLeaderboard(r.Context(), versionParam, leaderboardIdParam, accountIdParam, appKeyParam, rankTypeParam, leaderboardModeParam, sortFieldParam, iconMediaParam, iconAssetIdParam, bannerMediaParam, bannerAssetIdParam, limitationParam, activeParam, titleParam, descriptionParam, metaDataParam)
+	result, err := c.service.UpdateLeaderboard(r.Context(), leaderboardIdParam, accountIdParam, appKeyParam, rankTypeParam, leaderboardModeParam, sortFieldParam, iconMediaParam, iconAssetIdParam, bannerMediaParam, bannerAssetIdParam, limitationParam, activeParam, titleParam, descriptionParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

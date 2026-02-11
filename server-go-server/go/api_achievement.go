@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // AchievementAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,85 +53,85 @@ func (c *AchievementAPIController) Routes() Routes {
 		"CreateAchievement": Route{
 			"CreateAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/create",
+			"/api/3.18/achievement/create",
 			c.CreateAchievement,
 		},
 		"DeleteAchievement": Route{
 			"DeleteAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/delete",
+			"/api/3.18/achievement/delete",
 			c.DeleteAchievement,
 		},
 		"GetAchievement": Route{
 			"GetAchievement",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/get",
+			"/api/3.18/achievement/get",
 			c.GetAchievement,
 		},
 		"ListAchievements": Route{
 			"ListAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/list",
+			"/api/3.18/achievement/list",
 			c.ListAchievements,
 		},
 		"GetUserAchievements": Route{
 			"GetUserAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/progress/get",
+			"/api/3.18/achievement/progress/get",
 			c.GetUserAchievements,
 		},
 		"UpdateUserAchievement": Route{
 			"UpdateUserAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/progress/update",
+			"/api/3.18/achievement/progress/update",
 			c.UpdateUserAchievement,
 		},
 		"SearchAchievements": Route{
 			"SearchAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/search",
+			"/api/3.18/achievement/search",
 			c.SearchAchievements,
 		},
 		"ListAchievementTags": Route{
 			"ListAchievementTags",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/tag/list",
+			"/api/3.18/achievement/tag/list",
 			c.ListAchievementTags,
 		},
 		"CreateAchievementTier": Route{
 			"CreateAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/create",
+			"/api/3.18/achievement/tier/create",
 			c.CreateAchievementTier,
 		},
 		"DeleteAchievementTier": Route{
 			"DeleteAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/delete",
+			"/api/3.18/achievement/tier/delete",
 			c.DeleteAchievementTier,
 		},
 		"UpdateAchievementTier": Route{
 			"UpdateAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/update",
+			"/api/3.18/achievement/tier/update",
 			c.UpdateAchievementTier,
 		},
 		"GetAchievementTier": Route{
 			"GetAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/get",
+			"/api/3.18/achievement/tier/get",
 			c.GetAchievementTier,
 		},
-		"ApiVersionAchievementTierSearchPost": Route{
-			"ApiVersionAchievementTierSearchPost",
+		"AchievementTierSearchPost": Route{
+			"AchievementTierSearchPost",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/search",
-			c.ApiVersionAchievementTierSearchPost,
+			"/api/3.18/achievement/tier/search",
+			c.AchievementTierSearchPost,
 		},
 		"UpdateAchievement": Route{
 			"UpdateAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/update",
+			"/api/3.18/achievement/update",
 			c.UpdateAchievement,
 		},
 	}
@@ -145,85 +143,85 @@ func (c *AchievementAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/create",
+			"/api/3.18/achievement/create",
 			c.CreateAchievement,
 		},
 		Route{
 			"DeleteAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/delete",
+			"/api/3.18/achievement/delete",
 			c.DeleteAchievement,
 		},
 		Route{
 			"GetAchievement",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/get",
+			"/api/3.18/achievement/get",
 			c.GetAchievement,
 		},
 		Route{
 			"ListAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/list",
+			"/api/3.18/achievement/list",
 			c.ListAchievements,
 		},
 		Route{
 			"GetUserAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/progress/get",
+			"/api/3.18/achievement/progress/get",
 			c.GetUserAchievements,
 		},
 		Route{
 			"UpdateUserAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/progress/update",
+			"/api/3.18/achievement/progress/update",
 			c.UpdateUserAchievement,
 		},
 		Route{
 			"SearchAchievements",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/search",
+			"/api/3.18/achievement/search",
 			c.SearchAchievements,
 		},
 		Route{
 			"ListAchievementTags",
 			strings.ToUpper("Get"),
-			"/api/{version}/achievement/tag/list",
+			"/api/3.18/achievement/tag/list",
 			c.ListAchievementTags,
 		},
 		Route{
 			"CreateAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/create",
+			"/api/3.18/achievement/tier/create",
 			c.CreateAchievementTier,
 		},
 		Route{
 			"DeleteAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/delete",
+			"/api/3.18/achievement/tier/delete",
 			c.DeleteAchievementTier,
 		},
 		Route{
 			"UpdateAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/update",
+			"/api/3.18/achievement/tier/update",
 			c.UpdateAchievementTier,
 		},
 		Route{
 			"GetAchievementTier",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/get",
+			"/api/3.18/achievement/tier/get",
 			c.GetAchievementTier,
 		},
 		Route{
-			"ApiVersionAchievementTierSearchPost",
+			"AchievementTierSearchPost",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/tier/search",
-			c.ApiVersionAchievementTierSearchPost,
+			"/api/3.18/achievement/tier/search",
+			c.AchievementTierSearchPost,
 		},
 		Route{
 			"UpdateAchievement",
 			strings.ToUpper("Post"),
-			"/api/{version}/achievement/update",
+			"/api/3.18/achievement/update",
 			c.UpdateAchievement,
 		},
 	}
@@ -233,18 +231,9 @@ func (c *AchievementAPIController) OrderedRoutes() []Route {
 
 // CreateAchievement - Create Achievement
 func (c *AchievementAPIController) CreateAchievement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -384,7 +373,7 @@ func (c *AchievementAPIController) CreateAchievement(w http.ResponseWriter, r *h
 		triggerDefinitionParam = param
 	} else {
 	}
-	result, err := c.service.CreateAchievement(r.Context(), versionParam, appKeyParam, titleParam, deviceIdParam, accountIdParam, analyticsTagParam, descriptionParam, rankTypeParam, rankIncrementParam, minIncrementParam, maxIncrementParam, validateParam, activeParam, triggerDefinitionParam)
+	result, err := c.service.CreateAchievement(r.Context(), appKeyParam, titleParam, deviceIdParam, accountIdParam, analyticsTagParam, descriptionParam, rankTypeParam, rankIncrementParam, minIncrementParam, maxIncrementParam, validateParam, activeParam, triggerDefinitionParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -396,18 +385,9 @@ func (c *AchievementAPIController) CreateAchievement(w http.ResponseWriter, r *h
 
 // DeleteAchievement - Delete Achievement
 func (c *AchievementAPIController) DeleteAchievement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var achievementIdParam int64
@@ -440,7 +420,7 @@ func (c *AchievementAPIController) DeleteAchievement(w http.ResponseWriter, r *h
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteAchievement(r.Context(), versionParam, achievementIdParam, accountIdParam)
+	result, err := c.service.DeleteAchievement(r.Context(), achievementIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -452,18 +432,9 @@ func (c *AchievementAPIController) DeleteAchievement(w http.ResponseWriter, r *h
 
 // GetAchievement - Get Achievement
 func (c *AchievementAPIController) GetAchievement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var achievementIdParam int64
@@ -510,7 +481,7 @@ func (c *AchievementAPIController) GetAchievement(w http.ResponseWriter, r *http
 		achievementTypeParam = param
 	} else {
 	}
-	result, err := c.service.GetAchievement(r.Context(), versionParam, achievementIdParam, deviceIdParam, accountIdParam, achievementTypeParam)
+	result, err := c.service.GetAchievement(r.Context(), achievementIdParam, deviceIdParam, accountIdParam, achievementTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -522,18 +493,9 @@ func (c *AchievementAPIController) GetAchievement(w http.ResponseWriter, r *http
 
 // ListAchievements - List Achievements
 func (c *AchievementAPIController) ListAchievements(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -658,7 +620,7 @@ func (c *AchievementAPIController) ListAchievements(w http.ResponseWriter, r *ht
 		rankTypeParam = param
 	} else {
 	}
-	result, err := c.service.ListAchievements(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, appKeyParam, keywordParam, achievementTypeParam, rankTypeParam)
+	result, err := c.service.ListAchievements(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, appKeyParam, keywordParam, achievementTypeParam, rankTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -670,18 +632,9 @@ func (c *AchievementAPIController) ListAchievements(w http.ResponseWriter, r *ht
 
 // GetUserAchievements - Get Achievement Progress
 func (c *AchievementAPIController) GetUserAchievements(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var returnNullsParam bool
@@ -809,7 +762,7 @@ func (c *AchievementAPIController) GetUserAchievements(w http.ResponseWriter, r 
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetUserAchievements(r.Context(), versionParam, returnNullsParam, appKeyParam, includeUndiscoveredParam, deviceIdParam, accountIdParam, connectionAccountEmailParam, connectionAccountIdParam, rankTypeParam, achievementTypeParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetUserAchievements(r.Context(), returnNullsParam, appKeyParam, includeUndiscoveredParam, deviceIdParam, accountIdParam, connectionAccountEmailParam, connectionAccountIdParam, rankTypeParam, achievementTypeParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -821,18 +774,9 @@ func (c *AchievementAPIController) GetUserAchievements(w http.ResponseWriter, r 
 
 // UpdateUserAchievement - Update Achievement Progress
 func (c *AchievementAPIController) UpdateUserAchievement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -942,7 +886,7 @@ func (c *AchievementAPIController) UpdateUserAchievement(w http.ResponseWriter, 
 		returnProgressParam = param
 	} else {
 	}
-	result, err := c.service.UpdateUserAchievement(r.Context(), versionParam, accountIdParam, achievementIdParam, tagParam, customIdParam, incrementParam, startDateParam, endDateParam, returnProgressParam)
+	result, err := c.service.UpdateUserAchievement(r.Context(), accountIdParam, achievementIdParam, tagParam, customIdParam, incrementParam, startDateParam, endDateParam, returnProgressParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -954,18 +898,9 @@ func (c *AchievementAPIController) UpdateUserAchievement(w http.ResponseWriter, 
 
 // SearchAchievements - Search Achievements
 func (c *AchievementAPIController) SearchAchievements(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1108,7 +1043,7 @@ func (c *AchievementAPIController) SearchAchievements(w http.ResponseWriter, r *
 		rankTypeParam = param
 	} else {
 	}
-	result, err := c.service.SearchAchievements(r.Context(), versionParam, appKeyParam, sortFieldParam, descendingParam, includeTiersParam, includeInactiveTiersParam, startParam, limitParam, deviceIdParam, accountIdParam, keywordParam, achievementTypeParam, rankTypeParam)
+	result, err := c.service.SearchAchievements(r.Context(), appKeyParam, sortFieldParam, descendingParam, includeTiersParam, includeInactiveTiersParam, startParam, limitParam, deviceIdParam, accountIdParam, keywordParam, achievementTypeParam, rankTypeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1120,18 +1055,9 @@ func (c *AchievementAPIController) SearchAchievements(w http.ResponseWriter, r *
 
 // ListAchievementTags - List Achievement Tags
 func (c *AchievementAPIController) ListAchievementTags(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1141,7 +1067,7 @@ func (c *AchievementAPIController) ListAchievementTags(w http.ResponseWriter, r 
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.ListAchievementTags(r.Context(), versionParam, appKeyParam)
+	result, err := c.service.ListAchievementTags(r.Context(), appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1153,18 +1079,9 @@ func (c *AchievementAPIController) ListAchievementTags(w http.ResponseWriter, r 
 
 // CreateAchievementTier - Create Achievement Tier
 func (c *AchievementAPIController) CreateAchievementTier(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var achievementIdParam int64
@@ -1339,7 +1256,7 @@ func (c *AchievementAPIController) CreateAchievementTier(w http.ResponseWriter, 
 		gameObjectIdParam = param
 	} else {
 	}
-	result, err := c.service.CreateAchievementTier(r.Context(), versionParam, achievementIdParam, scoreAllInstancesParam, deviceIdParam, accountIdParam, iconParam, iconAssetIdParam, titleParam, descriptionParam, goalCountParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam)
+	result, err := c.service.CreateAchievementTier(r.Context(), achievementIdParam, scoreAllInstancesParam, deviceIdParam, accountIdParam, iconParam, iconAssetIdParam, titleParam, descriptionParam, goalCountParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1351,18 +1268,9 @@ func (c *AchievementAPIController) CreateAchievementTier(w http.ResponseWriter, 
 
 // DeleteAchievementTier - Delete Achievement Tier
 func (c *AchievementAPIController) DeleteAchievementTier(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var achievementTierIdParam int64
@@ -1395,7 +1303,7 @@ func (c *AchievementAPIController) DeleteAchievementTier(w http.ResponseWriter, 
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteAchievementTier(r.Context(), versionParam, achievementTierIdParam, accountIdParam)
+	result, err := c.service.DeleteAchievementTier(r.Context(), achievementTierIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1407,18 +1315,9 @@ func (c *AchievementAPIController) DeleteAchievementTier(w http.ResponseWriter, 
 
 // UpdateAchievementTier - Update Achievement Tier
 func (c *AchievementAPIController) UpdateAchievementTier(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var achievementTierIdParam int64
@@ -1591,7 +1490,7 @@ func (c *AchievementAPIController) UpdateAchievementTier(w http.ResponseWriter, 
 		scoreAllInstancesParam = param
 	} else {
 	}
-	result, err := c.service.UpdateAchievementTier(r.Context(), versionParam, achievementTierIdParam, deviceIdParam, accountIdParam, iconParam, iconAssetIdParam, titleParam, descriptionParam, goalCountParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, scoreAllInstancesParam)
+	result, err := c.service.UpdateAchievementTier(r.Context(), achievementTierIdParam, deviceIdParam, accountIdParam, iconParam, iconAssetIdParam, titleParam, descriptionParam, goalCountParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, scoreAllInstancesParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1603,18 +1502,9 @@ func (c *AchievementAPIController) UpdateAchievementTier(w http.ResponseWriter, 
 
 // GetAchievementTier - Gets an achievement tier
 func (c *AchievementAPIController) GetAchievementTier(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1649,7 +1539,7 @@ func (c *AchievementAPIController) GetAchievementTier(w http.ResponseWriter, r *
 		c.errorHandler(w, r, &RequiredError{Field: "achievementTierId"}, nil)
 		return
 	}
-	result, err := c.service.GetAchievementTier(r.Context(), versionParam, accountIdParam, achievementTierIdParam)
+	result, err := c.service.GetAchievementTier(r.Context(), accountIdParam, achievementTierIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1659,20 +1549,11 @@ func (c *AchievementAPIController) GetAchievementTier(w http.ResponseWriter, r *
 	_ = EncodeJSONResponse(result.Body, &result.Code, w)
 }
 
-// ApiVersionAchievementTierSearchPost - Searches an Achievement Tier
-func (c *AchievementAPIController) ApiVersionAchievementTierSearchPost(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
+// AchievementTierSearchPost - Searches an Achievement Tier
+func (c *AchievementAPIController) AchievementTierSearchPost(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1794,7 +1675,7 @@ func (c *AchievementAPIController) ApiVersionAchievementTierSearchPost(w http.Re
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.ApiVersionAchievementTierSearchPost(r.Context(), versionParam, deviceIdParam, accountIdParam, appKeyParam, keywordParam, achievementTypeParam, rankTypeParam, sortFieldParam, descendingParam, descendingGoalParam, startParam, limitParam)
+	result, err := c.service.AchievementTierSearchPost(r.Context(), deviceIdParam, accountIdParam, appKeyParam, keywordParam, achievementTypeParam, rankTypeParam, sortFieldParam, descendingParam, descendingGoalParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1806,18 +1687,9 @@ func (c *AchievementAPIController) ApiVersionAchievementTierSearchPost(w http.Re
 
 // UpdateAchievement - Update Achievement
 func (c *AchievementAPIController) UpdateAchievement(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -1988,7 +1860,7 @@ func (c *AchievementAPIController) UpdateAchievement(w http.ResponseWriter, r *h
 		triggerDefinitionParam = param
 	} else {
 	}
-	result, err := c.service.UpdateAchievement(r.Context(), versionParam, deviceIdParam, accountIdParam, achievementIdParam, analyticsTagParam, titleParam, descriptionParam, rankTypeParam, rankIncrementParam, minIncrementParam, nullMinIncrementParam, maxIncrementParam, nullMaxIncrementParam, validateParam, activeParam, triggerDefinitionParam)
+	result, err := c.service.UpdateAchievement(r.Context(), deviceIdParam, accountIdParam, achievementIdParam, analyticsTagParam, titleParam, descriptionParam, rankTypeParam, rankIncrementParam, minIncrementParam, nullMinIncrementParam, maxIncrementParam, nullMaxIncrementParam, validateParam, activeParam, triggerDefinitionParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

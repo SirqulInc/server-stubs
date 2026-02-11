@@ -29,7 +29,7 @@ func NewWalletAPIService() *WalletAPIService {
 }
 
 // CreateOfferTransaction - Create Wallet Offers
-func (s *WalletAPIService) CreateOfferTransaction(ctx context.Context, version float32, deviceId string, accountId int64, offerId int64, offerLocationId int64, offerCart string, promoCode string, currencyType string, usePoints bool, metaData string, appKey string, status int32) (ImplResponse, error) {
+func (s *WalletAPIService) CreateOfferTransaction(ctx context.Context, deviceId string, accountId int64, offerId int64, offerLocationId int64, offerCart string, promoCode string, currencyType string, usePoints bool, metaData string, appKey string, status int32) (ImplResponse, error) {
 	// TODO - update CreateOfferTransaction with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *WalletAPIService) CreateOfferTransaction(ctx context.Context, version f
 }
 
 // PreviewOfferTransaction - Preview Wallet Offers
-func (s *WalletAPIService) PreviewOfferTransaction(ctx context.Context, version float32, deviceId string, accountId int64, offerId int64, offerLocationId int64, offerCart string, promoCode string, currencyType string, usePoints bool, metaData string, appKey string) (ImplResponse, error) {
+func (s *WalletAPIService) PreviewOfferTransaction(ctx context.Context, deviceId string, accountId int64, offerId int64, offerLocationId int64, offerCart string, promoCode string, currencyType string, usePoints bool, metaData string, appKey string) (ImplResponse, error) {
 	// TODO - update PreviewOfferTransaction with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *WalletAPIService) PreviewOfferTransaction(ctx context.Context, version 
 }
 
 // DeleteOfferTransaction - Delete Wallet Offer
-func (s *WalletAPIService) DeleteOfferTransaction(ctx context.Context, version float32, transactionId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *WalletAPIService) DeleteOfferTransaction(ctx context.Context, transactionId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteOfferTransaction with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *WalletAPIService) DeleteOfferTransaction(ctx context.Context, version f
 }
 
 // GetOfferTransaction - Get Wallet Offer
-func (s *WalletAPIService) GetOfferTransaction(ctx context.Context, version float32, transactionId int64, deviceId string, accountId int64, includeMission bool, latitude float64, longitude float64, returnFullResponse bool) (ImplResponse, error) {
+func (s *WalletAPIService) GetOfferTransaction(ctx context.Context, transactionId int64, deviceId string, accountId int64, includeMission bool, latitude float64, longitude float64, returnFullResponse bool) (ImplResponse, error) {
 	// TODO - update GetOfferTransaction with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *WalletAPIService) GetOfferTransaction(ctx context.Context, version floa
 }
 
 // SearchOfferTransactions - Search Wallet Offers
-func (s *WalletAPIService) SearchOfferTransactions(ctx context.Context, version float32, deviceId string, accountId int64, keyword string, retailerId int64, retailerIds string, retailerLocationId int64, retailerLocationIds string, excludeRetailerLocationIds string, offerId int64, offerIds string, offerLocationId int64, offerLocationIds string, offerType string, offerTypes string, specialOfferType string, specialOfferTypes string, categoryIds string, filterIds string, offerAudienceIds string, sortField string, descending bool, start int32, limit int32, latitude float64, longitude float64, redeemableStartDate int64, redeemableEndDate int64, filterByParentOffer bool, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64, redeemed bool, statuses string, reservationsOnly bool, activeOnly bool, returnFullResponse bool, recurringStartedSince int64, recurringStartedBefore int64, recurringExpirationSince int64, recurringExpirationBefore int64) (ImplResponse, error) {
+func (s *WalletAPIService) SearchOfferTransactions(ctx context.Context, deviceId string, accountId int64, keyword string, retailerId int64, retailerIds string, retailerLocationId int64, retailerLocationIds string, excludeRetailerLocationIds string, offerId int64, offerIds string, offerLocationId int64, offerLocationIds string, offerType string, offerTypes string, specialOfferType string, specialOfferTypes string, categoryIds string, filterIds string, offerAudienceIds string, sortField string, descending bool, start int32, limit int32, latitude float64, longitude float64, redeemableStartDate int64, redeemableEndDate int64, filterByParentOffer bool, startedSince int64, startedBefore int64, endedSince int64, endedBefore int64, redeemed bool, statuses string, reservationsOnly bool, activeOnly bool, returnFullResponse bool, recurringStartedSince int64, recurringStartedBefore int64, recurringExpirationSince int64, recurringExpirationBefore int64) (ImplResponse, error) {
 	// TODO - update SearchOfferTransactions with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *WalletAPIService) SearchOfferTransactions(ctx context.Context, version 
 }
 
 // UpdateOfferTransaction - Update Wallet Offer
-func (s *WalletAPIService) UpdateOfferTransaction(ctx context.Context, version float32, transactionId int64, status int32, deviceId string, accountId int64, offerLocationId int64, currencyType string, usePoints bool, appKey string, latitude float64, longitude float64, metaData string, returnFullResponse bool, exceptionMembershipOfferIds string) (ImplResponse, error) {
+func (s *WalletAPIService) UpdateOfferTransaction(ctx context.Context, transactionId int64, status int32, deviceId string, accountId int64, offerLocationId int64, currencyType string, usePoints bool, appKey string, latitude float64, longitude float64, metaData string, returnFullResponse bool, exceptionMembershipOfferIds string) (ImplResponse, error) {
 	// TODO - update UpdateOfferTransaction with the required logic for this service method.
 	// Add api_wallet_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

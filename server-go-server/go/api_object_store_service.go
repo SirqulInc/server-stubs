@@ -29,7 +29,7 @@ func NewObjectStoreAPIService() *ObjectStoreAPIService {
 }
 
 // CreateObject - Create Object
-func (s *ObjectStoreAPIService) CreateObject(ctx context.Context, version float32, accountId int64, appKey string, objectName string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) CreateObject(ctx context.Context, accountId int64, appKey string, objectName string) (ImplResponse, error) {
 	// TODO - update CreateObject with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ObjectStoreAPIService) CreateObject(ctx context.Context, version float3
 }
 
 // SearchData - Search Data
-func (s *ObjectStoreAPIService) SearchData(ctx context.Context, version float32, objectName string, count bool, start int64, limit int64, accountId int64, criteria string, order string, include string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) SearchData(ctx context.Context, objectName string, count bool, start int64, limit int64, accountId int64, criteria string, order string, include string) (ImplResponse, error) {
 	// TODO - update SearchData with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ObjectStoreAPIService) SearchData(ctx context.Context, version float32,
 }
 
 // CreateData - Create Data
-func (s *ObjectStoreAPIService) CreateData(ctx context.Context, version float32, objectName string, accountId int64, body string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) CreateData(ctx context.Context, objectName string, accountId int64, body string) (ImplResponse, error) {
 	// TODO - update CreateData with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ObjectStoreAPIService) CreateData(ctx context.Context, version float32,
 }
 
 // GetData - Get Data
-func (s *ObjectStoreAPIService) GetData(ctx context.Context, version float32, objectName string, objectId string, accountId int64, include string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) GetData(ctx context.Context, objectName string, objectId string, accountId int64, include string) (ImplResponse, error) {
 	// TODO - update GetData with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ObjectStoreAPIService) GetData(ctx context.Context, version float32, ob
 }
 
 // UpdateData - Update Data
-func (s *ObjectStoreAPIService) UpdateData(ctx context.Context, version float32, objectName string, objectId string, accountId int64, body string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) UpdateData(ctx context.Context, objectName string, objectId string, accountId int64, body string) (ImplResponse, error) {
 	// TODO - update UpdateData with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ObjectStoreAPIService) UpdateData(ctx context.Context, version float32,
 }
 
 // DeleteData - Delete Data
-func (s *ObjectStoreAPIService) DeleteData(ctx context.Context, version float32, objectName string, objectId string, accountId int64) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) DeleteData(ctx context.Context, objectName string, objectId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteData with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *ObjectStoreAPIService) DeleteData(ctx context.Context, version float32,
 }
 
 // DeleteObject - Delete Object
-func (s *ObjectStoreAPIService) DeleteObject(ctx context.Context, version float32, accountId int64, appKey string, objectName string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) DeleteObject(ctx context.Context, accountId int64, appKey string, objectName string) (ImplResponse, error) {
 	// TODO - update DeleteObject with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *ObjectStoreAPIService) DeleteObject(ctx context.Context, version float3
 }
 
 // AddField - Create Field
-func (s *ObjectStoreAPIService) AddField(ctx context.Context, version float32, accountId int64, appKey string, objectName string, fieldName string, fieldType string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) AddField(ctx context.Context, accountId int64, appKey string, objectName string, fieldName string, fieldType string) (ImplResponse, error) {
 	// TODO - update AddField with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *ObjectStoreAPIService) AddField(ctx context.Context, version float32, a
 }
 
 // DeleteField - Delete Field
-func (s *ObjectStoreAPIService) DeleteField(ctx context.Context, version float32, accountId int64, appKey string, objectName string, fieldName string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) DeleteField(ctx context.Context, accountId int64, appKey string, objectName string, fieldName string) (ImplResponse, error) {
 	// TODO - update DeleteField with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *ObjectStoreAPIService) DeleteField(ctx context.Context, version float32
 }
 
 // GetObject - Get Object
-func (s *ObjectStoreAPIService) GetObject(ctx context.Context, version float32, accountId int64, appKey string, objectName string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) GetObject(ctx context.Context, accountId int64, appKey string, objectName string) (ImplResponse, error) {
 	// TODO - update GetObject with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *ObjectStoreAPIService) GetObject(ctx context.Context, version float32, 
 }
 
 // SearchObject - Search Objects
-func (s *ObjectStoreAPIService) SearchObject(ctx context.Context, version float32, accountId int64, appKey string, start int64, limit int64, keyword string) (ImplResponse, error) {
+func (s *ObjectStoreAPIService) SearchObject(ctx context.Context, accountId int64, appKey string, start int64, limit int64, keyword string) (ImplResponse, error) {
 	// TODO - update SearchObject with the required logic for this service method.
 	// Add api_object_store_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

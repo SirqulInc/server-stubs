@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // ScoreAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,19 +52,19 @@ func (c *ScoreAPIController) Routes() Routes {
 		"CreateScore": Route{
 			"CreateScore",
 			strings.ToUpper("Post"),
-			"/api/{version}/score/create",
+			"/api/3.18/score/create",
 			c.CreateScore,
 		},
 		"GetScore": Route{
 			"GetScore",
 			strings.ToUpper("Get"),
-			"/api/{version}/score/get",
+			"/api/3.18/score/get",
 			c.GetScore,
 		},
 		"SearchScores": Route{
 			"SearchScores",
 			strings.ToUpper("Get"),
-			"/api/{version}/score/search",
+			"/api/3.18/score/search",
 			c.SearchScores,
 		},
 	}
@@ -78,19 +76,19 @@ func (c *ScoreAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateScore",
 			strings.ToUpper("Post"),
-			"/api/{version}/score/create",
+			"/api/3.18/score/create",
 			c.CreateScore,
 		},
 		Route{
 			"GetScore",
 			strings.ToUpper("Get"),
-			"/api/{version}/score/get",
+			"/api/3.18/score/get",
 			c.GetScore,
 		},
 		Route{
 			"SearchScores",
 			strings.ToUpper("Get"),
-			"/api/{version}/score/search",
+			"/api/3.18/score/search",
 			c.SearchScores,
 		},
 	}
@@ -100,18 +98,9 @@ func (c *ScoreAPIController) OrderedRoutes() []Route {
 
 // CreateScore - Create Score
 func (c *ScoreAPIController) CreateScore(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -253,7 +242,7 @@ func (c *ScoreAPIController) CreateScore(w http.ResponseWriter, r *http.Request)
 		highestParam = param
 	} else {
 	}
-	result, err := c.service.CreateScore(r.Context(), versionParam, accountIdParam, appKeyParam, pointsParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, timeTakenParam, highestParam)
+	result, err := c.service.CreateScore(r.Context(), accountIdParam, appKeyParam, pointsParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, timeTakenParam, highestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -265,18 +254,9 @@ func (c *ScoreAPIController) CreateScore(w http.ResponseWriter, r *http.Request)
 
 // GetScore - Get Score
 func (c *ScoreAPIController) GetScore(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -388,7 +368,7 @@ func (c *ScoreAPIController) GetScore(w http.ResponseWriter, r *http.Request) {
 		scoreStatusParam = param
 	} else {
 	}
-	result, err := c.service.GetScore(r.Context(), versionParam, accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, scoreObjectTypeParam, scoreStatusParam)
+	result, err := c.service.GetScore(r.Context(), accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam, scoreObjectTypeParam, scoreStatusParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -400,18 +380,9 @@ func (c *ScoreAPIController) GetScore(w http.ResponseWriter, r *http.Request) {
 
 // SearchScores - Search Score
 func (c *ScoreAPIController) SearchScores(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -509,7 +480,7 @@ func (c *ScoreAPIController) SearchScores(w http.ResponseWriter, r *http.Request
 		gameObjectIdParam = param
 	} else {
 	}
-	result, err := c.service.SearchScores(r.Context(), versionParam, accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam)
+	result, err := c.service.SearchScores(r.Context(), accountIdParam, appKeyParam, missionIdParam, gameIdParam, packIdParam, gameLevelIdParam, gameObjectIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

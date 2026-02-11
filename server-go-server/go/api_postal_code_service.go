@@ -29,7 +29,7 @@ func NewPostalCodeAPIService() *PostalCodeAPIService {
 }
 
 // CreatePostalCode - Create Postal Code
-func (s *PostalCodeAPIService) CreatePostalCode(ctx context.Context, version float32, accountId int64, code string, latitude float64, longitude float64, stateCode string, city string, active bool) (ImplResponse, error) {
+func (s *PostalCodeAPIService) CreatePostalCode(ctx context.Context, accountId int64, code string, latitude float64, longitude float64, stateCode string, city string, active bool) (ImplResponse, error) {
 	// TODO - update CreatePostalCode with the required logic for this service method.
 	// Add api_postal_code_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *PostalCodeAPIService) CreatePostalCode(ctx context.Context, version flo
 }
 
 // DeletePostalCode - Delete Postal Code
-func (s *PostalCodeAPIService) DeletePostalCode(ctx context.Context, version float32, accountId int64, postalCodeId int64) (ImplResponse, error) {
+func (s *PostalCodeAPIService) DeletePostalCode(ctx context.Context, accountId int64, postalCodeId int64) (ImplResponse, error) {
 	// TODO - update DeletePostalCode with the required logic for this service method.
 	// Add api_postal_code_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *PostalCodeAPIService) DeletePostalCode(ctx context.Context, version flo
 }
 
 // GetPostalCode - Get Postal Code
-func (s *PostalCodeAPIService) GetPostalCode(ctx context.Context, version float32, postalCodeId int64) (ImplResponse, error) {
+func (s *PostalCodeAPIService) GetPostalCode(ctx context.Context, postalCodeId int64) (ImplResponse, error) {
 	// TODO - update GetPostalCode with the required logic for this service method.
 	// Add api_postal_code_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *PostalCodeAPIService) GetPostalCode(ctx context.Context, version float3
 }
 
 // GetPostalCodes - Search Postal Codes
-func (s *PostalCodeAPIService) GetPostalCodes(ctx context.Context, version float32, sortField string, descending bool, latitude float64, longitude float64, keyword string, miles float64, start int32, limit int32) (ImplResponse, error) {
+func (s *PostalCodeAPIService) GetPostalCodes(ctx context.Context, sortField string, descending bool, latitude float64, longitude float64, keyword string, miles float64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetPostalCodes with the required logic for this service method.
 	// Add api_postal_code_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *PostalCodeAPIService) GetPostalCodes(ctx context.Context, version float
 }
 
 // UpdatePostalCode - Update Postal Code
-func (s *PostalCodeAPIService) UpdatePostalCode(ctx context.Context, version float32, accountId int64, postalCodeId int64, code string, latitude float64, longitude float64, stateCode string, city string, active bool) (ImplResponse, error) {
+func (s *PostalCodeAPIService) UpdatePostalCode(ctx context.Context, accountId int64, postalCodeId int64, code string, latitude float64, longitude float64, stateCode string, city string, active bool) (ImplResponse, error) {
 	// TODO - update UpdatePostalCode with the required logic for this service method.
 	// Add api_postal_code_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

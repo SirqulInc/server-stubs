@@ -57,19 +57,19 @@ func (c *DependentAPIController) Routes() Routes {
 		"GetDependents": Route{
 			"GetDependents",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.GetDependents,
 		},
 		"Create": Route{
 			"Create",
 			strings.ToUpper("Put"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.Create,
 		},
 		"RemoveDependent": Route{
 			"RemoveDependent",
 			strings.ToUpper("Delete"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.RemoveDependent,
 		},
 	}
@@ -81,19 +81,19 @@ func (c *DependentAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetDependents",
 			strings.ToUpper("Get"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.GetDependents,
 		},
 		Route{
 			"Create",
 			strings.ToUpper("Put"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.Create,
 		},
 		Route{
 			"RemoveDependent",
 			strings.ToUpper("Delete"),
-			"/api/{version}/cargo/dependent/{accountId}",
+			"/api/3.18/cargo/dependent/{accountId}",
 			c.RemoveDependent,
 		},
 	}
@@ -104,14 +104,6 @@ func (c *DependentAPIController) OrderedRoutes() []Route {
 // GetDependents - Get dependent list of an account
 func (c *DependentAPIController) GetDependents(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	accountIdParam, err := parseNumericParameter[int64](
 		params["accountId"],
 		WithRequire[int64](parseInt64),
@@ -120,7 +112,7 @@ func (c *DependentAPIController) GetDependents(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &ParsingError{Param: "accountId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetDependents(r.Context(), versionParam, accountIdParam)
+	result, err := c.service.GetDependents(r.Context(), accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -133,14 +125,6 @@ func (c *DependentAPIController) GetDependents(w http.ResponseWriter, r *http.Re
 // Create - Create Dependent
 func (c *DependentAPIController) Create(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	accountIdParam, err := parseNumericParameter[int64](
 		params["accountId"],
 		WithRequire[int64](parseInt64),
@@ -164,7 +148,7 @@ func (c *DependentAPIController) Create(w http.ResponseWriter, r *http.Request) 
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.Create(r.Context(), versionParam, accountIdParam, bodyParam)
+	result, err := c.service.Create(r.Context(), accountIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -177,14 +161,6 @@ func (c *DependentAPIController) Create(w http.ResponseWriter, r *http.Request) 
 // RemoveDependent - Delete Dependent
 func (c *DependentAPIController) RemoveDependent(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	accountIdParam, err := parseNumericParameter[int64](
 		params["accountId"],
 		WithRequire[int64](parseInt64),
@@ -201,7 +177,7 @@ func (c *DependentAPIController) RemoveDependent(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &ParsingError{Param: "dependentId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.RemoveDependent(r.Context(), versionParam, accountIdParam, dependentIdParam)
+	result, err := c.service.RemoveDependent(r.Context(), accountIdParam, dependentIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -30,7 +30,7 @@ func NewLeaderboardAPIService() *LeaderboardAPIService {
 }
 
 // CreateLeaderboard - Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-func (s *LeaderboardAPIService) CreateLeaderboard(ctx context.Context, version float32, accountId int64, appKey string, rankType string, leaderboardMode string, iconMedia *os.File, iconAssetId int64, bannerMedia *os.File, bannerAssetId int64, limitation int32, sortField string, title string, description string, metaData string) (ImplResponse, error) {
+func (s *LeaderboardAPIService) CreateLeaderboard(ctx context.Context, accountId int64, appKey string, rankType string, leaderboardMode string, iconMedia *os.File, iconAssetId int64, bannerMedia *os.File, bannerAssetId int64, limitation int32, sortField string, title string, description string, metaData string) (ImplResponse, error) {
 	// TODO - update CreateLeaderboard with the required logic for this service method.
 	// Add api_leaderboard_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *LeaderboardAPIService) CreateLeaderboard(ctx context.Context, version f
 }
 
 // DeleteLeaderboard - Delete the Leader Board
-func (s *LeaderboardAPIService) DeleteLeaderboard(ctx context.Context, version float32, leaderboardId int64, accountId int64) (ImplResponse, error) {
+func (s *LeaderboardAPIService) DeleteLeaderboard(ctx context.Context, leaderboardId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteLeaderboard with the required logic for this service method.
 	// Add api_leaderboard_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *LeaderboardAPIService) DeleteLeaderboard(ctx context.Context, version f
 }
 
 // GetLeaderboard - Read a leaderboard by id and retrieve the matching ranking list
-func (s *LeaderboardAPIService) GetLeaderboard(ctx context.Context, version float32, leaderboardId int64, accountId int64, includeFullRankingList bool) (ImplResponse, error) {
+func (s *LeaderboardAPIService) GetLeaderboard(ctx context.Context, leaderboardId int64, accountId int64, includeFullRankingList bool) (ImplResponse, error) {
 	// TODO - update GetLeaderboard with the required logic for this service method.
 	// Add api_leaderboard_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *LeaderboardAPIService) GetLeaderboard(ctx context.Context, version floa
 }
 
 // SearchLeaderboards - Search leaderboard and retrieve the matching ranking list
-func (s *LeaderboardAPIService) SearchLeaderboards(ctx context.Context, version float32, accountId int64, appKey string, globalOnly bool, keyword string, leaderboardIds string, rankTypes string, sortField string, descending bool, includeInactive bool, includeAppResponse bool, start int32, limit int32) (ImplResponse, error) {
+func (s *LeaderboardAPIService) SearchLeaderboards(ctx context.Context, accountId int64, appKey string, globalOnly bool, keyword string, leaderboardIds string, rankTypes string, sortField string, descending bool, includeInactive bool, includeAppResponse bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchLeaderboards with the required logic for this service method.
 	// Add api_leaderboard_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *LeaderboardAPIService) SearchLeaderboards(ctx context.Context, version 
 }
 
 // UpdateLeaderboard - Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-func (s *LeaderboardAPIService) UpdateLeaderboard(ctx context.Context, version float32, leaderboardId int64, accountId int64, appKey string, rankType string, leaderboardMode string, sortField string, iconMedia *os.File, iconAssetId int64, bannerMedia *os.File, bannerAssetId int64, limitation int32, active bool, title string, description string, metaData string) (ImplResponse, error) {
+func (s *LeaderboardAPIService) UpdateLeaderboard(ctx context.Context, leaderboardId int64, accountId int64, appKey string, rankType string, leaderboardMode string, sortField string, iconMedia *os.File, iconAssetId int64, bannerMedia *os.File, bannerAssetId int64, limitation int32, active bool, title string, description string, metaData string) (ImplResponse, error) {
 	// TODO - update UpdateLeaderboard with the required logic for this service method.
 	// Add api_leaderboard_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

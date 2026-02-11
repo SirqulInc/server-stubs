@@ -29,7 +29,7 @@ func NewPathingAPIService() *PathingAPIService {
 }
 
 // ComputePath - Calculate Path
-func (s *PathingAPIService) ComputePath(ctx context.Context, version float32, data string, units string, reducePath bool, directions bool) (ImplResponse, error) {
+func (s *PathingAPIService) ComputePath(ctx context.Context, data string, units string, reducePath bool, directions bool) (ImplResponse, error) {
 	// TODO - update ComputePath with the required logic for this service method.
 	// Add api_pathing_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

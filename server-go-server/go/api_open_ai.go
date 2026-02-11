@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // OpenAIAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *OpenAIAPIController) Routes() Routes {
 		"ImageGeneration": Route{
 			"ImageGeneration",
 			strings.ToUpper("Post"),
-			"/api/{version}/openai/v1/images/generations",
+			"/api/3.18/openai/v1/images/generations",
 			c.ImageGeneration,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *OpenAIAPIController) OrderedRoutes() []Route {
 		Route{
 			"ImageGeneration",
 			strings.ToUpper("Post"),
-			"/api/{version}/openai/v1/images/generations",
+			"/api/3.18/openai/v1/images/generations",
 			c.ImageGeneration,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *OpenAIAPIController) OrderedRoutes() []Route {
 
 // ImageGeneration - Generate images with OpenAI
 func (c *OpenAIAPIController) ImageGeneration(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -129,7 +118,7 @@ func (c *OpenAIAPIController) ImageGeneration(w http.ResponseWriter, r *http.Req
 		returnRawResponseParam = param
 	} else {
 	}
-	result, err := c.service.ImageGeneration(r.Context(), versionParam, accountIdParam, postBodyParam, returnRawResponseParam)
+	result, err := c.service.ImageGeneration(r.Context(), accountIdParam, postBodyParam, returnRawResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

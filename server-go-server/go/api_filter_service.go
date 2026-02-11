@@ -29,7 +29,7 @@ func NewFilterAPIService() *FilterAPIService {
 }
 
 // CreateFilter - Create Filter
-func (s *FilterAPIService) CreateFilter(ctx context.Context, version float32, accountId int64, name string, appKey string, parentFilterId int64, description string, externalId string, externalType string, active bool, metaData string) (ImplResponse, error) {
+func (s *FilterAPIService) CreateFilter(ctx context.Context, accountId int64, name string, appKey string, parentFilterId int64, description string, externalId string, externalType string, active bool, metaData string) (ImplResponse, error) {
 	// TODO - update CreateFilter with the required logic for this service method.
 	// Add api_filter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *FilterAPIService) CreateFilter(ctx context.Context, version float32, ac
 }
 
 // DeleteFilter - Delete Filter
-func (s *FilterAPIService) DeleteFilter(ctx context.Context, version float32, accountId int64, filterId int64) (ImplResponse, error) {
+func (s *FilterAPIService) DeleteFilter(ctx context.Context, accountId int64, filterId int64) (ImplResponse, error) {
 	// TODO - update DeleteFilter with the required logic for this service method.
 	// Add api_filter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *FilterAPIService) DeleteFilter(ctx context.Context, version float32, ac
 }
 
 // GetFilter - Get Filter
-func (s *FilterAPIService) GetFilter(ctx context.Context, version float32, filterId int64) (ImplResponse, error) {
+func (s *FilterAPIService) GetFilter(ctx context.Context, filterId int64) (ImplResponse, error) {
 	// TODO - update GetFilter with the required logic for this service method.
 	// Add api_filter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *FilterAPIService) GetFilter(ctx context.Context, version float32, filte
 }
 
 // SearchFilters - Search Filters
-func (s *FilterAPIService) SearchFilters(ctx context.Context, version float32, accountId int64, keyword string, appKey string, responseGroup string, rootOnly bool, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *FilterAPIService) SearchFilters(ctx context.Context, accountId int64, keyword string, appKey string, responseGroup string, rootOnly bool, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchFilters with the required logic for this service method.
 	// Add api_filter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *FilterAPIService) SearchFilters(ctx context.Context, version float32, a
 }
 
 // UpdateFilter - Update Filter
-func (s *FilterAPIService) UpdateFilter(ctx context.Context, version float32, accountId int64, filterId int64, parentFilterId int64, name string, description string, externalId string, externalType string, active bool, metaData string) (ImplResponse, error) {
+func (s *FilterAPIService) UpdateFilter(ctx context.Context, accountId int64, filterId int64, parentFilterId int64, name string, description string, externalId string, externalType string, active bool, metaData string) (ImplResponse, error) {
 	// TODO - update UpdateFilter with the required logic for this service method.
 	// Add api_filter_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

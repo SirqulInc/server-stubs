@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // GameLevelAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,61 +52,61 @@ func (c *GameLevelAPIController) Routes() Routes {
 		"CreateGameLevel": Route{
 			"CreateGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/create",
+			"/api/3.18/level/create",
 			c.CreateGameLevel,
 		},
 		"DeleteGameLevel": Route{
 			"DeleteGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/delete",
+			"/api/3.18/level/delete",
 			c.DeleteGameLevel,
 		},
 		"GetGameLevel": Route{
 			"GetGameLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/get",
+			"/api/3.18/level/get",
 			c.GetGameLevel,
 		},
 		"GetQuestionsInLevel": Route{
 			"GetQuestionsInLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/questions/get",
+			"/api/3.18/level/questions/get",
 			c.GetQuestionsInLevel,
 		},
 		"UpdateQuestionsInLevel": Route{
 			"UpdateQuestionsInLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/questions/update",
+			"/api/3.18/level/questions/update",
 			c.UpdateQuestionsInLevel,
 		},
 		"GetGameLevelsByApplication": Route{
 			"GetGameLevelsByApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/search",
+			"/api/3.18/level/search",
 			c.GetGameLevelsByApplication,
 		},
 		"GetGameLevelsByBillableEntity": Route{
 			"GetGameLevelsByBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/searchByBillableEntity",
+			"/api/3.18/level/searchByBillableEntity",
 			c.GetGameLevelsByBillableEntity,
 		},
 		"UpdateGameLevel": Route{
 			"UpdateGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/update",
+			"/api/3.18/level/update",
 			c.UpdateGameLevel,
 		},
 		"GetWordsInLevel": Route{
 			"GetWordsInLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/words/get",
+			"/api/3.18/level/words/get",
 			c.GetWordsInLevel,
 		},
 		"UpdateWordsInLevel": Route{
 			"UpdateWordsInLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/words/update",
+			"/api/3.18/level/words/update",
 			c.UpdateWordsInLevel,
 		},
 	}
@@ -120,61 +118,61 @@ func (c *GameLevelAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/create",
+			"/api/3.18/level/create",
 			c.CreateGameLevel,
 		},
 		Route{
 			"DeleteGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/delete",
+			"/api/3.18/level/delete",
 			c.DeleteGameLevel,
 		},
 		Route{
 			"GetGameLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/get",
+			"/api/3.18/level/get",
 			c.GetGameLevel,
 		},
 		Route{
 			"GetQuestionsInLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/questions/get",
+			"/api/3.18/level/questions/get",
 			c.GetQuestionsInLevel,
 		},
 		Route{
 			"UpdateQuestionsInLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/questions/update",
+			"/api/3.18/level/questions/update",
 			c.UpdateQuestionsInLevel,
 		},
 		Route{
 			"GetGameLevelsByApplication",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/search",
+			"/api/3.18/level/search",
 			c.GetGameLevelsByApplication,
 		},
 		Route{
 			"GetGameLevelsByBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/searchByBillableEntity",
+			"/api/3.18/level/searchByBillableEntity",
 			c.GetGameLevelsByBillableEntity,
 		},
 		Route{
 			"UpdateGameLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/update",
+			"/api/3.18/level/update",
 			c.UpdateGameLevel,
 		},
 		Route{
 			"GetWordsInLevel",
 			strings.ToUpper("Get"),
-			"/api/{version}/level/words/get",
+			"/api/3.18/level/words/get",
 			c.GetWordsInLevel,
 		},
 		Route{
 			"UpdateWordsInLevel",
 			strings.ToUpper("Post"),
-			"/api/{version}/level/words/update",
+			"/api/3.18/level/words/update",
 			c.UpdateWordsInLevel,
 		},
 	}
@@ -184,18 +182,9 @@ func (c *GameLevelAPIController) OrderedRoutes() []Route {
 
 // CreateGameLevel - Create Game Level
 func (c *GameLevelAPIController) CreateGameLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -465,7 +454,7 @@ func (c *GameLevelAPIController) CreateGameLevel(w http.ResponseWriter, r *http.
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.CreateGameLevel(r.Context(), versionParam, accountIdParam, nameParam, gameDataParam, gameDataSuffixParam, appKeyParam, descriptionParam, difficultyParam, appVersionParam, assetImageIdParam, assetIconIdParam, visibilityParam, friendGroupParam, connectionIdsParam, connectionGroupIdsParam, balanceParam, activeParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, tutorialTitleParam, tutorialMessageParam, tutorialAlignmentParam, tutorialImageAssetIdParam, offerIdParam, metaDataParam)
+	result, err := c.service.CreateGameLevel(r.Context(), accountIdParam, nameParam, gameDataParam, gameDataSuffixParam, appKeyParam, descriptionParam, difficultyParam, appVersionParam, assetImageIdParam, assetIconIdParam, visibilityParam, friendGroupParam, connectionIdsParam, connectionGroupIdsParam, balanceParam, activeParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, tutorialTitleParam, tutorialMessageParam, tutorialAlignmentParam, tutorialImageAssetIdParam, offerIdParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -477,18 +466,9 @@ func (c *GameLevelAPIController) CreateGameLevel(w http.ResponseWriter, r *http.
 
 // DeleteGameLevel - Delete Game Level
 func (c *GameLevelAPIController) DeleteGameLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -523,7 +503,7 @@ func (c *GameLevelAPIController) DeleteGameLevel(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "levelId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteGameLevel(r.Context(), versionParam, accountIdParam, levelIdParam)
+	result, err := c.service.DeleteGameLevel(r.Context(), accountIdParam, levelIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -535,18 +515,9 @@ func (c *GameLevelAPIController) DeleteGameLevel(w http.ResponseWriter, r *http.
 
 // GetGameLevel - Get Game Level
 func (c *GameLevelAPIController) GetGameLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -595,7 +566,7 @@ func (c *GameLevelAPIController) GetGameLevel(w http.ResponseWriter, r *http.Req
 		includeGameDataParam = param
 	} else {
 	}
-	result, err := c.service.GetGameLevel(r.Context(), versionParam, accountIdParam, levelIdParam, includeGameDataParam)
+	result, err := c.service.GetGameLevel(r.Context(), accountIdParam, levelIdParam, includeGameDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -607,18 +578,9 @@ func (c *GameLevelAPIController) GetGameLevel(w http.ResponseWriter, r *http.Req
 
 // GetQuestionsInLevel - Get Level Questions
 func (c *GameLevelAPIController) GetQuestionsInLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var levelIdParam int64
@@ -653,7 +615,7 @@ func (c *GameLevelAPIController) GetQuestionsInLevel(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetQuestionsInLevel(r.Context(), versionParam, levelIdParam, accountIdParam)
+	result, err := c.service.GetQuestionsInLevel(r.Context(), levelIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -665,18 +627,9 @@ func (c *GameLevelAPIController) GetQuestionsInLevel(w http.ResponseWriter, r *h
 
 // UpdateQuestionsInLevel - Update Level Questions
 func (c *GameLevelAPIController) UpdateQuestionsInLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var levelIdParam int64
@@ -720,7 +673,7 @@ func (c *GameLevelAPIController) UpdateQuestionsInLevel(w http.ResponseWriter, r
 		c.errorHandler(w, r, &RequiredError{Field: "questionIds"}, nil)
 		return
 	}
-	result, err := c.service.UpdateQuestionsInLevel(r.Context(), versionParam, levelIdParam, accountIdParam, questionIdsParam)
+	result, err := c.service.UpdateQuestionsInLevel(r.Context(), levelIdParam, accountIdParam, questionIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -732,18 +685,9 @@ func (c *GameLevelAPIController) UpdateQuestionsInLevel(w http.ResponseWriter, r
 
 // GetGameLevelsByApplication - Search Game Levels
 func (c *GameLevelAPIController) GetGameLevelsByApplication(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -855,7 +799,7 @@ func (c *GameLevelAPIController) GetGameLevelsByApplication(w http.ResponseWrite
 		filtersParam = param
 	} else {
 	}
-	result, err := c.service.GetGameLevelsByApplication(r.Context(), versionParam, accountIdParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, appVersionParam, includeGameDataParam, filtersParam)
+	result, err := c.service.GetGameLevelsByApplication(r.Context(), accountIdParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, appVersionParam, includeGameDataParam, filtersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -867,18 +811,9 @@ func (c *GameLevelAPIController) GetGameLevelsByApplication(w http.ResponseWrite
 
 // GetGameLevelsByBillableEntity - Search Game Level by Billable Entity
 func (c *GameLevelAPIController) GetGameLevelsByBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -974,7 +909,7 @@ func (c *GameLevelAPIController) GetGameLevelsByBillableEntity(w http.ResponseWr
 		limitParam = param
 	} else {
 	}
-	result, err := c.service.GetGameLevelsByBillableEntity(r.Context(), versionParam, accountIdParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam)
+	result, err := c.service.GetGameLevelsByBillableEntity(r.Context(), accountIdParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, activeOnlyParam, startParam, limitParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -986,18 +921,9 @@ func (c *GameLevelAPIController) GetGameLevelsByBillableEntity(w http.ResponseWr
 
 // UpdateGameLevel - Update Game Level
 func (c *GameLevelAPIController) UpdateGameLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1277,7 +1203,7 @@ func (c *GameLevelAPIController) UpdateGameLevel(w http.ResponseWriter, r *http.
 		metaDataParam = param
 	} else {
 	}
-	result, err := c.service.UpdateGameLevel(r.Context(), versionParam, accountIdParam, levelIdParam, appKeyParam, nameParam, descriptionParam, difficultyParam, appVersionParam, assetImageIdParam, assetIconIdParam, gameDataParam, gameDataSuffixParam, visibilityParam, friendGroupParam, connectionIdsParam, connectionGroupIdsParam, balanceParam, activeParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, tutorialTitleParam, tutorialMessageParam, tutorialAlignmentParam, tutorialImageAssetIdParam, offerIdParam, metaDataParam)
+	result, err := c.service.UpdateGameLevel(r.Context(), accountIdParam, levelIdParam, appKeyParam, nameParam, descriptionParam, difficultyParam, appVersionParam, assetImageIdParam, assetIconIdParam, gameDataParam, gameDataSuffixParam, visibilityParam, friendGroupParam, connectionIdsParam, connectionGroupIdsParam, balanceParam, activeParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, tutorialTitleParam, tutorialMessageParam, tutorialAlignmentParam, tutorialImageAssetIdParam, offerIdParam, metaDataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1289,18 +1215,9 @@ func (c *GameLevelAPIController) UpdateGameLevel(w http.ResponseWriter, r *http.
 
 // GetWordsInLevel - Get Level Words
 func (c *GameLevelAPIController) GetWordsInLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var levelIdParam int64
@@ -1335,7 +1252,7 @@ func (c *GameLevelAPIController) GetWordsInLevel(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetWordsInLevel(r.Context(), versionParam, levelIdParam, accountIdParam)
+	result, err := c.service.GetWordsInLevel(r.Context(), levelIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1347,18 +1264,9 @@ func (c *GameLevelAPIController) GetWordsInLevel(w http.ResponseWriter, r *http.
 
 // UpdateWordsInLevel - Update Level Words
 func (c *GameLevelAPIController) UpdateWordsInLevel(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var levelIdParam int64
@@ -1402,7 +1310,7 @@ func (c *GameLevelAPIController) UpdateWordsInLevel(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "wordIds"}, nil)
 		return
 	}
-	result, err := c.service.UpdateWordsInLevel(r.Context(), versionParam, levelIdParam, accountIdParam, wordIdsParam)
+	result, err := c.service.UpdateWordsInLevel(r.Context(), levelIdParam, accountIdParam, wordIdsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

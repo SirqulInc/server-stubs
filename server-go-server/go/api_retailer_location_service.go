@@ -30,7 +30,7 @@ func NewRetailerLocationAPIService() *RetailerLocationAPIService {
 }
 
 // CreateRetailerLocations - Create Retailer Location
-func (s *RetailerLocationAPIService) CreateRetailerLocations(ctx context.Context, version float32, retailerId int64, name string, streetAddress string, city string, state string, postalCode string, deviceId string, accountId int64, streetAddress2 string, country string, businessPhone string, businessPhoneExt string, website string, email string, internalId string, detailsHeader string, detailsBody string, hours string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, building string, googlePlaceId string, yelpId string, active bool, publicLocation bool, locationType string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, responseFormat string, responseIncludes string) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) CreateRetailerLocations(ctx context.Context, retailerId int64, name string, streetAddress string, city string, state string, postalCode string, deviceId string, accountId int64, streetAddress2 string, country string, businessPhone string, businessPhoneExt string, website string, email string, internalId string, detailsHeader string, detailsBody string, hours string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, building string, googlePlaceId string, yelpId string, active bool, publicLocation bool, locationType string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, responseFormat string, responseIncludes string) (ImplResponse, error) {
 	// TODO - update CreateRetailerLocations with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *RetailerLocationAPIService) CreateRetailerLocations(ctx context.Context
 }
 
 // DeleteRetailerLocation - Delete Retailer Location
-func (s *RetailerLocationAPIService) DeleteRetailerLocation(ctx context.Context, version float32, deviceId string, accountId int64, retailerLocationId int64) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) DeleteRetailerLocation(ctx context.Context, deviceId string, accountId int64, retailerLocationId int64) (ImplResponse, error) {
 	// TODO - update DeleteRetailerLocation with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *RetailerLocationAPIService) DeleteRetailerLocation(ctx context.Context,
 }
 
 // GetRetailerLocation - Get Retailer Location
-func (s *RetailerLocationAPIService) GetRetailerLocation(ctx context.Context, version float32, retailerLocationId int64, deviceId string, accountId int64, retailerLocationToken string) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) GetRetailerLocation(ctx context.Context, retailerLocationId int64, deviceId string, accountId int64, retailerLocationToken string) (ImplResponse, error) {
 	// TODO - update GetRetailerLocation with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *RetailerLocationAPIService) GetRetailerLocation(ctx context.Context, ve
 }
 
 // IndexedRetailerLocationDistanceSearch - Distance Search Retailer Locations (Indexed)
-func (s *RetailerLocationAPIService) IndexedRetailerLocationDistanceSearch(ctx context.Context, version float32, latitude float64, longitude float64, searchRange float64, start int32, limit int32, accountId int64, address string, hasOffers bool, categories string, filters string, audiences string, retailerIds string, retailerLocationIds string, tags string, locationType string, sortField string, descending bool, q string, keyword string, keywordOperator string, searchExpression string, distanceUnit string, returnFavorited bool, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, returnExternalCategoryData bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) IndexedRetailerLocationDistanceSearch(ctx context.Context, latitude float64, longitude float64, searchRange float64, start int32, limit int32, accountId int64, address string, hasOffers bool, categories string, filters string, audiences string, retailerIds string, retailerLocationIds string, tags string, locationType string, sortField string, descending bool, q string, keyword string, keywordOperator string, searchExpression string, distanceUnit string, returnFavorited bool, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, returnExternalCategoryData bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
 	// TODO - update IndexedRetailerLocationDistanceSearch with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *RetailerLocationAPIService) IndexedRetailerLocationDistanceSearch(ctx c
 }
 
 // IndexedRetailerLocationSearch - Keyword Search Retailer Locations (Indexed)
-func (s *RetailerLocationAPIService) IndexedRetailerLocationSearch(ctx context.Context, version float32, accountId int64, start int32, limit int32, hasOffers bool, categories string, filters string, audiences string, retailerIds string, retailerLocationIds string, tags string, locationType string, sortField string, descending bool, q string, keyword string, keywordOperator string, searchExpression string, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, returnExternalCategoryData bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) IndexedRetailerLocationSearch(ctx context.Context, accountId int64, start int32, limit int32, hasOffers bool, categories string, filters string, audiences string, retailerIds string, retailerLocationIds string, tags string, locationType string, sortField string, descending bool, q string, keyword string, keywordOperator string, searchExpression string, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, returnExternalCategoryData bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
 	// TODO - update IndexedRetailerLocationSearch with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *RetailerLocationAPIService) IndexedRetailerLocationSearch(ctx context.C
 }
 
 // SearchRetailerLocations - Search Retailer Locations (Owned)
-func (s *RetailerLocationAPIService) SearchRetailerLocations(ctx context.Context, version float32, deviceId string, accountId int64, q string, keyword string, retailerIds string, retailerLocationIds string, locationType string, sortField string, descending bool, i int32, start int32, l int32, limit int32, showPublicLocations bool, activeOnly bool, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) SearchRetailerLocations(ctx context.Context, deviceId string, accountId int64, q string, keyword string, retailerIds string, retailerLocationIds string, locationType string, sortField string, descending bool, i int32, start int32, l int32, limit int32, showPublicLocations bool, activeOnly bool, returnRetailer bool, returnAssets bool, returnOffers bool, returnCategories bool, returnFilters bool, returnAudiences bool, returnQrCode bool, includeFavorite bool, includeLiked bool, includeRating bool) (ImplResponse, error) {
 	// TODO - update SearchRetailerLocations with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *RetailerLocationAPIService) SearchRetailerLocations(ctx context.Context
 }
 
 // UpdateRetailerLocations - Update Retailer Location
-func (s *RetailerLocationAPIService) UpdateRetailerLocations(ctx context.Context, version float32, retailerLocationId int64, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, internalId string, detailsHeader string, detailsBody string, hours string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, building string, googlePlaceId string, yelpId string, metaData string, paymentProvider string, active bool, publicLocation bool, locationType string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, responseFormat string, tags string) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) UpdateRetailerLocations(ctx context.Context, retailerLocationId int64, deviceId string, accountId int64, name string, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, internalId string, detailsHeader string, detailsBody string, hours string, logo *os.File, logoAssetId int64, picture1 *os.File, picture1AssetId int64, picture2 *os.File, picture2AssetId int64, categoryIds string, filterIds string, latitude float64, longitude float64, building string, googlePlaceId string, yelpId string, metaData string, paymentProvider string, active bool, publicLocation bool, locationType string, audienceIds string, audienceIdsToAdd string, audienceIdsToRemove string, responseFormat string, tags string) (ImplResponse, error) {
 	// TODO - update UpdateRetailerLocations with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *RetailerLocationAPIService) UpdateRetailerLocations(ctx context.Context
 }
 
 // CreateRetailerLocationConsumer - Create Retailer Location (Consumer)
-func (s *RetailerLocationAPIService) CreateRetailerLocationConsumer(ctx context.Context, version float32, appKey string, name string, deviceId string, accountId int64, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, detailsHeader string, detailsBody string, hours string, tags string, logoAssetId int64, picture1AssetId int64, picture2AssetId int64, categoryIds string, filterIds string, metaData string, publicLocation bool, active bool, locationType string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) CreateRetailerLocationConsumer(ctx context.Context, appKey string, name string, deviceId string, accountId int64, streetAddress string, streetAddress2 string, city string, state string, postalCode string, country string, businessPhone string, businessPhoneExt string, website string, email string, detailsHeader string, detailsBody string, hours string, tags string, logoAssetId int64, picture1AssetId int64, picture2AssetId int64, categoryIds string, filterIds string, metaData string, publicLocation bool, active bool, locationType string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update CreateRetailerLocationConsumer with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *RetailerLocationAPIService) CreateRetailerLocationConsumer(ctx context.
 }
 
 // GetRetailerLocationConsumer - Get Retailer Location (Consumer)
-func (s *RetailerLocationAPIService) GetRetailerLocationConsumer(ctx context.Context, version float32, retailerLocationId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *RetailerLocationAPIService) GetRetailerLocationConsumer(ctx context.Context, retailerLocationId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetRetailerLocationConsumer with the required logic for this service method.
 	// Add api_retailer_location_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

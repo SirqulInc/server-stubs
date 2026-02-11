@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // MissionAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,55 +52,55 @@ func (c *MissionAPIController) Routes() Routes {
 		"CreateMission": Route{
 			"CreateMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/create",
+			"/api/3.18/mission/create",
 			c.CreateMission,
 		},
 		"DeleteMission": Route{
 			"DeleteMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/delete",
+			"/api/3.18/mission/delete",
 			c.DeleteMission,
 		},
 		"FindMissions": Route{
 			"FindMissions",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/find",
+			"/api/3.18/mission/find",
 			c.FindMissions,
 		},
 		"SearchMissionFormats": Route{
 			"SearchMissionFormats",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/format/search",
+			"/api/3.18/mission/format/search",
 			c.SearchMissionFormats,
 		},
 		"GetMission": Route{
 			"GetMission",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/get",
+			"/api/3.18/mission/get",
 			c.GetMission,
 		},
 		"ImportMission": Route{
 			"ImportMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/import",
+			"/api/3.18/mission/import",
 			c.ImportMission,
 		},
 		"SearchMissions": Route{
 			"SearchMissions",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/search",
+			"/api/3.18/mission/search",
 			c.SearchMissions,
 		},
 		"SearchMissionsByBillableEntity": Route{
 			"SearchMissionsByBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/searchByBillableEntity",
+			"/api/3.18/mission/searchByBillableEntity",
 			c.SearchMissionsByBillableEntity,
 		},
 		"UpdateMission": Route{
 			"UpdateMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/update",
+			"/api/3.18/mission/update",
 			c.UpdateMission,
 		},
 	}
@@ -114,55 +112,55 @@ func (c *MissionAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/create",
+			"/api/3.18/mission/create",
 			c.CreateMission,
 		},
 		Route{
 			"DeleteMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/delete",
+			"/api/3.18/mission/delete",
 			c.DeleteMission,
 		},
 		Route{
 			"FindMissions",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/find",
+			"/api/3.18/mission/find",
 			c.FindMissions,
 		},
 		Route{
 			"SearchMissionFormats",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/format/search",
+			"/api/3.18/mission/format/search",
 			c.SearchMissionFormats,
 		},
 		Route{
 			"GetMission",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/get",
+			"/api/3.18/mission/get",
 			c.GetMission,
 		},
 		Route{
 			"ImportMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/import",
+			"/api/3.18/mission/import",
 			c.ImportMission,
 		},
 		Route{
 			"SearchMissions",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/search",
+			"/api/3.18/mission/search",
 			c.SearchMissions,
 		},
 		Route{
 			"SearchMissionsByBillableEntity",
 			strings.ToUpper("Get"),
-			"/api/{version}/mission/searchByBillableEntity",
+			"/api/3.18/mission/searchByBillableEntity",
 			c.SearchMissionsByBillableEntity,
 		},
 		Route{
 			"UpdateMission",
 			strings.ToUpper("Post"),
-			"/api/{version}/mission/update",
+			"/api/3.18/mission/update",
 			c.UpdateMission,
 		},
 	}
@@ -172,18 +170,9 @@ func (c *MissionAPIController) OrderedRoutes() []Route {
 
 // CreateMission - Create Mission
 func (c *MissionAPIController) CreateMission(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -442,7 +431,7 @@ func (c *MissionAPIController) CreateMission(w http.ResponseWriter, r *http.Requ
 		radiusParam = param
 	} else {
 	}
-	result, err := c.service.CreateMission(r.Context(), versionParam, accountIdParam, titleParam, descriptionParam, subTypeParam, startDateParam, endDateParam, activeParam, gameLevelIdsParam, creativeIdsParam, audienceIdsParam, missionTaskParam, formatTypeParam, offerIdParam, balanceParam, advancedReportingParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, metaDataParam, applicationIdsParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam)
+	result, err := c.service.CreateMission(r.Context(), accountIdParam, titleParam, descriptionParam, subTypeParam, startDateParam, endDateParam, activeParam, gameLevelIdsParam, creativeIdsParam, audienceIdsParam, missionTaskParam, formatTypeParam, offerIdParam, balanceParam, advancedReportingParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, metaDataParam, applicationIdsParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -454,18 +443,9 @@ func (c *MissionAPIController) CreateMission(w http.ResponseWriter, r *http.Requ
 
 // DeleteMission - Delete Mission
 func (c *MissionAPIController) DeleteMission(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -500,7 +480,7 @@ func (c *MissionAPIController) DeleteMission(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "missionId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteMission(r.Context(), versionParam, accountIdParam, missionIdParam)
+	result, err := c.service.DeleteMission(r.Context(), accountIdParam, missionIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -512,18 +492,9 @@ func (c *MissionAPIController) DeleteMission(w http.ResponseWriter, r *http.Requ
 
 // FindMissions - Find Missions
 func (c *MissionAPIController) FindMissions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -738,7 +709,7 @@ func (c *MissionAPIController) FindMissions(w http.ResponseWriter, r *http.Reque
 		audienceOperatorParam = param
 	} else {
 	}
-	result, err := c.service.FindMissions(r.Context(), versionParam, appKeyParam, suffixParam, type_Param, accountIdParam, appVersionParam, latitudeParam, longitudeParam, deviceParam, deviceIdentifierParam, deviceVersionParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, allocatesTicketsParam, randomizeParam, targetedAdsOnlyParam, missionIdsParam, audienceOperatorParam)
+	result, err := c.service.FindMissions(r.Context(), appKeyParam, suffixParam, type_Param, accountIdParam, appVersionParam, latitudeParam, longitudeParam, deviceParam, deviceIdentifierParam, deviceVersionParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, allocatesTicketsParam, randomizeParam, targetedAdsOnlyParam, missionIdsParam, audienceOperatorParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -750,18 +721,9 @@ func (c *MissionAPIController) FindMissions(w http.ResponseWriter, r *http.Reque
 
 // SearchMissionFormats - Search Mission Formats
 func (c *MissionAPIController) SearchMissionFormats(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startParam int32
@@ -812,7 +774,7 @@ func (c *MissionAPIController) SearchMissionFormats(w http.ResponseWriter, r *ht
 		c.errorHandler(w, r, &RequiredError{Field: "activeOnly"}, nil)
 		return
 	}
-	result, err := c.service.SearchMissionFormats(r.Context(), versionParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchMissionFormats(r.Context(), startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -824,18 +786,9 @@ func (c *MissionAPIController) SearchMissionFormats(w http.ResponseWriter, r *ht
 
 // GetMission - Get Mission
 func (c *MissionAPIController) GetMission(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -884,7 +837,7 @@ func (c *MissionAPIController) GetMission(w http.ResponseWriter, r *http.Request
 		returnCreativeParam = param
 	} else {
 	}
-	result, err := c.service.GetMission(r.Context(), versionParam, accountIdParam, missionIdParam, returnCreativeParam)
+	result, err := c.service.GetMission(r.Context(), accountIdParam, missionIdParam, returnCreativeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -896,18 +849,9 @@ func (c *MissionAPIController) GetMission(w http.ResponseWriter, r *http.Request
 
 // ImportMission - Import Mission
 func (c *MissionAPIController) ImportMission(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1009,7 +953,7 @@ func (c *MissionAPIController) ImportMission(w http.ResponseWriter, r *http.Requ
 		adSizeParam = param
 	} else {
 	}
-	result, err := c.service.ImportMission(r.Context(), versionParam, accountIdParam, latitudeParam, longitudeParam, appKeyParam, keywordParam, startParam, limitParam, adSizeParam)
+	result, err := c.service.ImportMission(r.Context(), accountIdParam, latitudeParam, longitudeParam, appKeyParam, keywordParam, startParam, limitParam, adSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1021,18 +965,9 @@ func (c *MissionAPIController) ImportMission(w http.ResponseWriter, r *http.Requ
 
 // SearchMissions - Search Missions
 func (c *MissionAPIController) SearchMissions(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1163,7 +1098,7 @@ func (c *MissionAPIController) SearchMissions(w http.ResponseWriter, r *http.Req
 		descendingParam = param
 	} else {
 	}
-	result, err := c.service.SearchMissions(r.Context(), versionParam, accountIdParam, keywordParam, subTypeParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, includeInactiveParam, suffixParam, sortFieldParam, descendingParam)
+	result, err := c.service.SearchMissions(r.Context(), accountIdParam, keywordParam, subTypeParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, includeInactiveParam, suffixParam, sortFieldParam, descendingParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1175,18 +1110,9 @@ func (c *MissionAPIController) SearchMissions(w http.ResponseWriter, r *http.Req
 
 // SearchMissionsByBillableEntity - Search Missions by Billable Entity
 func (c *MissionAPIController) SearchMissionsByBillableEntity(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1310,7 +1236,7 @@ func (c *MissionAPIController) SearchMissionsByBillableEntity(w http.ResponseWri
 		descendingParam = param
 	} else {
 	}
-	result, err := c.service.SearchMissionsByBillableEntity(r.Context(), versionParam, accountIdParam, keywordParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, includeInactiveParam, suffixParam, sortFieldParam, descendingParam)
+	result, err := c.service.SearchMissionsByBillableEntity(r.Context(), accountIdParam, keywordParam, startParam, limitParam, includeGameDataParam, includeAudiencesParam, includeInactiveParam, suffixParam, sortFieldParam, descendingParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1322,18 +1248,9 @@ func (c *MissionAPIController) SearchMissionsByBillableEntity(w http.ResponseWri
 
 // UpdateMission - Update Mission
 func (c *MissionAPIController) UpdateMission(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1592,7 +1509,7 @@ func (c *MissionAPIController) UpdateMission(w http.ResponseWriter, r *http.Requ
 		radiusParam = param
 	} else {
 	}
-	result, err := c.service.UpdateMission(r.Context(), versionParam, accountIdParam, missionIdParam, titleParam, descriptionParam, subTypeParam, metaDataParam, startDateParam, endDateParam, activeParam, gameLevelIdsParam, creativeIdsParam, audienceIdsParam, offerIdParam, balanceParam, advancedReportingParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, applicationIdsParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam)
+	result, err := c.service.UpdateMission(r.Context(), accountIdParam, missionIdParam, titleParam, descriptionParam, subTypeParam, metaDataParam, startDateParam, endDateParam, activeParam, gameLevelIdsParam, creativeIdsParam, audienceIdsParam, offerIdParam, balanceParam, advancedReportingParam, allocateTicketsParam, ticketCountParam, ticketTypeParam, pointsParam, applicationIdsParam, devicesParam, deviceIdsParam, deviceVersionsParam, locationsParam, radiusParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

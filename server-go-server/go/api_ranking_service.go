@@ -29,7 +29,7 @@ func NewRankingAPIService() *RankingAPIService {
 }
 
 // GetRankings - Search Rankings
-func (s *RankingAPIService) GetRankings(ctx context.Context, version float32, deviceId string, accountId int64, gameType string, appKey string, q string, keyword string, rankType string, leaderboardMode string, withinAccountIds string, returnUserRank bool, albumId int64, audienceId int64, sortField string, descending bool, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
+func (s *RankingAPIService) GetRankings(ctx context.Context, deviceId string, accountId int64, gameType string, appKey string, q string, keyword string, rankType string, leaderboardMode string, withinAccountIds string, returnUserRank bool, albumId int64, audienceId int64, sortField string, descending bool, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetRankings with the required logic for this service method.
 	// Add api_ranking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *RankingAPIService) GetRankings(ctx context.Context, version float32, de
 }
 
 // GetUserRank - Get Personal Rankings
-func (s *RankingAPIService) GetUserRank(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, rankType string, returnUserRank bool, leaderboardMode string, sortField string, keyword string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *RankingAPIService) GetUserRank(ctx context.Context, deviceId string, accountId int64, appKey string, rankType string, returnUserRank bool, leaderboardMode string, sortField string, keyword string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetUserRank with the required logic for this service method.
 	// Add api_ranking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *RankingAPIService) GetUserRank(ctx context.Context, version float32, de
 }
 
 // UpdateRankings - Update Ranking
-func (s *RankingAPIService) UpdateRankings(ctx context.Context, version float32, accountId int64, appKey string, rankType string, increment int64, timeIncrement int64, tag string, startDate int64, endDate int64, updateGlobal bool, createLeaderboard bool) (ImplResponse, error) {
+func (s *RankingAPIService) UpdateRankings(ctx context.Context, accountId int64, appKey string, rankType string, increment int64, timeIncrement int64, tag string, startDate int64, endDate int64, updateGlobal bool, createLeaderboard bool) (ImplResponse, error) {
 	// TODO - update UpdateRankings with the required logic for this service method.
 	// Add api_ranking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *RankingAPIService) UpdateRankings(ctx context.Context, version float32,
 }
 
 // GetHistoricalRankings - Search Historical Rankings
-func (s *RankingAPIService) GetHistoricalRankings(ctx context.Context, version float32, appKey string, rankType string, startDate int64, endDate int64, deviceId string, accountId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *RankingAPIService) GetHistoricalRankings(ctx context.Context, appKey string, rankType string, startDate int64, endDate int64, deviceId string, accountId int64, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetHistoricalRankings with the required logic for this service method.
 	// Add api_ranking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *RankingAPIService) GetHistoricalRankings(ctx context.Context, version f
 }
 
 // OverrideUserRank - Override User Rank
-func (s *RankingAPIService) OverrideUserRank(ctx context.Context, version float32, accountId int64, ownerAccountId int64, appKey string, rankType string, totalScore int64, totalCount int64, totalTime int64, dailyScore int64, dailyCount int64, dailyTime int64, weeklyScore int64, weeklyCount int64, weeklyTime int64, monthlyScore int64, monthlyCount int64, monthlyTime int64, topScore int64, lowestScore int64, streakCount int64, streakBestCount int64, startDate int64, endDate int64) (ImplResponse, error) {
+func (s *RankingAPIService) OverrideUserRank(ctx context.Context, accountId int64, ownerAccountId int64, appKey string, rankType string, totalScore int64, totalCount int64, totalTime int64, dailyScore int64, dailyCount int64, dailyTime int64, weeklyScore int64, weeklyCount int64, weeklyTime int64, monthlyScore int64, monthlyCount int64, monthlyTime int64, topScore int64, lowestScore int64, streakCount int64, streakBestCount int64, startDate int64, endDate int64) (ImplResponse, error) {
 	// TODO - update OverrideUserRank with the required logic for this service method.
 	// Add api_ranking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

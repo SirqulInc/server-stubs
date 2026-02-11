@@ -29,7 +29,7 @@ func NewPackAPIService() *PackAPIService {
 }
 
 // CreatePack - Create Pack
-func (s *PackAPIService) CreatePack(ctx context.Context, version float32, accountId int64, title string, packOrder int64, price int32, highest bool, allocateTickets bool, ticketCount int64, description string, searchTags string, active bool, gameType string, appKey string, packType string, sequenceType string, backgroundId int64, imageId int64, startDate int64, endDate int64, authorOverride string, priceType string, gameLevelIds string, inGame bool, ticketType string, points int64) (ImplResponse, error) {
+func (s *PackAPIService) CreatePack(ctx context.Context, accountId int64, title string, packOrder int64, price int32, highest bool, allocateTickets bool, ticketCount int64, description string, searchTags string, active bool, gameType string, appKey string, packType string, sequenceType string, backgroundId int64, imageId int64, startDate int64, endDate int64, authorOverride string, priceType string, gameLevelIds string, inGame bool, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update CreatePack with the required logic for this service method.
 	// Add api_pack_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *PackAPIService) CreatePack(ctx context.Context, version float32, accoun
 }
 
 // DeletePack - Delete Pack
-func (s *PackAPIService) DeletePack(ctx context.Context, version float32, accountId int64, packId int64) (ImplResponse, error) {
+func (s *PackAPIService) DeletePack(ctx context.Context, accountId int64, packId int64) (ImplResponse, error) {
 	// TODO - update DeletePack with the required logic for this service method.
 	// Add api_pack_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *PackAPIService) DeletePack(ctx context.Context, version float32, accoun
 }
 
 // GetPack - Get Pack
-func (s *PackAPIService) GetPack(ctx context.Context, version float32, accountId int64, packId int64, includeGameData bool) (ImplResponse, error) {
+func (s *PackAPIService) GetPack(ctx context.Context, accountId int64, packId int64, includeGameData bool) (ImplResponse, error) {
 	// TODO - update GetPack with the required logic for this service method.
 	// Add api_pack_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *PackAPIService) GetPack(ctx context.Context, version float32, accountId
 }
 
 // SearchPacks - Search Packs
-func (s *PackAPIService) SearchPacks(ctx context.Context, version float32, accountId int64, sortField string, descending bool, keyword string, packType string, start int32, limit int32, includeGameData bool, includeInactive bool, appKey string) (ImplResponse, error) {
+func (s *PackAPIService) SearchPacks(ctx context.Context, accountId int64, sortField string, descending bool, keyword string, packType string, start int32, limit int32, includeGameData bool, includeInactive bool, appKey string) (ImplResponse, error) {
 	// TODO - update SearchPacks with the required logic for this service method.
 	// Add api_pack_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *PackAPIService) SearchPacks(ctx context.Context, version float32, accou
 }
 
 // UpdatePack - Update Pack
-func (s *PackAPIService) UpdatePack(ctx context.Context, version float32, accountId int64, packId int64, allocateTickets bool, ticketCount int64, title string, description string, searchTags string, active bool, gameType string, appKey string, packType string, packOrder int64, sequenceType string, backgroundId int64, imageId int64, startDate int64, endDate int64, authorOverride string, price int32, priceType string, gameLevelIds string, inGame bool, highest bool, ticketType string, points int64) (ImplResponse, error) {
+func (s *PackAPIService) UpdatePack(ctx context.Context, accountId int64, packId int64, allocateTickets bool, ticketCount int64, title string, description string, searchTags string, active bool, gameType string, appKey string, packType string, packOrder int64, sequenceType string, backgroundId int64, imageId int64, startDate int64, endDate int64, authorOverride string, price int32, priceType string, gameLevelIds string, inGame bool, highest bool, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update UpdatePack with the required logic for this service method.
 	// Add api_pack_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

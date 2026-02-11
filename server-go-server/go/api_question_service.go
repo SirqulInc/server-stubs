@@ -29,7 +29,7 @@ func NewQuestionAPIService() *QuestionAPIService {
 }
 
 // CreateQuestion - Create Question
-func (s *QuestionAPIService) CreateQuestion(ctx context.Context, version float32, accountId int64, question string, answers string, active bool, allocateTickets bool, ticketCount int64, tags string, videoURL string, assetId int64, ticketType string, points int64) (ImplResponse, error) {
+func (s *QuestionAPIService) CreateQuestion(ctx context.Context, accountId int64, question string, answers string, active bool, allocateTickets bool, ticketCount int64, tags string, videoURL string, assetId int64, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update CreateQuestion with the required logic for this service method.
 	// Add api_question_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *QuestionAPIService) CreateQuestion(ctx context.Context, version float32
 }
 
 // DeleteQuestion - Delete Question
-func (s *QuestionAPIService) DeleteQuestion(ctx context.Context, version float32, questionId int64, accountId int64) (ImplResponse, error) {
+func (s *QuestionAPIService) DeleteQuestion(ctx context.Context, questionId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteQuestion with the required logic for this service method.
 	// Add api_question_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *QuestionAPIService) DeleteQuestion(ctx context.Context, version float32
 }
 
 // GetQuestion - Get Question
-func (s *QuestionAPIService) GetQuestion(ctx context.Context, version float32, questionId int64, accountId int64) (ImplResponse, error) {
+func (s *QuestionAPIService) GetQuestion(ctx context.Context, questionId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetQuestion with the required logic for this service method.
 	// Add api_question_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *QuestionAPIService) GetQuestion(ctx context.Context, version float32, q
 }
 
 // SearchQuestions - Search Questions
-func (s *QuestionAPIService) SearchQuestions(ctx context.Context, version float32, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, keyword string) (ImplResponse, error) {
+func (s *QuestionAPIService) SearchQuestions(ctx context.Context, accountId int64, sortField string, descending bool, activeOnly bool, start int32, limit int32, keyword string) (ImplResponse, error) {
 	// TODO - update SearchQuestions with the required logic for this service method.
 	// Add api_question_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *QuestionAPIService) SearchQuestions(ctx context.Context, version float3
 }
 
 // UpdateQuestion - Update Question
-func (s *QuestionAPIService) UpdateQuestion(ctx context.Context, version float32, questionId int64, accountId int64, ticketCount int64, question string, answers string, tags string, videoURL string, assetId int64, active bool, allocateTickets bool, ticketType string, points int64) (ImplResponse, error) {
+func (s *QuestionAPIService) UpdateQuestion(ctx context.Context, questionId int64, accountId int64, ticketCount int64, question string, answers string, tags string, videoURL string, assetId int64, active bool, allocateTickets bool, ticketType string, points int64) (ImplResponse, error) {
 	// TODO - update UpdateQuestion with the required logic for this service method.
 	// Add api_question_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

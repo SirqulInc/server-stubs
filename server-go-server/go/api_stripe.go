@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // StripeAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *StripeAPIController) Routes() Routes {
 		"CreateStripeCheckoutSession": Route{
 			"CreateStripeCheckoutSession",
 			strings.ToUpper("Post"),
-			"/api/{version}/stripe/checkout/session/create",
+			"/api/3.18/stripe/checkout/session/create",
 			c.CreateStripeCheckoutSession,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *StripeAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateStripeCheckoutSession",
 			strings.ToUpper("Post"),
-			"/api/{version}/stripe/checkout/session/create",
+			"/api/3.18/stripe/checkout/session/create",
 			c.CreateStripeCheckoutSession,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *StripeAPIController) OrderedRoutes() []Route {
 
 // CreateStripeCheckoutSession - Create Stripe Checkout Session
 func (c *StripeAPIController) CreateStripeCheckoutSession(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -108,7 +97,7 @@ func (c *StripeAPIController) CreateStripeCheckoutSession(w http.ResponseWriter,
 		c.errorHandler(w, r, &RequiredError{Field: "stripeParameters"}, nil)
 		return
 	}
-	result, err := c.service.CreateStripeCheckoutSession(r.Context(), versionParam, appKeyParam, stripeParametersParam)
+	result, err := c.service.CreateStripeCheckoutSession(r.Context(), appKeyParam, stripeParametersParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

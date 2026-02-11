@@ -29,7 +29,7 @@ func NewBidAPIService() *BidAPIService {
 }
 
 // CreateBid - Create Bid
-func (s *BidAPIService) CreateBid(ctx context.Context, version float32, biddableType string, biddableId int64, amountPerView float64, amountPerAction float64, budgetAmount float64, budgetSchedule string, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *BidAPIService) CreateBid(ctx context.Context, biddableType string, biddableId int64, amountPerView float64, amountPerAction float64, budgetAmount float64, budgetSchedule string, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update CreateBid with the required logic for this service method.
 	// Add api_bid_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *BidAPIService) CreateBid(ctx context.Context, version float32, biddable
 }
 
 // DeleteBid - Delete Bid
-func (s *BidAPIService) DeleteBid(ctx context.Context, version float32, bidId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *BidAPIService) DeleteBid(ctx context.Context, bidId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteBid with the required logic for this service method.
 	// Add api_bid_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *BidAPIService) DeleteBid(ctx context.Context, version float32, bidId in
 }
 
 // GetBid - Get Bid
-func (s *BidAPIService) GetBid(ctx context.Context, version float32, bidId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *BidAPIService) GetBid(ctx context.Context, bidId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetBid with the required logic for this service method.
 	// Add api_bid_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *BidAPIService) GetBid(ctx context.Context, version float32, bidId int64
 }
 
 // UpdateBid - Update Bid
-func (s *BidAPIService) UpdateBid(ctx context.Context, version float32, bidId int64, deviceId string, accountId int64, amountPerView float64, amountPerAction float64, budgetAmount float64, budgetSchedule string) (ImplResponse, error) {
+func (s *BidAPIService) UpdateBid(ctx context.Context, bidId int64, deviceId string, accountId int64, amountPerView float64, amountPerAction float64, budgetAmount float64, budgetSchedule string) (ImplResponse, error) {
 	// TODO - update UpdateBid with the required logic for this service method.
 	// Add api_bid_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

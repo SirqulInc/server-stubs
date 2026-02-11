@@ -57,37 +57,37 @@ func (c *ProgramAPIController) Routes() Routes {
 		"SearchPrograms": Route{
 			"SearchPrograms",
 			strings.ToUpper("Get"),
-			"/api/{version}/program",
+			"/api/3.18/program",
 			c.SearchPrograms,
 		},
 		"CreateProgram": Route{
 			"CreateProgram",
 			strings.ToUpper("Post"),
-			"/api/{version}/program",
+			"/api/3.18/program",
 			c.CreateProgram,
 		},
 		"GetProgram": Route{
 			"GetProgram",
 			strings.ToUpper("Get"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.GetProgram,
 		},
 		"PutProgram": Route{
 			"PutProgram",
 			strings.ToUpper("Put"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.PutProgram,
 		},
 		"PostProgram": Route{
 			"PostProgram",
 			strings.ToUpper("Post"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.PostProgram,
 		},
 		"DeleteProgram": Route{
 			"DeleteProgram",
 			strings.ToUpper("Delete"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.DeleteProgram,
 		},
 	}
@@ -99,37 +99,37 @@ func (c *ProgramAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchPrograms",
 			strings.ToUpper("Get"),
-			"/api/{version}/program",
+			"/api/3.18/program",
 			c.SearchPrograms,
 		},
 		Route{
 			"CreateProgram",
 			strings.ToUpper("Post"),
-			"/api/{version}/program",
+			"/api/3.18/program",
 			c.CreateProgram,
 		},
 		Route{
 			"GetProgram",
 			strings.ToUpper("Get"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.GetProgram,
 		},
 		Route{
 			"PutProgram",
 			strings.ToUpper("Put"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.PutProgram,
 		},
 		Route{
 			"PostProgram",
 			strings.ToUpper("Post"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.PostProgram,
 		},
 		Route{
 			"DeleteProgram",
 			strings.ToUpper("Delete"),
-			"/api/{version}/program/{id}",
+			"/api/3.18/program/{id}",
 			c.DeleteProgram,
 		},
 	}
@@ -139,18 +139,9 @@ func (c *ProgramAPIController) OrderedRoutes() []Route {
 
 // SearchPrograms - Search Programs
 func (c *ProgramAPIController) SearchPrograms(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -233,7 +224,7 @@ func (c *ProgramAPIController) SearchPrograms(w http.ResponseWriter, r *http.Req
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchPrograms(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam)
+	result, err := c.service.SearchPrograms(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -245,15 +236,6 @@ func (c *ProgramAPIController) SearchPrograms(w http.ResponseWriter, r *http.Req
 
 // CreateProgram - Create Program
 func (c *ProgramAPIController) CreateProgram(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Program
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -269,7 +251,7 @@ func (c *ProgramAPIController) CreateProgram(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateProgram(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateProgram(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -282,14 +264,6 @@ func (c *ProgramAPIController) CreateProgram(w http.ResponseWriter, r *http.Requ
 // GetProgram - Get Program
 func (c *ProgramAPIController) GetProgram(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -298,7 +272,7 @@ func (c *ProgramAPIController) GetProgram(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetProgram(r.Context(), versionParam, idParam)
+	result, err := c.service.GetProgram(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -311,14 +285,6 @@ func (c *ProgramAPIController) GetProgram(w http.ResponseWriter, r *http.Request
 // PutProgram - Update Program
 func (c *ProgramAPIController) PutProgram(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -342,7 +308,7 @@ func (c *ProgramAPIController) PutProgram(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.PutProgram(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.PutProgram(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -355,14 +321,6 @@ func (c *ProgramAPIController) PutProgram(w http.ResponseWriter, r *http.Request
 // PostProgram - Update Program
 func (c *ProgramAPIController) PostProgram(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -386,7 +344,7 @@ func (c *ProgramAPIController) PostProgram(w http.ResponseWriter, r *http.Reques
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.PostProgram(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.PostProgram(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -399,14 +357,6 @@ func (c *ProgramAPIController) PostProgram(w http.ResponseWriter, r *http.Reques
 // DeleteProgram - Delete Program
 func (c *ProgramAPIController) DeleteProgram(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -415,7 +365,7 @@ func (c *ProgramAPIController) DeleteProgram(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &ParsingError{Param: "id", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteProgram(r.Context(), versionParam, idParam)
+	result, err := c.service.DeleteProgram(r.Context(), idParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

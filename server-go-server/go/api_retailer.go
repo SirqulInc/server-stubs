@@ -15,8 +15,6 @@ import (
 	"net/http"
 	"strings"
 	"os"
-
-	"github.com/gorilla/mux"
 )
 
 // RetailerAPIController binds http requests to an api service and writes the service results to the http response
@@ -55,37 +53,37 @@ func (c *RetailerAPIController) Routes() Routes {
 		"CreateRetailer": Route{
 			"CreateRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/create",
+			"/api/3.18/retailer/create",
 			c.CreateRetailer,
 		},
 		"DeleteRetailer": Route{
 			"DeleteRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/delete",
+			"/api/3.18/retailer/delete",
 			c.DeleteRetailer,
 		},
 		"GetRetailer": Route{
 			"GetRetailer",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/get",
+			"/api/3.18/retailer/get",
 			c.GetRetailer,
 		},
 		"RetailerLoginCheck": Route{
 			"RetailerLoginCheck",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/login",
+			"/api/3.18/retailer/login",
 			c.RetailerLoginCheck,
 		},
 		"GetRetailers": Route{
 			"GetRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/search",
+			"/api/3.18/retailer/search",
 			c.GetRetailers,
 		},
 		"UpdateRetailer": Route{
 			"UpdateRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/update",
+			"/api/3.18/retailer/update",
 			c.UpdateRetailer,
 		},
 	}
@@ -97,37 +95,37 @@ func (c *RetailerAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/create",
+			"/api/3.18/retailer/create",
 			c.CreateRetailer,
 		},
 		Route{
 			"DeleteRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/delete",
+			"/api/3.18/retailer/delete",
 			c.DeleteRetailer,
 		},
 		Route{
 			"GetRetailer",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/get",
+			"/api/3.18/retailer/get",
 			c.GetRetailer,
 		},
 		Route{
 			"RetailerLoginCheck",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/login",
+			"/api/3.18/retailer/login",
 			c.RetailerLoginCheck,
 		},
 		Route{
 			"GetRetailers",
 			strings.ToUpper("Get"),
-			"/api/{version}/retailer/search",
+			"/api/3.18/retailer/search",
 			c.GetRetailers,
 		},
 		Route{
 			"UpdateRetailer",
 			strings.ToUpper("Post"),
-			"/api/{version}/retailer/update",
+			"/api/3.18/retailer/update",
 			c.UpdateRetailer,
 		},
 	}
@@ -137,18 +135,9 @@ func (c *RetailerAPIController) OrderedRoutes() []Route {
 
 // CreateRetailer - Create Retailer
 func (c *RetailerAPIController) CreateRetailer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var nameParam string
@@ -433,7 +422,7 @@ func (c *RetailerAPIController) CreateRetailer(w http.ResponseWriter, r *http.Re
 		responseFormatParam = param
 	} else {
 	}
-	result, err := c.service.CreateRetailer(r.Context(), versionParam, nameParam, deviceIdParam, accountIdParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, countryParam, businessPhoneParam, businessPhoneExtParam, websiteParam, emailParam, facebookUrlParam, twitterUrlParam, logoParam, logoAssetIdParam, picture1Param, picture1AssetIdParam, picture2Param, picture2AssetIdParam, categoryIdsParam, categoryIdsToAddParam, categoryIdsToRemoveParam, filterIdsParam, latitudeParam, longitudeParam, metaDataParam, searchTagsParam, retailerTypeParam, visibilityParam, createDefaultLocationParam, responseFormatParam)
+	result, err := c.service.CreateRetailer(r.Context(), nameParam, deviceIdParam, accountIdParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, countryParam, businessPhoneParam, businessPhoneExtParam, websiteParam, emailParam, facebookUrlParam, twitterUrlParam, logoParam, logoAssetIdParam, picture1Param, picture1AssetIdParam, picture2Param, picture2AssetIdParam, categoryIdsParam, categoryIdsToAddParam, categoryIdsToRemoveParam, filterIdsParam, latitudeParam, longitudeParam, metaDataParam, searchTagsParam, retailerTypeParam, visibilityParam, createDefaultLocationParam, responseFormatParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -445,18 +434,9 @@ func (c *RetailerAPIController) CreateRetailer(w http.ResponseWriter, r *http.Re
 
 // DeleteRetailer - Delete Retailer
 func (c *RetailerAPIController) DeleteRetailer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -494,7 +474,7 @@ func (c *RetailerAPIController) DeleteRetailer(w http.ResponseWriter, r *http.Re
 		retailerIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteRetailer(r.Context(), versionParam, deviceIdParam, accountIdParam, retailerIdParam)
+	result, err := c.service.DeleteRetailer(r.Context(), deviceIdParam, accountIdParam, retailerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -506,18 +486,9 @@ func (c *RetailerAPIController) DeleteRetailer(w http.ResponseWriter, r *http.Re
 
 // GetRetailer - Get Retailer
 func (c *RetailerAPIController) GetRetailer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var retailerIdParam int64
@@ -571,7 +542,7 @@ func (c *RetailerAPIController) GetRetailer(w http.ResponseWriter, r *http.Reque
 		includeCountsParam = param
 	} else {
 	}
-	result, err := c.service.GetRetailer(r.Context(), versionParam, retailerIdParam, deviceIdParam, accountIdParam, includeCountsParam)
+	result, err := c.service.GetRetailer(r.Context(), retailerIdParam, deviceIdParam, accountIdParam, includeCountsParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -583,18 +554,9 @@ func (c *RetailerAPIController) GetRetailer(w http.ResponseWriter, r *http.Reque
 
 // RetailerLoginCheck - Login Retailer
 func (c *RetailerAPIController) RetailerLoginCheck(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var usernameParam string
@@ -657,7 +619,7 @@ func (c *RetailerAPIController) RetailerLoginCheck(w http.ResponseWriter, r *htt
 		appKeyParam = param
 	} else {
 	}
-	result, err := c.service.RetailerLoginCheck(r.Context(), versionParam, usernameParam, passwordParam, deviceIdParam, latitudeParam, longitudeParam, appKeyParam)
+	result, err := c.service.RetailerLoginCheck(r.Context(), usernameParam, passwordParam, deviceIdParam, latitudeParam, longitudeParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -669,18 +631,9 @@ func (c *RetailerAPIController) RetailerLoginCheck(w http.ResponseWriter, r *htt
 
 // GetRetailers - Search Retailers
 func (c *RetailerAPIController) GetRetailers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var visibilityParam string
@@ -842,7 +795,7 @@ func (c *RetailerAPIController) GetRetailers(w http.ResponseWriter, r *http.Requ
 		lParam = param
 	} else {
 	}
-	result, err := c.service.GetRetailers(r.Context(), versionParam, visibilityParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, qParam, keywordParam, categoryIdsParam, filterIdsParam, iParam, lParam)
+	result, err := c.service.GetRetailers(r.Context(), visibilityParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, deviceIdParam, accountIdParam, qParam, keywordParam, categoryIdsParam, filterIdsParam, iParam, lParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -854,18 +807,9 @@ func (c *RetailerAPIController) GetRetailers(w http.ResponseWriter, r *http.Requ
 
 // UpdateRetailer - Update Retailer
 func (c *RetailerAPIController) UpdateRetailer(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var retailerIdParam int64
@@ -1150,7 +1094,7 @@ func (c *RetailerAPIController) UpdateRetailer(w http.ResponseWriter, r *http.Re
 		responseFormatParam = param
 	} else {
 	}
-	result, err := c.service.UpdateRetailer(r.Context(), versionParam, retailerIdParam, deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, countryParam, businessPhoneParam, businessPhoneExtParam, websiteParam, emailParam, facebookUrlParam, twitterUrlParam, logoParam, logoAssetIdParam, picture1Param, picture1AssetIdParam, picture2Param, picture2AssetIdParam, categoryIdsParam, filterIdsParam, latitudeParam, longitudeParam, metaDataParam, searchTagsParam, retailerTypeParam, visibilityParam, activeParam, responseFormatParam)
+	result, err := c.service.UpdateRetailer(r.Context(), retailerIdParam, deviceIdParam, accountIdParam, nameParam, streetAddressParam, streetAddress2Param, cityParam, stateParam, postalCodeParam, countryParam, businessPhoneParam, businessPhoneExtParam, websiteParam, emailParam, facebookUrlParam, twitterUrlParam, logoParam, logoAssetIdParam, picture1Param, picture1AssetIdParam, picture2Param, picture2AssetIdParam, categoryIdsParam, filterIdsParam, latitudeParam, longitudeParam, metaDataParam, searchTagsParam, retailerTypeParam, visibilityParam, activeParam, responseFormatParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

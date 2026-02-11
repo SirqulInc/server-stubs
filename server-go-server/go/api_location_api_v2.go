@@ -57,13 +57,13 @@ func (c *LocationApiV2APIController) Routes() Routes {
 		"CreateLocationV2": Route{
 			"CreateLocationV2",
 			strings.ToUpper("Post"),
-			"/api/{version}/location",
+			"/api/3.18/location",
 			c.CreateLocationV2,
 		},
 		"UpdateLocationV2": Route{
 			"UpdateLocationV2",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/{id}",
+			"/api/3.18/location/{id}",
 			c.UpdateLocationV2,
 		},
 	}
@@ -75,13 +75,13 @@ func (c *LocationApiV2APIController) OrderedRoutes() []Route {
 		Route{
 			"CreateLocationV2",
 			strings.ToUpper("Post"),
-			"/api/{version}/location",
+			"/api/3.18/location",
 			c.CreateLocationV2,
 		},
 		Route{
 			"UpdateLocationV2",
 			strings.ToUpper("Post"),
-			"/api/{version}/location/{id}",
+			"/api/3.18/location/{id}",
 			c.UpdateLocationV2,
 		},
 	}
@@ -91,15 +91,6 @@ func (c *LocationApiV2APIController) OrderedRoutes() []Route {
 
 // CreateLocationV2 - Create new location
 func (c *LocationApiV2APIController) CreateLocationV2(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam Location
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -115,7 +106,7 @@ func (c *LocationApiV2APIController) CreateLocationV2(w http.ResponseWriter, r *
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateLocationV2(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateLocationV2(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -128,14 +119,6 @@ func (c *LocationApiV2APIController) CreateLocationV2(w http.ResponseWriter, r *
 // UpdateLocationV2 - Update an existing location
 func (c *LocationApiV2APIController) UpdateLocationV2(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	idParam, err := parseNumericParameter[int64](
 		params["id"],
 		WithRequire[int64](parseInt64),
@@ -159,7 +142,7 @@ func (c *LocationApiV2APIController) UpdateLocationV2(w http.ResponseWriter, r *
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateLocationV2(r.Context(), versionParam, idParam, bodyParam)
+	result, err := c.service.UpdateLocationV2(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

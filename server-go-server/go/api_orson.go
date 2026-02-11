@@ -55,145 +55,145 @@ func (c *OrsonAPIController) Routes() Routes {
 		"CreateInstantEpisode": Route{
 			"CreateInstantEpisode",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/stories/episodes/instant",
+			"/api/3.18/orson/stories/episodes/instant",
 			c.CreateInstantEpisode,
 		},
 		"GetEpisodeStatus": Route{
 			"GetEpisodeStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/stories/episodes/{episodeId}/status",
+			"/api/3.18/orson/stories/episodes/{episodeId}/status",
 			c.GetEpisodeStatus,
 		},
 		"StartVideoRender": Route{
 			"StartVideoRender",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/stories/renders",
+			"/api/3.18/orson/stories/renders",
 			c.StartVideoRender,
 		},
 		"GetRenderStatus": Route{
 			"GetRenderStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/stories/renders/{renderId}/status",
+			"/api/3.18/orson/stories/renders/{renderId}/status",
 			c.GetRenderStatus,
 		},
 		"CreateVoiceCanvas": Route{
 			"CreateVoiceCanvas",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/voiceCanvas",
+			"/api/3.18/orson/ai/voiceCanvas",
 			c.CreateVoiceCanvas,
 		},
 		"GetVoiceCanvas": Route{
 			"GetVoiceCanvas",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/voiceCanvas/{requestId}",
+			"/api/3.18/orson/ai/voiceCanvas/{requestId}",
 			c.GetVoiceCanvas,
 		},
 		"SummarizeTopics": Route{
 			"SummarizeTopics",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/topics",
+			"/api/3.18/orson/ai/topics",
 			c.SummarizeTopics,
 		},
 		"GetTopics": Route{
 			"GetTopics",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/topics/{requestId}",
+			"/api/3.18/orson/ai/topics/{requestId}",
 			c.GetTopics,
 		},
 		"AddMovie": Route{
 			"AddMovie",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/addMovie",
+			"/api/3.18/orson/ai/addMovie",
 			c.AddMovie,
 		},
 		"GetAddMovieResult": Route{
 			"GetAddMovieResult",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/addMovie/{requestId}",
+			"/api/3.18/orson/ai/addMovie/{requestId}",
 			c.GetAddMovieResult,
 		},
 		"Stt": Route{
 			"Stt",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/stt",
+			"/api/3.18/orson/ai/stt",
 			c.Stt,
 		},
 		"GetSTT": Route{
 			"GetSTT",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/stt/{requestId}",
+			"/api/3.18/orson/ai/stt/{requestId}",
 			c.GetSTT,
 		},
 		"Tts": Route{
 			"Tts",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/tts",
+			"/api/3.18/orson/ai/tts",
 			c.Tts,
 		},
 		"GetTTS": Route{
 			"GetTTS",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/tts/{requestId}",
+			"/api/3.18/orson/ai/tts/{requestId}",
 			c.GetTTS,
 		},
 		"TechTune": Route{
 			"TechTune",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/techTune",
+			"/api/3.18/orson/ai/techTune",
 			c.TechTune,
 		},
 		"GetTechTune": Route{
 			"GetTechTune",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/techTune/{requestId}",
+			"/api/3.18/orson/ai/techTune/{requestId}",
 			c.GetTechTune,
 		},
 		"Emotion": Route{
 			"Emotion",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/emotion",
+			"/api/3.18/orson/ai/emotion",
 			c.Emotion,
 		},
 		"GetEmotion": Route{
 			"GetEmotion",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/emotion/{requestId}",
+			"/api/3.18/orson/ai/emotion/{requestId}",
 			c.GetEmotion,
 		},
 		"Batch": Route{
 			"Batch",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/batch",
+			"/api/3.18/orson/ai/batch",
 			c.Batch,
 		},
 		"GetBatch": Route{
 			"GetBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/batch/{requestId}",
+			"/api/3.18/orson/ai/batch/{requestId}",
 			c.GetBatch,
 		},
 		"AiFindImages": Route{
 			"AiFindImages",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/img",
+			"/api/3.18/orson/ai/img",
 			c.AiFindImages,
 		},
 		"AiDocs": Route{
 			"AiDocs",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/docs",
+			"/api/3.18/orson/ai/docs",
 			c.AiDocs,
 		},
 		"AiTags": Route{
 			"AiTags",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/tags",
+			"/api/3.18/orson/ai/tags",
 			c.AiTags,
 		},
 		"AiText": Route{
 			"AiText",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/text",
+			"/api/3.18/orson/ai/text",
 			c.AiText,
 		},
 	}
@@ -205,145 +205,145 @@ func (c *OrsonAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateInstantEpisode",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/stories/episodes/instant",
+			"/api/3.18/orson/stories/episodes/instant",
 			c.CreateInstantEpisode,
 		},
 		Route{
 			"GetEpisodeStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/stories/episodes/{episodeId}/status",
+			"/api/3.18/orson/stories/episodes/{episodeId}/status",
 			c.GetEpisodeStatus,
 		},
 		Route{
 			"StartVideoRender",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/stories/renders",
+			"/api/3.18/orson/stories/renders",
 			c.StartVideoRender,
 		},
 		Route{
 			"GetRenderStatus",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/stories/renders/{renderId}/status",
+			"/api/3.18/orson/stories/renders/{renderId}/status",
 			c.GetRenderStatus,
 		},
 		Route{
 			"CreateVoiceCanvas",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/voiceCanvas",
+			"/api/3.18/orson/ai/voiceCanvas",
 			c.CreateVoiceCanvas,
 		},
 		Route{
 			"GetVoiceCanvas",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/voiceCanvas/{requestId}",
+			"/api/3.18/orson/ai/voiceCanvas/{requestId}",
 			c.GetVoiceCanvas,
 		},
 		Route{
 			"SummarizeTopics",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/topics",
+			"/api/3.18/orson/ai/topics",
 			c.SummarizeTopics,
 		},
 		Route{
 			"GetTopics",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/topics/{requestId}",
+			"/api/3.18/orson/ai/topics/{requestId}",
 			c.GetTopics,
 		},
 		Route{
 			"AddMovie",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/addMovie",
+			"/api/3.18/orson/ai/addMovie",
 			c.AddMovie,
 		},
 		Route{
 			"GetAddMovieResult",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/addMovie/{requestId}",
+			"/api/3.18/orson/ai/addMovie/{requestId}",
 			c.GetAddMovieResult,
 		},
 		Route{
 			"Stt",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/stt",
+			"/api/3.18/orson/ai/stt",
 			c.Stt,
 		},
 		Route{
 			"GetSTT",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/stt/{requestId}",
+			"/api/3.18/orson/ai/stt/{requestId}",
 			c.GetSTT,
 		},
 		Route{
 			"Tts",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/tts",
+			"/api/3.18/orson/ai/tts",
 			c.Tts,
 		},
 		Route{
 			"GetTTS",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/tts/{requestId}",
+			"/api/3.18/orson/ai/tts/{requestId}",
 			c.GetTTS,
 		},
 		Route{
 			"TechTune",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/techTune",
+			"/api/3.18/orson/ai/techTune",
 			c.TechTune,
 		},
 		Route{
 			"GetTechTune",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/techTune/{requestId}",
+			"/api/3.18/orson/ai/techTune/{requestId}",
 			c.GetTechTune,
 		},
 		Route{
 			"Emotion",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/emotion",
+			"/api/3.18/orson/ai/emotion",
 			c.Emotion,
 		},
 		Route{
 			"GetEmotion",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/emotion/{requestId}",
+			"/api/3.18/orson/ai/emotion/{requestId}",
 			c.GetEmotion,
 		},
 		Route{
 			"Batch",
 			strings.ToUpper("Post"),
-			"/api/{version}/orson/ai/batch",
+			"/api/3.18/orson/ai/batch",
 			c.Batch,
 		},
 		Route{
 			"GetBatch",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/batch/{requestId}",
+			"/api/3.18/orson/ai/batch/{requestId}",
 			c.GetBatch,
 		},
 		Route{
 			"AiFindImages",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/img",
+			"/api/3.18/orson/ai/img",
 			c.AiFindImages,
 		},
 		Route{
 			"AiDocs",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/docs",
+			"/api/3.18/orson/ai/docs",
 			c.AiDocs,
 		},
 		Route{
 			"AiTags",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/tags",
+			"/api/3.18/orson/ai/tags",
 			c.AiTags,
 		},
 		Route{
 			"AiText",
 			strings.ToUpper("Get"),
-			"/api/{version}/orson/ai/text",
+			"/api/3.18/orson/ai/text",
 			c.AiText,
 		},
 	}
@@ -353,18 +353,9 @@ func (c *OrsonAPIController) OrderedRoutes() []Route {
 
 // CreateInstantEpisode - Creates an instant episode
 func (c *OrsonAPIController) CreateInstantEpisode(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -392,7 +383,7 @@ func (c *OrsonAPIController) CreateInstantEpisode(w http.ResponseWriter, r *http
 		c.errorHandler(w, r, &RequiredError{Field: "data"}, nil)
 		return
 	}
-	result, err := c.service.CreateInstantEpisode(r.Context(), versionParam, accountIdParam, dataParam)
+	result, err := c.service.CreateInstantEpisode(r.Context(), accountIdParam, dataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -408,14 +399,6 @@ func (c *OrsonAPIController) GetEpisodeStatus(w http.ResponseWriter, r *http.Req
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	episodeIdParam, err := parseNumericParameter[int64](
@@ -442,7 +425,7 @@ func (c *OrsonAPIController) GetEpisodeStatus(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetEpisodeStatus(r.Context(), versionParam, episodeIdParam, accountIdParam)
+	result, err := c.service.GetEpisodeStatus(r.Context(), episodeIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -454,18 +437,9 @@ func (c *OrsonAPIController) GetEpisodeStatus(w http.ResponseWriter, r *http.Req
 
 // StartVideoRender - Starts a StoryStitch video render
 func (c *OrsonAPIController) StartVideoRender(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -493,7 +467,7 @@ func (c *OrsonAPIController) StartVideoRender(w http.ResponseWriter, r *http.Req
 		c.errorHandler(w, r, &RequiredError{Field: "data"}, nil)
 		return
 	}
-	result, err := c.service.StartVideoRender(r.Context(), versionParam, accountIdParam, dataParam)
+	result, err := c.service.StartVideoRender(r.Context(), accountIdParam, dataParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -509,14 +483,6 @@ func (c *OrsonAPIController) GetRenderStatus(w http.ResponseWriter, r *http.Requ
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	renderIdParam := params["renderId"]
@@ -540,7 +506,7 @@ func (c *OrsonAPIController) GetRenderStatus(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetRenderStatus(r.Context(), versionParam, renderIdParam, accountIdParam)
+	result, err := c.service.GetRenderStatus(r.Context(), renderIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -552,18 +518,9 @@ func (c *OrsonAPIController) GetRenderStatus(w http.ResponseWriter, r *http.Requ
 
 // CreateVoiceCanvas - Create VoiceCanvas images
 func (c *OrsonAPIController) CreateVoiceCanvas(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -654,7 +611,7 @@ func (c *OrsonAPIController) CreateVoiceCanvas(w http.ResponseWriter, r *http.Re
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.CreateVoiceCanvas(r.Context(), versionParam, accountIdParam, dimensionsParam, thirdPartyAccountIdParam, textParam, fileParam, urlParam, parseFlagParam, fetchFlagParam, callbackParam)
+	result, err := c.service.CreateVoiceCanvas(r.Context(), accountIdParam, dimensionsParam, thirdPartyAccountIdParam, textParam, fileParam, urlParam, parseFlagParam, fetchFlagParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -670,14 +627,6 @@ func (c *OrsonAPIController) GetVoiceCanvas(w http.ResponseWriter, r *http.Reque
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -701,7 +650,7 @@ func (c *OrsonAPIController) GetVoiceCanvas(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetVoiceCanvas(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetVoiceCanvas(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -713,18 +662,9 @@ func (c *OrsonAPIController) GetVoiceCanvas(w http.ResponseWriter, r *http.Reque
 
 // SummarizeTopics - Summarize Topics
 func (c *OrsonAPIController) SummarizeTopics(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -806,7 +746,7 @@ func (c *OrsonAPIController) SummarizeTopics(w http.ResponseWriter, r *http.Requ
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.SummarizeTopics(r.Context(), versionParam, accountIdParam, thirdPartyAccountIdParam, docParam, fileParam, urlParam, limitParam, offsetParam, callbackParam)
+	result, err := c.service.SummarizeTopics(r.Context(), accountIdParam, thirdPartyAccountIdParam, docParam, fileParam, urlParam, limitParam, offsetParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -822,14 +762,6 @@ func (c *OrsonAPIController) GetTopics(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -853,7 +785,7 @@ func (c *OrsonAPIController) GetTopics(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetTopics(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetTopics(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -865,18 +797,9 @@ func (c *OrsonAPIController) GetTopics(w http.ResponseWriter, r *http.Request) {
 
 // AddMovie - Add Movie
 func (c *OrsonAPIController) AddMovie(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -939,7 +862,7 @@ func (c *OrsonAPIController) AddMovie(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.AddMovie(r.Context(), versionParam, accountIdParam, movieNameParam, thirdPartyAccountIdParam, tagsParam, fileParam, urlParam, callbackParam)
+	result, err := c.service.AddMovie(r.Context(), accountIdParam, movieNameParam, thirdPartyAccountIdParam, tagsParam, fileParam, urlParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -955,14 +878,6 @@ func (c *OrsonAPIController) GetAddMovieResult(w http.ResponseWriter, r *http.Re
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -986,7 +901,7 @@ func (c *OrsonAPIController) GetAddMovieResult(w http.ResponseWriter, r *http.Re
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetAddMovieResult(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetAddMovieResult(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -998,18 +913,9 @@ func (c *OrsonAPIController) GetAddMovieResult(w http.ResponseWriter, r *http.Re
 
 // Stt - Speach to Text
 func (c *OrsonAPIController) Stt(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1070,7 +976,7 @@ func (c *OrsonAPIController) Stt(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.Stt(r.Context(), versionParam, accountIdParam, thirdPartyAccountIdParam, sourceLanguageParam, targetLanguageParam, fileParam, urlParam, callbackParam)
+	result, err := c.service.Stt(r.Context(), accountIdParam, thirdPartyAccountIdParam, sourceLanguageParam, targetLanguageParam, fileParam, urlParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1086,14 +992,6 @@ func (c *OrsonAPIController) GetSTT(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -1117,7 +1015,7 @@ func (c *OrsonAPIController) GetSTT(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetSTT(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetSTT(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1129,18 +1027,9 @@ func (c *OrsonAPIController) GetSTT(w http.ResponseWriter, r *http.Request) {
 
 // Tts - Text to Speach
 func (c *OrsonAPIController) Tts(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1196,7 +1085,7 @@ func (c *OrsonAPIController) Tts(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.Tts(r.Context(), versionParam, accountIdParam, textParam, thirdPartyAccountIdParam, languageParam, voiceParam, callbackParam)
+	result, err := c.service.Tts(r.Context(), accountIdParam, textParam, thirdPartyAccountIdParam, languageParam, voiceParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1212,14 +1101,6 @@ func (c *OrsonAPIController) GetTTS(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -1243,7 +1124,7 @@ func (c *OrsonAPIController) GetTTS(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetTTS(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetTTS(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1255,18 +1136,9 @@ func (c *OrsonAPIController) GetTTS(w http.ResponseWriter, r *http.Request) {
 
 // TechTune - Detect Technical Issues
 func (c *OrsonAPIController) TechTune(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1329,7 +1201,7 @@ func (c *OrsonAPIController) TechTune(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.TechTune(r.Context(), versionParam, accountIdParam, numFacesExpectedParam, thirdPartyAccountIdParam, fileParam, urlParam, callbackParam)
+	result, err := c.service.TechTune(r.Context(), accountIdParam, numFacesExpectedParam, thirdPartyAccountIdParam, fileParam, urlParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1345,14 +1217,6 @@ func (c *OrsonAPIController) GetTechTune(w http.ResponseWriter, r *http.Request)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -1376,7 +1240,7 @@ func (c *OrsonAPIController) GetTechTune(w http.ResponseWriter, r *http.Request)
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetTechTune(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetTechTune(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1388,18 +1252,9 @@ func (c *OrsonAPIController) GetTechTune(w http.ResponseWriter, r *http.Request)
 
 // Emotion - Detect emotions
 func (c *OrsonAPIController) Emotion(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1446,7 +1301,7 @@ func (c *OrsonAPIController) Emotion(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.Emotion(r.Context(), versionParam, accountIdParam, thirdPartyAccountIdParam, fileParam, urlParam, callbackParam)
+	result, err := c.service.Emotion(r.Context(), accountIdParam, thirdPartyAccountIdParam, fileParam, urlParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1462,14 +1317,6 @@ func (c *OrsonAPIController) GetEmotion(w http.ResponseWriter, r *http.Request) 
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -1493,7 +1340,7 @@ func (c *OrsonAPIController) GetEmotion(w http.ResponseWriter, r *http.Request) 
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetEmotion(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetEmotion(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1505,18 +1352,9 @@ func (c *OrsonAPIController) GetEmotion(w http.ResponseWriter, r *http.Request) 
 
 // Batch - Batch Analysis
 func (c *OrsonAPIController) Batch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1584,7 +1422,7 @@ func (c *OrsonAPIController) Batch(w http.ResponseWriter, r *http.Request) {
 		callbackParam = param
 	} else {
 	}
-	result, err := c.service.Batch(r.Context(), versionParam, accountIdParam, thirdPartyAccountIdParam, limitParam, operationsParam, fileParam, urlParam, callbackParam)
+	result, err := c.service.Batch(r.Context(), accountIdParam, thirdPartyAccountIdParam, limitParam, operationsParam, fileParam, urlParam, callbackParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1600,14 +1438,6 @@ func (c *OrsonAPIController) GetBatch(w http.ResponseWriter, r *http.Request) {
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	requestIdParam := params["requestId"]
@@ -1631,7 +1461,7 @@ func (c *OrsonAPIController) GetBatch(w http.ResponseWriter, r *http.Request) {
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.GetBatch(r.Context(), versionParam, requestIdParam, accountIdParam)
+	result, err := c.service.GetBatch(r.Context(), requestIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1643,18 +1473,9 @@ func (c *OrsonAPIController) GetBatch(w http.ResponseWriter, r *http.Request) {
 
 // AiFindImages - Find images
 func (c *OrsonAPIController) AiFindImages(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1703,7 +1524,7 @@ func (c *OrsonAPIController) AiFindImages(w http.ResponseWriter, r *http.Request
 		sizeParam = param
 	} else {
 	}
-	result, err := c.service.AiFindImages(r.Context(), versionParam, accountIdParam, textParam, parseFlagParam, fetchFlagParam, sizeParam)
+	result, err := c.service.AiFindImages(r.Context(), accountIdParam, textParam, parseFlagParam, fetchFlagParam, sizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1715,18 +1536,9 @@ func (c *OrsonAPIController) AiFindImages(w http.ResponseWriter, r *http.Request
 
 // AiDocs - Search Docs
 func (c *OrsonAPIController) AiDocs(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1796,7 +1608,7 @@ func (c *OrsonAPIController) AiDocs(w http.ResponseWriter, r *http.Request) {
 		offsetParam = param
 	} else {
 	}
-	result, err := c.service.AiDocs(r.Context(), versionParam, accountIdParam, docParam, returnTopicsParam, limitParam, offsetParam)
+	result, err := c.service.AiDocs(r.Context(), accountIdParam, docParam, returnTopicsParam, limitParam, offsetParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1808,18 +1620,9 @@ func (c *OrsonAPIController) AiDocs(w http.ResponseWriter, r *http.Request) {
 
 // AiTags - Search Tags
 func (c *OrsonAPIController) AiTags(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1882,7 +1685,7 @@ func (c *OrsonAPIController) AiTags(w http.ResponseWriter, r *http.Request) {
 		offsetParam = param
 	} else {
 	}
-	result, err := c.service.AiTags(r.Context(), versionParam, accountIdParam, tagsParam, conditionalParam, limitParam, offsetParam)
+	result, err := c.service.AiTags(r.Context(), accountIdParam, tagsParam, conditionalParam, limitParam, offsetParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1894,18 +1697,9 @@ func (c *OrsonAPIController) AiTags(w http.ResponseWriter, r *http.Request) {
 
 // AiText - Search Text
 func (c *OrsonAPIController) AiText(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -1968,7 +1762,7 @@ func (c *OrsonAPIController) AiText(w http.ResponseWriter, r *http.Request) {
 		offsetParam = param
 	} else {
 	}
-	result, err := c.service.AiText(r.Context(), versionParam, accountIdParam, termsParam, conditionalParam, limitParam, offsetParam)
+	result, err := c.service.AiText(r.Context(), accountIdParam, termsParam, conditionalParam, limitParam, offsetParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

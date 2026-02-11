@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // AnalyticsAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *AnalyticsAPIController) Routes() Routes {
 		"AggregatedFilteredUsage": Route{
 			"AggregatedFilteredUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/aggregatedFilteredUsage",
+			"/api/3.18/analytics/aggregatedFilteredUsage",
 			c.AggregatedFilteredUsage,
 		},
 		"FilteredUsage": Route{
 			"FilteredUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/filteredUsage",
+			"/api/3.18/analytics/filteredUsage",
 			c.FilteredUsage,
 		},
 		"Usage": Route{
 			"Usage",
 			strings.ToUpper("Post"),
-			"/api/{version}/analytics/usage",
+			"/api/3.18/analytics/usage",
 			c.Usage,
 		},
 		"UsageBatch": Route{
 			"UsageBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/analytics/usage/batch",
+			"/api/3.18/analytics/usage/batch",
 			c.UsageBatch,
 		},
 		"Activities": Route{
 			"Activities",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/useractivity",
+			"/api/3.18/analytics/useractivity",
 			c.Activities,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *AnalyticsAPIController) OrderedRoutes() []Route {
 		Route{
 			"AggregatedFilteredUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/aggregatedFilteredUsage",
+			"/api/3.18/analytics/aggregatedFilteredUsage",
 			c.AggregatedFilteredUsage,
 		},
 		Route{
 			"FilteredUsage",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/filteredUsage",
+			"/api/3.18/analytics/filteredUsage",
 			c.FilteredUsage,
 		},
 		Route{
 			"Usage",
 			strings.ToUpper("Post"),
-			"/api/{version}/analytics/usage",
+			"/api/3.18/analytics/usage",
 			c.Usage,
 		},
 		Route{
 			"UsageBatch",
 			strings.ToUpper("Post"),
-			"/api/{version}/analytics/usage/batch",
+			"/api/3.18/analytics/usage/batch",
 			c.UsageBatch,
 		},
 		Route{
 			"Activities",
 			strings.ToUpper("Get"),
-			"/api/{version}/analytics/useractivity",
+			"/api/3.18/analytics/useractivity",
 			c.Activities,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *AnalyticsAPIController) OrderedRoutes() []Route {
 
 // AggregatedFilteredUsage - Get Aggregated Filtered Usage
 func (c *AnalyticsAPIController) AggregatedFilteredUsage(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -432,7 +421,7 @@ func (c *AnalyticsAPIController) AggregatedFilteredUsage(w http.ResponseWriter, 
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.AggregatedFilteredUsage(r.Context(), versionParam, deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, startDateParam, endDateParam, deviceTypeParam, deviceParam, deviceOSParam, genderParam, ageGroupParam, countryParam, stateParam, cityParam, zipParam, modelParam, tagParam, userAccountIdParam, userAccountDisplayParam, userAccountUsernameParam, groupByRootParam, groupByParam, distinctCountParam, sortFieldParam, descendingParam, hideUnknownParam, responseFormatParam, lParam, limitParam, latitudeParam, longitudeParam)
+	result, err := c.service.AggregatedFilteredUsage(r.Context(), deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, startDateParam, endDateParam, deviceTypeParam, deviceParam, deviceOSParam, genderParam, ageGroupParam, countryParam, stateParam, cityParam, zipParam, modelParam, tagParam, userAccountIdParam, userAccountDisplayParam, userAccountUsernameParam, groupByRootParam, groupByParam, distinctCountParam, sortFieldParam, descendingParam, hideUnknownParam, responseFormatParam, lParam, limitParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -444,18 +433,9 @@ func (c *AnalyticsAPIController) AggregatedFilteredUsage(w http.ResponseWriter, 
 
 // FilteredUsage - Get Filtered Usage
 func (c *AnalyticsAPIController) FilteredUsage(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -843,7 +823,7 @@ func (c *AnalyticsAPIController) FilteredUsage(w http.ResponseWriter, r *http.Re
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.FilteredUsage(r.Context(), versionParam, deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, startDateParam, endDateParam, deviceTypeParam, deviceParam, deviceOSParam, genderParam, ageGroupParam, countryParam, stateParam, cityParam, zipParam, modelParam, tagParam, userAccountIdParam, userAccountDisplayParam, userAccountUsernameParam, customIdParam, customTypeParam, customValueParam, customValue2Param, customLongParam, customLong2Param, customMessageParam, customMessage2Param, groupByParam, distinctCountParam, sumColumnParam, sortFieldParam, descendingParam, hideUnknownParam, responseFormatParam, lParam, limitParam, latitudeParam, longitudeParam)
+	result, err := c.service.FilteredUsage(r.Context(), deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, startDateParam, endDateParam, deviceTypeParam, deviceParam, deviceOSParam, genderParam, ageGroupParam, countryParam, stateParam, cityParam, zipParam, modelParam, tagParam, userAccountIdParam, userAccountDisplayParam, userAccountUsernameParam, customIdParam, customTypeParam, customValueParam, customValue2Param, customLongParam, customLong2Param, customMessageParam, customMessage2Param, groupByParam, distinctCountParam, sumColumnParam, sortFieldParam, descendingParam, hideUnknownParam, responseFormatParam, lParam, limitParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -855,18 +835,9 @@ func (c *AnalyticsAPIController) FilteredUsage(w http.ResponseWriter, r *http.Re
 
 // Usage - Create Usage Record
 func (c *AnalyticsAPIController) Usage(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var tagParam string
@@ -1172,7 +1143,7 @@ func (c *AnalyticsAPIController) Usage(w http.ResponseWriter, r *http.Request) {
 		customLong2Param = param
 	} else {
 	}
-	result, err := c.service.Usage(r.Context(), versionParam, tagParam, deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, appVersionParam, deviceParam, deviceTypeParam, deviceOSParam, modelParam, latitudeParam, longitudeParam, customIdParam, customTypeParam, achievementIncrementParam, cityParam, stateParam, countryParam, zipParam, locationDescriptionParam, clientTimeParam, errorMessageParam, ipParam, userAgentParam, backgroundEventParam, customMessageParam, customMessage2Param, customValueParam, customValue2Param, customLongParam, customLong2Param)
+	result, err := c.service.Usage(r.Context(), tagParam, deviceIdParam, accountIdParam, applicationIdParam, appKeyParam, appVersionParam, deviceParam, deviceTypeParam, deviceOSParam, modelParam, latitudeParam, longitudeParam, customIdParam, customTypeParam, achievementIncrementParam, cityParam, stateParam, countryParam, zipParam, locationDescriptionParam, clientTimeParam, errorMessageParam, ipParam, userAgentParam, backgroundEventParam, customMessageParam, customMessage2Param, customValueParam, customValue2Param, customLongParam, customLong2Param)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1184,18 +1155,9 @@ func (c *AnalyticsAPIController) Usage(w http.ResponseWriter, r *http.Request) {
 
 // UsageBatch - Create Multiple Usage Records
 func (c *AnalyticsAPIController) UsageBatch(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var appKeyParam string
@@ -1302,7 +1264,7 @@ func (c *AnalyticsAPIController) UsageBatch(w http.ResponseWriter, r *http.Reque
 		returnSummaryResponseParam = param
 	} else {
 	}
-	result, err := c.service.UsageBatch(r.Context(), versionParam, appKeyParam, deviceParam, dataParam, deviceIdParam, accountIdParam, appVersionParam, deviceTypeParam, deviceOSParam, modelParam, updateRankingParam, returnSummaryResponseParam)
+	result, err := c.service.UsageBatch(r.Context(), appKeyParam, deviceParam, dataParam, deviceIdParam, accountIdParam, appVersionParam, deviceTypeParam, deviceOSParam, modelParam, updateRankingParam, returnSummaryResponseParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -1314,18 +1276,9 @@ func (c *AnalyticsAPIController) UsageBatch(w http.ResponseWriter, r *http.Reque
 
 // Activities - Get User Activity
 func (c *AnalyticsAPIController) Activities(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var startParam int32
@@ -1376,7 +1329,7 @@ func (c *AnalyticsAPIController) Activities(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, &RequiredError{Field: "accountId"}, nil)
 		return
 	}
-	result, err := c.service.Activities(r.Context(), versionParam, startParam, limitParam, accountIdParam)
+	result, err := c.service.Activities(r.Context(), startParam, limitParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

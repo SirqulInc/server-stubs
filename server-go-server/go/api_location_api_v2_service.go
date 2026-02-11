@@ -29,7 +29,7 @@ func NewLocationApiV2APIService() *LocationApiV2APIService {
 }
 
 // CreateLocationV2 - Create new location
-func (s *LocationApiV2APIService) CreateLocationV2(ctx context.Context, version float32, body Location) (ImplResponse, error) {
+func (s *LocationApiV2APIService) CreateLocationV2(ctx context.Context, body Location) (ImplResponse, error) {
 	// TODO - update CreateLocationV2 with the required logic for this service method.
 	// Add api_location_api_v2_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *LocationApiV2APIService) CreateLocationV2(ctx context.Context, version 
 }
 
 // UpdateLocationV2 - Update an existing location
-func (s *LocationApiV2APIService) UpdateLocationV2(ctx context.Context, version float32, id int64, body Location) (ImplResponse, error) {
+func (s *LocationApiV2APIService) UpdateLocationV2(ctx context.Context, id int64, body Location) (ImplResponse, error) {
 	// TODO - update UpdateLocationV2 with the required logic for this service method.
 	// Add api_location_api_v2_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // FacebookAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,13 +52,13 @@ func (c *FacebookAPIController) Routes() Routes {
 		"GetToken": Route{
 			"GetToken",
 			strings.ToUpper("Get"),
-			"/api/{version}/facebook/getfbtoken",
+			"/api/3.18/facebook/getfbtoken",
 			c.GetToken,
 		},
 		"GraphInterface": Route{
 			"GraphInterface",
 			strings.ToUpper("Post"),
-			"/api/{version}/facebook/graph",
+			"/api/3.18/facebook/graph",
 			c.GraphInterface,
 		},
 	}
@@ -72,13 +70,13 @@ func (c *FacebookAPIController) OrderedRoutes() []Route {
 		Route{
 			"GetToken",
 			strings.ToUpper("Get"),
-			"/api/{version}/facebook/getfbtoken",
+			"/api/3.18/facebook/getfbtoken",
 			c.GetToken,
 		},
 		Route{
 			"GraphInterface",
 			strings.ToUpper("Post"),
-			"/api/{version}/facebook/graph",
+			"/api/3.18/facebook/graph",
 			c.GraphInterface,
 		},
 	}
@@ -88,18 +86,9 @@ func (c *FacebookAPIController) OrderedRoutes() []Route {
 
 // GetToken - Get Facebook Token
 func (c *FacebookAPIController) GetToken(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -151,7 +140,7 @@ func (c *FacebookAPIController) GetToken(w http.ResponseWriter, r *http.Request)
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetToken(r.Context(), versionParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetToken(r.Context(), deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -163,18 +152,9 @@ func (c *FacebookAPIController) GetToken(w http.ResponseWriter, r *http.Request)
 
 // GraphInterface - Post to Facebook
 func (c *FacebookAPIController) GraphInterface(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var eventParam string
@@ -284,7 +264,7 @@ func (c *FacebookAPIController) GraphInterface(w http.ResponseWriter, r *http.Re
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GraphInterface(r.Context(), versionParam, eventParam, deviceIdParam, accountIdParam, permissionableTypeParam, permissionableIdParam, assetIdParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
+	result, err := c.service.GraphInterface(r.Context(), eventParam, deviceIdParam, accountIdParam, permissionableTypeParam, permissionableIdParam, assetIdParam, gameTypeParam, appKeyParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

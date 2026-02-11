@@ -29,7 +29,7 @@ func NewTrackingAPIService() *TrackingAPIService {
 }
 
 // BatchSaveTracking - Create Batch Tracking
-func (s *TrackingAPIService) BatchSaveTracking(ctx context.Context, version float32, data string, deviceId string, accountId int64, generateAccounts bool, updateAccountLocations bool, defaultTag string, slaveUID string) (ImplResponse, error) {
+func (s *TrackingAPIService) BatchSaveTracking(ctx context.Context, data string, deviceId string, accountId int64, generateAccounts bool, updateAccountLocations bool, defaultTag string, slaveUID string) (ImplResponse, error) {
 	// TODO - update BatchSaveTracking with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *TrackingAPIService) BatchSaveTracking(ctx context.Context, version floa
 }
 
 // SaveTrackingLeg - Create Tracking Leg
-func (s *TrackingAPIService) SaveTrackingLeg(ctx context.Context, version float32, startLat float64, startLng float64, startDate int64, endLat float64, endLng float64, endDate int64, deviceId string, accountId int64, distance float64, duration int64, steps string, tags string) (ImplResponse, error) {
+func (s *TrackingAPIService) SaveTrackingLeg(ctx context.Context, startLat float64, startLng float64, startDate int64, endLat float64, endLng float64, endDate int64, deviceId string, accountId int64, distance float64, duration int64, steps string, tags string) (ImplResponse, error) {
 	// TODO - update SaveTrackingLeg with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *TrackingAPIService) SaveTrackingLeg(ctx context.Context, version float3
 }
 
 // SearchAccountsWithTrackingLegs - List Tracking
-func (s *TrackingAPIService) SearchAccountsWithTrackingLegs(ctx context.Context, version float32, accountId int64, keyword string, startDate int64, endDate int64, tags string, audienceIds string, latitude float64, longitude float64, range_ float64, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *TrackingAPIService) SearchAccountsWithTrackingLegs(ctx context.Context, accountId int64, keyword string, startDate int64, endDate int64, tags string, audienceIds string, latitude float64, longitude float64, range_ float64, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchAccountsWithTrackingLegs with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *TrackingAPIService) SearchAccountsWithTrackingLegs(ctx context.Context,
 }
 
 // GetPredictedPath - Get Tracking Path
-func (s *TrackingAPIService) GetPredictedPath(ctx context.Context, version float32, accountId int64, startStepId int64, endStepId int64) (ImplResponse, error) {
+func (s *TrackingAPIService) GetPredictedPath(ctx context.Context, accountId int64, startStepId int64, endStepId int64) (ImplResponse, error) {
 	// TODO - update GetPredictedPath with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *TrackingAPIService) GetPredictedPath(ctx context.Context, version float
 }
 
 // GetPredictedLocations - Get Predicted Locations
-func (s *TrackingAPIService) GetPredictedLocations(ctx context.Context, version float32, accountId int64, latitude float64, longitude float64, dateCheck int64, hourCheck string, threshold int64, distanceUnit string, searchRange float64, sortOrder string) (ImplResponse, error) {
+func (s *TrackingAPIService) GetPredictedLocations(ctx context.Context, accountId int64, latitude float64, longitude float64, dateCheck int64, hourCheck string, threshold int64, distanceUnit string, searchRange float64, sortOrder string) (ImplResponse, error) {
 	// TODO - update GetPredictedLocations with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *TrackingAPIService) GetPredictedLocations(ctx context.Context, version 
 }
 
 // GetPreferredLocations - Search Preferred Locations
-func (s *TrackingAPIService) GetPreferredLocations(ctx context.Context, version float32, accountId int64, latitude float64, longitude float64, dateCheck int64, hourCheck string, sortField string, descending bool, start int32, limit int32, searchRange float64, distanceUnit string) (ImplResponse, error) {
+func (s *TrackingAPIService) GetPreferredLocations(ctx context.Context, accountId int64, latitude float64, longitude float64, dateCheck int64, hourCheck string, sortField string, descending bool, start int32, limit int32, searchRange float64, distanceUnit string) (ImplResponse, error) {
 	// TODO - update GetPreferredLocations with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *TrackingAPIService) GetPreferredLocations(ctx context.Context, version 
 }
 
 // GetTrackingLegs - Search Tracking
-func (s *TrackingAPIService) GetTrackingLegs(ctx context.Context, version float32, deviceId string, accountId int64, ownerId int64, trackingDeviceId string, startDate int64, endDate int64, tags string, getLastPoint bool) (ImplResponse, error) {
+func (s *TrackingAPIService) GetTrackingLegs(ctx context.Context, deviceId string, accountId int64, ownerId int64, trackingDeviceId string, startDate int64, endDate int64, tags string, getLastPoint bool) (ImplResponse, error) {
 	// TODO - update GetTrackingLegs with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *TrackingAPIService) GetTrackingLegs(ctx context.Context, version float3
 }
 
 // SaveTrackingStep - Create Tracking Step
-func (s *TrackingAPIService) SaveTrackingStep(ctx context.Context, version float32, legId int64, startLat float64, startLng float64, startDate int64, endLat float64, endLng float64, endDate int64, deviceId string, accountId int64, distance float64, duration int64) (ImplResponse, error) {
+func (s *TrackingAPIService) SaveTrackingStep(ctx context.Context, legId int64, startLat float64, startLng float64, startDate int64, endLat float64, endLng float64, endDate int64, deviceId string, accountId int64, distance float64, duration int64) (ImplResponse, error) {
 	// TODO - update SaveTrackingStep with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *TrackingAPIService) SaveTrackingStep(ctx context.Context, version float
 }
 
 // SearchTrackingLegs - Search Tracking (Billable)
-func (s *TrackingAPIService) SearchTrackingLegs(ctx context.Context, version float32, accountId int64, appKey string, trackingDeviceId string, startDate int64, endDate int64, tags string, start int32, limit int32) (ImplResponse, error) {
+func (s *TrackingAPIService) SearchTrackingLegs(ctx context.Context, accountId int64, appKey string, trackingDeviceId string, startDate int64, endDate int64, tags string, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchTrackingLegs with the required logic for this service method.
 	// Add api_tracking_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

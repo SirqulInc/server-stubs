@@ -29,7 +29,7 @@ func NewServiceHubAPIService() *ServiceHubAPIService {
 }
 
 // SearchServiceHubs - Search Service Hubs
-func (s *ServiceHubAPIService) SearchServiceHubs(ctx context.Context, version float32, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string, retailerId int64) (ImplResponse, error) {
+func (s *ServiceHubAPIService) SearchServiceHubs(ctx context.Context, sortField string, descending bool, start int32, limit int32, activeOnly bool, keyword string, retailerId int64) (ImplResponse, error) {
 	// TODO - update SearchServiceHubs with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *ServiceHubAPIService) SearchServiceHubs(ctx context.Context, version fl
 }
 
 // CreateServiceHub - Create Service Hub
-func (s *ServiceHubAPIService) CreateServiceHub(ctx context.Context, version float32, body ServiceHub) (ImplResponse, error) {
+func (s *ServiceHubAPIService) CreateServiceHub(ctx context.Context, body ServiceHub) (ImplResponse, error) {
 	// TODO - update CreateServiceHub with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *ServiceHubAPIService) CreateServiceHub(ctx context.Context, version flo
 }
 
 // GetServiceHub - Get Service Hub
-func (s *ServiceHubAPIService) GetServiceHub(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ServiceHubAPIService) GetServiceHub(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update GetServiceHub with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *ServiceHubAPIService) GetServiceHub(ctx context.Context, version float3
 }
 
 // PutServiceHub - Update Service Hub
-func (s *ServiceHubAPIService) PutServiceHub(ctx context.Context, version float32, id int64, body ServiceHub) (ImplResponse, error) {
+func (s *ServiceHubAPIService) PutServiceHub(ctx context.Context, id int64, body ServiceHub) (ImplResponse, error) {
 	// TODO - update PutServiceHub with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *ServiceHubAPIService) PutServiceHub(ctx context.Context, version float3
 }
 
 // PostServiceHub - Update Service Hub
-func (s *ServiceHubAPIService) PostServiceHub(ctx context.Context, version float32, id int64, body ServiceHub) (ImplResponse, error) {
+func (s *ServiceHubAPIService) PostServiceHub(ctx context.Context, id int64, body ServiceHub) (ImplResponse, error) {
 	// TODO - update PostServiceHub with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *ServiceHubAPIService) PostServiceHub(ctx context.Context, version float
 }
 
 // DeleteServiceHub - Delete Service Hub
-func (s *ServiceHubAPIService) DeleteServiceHub(ctx context.Context, version float32, id int64) (ImplResponse, error) {
+func (s *ServiceHubAPIService) DeleteServiceHub(ctx context.Context, id int64) (ImplResponse, error) {
 	// TODO - update DeleteServiceHub with the required logic for this service method.
 	// Add api_service_hub_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -57,31 +57,31 @@ func (c *RouteSettingAPIController) Routes() Routes {
 		"SearchRouteSettings": Route{
 			"SearchRouteSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/setting",
+			"/api/3.18/route/setting",
 			c.SearchRouteSettings,
 		},
 		"CreateRouteSettings": Route{
 			"CreateRouteSettings",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/setting",
+			"/api/3.18/route/setting",
 			c.CreateRouteSettings,
 		},
 		"GetRouteSettings": Route{
 			"GetRouteSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.GetRouteSettings,
 		},
 		"UpdateRouteSettings": Route{
 			"UpdateRouteSettings",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.UpdateRouteSettings,
 		},
 		"DeleteRouteSettings": Route{
 			"DeleteRouteSettings",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.DeleteRouteSettings,
 		},
 	}
@@ -93,31 +93,31 @@ func (c *RouteSettingAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchRouteSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/setting",
+			"/api/3.18/route/setting",
 			c.SearchRouteSettings,
 		},
 		Route{
 			"CreateRouteSettings",
 			strings.ToUpper("Post"),
-			"/api/{version}/route/setting",
+			"/api/3.18/route/setting",
 			c.CreateRouteSettings,
 		},
 		Route{
 			"GetRouteSettings",
 			strings.ToUpper("Get"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.GetRouteSettings,
 		},
 		Route{
 			"UpdateRouteSettings",
 			strings.ToUpper("Put"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.UpdateRouteSettings,
 		},
 		Route{
 			"DeleteRouteSettings",
 			strings.ToUpper("Delete"),
-			"/api/{version}/route/setting/{routeSettingsId}",
+			"/api/3.18/route/setting/{routeSettingsId}",
 			c.DeleteRouteSettings,
 		},
 	}
@@ -127,18 +127,9 @@ func (c *RouteSettingAPIController) OrderedRoutes() []Route {
 
 // SearchRouteSettings - Search Route Settings
 func (c *RouteSettingAPIController) SearchRouteSettings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var sortFieldParam string
@@ -249,7 +240,7 @@ func (c *RouteSettingAPIController) SearchRouteSettings(w http.ResponseWriter, r
 		keywordParam = param
 	} else {
 	}
-	result, err := c.service.SearchRouteSettings(r.Context(), versionParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, hubIdParam, programIdParam, keywordParam)
+	result, err := c.service.SearchRouteSettings(r.Context(), sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam, hubIdParam, programIdParam, keywordParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -261,15 +252,6 @@ func (c *RouteSettingAPIController) SearchRouteSettings(w http.ResponseWriter, r
 
 // CreateRouteSettings - Create Route Setting
 func (c *RouteSettingAPIController) CreateRouteSettings(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	var bodyParam RouteSettings
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -285,7 +267,7 @@ func (c *RouteSettingAPIController) CreateRouteSettings(w http.ResponseWriter, r
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.CreateRouteSettings(r.Context(), versionParam, bodyParam)
+	result, err := c.service.CreateRouteSettings(r.Context(), bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -298,14 +280,6 @@ func (c *RouteSettingAPIController) CreateRouteSettings(w http.ResponseWriter, r
 // GetRouteSettings - Get Route Setting
 func (c *RouteSettingAPIController) GetRouteSettings(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeSettingsIdParam, err := parseNumericParameter[int64](
 		params["routeSettingsId"],
 		WithRequire[int64](parseInt64),
@@ -314,7 +288,7 @@ func (c *RouteSettingAPIController) GetRouteSettings(w http.ResponseWriter, r *h
 		c.errorHandler(w, r, &ParsingError{Param: "routeSettingsId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.GetRouteSettings(r.Context(), versionParam, routeSettingsIdParam)
+	result, err := c.service.GetRouteSettings(r.Context(), routeSettingsIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -327,14 +301,6 @@ func (c *RouteSettingAPIController) GetRouteSettings(w http.ResponseWriter, r *h
 // UpdateRouteSettings - Update Route Setting
 func (c *RouteSettingAPIController) UpdateRouteSettings(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeSettingsIdParam, err := parseNumericParameter[int64](
 		params["routeSettingsId"],
 		WithRequire[int64](parseInt64),
@@ -358,7 +324,7 @@ func (c *RouteSettingAPIController) UpdateRouteSettings(w http.ResponseWriter, r
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.UpdateRouteSettings(r.Context(), versionParam, routeSettingsIdParam, bodyParam)
+	result, err := c.service.UpdateRouteSettings(r.Context(), routeSettingsIdParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -371,14 +337,6 @@ func (c *RouteSettingAPIController) UpdateRouteSettings(w http.ResponseWriter, r
 // DeleteRouteSettings - Delete Route Setting
 func (c *RouteSettingAPIController) DeleteRouteSettings(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
-		return
-	}
 	routeSettingsIdParam, err := parseNumericParameter[int64](
 		params["routeSettingsId"],
 		WithRequire[int64](parseInt64),
@@ -387,7 +345,7 @@ func (c *RouteSettingAPIController) DeleteRouteSettings(w http.ResponseWriter, r
 		c.errorHandler(w, r, &ParsingError{Param: "routeSettingsId", Err: err}, nil)
 		return
 	}
-	result, err := c.service.DeleteRouteSettings(r.Context(), versionParam, routeSettingsIdParam)
+	result, err := c.service.DeleteRouteSettings(r.Context(), routeSettingsIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

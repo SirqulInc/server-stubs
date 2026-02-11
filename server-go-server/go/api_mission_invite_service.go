@@ -29,7 +29,7 @@ func NewMissionInviteAPIService() *MissionInviteAPIService {
 }
 
 // CreateMissionInvite - Create Mission Invite
-func (s *MissionInviteAPIService) CreateMissionInvite(ctx context.Context, version float32, deviceId string, accountId int64, missionId int64, joinCode string, includeGameData bool) (ImplResponse, error) {
+func (s *MissionInviteAPIService) CreateMissionInvite(ctx context.Context, deviceId string, accountId int64, missionId int64, joinCode string, includeGameData bool) (ImplResponse, error) {
 	// TODO - update CreateMissionInvite with the required logic for this service method.
 	// Add api_mission_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *MissionInviteAPIService) CreateMissionInvite(ctx context.Context, versi
 }
 
 // DeleteMissionInvite - Delete Mission Invite
-func (s *MissionInviteAPIService) DeleteMissionInvite(ctx context.Context, version float32, deviceId string, accountId int64, missionId int64, missionInviteId int64, includeGameData bool) (ImplResponse, error) {
+func (s *MissionInviteAPIService) DeleteMissionInvite(ctx context.Context, deviceId string, accountId int64, missionId int64, missionInviteId int64, includeGameData bool) (ImplResponse, error) {
 	// TODO - update DeleteMissionInvite with the required logic for this service method.
 	// Add api_mission_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *MissionInviteAPIService) DeleteMissionInvite(ctx context.Context, versi
 }
 
 // GetMissionInvite - Get Mission Invite
-func (s *MissionInviteAPIService) GetMissionInvite(ctx context.Context, version float32, deviceId string, accountId int64, missionId int64, missionInviteId int64, includeGameData bool, includeScores string) (ImplResponse, error) {
+func (s *MissionInviteAPIService) GetMissionInvite(ctx context.Context, deviceId string, accountId int64, missionId int64, missionInviteId int64, includeGameData bool, includeScores string) (ImplResponse, error) {
 	// TODO - update GetMissionInvite with the required logic for this service method.
 	// Add api_mission_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *MissionInviteAPIService) GetMissionInvite(ctx context.Context, version 
 }
 
 // SearchMissionInvites - Search Mission Invites
-func (s *MissionInviteAPIService) SearchMissionInvites(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, appVersion string, missionId int64, status string, lastUpdated int64, start int32, limit int32, keyword string, missionTypes string, filterByBillable bool, includeGameData bool) (ImplResponse, error) {
+func (s *MissionInviteAPIService) SearchMissionInvites(ctx context.Context, deviceId string, accountId int64, appKey string, appVersion string, missionId int64, status string, lastUpdated int64, start int32, limit int32, keyword string, missionTypes string, filterByBillable bool, includeGameData bool) (ImplResponse, error) {
 	// TODO - update SearchMissionInvites with the required logic for this service method.
 	// Add api_mission_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *MissionInviteAPIService) SearchMissionInvites(ctx context.Context, vers
 }
 
 // UpdateMissionInvite - Update Mission Invite
-func (s *MissionInviteAPIService) UpdateMissionInvite(ctx context.Context, version float32, deviceId string, accountId int64, appKey string, missionId int64, missionInviteId int64, packId int64, gameLevelId int64, status string, permissionableType string, permissionableId int64, includeGameData bool) (ImplResponse, error) {
+func (s *MissionInviteAPIService) UpdateMissionInvite(ctx context.Context, deviceId string, accountId int64, appKey string, missionId int64, missionInviteId int64, packId int64, gameLevelId int64, status string, permissionableType string, permissionableId int64, includeGameData bool) (ImplResponse, error) {
 	// TODO - update UpdateMissionInvite with the required logic for this service method.
 	// Add api_mission_invite_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

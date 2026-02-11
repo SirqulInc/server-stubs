@@ -29,7 +29,7 @@ func NewRegionAPIService() *RegionAPIService {
 }
 
 // CreateRegion - Create Region
-func (s *RegionAPIService) CreateRegion(ctx context.Context, version float32, accountId int64, regionClass string, shortName string, fullName string, parentIds string, childrenIds string, postalCodeIds string, locations string, retailerLocationId int64, visibility string, categoryIds string, filterIds string, start int64, end int64, polygon string, metaData string, latitude float64, longitude float64, versionCode int32, root bool, active bool) (ImplResponse, error) {
+func (s *RegionAPIService) CreateRegion(ctx context.Context, accountId int64, regionClass string, shortName string, fullName string, parentIds string, childrenIds string, postalCodeIds string, locations string, retailerLocationId int64, visibility string, categoryIds string, filterIds string, start int64, end int64, polygon string, metaData string, latitude float64, longitude float64, versionCode int32, root bool, active bool) (ImplResponse, error) {
 	// TODO - update CreateRegion with the required logic for this service method.
 	// Add api_region_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *RegionAPIService) CreateRegion(ctx context.Context, version float32, ac
 }
 
 // DeleteRegion - Delete Region
-func (s *RegionAPIService) DeleteRegion(ctx context.Context, version float32, accountId int64, regionId int64) (ImplResponse, error) {
+func (s *RegionAPIService) DeleteRegion(ctx context.Context, accountId int64, regionId int64) (ImplResponse, error) {
 	// TODO - update DeleteRegion with the required logic for this service method.
 	// Add api_region_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *RegionAPIService) DeleteRegion(ctx context.Context, version float32, ac
 }
 
 // GetRegion - Get Region
-func (s *RegionAPIService) GetRegion(ctx context.Context, version float32, regionId int64, accountId int64) (ImplResponse, error) {
+func (s *RegionAPIService) GetRegion(ctx context.Context, regionId int64, accountId int64) (ImplResponse, error) {
 	// TODO - update GetRegion with the required logic for this service method.
 	// Add api_region_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *RegionAPIService) GetRegion(ctx context.Context, version float32, regio
 }
 
 // SearchRegions - Search Regions
-func (s *RegionAPIService) SearchRegions(ctx context.Context, version float32, accountId int64, query string, keyword string, latitude float64, longitude float64, range_ float64, regionClass string, visibility string, searchMode string, sortField string, descending bool, includeParent bool, includeChildren bool, includePostalCodes bool, categoryIds string, filterIds string, versionCode int32, activeOnly bool, showDeleted bool, lastUpdatedSince int64, start int32, limit int32) (ImplResponse, error) {
+func (s *RegionAPIService) SearchRegions(ctx context.Context, accountId int64, query string, keyword string, latitude float64, longitude float64, range_ float64, regionClass string, visibility string, searchMode string, sortField string, descending bool, includeParent bool, includeChildren bool, includePostalCodes bool, categoryIds string, filterIds string, versionCode int32, activeOnly bool, showDeleted bool, lastUpdatedSince int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchRegions with the required logic for this service method.
 	// Add api_region_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *RegionAPIService) SearchRegions(ctx context.Context, version float32, a
 }
 
 // UpdateRegion - Update Region
-func (s *RegionAPIService) UpdateRegion(ctx context.Context, version float32, accountId int64, regionId int64, regionClass string, shortName string, fullName string, parentIds string, childrenIds string, postalCodeIds string, locations string, retailerLocationId int64, visibility string, categoryIds string, filterIds string, start int64, end int64, polygon string, metaData string, latitude float64, longitude float64, versionCode int32, root bool, active bool, clearLists bool) (ImplResponse, error) {
+func (s *RegionAPIService) UpdateRegion(ctx context.Context, accountId int64, regionId int64, regionClass string, shortName string, fullName string, parentIds string, childrenIds string, postalCodeIds string, locations string, retailerLocationId int64, visibility string, categoryIds string, filterIds string, start int64, end int64, polygon string, metaData string, latitude float64, longitude float64, versionCode int32, root bool, active bool, clearLists bool) (ImplResponse, error) {
 	// TODO - update UpdateRegion with the required logic for this service method.
 	// Add api_region_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

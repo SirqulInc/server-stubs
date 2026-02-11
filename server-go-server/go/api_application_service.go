@@ -30,7 +30,7 @@ func NewApplicationAPIService() *ApplicationAPIService {
 }
 
 // UpdateApplicationActive - Change Appliation Status
-func (s *ApplicationAPIService) UpdateApplicationActive(ctx context.Context, version float32, accountId int64, appKey string, active bool) (ImplResponse, error) {
+func (s *ApplicationAPIService) UpdateApplicationActive(ctx context.Context, accountId int64, appKey string, active bool) (ImplResponse, error) {
 	// TODO - update UpdateApplicationActive with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -41,7 +41,7 @@ func (s *ApplicationAPIService) UpdateApplicationActive(ctx context.Context, ver
 }
 
 // UploadApplicationCertificate - Create Application Certificate
-func (s *ApplicationAPIService) UploadApplicationCertificate(ctx context.Context, version float32, appKey string, deviceId string, accountId int64, certificate *os.File) (ImplResponse, error) {
+func (s *ApplicationAPIService) UploadApplicationCertificate(ctx context.Context, appKey string, deviceId string, accountId int64, certificate *os.File) (ImplResponse, error) {
 	// TODO - update UploadApplicationCertificate with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -52,7 +52,7 @@ func (s *ApplicationAPIService) UploadApplicationCertificate(ctx context.Context
 }
 
 // CreateApplication - Create Application
-func (s *ApplicationAPIService) CreateApplication(ctx context.Context, version float32, appName string, deviceId string, accountId int64, about string, bundleId string, appIconAssetId int64, appLogoAssetId int64, facebookAppId string, facebookAppSecret string, googleApiKey string, updateEULADate bool, eulaVersion string, landingPageUrl string, showInActivities bool, activityDescription string, inviteWelcomeText string, invitePageUrl string, urlScheme string, platforms string, downloadUrls string, categoryIds string, scoringType string, hintCost int32, maxScore int32, ticketsPerPoint float32, hasGameData bool, publicNotifications bool, useMatchingAlgorithm bool, globalTickets bool, buildVersion float32, apiVersion float32, placementName string, placementDescription string, placementSize string, placementHeight int32, placementWidth int32, placementRefreshInterval int32, createObjectStore bool, publicContentApproval bool, productionMode bool, minimumSessionLength int32, sessionGapLength int32, localAdsEnabled bool, sqootApiKey string, trilatProcessingType string, maxSampleSize int32, minRSSI float64, modules string, authorizedCount int32, authorizedServers string, defaultTimezone string, smtpPass string, metaData string, placementMetaData string, ipsFloor bool, enableAPNSBadge bool, includeInReport bool, defaultAppFilterId int64, enableWelcomeEmail bool, appleAppId string, appleTeamId string, appleAuthKeyId string, appleAuthKey *os.File, appleIssuerId string, appStoreKeyId string, appStoreKey *os.File, googlePrivateKeyFile *os.File, authorizeNetApiKey string, authorizeNetTransactionKey string, emailSender string, smtpUser string, smtpHost string, vatomBusinessId string, vatomRestClientId string, vatomRestSecretKey string, twilioAccountSID string, twilioAuthToken string, twilioSenderPhoneNumber string, openAISecretKey string) (ImplResponse, error) {
+func (s *ApplicationAPIService) CreateApplication(ctx context.Context, appName string, deviceId string, accountId int64, about string, bundleId string, appIconAssetId int64, appLogoAssetId int64, facebookAppId string, facebookAppSecret string, googleApiKey string, updateEULADate bool, eulaVersion string, landingPageUrl string, showInActivities bool, activityDescription string, inviteWelcomeText string, invitePageUrl string, urlScheme string, platforms string, downloadUrls string, categoryIds string, scoringType string, hintCost int32, maxScore int32, ticketsPerPoint float32, hasGameData bool, publicNotifications bool, useMatchingAlgorithm bool, globalTickets bool, buildVersion float32, apiVersion float32, placementName string, placementDescription string, placementSize string, placementHeight int32, placementWidth int32, placementRefreshInterval int32, createObjectStore bool, publicContentApproval bool, productionMode bool, minimumSessionLength int32, sessionGapLength int32, localAdsEnabled bool, sqootApiKey string, trilatProcessingType string, maxSampleSize int32, minRSSI float64, modules string, authorizedCount int32, authorizedServers string, defaultTimezone string, smtpPass string, metaData string, placementMetaData string, ipsFloor bool, enableAPNSBadge bool, includeInReport bool, defaultAppFilterId int64, enableWelcomeEmail bool, appleAppId string, appleTeamId string, appleAuthKeyId string, appleAuthKey *os.File, appleIssuerId string, appStoreKeyId string, appStoreKey *os.File, googlePrivateKeyFile *os.File, authorizeNetApiKey string, authorizeNetTransactionKey string, emailSender string, smtpUser string, smtpHost string, vatomBusinessId string, vatomRestClientId string, vatomRestSecretKey string, twilioAccountSID string, twilioAuthToken string, twilioSenderPhoneNumber string, openAISecretKey string) (ImplResponse, error) {
 	// TODO - update CreateApplication with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -63,7 +63,7 @@ func (s *ApplicationAPIService) CreateApplication(ctx context.Context, version f
 }
 
 // DeleteApplication - Delete Application
-func (s *ApplicationAPIService) DeleteApplication(ctx context.Context, version float32, accountId int64, appKey string) (ImplResponse, error) {
+func (s *ApplicationAPIService) DeleteApplication(ctx context.Context, accountId int64, appKey string) (ImplResponse, error) {
 	// TODO - update DeleteApplication with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -74,7 +74,7 @@ func (s *ApplicationAPIService) DeleteApplication(ctx context.Context, version f
 }
 
 // GetApplication - Get Application
-func (s *ApplicationAPIService) GetApplication(ctx context.Context, version float32, appKey string, applicationId int64) (ImplResponse, error) {
+func (s *ApplicationAPIService) GetApplication(ctx context.Context, appKey string, applicationId int64) (ImplResponse, error) {
 	// TODO - update GetApplication with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -85,7 +85,7 @@ func (s *ApplicationAPIService) GetApplication(ctx context.Context, version floa
 }
 
 // ListApplications - List Applications
-func (s *ApplicationAPIService) ListApplications(ctx context.Context, version float32, accountId int64, q string, keyword string, platforms string, deviceIds string, deviceVersions string, categoryIds string, sortField string, hasAds bool, publicNotifications bool, filterBillable bool, filterContentAdmin bool, descending bool, i int32, start int32, l int32, limit int32, applicationIds string, hasObjectStore bool, activeOnly bool) (ImplResponse, error) {
+func (s *ApplicationAPIService) ListApplications(ctx context.Context, accountId int64, q string, keyword string, platforms string, deviceIds string, deviceVersions string, categoryIds string, sortField string, hasAds bool, publicNotifications bool, filterBillable bool, filterContentAdmin bool, descending bool, i int32, start int32, l int32, limit int32, applicationIds string, hasObjectStore bool, activeOnly bool) (ImplResponse, error) {
 	// TODO - update ListApplications with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -96,7 +96,7 @@ func (s *ApplicationAPIService) ListApplications(ctx context.Context, version fl
 }
 
 // CreateApplicationPlacement - Create Ad Placement
-func (s *ApplicationAPIService) CreateApplicationPlacement(ctx context.Context, version float32, appKey string, size string, deviceId string, accountId int64, name string, description string, height int32, width int32, refreshInterval int32, defaultImageId int64, active bool) (ImplResponse, error) {
+func (s *ApplicationAPIService) CreateApplicationPlacement(ctx context.Context, appKey string, size string, deviceId string, accountId int64, name string, description string, height int32, width int32, refreshInterval int32, defaultImageId int64, active bool) (ImplResponse, error) {
 	// TODO - update CreateApplicationPlacement with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -107,7 +107,7 @@ func (s *ApplicationAPIService) CreateApplicationPlacement(ctx context.Context, 
 }
 
 // DeleteApplicationPlacement - Delete Ad Placement
-func (s *ApplicationAPIService) DeleteApplicationPlacement(ctx context.Context, version float32, placementId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *ApplicationAPIService) DeleteApplicationPlacement(ctx context.Context, placementId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update DeleteApplicationPlacement with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -118,7 +118,7 @@ func (s *ApplicationAPIService) DeleteApplicationPlacement(ctx context.Context, 
 }
 
 // GetApplicationPlacement - Get Ad Placement
-func (s *ApplicationAPIService) GetApplicationPlacement(ctx context.Context, version float32, placementId int64, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *ApplicationAPIService) GetApplicationPlacement(ctx context.Context, placementId int64, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update GetApplicationPlacement with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -129,7 +129,7 @@ func (s *ApplicationAPIService) GetApplicationPlacement(ctx context.Context, ver
 }
 
 // SearchApplicationPlacement - Search for Ad Placements
-func (s *ApplicationAPIService) SearchApplicationPlacement(ctx context.Context, version float32, appKey string, deviceId string, accountId int64, start int32, limit int32) (ImplResponse, error) {
+func (s *ApplicationAPIService) SearchApplicationPlacement(ctx context.Context, appKey string, deviceId string, accountId int64, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchApplicationPlacement with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -140,7 +140,7 @@ func (s *ApplicationAPIService) SearchApplicationPlacement(ctx context.Context, 
 }
 
 // UpdateApplicationPlacement - Update Ad Placement
-func (s *ApplicationAPIService) UpdateApplicationPlacement(ctx context.Context, version float32, placementId int64, deviceId string, accountId int64, name string, description string, size string, height int32, width int32, refreshInterval int32, defaultImageId int64, active bool) (ImplResponse, error) {
+func (s *ApplicationAPIService) UpdateApplicationPlacement(ctx context.Context, placementId int64, deviceId string, accountId int64, name string, description string, size string, height int32, width int32, refreshInterval int32, defaultImageId int64, active bool) (ImplResponse, error) {
 	// TODO - update UpdateApplicationPlacement with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -151,7 +151,7 @@ func (s *ApplicationAPIService) UpdateApplicationPlacement(ctx context.Context, 
 }
 
 // SearchApplications - Search Applications
-func (s *ApplicationAPIService) SearchApplications(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64, q string, keyword string, qSearchFields string, sortField string, descending bool, i int32, start int32, l int32, limit int32, hasAds bool, publicNotifications bool, activeOnly bool) (ImplResponse, error) {
+func (s *ApplicationAPIService) SearchApplications(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64, q string, keyword string, qSearchFields string, sortField string, descending bool, i int32, start int32, l int32, limit int32, hasAds bool, publicNotifications bool, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchApplications with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -162,7 +162,7 @@ func (s *ApplicationAPIService) SearchApplications(ctx context.Context, version 
 }
 
 // SearchApplicationSettings - Search for Application Settings
-func (s *ApplicationAPIService) SearchApplicationSettings(ctx context.Context, version float32, deviceId string, accountId int64, connectionAccountId int64, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
+func (s *ApplicationAPIService) SearchApplicationSettings(ctx context.Context, deviceId string, accountId int64, connectionAccountId int64, keyword string, sortField string, descending bool, start int32, limit int32) (ImplResponse, error) {
 	// TODO - update SearchApplicationSettings with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -173,7 +173,7 @@ func (s *ApplicationAPIService) SearchApplicationSettings(ctx context.Context, v
 }
 
 // UpdateApplication - Update Application
-func (s *ApplicationAPIService) UpdateApplication(ctx context.Context, version float32, appKey string, appName string, deviceId string, accountId int64, about string, bundleId string, appIconAssetId int64, appLogoAssetId int64, facebookAppId string, facebookAppSecret string, googleApiKey string, updateEULADate bool, eulaVersion string, landingPageUrl string, showInActivities bool, activityDescription string, inviteWelcomeText string, invitePageUrl string, urlScheme string, platforms string, downloadUrls string, categoryIds string, scoringType string, hintCost int32, maxScore int32, ticketsPerPoint float32, hasGameData bool, publicNotifications bool, useMatchingAlgorithm bool, globalTickets bool, buildVersion float32, apiVersion float32, placementName string, placementDescription string, placementSize string, placementHeight int32, placementWidth int32, placementRefreshInterval int32, createObjectStore bool, publicContentApproval bool, productionMode bool, minimumSessionLength int32, sessionGapLength int32, localAdsEnabled bool, sqootApiKey string, trilatProcessingType string, maxSampleSize int32, minRSSI float64, modules string, authorizedCount int32, authorizedServers string, defaultTimezone string, smtpPass string, metaData string, placementMetaData string, ipsFloor bool, enableAPNSBadge bool, includeInReport bool, defaultAppFilterId int64, enableWelcomeEmail bool, appleAppId string, appleTeamId string, appleAuthKeyId string, appleAuthKey *os.File, appleIssuerId string, appStoreKeyId string, appStoreKey *os.File, googlePrivateKeyFile *os.File, authorizeNetApiKey string, authorizeNetTransactionKey string, emailSender string, smtpUser string, smtpHost string, vatomBusinessId string, vatomRestClientId string, vatomRestSecretKey string, twilioAccountSID string, twilioAuthToken string, twilioSenderPhoneNumber string, openAISecretKey string) (ImplResponse, error) {
+func (s *ApplicationAPIService) UpdateApplication(ctx context.Context, appKey string, appName string, deviceId string, accountId int64, about string, bundleId string, appIconAssetId int64, appLogoAssetId int64, facebookAppId string, facebookAppSecret string, googleApiKey string, updateEULADate bool, eulaVersion string, landingPageUrl string, showInActivities bool, activityDescription string, inviteWelcomeText string, invitePageUrl string, urlScheme string, platforms string, downloadUrls string, categoryIds string, scoringType string, hintCost int32, maxScore int32, ticketsPerPoint float32, hasGameData bool, publicNotifications bool, useMatchingAlgorithm bool, globalTickets bool, buildVersion float32, apiVersion float32, placementName string, placementDescription string, placementSize string, placementHeight int32, placementWidth int32, placementRefreshInterval int32, createObjectStore bool, publicContentApproval bool, productionMode bool, minimumSessionLength int32, sessionGapLength int32, localAdsEnabled bool, sqootApiKey string, trilatProcessingType string, maxSampleSize int32, minRSSI float64, modules string, authorizedCount int32, authorizedServers string, defaultTimezone string, smtpPass string, metaData string, placementMetaData string, ipsFloor bool, enableAPNSBadge bool, includeInReport bool, defaultAppFilterId int64, enableWelcomeEmail bool, appleAppId string, appleTeamId string, appleAuthKeyId string, appleAuthKey *os.File, appleIssuerId string, appStoreKeyId string, appStoreKey *os.File, googlePrivateKeyFile *os.File, authorizeNetApiKey string, authorizeNetTransactionKey string, emailSender string, smtpUser string, smtpHost string, vatomBusinessId string, vatomRestClientId string, vatomRestSecretKey string, twilioAccountSID string, twilioAuthToken string, twilioSenderPhoneNumber string, openAISecretKey string) (ImplResponse, error) {
 	// TODO - update UpdateApplication with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -184,7 +184,7 @@ func (s *ApplicationAPIService) UpdateApplication(ctx context.Context, version f
 }
 
 // GetUniqueUsersByApp - Search Application Users
-func (s *ApplicationAPIService) GetUniqueUsersByApp(ctx context.Context, version float32, appKey string, q string, keyword string, since int64, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
+func (s *ApplicationAPIService) GetUniqueUsersByApp(ctx context.Context, appKey string, q string, keyword string, since int64, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetUniqueUsersByApp with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -195,7 +195,7 @@ func (s *ApplicationAPIService) GetUniqueUsersByApp(ctx context.Context, version
 }
 
 // GetApplicationVersions - Get API versions
-func (s *ApplicationAPIService) GetApplicationVersions(ctx context.Context, version float32) (ImplResponse, error) {
+func (s *ApplicationAPIService) GetApplicationVersions(ctx context.Context) (ImplResponse, error) {
 	// TODO - update GetApplicationVersions with the required logic for this service method.
 	// Add api_application_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

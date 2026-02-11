@@ -29,7 +29,7 @@ func NewAccountAPIService() *AccountAPIService {
 }
 
 // BlockAccount - Block Account
-func (s *AccountAPIService) BlockAccount(ctx context.Context, version float32, accountIdBeingBlocked int64, deviceId string, accountId int64, blockFlagValue bool, removeFromGroupsIfBlocked bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) BlockAccount(ctx context.Context, accountIdBeingBlocked int64, deviceId string, accountId int64, blockFlagValue bool, removeFromGroupsIfBlocked bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update BlockAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -40,7 +40,7 @@ func (s *AccountAPIService) BlockAccount(ctx context.Context, version float32, a
 }
 
 // EditUsername - Update Username and Email
-func (s *AccountAPIService) EditUsername(ctx context.Context, version float32, deviceId string, accountId int64, emailAddress string, username string) (ImplResponse, error) {
+func (s *AccountAPIService) EditUsername(ctx context.Context, deviceId string, accountId int64, emailAddress string, username string) (ImplResponse, error) {
 	// TODO - update EditUsername with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -51,7 +51,7 @@ func (s *AccountAPIService) EditUsername(ctx context.Context, version float32, d
 }
 
 // SetMatchToken - Save Match Token
-func (s *AccountAPIService) SetMatchToken(ctx context.Context, version float32, deviceId string, accountId int64, matchToken string, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) SetMatchToken(ctx context.Context, deviceId string, accountId int64, matchToken string, gameType string, appKey string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update SetMatchToken with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -62,7 +62,7 @@ func (s *AccountAPIService) SetMatchToken(ctx context.Context, version float32, 
 }
 
 // MergeAccount - Merge Account
-func (s *AccountAPIService) MergeAccount(ctx context.Context, version float32, mergeAccountId int64, appKey string, deviceId string, accountId int64) (ImplResponse, error) {
+func (s *AccountAPIService) MergeAccount(ctx context.Context, mergeAccountId int64, appKey string, deviceId string, accountId int64) (ImplResponse, error) {
 	// TODO - update MergeAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -73,7 +73,7 @@ func (s *AccountAPIService) MergeAccount(ctx context.Context, version float32, m
 }
 
 // CreateAccount - Create Account
-func (s *AccountAPIService) CreateAccount(ctx context.Context, version float32, username string, password string, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, deviceId string, deviceIdType string, emailAddress string, assetId int64, streetAddress string, zipcode string, gender string, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, role string, platforms string, tags string, aboutUs string, gameExperience string, categoryIds string, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, latitude float64, longitude float64, acceptedTerms bool, inviteToken string, referralAccountId int64, sendValidation bool, gameType string, appKey string, appVersion string, responseType string, audienceIdsToAdd string, appBlob string, appEnablePush bool, appEnableSMS bool, appEnableEmail bool, locationVisibility string, homeLatitude float64, homeLongitude float64, appNickname string, personalAudienceId int64) (ImplResponse, error) {
+func (s *AccountAPIService) CreateAccount(ctx context.Context, username string, password string, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, deviceId string, deviceIdType string, emailAddress string, assetId int64, streetAddress string, zipcode string, gender string, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, role string, platforms string, tags string, aboutUs string, gameExperience string, categoryIds string, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, latitude float64, longitude float64, acceptedTerms bool, inviteToken string, referralAccountId int64, sendValidation bool, gameType string, appKey string, appVersion string, responseType string, audienceIdsToAdd string, appBlob string, appEnablePush bool, appEnableSMS bool, appEnableEmail bool, locationVisibility string, homeLatitude float64, homeLongitude float64, appNickname string, personalAudienceId int64) (ImplResponse, error) {
 	// TODO - update CreateAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -84,7 +84,7 @@ func (s *AccountAPIService) CreateAccount(ctx context.Context, version float32, 
 }
 
 // UpdateActveStatus - Update Account Active Status
-func (s *AccountAPIService) UpdateActveStatus(ctx context.Context, version float32, accountId int64, connectionAccountId int64, active bool, deviceId string, appKey string) (ImplResponse, error) {
+func (s *AccountAPIService) UpdateActveStatus(ctx context.Context, accountId int64, connectionAccountId int64, active bool, deviceId string, appKey string) (ImplResponse, error) {
 	// TODO - update UpdateActveStatus with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -95,7 +95,7 @@ func (s *AccountAPIService) UpdateActveStatus(ctx context.Context, version float
 }
 
 // SecureSignup - Create Account (Encrypted Username)
-func (s *AccountAPIService) SecureSignup(ctx context.Context, version float32, deviceId string, username string, password string, name string, inviteToken string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, deviceIdType string, emailAddress string, assetId int64, address string, zipcode string, gender string, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, role string, platforms string, tags string, aboutUs string, gameExperience string, categoryIds string, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, latitude float64, longitude float64, acceptedTerms bool, charsetName string, gameType string, appKey string, appVersion string, responseType string) (ImplResponse, error) {
+func (s *AccountAPIService) SecureSignup(ctx context.Context, deviceId string, username string, password string, name string, inviteToken string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, deviceIdType string, emailAddress string, assetId int64, address string, zipcode string, gender string, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, role string, platforms string, tags string, aboutUs string, gameExperience string, categoryIds string, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, latitude float64, longitude float64, acceptedTerms bool, charsetName string, gameType string, appKey string, appVersion string, responseType string) (ImplResponse, error) {
 	// TODO - update SecureSignup with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -106,7 +106,7 @@ func (s *AccountAPIService) SecureSignup(ctx context.Context, version float32, d
 }
 
 // LoginUsername - Login Account (Username)
-func (s *AccountAPIService) LoginUsername(ctx context.Context, version float32, username string, password string, deviceId string, latitude float64, longitude float64, app string, gameType string, appKey string, returnProfile bool, responseFilters string) (ImplResponse, error) {
+func (s *AccountAPIService) LoginUsername(ctx context.Context, username string, password string, deviceId string, latitude float64, longitude float64, app string, gameType string, appKey string, returnProfile bool, responseFilters string) (ImplResponse, error) {
 	// TODO - update LoginUsername with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -117,7 +117,7 @@ func (s *AccountAPIService) LoginUsername(ctx context.Context, version float32, 
 }
 
 // UpdateLocation - Update Location
-func (s *AccountAPIService) UpdateLocation(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64, clientTime int64) (ImplResponse, error) {
+func (s *AccountAPIService) UpdateLocation(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64, clientTime int64) (ImplResponse, error) {
 	// TODO - update UpdateLocation with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -128,7 +128,7 @@ func (s *AccountAPIService) UpdateLocation(ctx context.Context, version float32,
 }
 
 // LoginGeneral - Login Account
-func (s *AccountAPIService) LoginGeneral(ctx context.Context, version float32, accessToken string, networkUID string, appKey string, deviceId string, deviceIdType string, accessTokenSecret string, ageRestriction int32, responseFilters string, latitude float64, longitude float64, emailMatch bool, chosenAccountId int64, thirdPartyCredentialId int64) (ImplResponse, error) {
+func (s *AccountAPIService) LoginGeneral(ctx context.Context, accessToken string, networkUID string, appKey string, deviceId string, deviceIdType string, accessTokenSecret string, ageRestriction int32, responseFilters string, latitude float64, longitude float64, emailMatch bool, chosenAccountId int64, thirdPartyCredentialId int64) (ImplResponse, error) {
 	// TODO - update LoginGeneral with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -139,7 +139,7 @@ func (s *AccountAPIService) LoginGeneral(ctx context.Context, version float32, a
 }
 
 // LoginDelegate - Login as Account
-func (s *AccountAPIService) LoginDelegate(ctx context.Context, version float32, accessToken string, appKey string, deviceId string, accessTokenSecret string, delegatedAccountId int64, delegatedUsername string, networkUID string, ageRestriction int32, responseFilters string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) LoginDelegate(ctx context.Context, accessToken string, appKey string, deviceId string, accessTokenSecret string, delegatedAccountId int64, delegatedUsername string, networkUID string, ageRestriction int32, responseFilters string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update LoginDelegate with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -150,7 +150,7 @@ func (s *AccountAPIService) LoginDelegate(ctx context.Context, version float32, 
 }
 
 // SecureLogin - Login Account (Encrypted Username)
-func (s *AccountAPIService) SecureLogin(ctx context.Context, version float32, username string, password string, gameType string, deviceId string, charsetName string, latitude float64, longitude float64, returnProfile bool, responseFilters string) (ImplResponse, error) {
+func (s *AccountAPIService) SecureLogin(ctx context.Context, username string, password string, gameType string, deviceId string, charsetName string, latitude float64, longitude float64, returnProfile bool, responseFilters string) (ImplResponse, error) {
 	// TODO - update SecureLogin with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -161,7 +161,7 @@ func (s *AccountAPIService) SecureLogin(ctx context.Context, version float32, us
 }
 
 // Logout - Logout Account
-func (s *AccountAPIService) Logout(ctx context.Context, version float32, deviceId string, deviceIdType string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) Logout(ctx context.Context, deviceId string, deviceIdType string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update Logout with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -172,7 +172,7 @@ func (s *AccountAPIService) Logout(ctx context.Context, version float32, deviceI
 }
 
 // PasswordChange - Update Password
-func (s *AccountAPIService) PasswordChange(ctx context.Context, version float32, accountId int64, oldPassword string, newPassword string, confirmPassword string) (ImplResponse, error) {
+func (s *AccountAPIService) PasswordChange(ctx context.Context, accountId int64, oldPassword string, newPassword string, confirmPassword string) (ImplResponse, error) {
 	// TODO - update PasswordChange with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -183,7 +183,7 @@ func (s *AccountAPIService) PasswordChange(ctx context.Context, version float32,
 }
 
 // PasswordReset - Reset Password
-func (s *AccountAPIService) PasswordReset(ctx context.Context, version float32, token string, password string, confirm string) (ImplResponse, error) {
+func (s *AccountAPIService) PasswordReset(ctx context.Context, token string, password string, confirm string) (ImplResponse, error) {
 	// TODO - update PasswordReset with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -194,7 +194,7 @@ func (s *AccountAPIService) PasswordReset(ctx context.Context, version float32, 
 }
 
 // GetProfileAssets - Get Profile Assets
-func (s *AccountAPIService) GetProfileAssets(ctx context.Context, version float32, returnNulls bool, deviceId string, accountId int64, ownerId int64, mediaTypes string, mimeTypes string, sortField string, descending bool, latitude float64, longitude float64, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
+func (s *AccountAPIService) GetProfileAssets(ctx context.Context, returnNulls bool, deviceId string, accountId int64, ownerId int64, mediaTypes string, mimeTypes string, sortField string, descending bool, latitude float64, longitude float64, i int32, start int32, l int32, limit int32) (ImplResponse, error) {
 	// TODO - update GetProfileAssets with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -205,7 +205,7 @@ func (s *AccountAPIService) GetProfileAssets(ctx context.Context, version float3
 }
 
 // GetAccount - Get Account
-func (s *AccountAPIService) GetAccount(ctx context.Context, version float32, returnNulls bool, deviceId string, accountId int64, connectionAccountEmail string, connectionAccountId int64, responseFilters string, gameType string, appKey string, purchaseType string, updateViewedDate bool, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) GetAccount(ctx context.Context, returnNulls bool, deviceId string, accountId int64, connectionAccountEmail string, connectionAccountId int64, responseFilters string, gameType string, appKey string, purchaseType string, updateViewedDate bool, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -216,7 +216,7 @@ func (s *AccountAPIService) GetAccount(ctx context.Context, version float32, ret
 }
 
 // SearchAccounts - Search Accounts
-func (s *AccountAPIService) SearchAccounts(ctx context.Context, version float32, accountId int64, appKey string, keyword string, latitude float64, longitude float64, radius float64, gender string, gameExperience string, age int32, categoryIds string, returnNulls bool, responseFilters string, purchaseType string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
+func (s *AccountAPIService) SearchAccounts(ctx context.Context, accountId int64, appKey string, keyword string, latitude float64, longitude float64, radius float64, gender string, gameExperience string, age int32, categoryIds string, returnNulls bool, responseFilters string, purchaseType string, sortField string, descending bool, start int32, limit int32, activeOnly bool) (ImplResponse, error) {
 	// TODO - update SearchAccounts with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -227,7 +227,7 @@ func (s *AccountAPIService) SearchAccounts(ctx context.Context, version float32,
 }
 
 // GetReferralList - Search Accounts
-func (s *AccountAPIService) GetReferralList(ctx context.Context, version float32, accountId int64, appKey string, retrieveType string, levelLimit float32, ancestorLevelLimit float32, childrenLevelLimit float32, ancestorListStart float32, ancestorListLimit float32, childrenListStart float32, childrenListLimit float32, childrenChildren bool) (ImplResponse, error) {
+func (s *AccountAPIService) GetReferralList(ctx context.Context, accountId int64, appKey string, retrieveType string, levelLimit float32, ancestorLevelLimit float32, childrenLevelLimit float32, ancestorListStart float32, ancestorListLimit float32, childrenListStart float32, childrenListLimit float32, childrenChildren bool) (ImplResponse, error) {
 	// TODO - update GetReferralList with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -238,7 +238,7 @@ func (s *AccountAPIService) GetReferralList(ctx context.Context, version float32
 }
 
 // EditAccount - Update Account
-func (s *AccountAPIService) EditAccount(ctx context.Context, version float32, deviceId string, accountId int64, connectionAccountId int64, role string, assetId int64, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, gender string, age int32, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, makeProfileInfoPublic bool, makeGameInfoPublic bool, makeFriendsInfoPublic bool, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, platforms string, tags string, aboutUs string, matchToken string, gameExperience string, categories string, categoryIds string, responseFilters string, showAsZipcode bool, showExactLocation bool, showOthersExactLocation bool, acceptedTerms bool, locationVisibility string, appBlob string, appEnablePush bool, appEnableSMS bool, appEnableEmail bool, gameType string, appKey string, latitude float64, longitude float64, returnProfile bool, audienceIdsToAdd string, audienceIdsToRemove string, referralAccountId int64, appNickname string, personalAudienceId int64, nonGuestUsername string) (ImplResponse, error) {
+func (s *AccountAPIService) EditAccount(ctx context.Context, deviceId string, accountId int64, connectionAccountId int64, role string, assetId int64, name string, prefixName string, firstName string, middleName string, lastName string, suffixName string, title string, gender string, age int32, birthday int64, homePhone string, cellPhone string, cellPhoneCarrier string, businessPhone string, emailAddress string, streetAddress string, streetAddress2 string, city string, state string, zipcode string, country string, makeProfileInfoPublic bool, makeGameInfoPublic bool, makeFriendsInfoPublic bool, hometown string, height string, heightIndex int32, ethnicity string, bodyType string, maritalStatus string, children string, religion string, education string, educationIndex int32, smoke string, drink string, companionship string, companionshipIndex int32, preferredMinAge int32, preferredMaxAge int32, preferredMinHeight int32, preferredMaxHeight int32, preferredGender string, preferredEducation string, preferredEducationIndex int32, preferredBodyType string, preferredEthnicity string, preferredLocation string, preferredLocationRange float64, platforms string, tags string, aboutUs string, matchToken string, gameExperience string, categories string, categoryIds string, responseFilters string, showAsZipcode bool, showExactLocation bool, showOthersExactLocation bool, acceptedTerms bool, locationVisibility string, appBlob string, appEnablePush bool, appEnableSMS bool, appEnableEmail bool, gameType string, appKey string, latitude float64, longitude float64, returnProfile bool, audienceIdsToAdd string, audienceIdsToRemove string, referralAccountId int64, appNickname string, personalAudienceId int64, nonGuestUsername string) (ImplResponse, error) {
 	// TODO - update EditAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -249,7 +249,7 @@ func (s *AccountAPIService) EditAccount(ctx context.Context, version float32, de
 }
 
 // RequestValidateAccount - Send Validation Request
-func (s *AccountAPIService) RequestValidateAccount(ctx context.Context, version float32, accountId int64) (ImplResponse, error) {
+func (s *AccountAPIService) RequestValidateAccount(ctx context.Context, accountId int64) (ImplResponse, error) {
 	// TODO - update RequestValidateAccount with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -260,7 +260,7 @@ func (s *AccountAPIService) RequestValidateAccount(ctx context.Context, version 
 }
 
 // RequestPasswordReset - Request Password Reset
-func (s *AccountAPIService) RequestPasswordReset(ctx context.Context, version float32, email string, from string, domain string, subUrl string, referer string) (ImplResponse, error) {
+func (s *AccountAPIService) RequestPasswordReset(ctx context.Context, email string, from string, domain string, subUrl string, referer string) (ImplResponse, error) {
 	// TODO - update RequestPasswordReset with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -271,7 +271,7 @@ func (s *AccountAPIService) RequestPasswordReset(ctx context.Context, version fl
 }
 
 // AccountLocationSearch - Search Accounts by Location
-func (s *AccountAPIService) AccountLocationSearch(ctx context.Context, version float32, deviceId string, accountId int64, q string, keyword string, postalCode string, latitude float64, longitude float64, appKey string, range_ float64, locationLastUpdated int64, gender string, minAge int32, maxAge int32, companionshipIndex int32, i int32, start int32, l int32, limit int32, searchMode string, sortField string, descending bool, roles string, tags string, experience string, categoryIds string, audienceIds string, audienceOperator string, updateCurrentLocation bool, updatePreferredSettings bool, showExactLocations bool, showConnectionToSearcher bool, flagCountMinimum int64, verifiedUserOnly bool, contentAdminOnly bool) (ImplResponse, error) {
+func (s *AccountAPIService) AccountLocationSearch(ctx context.Context, deviceId string, accountId int64, q string, keyword string, postalCode string, latitude float64, longitude float64, appKey string, range_ float64, locationLastUpdated int64, gender string, minAge int32, maxAge int32, companionshipIndex int32, i int32, start int32, l int32, limit int32, searchMode string, sortField string, descending bool, roles string, tags string, experience string, categoryIds string, audienceIds string, audienceOperator string, updateCurrentLocation bool, updatePreferredSettings bool, showExactLocations bool, showConnectionToSearcher bool, flagCountMinimum int64, verifiedUserOnly bool, contentAdminOnly bool) (ImplResponse, error) {
 	// TODO - update AccountLocationSearch with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -282,7 +282,7 @@ func (s *AccountAPIService) AccountLocationSearch(ctx context.Context, version f
 }
 
 // GetSettings - Get Account Settings
-func (s *AccountAPIService) GetSettings(ctx context.Context, version float32, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) GetSettings(ctx context.Context, deviceId string, accountId int64, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update GetSettings with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -293,7 +293,7 @@ func (s *AccountAPIService) GetSettings(ctx context.Context, version float32, de
 }
 
 // UpdateSettings - Update Account Settings
-func (s *AccountAPIService) UpdateSettings(ctx context.Context, version float32, deviceId string, accountId int64, blockedNotifications string, suggestionMethod string, suggestionCount int32, suggestionTimeFrame int32, showOthersExactLocation bool, showAsZipcode bool, showExactLocation bool, favoriteVisibility string, latitude float64, longitude float64) (ImplResponse, error) {
+func (s *AccountAPIService) UpdateSettings(ctx context.Context, deviceId string, accountId int64, blockedNotifications string, suggestionMethod string, suggestionCount int32, suggestionTimeFrame int32, showOthersExactLocation bool, showAsZipcode bool, showExactLocation bool, favoriteVisibility string, latitude float64, longitude float64) (ImplResponse, error) {
 	// TODO - update UpdateSettings with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -304,7 +304,7 @@ func (s *AccountAPIService) UpdateSettings(ctx context.Context, version float32,
 }
 
 // ValidateAccountSignup - Save Validation Status
-func (s *AccountAPIService) ValidateAccountSignup(ctx context.Context, version float32, token string) (ImplResponse, error) {
+func (s *AccountAPIService) ValidateAccountSignup(ctx context.Context, token string) (ImplResponse, error) {
 	// TODO - update ValidateAccountSignup with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -315,7 +315,7 @@ func (s *AccountAPIService) ValidateAccountSignup(ctx context.Context, version f
 }
 
 // ValidatePasswordReset - Validate Password Reset Token
-func (s *AccountAPIService) ValidatePasswordReset(ctx context.Context, version float32, token string) (ImplResponse, error) {
+func (s *AccountAPIService) ValidatePasswordReset(ctx context.Context, token string) (ImplResponse, error) {
 	// TODO - update ValidatePasswordReset with the required logic for this service method.
 	// Add api_account_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

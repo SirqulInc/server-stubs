@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // TriggerAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *TriggerAPIController) Routes() Routes {
 		"CreateTrigger": Route{
 			"CreateTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/create",
+			"/api/3.18/trigger/create",
 			c.CreateTrigger,
 		},
 		"DeleteTrigger": Route{
 			"DeleteTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/delete",
+			"/api/3.18/trigger/delete",
 			c.DeleteTrigger,
 		},
 		"GetTrigger": Route{
 			"GetTrigger",
 			strings.ToUpper("Get"),
-			"/api/{version}/trigger/get",
+			"/api/3.18/trigger/get",
 			c.GetTrigger,
 		},
 		"SearchTriggers": Route{
 			"SearchTriggers",
 			strings.ToUpper("Get"),
-			"/api/{version}/trigger/search",
+			"/api/3.18/trigger/search",
 			c.SearchTriggers,
 		},
 		"UpdateTrigger": Route{
 			"UpdateTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/update",
+			"/api/3.18/trigger/update",
 			c.UpdateTrigger,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *TriggerAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/create",
+			"/api/3.18/trigger/create",
 			c.CreateTrigger,
 		},
 		Route{
 			"DeleteTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/delete",
+			"/api/3.18/trigger/delete",
 			c.DeleteTrigger,
 		},
 		Route{
 			"GetTrigger",
 			strings.ToUpper("Get"),
-			"/api/{version}/trigger/get",
+			"/api/3.18/trigger/get",
 			c.GetTrigger,
 		},
 		Route{
 			"SearchTriggers",
 			strings.ToUpper("Get"),
-			"/api/{version}/trigger/search",
+			"/api/3.18/trigger/search",
 			c.SearchTriggers,
 		},
 		Route{
 			"UpdateTrigger",
 			strings.ToUpper("Post"),
-			"/api/{version}/trigger/update",
+			"/api/3.18/trigger/update",
 			c.UpdateTrigger,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *TriggerAPIController) OrderedRoutes() []Route {
 
 // CreateTrigger - Create Trigger
 func (c *TriggerAPIController) CreateTrigger(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -270,7 +259,7 @@ func (c *TriggerAPIController) CreateTrigger(w http.ResponseWriter, r *http.Requ
 		var param bool = true
 		activeParam = param
 	}
-	result, err := c.service.CreateTrigger(r.Context(), versionParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, conditionalInputParam, visibilityParam, activeParam)
+	result, err := c.service.CreateTrigger(r.Context(), accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, conditionalInputParam, visibilityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -282,18 +271,9 @@ func (c *TriggerAPIController) CreateTrigger(w http.ResponseWriter, r *http.Requ
 
 // DeleteTrigger - Delete Trigger
 func (c *TriggerAPIController) DeleteTrigger(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -328,7 +308,7 @@ func (c *TriggerAPIController) DeleteTrigger(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "triggerId"}, nil)
 		return
 	}
-	result, err := c.service.DeleteTrigger(r.Context(), versionParam, accountIdParam, triggerIdParam)
+	result, err := c.service.DeleteTrigger(r.Context(), accountIdParam, triggerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -340,18 +320,9 @@ func (c *TriggerAPIController) DeleteTrigger(w http.ResponseWriter, r *http.Requ
 
 // GetTrigger - Get Trigger
 func (c *TriggerAPIController) GetTrigger(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -386,7 +357,7 @@ func (c *TriggerAPIController) GetTrigger(w http.ResponseWriter, r *http.Request
 		c.errorHandler(w, r, &RequiredError{Field: "triggerId"}, nil)
 		return
 	}
-	result, err := c.service.GetTrigger(r.Context(), versionParam, accountIdParam, triggerIdParam)
+	result, err := c.service.GetTrigger(r.Context(), accountIdParam, triggerIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -398,18 +369,9 @@ func (c *TriggerAPIController) GetTrigger(w http.ResponseWriter, r *http.Request
 
 // SearchTriggers - Search Triggers
 func (c *TriggerAPIController) SearchTriggers(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var accountIdParam int64
@@ -547,7 +509,7 @@ func (c *TriggerAPIController) SearchTriggers(w http.ResponseWriter, r *http.Req
 		var param bool = true
 		activeOnlyParam = param
 	}
-	result, err := c.service.SearchTriggers(r.Context(), versionParam, accountIdParam, groupingIdParam, filterParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
+	result, err := c.service.SearchTriggers(r.Context(), accountIdParam, groupingIdParam, filterParam, statusesParam, templateTypesParam, appKeyParam, keywordParam, sortFieldParam, descendingParam, startParam, limitParam, activeOnlyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -559,18 +521,9 @@ func (c *TriggerAPIController) SearchTriggers(w http.ResponseWriter, r *http.Req
 
 // UpdateTrigger - Update Trigger
 func (c *TriggerAPIController) UpdateTrigger(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var triggerIdParam int64
@@ -717,7 +670,7 @@ func (c *TriggerAPIController) UpdateTrigger(w http.ResponseWriter, r *http.Requ
 		activeParam = param
 	} else {
 	}
-	result, err := c.service.UpdateTrigger(r.Context(), versionParam, triggerIdParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, conditionalInputParam, visibilityParam, activeParam)
+	result, err := c.service.UpdateTrigger(r.Context(), triggerIdParam, accountIdParam, nameParam, appKeyParam, groupingIdParam, endpointURLParam, payloadParam, scheduledDateParam, startDateParam, endDateParam, cronExpressionParam, conditionalInputParam, visibilityParam, activeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

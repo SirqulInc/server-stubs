@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // WeatherAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,7 +52,7 @@ func (c *WeatherAPIController) Routes() Routes {
 		"SearchWeather": Route{
 			"SearchWeather",
 			strings.ToUpper("Get"),
-			"/api/{version}/weather/search",
+			"/api/3.18/weather/search",
 			c.SearchWeather,
 		},
 	}
@@ -66,7 +64,7 @@ func (c *WeatherAPIController) OrderedRoutes() []Route {
 		Route{
 			"SearchWeather",
 			strings.ToUpper("Get"),
-			"/api/{version}/weather/search",
+			"/api/3.18/weather/search",
 			c.SearchWeather,
 		},
 	}
@@ -76,18 +74,9 @@ func (c *WeatherAPIController) OrderedRoutes() []Route {
 
 // SearchWeather - Search Weather
 func (c *WeatherAPIController) SearchWeather(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var regionIdParam int64
@@ -148,7 +137,7 @@ func (c *WeatherAPIController) SearchWeather(w http.ResponseWriter, r *http.Requ
 		var param int64 = -6
 		timezoneOffsetParam = param
 	}
-	result, err := c.service.SearchWeather(r.Context(), versionParam, regionIdParam, latitudeParam, longitudeParam, timezoneOffsetParam)
+	result, err := c.service.SearchWeather(r.Context(), regionIdParam, latitudeParam, longitudeParam, timezoneOffsetParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

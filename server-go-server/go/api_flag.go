@@ -14,8 +14,6 @@ package openapi
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 // FlagAPIController binds http requests to an api service and writes the service results to the http response
@@ -54,31 +52,31 @@ func (c *FlagAPIController) Routes() Routes {
 		"CreateFlag": Route{
 			"CreateFlag",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/create",
+			"/api/3.18/flag/create",
 			c.CreateFlag,
 		},
 		"DeleteFlag": Route{
 			"DeleteFlag",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/delete",
+			"/api/3.18/flag/delete",
 			c.DeleteFlag,
 		},
 		"GetFlag": Route{
 			"GetFlag",
 			strings.ToUpper("Get"),
-			"/api/{version}/flag/get",
+			"/api/3.18/flag/get",
 			c.GetFlag,
 		},
 		"GetFlagThreshold": Route{
 			"GetFlagThreshold",
 			strings.ToUpper("Get"),
-			"/api/{version}/flag/threshold/get",
+			"/api/3.18/flag/threshold/get",
 			c.GetFlagThreshold,
 		},
 		"UpdateFlagThreshold": Route{
 			"UpdateFlagThreshold",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/threshold/update",
+			"/api/3.18/flag/threshold/update",
 			c.UpdateFlagThreshold,
 		},
 	}
@@ -90,31 +88,31 @@ func (c *FlagAPIController) OrderedRoutes() []Route {
 		Route{
 			"CreateFlag",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/create",
+			"/api/3.18/flag/create",
 			c.CreateFlag,
 		},
 		Route{
 			"DeleteFlag",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/delete",
+			"/api/3.18/flag/delete",
 			c.DeleteFlag,
 		},
 		Route{
 			"GetFlag",
 			strings.ToUpper("Get"),
-			"/api/{version}/flag/get",
+			"/api/3.18/flag/get",
 			c.GetFlag,
 		},
 		Route{
 			"GetFlagThreshold",
 			strings.ToUpper("Get"),
-			"/api/{version}/flag/threshold/get",
+			"/api/3.18/flag/threshold/get",
 			c.GetFlagThreshold,
 		},
 		Route{
 			"UpdateFlagThreshold",
 			strings.ToUpper("Post"),
-			"/api/{version}/flag/threshold/update",
+			"/api/3.18/flag/threshold/update",
 			c.UpdateFlagThreshold,
 		},
 	}
@@ -124,18 +122,9 @@ func (c *FlagAPIController) OrderedRoutes() []Route {
 
 // CreateFlag - Create Flag
 func (c *FlagAPIController) CreateFlag(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var flagableTypeParam string
@@ -219,7 +208,7 @@ func (c *FlagAPIController) CreateFlag(w http.ResponseWriter, r *http.Request) {
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.CreateFlag(r.Context(), versionParam, flagableTypeParam, flagableIdParam, deviceIdParam, accountIdParam, flagDescriptionParam, latitudeParam, longitudeParam)
+	result, err := c.service.CreateFlag(r.Context(), flagableTypeParam, flagableIdParam, deviceIdParam, accountIdParam, flagDescriptionParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -231,18 +220,9 @@ func (c *FlagAPIController) CreateFlag(w http.ResponseWriter, r *http.Request) {
 
 // DeleteFlag - Delete Flag
 func (c *FlagAPIController) DeleteFlag(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var deviceIdParam string
@@ -308,7 +288,7 @@ func (c *FlagAPIController) DeleteFlag(w http.ResponseWriter, r *http.Request) {
 		flagableIdParam = param
 	} else {
 	}
-	result, err := c.service.DeleteFlag(r.Context(), versionParam, deviceIdParam, accountIdParam, itemBeingFlaggedTypeParam, itemBeingFlaggedIdParam, flagableTypeParam, flagableIdParam)
+	result, err := c.service.DeleteFlag(r.Context(), deviceIdParam, accountIdParam, itemBeingFlaggedTypeParam, itemBeingFlaggedIdParam, flagableTypeParam, flagableIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -320,18 +300,9 @@ func (c *FlagAPIController) DeleteFlag(w http.ResponseWriter, r *http.Request) {
 
 // GetFlag - Get Flag
 func (c *FlagAPIController) GetFlag(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var flagableTypeParam string
@@ -408,7 +379,7 @@ func (c *FlagAPIController) GetFlag(w http.ResponseWriter, r *http.Request) {
 		longitudeParam = param
 	} else {
 	}
-	result, err := c.service.GetFlag(r.Context(), versionParam, flagableTypeParam, flagableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
+	result, err := c.service.GetFlag(r.Context(), flagableTypeParam, flagableIdParam, deviceIdParam, accountIdParam, latitudeParam, longitudeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -420,18 +391,9 @@ func (c *FlagAPIController) GetFlag(w http.ResponseWriter, r *http.Request) {
 
 // GetFlagThreshold - Get Flag Threshold
 func (c *FlagAPIController) GetFlagThreshold(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var itemBeingFlaggedTypeParam string
@@ -452,7 +414,7 @@ func (c *FlagAPIController) GetFlagThreshold(w http.ResponseWriter, r *http.Requ
 		c.errorHandler(w, r, &RequiredError{Field: "appKey"}, nil)
 		return
 	}
-	result, err := c.service.GetFlagThreshold(r.Context(), versionParam, itemBeingFlaggedTypeParam, appKeyParam)
+	result, err := c.service.GetFlagThreshold(r.Context(), itemBeingFlaggedTypeParam, appKeyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -464,18 +426,9 @@ func (c *FlagAPIController) GetFlagThreshold(w http.ResponseWriter, r *http.Requ
 
 // UpdateFlagThreshold - Update Flag Threshold
 func (c *FlagAPIController) UpdateFlagThreshold(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
 	query, err := parseQuery(r.URL.RawQuery)
 	if err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
-		return
-	}
-	versionParam, err := parseNumericParameter[float32](
-		params["version"],
-		WithRequire[float32](parseFloat32),
-	)
-	if err != nil {
-		c.errorHandler(w, r, &ParsingError{Param: "version", Err: err}, nil)
 		return
 	}
 	var itemBeingFlaggedTypeParam string
@@ -533,7 +486,7 @@ func (c *FlagAPIController) UpdateFlagThreshold(w http.ResponseWriter, r *http.R
 		accountIdParam = param
 	} else {
 	}
-	result, err := c.service.UpdateFlagThreshold(r.Context(), versionParam, itemBeingFlaggedTypeParam, thresholdParam, appKeyParam, deviceIdParam, accountIdParam)
+	result, err := c.service.UpdateFlagThreshold(r.Context(), itemBeingFlaggedTypeParam, thresholdParam, appKeyParam, deviceIdParam, accountIdParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
