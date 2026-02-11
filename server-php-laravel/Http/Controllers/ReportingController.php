@@ -47,19 +47,16 @@ class ReportingController extends Controller
      * Create Offline Report.
      *
      */
-    public function createBatch(Request $request, float $version): JsonResponse
+    public function createBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -102,7 +99,6 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $status = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateBatchStatusParameter::class);
@@ -126,7 +122,7 @@ class ReportingController extends Controller
         $pageUrl = $request->string('pageUrl')->value();
 
 
-        $apiResult = $this->api->createBatch($version, $accountId, $status, $previewLimit, $appKey, $endpoint, $parameters, $name, $startDate, $endDate, $description, $pageUrl);
+        $apiResult = $this->api->createBatch($accountId, $status, $previewLimit, $appKey, $endpoint, $parameters, $name, $startDate, $endDate, $description, $pageUrl);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ReportBatchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -142,12 +138,12 @@ class ReportingController extends Controller
      * Create Offline Report.
      *
      */
-    public function createRegionLegSummaryBatch(Request $request, float $version): JsonResponse
+    public function createRegionLegSummaryBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -159,11 +155,10 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $request->get('body');
 
 
-        $apiResult = $this->api->createRegionLegSummaryBatch($version, $body);
+        $apiResult = $this->api->createRegionLegSummaryBatch($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ReportRegionLegSummaryBatchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -179,19 +174,16 @@ class ReportingController extends Controller
      * Delete Offline Report.
      *
      */
-    public function deleteBatch(Request $request, float $version): JsonResponse
+    public function deleteBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -207,13 +199,12 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $batchId = $request->integer('batchId');
 
 
-        $apiResult = $this->api->deleteBatch($version, $accountId, $batchId);
+        $apiResult = $this->api->deleteBatch($accountId, $batchId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -229,19 +220,16 @@ class ReportingController extends Controller
      * Get Offline Report.
      *
      */
-    public function getReportBatch(Request $request, float $version): JsonResponse
+    public function getReportBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -261,7 +249,6 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $batchId = $request->integer('batchId');
@@ -269,7 +256,7 @@ class ReportingController extends Controller
         $allResults = $request->boolean('allResults');
 
 
-        $apiResult = $this->api->getReportBatch($version, $accountId, $batchId, $allResults);
+        $apiResult = $this->api->getReportBatch($accountId, $batchId, $allResults);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ReportBatchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -285,19 +272,16 @@ class ReportingController extends Controller
      * Run Report.
      *
      */
-    public function runReport(Request $request, float $version): JsonResponse
+    public function runReport(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'desc' => [
                     'required',
                     'boolean',
@@ -329,7 +313,6 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $desc = $request->boolean('desc');
 
         $accountId = $request->integer('accountId');
@@ -347,7 +330,7 @@ class ReportingController extends Controller
         $responseFormat = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AggregatedFilteredUsageResponseFormatParameter::class);
 
 
-        $apiResult = $this->api->runReport($version, $desc, $accountId, $query, $parameters, $order, $start, $limit, $responseFormat);
+        $apiResult = $this->api->runReport($desc, $accountId, $query, $parameters, $order, $start, $limit, $responseFormat);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ReportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -363,19 +346,16 @@ class ReportingController extends Controller
      * Search Offline Reports.
      *
      */
-    public function searchBatch(Request $request, float $version): JsonResponse
+    public function searchBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -412,7 +392,6 @@ class ReportingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $start = $request->integer('start');
@@ -432,7 +411,7 @@ class ReportingController extends Controller
         $endDate = $request->integer('endDate');
 
 
-        $apiResult = $this->api->searchBatch($version, $accountId, $start, $limit, $names, $appKey, $status, $globalAppSearch, $startDate, $endDate);
+        $apiResult = $this->api->searchBatch($accountId, $start, $limit, $names, $appKey, $status, $globalAppSearch, $startDate, $endDate);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

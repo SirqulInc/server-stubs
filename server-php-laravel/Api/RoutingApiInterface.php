@@ -28,12 +28,10 @@ interface RoutingApiInterface {
      * Operation computeRouting
      *
      * Compute Route
-     * @param float $version
      * @param string $data
      * @return \OpenAPI\Server\Model\RoutingListResponse
      */
     public function computeRouting(
-            float $version,
             string $data,
     ):
         \OpenAPI\Server\Model\RoutingListResponse

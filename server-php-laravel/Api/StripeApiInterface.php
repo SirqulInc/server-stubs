@@ -28,13 +28,11 @@ interface StripeApiInterface {
      * Operation createStripeCheckoutSession
      *
      * Create Stripe Checkout Session
-     * @param float $version
      * @param string $appKey
      * @param string $stripeParameters
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function createStripeCheckoutSession(
-            float $version,
             string $appKey,
             string $stripeParameters,
     ):

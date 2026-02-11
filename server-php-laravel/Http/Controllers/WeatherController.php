@@ -47,19 +47,16 @@ class WeatherController extends Controller
      * Search Weather.
      *
      */
-    public function searchWeather(Request $request, float $version): JsonResponse
+    public function searchWeather(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'regionId' => [
                     'integer',
                 ],
@@ -77,7 +74,6 @@ class WeatherController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $regionId = $request->integer('regionId');
 
         $latitude = $request->float('latitude');
@@ -87,7 +83,7 @@ class WeatherController extends Controller
         $timezoneOffset = $request->integer('timezoneOffset');
 
 
-        $apiResult = $this->api->searchWeather($version, $regionId, $latitude, $longitude, $timezoneOffset);
+        $apiResult = $this->api->searchWeather($regionId, $latitude, $longitude, $timezoneOffset);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WeatherResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,14 +28,12 @@ interface TerritoryApiInterface {
      * Operation createTerritory
      *
      * Create Territory
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | bool $active
      * @return \OpenAPI\Server\Model\TerritoryResponse
      */
     public function createTerritory(
-            float $version,
             int $accountId,
             string $name,
             ?bool $active,
@@ -48,13 +46,11 @@ interface TerritoryApiInterface {
      * Operation deleteTerritory
      *
      * Delete Territory
-     * @param float $version
      * @param int $accountId
      * @param int $territoryId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteTerritory(
-            float $version,
             int $accountId,
             int $territoryId,
     ):
@@ -66,12 +62,10 @@ interface TerritoryApiInterface {
      * Operation getTerritory
      *
      * Get Territory
-     * @param float $version
      * @param int $territoryId
      * @return \OpenAPI\Server\Model\TerritoryResponse
      */
     public function getTerritory(
-            float $version,
             int $territoryId,
     ):
         \OpenAPI\Server\Model\TerritoryResponse
@@ -82,7 +76,6 @@ interface TerritoryApiInterface {
      * Operation searchTerritories
      *
      * Search Territories
-     * @param float $version
      * @param \OpenAPI\Server\Model\SearchTerritoriesSortFieldParameter $sortField
      * @param bool $descending
      * @param null | string $keyword
@@ -91,7 +84,6 @@ interface TerritoryApiInterface {
      * @return \OpenAPI\Server\Model\TerritoryResponse[]
      */
     public function searchTerritories(
-            float $version,
             \OpenAPI\Server\Model\SearchTerritoriesSortFieldParameter $sortField,
             bool $descending,
             ?string $keyword,
@@ -106,7 +98,6 @@ interface TerritoryApiInterface {
      * Operation updateTerritory
      *
      * Update Territory
-     * @param float $version
      * @param int $accountId
      * @param int $territoryId
      * @param null | string $name
@@ -114,7 +105,6 @@ interface TerritoryApiInterface {
      * @return \OpenAPI\Server\Model\TerritoryResponse
      */
     public function updateTerritory(
-            float $version,
             int $accountId,
             int $territoryId,
             ?string $name,

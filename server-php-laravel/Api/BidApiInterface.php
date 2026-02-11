@@ -28,7 +28,6 @@ interface BidApiInterface {
      * Operation createBid
      *
      * Create Bid
-     * @param float $version
      * @param string $biddableType
      * @param int $biddableId
      * @param float $amountPerView
@@ -40,7 +39,6 @@ interface BidApiInterface {
      * @return \OpenAPI\Server\Model\BidResponse
      */
     public function createBid(
-            float $version,
             string $biddableType,
             int $biddableId,
             float $amountPerView,
@@ -58,14 +56,12 @@ interface BidApiInterface {
      * Operation deleteBid
      *
      * Delete Bid
-     * @param float $version
      * @param int $bidId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteBid(
-            float $version,
             int $bidId,
             ?string $deviceId,
             ?int $accountId,
@@ -78,14 +74,12 @@ interface BidApiInterface {
      * Operation getBid
      *
      * Get Bid
-     * @param float $version
      * @param int $bidId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\BidResponse
      */
     public function getBid(
-            float $version,
             int $bidId,
             ?string $deviceId,
             ?int $accountId,
@@ -98,7 +92,6 @@ interface BidApiInterface {
      * Operation updateBid
      *
      * Update Bid
-     * @param float $version
      * @param int $bidId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -109,7 +102,6 @@ interface BidApiInterface {
      * @return \OpenAPI\Server\Model\BidResponse
      */
     public function updateBid(
-            float $version,
             int $bidId,
             ?string $deviceId,
             ?int $accountId,

@@ -47,12 +47,12 @@ class TripController extends Controller
      * Create Trip.
      *
      */
-    public function createTrip(Request $request, float $version): JsonResponse
+    public function createTrip(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class TripController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->createTrip($version, $body);
+        $apiResult = $this->api->createTrip($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class TripController extends Controller
      * Delete Trip.
      *
      */
-    public function delete(Request $request, float $version, int $id): JsonResponse
+    public function delete(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class TripController extends Controller
 
 
 
-
-        $apiResult = $this->api->delete($version, $id);
+        $apiResult = $this->api->delete($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -127,19 +122,16 @@ class TripController extends Controller
      * Set Trip Preference Driver.
      *
      */
-    public function driveTrip(Request $request, float $version, int $id): JsonResponse
+    public function driveTrip(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -156,11 +148,10 @@ class TripController extends Controller
         }
 
 
-
         $recurrence = $request->boolean('recurrence');
 
 
-        $apiResult = $this->api->driveTrip($version, $id, $recurrence);
+        $apiResult = $this->api->driveTrip($id, $recurrence);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -176,19 +167,16 @@ class TripController extends Controller
      * Set Trip Preference Flexible.
      *
      */
-    public function flexibleTrip(Request $request, float $version, int $id): JsonResponse
+    public function flexibleTrip(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -205,11 +193,10 @@ class TripController extends Controller
         }
 
 
-
         $recurrence = $request->boolean('recurrence');
 
 
-        $apiResult = $this->api->flexibleTrip($version, $id, $recurrence);
+        $apiResult = $this->api->flexibleTrip($id, $recurrence);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -225,19 +212,16 @@ class TripController extends Controller
      * Get Trip.
      *
      */
-    public function getTrip(Request $request, float $version, int $id): JsonResponse
+    public function getTrip(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -251,8 +235,7 @@ class TripController extends Controller
 
 
 
-
-        $apiResult = $this->api->getTrip($version, $id);
+        $apiResult = $this->api->getTrip($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -268,19 +251,16 @@ class TripController extends Controller
      * Get Trip Matches.
      *
      */
-    public function getTripMatches(Request $request, float $version, int $id): JsonResponse
+    public function getTripMatches(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -319,7 +299,6 @@ class TripController extends Controller
         }
 
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -335,7 +314,7 @@ class TripController extends Controller
         $matchedHasDriver = $request->boolean('matchedHasDriver');
 
 
-        $apiResult = $this->api->getTripMatches($version, $id, $sortField, $descending, $start, $limit, $activeOnly, $matchedHasRoute, $matchedHasDriver);
+        $apiResult = $this->api->getTripMatches($id, $sortField, $descending, $start, $limit, $activeOnly, $matchedHasRoute, $matchedHasDriver);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -352,19 +331,16 @@ class TripController extends Controller
      * Process Trip Matches.
      *
      */
-    public function processTripMatches(Request $request, float $version): JsonResponse
+    public function processTripMatches(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'startDate' => [
                     'integer',
                 ],
@@ -381,7 +357,6 @@ class TripController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $startDate = $request->integer('startDate');
 
         $endDate = $request->integer('endDate');
@@ -389,7 +364,7 @@ class TripController extends Controller
         $tripId = $request->integer('tripId');
 
 
-        $apiResult = $this->api->processTripMatches($version, $startDate, $endDate, $tripId);
+        $apiResult = $this->api->processTripMatches($startDate, $endDate, $tripId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -406,19 +381,16 @@ class TripController extends Controller
      * Set Trip Preference Rider.
      *
      */
-    public function ride(Request $request, float $version, int $id): JsonResponse
+    public function ride(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -435,11 +407,10 @@ class TripController extends Controller
         }
 
 
-
         $recurrence = $request->boolean('recurrence');
 
 
-        $apiResult = $this->api->ride($version, $id, $recurrence);
+        $apiResult = $this->api->ride($id, $recurrence);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -455,19 +426,16 @@ class TripController extends Controller
      * Search Trips.
      *
      */
-    public function search(Request $request, float $version): JsonResponse
+    public function search(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -508,7 +476,6 @@ class TripController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -528,7 +495,7 @@ class TripController extends Controller
         $hasNotifications = $request->boolean('hasNotifications');
 
 
-        $apiResult = $this->api->search($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $hasNotifications);
+        $apiResult = $this->api->search($accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $hasNotifications);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -545,19 +512,16 @@ class TripController extends Controller
      * Search Trips.
      *
      */
-    public function searchTrips(Request $request, float $version): JsonResponse
+    public function searchTrips(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -601,7 +565,6 @@ class TripController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -623,7 +586,7 @@ class TripController extends Controller
         $matchedHasDriver = $request->boolean('matchedHasDriver');
 
 
-        $apiResult = $this->api->searchTrips($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $matchedHasRoute, $matchedHasDriver);
+        $apiResult = $this->api->searchTrips($accountId, $sortField, $descending, $start, $limit, $activeOnly, $startDate, $endDate, $matchedHasRoute, $matchedHasDriver);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -640,12 +603,12 @@ class TripController extends Controller
      * Update Trip Locations.
      *
      */
-    public function updateLocations(Request $request, float $version, int $id): JsonResponse
+    public function updateLocations(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -658,11 +621,10 @@ class TripController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->updateLocations($version, $id, $body);
+        $apiResult = $this->api->updateLocations($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -678,12 +640,12 @@ class TripController extends Controller
      * Update Recurrence Locations.
      *
      */
-    public function updateRecurrenceLocations(Request $request, float $version, int $id): JsonResponse
+    public function updateRecurrenceLocations(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -696,11 +658,10 @@ class TripController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->updateRecurrenceLocations($version, $id, $body);
+        $apiResult = $this->api->updateRecurrenceLocations($id, $body);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -717,12 +678,12 @@ class TripController extends Controller
      * Update Recurrence Shipments.
      *
      */
-    public function updateRecurrenceShipments(Request $request, float $version, int $id): JsonResponse
+    public function updateRecurrenceShipments(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -735,11 +696,10 @@ class TripController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->updateRecurrenceShipments($version, $id, $body);
+        $apiResult = $this->api->updateRecurrenceShipments($id, $body);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -756,12 +716,12 @@ class TripController extends Controller
      * Update Trip Shipments.
      *
      */
-    public function updateShipments(Request $request, float $version, int $id): JsonResponse
+    public function updateShipments(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -774,11 +734,10 @@ class TripController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->updateShipments($version, $id, $body);
+        $apiResult = $this->api->updateShipments($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -794,12 +753,12 @@ class TripController extends Controller
      * Update Trip.
      *
      */
-    public function updateTrip(Request $request, float $version, int $id): JsonResponse
+    public function updateTrip(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -812,11 +771,10 @@ class TripController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Trip::class);
 
 
-        $apiResult = $this->api->updateTrip($version, $id, $body);
+        $apiResult = $this->api->updateTrip($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -832,19 +790,16 @@ class TripController extends Controller
      * Trip Notifications.
      *
      */
-    public function updateTripNotifications(Request $request, float $version): JsonResponse
+    public function updateTripNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -859,13 +814,12 @@ class TripController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $id = $request->integer('id');
 
         $notifications = $request->string('notifications')->value();
 
 
-        $apiResult = $this->api->updateTripNotifications($version, $id, $notifications);
+        $apiResult = $this->api->updateTripNotifications($id, $notifications);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Trip) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

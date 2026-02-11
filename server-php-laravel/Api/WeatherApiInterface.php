@@ -28,7 +28,6 @@ interface WeatherApiInterface {
      * Operation searchWeather
      *
      * Search Weather
-     * @param float $version
      * @param null | int $regionId
      * @param null | float $latitude
      * @param null | float $longitude
@@ -36,7 +35,6 @@ interface WeatherApiInterface {
      * @return \OpenAPI\Server\Model\WeatherResponse
      */
     public function searchWeather(
-            float $version,
             ?int $regionId,
             ?float $latitude,
             ?float $longitude,

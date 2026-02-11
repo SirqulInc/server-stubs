@@ -47,12 +47,12 @@ class RouteSettingController extends Controller
      * Create Route Setting.
      *
      */
-    public function createRouteSettings(Request $request, float $version): JsonResponse
+    public function createRouteSettings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class RouteSettingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\RouteSettings::class);
 
 
-        $apiResult = $this->api->createRouteSettings($version, $body);
+        $apiResult = $this->api->createRouteSettings($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RouteSettings) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class RouteSettingController extends Controller
      * Delete Route Setting.
      *
      */
-    public function deleteRouteSettings(Request $request, float $version, int $routeSettingsId): JsonResponse
+    public function deleteRouteSettings(Request $request, int $routeSettingsId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeSettingsId' => $routeSettingsId,
+                    'routeSettingsId' => $routeSettingsId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeSettingsId' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class RouteSettingController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteRouteSettings($version, $routeSettingsId);
+        $apiResult = $this->api->deleteRouteSettings($routeSettingsId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -128,19 +123,16 @@ class RouteSettingController extends Controller
      * Get Route Setting.
      *
      */
-    public function getRouteSettings(Request $request, float $version, int $routeSettingsId): JsonResponse
+    public function getRouteSettings(Request $request, int $routeSettingsId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeSettingsId' => $routeSettingsId,
+                    'routeSettingsId' => $routeSettingsId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeSettingsId' => [
                     'required',
                     'integer',
@@ -154,8 +146,7 @@ class RouteSettingController extends Controller
 
 
 
-
-        $apiResult = $this->api->getRouteSettings($version, $routeSettingsId);
+        $apiResult = $this->api->getRouteSettings($routeSettingsId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RouteSettings) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -171,19 +162,16 @@ class RouteSettingController extends Controller
      * Search Route Settings.
      *
      */
-    public function searchRouteSettings(Request $request, float $version): JsonResponse
+    public function searchRouteSettings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -220,7 +208,6 @@ class RouteSettingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -238,7 +225,7 @@ class RouteSettingController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchRouteSettings($version, $sortField, $descending, $start, $limit, $activeOnly, $hubId, $programId, $keyword);
+        $apiResult = $this->api->searchRouteSettings($sortField, $descending, $start, $limit, $activeOnly, $hubId, $programId, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -255,12 +242,12 @@ class RouteSettingController extends Controller
      * Update Route Setting.
      *
      */
-    public function updateRouteSettings(Request $request, float $version, int $routeSettingsId): JsonResponse
+    public function updateRouteSettings(Request $request, int $routeSettingsId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeSettingsId' => $routeSettingsId,
+                    'routeSettingsId' => $routeSettingsId,
                 ],
                 $request->all(),
             ),
@@ -273,11 +260,10 @@ class RouteSettingController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\RouteSettings::class);
 
 
-        $apiResult = $this->api->updateRouteSettings($version, $routeSettingsId, $body);
+        $apiResult = $this->api->updateRouteSettings($routeSettingsId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RouteSettings) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

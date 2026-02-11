@@ -28,7 +28,6 @@ interface InviteApiInterface {
      * Operation acceptInvite
      *
      * Accept Invite
-     * @param float $version
      * @param string $token
      * @param int $accountId
      * @param null | int $albumId
@@ -46,7 +45,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\ConsumerInviteResponse
      */
     public function acceptInvite(
-            float $version,
             string $token,
             int $accountId,
             ?int $albumId,
@@ -70,7 +68,6 @@ interface InviteApiInterface {
      * Operation albumContestInvite
      *
      * Invite to Contest
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $appId
@@ -81,7 +78,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function albumContestInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $appId,
@@ -98,7 +94,6 @@ interface InviteApiInterface {
      * Operation albumInvite
      *
      * Invite to Collection
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $appId
@@ -109,7 +104,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function albumInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $appId,
@@ -126,7 +120,6 @@ interface InviteApiInterface {
      * Operation eventInvite
      *
      * Invite to Event
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $listingId
@@ -135,7 +128,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function eventInvite(
-            float $version,
             int $accountId,
             string $appKey,
             int $listingId,
@@ -150,7 +142,6 @@ interface InviteApiInterface {
      * Operation gameInvite
      *
      * Invite to Game Level
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $appId
@@ -161,7 +152,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function gameInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $appId,
@@ -178,7 +168,6 @@ interface InviteApiInterface {
      * Operation getInvite
      *
      * Get Invite
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $token
      * @param null | int $albumId
@@ -191,7 +180,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getInvite(
-            float $version,
             ?int $accountId,
             ?string $token,
             ?int $albumId,
@@ -210,7 +198,6 @@ interface InviteApiInterface {
      * Operation missionInvite
      *
      * Invite to Mission
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $appId
@@ -221,7 +208,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function missionInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $appId,
@@ -238,14 +224,12 @@ interface InviteApiInterface {
      * Operation offerInvite
      *
      * Invite to Offer
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $offerId
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function offerInvite(
-            float $version,
             int $accountId,
             string $appKey,
             int $offerId,
@@ -258,14 +242,12 @@ interface InviteApiInterface {
      * Operation offerLocationInvite
      *
      * Invite to Offer Location
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $offerLocationId
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function offerLocationInvite(
-            float $version,
             int $accountId,
             string $appKey,
             int $offerLocationId,
@@ -278,7 +260,6 @@ interface InviteApiInterface {
      * Operation retailerLocationInvite
      *
      * Invite to Retailer Location
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $retailerLocationId
@@ -286,7 +267,6 @@ interface InviteApiInterface {
      * @return \OpenAPI\Server\Model\InviteResponse
      */
     public function retailerLocationInvite(
-            float $version,
             int $accountId,
             string $appKey,
             int $retailerLocationId,

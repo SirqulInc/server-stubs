@@ -28,7 +28,6 @@ interface MissionInviteApiInterface {
      * Operation createMissionInvite
      *
      * Create Mission Invite
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $missionId
@@ -37,7 +36,6 @@ interface MissionInviteApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function createMissionInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $missionId,
@@ -52,7 +50,6 @@ interface MissionInviteApiInterface {
      * Operation deleteMissionInvite
      *
      * Delete Mission Invite
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $missionId
@@ -61,7 +58,6 @@ interface MissionInviteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteMissionInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $missionId,
@@ -76,7 +72,6 @@ interface MissionInviteApiInterface {
      * Operation getMissionInvite
      *
      * Get Mission Invite
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $missionId
@@ -86,7 +81,6 @@ interface MissionInviteApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function getMissionInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $missionId,
@@ -102,7 +96,6 @@ interface MissionInviteApiInterface {
      * Operation searchMissionInvites
      *
      * Search Mission Invites
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -119,7 +112,6 @@ interface MissionInviteApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse[]
      */
     public function searchMissionInvites(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -142,7 +134,6 @@ interface MissionInviteApiInterface {
      * Operation updateMissionInvite
      *
      * Update Mission Invite
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -157,7 +148,6 @@ interface MissionInviteApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function updateMissionInvite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,

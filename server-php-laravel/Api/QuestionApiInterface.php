@@ -28,7 +28,6 @@ interface QuestionApiInterface {
      * Operation createQuestion
      *
      * Create Question
-     * @param float $version
      * @param int $accountId
      * @param string $question
      * @param string $answers
@@ -43,7 +42,6 @@ interface QuestionApiInterface {
      * @return \OpenAPI\Server\Model\QuestionResponse
      */
     public function createQuestion(
-            float $version,
             int $accountId,
             string $question,
             string $answers,
@@ -64,13 +62,11 @@ interface QuestionApiInterface {
      * Operation deleteQuestion
      *
      * Delete Question
-     * @param float $version
      * @param int $questionId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteQuestion(
-            float $version,
             int $questionId,
             int $accountId,
     ):
@@ -82,13 +78,11 @@ interface QuestionApiInterface {
      * Operation getQuestion
      *
      * Get Question
-     * @param float $version
      * @param int $questionId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\QuestionResponse
      */
     public function getQuestion(
-            float $version,
             int $questionId,
             int $accountId,
     ):
@@ -100,7 +94,6 @@ interface QuestionApiInterface {
      * Operation searchQuestions
      *
      * Search Questions
-     * @param float $version
      * @param int $accountId
      * @param string $sortField
      * @param bool $descending
@@ -111,7 +104,6 @@ interface QuestionApiInterface {
      * @return \OpenAPI\Server\Model\QuestionResponse[]
      */
     public function searchQuestions(
-            float $version,
             int $accountId,
             string $sortField,
             bool $descending,
@@ -128,7 +120,6 @@ interface QuestionApiInterface {
      * Operation updateQuestion
      *
      * Update Question
-     * @param float $version
      * @param int $questionId
      * @param int $accountId
      * @param int $ticketCount
@@ -144,7 +135,6 @@ interface QuestionApiInterface {
      * @return \OpenAPI\Server\Model\QuestionResponse
      */
     public function updateQuestion(
-            float $version,
             int $questionId,
             int $accountId,
             int $ticketCount,

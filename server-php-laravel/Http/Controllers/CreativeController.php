@@ -47,19 +47,16 @@ class CreativeController extends Controller
      * Add Preview.
      *
      */
-    public function addPreview(Request $request, float $version): JsonResponse
+    public function addPreview(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -75,13 +72,12 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $creativeId = $request->integer('creativeId');
 
 
-        $apiResult = $this->api->addPreview($version, $accountId, $creativeId);
+        $apiResult = $this->api->addPreview($accountId, $creativeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -97,19 +93,16 @@ class CreativeController extends Controller
      * Find Missions.
      *
      */
-    public function adsFind(Request $request, float $version): JsonResponse
+    public function adsFind(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -166,7 +159,6 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $randomize = $request->boolean('randomize');
@@ -200,7 +192,7 @@ class CreativeController extends Controller
         $missionIds = $request->string('missionIds')->value();
 
 
-        $apiResult = $this->api->adsFind($version, $appKey, $randomize, $targetedAdsOnly, $type, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeAudiences, $allocatesTickets, $missionIds);
+        $apiResult = $this->api->adsFind($appKey, $randomize, $targetedAdsOnly, $type, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeAudiences, $allocatesTickets, $missionIds);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -217,19 +209,16 @@ class CreativeController extends Controller
      * Create Creative.
      *
      */
-    public function createCreative(Request $request, float $version): JsonResponse
+    public function createCreative(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -285,7 +274,6 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -317,7 +305,7 @@ class CreativeController extends Controller
         $offerId = $request->integer('offerId');
 
 
-        $apiResult = $this->api->createCreative($version, $accountId, $name, $active, $waitForAsset, $description, $assetImageId, $action, $data, $suffix, $type, $balance, $referenceId, $appVersion, $missionId, $offerId);
+        $apiResult = $this->api->createCreative($accountId, $name, $active, $waitForAsset, $description, $assetImageId, $action, $data, $suffix, $type, $balance, $referenceId, $appVersion, $missionId, $offerId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreativeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -333,19 +321,16 @@ class CreativeController extends Controller
      * Delete Creative.
      *
      */
-    public function deleteCreative(Request $request, float $version): JsonResponse
+    public function deleteCreative(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -361,13 +346,12 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $creativeId = $request->integer('creativeId');
 
 
-        $apiResult = $this->api->deleteCreative($version, $accountId, $creativeId);
+        $apiResult = $this->api->deleteCreative($accountId, $creativeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -383,19 +367,16 @@ class CreativeController extends Controller
      * Get Creative.
      *
      */
-    public function getCreative(Request $request, float $version): JsonResponse
+    public function getCreative(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -411,13 +392,12 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $creativeId = $request->integer('creativeId');
 
 
-        $apiResult = $this->api->getCreative($version, $accountId, $creativeId);
+        $apiResult = $this->api->getCreative($accountId, $creativeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreativeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -433,19 +413,16 @@ class CreativeController extends Controller
      * Search Creatives.
      *
      */
-    public function getCreativesByApplication(Request $request, float $version): JsonResponse
+    public function getCreativesByApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -475,7 +452,6 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -489,7 +465,7 @@ class CreativeController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->getCreativesByApplication($version, $accountId, $appKey, $start, $limit, $missionId, $keyword);
+        $apiResult = $this->api->getCreativesByApplication($accountId, $appKey, $start, $limit, $missionId, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -506,19 +482,16 @@ class CreativeController extends Controller
      * Remove Preview.
      *
      */
-    public function removePreview(Request $request, float $version): JsonResponse
+    public function removePreview(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -534,13 +507,12 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $creativeId = $request->integer('creativeId');
 
 
-        $apiResult = $this->api->removePreview($version, $accountId, $creativeId);
+        $apiResult = $this->api->removePreview($accountId, $creativeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -556,19 +528,16 @@ class CreativeController extends Controller
      * Update Creative.
      *
      */
-    public function updateCreative(Request $request, float $version): JsonResponse
+    public function updateCreative(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -619,7 +588,6 @@ class CreativeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $creativeId = $request->integer('creativeId');
@@ -649,7 +617,7 @@ class CreativeController extends Controller
         $missionId = $request->integer('missionId');
 
 
-        $apiResult = $this->api->updateCreative($version, $accountId, $creativeId, $name, $description, $assetImageId, $action, $data, $suffix, $type, $balance, $active, $referenceId, $appVersion, $missionId);
+        $apiResult = $this->api->updateCreative($accountId, $creativeId, $name, $description, $assetImageId, $action, $data, $suffix, $type, $balance, $active, $referenceId, $appVersion, $missionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreativeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

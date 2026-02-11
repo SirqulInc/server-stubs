@@ -28,7 +28,6 @@ interface ConnectionApiInterface {
      * Operation addConnectionToGroup
      *
      * Add Connection
-     * @param float $version
      * @param bool $returnNulls
      * @param int $groupId
      * @param null | string $deviceId
@@ -41,7 +40,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function addConnectionToGroup(
-            float $version,
             bool $returnNulls,
             int $groupId,
             ?string $deviceId,
@@ -60,7 +58,6 @@ interface ConnectionApiInterface {
      * Operation addConnectionsToGroup
      *
      * Add Connections
-     * @param float $version
      * @param int $connectionGroupId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -71,7 +68,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function addConnectionsToGroup(
-            float $version,
             int $connectionGroupId,
             ?string $deviceId,
             ?int $accountId,
@@ -88,7 +84,6 @@ interface ConnectionApiInterface {
      * Operation addSubGroups
      *
      * Add Connection Groups
-     * @param float $version
      * @param bool $returnNulls
      * @param int $groupId
      * @param string $subGroupIds
@@ -99,7 +94,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionGroupResponse
      */
     public function addSubGroups(
-            float $version,
             bool $returnNulls,
             int $groupId,
             string $subGroupIds,
@@ -116,7 +110,6 @@ interface ConnectionApiInterface {
      * Operation createOrUpdateConnection
      *
      * Create or Update Connection
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $connectionId
@@ -134,7 +127,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionResponse
      */
     public function createOrUpdateConnection(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $connectionId,
@@ -158,7 +150,6 @@ interface ConnectionApiInterface {
      * Operation createOrUpdateGroup
      *
      * Create or Update Connection Group
-     * @param float $version
      * @param bool $returnNulls
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -176,7 +167,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function createOrUpdateGroup(
-            float $version,
             bool $returnNulls,
             ?string $deviceId,
             ?int $accountId,
@@ -200,14 +190,12 @@ interface ConnectionApiInterface {
      * Operation followAccept
      *
      * Accept Follow Request
-     * @param float $version
      * @param int $accountId
      * @param int $connectionAccountId
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function followAccept(
-            float $version,
             int $accountId,
             int $connectionAccountId,
             string $appKey,
@@ -220,14 +208,12 @@ interface ConnectionApiInterface {
      * Operation followReject
      *
      * Reject Follow Request
-     * @param float $version
      * @param int $accountId
      * @param int $connectionAccountId
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function followReject(
-            float $version,
             int $accountId,
             int $connectionAccountId,
             string $appKey,
@@ -240,14 +226,12 @@ interface ConnectionApiInterface {
      * Operation followRemove
      *
      * Remove Follower / Unfollow
-     * @param float $version
      * @param int $accountId
      * @param int $connectionAccountId
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function followRemove(
-            float $version,
             int $accountId,
             int $connectionAccountId,
             string $appKey,
@@ -260,7 +244,6 @@ interface ConnectionApiInterface {
      * Operation followRequest
      *
      * Send Follow Request
-     * @param float $version
      * @param int $accountId
      * @param int $connectionAccountId
      * @param string $appKey
@@ -268,7 +251,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function followRequest(
-            float $version,
             int $accountId,
             int $connectionAccountId,
             string $appKey,
@@ -282,7 +264,6 @@ interface ConnectionApiInterface {
      * Operation friendAccept
      *
      * Accept Friend
-     * @param float $version
      * @param int $friendAccountId
      * @param bool $notifyFriend
      * @param null | string $deviceId
@@ -293,7 +274,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function friendAccept(
-            float $version,
             int $friendAccountId,
             bool $notifyFriend,
             ?string $deviceId,
@@ -310,7 +290,6 @@ interface ConnectionApiInterface {
      * Operation friendReject
      *
      * Decline Friend
-     * @param float $version
      * @param int $friendAccountId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -321,7 +300,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function friendReject(
-            float $version,
             int $friendAccountId,
             ?string $deviceId,
             ?int $accountId,
@@ -338,7 +316,6 @@ interface ConnectionApiInterface {
      * Operation friendRemove
      *
      * Delete Friend
-     * @param float $version
      * @param int $friendAccountId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -347,7 +324,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function friendRemove(
-            float $version,
             int $friendAccountId,
             ?string $deviceId,
             ?int $accountId,
@@ -362,7 +338,6 @@ interface ConnectionApiInterface {
      * Operation friendRequest
      *
      * Request Friend
-     * @param float $version
      * @param int $friendAccountId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -372,7 +347,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function friendRequest(
-            float $version,
             int $friendAccountId,
             ?string $deviceId,
             ?int $accountId,
@@ -388,13 +362,11 @@ interface ConnectionApiInterface {
      * Operation getConnectionSentFriendRequests
      *
      * Get Sent Friend Requests
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\ConnectionListResponse
      */
     public function getConnectionSentFriendRequests(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
     ):
@@ -406,7 +378,6 @@ interface ConnectionApiInterface {
      * Operation getConnections
      *
      * Search Connections
-     * @param float $version
      * @param bool $returnNulls
      * @param string $filter
      * @param string $sortField
@@ -425,7 +396,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionListResponse
      */
     public function getConnections(
-            float $version,
             bool $returnNulls,
             string $filter,
             string $sortField,
@@ -450,7 +420,6 @@ interface ConnectionApiInterface {
      * Operation getGroupDetails
      *
      * Get Connection Group
-     * @param float $version
      * @param bool $combineConnections
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -460,7 +429,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionGroupResponse
      */
     public function getGroupDetails(
-            float $version,
             bool $combineConnections,
             ?string $deviceId,
             ?int $accountId,
@@ -476,7 +444,6 @@ interface ConnectionApiInterface {
      * Operation groupSearch
      *
      * Search Connection Groups
-     * @param float $version
      * @param \OpenAPI\Server\Model\GroupSearchSortFieldParameter $sortField
      * @param bool $descending
      * @param bool $activeOnly
@@ -490,7 +457,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionInfoResponse[]
      */
     public function groupSearch(
-            float $version,
             \OpenAPI\Server\Model\GroupSearchSortFieldParameter $sortField,
             bool $descending,
             bool $activeOnly,
@@ -510,7 +476,6 @@ interface ConnectionApiInterface {
      * Operation removeConnectionFromGroup
      *
      * Delete Connection
-     * @param float $version
      * @param bool $returnNulls
      * @param int $groupId
      * @param null | string $deviceId
@@ -523,7 +488,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeConnectionFromGroup(
-            float $version,
             bool $returnNulls,
             int $groupId,
             ?string $deviceId,
@@ -542,7 +506,6 @@ interface ConnectionApiInterface {
      * Operation removeConnectionsFromGroup
      *
      * Remove Connections
-     * @param float $version
      * @param int $connectionGroupId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -553,7 +516,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeConnectionsFromGroup(
-            float $version,
             int $connectionGroupId,
             ?string $deviceId,
             ?int $accountId,
@@ -570,7 +532,6 @@ interface ConnectionApiInterface {
      * Operation removeGroup
      *
      * Delete Connection Group
-     * @param float $version
      * @param bool $returnNulls
      * @param int $groupId
      * @param null | string $deviceId
@@ -580,7 +541,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeGroup(
-            float $version,
             bool $returnNulls,
             int $groupId,
             ?string $deviceId,
@@ -596,7 +556,6 @@ interface ConnectionApiInterface {
      * Operation removeSubGroups
      *
      * Remove Connection Groups
-     * @param float $version
      * @param bool $returnNulls
      * @param int $groupId
      * @param string $subGroupIds
@@ -607,7 +566,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeSubGroups(
-            float $version,
             bool $returnNulls,
             int $groupId,
             string $subGroupIds,
@@ -624,7 +582,6 @@ interface ConnectionApiInterface {
      * Operation searchConnections
      *
      * Search Possible Connections
-     * @param float $version
      * @param bool $returnNulls
      * @param int $start
      * @param int $limit
@@ -643,7 +600,6 @@ interface ConnectionApiInterface {
      * @return \OpenAPI\Server\Model\ConnectionListResponse
      */
     public function searchConnections(
-            float $version,
             bool $returnNulls,
             int $start,
             int $limit,

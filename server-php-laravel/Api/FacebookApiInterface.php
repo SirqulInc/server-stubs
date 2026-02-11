@@ -28,7 +28,6 @@ interface FacebookApiInterface {
      * Operation getToken
      *
      * Get Facebook Token
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -36,7 +35,6 @@ interface FacebookApiInterface {
      * @return \OpenAPI\Server\Model\TokenResponse
      */
     public function getToken(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,
@@ -50,7 +48,6 @@ interface FacebookApiInterface {
      * Operation graphInterface
      *
      * Post to Facebook
-     * @param float $version
      * @param string $event
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -64,7 +61,6 @@ interface FacebookApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function graphInterface(
-            float $version,
             string $event,
             ?string $deviceId,
             ?int $accountId,

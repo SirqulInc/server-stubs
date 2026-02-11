@@ -28,7 +28,6 @@ interface SecureAppApiInterface {
      * Operation createSecureApplication
      *
      * Create Secure Application
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param \Illuminate\Http\UploadedFile $keyCert
@@ -42,7 +41,6 @@ interface SecureAppApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function createSecureApplication(
-            float $version,
             int $accountId,
             string $appKey,
             \Illuminate\Http\UploadedFile $keyCert,
@@ -62,13 +60,11 @@ interface SecureAppApiInterface {
      * Operation deleteSecureApplication
      *
      * Delete Secure Application
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteSecureApplication(
-            float $version,
             int $accountId,
             string $appKey,
     ):
@@ -80,7 +76,6 @@ interface SecureAppApiInterface {
      * Operation loginSecure
      *
      * Login Clear
-     * @param float $version
      * @param string $appKey
      * @param \Illuminate\Http\UploadedFile $biometricFile
      * @param null | string $deviceId
@@ -93,7 +88,6 @@ interface SecureAppApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function loginSecure(
-            float $version,
             string $appKey,
             \Illuminate\Http\UploadedFile $biometricFile,
             ?string $deviceId,
@@ -112,12 +106,10 @@ interface SecureAppApiInterface {
      * Operation purchaseSecure
      *
      * Purchase Clear
-     * @param float $version
      * @param \OpenAPI\Server\Model\PaymentRequest $body
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function purchaseSecure(
-            float $version,
             \OpenAPI\Server\Model\PaymentRequest $body,
     ):
         \OpenAPI\Server\Model\ProfileResponse
@@ -128,13 +120,11 @@ interface SecureAppApiInterface {
      * Operation resetSecure
      *
      * Rest Secure Application
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function resetSecure(
-            float $version,
             int $accountId,
             string $appKey,
     ):
@@ -146,7 +136,6 @@ interface SecureAppApiInterface {
      * Operation updateSecureApplication
      *
      * Update Secure Application
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | bool $active
@@ -160,7 +149,6 @@ interface SecureAppApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateSecureApplication(
-            float $version,
             int $accountId,
             string $appKey,
             ?bool $active,

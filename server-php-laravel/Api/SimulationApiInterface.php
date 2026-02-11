@@ -28,13 +28,11 @@ interface SimulationApiInterface {
      * Operation simulation
      *
      * Routing Simulation
-     * @param float $version
      * @param string $data
      * @param bool $realTime
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function simulation(
-            float $version,
             string $data,
             bool $realTime,
     ):

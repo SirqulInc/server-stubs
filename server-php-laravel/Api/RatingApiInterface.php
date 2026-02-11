@@ -28,7 +28,6 @@ interface RatingApiInterface {
      * Operation createRating
      *
      * Create Rating
-     * @param float $version
      * @param string $ratableType
      * @param int $ratableId
      * @param int $ratingValue
@@ -43,7 +42,6 @@ interface RatingApiInterface {
      * @return \OpenAPI\Server\Model\RatingResponse
      */
     public function createRating(
-            float $version,
             string $ratableType,
             int $ratableId,
             int $ratingValue,
@@ -64,14 +62,12 @@ interface RatingApiInterface {
      * Operation deleteRating
      *
      * Delete Rating
-     * @param float $version
      * @param int $ratingId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteRating(
-            float $version,
             int $ratingId,
             ?string $deviceId,
             ?int $accountId,
@@ -84,7 +80,6 @@ interface RatingApiInterface {
      * Operation searchLocationRatingIndexes
      *
      * Search Location Rating Indexes
-     * @param float $version
      * @param null | string $categoryIds
      * @param null | string $keyword
      * @param null | string $locationType
@@ -105,7 +100,6 @@ interface RatingApiInterface {
      * @return \OpenAPI\Server\Model\RatingIndexResponse[]
      */
     public function searchLocationRatingIndexes(
-            float $version,
             ?string $categoryIds,
             ?string $keyword,
             ?string $locationType,
@@ -132,7 +126,6 @@ interface RatingApiInterface {
      * Operation searchRatingIndexes
      *
      * Search Rating Indexes
-     * @param float $version
      * @param \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $ratableType
      * @param null | string $ratableIds
      * @param null | string $categoryIds
@@ -149,7 +142,6 @@ interface RatingApiInterface {
      * @return \OpenAPI\Server\Model\RatingIndexResponse[]
      */
     public function searchRatingIndexes(
-            float $version,
             \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $ratableType,
             ?string $ratableIds,
             ?string $categoryIds,
@@ -172,7 +164,6 @@ interface RatingApiInterface {
      * Operation searchRatings
      *
      * Search Ratings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $filterAccountId
@@ -187,7 +178,6 @@ interface RatingApiInterface {
      * @return \OpenAPI\Server\Model\RatingResponse[]
      */
     public function searchRatings(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $filterAccountId,
@@ -208,7 +198,6 @@ interface RatingApiInterface {
      * Operation updateRating
      *
      * Update Rating
-     * @param float $version
      * @param int $ratingId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -222,7 +211,6 @@ interface RatingApiInterface {
      * @return \OpenAPI\Server\Model\RatingResponse
      */
     public function updateRating(
-            float $version,
             int $ratingId,
             ?string $deviceId,
             ?int $accountId,

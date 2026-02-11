@@ -28,7 +28,6 @@ interface PackApiInterface {
      * Operation createPack
      *
      * Create Pack
-     * @param float $version
      * @param int $accountId
      * @param string $title
      * @param int $packOrder
@@ -56,7 +55,6 @@ interface PackApiInterface {
      * @return \OpenAPI\Server\Model\PackResponse
      */
     public function createPack(
-            float $version,
             int $accountId,
             string $title,
             int $packOrder,
@@ -90,13 +88,11 @@ interface PackApiInterface {
      * Operation deletePack
      *
      * Delete Pack
-     * @param float $version
      * @param int $accountId
      * @param int $packId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deletePack(
-            float $version,
             int $accountId,
             int $packId,
     ):
@@ -108,14 +104,12 @@ interface PackApiInterface {
      * Operation getPack
      *
      * Get Pack
-     * @param float $version
      * @param int $accountId
      * @param int $packId
      * @param bool $includeGameData
      * @return \OpenAPI\Server\Model\PackResponse
      */
     public function getPack(
-            float $version,
             int $accountId,
             int $packId,
             bool $includeGameData,
@@ -128,7 +122,6 @@ interface PackApiInterface {
      * Operation searchPacks
      *
      * Search Packs
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\SearchPacksSortFieldParameter $sortField
      * @param bool $descending
@@ -142,7 +135,6 @@ interface PackApiInterface {
      * @return \OpenAPI\Server\Model\PackResponse[]
      */
     public function searchPacks(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\SearchPacksSortFieldParameter $sortField,
             bool $descending,
@@ -162,7 +154,6 @@ interface PackApiInterface {
      * Operation updatePack
      *
      * Update Pack
-     * @param float $version
      * @param int $accountId
      * @param int $packId
      * @param bool $allocateTickets
@@ -191,7 +182,6 @@ interface PackApiInterface {
      * @return \OpenAPI\Server\Model\PackResponse
      */
     public function updatePack(
-            float $version,
             int $accountId,
             int $packId,
             bool $allocateTickets,

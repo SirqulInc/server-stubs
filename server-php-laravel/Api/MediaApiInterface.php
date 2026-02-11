@@ -28,7 +28,6 @@ interface MediaApiInterface {
      * Operation createMedia
      *
      * Create Media
-     * @param float $version
      * @param int $accountId
      * @param string $title
      * @param \OpenAPI\Server\Model\CreateMediaBarcodeTypeParameter $barcodeType
@@ -89,7 +88,6 @@ interface MediaApiInterface {
      * @return \OpenAPI\Server\Model\MediaOfferResponse
      */
     public function createMedia(
-            float $version,
             int $accountId,
             string $title,
             \OpenAPI\Server\Model\CreateMediaBarcodeTypeParameter $barcodeType,
@@ -156,13 +154,11 @@ interface MediaApiInterface {
      * Operation deleteMedia
      *
      * Delete Media
-     * @param float $version
      * @param int $accountId
      * @param int $mediaId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteMedia(
-            float $version,
             int $accountId,
             int $mediaId,
     ):
@@ -174,13 +170,11 @@ interface MediaApiInterface {
      * Operation getMedia
      *
      * Media Get
-     * @param float $version
      * @param int $accountId
      * @param int $mediaId
      * @return \OpenAPI\Server\Model\MediaOfferResponse
      */
     public function getMedia(
-            float $version,
             int $accountId,
             int $mediaId,
     ):
@@ -192,7 +186,6 @@ interface MediaApiInterface {
      * Operation searchMedia
      *
      * Search Media
-     * @param float $version
      * @param int $accountId
      * @param bool $activeOnly
      * @param \OpenAPI\Server\Model\SearchEventsSortFieldParameter $sortField
@@ -205,7 +198,6 @@ interface MediaApiInterface {
      * @return \OpenAPI\Server\Model\MediaOfferResponse[]
      */
     public function searchMedia(
-            float $version,
             int $accountId,
             bool $activeOnly,
             \OpenAPI\Server\Model\SearchEventsSortFieldParameter $sortField,
@@ -224,7 +216,6 @@ interface MediaApiInterface {
      * Operation updateMedia
      *
      * Update Media
-     * @param float $version
      * @param int $accountId
      * @param int $mediaId
      * @param null | string $retailerLocationIds
@@ -287,7 +278,6 @@ interface MediaApiInterface {
      * @return \OpenAPI\Server\Model\MediaOfferResponse
      */
     public function updateMedia(
-            float $version,
             int $accountId,
             int $mediaId,
             ?string $retailerLocationIds,

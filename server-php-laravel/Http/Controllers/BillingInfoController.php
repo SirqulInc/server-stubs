@@ -47,19 +47,16 @@ class BillingInfoController extends Controller
      * Update Payment Method.
      *
      */
-    public function addPaymentMethod(Request $request, float $version): JsonResponse
+    public function addPaymentMethod(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -137,7 +134,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $paymentMethodId = $request->integer('paymentMethodId');
@@ -185,7 +181,7 @@ class BillingInfoController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->addPaymentMethod($version, $accountId, $paymentMethodId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $defaultPaymentMethod, $paymentMethodNickname, $taxId, $providerCustomerProfileId, $providerPaymentProfileId, $metaData);
+        $apiResult = $this->api->addPaymentMethod($accountId, $paymentMethodId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $defaultPaymentMethod, $paymentMethodNickname, $taxId, $providerCustomerProfileId, $providerPaymentProfileId, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -201,19 +197,16 @@ class BillingInfoController extends Controller
      * Create Payment Method.
      *
      */
-    public function createPaymentMethod(Request $request, float $version): JsonResponse
+    public function createPaymentMethod(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -297,7 +290,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $accountName = $request->string('accountName')->value();
@@ -349,7 +341,7 @@ class BillingInfoController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->createPaymentMethod($version, $accountId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $paymentMethodNickname, $taxId, $defaultPaymentMethod, $authToken, $provider, $providerCustomerProfileId, $providerPaymentProfileId, $metaData, $appKey);
+        $apiResult = $this->api->createPaymentMethod($accountId, $accountName, $firstName, $lastName, $address, $city, $state, $postalCode, $country, $phone, $creditCardNumber, $expirationDate, $ccv, $accountNumber, $bankName, $routingNumber, $paymentMethodNickname, $taxId, $defaultPaymentMethod, $authToken, $provider, $providerCustomerProfileId, $providerPaymentProfileId, $metaData, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -365,19 +357,16 @@ class BillingInfoController extends Controller
      * Create Smart Contract.
      *
      */
-    public function createSmartContract(Request $request, float $version): JsonResponse
+    public function createSmartContract(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -400,7 +389,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $tokenName = $request->string('tokenName')->value();
@@ -410,7 +398,7 @@ class BillingInfoController extends Controller
         $paymentMethodId = $request->integer('paymentMethodId');
 
 
-        $apiResult = $this->api->createSmartContract($version, $accountId, $tokenName, $tokenSymbol, $paymentMethodId);
+        $apiResult = $this->api->createSmartContract($accountId, $tokenName, $tokenSymbol, $paymentMethodId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -426,19 +414,16 @@ class BillingInfoController extends Controller
      * Get Crypto Balances.
      *
      */
-    public function getCryptoBalance(Request $request, float $version): JsonResponse
+    public function getCryptoBalance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -456,7 +441,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $ownerAccountId = $request->integer('ownerAccountId');
@@ -464,7 +448,7 @@ class BillingInfoController extends Controller
         $paymentMethodId = $request->integer('paymentMethodId');
 
 
-        $apiResult = $this->api->getCryptoBalance($version, $accountId, $ownerAccountId, $paymentMethodId);
+        $apiResult = $this->api->getCryptoBalance($accountId, $ownerAccountId, $paymentMethodId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -480,19 +464,16 @@ class BillingInfoController extends Controller
      * Get Payment Method.
      *
      */
-    public function getPaymentMethod(Request $request, float $version): JsonResponse
+    public function getPaymentMethod(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -510,7 +491,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $paymentMethodId = $request->integer('paymentMethodId');
@@ -518,7 +498,7 @@ class BillingInfoController extends Controller
         $getCurrentBalance = $request->boolean('getCurrentBalance');
 
 
-        $apiResult = $this->api->getPaymentMethod($version, $accountId, $paymentMethodId, $getCurrentBalance);
+        $apiResult = $this->api->getPaymentMethod($accountId, $paymentMethodId, $getCurrentBalance);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -534,19 +514,16 @@ class BillingInfoController extends Controller
      * Search Payment Methods.
      *
      */
-    public function searchPaymentMethod(Request $request, float $version): JsonResponse
+    public function searchPaymentMethod(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -579,7 +556,6 @@ class BillingInfoController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $provider = $request->string('provider')->value();
@@ -597,7 +573,7 @@ class BillingInfoController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchPaymentMethod($version, $accountId, $provider, $type, $keyword, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchPaymentMethod($accountId, $provider, $type, $keyword, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PaymentTypesResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

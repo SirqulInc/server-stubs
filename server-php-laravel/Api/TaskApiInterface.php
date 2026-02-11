@@ -28,7 +28,6 @@ interface TaskApiInterface {
      * Operation createTask
      *
      * Create Task
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $appKey
@@ -44,7 +43,6 @@ interface TaskApiInterface {
      * @return \OpenAPI\Server\Model\TaskResponse
      */
     public function createTask(
-            float $version,
             int $accountId,
             string $name,
             ?string $appKey,
@@ -66,13 +64,11 @@ interface TaskApiInterface {
      * Operation deleteTask
      *
      * Delete Task
-     * @param float $version
      * @param int $accountId
      * @param int $taskId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteTask(
-            float $version,
             int $accountId,
             int $taskId,
     ):
@@ -84,13 +80,11 @@ interface TaskApiInterface {
      * Operation getTask
      *
      * Get Task
-     * @param float $version
      * @param int $accountId
      * @param int $taskId
      * @return \OpenAPI\Server\Model\TaskResponse
      */
     public function getTask(
-            float $version,
             int $accountId,
             int $taskId,
     ):
@@ -102,7 +96,6 @@ interface TaskApiInterface {
      * Operation searchTasks
      *
      * Search Tasks
-     * @param float $version
      * @param int $accountId
      * @param null | string $groupingId
      * @param null | string $filter
@@ -118,7 +111,6 @@ interface TaskApiInterface {
      * @return \OpenAPI\Server\Model\TaskResponse[]
      */
     public function searchTasks(
-            float $version,
             int $accountId,
             ?string $groupingId,
             ?string $filter,
@@ -140,7 +132,6 @@ interface TaskApiInterface {
      * Operation updateTask
      *
      * Update Task
-     * @param float $version
      * @param int $taskId
      * @param int $accountId
      * @param null | string $name
@@ -157,7 +148,6 @@ interface TaskApiInterface {
      * @return \OpenAPI\Server\Model\TaskResponse
      */
     public function updateTask(
-            float $version,
             int $taskId,
             int $accountId,
             ?string $name,

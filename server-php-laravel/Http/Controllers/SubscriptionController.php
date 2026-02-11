@@ -47,19 +47,16 @@ class SubscriptionController extends Controller
      * Create Subscription.
      *
      */
-    public function createSubscription(Request $request, float $version): JsonResponse
+    public function createSubscription(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -77,7 +74,6 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $planId = $request->integer('planId');
@@ -85,7 +81,7 @@ class SubscriptionController extends Controller
         $promoCode = $request->string('promoCode')->value();
 
 
-        $apiResult = $this->api->createSubscription($version, $accountId, $planId, $promoCode);
+        $apiResult = $this->api->createSubscription($accountId, $planId, $promoCode);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SubscriptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -101,19 +97,16 @@ class SubscriptionController extends Controller
      * Delete Subscription.
      *
      */
-    public function deleteSubscription(Request $request, float $version): JsonResponse
+    public function deleteSubscription(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -125,11 +118,10 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteSubscription($version, $accountId);
+        $apiResult = $this->api->deleteSubscription($accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -145,19 +137,16 @@ class SubscriptionController extends Controller
      * Get Subscription.
      *
      */
-    public function getSubscription(Request $request, float $version): JsonResponse
+    public function getSubscription(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -169,11 +158,10 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getSubscription($version, $accountId);
+        $apiResult = $this->api->getSubscription($accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SubscriptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -189,19 +177,16 @@ class SubscriptionController extends Controller
      * Get Subscription Plan.
      *
      */
-    public function getSubscriptionPlan(Request $request, float $version): JsonResponse
+    public function getSubscriptionPlan(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'planId' => [
                     'required',
                     'integer',
@@ -213,11 +198,10 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $planId = $request->integer('planId');
 
 
-        $apiResult = $this->api->getSubscriptionPlan($version, $planId);
+        $apiResult = $this->api->getSubscriptionPlan($planId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SubscriptionPlanResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -233,19 +217,16 @@ class SubscriptionController extends Controller
      * List Subscription Plans.
      *
      */
-    public function getSubscriptionPlans(Request $request, float $version): JsonResponse
+    public function getSubscriptionPlans(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'visible' => [
                     'boolean',
                 ],
@@ -259,13 +240,12 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $visible = $request->boolean('visible');
 
         $role = $request->string('role')->value();
 
 
-        $apiResult = $this->api->getSubscriptionPlans($version, $visible, $role);
+        $apiResult = $this->api->getSubscriptionPlans($visible, $role);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -282,19 +262,16 @@ class SubscriptionController extends Controller
      * Get Subscription Usage.
      *
      */
-    public function getSubscriptionUsage(Request $request, float $version): JsonResponse
+    public function getSubscriptionUsage(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -315,7 +292,6 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $applicationId = $request->integer('applicationId');
@@ -325,7 +301,7 @@ class SubscriptionController extends Controller
         $end = $request->integer('end');
 
 
-        $apiResult = $this->api->getSubscriptionUsage($version, $accountId, $applicationId, $start, $end);
+        $apiResult = $this->api->getSubscriptionUsage($accountId, $applicationId, $start, $end);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationUsageResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -341,19 +317,16 @@ class SubscriptionController extends Controller
      * Update Subscription.
      *
      */
-    public function updateSubscription(Request $request, float $version): JsonResponse
+    public function updateSubscription(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -374,7 +347,6 @@ class SubscriptionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $planId = $request->integer('planId');
@@ -384,7 +356,7 @@ class SubscriptionController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateSubscription($version, $accountId, $planId, $promoCode, $active);
+        $apiResult = $this->api->updateSubscription($accountId, $planId, $promoCode, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SubscriptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

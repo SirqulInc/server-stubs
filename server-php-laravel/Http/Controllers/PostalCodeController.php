@@ -47,19 +47,16 @@ class PostalCodeController extends Controller
      * Create Postal Code.
      *
      */
-    public function createPostalCode(Request $request, float $version): JsonResponse
+    public function createPostalCode(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -90,7 +87,6 @@ class PostalCodeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $code = $request->string('code')->value();
@@ -106,7 +102,7 @@ class PostalCodeController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createPostalCode($version, $accountId, $code, $latitude, $longitude, $stateCode, $city, $active);
+        $apiResult = $this->api->createPostalCode($accountId, $code, $latitude, $longitude, $stateCode, $city, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PostalCodeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -122,19 +118,16 @@ class PostalCodeController extends Controller
      * Delete Postal Code.
      *
      */
-    public function deletePostalCode(Request $request, float $version): JsonResponse
+    public function deletePostalCode(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -150,13 +143,12 @@ class PostalCodeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $postalCodeId = $request->integer('postalCodeId');
 
 
-        $apiResult = $this->api->deletePostalCode($version, $accountId, $postalCodeId);
+        $apiResult = $this->api->deletePostalCode($accountId, $postalCodeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -172,19 +164,16 @@ class PostalCodeController extends Controller
      * Get Postal Code.
      *
      */
-    public function getPostalCode(Request $request, float $version): JsonResponse
+    public function getPostalCode(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'postalCodeId' => [
                     'required',
                     'integer',
@@ -196,11 +185,10 @@ class PostalCodeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $postalCodeId = $request->integer('postalCodeId');
 
 
-        $apiResult = $this->api->getPostalCode($version, $postalCodeId);
+        $apiResult = $this->api->getPostalCode($postalCodeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PostalCodeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -216,19 +204,16 @@ class PostalCodeController extends Controller
      * Search Postal Codes.
      *
      */
-    public function getPostalCodes(Request $request, float $version): JsonResponse
+    public function getPostalCodes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -259,7 +244,6 @@ class PostalCodeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -277,7 +261,7 @@ class PostalCodeController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getPostalCodes($version, $sortField, $descending, $latitude, $longitude, $keyword, $miles, $start, $limit);
+        $apiResult = $this->api->getPostalCodes($sortField, $descending, $latitude, $longitude, $keyword, $miles, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -294,19 +278,16 @@ class PostalCodeController extends Controller
      * Update Postal Code.
      *
      */
-    public function updatePostalCode(Request $request, float $version): JsonResponse
+    public function updatePostalCode(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -338,7 +319,6 @@ class PostalCodeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $postalCodeId = $request->integer('postalCodeId');
@@ -356,7 +336,7 @@ class PostalCodeController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updatePostalCode($version, $accountId, $postalCodeId, $code, $latitude, $longitude, $stateCode, $city, $active);
+        $apiResult = $this->api->updatePostalCode($accountId, $postalCodeId, $code, $latitude, $longitude, $stateCode, $city, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PostalCodeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,7 +28,6 @@ interface NoteApiInterface {
      * Operation batchOperation
      *
      * Batch Note Operation
-     * @param float $version
      * @param int $notableId
      * @param string $notableType
      * @param null | string $deviceId
@@ -37,7 +36,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function batchOperation(
-            float $version,
             int $notableId,
             string $notableType,
             ?string $deviceId,
@@ -52,7 +50,6 @@ interface NoteApiInterface {
      * Operation createNote
      *
      * Create Note
-     * @param float $version
      * @param string $comment
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -98,7 +95,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\NoteResponse
      */
     public function createNote(
-            float $version,
             string $comment,
             ?string $deviceId,
             ?int $accountId,
@@ -150,7 +146,6 @@ interface NoteApiInterface {
      * Operation deleteNote
      *
      * Delete Note
-     * @param float $version
      * @param int $noteId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -160,7 +155,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteNote(
-            float $version,
             int $noteId,
             ?string $deviceId,
             ?int $accountId,
@@ -176,7 +170,6 @@ interface NoteApiInterface {
      * Operation getNote
      *
      * Get Note
-     * @param float $version
      * @param int $noteId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -184,7 +177,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getNote(
-            float $version,
             int $noteId,
             ?string $deviceId,
             ?int $accountId,
@@ -198,7 +190,6 @@ interface NoteApiInterface {
      * Operation searchNotes
      *
      * Search Notes
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $notableType
@@ -219,7 +210,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\NoteResponse[]
      */
     public function searchNotes(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $notableType,
@@ -246,7 +236,6 @@ interface NoteApiInterface {
      * Operation updateNote
      *
      * Update Note
-     * @param float $version
      * @param int $noteId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -291,7 +280,6 @@ interface NoteApiInterface {
      * @return \OpenAPI\Server\Model\NoteResponse
      */
     public function updateNote(
-            float $version,
             int $noteId,
             ?string $deviceId,
             ?int $accountId,

@@ -28,7 +28,6 @@ interface MissionApiInterface {
      * Operation createMission
      *
      * Create Mission
-     * @param float $version
      * @param int $accountId
      * @param string $title
      * @param null | string $description
@@ -58,7 +57,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function createMission(
-            float $version,
             int $accountId,
             string $title,
             ?string $description,
@@ -94,13 +92,11 @@ interface MissionApiInterface {
      * Operation deleteMission
      *
      * Delete Mission
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteMission(
-            float $version,
             int $accountId,
             int $missionId,
     ):
@@ -112,7 +108,6 @@ interface MissionApiInterface {
      * Operation findMissions
      *
      * Find Missions
-     * @param float $version
      * @param string $appKey
      * @param null | string $suffix
      * @param null | string $type
@@ -135,7 +130,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function findMissions(
-            float $version,
             string $appKey,
             ?string $suffix,
             ?string $type,
@@ -164,14 +158,12 @@ interface MissionApiInterface {
      * Operation getMission
      *
      * Get Mission
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @param null | bool $returnCreative
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function getMission(
-            float $version,
             int $accountId,
             int $missionId,
             ?bool $returnCreative,
@@ -184,7 +176,6 @@ interface MissionApiInterface {
      * Operation importMission
      *
      * Import Mission
-     * @param float $version
      * @param int $accountId
      * @param float $latitude
      * @param float $longitude
@@ -196,7 +187,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function importMission(
-            float $version,
             int $accountId,
             float $latitude,
             float $longitude,
@@ -214,14 +204,12 @@ interface MissionApiInterface {
      * Operation searchMissionFormats
      *
      * Search Mission Formats
-     * @param float $version
      * @param int $start
      * @param int $limit
      * @param bool $activeOnly
      * @return \OpenAPI\Server\Model\MissionFormatResponse[]
      */
     public function searchMissionFormats(
-            float $version,
             int $start,
             int $limit,
             bool $activeOnly,
@@ -234,7 +222,6 @@ interface MissionApiInterface {
      * Operation searchMissions
      *
      * Search Missions
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @param null | string $subType
@@ -249,7 +236,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse[]
      */
     public function searchMissions(
-            float $version,
             int $accountId,
             ?string $keyword,
             ?string $subType,
@@ -270,7 +256,6 @@ interface MissionApiInterface {
      * Operation searchMissionsByBillableEntity
      *
      * Search Missions by Billable Entity
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @param null | int $start
@@ -284,7 +269,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse[]
      */
     public function searchMissionsByBillableEntity(
-            float $version,
             int $accountId,
             ?string $keyword,
             ?int $start,
@@ -304,7 +288,6 @@ interface MissionApiInterface {
      * Operation updateMission
      *
      * Update Mission
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @param null | string $title
@@ -333,7 +316,6 @@ interface MissionApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse
      */
     public function updateMission(
-            float $version,
             int $accountId,
             int $missionId,
             ?string $title,

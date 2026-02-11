@@ -47,19 +47,16 @@ class DisbursementController extends Controller
      * Check Disbursements.
      *
      */
-    public function checkDisbursements(Request $request, float $version): JsonResponse
+    public function checkDisbursements(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'disbursementId' => [
                     'required',
                     'integer',
@@ -71,11 +68,10 @@ class DisbursementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $disbursementId = $request->integer('disbursementId');
 
 
-        $apiResult = $this->api->checkDisbursements($version, $disbursementId);
+        $apiResult = $this->api->checkDisbursements($disbursementId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DisbursementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -91,19 +87,16 @@ class DisbursementController extends Controller
      * Create Disbursement.
      *
      */
-    public function createDisbursement(Request $request, float $version): JsonResponse
+    public function createDisbursement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -144,7 +137,6 @@ class DisbursementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $receiverAccountId = $request->integer('receiverAccountId');
@@ -166,7 +158,7 @@ class DisbursementController extends Controller
         $introspectionParams = $request->string('introspectionParams')->value();
 
 
-        $apiResult = $this->api->createDisbursement($version, $accountId, $receiverAccountId, $originalSenderAccountId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $introspectionParams);
+        $apiResult = $this->api->createDisbursement($accountId, $receiverAccountId, $originalSenderAccountId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $introspectionParams);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DisbursementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -182,19 +174,16 @@ class DisbursementController extends Controller
      * Get Disbursement.
      *
      */
-    public function getDisbursement(Request $request, float $version): JsonResponse
+    public function getDisbursement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -210,13 +199,12 @@ class DisbursementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $disbursementId = $request->integer('disbursementId');
 
 
-        $apiResult = $this->api->getDisbursement($version, $accountId, $disbursementId);
+        $apiResult = $this->api->getDisbursement($accountId, $disbursementId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DisbursementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -232,19 +220,16 @@ class DisbursementController extends Controller
      * Search Disbursements.
      *
      */
-    public function searchDisbursements(Request $request, float $version): JsonResponse
+    public function searchDisbursements(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -283,7 +268,6 @@ class DisbursementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $receiverAccountId = $request->integer('receiverAccountId');
@@ -305,7 +289,7 @@ class DisbursementController extends Controller
         $externalId = $request->string('externalId')->value();
 
 
-        $apiResult = $this->api->searchDisbursements($version, $accountId, $receiverAccountId, $statuses, $providers, $beforeDate, $afterDate, $start, $limit, $activeOnly, $externalId);
+        $apiResult = $this->api->searchDisbursements($accountId, $receiverAccountId, $statuses, $providers, $beforeDate, $afterDate, $start, $limit, $activeOnly, $externalId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -322,19 +306,16 @@ class DisbursementController extends Controller
      * Update Disbursement.
      *
      */
-    public function updateDisbursement(Request $request, float $version): JsonResponse
+    public function updateDisbursement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -372,7 +353,6 @@ class DisbursementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $disbursementId = $request->integer('disbursementId');
@@ -394,7 +374,7 @@ class DisbursementController extends Controller
         $introspectionParams = $request->string('introspectionParams')->value();
 
 
-        $apiResult = $this->api->updateDisbursement($version, $accountId, $disbursementId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $retry, $introspectionParams);
+        $apiResult = $this->api->updateDisbursement($accountId, $disbursementId, $amount, $provider, $scheduledDate, $title, $comment, $externalId, $retry, $introspectionParams);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DisbursementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,13 +28,11 @@ interface DependentApiInterface {
      * Operation create
      *
      * Create Dependent
-     * @param float $version
      * @param int $accountId
      * @param null | \OpenAPI\Server\Model\Account $body
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function create(
-            float $version,
             int $accountId,
             ?\OpenAPI\Server\Model\Account $body,
     ):
@@ -46,12 +44,10 @@ interface DependentApiInterface {
      * Operation getDependents
      *
      * Get dependent list of an account
-     * @param float $version
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getDependents(
-            float $version,
             int $accountId,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -62,13 +58,11 @@ interface DependentApiInterface {
      * Operation removeDependent
      *
      * Delete Dependent
-     * @param float $version
      * @param int $accountId
      * @param int $dependentId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function removeDependent(
-            float $version,
             int $accountId,
             int $dependentId,
     ):

@@ -28,12 +28,10 @@ interface StopApiInterface {
      * Operation getStop
      *
      * Get Stop
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\Stop
      */
     public function getStop(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\Stop
@@ -44,13 +42,11 @@ interface StopApiInterface {
      * Operation updateStop
      *
      * Update Stop
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Stop $body
      * @return \OpenAPI\Server\Model\Stop
      */
     public function updateStop(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Stop $body,
     ):

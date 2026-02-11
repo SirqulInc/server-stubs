@@ -47,19 +47,16 @@ class TwilioController extends Controller
      * Buy Offer by SMS.
      *
      */
-    public function smsBuyOffer(Request $request, float $version, string $appKey): JsonResponse
+    public function smsBuyOffer(Request $request, string $appKey): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'appKey' => $appKey,
+                    'appKey' => $appKey,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -84,7 +81,6 @@ class TwilioController extends Controller
         }
 
 
-
         $body = $request->string('body')->value();
 
         $from = $request->string('from')->value();
@@ -92,7 +88,7 @@ class TwilioController extends Controller
         $currencyType = $request->string('currencyType')->value();
 
 
-        $apiResult = $this->api->smsBuyOffer($version, $appKey, $body, $from, $currencyType);
+        $apiResult = $this->api->smsBuyOffer($appKey, $body, $from, $currencyType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TwiMLResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

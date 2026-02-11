@@ -47,19 +47,16 @@ class ContestController extends Controller
      * Create or Update Contest.
      *
      */
-    public function addOrUpdateAlbumContest(Request $request, float $version): JsonResponse
+    public function addOrUpdateAlbumContest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'publicRead' => [
                     'required',
                     'boolean',
@@ -145,7 +142,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $publicRead = $request->boolean('publicRead');
 
         $publicWrite = $request->boolean('publicWrite');
@@ -197,7 +193,7 @@ class ContestController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addOrUpdateAlbumContest($version, $publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $deviceId, $accountId, $gameType, $appKey, $contestType, $albumContestId, $title, $description, $albumId1, $removeAlbum1, $albumId2, $removeAlbum2, $startDate, $endDate, $locationDescription, $connectionIdsToAdd, $connectionGroupIdsToAdd, $latitude, $longitude);
+        $apiResult = $this->api->addOrUpdateAlbumContest($publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $deviceId, $accountId, $gameType, $appKey, $contestType, $albumContestId, $title, $description, $albumId1, $removeAlbum1, $albumId2, $removeAlbum2, $startDate, $endDate, $locationDescription, $connectionIdsToAdd, $connectionGroupIdsToAdd, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumContestResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -213,19 +209,16 @@ class ContestController extends Controller
      * Approve Contest.
      *
      */
-    public function approveAlbumContest(Request $request, float $version): JsonResponse
+    public function approveAlbumContest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumContestId' => [
                     'required',
                     'integer',
@@ -246,7 +239,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumContestId = $request->integer('albumContestId');
 
         $approvalStatus = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ApproveAlbumApprovalStatusParameter::class);
@@ -256,7 +248,7 @@ class ContestController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->approveAlbumContest($version, $albumContestId, $approvalStatus, $deviceId, $accountId);
+        $apiResult = $this->api->approveAlbumContest($albumContestId, $approvalStatus, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -272,19 +264,16 @@ class ContestController extends Controller
      * Delete Contest.
      *
      */
-    public function deleteContest(Request $request, float $version): JsonResponse
+    public function deleteContest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumContestId' => [
                     'required',
                     'integer',
@@ -306,7 +295,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumContestId = $request->integer('albumContestId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -318,7 +306,7 @@ class ContestController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->deleteContest($version, $albumContestId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->deleteContest($albumContestId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -334,19 +322,16 @@ class ContestController extends Controller
      * Get Contest.
      *
      */
-    public function getAlbumContest(Request $request, float $version): JsonResponse
+    public function getAlbumContest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumContestId' => [
                     'required',
                     'integer',
@@ -368,7 +353,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumContestId = $request->integer('albumContestId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -380,7 +364,7 @@ class ContestController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getAlbumContest($version, $albumContestId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getAlbumContest($albumContestId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumContestResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -396,19 +380,16 @@ class ContestController extends Controller
      * Search Contests.
      *
      */
-    public function getAlbumContests(Request $request, float $version): JsonResponse
+    public function getAlbumContests(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'filter' => [
                     'required',
                     'string',
@@ -476,7 +457,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $filter = $request->string('filter')->value();
 
         $sortField = $request->string('sortField')->value();
@@ -516,7 +496,7 @@ class ContestController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getAlbumContests($version, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $appKey, $appType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $latitude, $longitude);
+        $apiResult = $this->api->getAlbumContests($filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $appKey, $appType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumContestListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -532,19 +512,16 @@ class ContestController extends Controller
      * Vote on Contest.
      *
      */
-    public function voteOnAlbumContest(Request $request, float $version): JsonResponse
+    public function voteOnAlbumContest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumContestId' => [
                     'required',
                     'integer',
@@ -573,7 +550,6 @@ class ContestController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumContestId = $request->integer('albumContestId');
 
         $albumId = $request->integer('albumId');
@@ -589,7 +565,7 @@ class ContestController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->voteOnAlbumContest($version, $albumContestId, $albumId, $deviceId, $accountId, $contestType, $latitude, $longitude);
+        $apiResult = $this->api->voteOnAlbumContest($albumContestId, $albumId, $deviceId, $accountId, $contestType, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumContestResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,19 +47,16 @@ class GameLevelController extends Controller
      * Create Game Level.
      *
      */
-    public function createGameLevel(Request $request, float $version): JsonResponse
+    public function createGameLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -148,7 +145,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -202,7 +198,7 @@ class GameLevelController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createGameLevel($version, $accountId, $name, $gameData, $gameDataSuffix, $appKey, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData);
+        $apiResult = $this->api->createGameLevel($accountId, $name, $gameData, $gameDataSuffix, $appKey, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameLevelResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -218,19 +214,16 @@ class GameLevelController extends Controller
      * Delete Game Level.
      *
      */
-    public function deleteGameLevel(Request $request, float $version): JsonResponse
+    public function deleteGameLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -246,13 +239,12 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $levelId = $request->integer('levelId');
 
 
-        $apiResult = $this->api->deleteGameLevel($version, $accountId, $levelId);
+        $apiResult = $this->api->deleteGameLevel($accountId, $levelId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -268,19 +260,16 @@ class GameLevelController extends Controller
      * Get Game Level.
      *
      */
-    public function getGameLevel(Request $request, float $version): JsonResponse
+    public function getGameLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -299,7 +288,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $levelId = $request->integer('levelId');
@@ -307,7 +295,7 @@ class GameLevelController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->getGameLevel($version, $accountId, $levelId, $includeGameData);
+        $apiResult = $this->api->getGameLevel($accountId, $levelId, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameLevelResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -323,19 +311,16 @@ class GameLevelController extends Controller
      * Search Game Levels.
      *
      */
-    public function getGameLevelsByApplication(Request $request, float $version): JsonResponse
+    public function getGameLevelsByApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -375,7 +360,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -397,7 +381,7 @@ class GameLevelController extends Controller
         $filters = $request->string('filters')->value();
 
 
-        $apiResult = $this->api->getGameLevelsByApplication($version, $accountId, $appKey, $keyword, $sortField, $descending, $start, $limit, $appVersion, $includeGameData, $filters);
+        $apiResult = $this->api->getGameLevelsByApplication($accountId, $appKey, $keyword, $sortField, $descending, $start, $limit, $appVersion, $includeGameData, $filters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameLevelListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -413,19 +397,16 @@ class GameLevelController extends Controller
      * Search Game Level by Billable Entity.
      *
      */
-    public function getGameLevelsByBillableEntity(Request $request, float $version): JsonResponse
+    public function getGameLevelsByBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -457,7 +438,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -475,7 +455,7 @@ class GameLevelController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getGameLevelsByBillableEntity($version, $accountId, $appKey, $keyword, $sortField, $descending, $activeOnly, $start, $limit);
+        $apiResult = $this->api->getGameLevelsByBillableEntity($accountId, $appKey, $keyword, $sortField, $descending, $activeOnly, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameLevelResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -491,19 +471,16 @@ class GameLevelController extends Controller
      * Get Level Questions.
      *
      */
-    public function getQuestionsInLevel(Request $request, float $version): JsonResponse
+    public function getQuestionsInLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'levelId' => [
                     'required',
                     'integer',
@@ -519,13 +496,12 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $levelId = $request->integer('levelId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getQuestionsInLevel($version, $levelId, $accountId);
+        $apiResult = $this->api->getQuestionsInLevel($levelId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QuestionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -541,19 +517,16 @@ class GameLevelController extends Controller
      * Get Level Words.
      *
      */
-    public function getWordsInLevel(Request $request, float $version): JsonResponse
+    public function getWordsInLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'levelId' => [
                     'required',
                     'integer',
@@ -569,13 +542,12 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $levelId = $request->integer('levelId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getWordsInLevel($version, $levelId, $accountId);
+        $apiResult = $this->api->getWordsInLevel($levelId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WordzWordResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -591,19 +563,16 @@ class GameLevelController extends Controller
      * Update Game Level.
      *
      */
-    public function updateGameLevel(Request $request, float $version): JsonResponse
+    public function updateGameLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -693,7 +662,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $levelId = $request->integer('levelId');
@@ -749,7 +717,7 @@ class GameLevelController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->updateGameLevel($version, $accountId, $levelId, $appKey, $name, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $gameData, $gameDataSuffix, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData);
+        $apiResult = $this->api->updateGameLevel($accountId, $levelId, $appKey, $name, $description, $difficulty, $appVersion, $assetImageId, $assetIconId, $gameData, $gameDataSuffix, $visibility, $friendGroup, $connectionIds, $connectionGroupIds, $balance, $active, $allocateTickets, $ticketCount, $ticketType, $points, $tutorialTitle, $tutorialMessage, $tutorialAlignment, $tutorialImageAssetId, $offerId, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameLevelResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -765,19 +733,16 @@ class GameLevelController extends Controller
      * Update Level Questions.
      *
      */
-    public function updateQuestionsInLevel(Request $request, float $version): JsonResponse
+    public function updateQuestionsInLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'levelId' => [
                     'required',
                     'integer',
@@ -797,7 +762,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $levelId = $request->integer('levelId');
 
         $accountId = $request->integer('accountId');
@@ -805,7 +769,7 @@ class GameLevelController extends Controller
         $questionIds = $request->string('questionIds')->value();
 
 
-        $apiResult = $this->api->updateQuestionsInLevel($version, $levelId, $accountId, $questionIds);
+        $apiResult = $this->api->updateQuestionsInLevel($levelId, $accountId, $questionIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -821,19 +785,16 @@ class GameLevelController extends Controller
      * Update Level Words.
      *
      */
-    public function updateWordsInLevel(Request $request, float $version): JsonResponse
+    public function updateWordsInLevel(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'levelId' => [
                     'required',
                     'integer',
@@ -853,7 +814,6 @@ class GameLevelController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $levelId = $request->integer('levelId');
 
         $accountId = $request->integer('accountId');
@@ -861,7 +821,7 @@ class GameLevelController extends Controller
         $wordIds = $request->string('wordIds')->value();
 
 
-        $apiResult = $this->api->updateWordsInLevel($version, $levelId, $accountId, $wordIds);
+        $apiResult = $this->api->updateWordsInLevel($levelId, $accountId, $wordIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

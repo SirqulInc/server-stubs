@@ -47,12 +47,12 @@ class CargoTypeController extends Controller
      * Create Cargo Type.
      *
      */
-    public function createCargoType(Request $request, float $version): JsonResponse
+    public function createCargoType(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class CargoTypeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CargoType::class);
 
 
-        $apiResult = $this->api->createCargoType($version, $body);
+        $apiResult = $this->api->createCargoType($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CargoType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class CargoTypeController extends Controller
      * Delete Cargo Type.
      *
      */
-    public function deleteCargoType(Request $request, float $version, int $cargoTypeId): JsonResponse
+    public function deleteCargoType(Request $request, int $cargoTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'cargoTypeId' => $cargoTypeId,
+                    'cargoTypeId' => $cargoTypeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'cargoTypeId' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class CargoTypeController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteCargoType($version, $cargoTypeId);
+        $apiResult = $this->api->deleteCargoType($cargoTypeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -127,19 +122,16 @@ class CargoTypeController extends Controller
      * Get Cargo Type.
      *
      */
-    public function getCargoType(Request $request, float $version, int $cargoTypeId): JsonResponse
+    public function getCargoType(Request $request, int $cargoTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'cargoTypeId' => $cargoTypeId,
+                    'cargoTypeId' => $cargoTypeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'cargoTypeId' => [
                     'required',
                     'integer',
@@ -153,8 +145,7 @@ class CargoTypeController extends Controller
 
 
 
-
-        $apiResult = $this->api->getCargoType($version, $cargoTypeId);
+        $apiResult = $this->api->getCargoType($cargoTypeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CargoType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,19 +161,16 @@ class CargoTypeController extends Controller
      * Search Cargo Type.
      *
      */
-    public function searchCargoTypes(Request $request, float $version): JsonResponse
+    public function searchCargoTypes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -216,7 +204,6 @@ class CargoTypeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -232,7 +219,7 @@ class CargoTypeController extends Controller
         $hubId = $request->integer('hubId');
 
 
-        $apiResult = $this->api->searchCargoTypes($version, $sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId);
+        $apiResult = $this->api->searchCargoTypes($sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -249,12 +236,12 @@ class CargoTypeController extends Controller
      * Update Cargo Type.
      *
      */
-    public function updateCargoType(Request $request, float $version, int $cargoTypeId): JsonResponse
+    public function updateCargoType(Request $request, int $cargoTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'cargoTypeId' => $cargoTypeId,
+                    'cargoTypeId' => $cargoTypeId,
                 ],
                 $request->all(),
             ),
@@ -267,11 +254,10 @@ class CargoTypeController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CargoType::class);
 
 
-        $apiResult = $this->api->updateCargoType($version, $cargoTypeId, $body);
+        $apiResult = $this->api->updateCargoType($cargoTypeId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CargoType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

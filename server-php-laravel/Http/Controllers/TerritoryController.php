@@ -47,19 +47,16 @@ class TerritoryController extends Controller
      * Create Territory.
      *
      */
-    public function createTerritory(Request $request, float $version): JsonResponse
+    public function createTerritory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -78,7 +75,6 @@ class TerritoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -86,7 +82,7 @@ class TerritoryController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createTerritory($version, $accountId, $name, $active);
+        $apiResult = $this->api->createTerritory($accountId, $name, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TerritoryResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -102,19 +98,16 @@ class TerritoryController extends Controller
      * Delete Territory.
      *
      */
-    public function deleteTerritory(Request $request, float $version): JsonResponse
+    public function deleteTerritory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -130,13 +123,12 @@ class TerritoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $territoryId = $request->integer('territoryId');
 
 
-        $apiResult = $this->api->deleteTerritory($version, $accountId, $territoryId);
+        $apiResult = $this->api->deleteTerritory($accountId, $territoryId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -152,19 +144,16 @@ class TerritoryController extends Controller
      * Get Territory.
      *
      */
-    public function getTerritory(Request $request, float $version): JsonResponse
+    public function getTerritory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'territoryId' => [
                     'required',
                     'integer',
@@ -176,11 +165,10 @@ class TerritoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $territoryId = $request->integer('territoryId');
 
 
-        $apiResult = $this->api->getTerritory($version, $territoryId);
+        $apiResult = $this->api->getTerritory($territoryId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TerritoryResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -196,19 +184,16 @@ class TerritoryController extends Controller
      * Search Territories.
      *
      */
-    public function searchTerritories(Request $request, float $version): JsonResponse
+    public function searchTerritories(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -232,7 +217,6 @@ class TerritoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchTerritoriesSortFieldParameter::class);
 
         $descending = $request->boolean('descending');
@@ -244,7 +228,7 @@ class TerritoryController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchTerritories($version, $sortField, $descending, $keyword, $start, $limit);
+        $apiResult = $this->api->searchTerritories($sortField, $descending, $keyword, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -261,19 +245,16 @@ class TerritoryController extends Controller
      * Update Territory.
      *
      */
-    public function updateTerritory(Request $request, float $version): JsonResponse
+    public function updateTerritory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -295,7 +276,6 @@ class TerritoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $territoryId = $request->integer('territoryId');
@@ -305,7 +285,7 @@ class TerritoryController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateTerritory($version, $accountId, $territoryId, $name, $active);
+        $apiResult = $this->api->updateTerritory($accountId, $territoryId, $name, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TerritoryResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

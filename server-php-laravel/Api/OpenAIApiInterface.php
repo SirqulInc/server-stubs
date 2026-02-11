@@ -28,14 +28,12 @@ interface OpenAIApiInterface {
      * Operation imageGeneration
      *
      * Generate images with OpenAI
-     * @param float $version
      * @param int $accountId
      * @param string $postBody
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\WrappedProxyItemResponse
      */
     public function imageGeneration(
-            float $version,
             int $accountId,
             string $postBody,
             ?bool $returnRawResponse,

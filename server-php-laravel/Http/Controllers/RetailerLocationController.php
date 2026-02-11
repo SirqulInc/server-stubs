@@ -47,19 +47,16 @@ class RetailerLocationController extends Controller
      * Create Retailer Location (Consumer).
      *
      */
-    public function createRetailerLocationConsumer(Request $request, float $version): JsonResponse
+    public function createRetailerLocationConsumer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -154,7 +151,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $name = $request->string('name')->value();
@@ -214,7 +210,7 @@ class RetailerLocationController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createRetailerLocationConsumer($version, $appKey, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $detailsHeader, $detailsBody, $hours, $tags, $logoAssetId, $picture1AssetId, $picture2AssetId, $categoryIds, $filterIds, $metaData, $publicLocation, $active, $locationType, $latitude, $longitude);
+        $apiResult = $this->api->createRetailerLocationConsumer($appKey, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $detailsHeader, $detailsBody, $hours, $tags, $logoAssetId, $picture1AssetId, $picture2AssetId, $categoryIds, $filterIds, $metaData, $publicLocation, $active, $locationType, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -230,19 +226,16 @@ class RetailerLocationController extends Controller
      * Create Retailer Location.
      *
      */
-    public function createRetailerLocations(Request $request, float $version): JsonResponse
+    public function createRetailerLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerId' => [
                     'required',
                     'integer',
@@ -370,7 +363,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerId = $request->integer('retailerId');
 
         $name = $request->string('name')->value();
@@ -450,7 +442,7 @@ class RetailerLocationController extends Controller
         $responseIncludes = $request->string('responseIncludes')->value();
 
 
-        $apiResult = $this->api->createRetailerLocations($version, $retailerId, $name, $streetAddress, $city, $state, $postalCode, $deviceId, $accountId, $streetAddress2, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $responseIncludes);
+        $apiResult = $this->api->createRetailerLocations($retailerId, $name, $streetAddress, $city, $state, $postalCode, $deviceId, $accountId, $streetAddress2, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $responseIncludes);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -466,19 +458,16 @@ class RetailerLocationController extends Controller
      * Delete Retailer Location.
      *
      */
-    public function deleteRetailerLocation(Request $request, float $version): JsonResponse
+    public function deleteRetailerLocation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -495,7 +484,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -503,7 +491,7 @@ class RetailerLocationController extends Controller
         $retailerLocationId = $request->integer('retailerLocationId');
 
 
-        $apiResult = $this->api->deleteRetailerLocation($version, $deviceId, $accountId, $retailerLocationId);
+        $apiResult = $this->api->deleteRetailerLocation($deviceId, $accountId, $retailerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -519,19 +507,16 @@ class RetailerLocationController extends Controller
      * Get Retailer Location.
      *
      */
-    public function getRetailerLocation(Request $request, float $version): JsonResponse
+    public function getRetailerLocation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerLocationId' => [
                     'required',
                     'integer',
@@ -552,7 +537,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerLocationId = $request->integer('retailerLocationId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -562,7 +546,7 @@ class RetailerLocationController extends Controller
         $retailerLocationToken = $request->string('retailerLocationToken')->value();
 
 
-        $apiResult = $this->api->getRetailerLocation($version, $retailerLocationId, $deviceId, $accountId, $retailerLocationToken);
+        $apiResult = $this->api->getRetailerLocation($retailerLocationId, $deviceId, $accountId, $retailerLocationToken);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -578,19 +562,16 @@ class RetailerLocationController extends Controller
      * Get Retailer Location (Consumer).
      *
      */
-    public function getRetailerLocationConsumer(Request $request, float $version): JsonResponse
+    public function getRetailerLocationConsumer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerLocationId' => [
                     'required',
                     'integer',
@@ -608,7 +589,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerLocationId = $request->integer('retailerLocationId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -616,7 +596,7 @@ class RetailerLocationController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getRetailerLocationConsumer($version, $retailerLocationId, $deviceId, $accountId);
+        $apiResult = $this->api->getRetailerLocationConsumer($retailerLocationId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -632,19 +612,16 @@ class RetailerLocationController extends Controller
      * Distance Search Retailer Locations (Indexed).
      *
      */
-    public function indexedRetailerLocationDistanceSearch(Request $request, float $version): JsonResponse
+    public function indexedRetailerLocationDistanceSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'latitude' => [
                     'required',
                 ],
@@ -755,7 +732,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $latitude = $request->float('latitude');
 
         $longitude = $request->float('longitude');
@@ -825,7 +801,7 @@ class RetailerLocationController extends Controller
         $includeRating = $request->boolean('includeRating');
 
 
-        $apiResult = $this->api->indexedRetailerLocationDistanceSearch($version, $latitude, $longitude, $searchRange, $start, $limit, $accountId, $address, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $distanceUnit, $returnFavorited, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating);
+        $apiResult = $this->api->indexedRetailerLocationDistanceSearch($latitude, $longitude, $searchRange, $start, $limit, $accountId, $address, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $distanceUnit, $returnFavorited, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -842,19 +818,16 @@ class RetailerLocationController extends Controller
      * Keyword Search Retailer Locations (Indexed).
      *
      */
-    public function indexedRetailerLocationSearch(Request $request, float $version): JsonResponse
+    public function indexedRetailerLocationSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -946,7 +919,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $start = $request->integer('start');
@@ -1004,7 +976,7 @@ class RetailerLocationController extends Controller
         $includeRating = $request->boolean('includeRating');
 
 
-        $apiResult = $this->api->indexedRetailerLocationSearch($version, $accountId, $start, $limit, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating);
+        $apiResult = $this->api->indexedRetailerLocationSearch($accountId, $start, $limit, $hasOffers, $categories, $filters, $audiences, $retailerIds, $retailerLocationIds, $tags, $locationType, $sortField, $descending, $q, $keyword, $keywordOperator, $searchExpression, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $returnExternalCategoryData, $includeFavorite, $includeLiked, $includeRating);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1021,19 +993,16 @@ class RetailerLocationController extends Controller
      * Search Retailer Locations (Owned).
      *
      */
-    public function searchRetailerLocations(Request $request, float $version): JsonResponse
+    public function searchRetailerLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1115,7 +1084,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1167,7 +1135,7 @@ class RetailerLocationController extends Controller
         $includeRating = $request->boolean('includeRating');
 
 
-        $apiResult = $this->api->searchRetailerLocations($version, $deviceId, $accountId, $q, $keyword, $retailerIds, $retailerLocationIds, $locationType, $sortField, $descending, $i, $start, $l, $limit, $showPublicLocations, $activeOnly, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $includeFavorite, $includeLiked, $includeRating);
+        $apiResult = $this->api->searchRetailerLocations($deviceId, $accountId, $q, $keyword, $retailerIds, $retailerLocationIds, $locationType, $sortField, $descending, $i, $start, $l, $limit, $showPublicLocations, $activeOnly, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters, $returnAudiences, $returnQrCode, $includeFavorite, $includeLiked, $includeRating);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1184,19 +1152,16 @@ class RetailerLocationController extends Controller
      * Update Retailer Location.
      *
      */
-    public function updateRetailerLocations(Request $request, float $version): JsonResponse
+    public function updateRetailerLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerLocationId' => [
                     'required',
                     'integer',
@@ -1325,7 +1290,6 @@ class RetailerLocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerLocationId = $request->integer('retailerLocationId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1409,7 +1373,7 @@ class RetailerLocationController extends Controller
         $tags = $request->string('tags')->value();
 
 
-        $apiResult = $this->api->updateRetailerLocations($version, $retailerLocationId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $metaData, $paymentProvider, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $tags);
+        $apiResult = $this->api->updateRetailerLocations($retailerLocationId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $internalId, $detailsHeader, $detailsBody, $hours, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $building, $googlePlaceId, $yelpId, $metaData, $paymentProvider, $active, $publicLocation, $locationType, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $responseFormat, $tags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

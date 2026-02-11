@@ -47,19 +47,16 @@ class WorkflowController extends Controller
      * Run Workflow.
      *
      */
-    public function runWorkflow(Request $request, float $version): JsonResponse
+    public function runWorkflow(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -84,7 +81,6 @@ class WorkflowController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $workflowId = $request->integer('workflowId');
@@ -96,7 +92,7 @@ class WorkflowController extends Controller
         $parameters = $request->string('parameters')->value();
 
 
-        $apiResult = $this->api->runWorkflow($version, $accountId, $workflowId, $skuId, $versionCode, $parameters);
+        $apiResult = $this->api->runWorkflow($accountId, $workflowId, $skuId, $versionCode, $parameters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,7 +28,6 @@ interface ContestApiInterface {
      * Operation addOrUpdateAlbumContest
      *
      * Create or Update Contest
-     * @param float $version
      * @param bool $publicRead
      * @param bool $publicWrite
      * @param bool $publicDelete
@@ -57,7 +56,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\AlbumContestResponse
      */
     public function addOrUpdateAlbumContest(
-            float $version,
             bool $publicRead,
             bool $publicWrite,
             bool $publicDelete,
@@ -92,7 +90,6 @@ interface ContestApiInterface {
      * Operation approveAlbumContest
      *
      * Approve Contest
-     * @param float $version
      * @param int $albumContestId
      * @param \OpenAPI\Server\Model\ApproveAlbumApprovalStatusParameter $approvalStatus
      * @param null | string $deviceId
@@ -100,7 +97,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function approveAlbumContest(
-            float $version,
             int $albumContestId,
             \OpenAPI\Server\Model\ApproveAlbumApprovalStatusParameter $approvalStatus,
             ?string $deviceId,
@@ -114,7 +110,6 @@ interface ContestApiInterface {
      * Operation deleteContest
      *
      * Delete Contest
-     * @param float $version
      * @param int $albumContestId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -123,7 +118,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteContest(
-            float $version,
             int $albumContestId,
             ?string $deviceId,
             ?int $accountId,
@@ -138,7 +132,6 @@ interface ContestApiInterface {
      * Operation getAlbumContest
      *
      * Get Contest
-     * @param float $version
      * @param int $albumContestId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -147,7 +140,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\AlbumContestResponse
      */
     public function getAlbumContest(
-            float $version,
             int $albumContestId,
             ?string $deviceId,
             ?int $accountId,
@@ -162,7 +154,6 @@ interface ContestApiInterface {
      * Operation getAlbumContests
      *
      * Search Contests
-     * @param float $version
      * @param string $filter
      * @param string $sortField
      * @param bool $descending
@@ -185,7 +176,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\AlbumContestListResponse
      */
     public function getAlbumContests(
-            float $version,
             string $filter,
             string $sortField,
             bool $descending,
@@ -214,7 +204,6 @@ interface ContestApiInterface {
      * Operation voteOnAlbumContest
      *
      * Vote on Contest
-     * @param float $version
      * @param int $albumContestId
      * @param int $albumId
      * @param null | string $deviceId
@@ -225,7 +214,6 @@ interface ContestApiInterface {
      * @return \OpenAPI\Server\Model\AlbumContestResponse
      */
     public function voteOnAlbumContest(
-            float $version,
             int $albumContestId,
             int $albumId,
             ?string $deviceId,

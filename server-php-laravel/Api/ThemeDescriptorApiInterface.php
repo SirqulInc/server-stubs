@@ -28,7 +28,6 @@ interface ThemeDescriptorApiInterface {
      * Operation addOrUpdateThemeDescriptor
      *
      * Create/Update Theme
-     * @param float $version
      * @param bool $publicRead
      * @param bool $publicWrite
      * @param bool $publicDelete
@@ -59,7 +58,6 @@ interface ThemeDescriptorApiInterface {
      * @return \OpenAPI\Server\Model\ThemeDescriptorResponse
      */
     public function addOrUpdateThemeDescriptor(
-            float $version,
             bool $publicRead,
             bool $publicWrite,
             bool $publicDelete,
@@ -96,7 +94,6 @@ interface ThemeDescriptorApiInterface {
      * Operation getThemeDescriptor
      *
      * Get Theme
-     * @param float $version
      * @param int $themeDescriptorId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -106,7 +103,6 @@ interface ThemeDescriptorApiInterface {
      * @return \OpenAPI\Server\Model\PurchaseItemListResponse
      */
     public function getThemeDescriptor(
-            float $version,
             int $themeDescriptorId,
             ?string $deviceId,
             ?int $accountId,
@@ -122,7 +118,6 @@ interface ThemeDescriptorApiInterface {
      * Operation getThemeDescriptors
      *
      * Search Themes
-     * @param float $version
      * @param string $filter
      * @param string $sortField
      * @param bool $descending
@@ -144,7 +139,6 @@ interface ThemeDescriptorApiInterface {
      * @return \OpenAPI\Server\Model\PurchaseItemListResponse
      */
     public function getThemeDescriptors(
-            float $version,
             string $filter,
             string $sortField,
             bool $descending,
@@ -172,7 +166,6 @@ interface ThemeDescriptorApiInterface {
      * Operation removeThemeDescriptor
      *
      * Delete Theme
-     * @param float $version
      * @param int $themeDescriptorId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -182,7 +175,6 @@ interface ThemeDescriptorApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeThemeDescriptor(
-            float $version,
             int $themeDescriptorId,
             ?string $deviceId,
             ?int $accountId,

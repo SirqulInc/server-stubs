@@ -28,12 +28,10 @@ interface TripApiInterface {
      * Operation createTrip
      *
      * Create Trip
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip
      */
     public function createTrip(
-            float $version,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
         \OpenAPI\Server\Model\Trip
@@ -44,12 +42,10 @@ interface TripApiInterface {
      * Operation delete
      *
      * Delete Trip
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function delete(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -60,13 +56,11 @@ interface TripApiInterface {
      * Operation driveTrip
      *
      * Set Trip Preference Driver
-     * @param float $version
      * @param int $id
      * @param bool $recurrence
      * @return \OpenAPI\Server\Model\Trip
      */
     public function driveTrip(
-            float $version,
             int $id,
             bool $recurrence,
     ):
@@ -78,13 +72,11 @@ interface TripApiInterface {
      * Operation flexibleTrip
      *
      * Set Trip Preference Flexible
-     * @param float $version
      * @param int $id
      * @param bool $recurrence
      * @return \OpenAPI\Server\Model\Trip
      */
     public function flexibleTrip(
-            float $version,
             int $id,
             bool $recurrence,
     ):
@@ -96,12 +88,10 @@ interface TripApiInterface {
      * Operation getTrip
      *
      * Get Trip
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\Trip
      */
     public function getTrip(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\Trip
@@ -112,7 +102,6 @@ interface TripApiInterface {
      * Operation getTripMatches
      *
      * Get Trip Matches
-     * @param float $version
      * @param int $id
      * @param string $sortField
      * @param bool $descending
@@ -124,7 +113,6 @@ interface TripApiInterface {
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function getTripMatches(
-            float $version,
             int $id,
             string $sortField,
             bool $descending,
@@ -142,14 +130,12 @@ interface TripApiInterface {
      * Operation processTripMatches
      *
      * Process Trip Matches
-     * @param float $version
      * @param null | int $startDate
      * @param null | int $endDate
      * @param null | int $tripId
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function processTripMatches(
-            float $version,
             ?int $startDate,
             ?int $endDate,
             ?int $tripId,
@@ -162,13 +148,11 @@ interface TripApiInterface {
      * Operation ride
      *
      * Set Trip Preference Rider
-     * @param float $version
      * @param int $id
      * @param bool $recurrence
      * @return \OpenAPI\Server\Model\Trip
      */
     public function ride(
-            float $version,
             int $id,
             bool $recurrence,
     ):
@@ -180,7 +164,6 @@ interface TripApiInterface {
      * Operation search
      *
      * Search Trips
-     * @param float $version
      * @param int $accountId
      * @param string $sortField
      * @param bool $descending
@@ -193,7 +176,6 @@ interface TripApiInterface {
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function search(
-            float $version,
             int $accountId,
             string $sortField,
             bool $descending,
@@ -212,7 +194,6 @@ interface TripApiInterface {
      * Operation searchTrips
      *
      * Search Trips
-     * @param float $version
      * @param int $accountId
      * @param string $sortField
      * @param bool $descending
@@ -226,7 +207,6 @@ interface TripApiInterface {
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function searchTrips(
-            float $version,
             int $accountId,
             string $sortField,
             bool $descending,
@@ -246,13 +226,11 @@ interface TripApiInterface {
      * Operation updateLocations
      *
      * Update Trip Locations
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip
      */
     public function updateLocations(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
@@ -264,13 +242,11 @@ interface TripApiInterface {
      * Operation updateRecurrenceLocations
      *
      * Update Recurrence Locations
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function updateRecurrenceLocations(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
@@ -282,13 +258,11 @@ interface TripApiInterface {
      * Operation updateRecurrenceShipments
      *
      * Update Recurrence Shipments
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip[]
      */
     public function updateRecurrenceShipments(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
@@ -300,13 +274,11 @@ interface TripApiInterface {
      * Operation updateShipments
      *
      * Update Trip Shipments
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip
      */
     public function updateShipments(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
@@ -318,13 +290,11 @@ interface TripApiInterface {
      * Operation updateTrip
      *
      * Update Trip
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Trip $body
      * @return \OpenAPI\Server\Model\Trip
      */
     public function updateTrip(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Trip $body,
     ):
@@ -336,13 +306,11 @@ interface TripApiInterface {
      * Operation updateTripNotifications
      *
      * Trip Notifications
-     * @param float $version
      * @param int $id
      * @param null | string $notifications
      * @return \OpenAPI\Server\Model\Trip
      */
     public function updateTripNotifications(
-            float $version,
             int $id,
             ?string $notifications,
     ):

@@ -47,12 +47,12 @@ class ProgramController extends Controller
      * Create Program.
      *
      */
-    public function createProgram(Request $request, float $version): JsonResponse
+    public function createProgram(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class ProgramController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Program::class);
 
 
-        $apiResult = $this->api->createProgram($version, $body);
+        $apiResult = $this->api->createProgram($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Program) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class ProgramController extends Controller
      * Delete Program.
      *
      */
-    public function deleteProgram(Request $request, float $version, int $id): JsonResponse
+    public function deleteProgram(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class ProgramController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteProgram($version, $id);
+        $apiResult = $this->api->deleteProgram($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -127,19 +122,16 @@ class ProgramController extends Controller
      * Get Program.
      *
      */
-    public function getProgram(Request $request, float $version, int $id): JsonResponse
+    public function getProgram(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -153,8 +145,7 @@ class ProgramController extends Controller
 
 
 
-
-        $apiResult = $this->api->getProgram($version, $id);
+        $apiResult = $this->api->getProgram($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Program) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,12 +161,12 @@ class ProgramController extends Controller
      * Update Program.
      *
      */
-    public function postProgram(Request $request, float $version, int $id): JsonResponse
+    public function postProgram(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -188,11 +179,10 @@ class ProgramController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Program::class);
 
 
-        $apiResult = $this->api->postProgram($version, $id, $body);
+        $apiResult = $this->api->postProgram($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Program) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -208,12 +198,12 @@ class ProgramController extends Controller
      * Update Program.
      *
      */
-    public function putProgram(Request $request, float $version, int $id): JsonResponse
+    public function putProgram(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -226,11 +216,10 @@ class ProgramController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Program::class);
 
 
-        $apiResult = $this->api->putProgram($version, $id, $body);
+        $apiResult = $this->api->putProgram($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Program) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -246,19 +235,16 @@ class ProgramController extends Controller
      * Search Programs.
      *
      */
-    public function searchPrograms(Request $request, float $version): JsonResponse
+    public function searchPrograms(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -289,7 +275,6 @@ class ProgramController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -303,7 +288,7 @@ class ProgramController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchPrograms($version, $sortField, $descending, $start, $limit, $activeOnly, $keyword);
+        $apiResult = $this->api->searchPrograms($sortField, $descending, $start, $limit, $activeOnly, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

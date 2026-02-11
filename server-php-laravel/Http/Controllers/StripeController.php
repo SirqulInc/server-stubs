@@ -47,19 +47,16 @@ class StripeController extends Controller
      * Create Stripe Checkout Session.
      *
      */
-    public function createStripeCheckoutSession(Request $request, float $version): JsonResponse
+    public function createStripeCheckoutSession(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -75,13 +72,12 @@ class StripeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $stripeParameters = $request->string('stripeParameters')->value();
 
 
-        $apiResult = $this->api->createStripeCheckoutSession($version, $appKey, $stripeParameters);
+        $apiResult = $this->api->createStripeCheckoutSession($appKey, $stripeParameters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

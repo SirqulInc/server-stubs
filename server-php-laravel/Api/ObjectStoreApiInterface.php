@@ -28,7 +28,6 @@ interface ObjectStoreApiInterface {
      * Operation addField
      *
      * Create Field
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $objectName
@@ -37,7 +36,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function addField(
-            float $version,
             int $accountId,
             string $appKey,
             string $objectName,
@@ -52,14 +50,12 @@ interface ObjectStoreApiInterface {
      * Operation createData
      *
      * Create Data
-     * @param float $version
      * @param string $objectName
      * @param null | int $accountId
      * @param null | string $body
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function createData(
-            float $version,
             string $objectName,
             ?int $accountId,
             ?string $body,
@@ -72,14 +68,12 @@ interface ObjectStoreApiInterface {
      * Operation createObject
      *
      * Create Object
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $objectName
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function createObject(
-            float $version,
             int $accountId,
             string $appKey,
             string $objectName,
@@ -92,14 +86,12 @@ interface ObjectStoreApiInterface {
      * Operation deleteData
      *
      * Delete Data
-     * @param float $version
      * @param string $objectName
      * @param string $objectId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function deleteData(
-            float $version,
             string $objectName,
             string $objectId,
             ?int $accountId,
@@ -112,7 +104,6 @@ interface ObjectStoreApiInterface {
      * Operation deleteField
      *
      * Delete Field
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $objectName
@@ -120,7 +111,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function deleteField(
-            float $version,
             int $accountId,
             string $appKey,
             string $objectName,
@@ -134,14 +124,12 @@ interface ObjectStoreApiInterface {
      * Operation deleteObject
      *
      * Delete Object
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $objectName
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function deleteObject(
-            float $version,
             int $accountId,
             string $appKey,
             string $objectName,
@@ -154,7 +142,6 @@ interface ObjectStoreApiInterface {
      * Operation getData
      *
      * Get Data
-     * @param float $version
      * @param string $objectName
      * @param string $objectId
      * @param null | int $accountId
@@ -162,7 +149,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function getData(
-            float $version,
             string $objectName,
             string $objectId,
             ?int $accountId,
@@ -176,14 +162,12 @@ interface ObjectStoreApiInterface {
      * Operation getObject
      *
      * Get Object
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $objectName
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function getObject(
-            float $version,
             int $accountId,
             string $appKey,
             string $objectName,
@@ -196,7 +180,6 @@ interface ObjectStoreApiInterface {
      * Operation searchData
      *
      * Search Data
-     * @param float $version
      * @param string $objectName
      * @param bool $count
      * @param int $start
@@ -208,7 +191,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function searchData(
-            float $version,
             string $objectName,
             bool $count,
             int $start,
@@ -226,7 +208,6 @@ interface ObjectStoreApiInterface {
      * Operation searchObject
      *
      * Search Objects
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $start
@@ -235,7 +216,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function searchObject(
-            float $version,
             int $accountId,
             string $appKey,
             int $start,
@@ -250,7 +230,6 @@ interface ObjectStoreApiInterface {
      * Operation updateData
      *
      * Update Data
-     * @param float $version
      * @param string $objectName
      * @param string $objectId
      * @param null | int $accountId
@@ -258,7 +237,6 @@ interface ObjectStoreApiInterface {
      * @return \OpenAPI\Server\Model\ObjectStoreResponse
      */
     public function updateData(
-            float $version,
             string $objectName,
             string $objectId,
             ?int $accountId,

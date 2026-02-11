@@ -28,7 +28,6 @@ interface ListingApiInterface {
      * Operation createListing
      *
      * Create Listing
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $filterIds
@@ -46,7 +45,6 @@ interface ListingApiInterface {
      * @return \OpenAPI\Server\Model\ListingFullResponse
      */
     public function createListing(
-            float $version,
             int $accountId,
             string $name,
             ?string $filterIds,
@@ -70,13 +68,11 @@ interface ListingApiInterface {
      * Operation deleteListing
      *
      * Delete Listing
-     * @param float $version
      * @param int $accountId
      * @param int $listingId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteListing(
-            float $version,
             int $accountId,
             int $listingId,
     ):
@@ -88,12 +84,10 @@ interface ListingApiInterface {
      * Operation getListing
      *
      * Get Listing
-     * @param float $version
      * @param int $listingId
      * @return \OpenAPI\Server\Model\ListingFullResponse
      */
     public function getListing(
-            float $version,
             int $listingId,
     ):
         \OpenAPI\Server\Model\ListingFullResponse
@@ -104,7 +98,6 @@ interface ListingApiInterface {
      * Operation searchListing
      *
      * Search Listings
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $keyword
      * @param null | int $start
@@ -123,7 +116,6 @@ interface ListingApiInterface {
      * @return \OpenAPI\Server\Model\ListingResponse[]
      */
     public function searchListing(
-            float $version,
             ?int $accountId,
             ?string $keyword,
             ?int $start,
@@ -148,7 +140,6 @@ interface ListingApiInterface {
      * Operation summaryListing
      *
      * Summary Listing
-     * @param float $version
      * @param null | int $accountId
      * @param null | int $startDate
      * @param null | string $categoryIds
@@ -157,7 +148,6 @@ interface ListingApiInterface {
      * @return \OpenAPI\Server\Model\ListingGroupResponse[]
      */
     public function summaryListing(
-            float $version,
             ?int $accountId,
             ?int $startDate,
             ?string $categoryIds,
@@ -172,7 +162,6 @@ interface ListingApiInterface {
      * Operation updateListing
      *
      * Update Listing
-     * @param float $version
      * @param int $accountId
      * @param int $listingId
      * @param null | string $filterIds
@@ -191,7 +180,6 @@ interface ListingApiInterface {
      * @return \OpenAPI\Server\Model\ListingFullResponse
      */
     public function updateListing(
-            float $version,
             int $accountId,
             int $listingId,
             ?string $filterIds,

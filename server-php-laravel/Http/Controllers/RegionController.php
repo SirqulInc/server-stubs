@@ -47,19 +47,16 @@ class RegionController extends Controller
      * Create Region.
      *
      */
-    public function createRegion(Request $request, float $version): JsonResponse
+    public function createRegion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -130,7 +127,6 @@ class RegionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $regionClass = $request->string('regionClass')->value();
@@ -174,7 +170,7 @@ class RegionController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createRegion($version, $accountId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active);
+        $apiResult = $this->api->createRegion($accountId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RegionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -190,19 +186,16 @@ class RegionController extends Controller
      * Delete Region.
      *
      */
-    public function deleteRegion(Request $request, float $version): JsonResponse
+    public function deleteRegion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -218,13 +211,12 @@ class RegionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $regionId = $request->integer('regionId');
 
 
-        $apiResult = $this->api->deleteRegion($version, $accountId, $regionId);
+        $apiResult = $this->api->deleteRegion($accountId, $regionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RegionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -240,19 +232,16 @@ class RegionController extends Controller
      * Get Region.
      *
      */
-    public function getRegion(Request $request, float $version): JsonResponse
+    public function getRegion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'regionId' => [
                     'required',
                     'integer',
@@ -267,13 +256,12 @@ class RegionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $regionId = $request->integer('regionId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getRegion($version, $regionId, $accountId);
+        $apiResult = $this->api->getRegion($regionId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RegionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -289,19 +277,16 @@ class RegionController extends Controller
      * Search Regions.
      *
      */
-    public function searchRegions(Request $request, float $version): JsonResponse
+    public function searchRegions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -368,7 +353,6 @@ class RegionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $query = $request->string('query')->value();
@@ -414,7 +398,7 @@ class RegionController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchRegions($version, $accountId, $query, $keyword, $latitude, $longitude, $range, $regionClass, $visibility, $searchMode, $sortField, $descending, $includeParent, $includeChildren, $includePostalCodes, $categoryIds, $filterIds, $versionCode, $activeOnly, $showDeleted, $lastUpdatedSince, $start, $limit);
+        $apiResult = $this->api->searchRegions($accountId, $query, $keyword, $latitude, $longitude, $range, $regionClass, $visibility, $searchMode, $sortField, $descending, $includeParent, $includeChildren, $includePostalCodes, $categoryIds, $filterIds, $versionCode, $activeOnly, $showDeleted, $lastUpdatedSince, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -431,19 +415,16 @@ class RegionController extends Controller
      * Update Region.
      *
      */
-    public function updateRegion(Request $request, float $version): JsonResponse
+    public function updateRegion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -519,7 +500,6 @@ class RegionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $regionId = $request->integer('regionId');
@@ -567,7 +547,7 @@ class RegionController extends Controller
         $clearLists = $request->boolean('clearLists');
 
 
-        $apiResult = $this->api->updateRegion($version, $accountId, $regionId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active, $clearLists);
+        $apiResult = $this->api->updateRegion($accountId, $regionId, $regionClass, $shortName, $fullName, $parentIds, $childrenIds, $postalCodeIds, $locations, $retailerLocationId, $visibility, $categoryIds, $filterIds, $start, $end, $polygon, $metaData, $latitude, $longitude, $versionCode, $root, $active, $clearLists);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RegionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,12 +28,10 @@ interface RouteApiInterface {
      * Operation approveRoute
      *
      * Approve Route
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Route
      */
     public function approveRoute(
-            float $version,
             int $routeId,
     ):
         \OpenAPI\Server\Model\Route
@@ -44,13 +42,11 @@ interface RouteApiInterface {
      * Operation copyRoute
      *
      * Copy Route
-     * @param float $version
      * @param int $routeId
      * @param null | \OpenAPI\Server\Model\Route $body
      * @return \OpenAPI\Server\Model\Route
      */
     public function copyRoute(
-            float $version,
             int $routeId,
             ?\OpenAPI\Server\Model\Route $body,
     ):
@@ -62,12 +58,10 @@ interface RouteApiInterface {
      * Operation createRoute
      *
      * Create Route
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Route $body
      * @return \OpenAPI\Server\Model\Route
      */
     public function createRoute(
-            float $version,
             ?\OpenAPI\Server\Model\Route $body,
     ):
         \OpenAPI\Server\Model\Route
@@ -78,12 +72,10 @@ interface RouteApiInterface {
      * Operation createRouteDirections
      *
      * Update Route Directions
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Direction[]
      */
     public function createRouteDirections(
-            float $version,
             int $routeId,
     ):
         array
@@ -94,12 +86,10 @@ interface RouteApiInterface {
      * Operation createRoutePolyline
      *
      * Create Route Polyline
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Route
      */
     public function createRoutePolyline(
-            float $version,
             int $routeId,
     ):
         \OpenAPI\Server\Model\Route
@@ -110,12 +100,10 @@ interface RouteApiInterface {
      * Operation deleteRoute
      *
      * Delete Route
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteRoute(
-            float $version,
             int $routeId,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -126,12 +114,10 @@ interface RouteApiInterface {
      * Operation disapproveRoute
      *
      * Disapprove Route
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Route
      */
     public function disapproveRoute(
-            float $version,
             int $routeId,
     ):
         \OpenAPI\Server\Model\Route
@@ -142,13 +128,11 @@ interface RouteApiInterface {
      * Operation getRoute
      *
      * Get Route
-     * @param float $version
      * @param int $routeId
      * @param bool $showInheritedProperties
      * @return \OpenAPI\Server\Model\Route
      */
     public function getRoute(
-            float $version,
             int $routeId,
             bool $showInheritedProperties,
     ):
@@ -160,12 +144,10 @@ interface RouteApiInterface {
      * Operation getRouteDirections
      *
      * Get Route Directions
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Direction[]
      */
     public function getRouteDirections(
-            float $version,
             int $routeId,
     ):
         array
@@ -176,12 +158,10 @@ interface RouteApiInterface {
      * Operation getRouteShipments
      *
      * Get Route Shipments
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\Shipment[]
      */
     public function getRouteShipments(
-            float $version,
             int $routeId,
     ):
         array
@@ -192,13 +172,11 @@ interface RouteApiInterface {
      * Operation getRouteStop
      *
      * Get Route Stop
-     * @param float $version
      * @param int $routeId
      * @param int $stopId
      * @return \OpenAPI\Server\Model\Stop
      */
     public function getRouteStop(
-            float $version,
             int $routeId,
             int $stopId,
     ):
@@ -210,13 +188,11 @@ interface RouteApiInterface {
      * Operation getRouteStops
      *
      * Get Route Stops
-     * @param float $version
      * @param int $routeId
      * @param bool $confirmedOnly
      * @return \OpenAPI\Server\Model\Stop[]
      */
     public function getRouteStops(
-            float $version,
             int $routeId,
             bool $confirmedOnly,
     ):
@@ -228,13 +204,11 @@ interface RouteApiInterface {
      * Operation getShipmentsAtStop
      *
      * Get Shipments At Stop
-     * @param float $version
      * @param int $routeId
      * @param int $stopId
      * @return \OpenAPI\Server\Model\Shipment[]
      */
     public function getShipmentsAtStop(
-            float $version,
             int $routeId,
             int $stopId,
     ):
@@ -246,12 +220,10 @@ interface RouteApiInterface {
      * Operation optimizeRoute
      *
      * Optimize Route
-     * @param float $version
      * @param int $routeId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function optimizeRoute(
-            float $version,
             int $routeId,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -262,13 +234,11 @@ interface RouteApiInterface {
      * Operation removeStop
      *
      * Delete Stop
-     * @param float $version
      * @param int $routeId
      * @param int $stopId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function removeStop(
-            float $version,
             int $routeId,
             int $stopId,
     ):
@@ -280,13 +250,11 @@ interface RouteApiInterface {
      * Operation reorderRouteStopsPatch
      *
      * Reorder Route Stops
-     * @param float $version
      * @param int $routeId
      * @param null | \OpenAPI\Server\Model\Stop[] $body
      * @return \OpenAPI\Server\Model\Stop[]
      */
     public function reorderRouteStopsPatch(
-            float $version,
             int $routeId,
             ?array $body,
     ):
@@ -298,13 +266,11 @@ interface RouteApiInterface {
      * Operation reorderRouteStopsPost
      *
      * Reorder Route Stops
-     * @param float $version
      * @param int $routeId
      * @param null | \OpenAPI\Server\Model\Stop[] $body
      * @return \OpenAPI\Server\Model\Stop[]
      */
     public function reorderRouteStopsPost(
-            float $version,
             int $routeId,
             ?array $body,
     ):
@@ -316,7 +282,6 @@ interface RouteApiInterface {
      * Operation searchRoutes
      *
      * Search Routes
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -341,7 +306,6 @@ interface RouteApiInterface {
      * @return \OpenAPI\Server\Model\Route[]
      */
     public function searchRoutes(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,
@@ -372,13 +336,11 @@ interface RouteApiInterface {
      * Operation setDriver
      *
      * Set Driver
-     * @param float $version
      * @param int $id
      * @param int $driverId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function setDriver(
-            float $version,
             int $id,
             int $driverId,
     ):
@@ -390,13 +352,11 @@ interface RouteApiInterface {
      * Operation updateRoute
      *
      * Update Route
-     * @param float $version
      * @param int $routeId
      * @param null | \OpenAPI\Server\Model\Route $body
      * @return \OpenAPI\Server\Model\Route
      */
     public function updateRoute(
-            float $version,
             int $routeId,
             ?\OpenAPI\Server\Model\Route $body,
     ):
@@ -408,14 +368,12 @@ interface RouteApiInterface {
      * Operation updateRouteStop
      *
      * Update Route Stop
-     * @param float $version
      * @param int $routeId
      * @param int $stopId
      * @param null | \OpenAPI\Server\Model\Stop $body
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function updateRouteStop(
-            float $version,
             int $routeId,
             int $stopId,
             ?\OpenAPI\Server\Model\Stop $body,

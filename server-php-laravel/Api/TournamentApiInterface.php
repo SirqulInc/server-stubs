@@ -28,7 +28,6 @@ interface TournamentApiInterface {
      * Operation createTournament
      *
      * Create Tournament
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $title
@@ -67,7 +66,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\TournamentResponse
      */
     public function createTournament(
-            float $version,
             int $accountId,
             string $appKey,
             string $title,
@@ -112,13 +110,11 @@ interface TournamentApiInterface {
      * Operation deleteTournament
      *
      * Delete Tournament
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteTournament(
-            float $version,
             int $accountId,
             int $missionId,
     ):
@@ -130,7 +126,6 @@ interface TournamentApiInterface {
      * Operation getTournament
      *
      * Get Tournament
-     * @param float $version
      * @param int $accountId
      * @param null | int $missionId
      * @param null | string $joinCode
@@ -139,7 +134,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\TournamentResponse
      */
     public function getTournament(
-            float $version,
             int $accountId,
             ?int $missionId,
             ?string $joinCode,
@@ -154,7 +148,6 @@ interface TournamentApiInterface {
      * Operation searchObjects
      *
      * Search Tournament Objects
-     * @param float $version
      * @param int $accountId
      * @param int $gameLevelId
      * @param null | \OpenAPI\Server\Model\SearchObjectsSortFieldParameter $sortField
@@ -164,7 +157,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function searchObjects(
-            float $version,
             int $accountId,
             int $gameLevelId,
             ?\OpenAPI\Server\Model\SearchObjectsSortFieldParameter $sortField,
@@ -180,7 +172,6 @@ interface TournamentApiInterface {
      * Operation searchRounds
      *
      * Search Tournament Rounds
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $status
@@ -192,7 +183,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function searchRounds(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $status,
@@ -210,7 +200,6 @@ interface TournamentApiInterface {
      * Operation searchTournaments
      *
      * Search Tournaments
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $keyword
@@ -226,7 +215,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\MissionShortResponse
      */
     public function searchTournaments(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $keyword,
@@ -248,7 +236,6 @@ interface TournamentApiInterface {
      * Operation submitTournamentScore
      *
      * Submit Tournament Score
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $missionId
@@ -259,7 +246,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function submitTournamentScore(
-            float $version,
             int $accountId,
             string $appKey,
             int $missionId,
@@ -276,7 +262,6 @@ interface TournamentApiInterface {
      * Operation submitTournamentVote
      *
      * Submit a vote for a multi-stage album tournament.
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $missionId
@@ -286,7 +271,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function submitTournamentVote(
-            float $version,
             int $accountId,
             string $appKey,
             int $missionId,
@@ -302,7 +286,6 @@ interface TournamentApiInterface {
      * Operation substituteTournamentPlayer
      *
      * Substitute Tournament Player
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @param int $packId
@@ -310,7 +293,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function substituteTournamentPlayer(
-            float $version,
             int $accountId,
             int $missionId,
             int $packId,
@@ -324,7 +306,6 @@ interface TournamentApiInterface {
      * Operation updateTournament
      *
      * Update Tournament
-     * @param float $version
      * @param int $accountId
      * @param int $missionId
      * @param null | string $title
@@ -362,7 +343,6 @@ interface TournamentApiInterface {
      * @return \OpenAPI\Server\Model\TournamentResponse
      */
     public function updateTournament(
-            float $version,
             int $accountId,
             int $missionId,
             ?string $title,

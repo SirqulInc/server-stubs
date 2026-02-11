@@ -47,19 +47,16 @@ class ScoreController extends Controller
      * Create Score.
      *
      */
-    public function createScore(Request $request, float $version): JsonResponse
+    public function createScore(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -100,7 +97,6 @@ class ScoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -122,7 +118,7 @@ class ScoreController extends Controller
         $highest = $request->boolean('highest');
 
 
-        $apiResult = $this->api->createScore($version, $accountId, $appKey, $points, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $timeTaken, $highest);
+        $apiResult = $this->api->createScore($accountId, $appKey, $points, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $timeTaken, $highest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -138,19 +134,16 @@ class ScoreController extends Controller
      * Get Score.
      *
      */
-    public function getScore(Request $request, float $version): JsonResponse
+    public function getScore(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -187,7 +180,6 @@ class ScoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -207,7 +199,7 @@ class ScoreController extends Controller
         $scoreStatus = $request->string('scoreStatus')->value();
 
 
-        $apiResult = $this->api->getScore($version, $accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreObjectType, $scoreStatus);
+        $apiResult = $this->api->getScore($accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreObjectType, $scoreStatus);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -223,19 +215,16 @@ class ScoreController extends Controller
      * Search Score.
      *
      */
-    public function searchScores(Request $request, float $version): JsonResponse
+    public function searchScores(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -266,7 +255,6 @@ class ScoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -282,7 +270,7 @@ class ScoreController extends Controller
         $gameObjectId = $request->integer('gameObjectId');
 
 
-        $apiResult = $this->api->searchScores($version, $accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId);
+        $apiResult = $this->api->searchScores($accountId, $appKey, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

@@ -47,19 +47,16 @@ class PurchaseOrderController extends Controller
      * Create Order.
      *
      */
-    public function createOrder(Request $request, float $version): JsonResponse
+    public function createOrder(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -104,7 +101,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $cart = $request->string('cart')->value();
@@ -130,7 +126,7 @@ class PurchaseOrderController extends Controller
         $promoCode = $request->string('promoCode')->value();
 
 
-        $apiResult = $this->api->createOrder($version, $appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode);
+        $apiResult = $this->api->createOrder($appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -146,19 +142,16 @@ class PurchaseOrderController extends Controller
      * Delete Order.
      *
      */
-    public function deleteOrder(Request $request, float $version): JsonResponse
+    public function deleteOrder(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'orderId' => [
                     'required',
                     'integer',
@@ -176,7 +169,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $orderId = $request->integer('orderId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -184,7 +176,7 @@ class PurchaseOrderController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteOrder($version, $orderId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteOrder($orderId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -200,19 +192,16 @@ class PurchaseOrderController extends Controller
      * Get Order.
      *
      */
-    public function getOrder(Request $request, float $version): JsonResponse
+    public function getOrder(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -232,7 +221,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -242,7 +230,7 @@ class PurchaseOrderController extends Controller
         $externalOrderId = $request->string('externalOrderId')->value();
 
 
-        $apiResult = $this->api->getOrder($version, $deviceId, $accountId, $orderId, $externalOrderId);
+        $apiResult = $this->api->getOrder($deviceId, $accountId, $orderId, $externalOrderId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -258,19 +246,16 @@ class PurchaseOrderController extends Controller
      * Preview Order.
      *
      */
-    public function previewOrder(Request $request, float $version): JsonResponse
+    public function previewOrder(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -315,7 +300,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $cart = $request->string('cart')->value();
@@ -341,7 +325,7 @@ class PurchaseOrderController extends Controller
         $promoCode = $request->string('promoCode')->value();
 
 
-        $apiResult = $this->api->previewOrder($version, $appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode);
+        $apiResult = $this->api->previewOrder($appKey, $cart, $deviceId, $accountId, $description, $currencyType, $paymentMethodId, $externalOrderId, $externalPaymentId, $remoteRefType, $externalDate, $promoCode);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -357,19 +341,16 @@ class PurchaseOrderController extends Controller
      * Search Orders.
      *
      */
-    public function searchOrders(Request $request, float $version): JsonResponse
+    public function searchOrders(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -471,7 +452,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -535,7 +515,7 @@ class PurchaseOrderController extends Controller
         $endedBefore = $request->integer('endedBefore');
 
 
-        $apiResult = $this->api->searchOrders($version, $appKey, $deviceId, $accountId, $start, $limit, $descending, $activeOnly, $ignoreCustomerFilter, $orderItemTypes, $orderItemIds, $orderCustomTypes, $orderCustomIds, $sortField, $offerTypes, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $offerIds, $offerLocationIds, $retailerIds, $retailerLocationIds, $statuses, $keyword, $redeemableStartDate, $redeemableEndDate, $startedSince, $startedBefore, $endedSince, $endedBefore);
+        $apiResult = $this->api->searchOrders($appKey, $deviceId, $accountId, $start, $limit, $descending, $activeOnly, $ignoreCustomerFilter, $orderItemTypes, $orderItemIds, $orderCustomTypes, $orderCustomIds, $sortField, $offerTypes, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $offerIds, $offerLocationIds, $retailerIds, $retailerLocationIds, $statuses, $keyword, $redeemableStartDate, $redeemableEndDate, $startedSince, $startedBefore, $endedSince, $endedBefore);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -552,19 +532,16 @@ class PurchaseOrderController extends Controller
      * Update Order.
      *
      */
-    public function updateOrder(Request $request, float $version): JsonResponse
+    public function updateOrder(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'orderId' => [
                     'required',
                     'integer',
@@ -607,7 +584,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $orderId = $request->integer('orderId');
 
         $appKey = $request->string('appKey')->value();
@@ -631,7 +607,7 @@ class PurchaseOrderController extends Controller
         $externalDate = $request->integer('externalDate');
 
 
-        $apiResult = $this->api->updateOrder($version, $orderId, $appKey, $cart, $deviceId, $accountId, $paymentTransactionId, $description, $currencyType, $paymentMethodId, $externalPaymentId, $externalDate);
+        $apiResult = $this->api->updateOrder($orderId, $appKey, $cart, $deviceId, $accountId, $paymentTransactionId, $description, $currencyType, $paymentMethodId, $externalPaymentId, $externalDate);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

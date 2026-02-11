@@ -47,19 +47,16 @@ class GameController extends Controller
      * Create a Game.
      *
      */
-    public function createGame(Request $request, float $version): JsonResponse
+    public function createGame(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -88,7 +85,6 @@ class GameController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -104,7 +100,7 @@ class GameController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->createGame($version, $accountId, $appKey, $title, $description, $metaData, $packIds, $includeGameData);
+        $apiResult = $this->api->createGame($accountId, $appKey, $title, $description, $metaData, $packIds, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -120,19 +116,16 @@ class GameController extends Controller
      * Delete a Game.
      *
      */
-    public function deleteGame(Request $request, float $version): JsonResponse
+    public function deleteGame(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -148,13 +141,12 @@ class GameController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $gameId = $request->integer('gameId');
 
 
-        $apiResult = $this->api->deleteGame($version, $accountId, $gameId);
+        $apiResult = $this->api->deleteGame($accountId, $gameId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,19 +162,16 @@ class GameController extends Controller
      * Get a Game by id.
      *
      */
-    public function getGame(Request $request, float $version): JsonResponse
+    public function getGame(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -201,7 +190,6 @@ class GameController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $gameId = $request->integer('gameId');
@@ -209,7 +197,7 @@ class GameController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->getGame($version, $accountId, $gameId, $includeGameData);
+        $apiResult = $this->api->getGame($accountId, $gameId, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -225,19 +213,16 @@ class GameController extends Controller
      * Search a Game.
      *
      */
-    public function searchGames(Request $request, float $version): JsonResponse
+    public function searchGames(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -273,7 +258,6 @@ class GameController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -291,7 +275,7 @@ class GameController extends Controller
         $includeInactive = $request->boolean('includeInactive');
 
 
-        $apiResult = $this->api->searchGames($version, $accountId, $appKey, $start, $limit, $keyword, $appVersion, $includeGameData, $includeInactive);
+        $apiResult = $this->api->searchGames($accountId, $appKey, $start, $limit, $keyword, $appVersion, $includeGameData, $includeInactive);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -307,19 +291,16 @@ class GameController extends Controller
      * Update a Game.
      *
      */
-    public function updateGame(Request $request, float $version): JsonResponse
+    public function updateGame(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -351,7 +332,6 @@ class GameController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $gameId = $request->integer('gameId');
@@ -369,7 +349,7 @@ class GameController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->updateGame($version, $accountId, $gameId, $appKey, $title, $description, $metaData, $packIds, $includeGameData);
+        $apiResult = $this->api->updateGame($accountId, $gameId, $appKey, $title, $description, $metaData, $packIds, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GameResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,19 +47,16 @@ class TrackingController extends Controller
      * Create Batch Tracking.
      *
      */
-    public function batchSaveTracking(Request $request, float $version): JsonResponse
+    public function batchSaveTracking(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'data' => [
                     'required',
                     'string',
@@ -89,7 +86,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $data = $request->string('data')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -105,7 +101,7 @@ class TrackingController extends Controller
         $slaveUID = $request->string('slaveUID')->value();
 
 
-        $apiResult = $this->api->batchSaveTracking($version, $data, $deviceId, $accountId, $generateAccounts, $updateAccountLocations, $defaultTag, $slaveUID);
+        $apiResult = $this->api->batchSaveTracking($data, $deviceId, $accountId, $generateAccounts, $updateAccountLocations, $defaultTag, $slaveUID);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -122,19 +118,16 @@ class TrackingController extends Controller
      * Get Predicted Locations.
      *
      */
-    public function getPredictedLocations(Request $request, float $version): JsonResponse
+    public function getPredictedLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -165,7 +158,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $latitude = $request->float('latitude');
@@ -185,7 +177,7 @@ class TrackingController extends Controller
         $sortOrder = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\GetPredictedLocationsSortOrderParameter::class);
 
 
-        $apiResult = $this->api->getPredictedLocations($version, $accountId, $latitude, $longitude, $dateCheck, $hourCheck, $threshold, $distanceUnit, $searchRange, $sortOrder);
+        $apiResult = $this->api->getPredictedLocations($accountId, $latitude, $longitude, $dateCheck, $hourCheck, $threshold, $distanceUnit, $searchRange, $sortOrder);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PredictedLocationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -201,19 +193,16 @@ class TrackingController extends Controller
      * Get Tracking Path.
      *
      */
-    public function getPredictedPath(Request $request, float $version): JsonResponse
+    public function getPredictedPath(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -233,7 +222,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $startStepId = $request->integer('startStepId');
@@ -241,7 +229,7 @@ class TrackingController extends Controller
         $endStepId = $request->integer('endStepId');
 
 
-        $apiResult = $this->api->getPredictedPath($version, $accountId, $startStepId, $endStepId);
+        $apiResult = $this->api->getPredictedPath($accountId, $startStepId, $endStepId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -258,19 +246,16 @@ class TrackingController extends Controller
      * Search Preferred Locations.
      *
      */
-    public function getPreferredLocations(Request $request, float $version): JsonResponse
+    public function getPreferredLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -308,7 +293,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $latitude = $request->float('latitude');
@@ -332,7 +316,7 @@ class TrackingController extends Controller
         $distanceUnit = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\GetOfferListCountsDistanceUnitParameter::class);
 
 
-        $apiResult = $this->api->getPreferredLocations($version, $accountId, $latitude, $longitude, $dateCheck, $hourCheck, $sortField, $descending, $start, $limit, $searchRange, $distanceUnit);
+        $apiResult = $this->api->getPreferredLocations($accountId, $latitude, $longitude, $dateCheck, $hourCheck, $sortField, $descending, $start, $limit, $searchRange, $distanceUnit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -349,19 +333,16 @@ class TrackingController extends Controller
      * Search Tracking.
      *
      */
-    public function getTrackingLegs(Request $request, float $version): JsonResponse
+    public function getTrackingLegs(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -393,7 +374,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -411,7 +391,7 @@ class TrackingController extends Controller
         $getLastPoint = $request->boolean('getLastPoint');
 
 
-        $apiResult = $this->api->getTrackingLegs($version, $deviceId, $accountId, $ownerId, $trackingDeviceId, $startDate, $endDate, $tags, $getLastPoint);
+        $apiResult = $this->api->getTrackingLegs($deviceId, $accountId, $ownerId, $trackingDeviceId, $startDate, $endDate, $tags, $getLastPoint);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -428,19 +408,16 @@ class TrackingController extends Controller
      * Create Tracking Leg.
      *
      */
-    public function saveTrackingLeg(Request $request, float $version): JsonResponse
+    public function saveTrackingLeg(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'startLat' => [
                     'required',
                 ],
@@ -485,7 +462,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $startLat = $request->float('startLat');
 
         $startLng = $request->float('startLng');
@@ -511,7 +487,7 @@ class TrackingController extends Controller
         $tags = $request->string('tags')->value();
 
 
-        $apiResult = $this->api->saveTrackingLeg($version, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration, $steps, $tags);
+        $apiResult = $this->api->saveTrackingLeg($startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration, $steps, $tags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -527,19 +503,16 @@ class TrackingController extends Controller
      * Create Tracking Step.
      *
      */
-    public function saveTrackingStep(Request $request, float $version): JsonResponse
+    public function saveTrackingStep(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'legId' => [
                     'required',
                     'integer',
@@ -582,7 +555,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $legId = $request->integer('legId');
 
         $startLat = $request->float('startLat');
@@ -606,7 +578,7 @@ class TrackingController extends Controller
         $duration = $request->integer('duration');
 
 
-        $apiResult = $this->api->saveTrackingStep($version, $legId, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration);
+        $apiResult = $this->api->saveTrackingStep($legId, $startLat, $startLng, $startDate, $endLat, $endLng, $endDate, $deviceId, $accountId, $distance, $duration);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -622,19 +594,16 @@ class TrackingController extends Controller
      * List Tracking.
      *
      */
-    public function searchAccountsWithTrackingLegs(Request $request, float $version): JsonResponse
+    public function searchAccountsWithTrackingLegs(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -682,7 +651,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -712,7 +680,7 @@ class TrackingController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchAccountsWithTrackingLegs($version, $accountId, $keyword, $startDate, $endDate, $tags, $audienceIds, $latitude, $longitude, $range, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchAccountsWithTrackingLegs($accountId, $keyword, $startDate, $endDate, $tags, $audienceIds, $latitude, $longitude, $range, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -729,19 +697,16 @@ class TrackingController extends Controller
      * Search Tracking (Billable).
      *
      */
-    public function searchTrackingLegs(Request $request, float $version): JsonResponse
+    public function searchTrackingLegs(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -775,7 +740,6 @@ class TrackingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -793,7 +757,7 @@ class TrackingController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchTrackingLegs($version, $accountId, $appKey, $trackingDeviceId, $startDate, $endDate, $tags, $start, $limit);
+        $apiResult = $this->api->searchTrackingLegs($accountId, $appKey, $trackingDeviceId, $startDate, $endDate, $tags, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

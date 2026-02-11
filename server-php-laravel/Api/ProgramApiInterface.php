@@ -28,12 +28,10 @@ interface ProgramApiInterface {
      * Operation createProgram
      *
      * Create Program
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Program $body
      * @return \OpenAPI\Server\Model\Program
      */
     public function createProgram(
-            float $version,
             ?\OpenAPI\Server\Model\Program $body,
     ):
         \OpenAPI\Server\Model\Program
@@ -44,12 +42,10 @@ interface ProgramApiInterface {
      * Operation deleteProgram
      *
      * Delete Program
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteProgram(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -60,12 +56,10 @@ interface ProgramApiInterface {
      * Operation getProgram
      *
      * Get Program
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\Program
      */
     public function getProgram(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\Program
@@ -76,13 +70,11 @@ interface ProgramApiInterface {
      * Operation postProgram
      *
      * Update Program
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Program $body
      * @return \OpenAPI\Server\Model\Program
      */
     public function postProgram(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Program $body,
     ):
@@ -94,13 +86,11 @@ interface ProgramApiInterface {
      * Operation putProgram
      *
      * Update Program
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Program $body
      * @return \OpenAPI\Server\Model\Program
      */
     public function putProgram(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Program $body,
     ):
@@ -112,7 +102,6 @@ interface ProgramApiInterface {
      * Operation searchPrograms
      *
      * Search Programs
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -122,7 +111,6 @@ interface ProgramApiInterface {
      * @return \OpenAPI\Server\Model\Program[]
      */
     public function searchPrograms(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,

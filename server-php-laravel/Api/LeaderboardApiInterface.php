@@ -28,7 +28,6 @@ interface LeaderboardApiInterface {
      * Operation createLeaderboard
      *
      * Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @param null | string $rankType
@@ -45,7 +44,6 @@ interface LeaderboardApiInterface {
      * @return \OpenAPI\Server\Model\LeaderboardResponse
      */
     public function createLeaderboard(
-            float $version,
             ?int $accountId,
             ?string $appKey,
             ?string $rankType,
@@ -68,13 +66,11 @@ interface LeaderboardApiInterface {
      * Operation deleteLeaderboard
      *
      * Delete the Leader Board
-     * @param float $version
      * @param int $leaderboardId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteLeaderboard(
-            float $version,
             int $leaderboardId,
             ?int $accountId,
     ):
@@ -86,14 +82,12 @@ interface LeaderboardApiInterface {
      * Operation getLeaderboard
      *
      * Read a leaderboard by id and retrieve the matching ranking list
-     * @param float $version
      * @param int $leaderboardId
      * @param null | int $accountId
      * @param null | bool $includeFullRankingList
      * @return \OpenAPI\Server\Model\LeaderboardResponse
      */
     public function getLeaderboard(
-            float $version,
             int $leaderboardId,
             ?int $accountId,
             ?bool $includeFullRankingList,
@@ -106,7 +100,6 @@ interface LeaderboardApiInterface {
      * Operation searchLeaderboards
      *
      * Search leaderboard and retrieve the matching ranking list
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @param null | bool $globalOnly
@@ -122,7 +115,6 @@ interface LeaderboardApiInterface {
      * @return \OpenAPI\Server\Model\LeaderboardResponse
      */
     public function searchLeaderboards(
-            float $version,
             ?int $accountId,
             ?string $appKey,
             ?bool $globalOnly,
@@ -144,7 +136,6 @@ interface LeaderboardApiInterface {
      * Operation updateLeaderboard
      *
      * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation
-     * @param float $version
      * @param int $leaderboardId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -163,7 +154,6 @@ interface LeaderboardApiInterface {
      * @return \OpenAPI\Server\Model\LeaderboardResponse
      */
     public function updateLeaderboard(
-            float $version,
             int $leaderboardId,
             ?int $accountId,
             ?string $appKey,

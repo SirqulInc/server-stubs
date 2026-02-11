@@ -47,19 +47,16 @@ class PackController extends Controller
      * Create Pack.
      *
      */
-    public function createPack(Request $request, float $version): JsonResponse
+    public function createPack(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -144,7 +141,6 @@ class PackController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $title = $request->string('title')->value();
@@ -194,7 +190,7 @@ class PackController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->createPack($version, $accountId, $title, $packOrder, $price, $highest, $allocateTickets, $ticketCount, $description, $searchTags, $active, $gameType, $appKey, $packType, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $priceType, $gameLevelIds, $inGame, $ticketType, $points);
+        $apiResult = $this->api->createPack($accountId, $title, $packOrder, $price, $highest, $allocateTickets, $ticketCount, $description, $searchTags, $active, $gameType, $appKey, $packType, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $priceType, $gameLevelIds, $inGame, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PackResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -210,19 +206,16 @@ class PackController extends Controller
      * Delete Pack.
      *
      */
-    public function deletePack(Request $request, float $version): JsonResponse
+    public function deletePack(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -238,13 +231,12 @@ class PackController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $packId = $request->integer('packId');
 
 
-        $apiResult = $this->api->deletePack($version, $accountId, $packId);
+        $apiResult = $this->api->deletePack($accountId, $packId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -260,19 +252,16 @@ class PackController extends Controller
      * Get Pack.
      *
      */
-    public function getPack(Request $request, float $version): JsonResponse
+    public function getPack(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -292,7 +281,6 @@ class PackController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $packId = $request->integer('packId');
@@ -300,7 +288,7 @@ class PackController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->getPack($version, $accountId, $packId, $includeGameData);
+        $apiResult = $this->api->getPack($accountId, $packId, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PackResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -316,19 +304,16 @@ class PackController extends Controller
      * Search Packs.
      *
      */
-    public function searchPacks(Request $request, float $version): JsonResponse
+    public function searchPacks(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -367,7 +352,6 @@ class PackController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchPacksSortFieldParameter::class);
@@ -389,7 +373,7 @@ class PackController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->searchPacks($version, $accountId, $sortField, $descending, $keyword, $packType, $start, $limit, $includeGameData, $includeInactive, $appKey);
+        $apiResult = $this->api->searchPacks($accountId, $sortField, $descending, $keyword, $packType, $start, $limit, $includeGameData, $includeInactive, $appKey);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -406,19 +390,16 @@ class PackController extends Controller
      * Update Pack.
      *
      */
-    public function updatePack(Request $request, float $version): JsonResponse
+    public function updatePack(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -503,7 +484,6 @@ class PackController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $packId = $request->integer('packId');
@@ -555,7 +535,7 @@ class PackController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->updatePack($version, $accountId, $packId, $allocateTickets, $ticketCount, $title, $description, $searchTags, $active, $gameType, $appKey, $packType, $packOrder, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $price, $priceType, $gameLevelIds, $inGame, $highest, $ticketType, $points);
+        $apiResult = $this->api->updatePack($accountId, $packId, $allocateTickets, $ticketCount, $title, $description, $searchTags, $active, $gameType, $appKey, $packType, $packOrder, $sequenceType, $backgroundId, $imageId, $startDate, $endDate, $authorOverride, $price, $priceType, $gameLevelIds, $inGame, $highest, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PackResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

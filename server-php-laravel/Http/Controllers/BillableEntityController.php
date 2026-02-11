@@ -47,19 +47,16 @@ class BillableEntityController extends Controller
      * Create Billable.
      *
      */
-    public function createBillableEntity(Request $request, float $version): JsonResponse
+    public function createBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -103,7 +100,6 @@ class BillableEntityController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -129,7 +125,7 @@ class BillableEntityController extends Controller
         $authorizeNetTransactionKey = $request->string('authorizeNetTransactionKey')->value();
 
 
-        $apiResult = $this->api->createBillableEntity($version, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey);
+        $apiResult = $this->api->createBillableEntity($deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BillableEntityResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -145,19 +141,16 @@ class BillableEntityController extends Controller
      * Delete Billable.
      *
      */
-    public function deleteBillableEntity(Request $request, float $version): JsonResponse
+    public function deleteBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -171,13 +164,12 @@ class BillableEntityController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteBillableEntity($version, $deviceId, $accountId);
+        $apiResult = $this->api->deleteBillableEntity($deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -193,19 +185,16 @@ class BillableEntityController extends Controller
      * Get Billable.
      *
      */
-    public function getBillableEntity(Request $request, float $version): JsonResponse
+    public function getBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -225,7 +214,6 @@ class BillableEntityController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -235,7 +223,7 @@ class BillableEntityController extends Controller
         $includePayments = $request->boolean('includePayments');
 
 
-        $apiResult = $this->api->getBillableEntity($version, $deviceId, $accountId, $includeCounts, $includePayments);
+        $apiResult = $this->api->getBillableEntity($deviceId, $accountId, $includeCounts, $includePayments);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BillableEntityResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -251,19 +239,16 @@ class BillableEntityController extends Controller
      * Update Billable.
      *
      */
-    public function updateBillableEntity(Request $request, float $version): JsonResponse
+    public function updateBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -307,7 +292,6 @@ class BillableEntityController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -333,7 +317,7 @@ class BillableEntityController extends Controller
         $authorizeNetTransactionKey = $request->string('authorizeNetTransactionKey')->value();
 
 
-        $apiResult = $this->api->updateBillableEntity($version, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey);
+        $apiResult = $this->api->updateBillableEntity($deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $businessPhone, $businessPhoneExt, $authorizeNetApiKey, $authorizeNetTransactionKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BillableEntityResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

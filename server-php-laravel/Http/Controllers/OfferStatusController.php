@@ -47,19 +47,16 @@ class OfferStatusController extends Controller
      * Create Offer Status.
      *
      */
-    public function createOfferTransactionStatus(Request $request, float $version): JsonResponse
+    public function createOfferTransactionStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'name' => [
                     'required',
                     'string',
@@ -97,7 +94,6 @@ class OfferStatusController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $name = $request->string('name')->value();
 
         $code = $request->integer('code');
@@ -119,7 +115,7 @@ class OfferStatusController extends Controller
         $applicationIds = $request->string('applicationIds')->value();
 
 
-        $apiResult = $this->api->createOfferTransactionStatus($version, $name, $code, $deviceId, $accountId, $latitude, $longitude, $description, $role, $active, $applicationIds);
+        $apiResult = $this->api->createOfferTransactionStatus($name, $code, $deviceId, $accountId, $latitude, $longitude, $description, $role, $active, $applicationIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferTransactionStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -135,19 +131,16 @@ class OfferStatusController extends Controller
      * Delete Offer Status.
      *
      */
-    public function deleteOfferTransactionStatus(Request $request, float $version): JsonResponse
+    public function deleteOfferTransactionStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'statusId' => [
                     'required',
                     'integer',
@@ -169,7 +162,6 @@ class OfferStatusController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $statusId = $request->integer('statusId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -181,7 +173,7 @@ class OfferStatusController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->deleteOfferTransactionStatus($version, $statusId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->deleteOfferTransactionStatus($statusId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -197,19 +189,16 @@ class OfferStatusController extends Controller
      * Get Offer Status.
      *
      */
-    public function getOfferTransactionStatus(Request $request, float $version): JsonResponse
+    public function getOfferTransactionStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'statusId' => [
                     'required',
                     'integer',
@@ -231,7 +220,6 @@ class OfferStatusController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $statusId = $request->integer('statusId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -243,7 +231,7 @@ class OfferStatusController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getOfferTransactionStatus($version, $statusId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getOfferTransactionStatus($statusId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferTransactionStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -259,19 +247,16 @@ class OfferStatusController extends Controller
      * Search Offer Status.
      *
      */
-    public function searchOfferTransactionStatuses(Request $request, float $version): JsonResponse
+    public function searchOfferTransactionStatuses(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -312,7 +297,6 @@ class OfferStatusController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -338,7 +322,7 @@ class OfferStatusController extends Controller
         $includeInactive = $request->boolean('includeInactive');
 
 
-        $apiResult = $this->api->searchOfferTransactionStatuses($version, $deviceId, $accountId, $latitude, $longitude, $keyword, $role, $appKey, $sortField, $descending, $start, $limit, $includeInactive);
+        $apiResult = $this->api->searchOfferTransactionStatuses($deviceId, $accountId, $latitude, $longitude, $keyword, $role, $appKey, $sortField, $descending, $start, $limit, $includeInactive);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -355,19 +339,16 @@ class OfferStatusController extends Controller
      * Update Offer Status.
      *
      */
-    public function updateOfferTransactionStatus(Request $request, float $version): JsonResponse
+    public function updateOfferTransactionStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -406,7 +387,6 @@ class OfferStatusController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -430,7 +410,7 @@ class OfferStatusController extends Controller
         $applicationIds = $request->string('applicationIds')->value();
 
 
-        $apiResult = $this->api->updateOfferTransactionStatus($version, $deviceId, $accountId, $latitude, $longitude, $statusId, $name, $description, $code, $role, $active, $applicationIds);
+        $apiResult = $this->api->updateOfferTransactionStatus($deviceId, $accountId, $latitude, $longitude, $statusId, $name, $description, $code, $role, $active, $applicationIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferTransactionStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

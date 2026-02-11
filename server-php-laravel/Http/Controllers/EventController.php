@@ -47,19 +47,16 @@ class EventController extends Controller
      * Attend Event.
      *
      */
-    public function attendEvent(Request $request, float $version): JsonResponse
+    public function attendEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -95,7 +92,6 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -117,7 +113,7 @@ class EventController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->attendEvent($version, $deviceId, $accountId, $appKey, $listingId, $retailerLocationId, $offerLocationId, $transactionId, $status, $latitude, $longitude);
+        $apiResult = $this->api->attendEvent($deviceId, $accountId, $appKey, $listingId, $retailerLocationId, $offerLocationId, $transactionId, $status, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -133,19 +129,16 @@ class EventController extends Controller
      * Create Event.
      *
      */
-    public function createEvent(Request $request, float $version): JsonResponse
+    public function createEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -191,7 +184,6 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $title = $request->string('title')->value();
@@ -217,7 +209,7 @@ class EventController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createEvent($version, $accountId, $title, $retailerLocationIds, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd, $metaData);
+        $apiResult = $this->api->createEvent($accountId, $title, $retailerLocationIds, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -233,19 +225,16 @@ class EventController extends Controller
      * Delete Event.
      *
      */
-    public function deleteEvent(Request $request, float $version): JsonResponse
+    public function deleteEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -261,13 +250,12 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $eventId = $request->integer('eventId');
 
 
-        $apiResult = $this->api->deleteEvent($version, $accountId, $eventId);
+        $apiResult = $this->api->deleteEvent($accountId, $eventId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -283,19 +271,16 @@ class EventController extends Controller
      * Get Event.
      *
      */
-    public function getEvent(Request $request, float $version): JsonResponse
+    public function getEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -311,13 +296,12 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $eventId = $request->integer('eventId');
 
 
-        $apiResult = $this->api->getEvent($version, $accountId, $eventId);
+        $apiResult = $this->api->getEvent($accountId, $eventId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -333,19 +317,16 @@ class EventController extends Controller
      * Search Event Attendance.
      *
      */
-    public function searchEventTransactions(Request $request, float $version): JsonResponse
+    public function searchEventTransactions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -409,7 +390,6 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -449,7 +429,7 @@ class EventController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchEventTransactions($version, $deviceId, $accountId, $appKey, $keyword, $retailerId, $retailerLocationId, $excludeRetailerLocationId, $listingId, $offerId, $offerLocationId, $customerAccountIds, $affiliatedCategoryIds, $startDate, $endDate, $statuses, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchEventTransactions($deviceId, $accountId, $appKey, $keyword, $retailerId, $retailerLocationId, $excludeRetailerLocationId, $listingId, $offerId, $offerLocationId, $customerAccountIds, $affiliatedCategoryIds, $startDate, $endDate, $statuses, $sortField, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -466,19 +446,16 @@ class EventController extends Controller
      * Search Events.
      *
      */
-    public function searchEvents(Request $request, float $version): JsonResponse
+    public function searchEvents(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -525,7 +502,6 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -553,7 +529,7 @@ class EventController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchEvents($version, $accountId, $keyword, $activeOnly, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $sortField, $descending, $startDate, $endDate, $start, $limit);
+        $apiResult = $this->api->searchEvents($accountId, $keyword, $activeOnly, $categoryIds, $filterIds, $offerAudienceIds, $transactionAudienceIds, $sortField, $descending, $startDate, $endDate, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -570,19 +546,16 @@ class EventController extends Controller
      * Update Event.
      *
      */
-    public function updateEvent(Request $request, float $version): JsonResponse
+    public function updateEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -628,7 +601,6 @@ class EventController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $eventId = $request->integer('eventId');
@@ -654,7 +626,7 @@ class EventController extends Controller
         $redeemableEnd = $request->integer('redeemableEnd');
 
 
-        $apiResult = $this->api->updateEvent($version, $accountId, $eventId, $retailerLocationIds, $title, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd);
+        $apiResult = $this->api->updateEvent($accountId, $eventId, $retailerLocationIds, $title, $subTitle, $details, $categoryIds, $filterIds, $active, $imageAssetId, $redeemableStart, $redeemableEnd);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

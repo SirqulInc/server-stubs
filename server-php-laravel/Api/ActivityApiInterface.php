@@ -28,12 +28,10 @@ interface ActivityApiInterface {
      * Operation createEntityReference
      *
      * Create an entity reference.
-     * @param float $version
      * @param \OpenAPI\Server\Model\EntityReference $body
      * @return \OpenAPI\Server\Model\ActivityResponse
      */
     public function createEntityReference(
-            float $version,
             \OpenAPI\Server\Model\EntityReference $body,
     ):
         \OpenAPI\Server\Model\ActivityResponse

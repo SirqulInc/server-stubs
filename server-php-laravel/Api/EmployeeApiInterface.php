@@ -28,7 +28,6 @@ interface EmployeeApiInterface {
      * Operation assignEmployee
      *
      * Assign Employee
-     * @param float $version
      * @param int $accountId
      * @param int $managerAccountId
      * @param int $employeeAccountId
@@ -36,7 +35,6 @@ interface EmployeeApiInterface {
      * @return \OpenAPI\Server\Model\EmployeeResponse
      */
     public function assignEmployee(
-            float $version,
             int $accountId,
             int $managerAccountId,
             int $employeeAccountId,
@@ -50,7 +48,6 @@ interface EmployeeApiInterface {
      * Operation assignToLocationEmployee
      *
      * Assign Employee to Location
-     * @param float $version
      * @param int $accountId
      * @param int $retailerLocationId
      * @param null | int $employeeAccountId
@@ -58,7 +55,6 @@ interface EmployeeApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function assignToLocationEmployee(
-            float $version,
             int $accountId,
             int $retailerLocationId,
             ?int $employeeAccountId,
@@ -72,7 +68,6 @@ interface EmployeeApiInterface {
      * Operation createEmployee
      *
      * Create Employee
-     * @param float $version
      * @param int $accountId
      * @param int $managerAccountId
      * @param string $username
@@ -106,7 +101,6 @@ interface EmployeeApiInterface {
      * @return \OpenAPI\Server\Model\EmployeeResponse
      */
     public function createEmployee(
-            float $version,
             int $accountId,
             int $managerAccountId,
             string $username,
@@ -146,13 +140,11 @@ interface EmployeeApiInterface {
      * Operation deleteEmployee
      *
      * Delete Employee
-     * @param float $version
      * @param int $accountId
      * @param int $employeeAccountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteEmployee(
-            float $version,
             int $accountId,
             int $employeeAccountId,
     ):
@@ -164,14 +156,12 @@ interface EmployeeApiInterface {
      * Operation getEmployee
      *
      * Get Employee
-     * @param float $version
      * @param int $accountId
      * @param int $employeeAccountId
      * @param null | string $settingsAppKey
      * @return \OpenAPI\Server\Model\EmployeeResponse
      */
     public function getEmployee(
-            float $version,
             int $accountId,
             int $employeeAccountId,
             ?string $settingsAppKey,
@@ -184,7 +174,6 @@ interface EmployeeApiInterface {
      * Operation searchEmployees
      *
      * Search Employees
-     * @param float $version
      * @param int $accountId
      * @param null | string $role
      * @param null | int $retailerId
@@ -205,7 +194,6 @@ interface EmployeeApiInterface {
      * @return \OpenAPI\Server\Model\EmployeeResponse[]
      */
     public function searchEmployees(
-            float $version,
             int $accountId,
             ?string $role,
             ?int $retailerId,
@@ -232,13 +220,11 @@ interface EmployeeApiInterface {
      * Operation unassignEmployee
      *
      * Unassign Employee
-     * @param float $version
      * @param int $accountId
      * @param int $employeeAccountId
      * @return \OpenAPI\Server\Model\EmployeeResponse
      */
     public function unassignEmployee(
-            float $version,
             int $accountId,
             int $employeeAccountId,
     ):
@@ -250,7 +236,6 @@ interface EmployeeApiInterface {
      * Operation updateEmployee
      *
      * Update Employee
-     * @param float $version
      * @param int $accountId
      * @param int $employeeAccountId
      * @param null | int $managerAccountId
@@ -284,7 +269,6 @@ interface EmployeeApiInterface {
      * @return \OpenAPI\Server\Model\EmployeeResponse
      */
     public function updateEmployee(
-            float $version,
             int $accountId,
             int $employeeAccountId,
             ?int $managerAccountId,

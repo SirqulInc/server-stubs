@@ -47,19 +47,16 @@ class ThirdPartyCredentialsController extends Controller
      * Create Credential.
      *
      */
-    public function createCredential(Request $request, float $version): JsonResponse
+    public function createCredential(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'thirdPartyId' => [
                     'required',
                     'string',
@@ -120,7 +117,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $thirdPartyId = $request->string('thirdPartyId')->value();
 
         $thirdPartyToken = $request->string('thirdPartyToken')->value();
@@ -156,7 +152,7 @@ class ThirdPartyCredentialsController extends Controller
         $audienceIdsToRemove = $request->string('audienceIdsToRemove')->value();
 
 
-        $apiResult = $this->api->createCredential($version, $thirdPartyId, $thirdPartyToken, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyName, $emailAddress, $signinOnlyMode, $responseFilters, $latitude, $longitude, $metaData, $thirdPartyRefreshToken, $audienceIdsToAdd, $audienceIdsToRemove);
+        $apiResult = $this->api->createCredential($thirdPartyId, $thirdPartyToken, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyName, $emailAddress, $signinOnlyMode, $responseFilters, $latitude, $longitude, $metaData, $thirdPartyRefreshToken, $audienceIdsToAdd, $audienceIdsToRemove);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -172,12 +168,12 @@ class ThirdPartyCredentialsController extends Controller
      * Create Network.
      *
      */
-    public function createNetwork(Request $request, float $version): JsonResponse
+    public function createNetwork(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -188,7 +184,6 @@ class ThirdPartyCredentialsController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => 'Invalid input'], 400);
         }
-
 
         $accountId = $request->integer('accountId');
 
@@ -225,7 +220,7 @@ class ThirdPartyCredentialsController extends Controller
         $body = $request->string('body')->value();
 
 
-        $apiResult = $this->api->createNetwork($version, $accountId, $name, $enableIntrospection, $description, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body);
+        $apiResult = $this->api->createNetwork($accountId, $name, $enableIntrospection, $description, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ThirdPartyNetworkResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -241,19 +236,16 @@ class ThirdPartyCredentialsController extends Controller
      * Delete Credential.
      *
      */
-    public function deleteCredential(Request $request, float $version): JsonResponse
+    public function deleteCredential(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -277,7 +269,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $networkUID = $request->string('networkUID')->value();
@@ -287,7 +278,7 @@ class ThirdPartyCredentialsController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->deleteCredential($version, $accountId, $networkUID, $thirdPartyId, $appKey);
+        $apiResult = $this->api->deleteCredential($accountId, $networkUID, $thirdPartyId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -303,19 +294,16 @@ class ThirdPartyCredentialsController extends Controller
      * Delete Network.
      *
      */
-    public function deleteNetwork(Request $request, float $version): JsonResponse
+    public function deleteNetwork(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -331,13 +319,12 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $networkUID = $request->string('networkUID')->value();
 
 
-        $apiResult = $this->api->deleteNetwork($version, $accountId, $networkUID);
+        $apiResult = $this->api->deleteNetwork($accountId, $networkUID);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -353,19 +340,16 @@ class ThirdPartyCredentialsController extends Controller
      * Get Credential.
      *
      */
-    public function getCredential(Request $request, float $version): JsonResponse
+    public function getCredential(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'networkUID' => [
                     'required',
                     'string',
@@ -418,7 +402,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $networkUID = $request->string('networkUID')->value();
 
         $appKey = $request->string('appKey')->value();
@@ -450,7 +433,7 @@ class ThirdPartyCredentialsController extends Controller
         $referralAccountId = $request->integer('referralAccountId');
 
 
-        $apiResult = $this->api->getCredential($version, $networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyCredentialId, $thirdPartyToken, $thirdPartySecret, $createNewAccount, $responseFilters, $latitude, $longitude, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId);
+        $apiResult = $this->api->getCredential($networkUID, $appKey, $accountId, $deviceId, $sessionId, $thirdPartyCredentialId, $thirdPartyToken, $thirdPartySecret, $createNewAccount, $responseFilters, $latitude, $longitude, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -466,19 +449,16 @@ class ThirdPartyCredentialsController extends Controller
      * Get Network.
      *
      */
-    public function getNetwork(Request $request, float $version): JsonResponse
+    public function getNetwork(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -494,13 +474,12 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $networkUID = $request->string('networkUID')->value();
 
 
-        $apiResult = $this->api->getNetwork($version, $accountId, $networkUID);
+        $apiResult = $this->api->getNetwork($accountId, $networkUID);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ThirdPartyNetworkResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -516,19 +495,16 @@ class ThirdPartyCredentialsController extends Controller
      * Search Credentials.
      *
      */
-    public function searchCredentials(Request $request, float $version): JsonResponse
+    public function searchCredentials(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -555,7 +531,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -569,7 +544,7 @@ class ThirdPartyCredentialsController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchCredentials($version, $accountId, $keyword, $networkUID, $descending, $start, $limit);
+        $apiResult = $this->api->searchCredentials($accountId, $keyword, $networkUID, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -586,19 +561,16 @@ class ThirdPartyCredentialsController extends Controller
      * Search Networks.
      *
      */
-    public function searchNetworks(Request $request, float $version): JsonResponse
+    public function searchNetworks(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -635,7 +607,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchNetworksSortFieldParameter::class);
@@ -653,7 +624,7 @@ class ThirdPartyCredentialsController extends Controller
         $filterBillable = $request->boolean('filterBillable');
 
 
-        $apiResult = $this->api->searchNetworks($version, $accountId, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $filterBillable);
+        $apiResult = $this->api->searchNetworks($accountId, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $filterBillable);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -670,19 +641,16 @@ class ThirdPartyCredentialsController extends Controller
      * Send MFA Challenge.
      *
      */
-    public function sendMFAChallenge(Request $request, float $version): JsonResponse
+    public function sendMFAChallenge(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'networkUID' => [
                     'required',
                     'string',
@@ -707,7 +675,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $networkUID = $request->string('networkUID')->value();
 
         $appKey = $request->string('appKey')->value();
@@ -719,7 +686,7 @@ class ThirdPartyCredentialsController extends Controller
         $deviceId = $request->string('deviceId')->value();
 
 
-        $apiResult = $this->api->sendMFAChallenge($version, $networkUID, $appKey, $thirdPartyToken, $thirdPartyCredentialId, $deviceId);
+        $apiResult = $this->api->sendMFAChallenge($networkUID, $appKey, $thirdPartyToken, $thirdPartyCredentialId, $deviceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -735,19 +702,16 @@ class ThirdPartyCredentialsController extends Controller
      * Update Credential.
      *
      */
-    public function updateCredential(Request $request, float $version): JsonResponse
+    public function updateCredential(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'networkUID' => [
                     'required',
                     'string',
@@ -785,7 +749,6 @@ class ThirdPartyCredentialsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $networkUID = $request->string('networkUID')->value();
 
         $thirdPartyId = $request->string('thirdPartyId')->value();
@@ -805,7 +768,7 @@ class ThirdPartyCredentialsController extends Controller
         $thirdPartyRefreshToken = $request->string('thirdPartyRefreshToken')->value();
 
 
-        $apiResult = $this->api->updateCredential($version, $networkUID, $thirdPartyId, $appKey, $deviceId, $thirdPartyName, $thirdPartyToken, $responseFilters, $metaData, $thirdPartyRefreshToken);
+        $apiResult = $this->api->updateCredential($networkUID, $thirdPartyId, $appKey, $deviceId, $thirdPartyName, $thirdPartyToken, $responseFilters, $metaData, $thirdPartyRefreshToken);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -821,12 +784,12 @@ class ThirdPartyCredentialsController extends Controller
      * Update Network.
      *
      */
-    public function updateNetwork(Request $request, float $version): JsonResponse
+    public function updateNetwork(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -837,7 +800,6 @@ class ThirdPartyCredentialsController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => 'Invalid input'], 400);
         }
-
 
         $accountId = $request->integer('accountId');
 
@@ -876,7 +838,7 @@ class ThirdPartyCredentialsController extends Controller
         $body = $request->string('body')->value();
 
 
-        $apiResult = $this->api->updateNetwork($version, $accountId, $networkUID, $name, $description, $enableIntrospection, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body);
+        $apiResult = $this->api->updateNetwork($accountId, $networkUID, $name, $description, $enableIntrospection, $introspectionMethod, $introspectionURL, $introspectionParams, $requiredRootField, $enableMFA, $sizeMFA, $shelfLifeMFA, $oauthTokenURL, $oauthPrivateKey, $oauthPublicKey, $oauthClientId, $oauthSecretKey, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ThirdPartyNetworkResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

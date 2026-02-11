@@ -25,10 +25,9 @@ interface AchievementApiInterface {
 
 
     /**
-     * Operation apiVersionAchievementTierSearchPost
+     * Operation achievementTierSearchPost
      *
      * Searches an Achievement Tier
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -42,8 +41,7 @@ interface AchievementApiInterface {
      * @param null | int $limit
      * @return \OpenAPI\Server\Model\AchievementTierResponse
      */
-    public function apiVersionAchievementTierSearchPost(
-            float $version,
+    public function achievementTierSearchPost(
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -64,7 +62,6 @@ interface AchievementApiInterface {
      * Operation createAchievement
      *
      * Create Achievement
-     * @param float $version
      * @param string $appKey
      * @param string $title
      * @param null | string $deviceId
@@ -81,7 +78,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementResponse
      */
     public function createAchievement(
-            float $version,
             string $appKey,
             string $title,
             ?string $deviceId,
@@ -104,7 +100,6 @@ interface AchievementApiInterface {
      * Operation createAchievementTier
      *
      * Create Achievement Tier
-     * @param float $version
      * @param int $achievementId
      * @param bool $scoreAllInstances
      * @param null | string $deviceId
@@ -122,7 +117,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementTierResponse
      */
     public function createAchievementTier(
-            float $version,
             int $achievementId,
             bool $scoreAllInstances,
             ?string $deviceId,
@@ -146,13 +140,11 @@ interface AchievementApiInterface {
      * Operation deleteAchievement
      *
      * Delete Achievement
-     * @param float $version
      * @param int $achievementId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteAchievement(
-            float $version,
             int $achievementId,
             ?int $accountId,
     ):
@@ -164,13 +156,11 @@ interface AchievementApiInterface {
      * Operation deleteAchievementTier
      *
      * Delete Achievement Tier
-     * @param float $version
      * @param int $achievementTierId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteAchievementTier(
-            float $version,
             int $achievementTierId,
             ?int $accountId,
     ):
@@ -182,7 +172,6 @@ interface AchievementApiInterface {
      * Operation getAchievement
      *
      * Get Achievement
-     * @param float $version
      * @param int $achievementId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -190,7 +179,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementTierResponse
      */
     public function getAchievement(
-            float $version,
             int $achievementId,
             ?string $deviceId,
             ?int $accountId,
@@ -204,13 +192,11 @@ interface AchievementApiInterface {
      * Operation getAchievementTier
      *
      * Gets an achievement tier
-     * @param float $version
      * @param int $accountId
      * @param int $achievementTierId
      * @return \OpenAPI\Server\Model\AchievementTierResponse
      */
     public function getAchievementTier(
-            float $version,
             int $accountId,
             int $achievementTierId,
     ):
@@ -222,7 +208,6 @@ interface AchievementApiInterface {
      * Operation getUserAchievements
      *
      * Get Achievement Progress
-     * @param float $version
      * @param bool $returnNulls
      * @param string $appKey
      * @param bool $includeUndiscovered
@@ -237,7 +222,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementProgressResponse[]
      */
     public function getUserAchievements(
-            float $version,
             bool $returnNulls,
             string $appKey,
             bool $includeUndiscovered,
@@ -258,12 +242,10 @@ interface AchievementApiInterface {
      * Operation listAchievementTags
      *
      * List Achievement Tags
-     * @param float $version
      * @param null | string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function listAchievementTags(
-            float $version,
             ?string $appKey,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -274,7 +256,6 @@ interface AchievementApiInterface {
      * Operation listAchievements
      *
      * List Achievements
-     * @param float $version
      * @param \OpenAPI\Server\Model\ListAchievementsSortFieldParameter $sortField
      * @param bool $descending
      * @param int $start
@@ -289,7 +270,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementShortResponse[]
      */
     public function listAchievements(
-            float $version,
             \OpenAPI\Server\Model\ListAchievementsSortFieldParameter $sortField,
             bool $descending,
             int $start,
@@ -310,7 +290,6 @@ interface AchievementApiInterface {
      * Operation searchAchievements
      *
      * Search Achievements
-     * @param float $version
      * @param string $appKey
      * @param \OpenAPI\Server\Model\SearchAchievementsSortFieldParameter $sortField
      * @param bool $descending
@@ -326,7 +305,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementShortResponse[]
      */
     public function searchAchievements(
-            float $version,
             string $appKey,
             \OpenAPI\Server\Model\SearchAchievementsSortFieldParameter $sortField,
             bool $descending,
@@ -348,7 +326,6 @@ interface AchievementApiInterface {
      * Operation updateAchievement
      *
      * Update Achievement
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $achievementId
@@ -367,7 +344,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementResponse
      */
     public function updateAchievement(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $achievementId,
@@ -392,7 +368,6 @@ interface AchievementApiInterface {
      * Operation updateAchievementTier
      *
      * Update Achievement Tier
-     * @param float $version
      * @param int $achievementTierId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -410,7 +385,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\AchievementTierResponse
      */
     public function updateAchievementTier(
-            float $version,
             int $achievementTierId,
             ?string $deviceId,
             ?int $accountId,
@@ -434,7 +408,6 @@ interface AchievementApiInterface {
      * Operation updateUserAchievement
      *
      * Update Achievement Progress
-     * @param float $version
      * @param int $accountId
      * @param null | int $achievementId
      * @param null | string $tag
@@ -446,7 +419,6 @@ interface AchievementApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateUserAchievement(
-            float $version,
             int $accountId,
             ?int $achievementId,
             ?string $tag,

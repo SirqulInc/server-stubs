@@ -47,19 +47,16 @@ class MissionInviteController extends Controller
      * Create Mission Invite.
      *
      */
-    public function createMissionInvite(Request $request, float $version): JsonResponse
+    public function createMissionInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -82,7 +79,6 @@ class MissionInviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -94,7 +90,7 @@ class MissionInviteController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->createMissionInvite($version, $deviceId, $accountId, $missionId, $joinCode, $includeGameData);
+        $apiResult = $this->api->createMissionInvite($deviceId, $accountId, $missionId, $joinCode, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -110,19 +106,16 @@ class MissionInviteController extends Controller
      * Delete Mission Invite.
      *
      */
-    public function deleteMissionInvite(Request $request, float $version): JsonResponse
+    public function deleteMissionInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -145,7 +138,6 @@ class MissionInviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -157,7 +149,7 @@ class MissionInviteController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->deleteMissionInvite($version, $deviceId, $accountId, $missionId, $missionInviteId, $includeGameData);
+        $apiResult = $this->api->deleteMissionInvite($deviceId, $accountId, $missionId, $missionInviteId, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -173,19 +165,16 @@ class MissionInviteController extends Controller
      * Get Mission Invite.
      *
      */
-    public function getMissionInvite(Request $request, float $version): JsonResponse
+    public function getMissionInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -211,7 +200,6 @@ class MissionInviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -225,7 +213,7 @@ class MissionInviteController extends Controller
         $includeScores = $request->string('includeScores')->value();
 
 
-        $apiResult = $this->api->getMissionInvite($version, $deviceId, $accountId, $missionId, $missionInviteId, $includeGameData, $includeScores);
+        $apiResult = $this->api->getMissionInvite($deviceId, $accountId, $missionId, $missionInviteId, $includeGameData, $includeScores);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -241,19 +229,16 @@ class MissionInviteController extends Controller
      * Search Mission Invites.
      *
      */
-    public function searchMissionInvites(Request $request, float $version): JsonResponse
+    public function searchMissionInvites(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -300,7 +285,6 @@ class MissionInviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -328,7 +312,7 @@ class MissionInviteController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->searchMissionInvites($version, $deviceId, $accountId, $appKey, $appVersion, $missionId, $status, $lastUpdated, $start, $limit, $keyword, $missionTypes, $filterByBillable, $includeGameData);
+        $apiResult = $this->api->searchMissionInvites($deviceId, $accountId, $appKey, $appVersion, $missionId, $status, $lastUpdated, $start, $limit, $keyword, $missionTypes, $filterByBillable, $includeGameData);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -345,19 +329,16 @@ class MissionInviteController extends Controller
      * Update Mission Invite.
      *
      */
-    public function updateMissionInvite(Request $request, float $version): JsonResponse
+    public function updateMissionInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -398,7 +379,6 @@ class MissionInviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -422,7 +402,7 @@ class MissionInviteController extends Controller
         $includeGameData = $request->boolean('includeGameData');
 
 
-        $apiResult = $this->api->updateMissionInvite($version, $deviceId, $accountId, $appKey, $missionId, $missionInviteId, $packId, $gameLevelId, $status, $permissionableType, $permissionableId, $includeGameData);
+        $apiResult = $this->api->updateMissionInvite($deviceId, $accountId, $appKey, $missionId, $missionInviteId, $packId, $gameLevelId, $status, $permissionableType, $permissionableId, $includeGameData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

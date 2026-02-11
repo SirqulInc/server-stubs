@@ -47,19 +47,16 @@ class RoutingController extends Controller
      * Compute Route.
      *
      */
-    public function computeRouting(Request $request, float $version): JsonResponse
+    public function computeRouting(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'data' => [
                     'required',
                     'string',
@@ -71,11 +68,10 @@ class RoutingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $data = $request->string('data')->value();
 
 
-        $apiResult = $this->api->computeRouting($version, $data);
+        $apiResult = $this->api->computeRouting($data);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RoutingListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

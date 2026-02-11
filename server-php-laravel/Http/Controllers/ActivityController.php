@@ -47,12 +47,12 @@ class ActivityController extends Controller
      * Create an entity reference..
      *
      */
-    public function createEntityReference(Request $request, float $version): JsonResponse
+    public function createEntityReference(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class ActivityController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\EntityReference::class);
 
 
-        $apiResult = $this->api->createEntityReference($version, $body);
+        $apiResult = $this->api->createEntityReference($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ActivityResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

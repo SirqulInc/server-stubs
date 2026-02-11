@@ -28,13 +28,11 @@ interface VehicleApiInterface {
      * Operation createVehicle
      *
      * Create Vehicle
-     * @param float $version
      * @param string $vehicle
      * @param null | \OpenAPI\Server\Model\Vehicle $body
      * @return \OpenAPI\Server\Model\Vehicle
      */
     public function createVehicle(
-            float $version,
             string $vehicle,
             ?\OpenAPI\Server\Model\Vehicle $body,
     ):
@@ -46,12 +44,10 @@ interface VehicleApiInterface {
      * Operation deleteVehicle
      *
      * Delete Vehicle
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteVehicle(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -62,12 +58,10 @@ interface VehicleApiInterface {
      * Operation getVehicle
      *
      * Get Vehicle
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\Vehicle
      */
     public function getVehicle(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\Vehicle
@@ -78,7 +72,6 @@ interface VehicleApiInterface {
      * Operation searchVehicle
      *
      * Search Vehicle
-     * @param float $version
      * @param int $hubId
      * @param string $sortField
      * @param bool $descending
@@ -89,7 +82,6 @@ interface VehicleApiInterface {
      * @return \OpenAPI\Server\Model\Vehicle[]
      */
     public function searchVehicle(
-            float $version,
             int $hubId,
             string $sortField,
             bool $descending,
@@ -106,14 +98,12 @@ interface VehicleApiInterface {
      * Operation updateVehicle
      *
      * Update Vehicle
-     * @param float $version
      * @param int $id
      * @param string $vehicle
      * @param null | \OpenAPI\Server\Model\Vehicle $body
      * @return \OpenAPI\Server\Model\Vehicle
      */
     public function updateVehicle(
-            float $version,
             int $id,
             string $vehicle,
             ?\OpenAPI\Server\Model\Vehicle $body,

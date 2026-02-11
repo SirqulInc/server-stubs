@@ -28,12 +28,10 @@ interface RouteSettingApiInterface {
      * Operation createRouteSettings
      *
      * Create Route Setting
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\RouteSettings $body
      * @return \OpenAPI\Server\Model\RouteSettings
      */
     public function createRouteSettings(
-            float $version,
             ?\OpenAPI\Server\Model\RouteSettings $body,
     ):
         \OpenAPI\Server\Model\RouteSettings
@@ -44,12 +42,10 @@ interface RouteSettingApiInterface {
      * Operation deleteRouteSettings
      *
      * Delete Route Setting
-     * @param float $version
      * @param int $routeSettingsId
      * @return object
      */
     public function deleteRouteSettings(
-            float $version,
             int $routeSettingsId,
     ):
         array
@@ -60,12 +56,10 @@ interface RouteSettingApiInterface {
      * Operation getRouteSettings
      *
      * Get Route Setting
-     * @param float $version
      * @param int $routeSettingsId
      * @return \OpenAPI\Server\Model\RouteSettings
      */
     public function getRouteSettings(
-            float $version,
             int $routeSettingsId,
     ):
         \OpenAPI\Server\Model\RouteSettings
@@ -76,7 +70,6 @@ interface RouteSettingApiInterface {
      * Operation searchRouteSettings
      *
      * Search Route Settings
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -88,7 +81,6 @@ interface RouteSettingApiInterface {
      * @return \OpenAPI\Server\Model\RouteSettings[]
      */
     public function searchRouteSettings(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,
@@ -106,13 +98,11 @@ interface RouteSettingApiInterface {
      * Operation updateRouteSettings
      *
      * Update Route Setting
-     * @param float $version
      * @param int $routeSettingsId
      * @param null | \OpenAPI\Server\Model\RouteSettings $body
      * @return \OpenAPI\Server\Model\RouteSettings
      */
     public function updateRouteSettings(
-            float $version,
             int $routeSettingsId,
             ?\OpenAPI\Server\Model\RouteSettings $body,
     ):

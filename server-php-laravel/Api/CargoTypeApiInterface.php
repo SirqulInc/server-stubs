@@ -28,12 +28,10 @@ interface CargoTypeApiInterface {
      * Operation createCargoType
      *
      * Create Cargo Type
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\CargoType $body
      * @return \OpenAPI\Server\Model\CargoType
      */
     public function createCargoType(
-            float $version,
             ?\OpenAPI\Server\Model\CargoType $body,
     ):
         \OpenAPI\Server\Model\CargoType
@@ -44,12 +42,10 @@ interface CargoTypeApiInterface {
      * Operation deleteCargoType
      *
      * Delete Cargo Type
-     * @param float $version
      * @param int $cargoTypeId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteCargoType(
-            float $version,
             int $cargoTypeId,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -60,12 +56,10 @@ interface CargoTypeApiInterface {
      * Operation getCargoType
      *
      * Get Cargo Type
-     * @param float $version
      * @param int $cargoTypeId
      * @return \OpenAPI\Server\Model\CargoType
      */
     public function getCargoType(
-            float $version,
             int $cargoTypeId,
     ):
         \OpenAPI\Server\Model\CargoType
@@ -76,7 +70,6 @@ interface CargoTypeApiInterface {
      * Operation searchCargoTypes
      *
      * Search Cargo Type
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -87,7 +80,6 @@ interface CargoTypeApiInterface {
      * @return \OpenAPI\Server\Model\CargoType[]
      */
     public function searchCargoTypes(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,
@@ -104,13 +96,11 @@ interface CargoTypeApiInterface {
      * Operation updateCargoType
      *
      * Update Cargo Type
-     * @param float $version
      * @param int $cargoTypeId
      * @param null | \OpenAPI\Server\Model\CargoType $body
      * @return \OpenAPI\Server\Model\CargoType
      */
     public function updateCargoType(
-            float $version,
             int $cargoTypeId,
             ?\OpenAPI\Server\Model\CargoType $body,
     ):

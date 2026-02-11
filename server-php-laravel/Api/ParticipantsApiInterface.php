@@ -28,14 +28,12 @@ interface ParticipantsApiInterface {
      * Operation processAllParticipants
      *
      * Process All Participant Feeds
-     * @param float $version
      * @param int $accountId
      * @param null | string $appKey
      * @param null | bool $useShortNameAsID
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function processAllParticipants(
-            float $version,
             int $accountId,
             ?string $appKey,
             ?bool $useShortNameAsID,
@@ -48,7 +46,6 @@ interface ParticipantsApiInterface {
      * Operation processParticipants
      *
      * Process Participants Feed
-     * @param float $version
      * @param int $accountId
      * @param string $league
      * @param null | string $appKey
@@ -57,7 +54,6 @@ interface ParticipantsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function processParticipants(
-            float $version,
             int $accountId,
             string $league,
             ?string $appKey,

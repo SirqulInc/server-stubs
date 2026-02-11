@@ -28,7 +28,6 @@ interface FlagApiInterface {
      * Operation createFlag
      *
      * Create Flag
-     * @param float $version
      * @param string $flagableType
      * @param int $flagableId
      * @param null | string $deviceId
@@ -39,7 +38,6 @@ interface FlagApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function createFlag(
-            float $version,
             string $flagableType,
             int $flagableId,
             ?string $deviceId,
@@ -56,7 +54,6 @@ interface FlagApiInterface {
      * Operation deleteFlag
      *
      * Delete Flag
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $itemBeingFlaggedType
@@ -66,7 +63,6 @@ interface FlagApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteFlag(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $itemBeingFlaggedType,
@@ -82,7 +78,6 @@ interface FlagApiInterface {
      * Operation getFlag
      *
      * Get Flag
-     * @param float $version
      * @param string $flagableType
      * @param int $flagableId
      * @param null | string $deviceId
@@ -92,7 +87,6 @@ interface FlagApiInterface {
      * @return \OpenAPI\Server\Model\FlagResponse
      */
     public function getFlag(
-            float $version,
             string $flagableType,
             int $flagableId,
             ?string $deviceId,
@@ -108,13 +102,11 @@ interface FlagApiInterface {
      * Operation getFlagThreshold
      *
      * Get Flag Threshold
-     * @param float $version
      * @param string $itemBeingFlaggedType
      * @param string $appKey
      * @return \OpenAPI\Server\Model\CountResponse
      */
     public function getFlagThreshold(
-            float $version,
             string $itemBeingFlaggedType,
             string $appKey,
     ):
@@ -126,7 +118,6 @@ interface FlagApiInterface {
      * Operation updateFlagThreshold
      *
      * Update Flag Threshold
-     * @param float $version
      * @param string $itemBeingFlaggedType
      * @param int $threshold
      * @param string $appKey
@@ -135,7 +126,6 @@ interface FlagApiInterface {
      * @return \OpenAPI\Server\Model\CountResponse
      */
     public function updateFlagThreshold(
-            float $version,
             string $itemBeingFlaggedType,
             int $threshold,
             string $appKey,

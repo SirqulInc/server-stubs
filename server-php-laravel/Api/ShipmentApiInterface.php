@@ -28,12 +28,10 @@ interface ShipmentApiInterface {
      * Operation cancelShipment
      *
      * Cancel Shipment
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function cancelShipment(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -44,12 +42,10 @@ interface ShipmentApiInterface {
      * Operation createShipment
      *
      * Create Shipment
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Shipment $body
      * @return \OpenAPI\Server\Model\Shipment
      */
     public function createShipment(
-            float $version,
             ?\OpenAPI\Server\Model\Shipment $body,
     ):
         \OpenAPI\Server\Model\Shipment
@@ -60,12 +56,10 @@ interface ShipmentApiInterface {
      * Operation deleteShipment
      *
      * Delete Shipment
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteShipment(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -76,12 +70,10 @@ interface ShipmentApiInterface {
      * Operation getShipment
      *
      * Get Shipment
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\Shipment
      */
     public function getShipment(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\Shipment
@@ -92,7 +84,6 @@ interface ShipmentApiInterface {
      * Operation searchShipments
      *
      * Search Shipments
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -104,7 +95,6 @@ interface ShipmentApiInterface {
      * @return \OpenAPI\Server\Model\Shipment[]
      */
     public function searchShipments(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,
@@ -122,13 +112,11 @@ interface ShipmentApiInterface {
      * Operation updateShipment
      *
      * Update Shipment
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Shipment $body
      * @return \OpenAPI\Server\Model\Shipment
      */
     public function updateShipment(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Shipment $body,
     ):
@@ -140,13 +128,11 @@ interface ShipmentApiInterface {
      * Operation updateShipmentStatus
      *
      * Uupdate Shipment Status
-     * @param float $version
      * @param int $id
      * @param null | array<string,bool> $body
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function updateShipmentStatus(
-            float $version,
             int $id,
             ?array $body,
     ):

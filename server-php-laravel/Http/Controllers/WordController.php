@@ -47,19 +47,16 @@ class WordController extends Controller
      * Create Word.
      *
      */
-    public function createWord(Request $request, float $version): JsonResponse
+    public function createWord(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -100,7 +97,6 @@ class WordController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $word = $request->string('word')->value();
@@ -120,7 +116,7 @@ class WordController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->createWord($version, $accountId, $word, $definition, $active, $allocateTickets, $ticketCount, $assetId, $ticketType, $points);
+        $apiResult = $this->api->createWord($accountId, $word, $definition, $active, $allocateTickets, $ticketCount, $assetId, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WordzWordResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -136,19 +132,16 @@ class WordController extends Controller
      * Delete Word.
      *
      */
-    public function deleteWord(Request $request, float $version): JsonResponse
+    public function deleteWord(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'wordId' => [
                     'required',
                     'integer',
@@ -164,13 +157,12 @@ class WordController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $wordId = $request->integer('wordId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteWord($version, $wordId, $accountId);
+        $apiResult = $this->api->deleteWord($wordId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -186,19 +178,16 @@ class WordController extends Controller
      * Get Word.
      *
      */
-    public function getWord(Request $request, float $version): JsonResponse
+    public function getWord(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'wordId' => [
                     'required',
                     'integer',
@@ -214,13 +203,12 @@ class WordController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $wordId = $request->integer('wordId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getWord($version, $wordId, $accountId);
+        $apiResult = $this->api->getWord($wordId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WordzWordResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -236,19 +224,16 @@ class WordController extends Controller
      * Search Words.
      *
      */
-    public function getWords(Request $request, float $version): JsonResponse
+    public function getWords(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -283,7 +268,6 @@ class WordController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -299,7 +283,7 @@ class WordController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->getWords($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword);
+        $apiResult = $this->api->getWords($accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -316,19 +300,16 @@ class WordController extends Controller
      * Update Word.
      *
      */
-    public function updateWord(Request $request, float $version): JsonResponse
+    public function updateWord(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'wordId' => [
                     'required',
                     'integer',
@@ -369,7 +350,6 @@ class WordController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $wordId = $request->integer('wordId');
 
         $accountId = $request->integer('accountId');
@@ -391,7 +371,7 @@ class WordController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->updateWord($version, $wordId, $accountId, $ticketCount, $wordText, $definition, $assetId, $active, $allocateTickets, $ticketType, $points);
+        $apiResult = $this->api->updateWord($wordId, $accountId, $ticketCount, $wordText, $definition, $assetId, $active, $allocateTickets, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WordzWordResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

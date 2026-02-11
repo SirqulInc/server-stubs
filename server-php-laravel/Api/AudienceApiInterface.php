@@ -28,7 +28,6 @@ interface AudienceApiInterface {
      * Operation createAudience
      *
      * Create Audience
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $description
@@ -61,7 +60,6 @@ interface AudienceApiInterface {
      * @return \OpenAPI\Server\Model\AudienceResponse
      */
     public function createAudience(
-            float $version,
             int $accountId,
             string $name,
             ?string $description,
@@ -100,13 +98,11 @@ interface AudienceApiInterface {
      * Operation deleteAudience
      *
      * Delete Audience
-     * @param float $version
      * @param int $accountId
      * @param int $audienceId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteAudience(
-            float $version,
             int $accountId,
             int $audienceId,
     ):
@@ -118,11 +114,9 @@ interface AudienceApiInterface {
      * Operation getAgeGroups
      *
      * Get Age Groups
-     * @param float $version
      * @return \OpenAPI\Server\Model\AgeGroupResponse[]
      */
     public function getAgeGroups(
-            float $version,
     ):
         array
     ;
@@ -132,7 +126,6 @@ interface AudienceApiInterface {
      * Operation getAudience
      *
      * Get Audience
-     * @param float $version
      * @param int $accountId
      * @param int $audienceId
      * @param null | string $appKey
@@ -142,7 +135,6 @@ interface AudienceApiInterface {
      * @return \OpenAPI\Server\Model\AudienceResponse
      */
     public function getAudience(
-            float $version,
             int $accountId,
             int $audienceId,
             ?string $appKey,
@@ -158,7 +150,6 @@ interface AudienceApiInterface {
      * Operation getAudienceList
      *
      * Search Audiences
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $albumIds
      * @param null | string $keyword
@@ -181,7 +172,6 @@ interface AudienceApiInterface {
      * @return \OpenAPI\Server\Model\SearchResponse[]
      */
     public function getAudienceList(
-            float $version,
             ?int $accountId,
             ?string $albumIds,
             ?string $keyword,
@@ -210,12 +200,10 @@ interface AudienceApiInterface {
      * Operation getDevices
      *
      * Get Devices
-     * @param float $version
      * @param bool $includeInactive
      * @return \OpenAPI\Server\Model\AudienceDeviceResponse[]
      */
     public function getDevices(
-            float $version,
             bool $includeInactive,
     ):
         array
@@ -226,11 +214,9 @@ interface AudienceApiInterface {
      * Operation getExperiences
      *
      * Get Experiences
-     * @param float $version
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getExperiences(
-            float $version,
     ):
         \OpenAPI\Server\Model\SirqulResponse
     ;
@@ -240,13 +226,11 @@ interface AudienceApiInterface {
      * Operation getGroupedAudiences
      *
      * Get GroupedAudiences
-     * @param float $version
      * @param int $accountId
      * @param string $audienceGroupingId
      * @return \OpenAPI\Server\Model\AudienceResponse
      */
     public function getGroupedAudiences(
-            float $version,
             int $accountId,
             string $audienceGroupingId,
     ):
@@ -258,14 +242,12 @@ interface AudienceApiInterface {
      * Operation listByAccount
      *
      * List Suggestions by Audience
-     * @param float $version
      * @param int $accountId
      * @param int $limit
      * @param string $suggestionType
      * @return \OpenAPI\Server\Model\OfferListResponse
      */
     public function listByAccount(
-            float $version,
             int $accountId,
             int $limit,
             string $suggestionType,
@@ -278,7 +260,6 @@ interface AudienceApiInterface {
      * Operation listByAudience
      *
      * List Offers by Audience
-     * @param float $version
      * @param int $limit
      * @param null | string $gender
      * @param null | int $age
@@ -288,7 +269,6 @@ interface AudienceApiInterface {
      * @return \OpenAPI\Server\Model\OfferListResponse
      */
     public function listByAudience(
-            float $version,
             int $limit,
             ?string $gender,
             ?int $age,
@@ -304,14 +284,12 @@ interface AudienceApiInterface {
      * Operation listLastestByAccount
      *
      * List Sent Suggestions
-     * @param float $version
      * @param int $accountId
      * @param int $timeframe
      * @param string $suggestionType
      * @return \OpenAPI\Server\Model\OfferListResponse
      */
     public function listLastestByAccount(
-            float $version,
             int $accountId,
             int $timeframe,
             string $suggestionType,
@@ -324,14 +302,12 @@ interface AudienceApiInterface {
      * Operation sendByAccount
      *
      * Send Suggestions
-     * @param float $version
      * @param int $accountId
      * @param float $latitude
      * @param float $longitude
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function sendByAccount(
-            float $version,
             int $accountId,
             float $latitude,
             float $longitude,
@@ -344,7 +320,6 @@ interface AudienceApiInterface {
      * Operation updateAudience
      *
      * Update Audience
-     * @param float $version
      * @param int $accountId
      * @param int $audienceId
      * @param null | string $name
@@ -379,7 +354,6 @@ interface AudienceApiInterface {
      * @return \OpenAPI\Server\Model\AudienceResponse
      */
     public function updateAudience(
-            float $version,
             int $accountId,
             int $audienceId,
             ?string $name,

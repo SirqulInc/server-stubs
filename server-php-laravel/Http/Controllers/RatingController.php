@@ -47,19 +47,16 @@ class RatingController extends Controller
      * Create Rating.
      *
      */
-    public function createRating(Request $request, float $version): JsonResponse
+    public function createRating(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'ratableType' => [
                     'required',
                     'string',
@@ -101,7 +98,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $ratableType = $request->string('ratableType')->value();
 
         $ratableId = $request->integer('ratableId');
@@ -125,7 +121,7 @@ class RatingController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createRating($version, $ratableType, $ratableId, $ratingValue, $deviceId, $accountId, $categoryId, $display, $description, $locationDescription, $latitude, $longitude);
+        $apiResult = $this->api->createRating($ratableType, $ratableId, $ratingValue, $deviceId, $accountId, $categoryId, $display, $description, $locationDescription, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RatingResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -141,19 +137,16 @@ class RatingController extends Controller
      * Delete Rating.
      *
      */
-    public function deleteRating(Request $request, float $version): JsonResponse
+    public function deleteRating(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'ratingId' => [
                     'required',
                     'integer',
@@ -171,7 +164,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $ratingId = $request->integer('ratingId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -179,7 +171,7 @@ class RatingController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteRating($version, $ratingId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteRating($ratingId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -195,19 +187,16 @@ class RatingController extends Controller
      * Search Location Rating Indexes.
      *
      */
-    public function searchLocationRatingIndexes(Request $request, float $version): JsonResponse
+    public function searchLocationRatingIndexes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'categoryIds' => [
                     'string',
                 ],
@@ -261,7 +250,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $categoryIds = $request->string('categoryIds')->value();
 
         $keyword = $request->string('keyword')->value();
@@ -297,7 +285,7 @@ class RatingController extends Controller
         $returnFilters = $request->boolean('returnFilters');
 
 
-        $apiResult = $this->api->searchLocationRatingIndexes($version, $categoryIds, $keyword, $locationType, $sortField, $descending, $start, $limit, $searchRange, $latitude, $longitude, $returnOverallRating, $distanceUnit, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters);
+        $apiResult = $this->api->searchLocationRatingIndexes($categoryIds, $keyword, $locationType, $sortField, $descending, $start, $limit, $searchRange, $latitude, $longitude, $returnOverallRating, $distanceUnit, $returnRetailer, $returnAssets, $returnOffers, $returnCategories, $returnFilters);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -314,19 +302,16 @@ class RatingController extends Controller
      * Search Rating Indexes.
      *
      */
-    public function searchRatingIndexes(Request $request, float $version): JsonResponse
+    public function searchRatingIndexes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'ratableType' => [
                     'required',
                 ],
@@ -370,7 +355,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $ratableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter::class);
 
         $ratableIds = $request->string('ratableIds')->value();
@@ -398,7 +382,7 @@ class RatingController extends Controller
         $returnOverallRating = $request->boolean('returnOverallRating');
 
 
-        $apiResult = $this->api->searchRatingIndexes($version, $ratableType, $ratableIds, $categoryIds, $secondaryType, $keyword, $sortField, $descending, $start, $limit, $latitude, $longitude, $returnRatable, $returnOverallRating);
+        $apiResult = $this->api->searchRatingIndexes($ratableType, $ratableIds, $categoryIds, $secondaryType, $keyword, $sortField, $descending, $start, $limit, $latitude, $longitude, $returnRatable, $returnOverallRating);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -415,19 +399,16 @@ class RatingController extends Controller
      * Search Ratings.
      *
      */
-    public function searchRatings(Request $request, float $version): JsonResponse
+    public function searchRatings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -467,7 +448,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -491,7 +471,7 @@ class RatingController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchRatings($version, $deviceId, $accountId, $filterAccountId, $ratableType, $ratableId, $categoryIds, $keyword, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchRatings($deviceId, $accountId, $filterAccountId, $ratableType, $ratableId, $categoryIds, $keyword, $sortField, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -508,19 +488,16 @@ class RatingController extends Controller
      * Update Rating.
      *
      */
-    public function updateRating(Request $request, float $version): JsonResponse
+    public function updateRating(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'ratingId' => [
                     'required',
                     'integer',
@@ -557,7 +534,6 @@ class RatingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $ratingId = $request->integer('ratingId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -579,7 +555,7 @@ class RatingController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->updateRating($version, $ratingId, $deviceId, $accountId, $ratingValue, $categoryId, $display, $description, $locationDescription, $latitude, $longitude);
+        $apiResult = $this->api->updateRating($ratingId, $deviceId, $accountId, $ratingValue, $categoryId, $display, $description, $locationDescription, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RatingResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,7 +28,6 @@ interface FilterApiInterface {
      * Operation createFilter
      *
      * Create Filter
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $appKey
@@ -41,7 +40,6 @@ interface FilterApiInterface {
      * @return \OpenAPI\Server\Model\FilterTreeResponse
      */
     public function createFilter(
-            float $version,
             int $accountId,
             string $name,
             ?string $appKey,
@@ -60,13 +58,11 @@ interface FilterApiInterface {
      * Operation deleteFilter
      *
      * Delete Filter
-     * @param float $version
      * @param int $accountId
      * @param int $filterId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteFilter(
-            float $version,
             int $accountId,
             int $filterId,
     ):
@@ -78,12 +74,10 @@ interface FilterApiInterface {
      * Operation getFilter
      *
      * Get Filter
-     * @param float $version
      * @param int $filterId
      * @return \OpenAPI\Server\Model\FilterTreeResponse
      */
     public function getFilter(
-            float $version,
             int $filterId,
     ):
         \OpenAPI\Server\Model\FilterTreeResponse
@@ -94,7 +88,6 @@ interface FilterApiInterface {
      * Operation searchFilters
      *
      * Search Filters
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $keyword
      * @param null | string $appKey
@@ -108,7 +101,6 @@ interface FilterApiInterface {
      * @return \OpenAPI\Server\Model\FilterResponse[]
      */
     public function searchFilters(
-            float $version,
             ?int $accountId,
             ?string $keyword,
             ?string $appKey,
@@ -128,7 +120,6 @@ interface FilterApiInterface {
      * Operation updateFilter
      *
      * Update Filter
-     * @param float $version
      * @param int $accountId
      * @param int $filterId
      * @param null | int $parentFilterId
@@ -141,7 +132,6 @@ interface FilterApiInterface {
      * @return \OpenAPI\Server\Model\FilterTreeResponse
      */
     public function updateFilter(
-            float $version,
             int $accountId,
             int $filterId,
             ?int $parentFilterId,

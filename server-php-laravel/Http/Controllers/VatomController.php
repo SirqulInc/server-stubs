@@ -47,19 +47,16 @@ class VatomController extends Controller
      * Create following.
      *
      */
-    public function createFollowing(Request $request, float $version): JsonResponse
+    public function createFollowing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -78,7 +75,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -86,7 +82,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->createFollowing($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->createFollowing($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -102,19 +98,16 @@ class VatomController extends Controller
      * Create Vatom Space.
      *
      */
-    public function createSpace(Request $request, float $version): JsonResponse
+    public function createSpace(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -137,7 +130,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -147,7 +139,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->createSpace($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->createSpace($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -163,19 +155,16 @@ class VatomController extends Controller
      * Create Vatom Event.
      *
      */
-    public function createVatomEvent(Request $request, float $version): JsonResponse
+    public function createVatomEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -198,7 +187,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -208,7 +196,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->createVatomEvent($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->createVatomEvent($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -224,19 +212,16 @@ class VatomController extends Controller
      * Delete following.
      *
      */
-    public function deleteFollowing(Request $request, float $version): JsonResponse
+    public function deleteFollowing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -255,7 +240,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomRelsKey = $request->string('vatomRelsKey')->value();
@@ -263,7 +247,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->deleteFollowing($version, $accountId, $vatomRelsKey, $returnRawResponse);
+        $apiResult = $this->api->deleteFollowing($accountId, $vatomRelsKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -279,19 +263,16 @@ class VatomController extends Controller
      * Reset All Points Balance.
      *
      */
-    public function deletePointsBalance(Request $request, float $version): JsonResponse
+    public function deletePointsBalance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -314,7 +295,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -324,7 +304,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->deletePointsBalance($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->deletePointsBalance($accountId, $appKey, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -340,19 +320,16 @@ class VatomController extends Controller
      * Delete Vatom Space.
      *
      */
-    public function deleteSpace(Request $request, float $version): JsonResponse
+    public function deleteSpace(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -375,7 +352,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -385,7 +361,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->deleteSpace($version, $accountId, $appKey, $vatomSpaceId, $returnRawResponse);
+        $apiResult = $this->api->deleteSpace($accountId, $appKey, $vatomSpaceId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -401,19 +377,16 @@ class VatomController extends Controller
      * Delete Vatom Event.
      *
      */
-    public function deleteVatomEvent(Request $request, float $version): JsonResponse
+    public function deleteVatomEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -436,7 +409,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -446,7 +418,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->deleteVatomEvent($version, $accountId, $appKey, $vatomEventId, $returnRawResponse);
+        $apiResult = $this->api->deleteVatomEvent($accountId, $appKey, $vatomEventId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -462,19 +434,16 @@ class VatomController extends Controller
      * Delete Vatom NFT.
      *
      */
-    public function deleteVatomNFT(Request $request, float $version): JsonResponse
+    public function deleteVatomNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -493,7 +462,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomId = $request->string('vatomId')->value();
@@ -501,7 +469,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->deleteVatomNFT($version, $accountId, $vatomId, $returnRawResponse);
+        $apiResult = $this->api->deleteVatomNFT($accountId, $vatomId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -517,19 +485,16 @@ class VatomController extends Controller
      * Execute Action on NFT.
      *
      */
-    public function executeActionOnNFT(Request $request, float $version): JsonResponse
+    public function executeActionOnNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -552,7 +517,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomId = $request->string('vatomId')->value();
@@ -562,7 +526,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->executeActionOnNFT($version, $accountId, $vatomId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->executeActionOnNFT($accountId, $vatomId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -578,19 +542,16 @@ class VatomController extends Controller
      * Search Vatom Geo Map.
      *
      */
-    public function geomapSearch(Request $request, float $version): JsonResponse
+    public function geomapSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -609,7 +570,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -617,7 +577,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->geomapSearch($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->geomapSearch($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -633,19 +593,16 @@ class VatomController extends Controller
      * Get Vatom Business Behaviors.
      *
      */
-    public function getBusinessBehaviors(Request $request, float $version): JsonResponse
+    public function getBusinessBehaviors(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -664,7 +621,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -672,7 +628,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getBusinessBehaviors($version, $accountId, $appKey, $returnRawResponse);
+        $apiResult = $this->api->getBusinessBehaviors($accountId, $appKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -688,19 +644,16 @@ class VatomController extends Controller
      * Get the coins for a Business.
      *
      */
-    public function getBusinessCoinsBalance(Request $request, float $version): JsonResponse
+    public function getBusinessCoinsBalance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -719,7 +672,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -727,7 +679,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getBusinessCoinsBalance($version, $accountId, $appKey, $returnRawResponse);
+        $apiResult = $this->api->getBusinessCoinsBalance($accountId, $appKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -743,19 +695,16 @@ class VatomController extends Controller
      * Get the user business ids.
      *
      */
-    public function getBusinessIds(Request $request, float $version): JsonResponse
+    public function getBusinessIds(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -770,13 +719,12 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getBusinessIds($version, $accountId, $returnRawResponse);
+        $apiResult = $this->api->getBusinessIds($accountId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -792,19 +740,16 @@ class VatomController extends Controller
      * Get Vatom Business Info.
      *
      */
-    public function getBusinessInfo(Request $request, float $version): JsonResponse
+    public function getBusinessInfo(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -826,7 +771,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -836,7 +780,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getBusinessInfo($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->getBusinessInfo($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -852,19 +796,16 @@ class VatomController extends Controller
      * Get Vatom Business Users.
      *
      */
-    public function getBusinessUsers(Request $request, float $version): JsonResponse
+    public function getBusinessUsers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -883,7 +824,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -891,7 +831,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getBusinessUsers($version, $accountId, $appKey, $returnRawResponse);
+        $apiResult = $this->api->getBusinessUsers($accountId, $appKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -907,19 +847,16 @@ class VatomController extends Controller
      * Get Campaign Group Entities.
      *
      */
-    public function getCampaignGroupEntities(Request $request, float $version): JsonResponse
+    public function getCampaignGroupEntities(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -942,7 +879,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -952,7 +888,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getCampaignGroupEntities($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getCampaignGroupEntities($accountId, $appKey, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -968,19 +904,16 @@ class VatomController extends Controller
      * Get Campaign Group Rules.
      *
      */
-    public function getCampaignGroupRules(Request $request, float $version): JsonResponse
+    public function getCampaignGroupRules(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1003,7 +936,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1013,7 +945,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getCampaignGroupRules($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getCampaignGroupRules($accountId, $appKey, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1029,19 +961,16 @@ class VatomController extends Controller
      * Get Campaign Group Stats.
      *
      */
-    public function getCampaignGroupStats(Request $request, float $version): JsonResponse
+    public function getCampaignGroupStats(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1064,7 +993,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1074,7 +1002,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getCampaignGroupStats($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getCampaignGroupStats($accountId, $appKey, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1090,19 +1018,16 @@ class VatomController extends Controller
      * Get Campaign Info.
      *
      */
-    public function getCampaignInfo(Request $request, float $version): JsonResponse
+    public function getCampaignInfo(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1125,7 +1050,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1135,7 +1059,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getCampaignInfo($version, $accountId, $appKey, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getCampaignInfo($accountId, $appKey, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1151,19 +1075,16 @@ class VatomController extends Controller
      * Get Vatom Event Guest List.
      *
      */
-    public function getEventGuestList(Request $request, float $version): JsonResponse
+    public function getEventGuestList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1186,7 +1107,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1196,7 +1116,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getEventGuestList($version, $accountId, $appKey, $vatomEventId, $returnRawResponse);
+        $apiResult = $this->api->getEventGuestList($accountId, $appKey, $vatomEventId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1212,19 +1132,16 @@ class VatomController extends Controller
      * Get Vatom User's Inventory.
      *
      */
-    public function getInventory(Request $request, float $version): JsonResponse
+    public function getInventory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1243,7 +1160,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -1251,7 +1167,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getInventory($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->getInventory($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1267,19 +1183,16 @@ class VatomController extends Controller
      * Get following.
      *
      */
-    public function getMyFollowing(Request $request, float $version): JsonResponse
+    public function getMyFollowing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1294,13 +1207,12 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getMyFollowing($version, $accountId, $returnRawResponse);
+        $apiResult = $this->api->getMyFollowing($accountId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1316,19 +1228,16 @@ class VatomController extends Controller
      * Get Points Balance.
      *
      */
-    public function getPointsBalance(Request $request, float $version): JsonResponse
+    public function getPointsBalance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1351,7 +1260,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1361,7 +1269,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getPointsBalance($version, $accountId, $vatomUserId, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getPointsBalance($accountId, $vatomUserId, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1377,19 +1285,16 @@ class VatomController extends Controller
      * Get Points Balance as Business.
      *
      */
-    public function getPointsBalanceAsBusiness(Request $request, float $version): JsonResponse
+    public function getPointsBalanceAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1416,7 +1321,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1428,7 +1332,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getPointsBalanceAsBusiness($version, $accountId, $appKey, $vatomUserId, $vatomCampaignId, $returnRawResponse);
+        $apiResult = $this->api->getPointsBalanceAsBusiness($accountId, $appKey, $vatomUserId, $vatomCampaignId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1444,19 +1348,16 @@ class VatomController extends Controller
      * Get Vatom Space.
      *
      */
-    public function getSpace(Request $request, float $version): JsonResponse
+    public function getSpace(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1479,7 +1380,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1489,7 +1389,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getSpace($version, $accountId, $appKey, $vatomSpaceId, $returnRawResponse);
+        $apiResult = $this->api->getSpace($accountId, $appKey, $vatomSpaceId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1505,19 +1405,16 @@ class VatomController extends Controller
      * Get the coins for a user (as a Business).
      *
      */
-    public function getUserCoinsAsBusiness(Request $request, float $version): JsonResponse
+    public function getUserCoinsAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1540,7 +1437,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1550,7 +1446,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserCoinsAsBusiness($version, $accountId, $vatomUserId, $appKey, $returnRawResponse);
+        $apiResult = $this->api->getUserCoinsAsBusiness($accountId, $vatomUserId, $appKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1566,19 +1462,16 @@ class VatomController extends Controller
      * Gets the coins balance for a Vatom User.
      *
      */
-    public function getUserCoinsBalance(Request $request, float $version): JsonResponse
+    public function getUserCoinsBalance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1600,7 +1493,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1610,7 +1502,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserCoinsBalance($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->getUserCoinsBalance($accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1626,19 +1518,16 @@ class VatomController extends Controller
      * Get user followers.
      *
      */
-    public function getUserFollowers(Request $request, float $version): JsonResponse
+    public function getUserFollowers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1657,7 +1546,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1665,7 +1553,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserFollowers($version, $accountId, $vatomUserId, $returnRawResponse);
+        $apiResult = $this->api->getUserFollowers($accountId, $vatomUserId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1681,19 +1569,16 @@ class VatomController extends Controller
      * Get user following.
      *
      */
-    public function getUserFollowing(Request $request, float $version): JsonResponse
+    public function getUserFollowing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1712,7 +1597,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1720,7 +1604,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserFollowing($version, $accountId, $vatomUserId, $returnRawResponse);
+        $apiResult = $this->api->getUserFollowing($accountId, $vatomUserId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1736,19 +1620,16 @@ class VatomController extends Controller
      * Get User Info.
      *
      */
-    public function getUserInfo(Request $request, float $version): JsonResponse
+    public function getUserInfo(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1767,7 +1648,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -1775,7 +1655,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserInfo($version, $accountId, $vatomUserId, $returnRawResponse);
+        $apiResult = $this->api->getUserInfo($accountId, $vatomUserId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1791,19 +1671,16 @@ class VatomController extends Controller
      * Get Vatom User Profile.
      *
      */
-    public function getUserProfile(Request $request, float $version): JsonResponse
+    public function getUserProfile(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1818,13 +1695,12 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getUserProfile($version, $accountId, $returnRawResponse);
+        $apiResult = $this->api->getUserProfile($accountId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1840,19 +1716,16 @@ class VatomController extends Controller
      * Get Vatom Event.
      *
      */
-    public function getVatomEvent(Request $request, float $version): JsonResponse
+    public function getVatomEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1875,7 +1748,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1885,7 +1757,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getVatomEvent($version, $accountId, $appKey, $vatomEventId, $returnRawResponse);
+        $apiResult = $this->api->getVatomEvent($accountId, $appKey, $vatomEventId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1901,19 +1773,16 @@ class VatomController extends Controller
      * Get Vatom NFT Details.
      *
      */
-    public function getVatomNFT(Request $request, float $version): JsonResponse
+    public function getVatomNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1932,7 +1801,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomId = $request->string('vatomId')->value();
@@ -1940,7 +1808,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->getVatomNFT($version, $accountId, $vatomId, $returnRawResponse);
+        $apiResult = $this->api->getVatomNFT($accountId, $vatomId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1956,19 +1824,16 @@ class VatomController extends Controller
      * List Vatom Communities.
      *
      */
-    public function listCommunities(Request $request, float $version): JsonResponse
+    public function listCommunities(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1990,7 +1855,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2000,7 +1864,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->listCommunities($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->listCommunities($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2016,19 +1880,16 @@ class VatomController extends Controller
      * List Vatom Events.
      *
      */
-    public function listEvents(Request $request, float $version): JsonResponse
+    public function listEvents(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2050,7 +1911,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2060,7 +1920,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->listEvents($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->listEvents($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2076,19 +1936,16 @@ class VatomController extends Controller
      * List Vatom Spaces.
      *
      */
-    public function listSpaces(Request $request, float $version): JsonResponse
+    public function listSpaces(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2110,7 +1967,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2120,7 +1976,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->listSpaces($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->listSpaces($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2136,19 +1992,16 @@ class VatomController extends Controller
      * List Coin Transactions for a Vatom User.
      *
      */
-    public function listUserCoinTransactions(Request $request, float $version): JsonResponse
+    public function listUserCoinTransactions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2170,7 +2023,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -2180,7 +2032,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->listUserCoinTransactions($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->listUserCoinTransactions($accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2196,19 +2048,16 @@ class VatomController extends Controller
      * List coin transactions for a user (as a Business).
      *
      */
-    public function listUserCoinTransactionsAsBusiness(Request $request, float $version): JsonResponse
+    public function listUserCoinTransactionsAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2234,7 +2083,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -2246,7 +2094,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->listUserCoinTransactionsAsBusiness($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->listUserCoinTransactionsAsBusiness($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2262,19 +2110,16 @@ class VatomController extends Controller
      * Perform Action on NFT.
      *
      */
-    public function performActionOnNFT(Request $request, float $version): JsonResponse
+    public function performActionOnNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2301,7 +2146,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomId = $request->string('vatomId')->value();
@@ -2313,7 +2157,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->performActionOnNFT($version, $accountId, $vatomId, $vatomAction, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->performActionOnNFT($accountId, $vatomId, $vatomAction, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2329,19 +2173,16 @@ class VatomController extends Controller
      * Redeem NFT.
      *
      */
-    public function redeemNFT(Request $request, float $version): JsonResponse
+    public function redeemNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2364,7 +2205,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2374,7 +2214,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->redeemNFT($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->redeemNFT($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2390,19 +2230,16 @@ class VatomController extends Controller
      * Redeem the coins for a user (as a Business).
      *
      */
-    public function redeemUserCoinsAsBusiness(Request $request, float $version): JsonResponse
+    public function redeemUserCoinsAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2429,7 +2266,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -2441,7 +2277,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->redeemUserCoinsAsBusiness($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->redeemUserCoinsAsBusiness($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2457,19 +2293,16 @@ class VatomController extends Controller
      * Search for Vatom Businesses.
      *
      */
-    public function searchBusinesses(Request $request, float $version): JsonResponse
+    public function searchBusinesses(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2487,7 +2320,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -2495,7 +2327,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->searchBusinesses($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->searchBusinesses($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2511,19 +2343,16 @@ class VatomController extends Controller
      * Search Campaign Groups.
      *
      */
-    public function searchCampaignGroups(Request $request, float $version): JsonResponse
+    public function searchCampaignGroups(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2542,7 +2371,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2550,7 +2378,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->searchCampaignGroups($version, $accountId, $appKey, $returnRawResponse);
+        $apiResult = $this->api->searchCampaignGroups($accountId, $appKey, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2566,19 +2394,16 @@ class VatomController extends Controller
      * Search User Identities.
      *
      */
-    public function searchIdentities(Request $request, float $version): JsonResponse
+    public function searchIdentities(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2593,13 +2418,12 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->searchIdentities($version, $accountId, $returnRawResponse);
+        $apiResult = $this->api->searchIdentities($accountId, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2615,19 +2439,16 @@ class VatomController extends Controller
      * Search Vatom User's Inventory.
      *
      */
-    public function searchInventory(Request $request, float $version): JsonResponse
+    public function searchInventory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2645,7 +2466,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -2653,7 +2473,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->searchInventory($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->searchInventory($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2669,19 +2489,16 @@ class VatomController extends Controller
      * Send NFT.
      *
      */
-    public function sendNFT(Request $request, float $version): JsonResponse
+    public function sendNFT(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2708,7 +2525,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2720,7 +2536,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->sendNFT($version, $accountId, $appKey, $vatomCampaignId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->sendNFT($accountId, $appKey, $vatomCampaignId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2736,19 +2552,16 @@ class VatomController extends Controller
      * Set Points Balance as Business.
      *
      */
-    public function setPointsBalanceAsBusiness(Request $request, float $version): JsonResponse
+    public function setPointsBalanceAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2779,7 +2592,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2793,7 +2605,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->setPointsBalanceAsBusiness($version, $accountId, $appKey, $vatomUserId, $vatomCampaignId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->setPointsBalanceAsBusiness($accountId, $appKey, $vatomUserId, $vatomCampaignId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2809,19 +2621,16 @@ class VatomController extends Controller
      * Transfer coins from Vatom Users.
      *
      */
-    public function transferUserCoins(Request $request, float $version): JsonResponse
+    public function transferUserCoins(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2844,7 +2653,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -2854,7 +2662,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->transferUserCoins($version, $accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->transferUserCoins($accountId, $vatomUserId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2870,19 +2678,16 @@ class VatomController extends Controller
      * Fund coins for a Business.
      *
      */
-    public function updateBusinessCoins(Request $request, float $version): JsonResponse
+    public function updateBusinessCoins(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2905,7 +2710,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2915,7 +2719,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateBusinessCoins($version, $accountId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateBusinessCoins($accountId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2931,19 +2735,16 @@ class VatomController extends Controller
      * Update Vatom Event Guest List.
      *
      */
-    public function updateEventGuestList(Request $request, float $version): JsonResponse
+    public function updateEventGuestList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2970,7 +2771,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2982,7 +2782,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateEventGuestList($version, $accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateEventGuestList($accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2998,19 +2798,16 @@ class VatomController extends Controller
      * Update Vatom Space.
      *
      */
-    public function updateSpace(Request $request, float $version): JsonResponse
+    public function updateSpace(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -3037,7 +2834,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -3049,7 +2845,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateSpace($version, $accountId, $appKey, $vatomSpaceId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateSpace($accountId, $appKey, $vatomSpaceId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -3065,19 +2861,16 @@ class VatomController extends Controller
      * Update the coins for a user (as a Business).
      *
      */
-    public function updateUserCoinsAsBusiness(Request $request, float $version): JsonResponse
+    public function updateUserCoinsAsBusiness(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -3104,7 +2897,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomUserId = $request->string('vatomUserId')->value();
@@ -3116,7 +2908,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateUserCoinsAsBusiness($version, $accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateUserCoinsAsBusiness($accountId, $vatomUserId, $appKey, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -3132,19 +2924,16 @@ class VatomController extends Controller
      * Update Vatom User Profile.
      *
      */
-    public function updateUserProfile(Request $request, float $version): JsonResponse
+    public function updateUserProfile(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -3163,7 +2952,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $vatomParameters = $request->string('vatomParameters')->value();
@@ -3171,7 +2959,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateUserProfile($version, $accountId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateUserProfile($accountId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -3187,19 +2975,16 @@ class VatomController extends Controller
      * Update Vatom Event.
      *
      */
-    public function updateVatomEvent(Request $request, float $version): JsonResponse
+    public function updateVatomEvent(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -3226,7 +3011,6 @@ class VatomController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -3238,7 +3022,7 @@ class VatomController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->updateVatomEvent($version, $accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse);
+        $apiResult = $this->api->updateVatomEvent($accountId, $appKey, $vatomEventId, $vatomParameters, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

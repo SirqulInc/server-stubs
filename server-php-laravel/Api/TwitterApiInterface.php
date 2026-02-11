@@ -28,12 +28,10 @@ interface TwitterApiInterface {
      * Operation authorizeTwitter
      *
      * Authorize Twitter
-     * @param float $version
      * @param string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function authorizeTwitter(
-            float $version,
             string $appKey,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -44,7 +42,6 @@ interface TwitterApiInterface {
      * Operation loginTwitter
      *
      * Login Twitter
-     * @param float $version
      * @param string $accessToken
      * @param string $accessTokenSecret
      * @param string $appKey
@@ -55,7 +52,6 @@ interface TwitterApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function loginTwitter(
-            float $version,
             string $accessToken,
             string $accessTokenSecret,
             string $appKey,

@@ -47,19 +47,16 @@ class ShipmentController extends Controller
      * Cancel Shipment.
      *
      */
-    public function cancelShipment(Request $request, float $version, int $id): JsonResponse
+    public function cancelShipment(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -73,8 +70,7 @@ class ShipmentController extends Controller
 
 
 
-
-        $apiResult = $this->api->cancelShipment($version, $id);
+        $apiResult = $this->api->cancelShipment($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -90,12 +86,12 @@ class ShipmentController extends Controller
      * Create Shipment.
      *
      */
-    public function createShipment(Request $request, float $version): JsonResponse
+    public function createShipment(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -107,11 +103,10 @@ class ShipmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Shipment::class);
 
 
-        $apiResult = $this->api->createShipment($version, $body);
+        $apiResult = $this->api->createShipment($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Shipment) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -127,19 +122,16 @@ class ShipmentController extends Controller
      * Delete Shipment.
      *
      */
-    public function deleteShipment(Request $request, float $version, int $id): JsonResponse
+    public function deleteShipment(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -153,8 +145,7 @@ class ShipmentController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteShipment($version, $id);
+        $apiResult = $this->api->deleteShipment($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -170,19 +161,16 @@ class ShipmentController extends Controller
      * Get Shipment.
      *
      */
-    public function getShipment(Request $request, float $version, int $id): JsonResponse
+    public function getShipment(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -196,8 +184,7 @@ class ShipmentController extends Controller
 
 
 
-
-        $apiResult = $this->api->getShipment($version, $id);
+        $apiResult = $this->api->getShipment($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Shipment) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -213,19 +200,16 @@ class ShipmentController extends Controller
      * Search Shipments.
      *
      */
-    public function searchShipments(Request $request, float $version): JsonResponse
+    public function searchShipments(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -262,7 +246,6 @@ class ShipmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -280,7 +263,7 @@ class ShipmentController extends Controller
         $routeId = $request->integer('routeId');
 
 
-        $apiResult = $this->api->searchShipments($version, $sortField, $descending, $start, $limit, $activeOnly, $ownerId, $riderId, $routeId);
+        $apiResult = $this->api->searchShipments($sortField, $descending, $start, $limit, $activeOnly, $ownerId, $riderId, $routeId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -297,12 +280,12 @@ class ShipmentController extends Controller
      * Update Shipment.
      *
      */
-    public function updateShipment(Request $request, float $version, int $id): JsonResponse
+    public function updateShipment(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -315,11 +298,10 @@ class ShipmentController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Shipment::class);
 
 
-        $apiResult = $this->api->updateShipment($version, $id, $body);
+        $apiResult = $this->api->updateShipment($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Shipment) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -335,12 +317,12 @@ class ShipmentController extends Controller
      * Uupdate Shipment Status.
      *
      */
-    public function updateShipmentStatus(Request $request, float $version, int $id): JsonResponse
+    public function updateShipmentStatus(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -353,11 +335,10 @@ class ShipmentController extends Controller
         }
 
 
-
         $body = $request->get('body');
 
 
-        $apiResult = $this->api->updateShipmentStatus($version, $id, $body);
+        $apiResult = $this->api->updateShipmentStatus($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);

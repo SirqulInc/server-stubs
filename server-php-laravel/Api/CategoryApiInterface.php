@@ -28,7 +28,6 @@ interface CategoryApiInterface {
      * Operation categoryDistanceSearch
      *
      * Search Categories by Distance
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $keyword
      * @param null | string $appKey
@@ -52,7 +51,6 @@ interface CategoryApiInterface {
      * @return \OpenAPI\Server\Model\CategoryResponse[]
      */
     public function categoryDistanceSearch(
-            float $version,
             ?int $accountId,
             ?string $keyword,
             ?string $appKey,
@@ -82,7 +80,6 @@ interface CategoryApiInterface {
      * Operation createCategory
      *
      * Create Category
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $appKey
@@ -100,7 +97,6 @@ interface CategoryApiInterface {
      * @return \OpenAPI\Server\Model\CategoryTreeResponse
      */
     public function createCategory(
-            float $version,
             int $accountId,
             string $name,
             ?string $appKey,
@@ -124,13 +120,11 @@ interface CategoryApiInterface {
      * Operation deleteCategory
      *
      * Delete Category
-     * @param float $version
      * @param int $accountId
      * @param int $categoryId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteCategory(
-            float $version,
             int $accountId,
             int $categoryId,
     ):
@@ -142,7 +136,6 @@ interface CategoryApiInterface {
      * Operation duplicateCategory
      *
      * Duplicate Category
-     * @param float $version
      * @param int $accountId
      * @param int $categoryId
      * @param null | string $appKey
@@ -150,7 +143,6 @@ interface CategoryApiInterface {
      * @return \OpenAPI\Server\Model\CategoryTreeResponse
      */
     public function duplicateCategory(
-            float $version,
             int $accountId,
             int $categoryId,
             ?string $appKey,
@@ -164,13 +156,11 @@ interface CategoryApiInterface {
      * Operation getCategory
      *
      * Get Category
-     * @param float $version
      * @param int $categoryId
      * @param null | bool $returnExternal
      * @return \OpenAPI\Server\Model\CategoryTreeResponse
      */
     public function getCategory(
-            float $version,
             int $categoryId,
             ?bool $returnExternal,
     ):
@@ -182,7 +172,6 @@ interface CategoryApiInterface {
      * Operation searchCategories
      *
      * Search Categories
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $keyword
      * @param null | string $appKey
@@ -207,7 +196,6 @@ interface CategoryApiInterface {
      * @return \OpenAPI\Server\Model\CategoryResponse[]
      */
     public function searchCategories(
-            float $version,
             ?int $accountId,
             ?string $keyword,
             ?string $appKey,
@@ -238,7 +226,6 @@ interface CategoryApiInterface {
      * Operation updateCategory
      *
      * Update Category
-     * @param float $version
      * @param int $accountId
      * @param int $categoryId
      * @param null | int $parentCategoryId
@@ -256,7 +243,6 @@ interface CategoryApiInterface {
      * @return \OpenAPI\Server\Model\CategoryTreeResponse
      */
     public function updateCategory(
-            float $version,
             int $accountId,
             int $categoryId,
             ?int $parentCategoryId,

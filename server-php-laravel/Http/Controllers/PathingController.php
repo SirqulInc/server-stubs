@@ -47,19 +47,16 @@ class PathingController extends Controller
      * Calculate Path.
      *
      */
-    public function computePath(Request $request, float $version): JsonResponse
+    public function computePath(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'data' => [
                     'required',
                     'string',
@@ -82,7 +79,6 @@ class PathingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $data = $request->string('data')->value();
 
         $units = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ComputePathUnitsParameter::class);
@@ -92,7 +88,7 @@ class PathingController extends Controller
         $directions = $request->boolean('directions');
 
 
-        $apiResult = $this->api->computePath($version, $data, $units, $reducePath, $directions);
+        $apiResult = $this->api->computePath($data, $units, $reducePath, $directions);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PathingResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

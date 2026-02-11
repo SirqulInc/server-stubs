@@ -47,19 +47,16 @@ class RankingController extends Controller
      * Search Historical Rankings.
      *
      */
-    public function getHistoricalRankings(Request $request, float $version): JsonResponse
+    public function getHistoricalRankings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -101,7 +98,6 @@ class RankingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $rankType = $request->string('rankType')->value();
@@ -123,7 +119,7 @@ class RankingController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getHistoricalRankings($version, $appKey, $rankType, $startDate, $endDate, $deviceId, $accountId, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->getHistoricalRankings($appKey, $rankType, $startDate, $endDate, $deviceId, $accountId, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RankFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -139,19 +135,16 @@ class RankingController extends Controller
      * Search Rankings.
      *
      */
-    public function getRankings(Request $request, float $version): JsonResponse
+    public function getRankings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -213,7 +206,6 @@ class RankingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -251,7 +243,7 @@ class RankingController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getRankings($version, $deviceId, $accountId, $gameType, $appKey, $q, $keyword, $rankType, $leaderboardMode, $withinAccountIds, $returnUserRank, $albumId, $audienceId, $sortField, $descending, $i, $start, $l, $limit);
+        $apiResult = $this->api->getRankings($deviceId, $accountId, $gameType, $appKey, $q, $keyword, $rankType, $leaderboardMode, $withinAccountIds, $returnUserRank, $albumId, $audienceId, $sortField, $descending, $i, $start, $l, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RankFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -267,19 +259,16 @@ class RankingController extends Controller
      * Get Personal Rankings.
      *
      */
-    public function getUserRank(Request $request, float $version): JsonResponse
+    public function getUserRank(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -320,7 +309,6 @@ class RankingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -344,7 +332,7 @@ class RankingController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getUserRank($version, $deviceId, $accountId, $appKey, $rankType, $returnUserRank, $leaderboardMode, $sortField, $keyword, $descending, $start, $limit);
+        $apiResult = $this->api->getUserRank($deviceId, $accountId, $appKey, $rankType, $returnUserRank, $leaderboardMode, $sortField, $keyword, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -361,19 +349,16 @@ class RankingController extends Controller
      * Override User Rank.
      *
      */
-    public function overrideUserRank(Request $request, float $version): JsonResponse
+    public function overrideUserRank(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -451,7 +436,6 @@ class RankingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $ownerAccountId = $request->integer('ownerAccountId');
@@ -497,7 +481,7 @@ class RankingController extends Controller
         $endDate = $request->integer('endDate');
 
 
-        $apiResult = $this->api->overrideUserRank($version, $accountId, $ownerAccountId, $appKey, $rankType, $totalScore, $totalCount, $totalTime, $dailyScore, $dailyCount, $dailyTime, $weeklyScore, $weeklyCount, $weeklyTime, $monthlyScore, $monthlyCount, $monthlyTime, $topScore, $lowestScore, $streakCount, $streakBestCount, $startDate, $endDate);
+        $apiResult = $this->api->overrideUserRank($accountId, $ownerAccountId, $appKey, $rankType, $totalScore, $totalCount, $totalTime, $dailyScore, $dailyCount, $dailyTime, $weeklyScore, $weeklyCount, $weeklyTime, $monthlyScore, $monthlyCount, $monthlyTime, $topScore, $lowestScore, $streakCount, $streakBestCount, $startDate, $endDate);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -513,19 +497,16 @@ class RankingController extends Controller
      * Update Ranking.
      *
      */
-    public function updateRankings(Request $request, float $version): JsonResponse
+    public function updateRankings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -566,7 +547,6 @@ class RankingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -588,7 +568,7 @@ class RankingController extends Controller
         $createLeaderboard = $request->boolean('createLeaderboard');
 
 
-        $apiResult = $this->api->updateRankings($version, $accountId, $appKey, $rankType, $increment, $timeIncrement, $tag, $startDate, $endDate, $updateGlobal, $createLeaderboard);
+        $apiResult = $this->api->updateRankings($accountId, $appKey, $rankType, $increment, $timeIncrement, $tag, $startDate, $endDate, $updateGlobal, $createLeaderboard);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

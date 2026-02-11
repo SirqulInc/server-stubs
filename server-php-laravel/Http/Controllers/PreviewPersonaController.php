@@ -47,19 +47,16 @@ class PreviewPersonaController extends Controller
      * Create Persona.
      *
      */
-    public function createPersona(Request $request, float $version): JsonResponse
+    public function createPersona(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -94,7 +91,6 @@ class PreviewPersonaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $title = $request->string('title')->value();
@@ -114,7 +110,7 @@ class PreviewPersonaController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createPersona($version, $accountId, $title, $previewAccounts, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude);
+        $apiResult = $this->api->createPersona($accountId, $title, $previewAccounts, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PreviewPersonaResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -130,19 +126,16 @@ class PreviewPersonaController extends Controller
      * Delete Persona.
      *
      */
-    public function deletePersona(Request $request, float $version): JsonResponse
+    public function deletePersona(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -158,13 +151,12 @@ class PreviewPersonaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $personaId = $request->integer('personaId');
 
 
-        $apiResult = $this->api->deletePersona($version, $accountId, $personaId);
+        $apiResult = $this->api->deletePersona($accountId, $personaId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -180,19 +172,16 @@ class PreviewPersonaController extends Controller
      * Get Persona.
      *
      */
-    public function getPersonaList(Request $request, float $version): JsonResponse
+    public function getPersonaList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -208,13 +197,12 @@ class PreviewPersonaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $personaId = $request->integer('personaId');
 
 
-        $apiResult = $this->api->getPersonaList($version, $accountId, $personaId);
+        $apiResult = $this->api->getPersonaList($accountId, $personaId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PreviewPersonaResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -230,19 +218,16 @@ class PreviewPersonaController extends Controller
      * Search Personas.
      *
      */
-    public function searchPersona(Request $request, float $version): JsonResponse
+    public function searchPersona(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -262,7 +247,6 @@ class PreviewPersonaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $start = $request->integer('start');
@@ -270,7 +254,7 @@ class PreviewPersonaController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchPersona($version, $accountId, $start, $limit);
+        $apiResult = $this->api->searchPersona($accountId, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PreviewPersonaResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -286,19 +270,16 @@ class PreviewPersonaController extends Controller
      * Update Persona.
      *
      */
-    public function updatePersona(Request $request, float $version): JsonResponse
+    public function updatePersona(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -339,7 +320,6 @@ class PreviewPersonaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $personaId = $request->integer('personaId');
@@ -363,7 +343,7 @@ class PreviewPersonaController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->updatePersona($version, $accountId, $personaId, $title, $previewAccounts, $active, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude);
+        $apiResult = $this->api->updatePersona($accountId, $personaId, $title, $previewAccounts, $active, $date, $age, $gender, $gameExperienceLevel, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PreviewPersonaResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

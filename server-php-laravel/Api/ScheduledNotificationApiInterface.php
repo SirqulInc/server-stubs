@@ -28,7 +28,6 @@ interface ScheduledNotificationApiInterface {
      * Operation createScheduledNotification
      *
      * Create Scheduled Notification
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param string $type
@@ -66,7 +65,6 @@ interface ScheduledNotificationApiInterface {
      * @return \OpenAPI\Server\Model\ScheduledNotificationFullResponse
      */
     public function createScheduledNotification(
-            float $version,
             int $accountId,
             string $name,
             string $type,
@@ -110,14 +108,12 @@ interface ScheduledNotificationApiInterface {
      * Operation deleteScheduledNotification
      *
      * Delete Scheduled Notification
-     * @param float $version
      * @param int $accountId
      * @param int $scheduledNotificationId
      * @param null | bool $deleteByGroupingId
      * @return \OpenAPI\Server\Model\ScheduledNotificationFullResponse
      */
     public function deleteScheduledNotification(
-            float $version,
             int $accountId,
             int $scheduledNotificationId,
             ?bool $deleteByGroupingId,
@@ -130,13 +126,11 @@ interface ScheduledNotificationApiInterface {
      * Operation getScheduledNotification
      *
      * Get Scheduled Notification
-     * @param float $version
      * @param int $accountId
      * @param int $scheduledNotificationId
      * @return \OpenAPI\Server\Model\ScheduledNotificationFullResponse
      */
     public function getScheduledNotification(
-            float $version,
             int $accountId,
             int $scheduledNotificationId,
     ):
@@ -148,7 +142,6 @@ interface ScheduledNotificationApiInterface {
      * Operation scheduleNotificationListings
      *
      * Generate Schedule Notifications
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $reportName
@@ -160,7 +153,6 @@ interface ScheduledNotificationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function scheduleNotificationListings(
-            float $version,
             int $accountId,
             string $appKey,
             string $reportName,
@@ -178,7 +170,6 @@ interface ScheduledNotificationApiInterface {
      * Operation searchScheduledNotifications
      *
      * Search Scheduled Notifications
-     * @param float $version
      * @param int $accountId
      * @param null | string $groupingId
      * @param null | int $audienceId
@@ -202,7 +193,6 @@ interface ScheduledNotificationApiInterface {
      * @return \OpenAPI\Server\Model\ScheduledNotificationFullResponse
      */
     public function searchScheduledNotifications(
-            float $version,
             int $accountId,
             ?string $groupingId,
             ?int $audienceId,
@@ -232,7 +222,6 @@ interface ScheduledNotificationApiInterface {
      * Operation updateScheduledNotification
      *
      * Update Scheduled Notification
-     * @param float $version
      * @param int $scheduledNotificationId
      * @param int $accountId
      * @param null | string $name
@@ -274,7 +263,6 @@ interface ScheduledNotificationApiInterface {
      * @return \OpenAPI\Server\Model\ScheduledNotificationFullResponse
      */
     public function updateScheduledNotification(
-            float $version,
             int $scheduledNotificationId,
             int $accountId,
             ?string $name,

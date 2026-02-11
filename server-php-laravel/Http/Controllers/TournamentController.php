@@ -47,19 +47,16 @@ class TournamentController extends Controller
      * Create Tournament.
      *
      */
-    public function createTournament(Request $request, float $version): JsonResponse
+    public function createTournament(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -173,7 +170,6 @@ class TournamentController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => 'Invalid input'], 400);
         }
-
 
         $accountId = $request->integer('accountId');
 
@@ -246,7 +242,7 @@ class TournamentController extends Controller
         $tieTag = $request->string('tieTag')->value();
 
 
-        $apiResult = $this->api->createTournament($version, $accountId, $appKey, $title, $costToPlay, $startDate, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $missionType, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag);
+        $apiResult = $this->api->createTournament($accountId, $appKey, $title, $costToPlay, $startDate, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $missionType, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TournamentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -262,19 +258,16 @@ class TournamentController extends Controller
      * Delete Tournament.
      *
      */
-    public function deleteTournament(Request $request, float $version): JsonResponse
+    public function deleteTournament(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -290,13 +283,12 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
 
 
-        $apiResult = $this->api->deleteTournament($version, $accountId, $missionId);
+        $apiResult = $this->api->deleteTournament($accountId, $missionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -312,19 +304,16 @@ class TournamentController extends Controller
      * Get Tournament.
      *
      */
-    public function getTournament(Request $request, float $version): JsonResponse
+    public function getTournament(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -347,7 +336,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
@@ -359,7 +347,7 @@ class TournamentController extends Controller
         $objectPreviewSize = $request->integer('objectPreviewSize');
 
 
-        $apiResult = $this->api->getTournament($version, $accountId, $missionId, $joinCode, $includeScores, $objectPreviewSize);
+        $apiResult = $this->api->getTournament($accountId, $missionId, $joinCode, $includeScores, $objectPreviewSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TournamentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -375,19 +363,16 @@ class TournamentController extends Controller
      * Search Tournament Objects.
      *
      */
-    public function searchObjects(Request $request, float $version): JsonResponse
+    public function searchObjects(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -414,7 +399,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $gameLevelId = $request->integer('gameLevelId');
@@ -428,7 +412,7 @@ class TournamentController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchObjects($version, $accountId, $gameLevelId, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchObjects($accountId, $gameLevelId, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -444,19 +428,16 @@ class TournamentController extends Controller
      * Search Tournament Rounds.
      *
      */
-    public function searchRounds(Request $request, float $version): JsonResponse
+    public function searchRounds(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -489,7 +470,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -507,7 +487,7 @@ class TournamentController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchRounds($version, $accountId, $appKey, $status, $missionType, $currentOnly, $visibilities, $start, $limit);
+        $apiResult = $this->api->searchRounds($accountId, $appKey, $status, $missionType, $currentOnly, $visibilities, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -523,19 +503,16 @@ class TournamentController extends Controller
      * Search Tournaments.
      *
      */
-    public function searchTournaments(Request $request, float $version): JsonResponse
+    public function searchTournaments(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -579,7 +556,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -605,7 +581,7 @@ class TournamentController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchTournaments($version, $accountId, $appKey, $keyword, $subType, $includeInactive, $missionTypes, $filter, $sortField, $descending, $visibility, $start, $limit);
+        $apiResult = $this->api->searchTournaments($accountId, $appKey, $keyword, $subType, $includeInactive, $missionTypes, $filter, $sortField, $descending, $visibility, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionShortResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -621,19 +597,16 @@ class TournamentController extends Controller
      * Submit Tournament Score.
      *
      */
-    public function submitTournamentScore(Request $request, float $version): JsonResponse
+    public function submitTournamentScore(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -668,7 +641,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -684,7 +656,7 @@ class TournamentController extends Controller
         $gameLevelId = $request->integer('gameLevelId');
 
 
-        $apiResult = $this->api->submitTournamentScore($version, $accountId, $appKey, $missionId, $gameId, $packId, $scores, $gameLevelId);
+        $apiResult = $this->api->submitTournamentScore($accountId, $appKey, $missionId, $gameId, $packId, $scores, $gameLevelId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -700,19 +672,16 @@ class TournamentController extends Controller
      * Submit a vote for a multi-stage album tournament..
      *
      */
-    public function submitTournamentVote(Request $request, float $version): JsonResponse
+    public function submitTournamentVote(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -742,7 +711,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -756,7 +724,7 @@ class TournamentController extends Controller
         $checkIfDeviceAlreadyVoted = $request->boolean('checkIfDeviceAlreadyVoted');
 
 
-        $apiResult = $this->api->submitTournamentVote($version, $accountId, $appKey, $missionId, $gameObjectId, $deviceId, $checkIfDeviceAlreadyVoted);
+        $apiResult = $this->api->submitTournamentVote($accountId, $appKey, $missionId, $gameObjectId, $deviceId, $checkIfDeviceAlreadyVoted);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -772,19 +740,16 @@ class TournamentController extends Controller
      * Substitute Tournament Player.
      *
      */
-    public function substituteTournamentPlayer(Request $request, float $version): JsonResponse
+    public function substituteTournamentPlayer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -808,7 +773,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
@@ -818,7 +782,7 @@ class TournamentController extends Controller
         $gameLevelId = $request->integer('gameLevelId');
 
 
-        $apiResult = $this->api->substituteTournamentPlayer($version, $accountId, $missionId, $packId, $gameLevelId);
+        $apiResult = $this->api->substituteTournamentPlayer($accountId, $missionId, $packId, $gameLevelId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -834,19 +798,16 @@ class TournamentController extends Controller
      * Update Tournament.
      *
      */
-    public function updateTournament(Request $request, float $version): JsonResponse
+    public function updateTournament(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -956,7 +917,6 @@ class TournamentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
@@ -1026,7 +986,7 @@ class TournamentController extends Controller
         $tieTag = $request->string('tieTag')->value();
 
 
-        $apiResult = $this->api->updateTournament($version, $accountId, $missionId, $title, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlay, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $startDate, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag);
+        $apiResult = $this->api->updateTournament($accountId, $missionId, $title, $subType, $imageAssetId, $secondsBetweenLevels, $secondsForTieBreaker, $secondsBetweenPacks, $maximumLevelLength, $costToPlay, $costToPlayType, $minimumToPlay, $startingLimit, $availableLimit, $description, $metaData, $startDate, $audienceIds, $active, $enableBuyBack, $offerIds, $offerAssetId, $fixedReward, $splitReward, $allocateTickets, $tournamentData, $visibility, $preliminaryGroups, $preliminaryGroupAdvancements, $enableMultipleEntries, $enableMultipleVotes, $featured, $winnerTag, $tieTag);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TournamentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

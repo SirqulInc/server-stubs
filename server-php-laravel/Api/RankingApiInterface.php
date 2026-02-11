@@ -28,7 +28,6 @@ interface RankingApiInterface {
      * Operation getHistoricalRankings
      *
      * Search Historical Rankings
-     * @param float $version
      * @param string $appKey
      * @param string $rankType
      * @param int $startDate
@@ -42,7 +41,6 @@ interface RankingApiInterface {
      * @return \OpenAPI\Server\Model\RankFullResponse
      */
     public function getHistoricalRankings(
-            float $version,
             string $appKey,
             string $rankType,
             int $startDate,
@@ -62,7 +60,6 @@ interface RankingApiInterface {
      * Operation getRankings
      *
      * Search Rankings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $gameType
@@ -84,7 +81,6 @@ interface RankingApiInterface {
      * @return \OpenAPI\Server\Model\RankFullResponse
      */
     public function getRankings(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $gameType,
@@ -112,7 +108,6 @@ interface RankingApiInterface {
      * Operation getUserRank
      *
      * Get Personal Rankings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -127,7 +122,6 @@ interface RankingApiInterface {
      * @return object
      */
     public function getUserRank(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -148,7 +142,6 @@ interface RankingApiInterface {
      * Operation overrideUserRank
      *
      * Override User Rank
-     * @param float $version
      * @param int $accountId
      * @param int $ownerAccountId
      * @param string $appKey
@@ -174,7 +167,6 @@ interface RankingApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function overrideUserRank(
-            float $version,
             int $accountId,
             int $ownerAccountId,
             string $appKey,
@@ -206,7 +198,6 @@ interface RankingApiInterface {
      * Operation updateRankings
      *
      * Update Ranking
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $rankType
@@ -220,7 +211,6 @@ interface RankingApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateRankings(
-            float $version,
             int $accountId,
             string $appKey,
             string $rankType,

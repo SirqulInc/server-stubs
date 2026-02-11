@@ -47,19 +47,16 @@ class ObjectStoreController extends Controller
      * Create Field.
      *
      */
-    public function addField(Request $request, float $version): JsonResponse
+    public function addField(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -87,7 +84,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -99,7 +95,7 @@ class ObjectStoreController extends Controller
         $fieldType = $request->string('fieldType')->value();
 
 
-        $apiResult = $this->api->addField($version, $accountId, $appKey, $objectName, $fieldName, $fieldType);
+        $apiResult = $this->api->addField($accountId, $appKey, $objectName, $fieldName, $fieldType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -115,12 +111,12 @@ class ObjectStoreController extends Controller
      * Create Data.
      *
      */
-    public function createData(Request $request, float $version, string $objectName): JsonResponse
+    public function createData(Request $request, string $objectName): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'objectName' => $objectName,
+                    'objectName' => $objectName,
                 ],
                 $request->all(),
             ),
@@ -133,13 +129,12 @@ class ObjectStoreController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
         $body = $request->string('body')->value();
 
 
-        $apiResult = $this->api->createData($version, $objectName, $accountId, $body);
+        $apiResult = $this->api->createData($objectName, $accountId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -155,19 +150,16 @@ class ObjectStoreController extends Controller
      * Create Object.
      *
      */
-    public function createObject(Request $request, float $version): JsonResponse
+    public function createObject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -187,7 +179,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -195,7 +186,7 @@ class ObjectStoreController extends Controller
         $objectName = $request->string('objectName')->value();
 
 
-        $apiResult = $this->api->createObject($version, $accountId, $appKey, $objectName);
+        $apiResult = $this->api->createObject($accountId, $appKey, $objectName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -211,19 +202,16 @@ class ObjectStoreController extends Controller
      * Delete Data.
      *
      */
-    public function deleteData(Request $request, float $version, string $objectName, string $objectId): JsonResponse
+    public function deleteData(Request $request, string $objectName, string $objectId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'objectName' => $objectName,'objectId' => $objectId,
+                    'objectName' => $objectName,'objectId' => $objectId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'objectName' => [
                     'required',
                     'string',
@@ -244,11 +232,10 @@ class ObjectStoreController extends Controller
 
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteData($version, $objectName, $objectId, $accountId);
+        $apiResult = $this->api->deleteData($objectName, $objectId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -264,19 +251,16 @@ class ObjectStoreController extends Controller
      * Delete Field.
      *
      */
-    public function deleteField(Request $request, float $version): JsonResponse
+    public function deleteField(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -300,7 +284,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -310,7 +293,7 @@ class ObjectStoreController extends Controller
         $fieldName = $request->string('fieldName')->value();
 
 
-        $apiResult = $this->api->deleteField($version, $accountId, $appKey, $objectName, $fieldName);
+        $apiResult = $this->api->deleteField($accountId, $appKey, $objectName, $fieldName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -326,19 +309,16 @@ class ObjectStoreController extends Controller
      * Delete Object.
      *
      */
-    public function deleteObject(Request $request, float $version): JsonResponse
+    public function deleteObject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -358,7 +338,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -366,7 +345,7 @@ class ObjectStoreController extends Controller
         $objectName = $request->string('objectName')->value();
 
 
-        $apiResult = $this->api->deleteObject($version, $accountId, $appKey, $objectName);
+        $apiResult = $this->api->deleteObject($accountId, $appKey, $objectName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -382,19 +361,16 @@ class ObjectStoreController extends Controller
      * Get Data.
      *
      */
-    public function getData(Request $request, float $version, string $objectName, string $objectId): JsonResponse
+    public function getData(Request $request, string $objectName, string $objectId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'objectName' => $objectName,'objectId' => $objectId,
+                    'objectName' => $objectName,'objectId' => $objectId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'objectName' => [
                     'required',
                     'string',
@@ -418,13 +394,12 @@ class ObjectStoreController extends Controller
 
 
 
-
         $accountId = $request->integer('accountId');
 
         $include = $request->string('include')->value();
 
 
-        $apiResult = $this->api->getData($version, $objectName, $objectId, $accountId, $include);
+        $apiResult = $this->api->getData($objectName, $objectId, $accountId, $include);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -440,19 +415,16 @@ class ObjectStoreController extends Controller
      * Get Object.
      *
      */
-    public function getObject(Request $request, float $version): JsonResponse
+    public function getObject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -472,7 +444,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -480,7 +451,7 @@ class ObjectStoreController extends Controller
         $objectName = $request->string('objectName')->value();
 
 
-        $apiResult = $this->api->getObject($version, $accountId, $appKey, $objectName);
+        $apiResult = $this->api->getObject($accountId, $appKey, $objectName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -496,19 +467,16 @@ class ObjectStoreController extends Controller
      * Search Data.
      *
      */
-    public function searchData(Request $request, float $version, string $objectName): JsonResponse
+    public function searchData(Request $request, string $objectName): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'objectName' => $objectName,
+                    'objectName' => $objectName,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'objectName' => [
                     'required',
                     'string',
@@ -545,7 +513,6 @@ class ObjectStoreController extends Controller
         }
 
 
-
         $count = $request->boolean('count');
 
         $start = $request->integer('start');
@@ -561,7 +528,7 @@ class ObjectStoreController extends Controller
         $include = $request->string('include')->value();
 
 
-        $apiResult = $this->api->searchData($version, $objectName, $count, $start, $limit, $accountId, $criteria, $order, $include);
+        $apiResult = $this->api->searchData($objectName, $count, $start, $limit, $accountId, $criteria, $order, $include);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -577,19 +544,16 @@ class ObjectStoreController extends Controller
      * Search Objects.
      *
      */
-    public function searchObject(Request $request, float $version): JsonResponse
+    public function searchObject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -616,7 +580,6 @@ class ObjectStoreController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -628,7 +591,7 @@ class ObjectStoreController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchObject($version, $accountId, $appKey, $start, $limit, $keyword);
+        $apiResult = $this->api->searchObject($accountId, $appKey, $start, $limit, $keyword);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -644,12 +607,12 @@ class ObjectStoreController extends Controller
      * Update Data.
      *
      */
-    public function updateData(Request $request, float $version, string $objectName, string $objectId): JsonResponse
+    public function updateData(Request $request, string $objectName, string $objectId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'objectName' => $objectName,'objectId' => $objectId,
+                    'objectName' => $objectName,'objectId' => $objectId,
                 ],
                 $request->all(),
             ),
@@ -663,13 +626,12 @@ class ObjectStoreController extends Controller
 
 
 
-
         $accountId = $request->integer('accountId');
 
         $body = $request->string('body')->value();
 
 
-        $apiResult = $this->api->updateData($version, $objectName, $objectId, $accountId, $body);
+        $apiResult = $this->api->updateData($objectName, $objectId, $accountId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ObjectStoreResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

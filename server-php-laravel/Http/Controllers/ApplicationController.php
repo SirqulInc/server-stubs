@@ -47,19 +47,16 @@ class ApplicationController extends Controller
      * Create Application.
      *
      */
-    public function createApplication(Request $request, float $version): JsonResponse
+    public function createApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appName' => [
                     'required',
                     'string',
@@ -298,7 +295,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appName = $request->string('appName')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -458,7 +454,7 @@ class ApplicationController extends Controller
         $openAISecretKey = $request->string('openAISecretKey')->value();
 
 
-        $apiResult = $this->api->createApplication($version, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey);
+        $apiResult = $this->api->createApplication($appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -474,19 +470,16 @@ class ApplicationController extends Controller
      * Create Ad Placement.
      *
      */
-    public function createApplicationPlacement(Request $request, float $version): JsonResponse
+    public function createApplicationPlacement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -528,7 +521,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $size = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter::class);
@@ -552,7 +544,7 @@ class ApplicationController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createApplicationPlacement($version, $appKey, $size, $deviceId, $accountId, $name, $description, $height, $width, $refreshInterval, $defaultImageId, $active);
+        $apiResult = $this->api->createApplicationPlacement($appKey, $size, $deviceId, $accountId, $name, $description, $height, $width, $refreshInterval, $defaultImageId, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PlacementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -568,19 +560,16 @@ class ApplicationController extends Controller
      * Delete Application.
      *
      */
-    public function deleteApplication(Request $request, float $version): JsonResponse
+    public function deleteApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -594,13 +583,12 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->deleteApplication($version, $accountId, $appKey);
+        $apiResult = $this->api->deleteApplication($accountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -616,19 +604,16 @@ class ApplicationController extends Controller
      * Delete Ad Placement.
      *
      */
-    public function deleteApplicationPlacement(Request $request, float $version): JsonResponse
+    public function deleteApplicationPlacement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'placementId' => [
                     'required',
                     'integer',
@@ -646,7 +631,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $placementId = $request->integer('placementId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -654,7 +638,7 @@ class ApplicationController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteApplicationPlacement($version, $placementId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteApplicationPlacement($placementId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PlacementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -670,19 +654,16 @@ class ApplicationController extends Controller
      * Get Application.
      *
      */
-    public function getApplication(Request $request, float $version): JsonResponse
+    public function getApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'string',
                 ],
@@ -696,13 +677,12 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $applicationId = $request->integer('applicationId');
 
 
-        $apiResult = $this->api->getApplication($version, $appKey, $applicationId);
+        $apiResult = $this->api->getApplication($appKey, $applicationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -718,19 +698,16 @@ class ApplicationController extends Controller
      * Get Ad Placement.
      *
      */
-    public function getApplicationPlacement(Request $request, float $version): JsonResponse
+    public function getApplicationPlacement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'placementId' => [
                     'required',
                     'integer',
@@ -748,7 +725,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $placementId = $request->integer('placementId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -756,7 +732,7 @@ class ApplicationController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getApplicationPlacement($version, $placementId, $deviceId, $accountId);
+        $apiResult = $this->api->getApplicationPlacement($placementId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PlacementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -772,19 +748,16 @@ class ApplicationController extends Controller
      * Get API versions.
      *
      */
-    public function getApplicationVersions(Request $request, float $version): JsonResponse
+    public function getApplicationVersions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
             ],
         );
 
@@ -793,8 +766,7 @@ class ApplicationController extends Controller
         }
 
 
-
-        $apiResult = $this->api->getApplicationVersions($version);
+        $apiResult = $this->api->getApplicationVersions();
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -810,19 +782,16 @@ class ApplicationController extends Controller
      * Search Application Users.
      *
      */
-    public function getUniqueUsersByApp(Request $request, float $version): JsonResponse
+    public function getUniqueUsersByApp(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -855,7 +824,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $q = $request->string('q')->value();
@@ -873,7 +841,7 @@ class ApplicationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getUniqueUsersByApp($version, $appKey, $q, $keyword, $since, $i, $start, $l, $limit);
+        $apiResult = $this->api->getUniqueUsersByApp($appKey, $q, $keyword, $since, $i, $start, $l, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AccountListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -889,19 +857,16 @@ class ApplicationController extends Controller
      * List Applications.
      *
      */
-    public function listApplications(Request $request, float $version): JsonResponse
+    public function listApplications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -968,7 +933,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $q = $request->string('q')->value();
@@ -1010,7 +974,7 @@ class ApplicationController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->listApplications($version, $accountId, $q, $keyword, $platforms, $deviceIds, $deviceVersions, $categoryIds, $sortField, $hasAds, $publicNotifications, $filterBillable, $filterContentAdmin, $descending, $i, $start, $l, $limit, $applicationIds, $hasObjectStore, $activeOnly);
+        $apiResult = $this->api->listApplications($accountId, $q, $keyword, $platforms, $deviceIds, $deviceVersions, $categoryIds, $sortField, $hasAds, $publicNotifications, $filterBillable, $filterContentAdmin, $descending, $i, $start, $l, $limit, $applicationIds, $hasObjectStore, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1027,19 +991,16 @@ class ApplicationController extends Controller
      * Search for Ad Placements.
      *
      */
-    public function searchApplicationPlacement(Request $request, float $version): JsonResponse
+    public function searchApplicationPlacement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -1063,7 +1024,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -1075,7 +1035,7 @@ class ApplicationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchApplicationPlacement($version, $appKey, $deviceId, $accountId, $start, $limit);
+        $apiResult = $this->api->searchApplicationPlacement($appKey, $deviceId, $accountId, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1092,19 +1052,16 @@ class ApplicationController extends Controller
      * Search for Application Settings.
      *
      */
-    public function searchApplicationSettings(Request $request, float $version): JsonResponse
+    public function searchApplicationSettings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1136,7 +1093,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1154,7 +1110,7 @@ class ApplicationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchApplicationSettings($version, $deviceId, $accountId, $connectionAccountId, $keyword, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchApplicationSettings($deviceId, $accountId, $connectionAccountId, $keyword, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationSettingsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1170,19 +1126,16 @@ class ApplicationController extends Controller
      * Search Applications.
      *
      */
-    public function searchApplications(Request $request, float $version): JsonResponse
+    public function searchApplications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1235,7 +1188,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1269,7 +1221,7 @@ class ApplicationController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchApplications($version, $deviceId, $accountId, $latitude, $longitude, $q, $keyword, $qSearchFields, $sortField, $descending, $i, $start, $l, $limit, $hasAds, $publicNotifications, $activeOnly);
+        $apiResult = $this->api->searchApplications($deviceId, $accountId, $latitude, $longitude, $q, $keyword, $qSearchFields, $sortField, $descending, $i, $start, $l, $limit, $hasAds, $publicNotifications, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1286,19 +1238,16 @@ class ApplicationController extends Controller
      * Update Application.
      *
      */
-    public function updateApplication(Request $request, float $version): JsonResponse
+    public function updateApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -1541,7 +1490,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $appName = $request->string('appName')->value();
@@ -1703,7 +1651,7 @@ class ApplicationController extends Controller
         $openAISecretKey = $request->string('openAISecretKey')->value();
 
 
-        $apiResult = $this->api->updateApplication($version, $appKey, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey);
+        $apiResult = $this->api->updateApplication($appKey, $appName, $deviceId, $accountId, $about, $bundleId, $appIconAssetId, $appLogoAssetId, $facebookAppId, $facebookAppSecret, $googleApiKey, $updateEULADate, $eulaVersion, $landingPageUrl, $showInActivities, $activityDescription, $inviteWelcomeText, $invitePageUrl, $urlScheme, $platforms, $downloadUrls, $categoryIds, $scoringType, $hintCost, $maxScore, $ticketsPerPoint, $hasGameData, $publicNotifications, $useMatchingAlgorithm, $globalTickets, $buildVersion, $apiVersion, $placementName, $placementDescription, $placementSize, $placementHeight, $placementWidth, $placementRefreshInterval, $createObjectStore, $publicContentApproval, $productionMode, $minimumSessionLength, $sessionGapLength, $localAdsEnabled, $sqootApiKey, $trilatProcessingType, $maxSampleSize, $minRSSI, $modules, $authorizedCount, $authorizedServers, $defaultTimezone, $smtpPass, $metaData, $placementMetaData, $ipsFloor, $enableAPNSBadge, $includeInReport, $defaultAppFilterId, $enableWelcomeEmail, $appleAppId, $appleTeamId, $appleAuthKeyId, $appleAuthKey, $appleIssuerId, $appStoreKeyId, $appStoreKey, $googlePrivateKeyFile, $authorizeNetApiKey, $authorizeNetTransactionKey, $emailSender, $smtpUser, $smtpHost, $vatomBusinessId, $vatomRestClientId, $vatomRestSecretKey, $twilioAccountSID, $twilioAuthToken, $twilioSenderPhoneNumber, $openAISecretKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1719,19 +1667,16 @@ class ApplicationController extends Controller
      * Change Appliation Status.
      *
      */
-    public function updateApplicationActive(Request $request, float $version): JsonResponse
+    public function updateApplicationActive(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1751,7 +1696,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1759,7 +1703,7 @@ class ApplicationController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateApplicationActive($version, $accountId, $appKey, $active);
+        $apiResult = $this->api->updateApplicationActive($accountId, $appKey, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1775,19 +1719,16 @@ class ApplicationController extends Controller
      * Update Ad Placement.
      *
      */
-    public function updateApplicationPlacement(Request $request, float $version): JsonResponse
+    public function updateApplicationPlacement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'placementId' => [
                     'required',
                     'integer',
@@ -1828,7 +1769,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $placementId = $request->integer('placementId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1852,7 +1792,7 @@ class ApplicationController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateApplicationPlacement($version, $placementId, $deviceId, $accountId, $name, $description, $size, $height, $width, $refreshInterval, $defaultImageId, $active);
+        $apiResult = $this->api->updateApplicationPlacement($placementId, $deviceId, $accountId, $name, $description, $size, $height, $width, $refreshInterval, $defaultImageId, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PlacementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1868,19 +1808,16 @@ class ApplicationController extends Controller
      * Create Application Certificate.
      *
      */
-    public function uploadApplicationCertificate(Request $request, float $version): JsonResponse
+    public function uploadApplicationCertificate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -1901,7 +1838,6 @@ class ApplicationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -1911,7 +1847,7 @@ class ApplicationController extends Controller
         $certificate = $request->file('certificate');
 
 
-        $apiResult = $this->api->uploadApplicationCertificate($version, $appKey, $deviceId, $accountId, $certificate);
+        $apiResult = $this->api->uploadApplicationCertificate($appKey, $deviceId, $accountId, $certificate);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

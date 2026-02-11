@@ -47,19 +47,16 @@ class SecureAppController extends Controller
      * Create Secure Application.
      *
      */
-    public function createSecureApplication(Request $request, float $version): JsonResponse
+    public function createSecureApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -100,7 +97,6 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -122,7 +118,7 @@ class SecureAppController extends Controller
         $biometricPosition2 = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateSecureApplicationBiometricPositionParameter::class);
 
 
-        $apiResult = $this->api->createSecureApplication($version, $accountId, $appKey, $keyCert, $trustStore, $username, $password, $active, $biometricType, $biometricPosition, $biometricPosition2);
+        $apiResult = $this->api->createSecureApplication($accountId, $appKey, $keyCert, $trustStore, $username, $password, $active, $biometricType, $biometricPosition, $biometricPosition2);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -138,19 +134,16 @@ class SecureAppController extends Controller
      * Delete Secure Application.
      *
      */
-    public function deleteSecureApplication(Request $request, float $version): JsonResponse
+    public function deleteSecureApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -166,13 +159,12 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->deleteSecureApplication($version, $accountId, $appKey);
+        $apiResult = $this->api->deleteSecureApplication($accountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -188,19 +180,16 @@ class SecureAppController extends Controller
      * Login Clear.
      *
      */
-    public function loginSecure(Request $request, float $version): JsonResponse
+    public function loginSecure(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -235,7 +224,6 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $biometricFile = $request->file('biometricFile');
@@ -255,7 +243,7 @@ class SecureAppController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->loginSecure($version, $appKey, $biometricFile, $deviceId, $biometricFile2, $ageRestriction, $returnProfile, $responseFilters, $latitude, $longitude);
+        $apiResult = $this->api->loginSecure($appKey, $biometricFile, $deviceId, $biometricFile2, $ageRestriction, $returnProfile, $responseFilters, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -271,12 +259,12 @@ class SecureAppController extends Controller
      * Purchase Clear.
      *
      */
-    public function purchaseSecure(Request $request, float $version): JsonResponse
+    public function purchaseSecure(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -288,11 +276,10 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PaymentRequest::class);
 
 
-        $apiResult = $this->api->purchaseSecure($version, $body);
+        $apiResult = $this->api->purchaseSecure($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -308,19 +295,16 @@ class SecureAppController extends Controller
      * Rest Secure Application.
      *
      */
-    public function resetSecure(Request $request, float $version): JsonResponse
+    public function resetSecure(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -336,13 +320,12 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->resetSecure($version, $accountId, $appKey);
+        $apiResult = $this->api->resetSecure($accountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -358,19 +341,16 @@ class SecureAppController extends Controller
      * Update Secure Application.
      *
      */
-    public function updateSecureApplication(Request $request, float $version): JsonResponse
+    public function updateSecureApplication(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -407,7 +387,6 @@ class SecureAppController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -429,7 +408,7 @@ class SecureAppController extends Controller
         $biometricPosition2 = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UpdateSecureApplicationBiometricPositionParameter::class);
 
 
-        $apiResult = $this->api->updateSecureApplication($version, $accountId, $appKey, $active, $keyCert, $trustStore, $username, $password, $biometricType, $biometricPosition, $biometricPosition2);
+        $apiResult = $this->api->updateSecureApplication($accountId, $appKey, $active, $keyCert, $trustStore, $username, $password, $biometricType, $biometricPosition, $biometricPosition2);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

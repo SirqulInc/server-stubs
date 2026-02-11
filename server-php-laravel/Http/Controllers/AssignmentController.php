@@ -47,19 +47,16 @@ class AssignmentController extends Controller
      * Search Assignment Assignees.
      *
      */
-    public function assigmentAssigneeAccountSearch(Request $request, float $version): JsonResponse
+    public function assigmentAssigneeAccountSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -74,13 +71,12 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->assigmentAssigneeAccountSearch($version, $accountId, $keyword);
+        $apiResult = $this->api->assigmentAssigneeAccountSearch($accountId, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -97,19 +93,16 @@ class AssignmentController extends Controller
      * Create Assignment.
      *
      */
-    public function assignmentCreate(Request $request, float $version): JsonResponse
+    public function assignmentCreate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -141,7 +134,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -157,7 +149,7 @@ class AssignmentController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->assignmentCreate($version, $accountId, $name, $assigneeAccountId, $description, $retailerLocationId, $tags, $active);
+        $apiResult = $this->api->assignmentCreate($accountId, $name, $assigneeAccountId, $description, $retailerLocationId, $tags, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -173,19 +165,16 @@ class AssignmentController extends Controller
      * Delete Assignment.
      *
      */
-    public function assignmentDelete(Request $request, float $version): JsonResponse
+    public function assignmentDelete(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -201,13 +190,12 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentId = $request->integer('assignmentId');
 
 
-        $apiResult = $this->api->assignmentDelete($version, $accountId, $assignmentId);
+        $apiResult = $this->api->assignmentDelete($accountId, $assignmentId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -223,19 +211,16 @@ class AssignmentController extends Controller
      * Get Assignment.
      *
      */
-    public function assignmentGet(Request $request, float $version): JsonResponse
+    public function assignmentGet(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -251,13 +236,12 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentId = $request->integer('assignmentId');
 
 
-        $apiResult = $this->api->assignmentGet($version, $accountId, $assignmentId);
+        $apiResult = $this->api->assignmentGet($accountId, $assignmentId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -273,19 +257,16 @@ class AssignmentController extends Controller
      * Search Assignments.
      *
      */
-    public function assignmentSearch(Request $request, float $version): JsonResponse
+    public function assignmentSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -330,7 +311,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssignmentSearchSortFieldParameter::class);
@@ -354,7 +334,7 @@ class AssignmentController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->assignmentSearch($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $creatorAccountId, $assigneeAccountIds, $retailerLocationIds, $currentStatusType, $keyword);
+        $apiResult = $this->api->assignmentSearch($accountId, $sortField, $descending, $activeOnly, $start, $limit, $creatorAccountId, $assigneeAccountIds, $retailerLocationIds, $currentStatusType, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -371,19 +351,16 @@ class AssignmentController extends Controller
      * Create Assignment Status.
      *
      */
-    public function assignmentStatusCreate(Request $request, float $version): JsonResponse
+    public function assignmentStatusCreate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -421,7 +398,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentId = $request->integer('assignmentId');
@@ -445,7 +421,7 @@ class AssignmentController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->assignmentStatusCreate($version, $accountId, $assignmentId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active);
+        $apiResult = $this->api->assignmentStatusCreate($accountId, $assignmentId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -461,19 +437,16 @@ class AssignmentController extends Controller
      * Deletes Assignment Status.
      *
      */
-    public function assignmentStatusDelete(Request $request, float $version): JsonResponse
+    public function assignmentStatusDelete(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -489,13 +462,12 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentStatusId = $request->integer('assignmentStatusId');
 
 
-        $apiResult = $this->api->assignmentStatusDelete($version, $accountId, $assignmentStatusId);
+        $apiResult = $this->api->assignmentStatusDelete($accountId, $assignmentStatusId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -511,19 +483,16 @@ class AssignmentController extends Controller
      * Get Assignment Status.
      *
      */
-    public function assignmentStatusGet(Request $request, float $version): JsonResponse
+    public function assignmentStatusGet(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -539,13 +508,12 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentStatusId = $request->integer('assignmentStatusId');
 
 
-        $apiResult = $this->api->assignmentStatusGet($version, $accountId, $assignmentStatusId);
+        $apiResult = $this->api->assignmentStatusGet($accountId, $assignmentStatusId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -561,19 +529,16 @@ class AssignmentController extends Controller
      * Search Assignment Statuses.
      *
      */
-    public function assignmentStatusSearch(Request $request, float $version): JsonResponse
+    public function assignmentStatusSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -621,7 +586,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssignmentStatusSearchSortFieldParameter::class);
@@ -647,7 +611,7 @@ class AssignmentController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->assignmentStatusSearch($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $assignmentId, $creatorAccountId, $assigneeAccountId, $retailerLocationId, $statusType, $keyword);
+        $apiResult = $this->api->assignmentStatusSearch($accountId, $sortField, $descending, $activeOnly, $start, $limit, $assignmentId, $creatorAccountId, $assigneeAccountId, $retailerLocationId, $statusType, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -664,19 +628,16 @@ class AssignmentController extends Controller
      * Update Assignment Status.
      *
      */
-    public function assignmentStatusUpdate(Request $request, float $version): JsonResponse
+    public function assignmentStatusUpdate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -714,7 +675,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentStatusId = $request->integer('assignmentStatusId');
@@ -738,7 +698,7 @@ class AssignmentController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->assignmentStatusUpdate($version, $accountId, $assignmentStatusId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active);
+        $apiResult = $this->api->assignmentStatusUpdate($accountId, $assignmentStatusId, $scheduledNotificationId, $toDo, $connection, $method, $status, $closure, $message, $followUp, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -754,19 +714,16 @@ class AssignmentController extends Controller
      * Update Assignment.
      *
      */
-    public function assignmentUpdate(Request $request, float $version): JsonResponse
+    public function assignmentUpdate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -800,7 +757,6 @@ class AssignmentController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $assignmentId = $request->integer('assignmentId');
@@ -818,7 +774,7 @@ class AssignmentController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->assignmentUpdate($version, $accountId, $assignmentId, $name, $description, $assigneeAccountId, $retailerLocationId, $tags, $active);
+        $apiResult = $this->api->assignmentUpdate($accountId, $assignmentId, $name, $description, $assigneeAccountId, $retailerLocationId, $tags, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssignmentResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

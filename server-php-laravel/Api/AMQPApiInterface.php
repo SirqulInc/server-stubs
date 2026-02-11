@@ -28,7 +28,6 @@ interface AMQPApiInterface {
      * Operation consumerCreate
      *
      * Create Consumer
-     * @param float $version
      * @param string $appKey
      * @param string $name
      * @param string $hostname
@@ -46,7 +45,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function consumerCreate(
-            float $version,
             string $appKey,
             string $name,
             string $hostname,
@@ -70,7 +68,6 @@ interface AMQPApiInterface {
      * Operation consumerUpdate
      *
      * Update Consumer
-     * @param float $version
      * @param string $appKey
      * @param int $queueId
      * @param string $dataMapping
@@ -80,7 +77,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function consumerUpdate(
-            float $version,
             string $appKey,
             int $queueId,
             string $dataMapping,
@@ -96,7 +92,6 @@ interface AMQPApiInterface {
      * Operation queueCreate
      *
      * Create Queue
-     * @param float $version
      * @param string $appKey
      * @param string $name
      * @param null | string $deviceId
@@ -112,7 +107,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function queueCreate(
-            float $version,
             string $appKey,
             string $name,
             ?string $deviceId,
@@ -134,14 +128,12 @@ interface AMQPApiInterface {
      * Operation queueDelete
      *
      * Delete Queue
-     * @param float $version
      * @param int $queueId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function queueDelete(
-            float $version,
             int $queueId,
             ?string $deviceId,
             ?int $accountId,
@@ -154,7 +146,6 @@ interface AMQPApiInterface {
      * Operation queueGet
      *
      * Get Queue
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $queueId
@@ -165,7 +156,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function queueGet(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $queueId,
@@ -182,7 +172,6 @@ interface AMQPApiInterface {
      * Operation queuePublish
      *
      * Publish Queue
-     * @param float $version
      * @param string $message
      * @param null | int $queueId
      * @param null | string $appKey
@@ -192,7 +181,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function queuePublish(
-            float $version,
             string $message,
             ?int $queueId,
             ?string $appKey,
@@ -208,7 +196,6 @@ interface AMQPApiInterface {
      * Operation queueSearch
      *
      * Search Queue
-     * @param float $version
      * @param null | int $queueId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -218,7 +205,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function queueSearch(
-            float $version,
             ?int $queueId,
             ?string $deviceId,
             ?int $accountId,
@@ -234,7 +220,6 @@ interface AMQPApiInterface {
      * Operation queueUpdate
      *
      * Update Queue
-     * @param float $version
      * @param int $queueId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -250,7 +235,6 @@ interface AMQPApiInterface {
      * @return \OpenAPI\Server\Model\QueueResponse
      */
     public function queueUpdate(
-            float $version,
             int $queueId,
             ?string $deviceId,
             ?int $accountId,

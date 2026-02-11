@@ -47,19 +47,16 @@ class MissionController extends Controller
      * Create Mission.
      *
      */
-    public function createMission(Request $request, float $version): JsonResponse
+    public function createMission(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -146,7 +143,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $title = $request->string('title')->value();
@@ -200,7 +196,7 @@ class MissionController extends Controller
         $radius = $request->string('radius')->value();
 
 
-        $apiResult = $this->api->createMission($version, $accountId, $title, $description, $subType, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $missionTask, $formatType, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $metaData, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius);
+        $apiResult = $this->api->createMission($accountId, $title, $description, $subType, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $missionTask, $formatType, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $metaData, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -216,19 +212,16 @@ class MissionController extends Controller
      * Delete Mission.
      *
      */
-    public function deleteMission(Request $request, float $version): JsonResponse
+    public function deleteMission(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -244,13 +237,12 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
 
 
-        $apiResult = $this->api->deleteMission($version, $accountId, $missionId);
+        $apiResult = $this->api->deleteMission($accountId, $missionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -266,19 +258,16 @@ class MissionController extends Controller
      * Find Missions.
      *
      */
-    public function findMissions(Request $request, float $version): JsonResponse
+    public function findMissions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -342,7 +331,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $suffix = $request->string('suffix')->value();
@@ -382,7 +370,7 @@ class MissionController extends Controller
         $audienceOperator = $request->string('audienceOperator')->value();
 
 
-        $apiResult = $this->api->findMissions($version, $appKey, $suffix, $type, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeGameData, $includeAudiences, $allocatesTickets, $randomize, $targetedAdsOnly, $missionIds, $audienceOperator);
+        $apiResult = $this->api->findMissions($appKey, $suffix, $type, $accountId, $appVersion, $latitude, $longitude, $device, $deviceIdentifier, $deviceVersion, $start, $limit, $includeGameData, $includeAudiences, $allocatesTickets, $randomize, $targetedAdsOnly, $missionIds, $audienceOperator);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -398,19 +386,16 @@ class MissionController extends Controller
      * Get Mission.
      *
      */
-    public function getMission(Request $request, float $version): JsonResponse
+    public function getMission(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -429,7 +414,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
@@ -437,7 +421,7 @@ class MissionController extends Controller
         $returnCreative = $request->boolean('returnCreative');
 
 
-        $apiResult = $this->api->getMission($version, $accountId, $missionId, $returnCreative);
+        $apiResult = $this->api->getMission($accountId, $missionId, $returnCreative);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -453,19 +437,16 @@ class MissionController extends Controller
      * Import Mission.
      *
      */
-    public function importMission(Request $request, float $version): JsonResponse
+    public function importMission(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -498,7 +479,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $latitude = $request->float('latitude');
@@ -516,7 +496,7 @@ class MissionController extends Controller
         $adSize = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter::class);
 
 
-        $apiResult = $this->api->importMission($version, $accountId, $latitude, $longitude, $appKey, $keyword, $start, $limit, $adSize);
+        $apiResult = $this->api->importMission($accountId, $latitude, $longitude, $appKey, $keyword, $start, $limit, $adSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -532,19 +512,16 @@ class MissionController extends Controller
      * Search Mission Formats.
      *
      */
-    public function searchMissionFormats(Request $request, float $version): JsonResponse
+    public function searchMissionFormats(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'start' => [
                     'required',
                     'integer',
@@ -564,7 +541,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $start = $request->integer('start');
 
         $limit = $request->integer('limit');
@@ -572,7 +548,7 @@ class MissionController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchMissionFormats($version, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchMissionFormats($start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -589,19 +565,16 @@ class MissionController extends Controller
      * Search Missions.
      *
      */
-    public function searchMissions(Request $request, float $version): JsonResponse
+    public function searchMissions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -643,7 +616,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -667,7 +639,7 @@ class MissionController extends Controller
         $descending = $request->boolean('descending');
 
 
-        $apiResult = $this->api->searchMissions($version, $accountId, $keyword, $subType, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending);
+        $apiResult = $this->api->searchMissions($accountId, $keyword, $subType, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -684,19 +656,16 @@ class MissionController extends Controller
      * Search Missions by Billable Entity.
      *
      */
-    public function searchMissionsByBillableEntity(Request $request, float $version): JsonResponse
+    public function searchMissionsByBillableEntity(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -735,7 +704,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -757,7 +725,7 @@ class MissionController extends Controller
         $descending = $request->boolean('descending');
 
 
-        $apiResult = $this->api->searchMissionsByBillableEntity($version, $accountId, $keyword, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending);
+        $apiResult = $this->api->searchMissionsByBillableEntity($accountId, $keyword, $start, $limit, $includeGameData, $includeAudiences, $includeInactive, $suffix, $sortField, $descending);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -774,19 +742,16 @@ class MissionController extends Controller
      * Update Mission.
      *
      */
-    public function updateMission(Request $request, float $version): JsonResponse
+    public function updateMission(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -870,7 +835,6 @@ class MissionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $missionId = $request->integer('missionId');
@@ -922,7 +886,7 @@ class MissionController extends Controller
         $radius = $request->string('radius')->value();
 
 
-        $apiResult = $this->api->updateMission($version, $accountId, $missionId, $title, $description, $subType, $metaData, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius);
+        $apiResult = $this->api->updateMission($accountId, $missionId, $title, $description, $subType, $metaData, $startDate, $endDate, $active, $gameLevelIds, $creativeIds, $audienceIds, $offerId, $balance, $advancedReporting, $allocateTickets, $ticketCount, $ticketType, $points, $applicationIds, $devices, $deviceIds, $deviceVersions, $locations, $radius);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MissionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

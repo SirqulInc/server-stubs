@@ -28,7 +28,6 @@ interface EventApiInterface {
      * Operation attendEvent
      *
      * Attend Event
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -42,7 +41,6 @@ interface EventApiInterface {
      * @return \OpenAPI\Server\Model\OfferResponse
      */
     public function attendEvent(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -62,7 +60,6 @@ interface EventApiInterface {
      * Operation createEvent
      *
      * Create Event
-     * @param float $version
      * @param int $accountId
      * @param string $title
      * @param null | string $retailerLocationIds
@@ -78,7 +75,6 @@ interface EventApiInterface {
      * @return \OpenAPI\Server\Model\OfferResponse
      */
     public function createEvent(
-            float $version,
             int $accountId,
             string $title,
             ?string $retailerLocationIds,
@@ -100,13 +96,11 @@ interface EventApiInterface {
      * Operation deleteEvent
      *
      * Delete Event
-     * @param float $version
      * @param int $accountId
      * @param int $eventId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteEvent(
-            float $version,
             int $accountId,
             int $eventId,
     ):
@@ -118,13 +112,11 @@ interface EventApiInterface {
      * Operation getEvent
      *
      * Get Event
-     * @param float $version
      * @param int $accountId
      * @param int $eventId
      * @return \OpenAPI\Server\Model\OfferResponse
      */
     public function getEvent(
-            float $version,
             int $accountId,
             int $eventId,
     ):
@@ -136,7 +128,6 @@ interface EventApiInterface {
      * Operation searchEventTransactions
      *
      * Search Event Attendance
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -159,7 +150,6 @@ interface EventApiInterface {
      * @return \OpenAPI\Server\Model\EventAttendanceResponse[]
      */
     public function searchEventTransactions(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -188,7 +178,6 @@ interface EventApiInterface {
      * Operation searchEvents
      *
      * Search Events
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @param null | bool $activeOnly
@@ -205,7 +194,6 @@ interface EventApiInterface {
      * @return \OpenAPI\Server\Model\OfferShortResponse[]
      */
     public function searchEvents(
-            float $version,
             int $accountId,
             ?string $keyword,
             ?bool $activeOnly,
@@ -228,7 +216,6 @@ interface EventApiInterface {
      * Operation updateEvent
      *
      * Update Event
-     * @param float $version
      * @param int $accountId
      * @param int $eventId
      * @param null | string $retailerLocationIds
@@ -244,7 +231,6 @@ interface EventApiInterface {
      * @return \OpenAPI\Server\Model\OfferResponse
      */
     public function updateEvent(
-            float $version,
             int $accountId,
             int $eventId,
             ?string $retailerLocationIds,

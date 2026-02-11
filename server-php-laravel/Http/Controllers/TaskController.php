@@ -47,19 +47,16 @@ class TaskController extends Controller
      * Create Task.
      *
      */
-    public function createTask(Request $request, float $version): JsonResponse
+    public function createTask(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -104,7 +101,6 @@ class TaskController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -130,7 +126,7 @@ class TaskController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createTask($version, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active);
+        $apiResult = $this->api->createTask($accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TaskResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -146,19 +142,16 @@ class TaskController extends Controller
      * Delete Task.
      *
      */
-    public function deleteTask(Request $request, float $version): JsonResponse
+    public function deleteTask(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -174,13 +167,12 @@ class TaskController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $taskId = $request->integer('taskId');
 
 
-        $apiResult = $this->api->deleteTask($version, $accountId, $taskId);
+        $apiResult = $this->api->deleteTask($accountId, $taskId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -196,19 +188,16 @@ class TaskController extends Controller
      * Get Task.
      *
      */
-    public function getTask(Request $request, float $version): JsonResponse
+    public function getTask(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -224,13 +213,12 @@ class TaskController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $taskId = $request->integer('taskId');
 
 
-        $apiResult = $this->api->getTask($version, $accountId, $taskId);
+        $apiResult = $this->api->getTask($accountId, $taskId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TaskResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -246,19 +234,16 @@ class TaskController extends Controller
      * Search Tasks.
      *
      */
-    public function searchTasks(Request $request, float $version): JsonResponse
+    public function searchTasks(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -303,7 +288,6 @@ class TaskController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $groupingId = $request->string('groupingId')->value();
@@ -329,7 +313,7 @@ class TaskController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchTasks($version, $accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchTasks($accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -346,19 +330,16 @@ class TaskController extends Controller
      * Update Task.
      *
      */
-    public function updateTask(Request $request, float $version): JsonResponse
+    public function updateTask(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'taskId' => [
                     'required',
                     'integer',
@@ -406,7 +387,6 @@ class TaskController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $taskId = $request->integer('taskId');
 
         $accountId = $request->integer('accountId');
@@ -434,7 +414,7 @@ class TaskController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateTask($version, $taskId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active);
+        $apiResult = $this->api->updateTask($taskId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $visibility, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TaskResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

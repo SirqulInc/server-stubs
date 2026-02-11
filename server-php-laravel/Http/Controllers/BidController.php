@@ -47,19 +47,16 @@ class BidController extends Controller
      * Create Bid.
      *
      */
-    public function createBid(Request $request, float $version): JsonResponse
+    public function createBid(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'biddableType' => [
                     'required',
                     'string',
@@ -94,7 +91,6 @@ class BidController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $biddableType = $request->string('biddableType')->value();
 
         $biddableId = $request->integer('biddableId');
@@ -112,7 +108,7 @@ class BidController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->createBid($version, $biddableType, $biddableId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule, $deviceId, $accountId);
+        $apiResult = $this->api->createBid($biddableType, $biddableId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BidResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -128,19 +124,16 @@ class BidController extends Controller
      * Delete Bid.
      *
      */
-    public function deleteBid(Request $request, float $version): JsonResponse
+    public function deleteBid(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'bidId' => [
                     'required',
                     'integer',
@@ -158,7 +151,6 @@ class BidController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $bidId = $request->integer('bidId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -166,7 +158,7 @@ class BidController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteBid($version, $bidId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteBid($bidId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -182,19 +174,16 @@ class BidController extends Controller
      * Get Bid.
      *
      */
-    public function getBid(Request $request, float $version): JsonResponse
+    public function getBid(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'bidId' => [
                     'required',
                     'integer',
@@ -212,7 +201,6 @@ class BidController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $bidId = $request->integer('bidId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -220,7 +208,7 @@ class BidController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getBid($version, $bidId, $deviceId, $accountId);
+        $apiResult = $this->api->getBid($bidId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BidResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -236,19 +224,16 @@ class BidController extends Controller
      * Update Bid.
      *
      */
-    public function updateBid(Request $request, float $version): JsonResponse
+    public function updateBid(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'bidId' => [
                     'required',
                     'integer',
@@ -275,7 +260,6 @@ class BidController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $bidId = $request->integer('bidId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -291,7 +275,7 @@ class BidController extends Controller
         $budgetSchedule = $request->string('budgetSchedule')->value();
 
 
-        $apiResult = $this->api->updateBid($version, $bidId, $deviceId, $accountId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule);
+        $apiResult = $this->api->updateBid($bidId, $deviceId, $accountId, $amountPerView, $amountPerAction, $budgetAmount, $budgetSchedule);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BidResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

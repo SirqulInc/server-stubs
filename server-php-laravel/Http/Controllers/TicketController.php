@@ -47,19 +47,16 @@ class TicketController extends Controller
      * Get Ticket Count.
      *
      */
-    public function getTicketCount(Request $request, float $version): JsonResponse
+    public function getTicketCount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -82,7 +79,6 @@ class TicketController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -94,7 +90,7 @@ class TicketController extends Controller
         $ticketType = $request->string('ticketType')->value();
 
 
-        $apiResult = $this->api->getTicketCount($version, $deviceId, $accountId, $gameType, $appKey, $ticketType);
+        $apiResult = $this->api->getTicketCount($deviceId, $accountId, $gameType, $appKey, $ticketType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CountResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -110,19 +106,16 @@ class TicketController extends Controller
      * Get Ticket List.
      *
      */
-    public function getTicketList(Request $request, float $version): JsonResponse
+    public function getTicketList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -157,7 +150,6 @@ class TicketController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -177,7 +169,7 @@ class TicketController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->getTicketList($version, $deviceId, $accountId, $ticketObjectType, $actionType, $ticketIds, $objectIds, $receiptTokens, $gameType, $appKey);
+        $apiResult = $this->api->getTicketList($deviceId, $accountId, $ticketObjectType, $actionType, $ticketIds, $objectIds, $receiptTokens, $gameType, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TicketListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -193,19 +185,16 @@ class TicketController extends Controller
      * Gift Tickets.
      *
      */
-    public function giftPurchase(Request $request, float $version): JsonResponse
+    public function giftPurchase(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'receiverAccountId' => [
                     'required',
                     'integer',
@@ -239,7 +228,6 @@ class TicketController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $receiverAccountId = $request->integer('receiverAccountId');
 
         $ticketId = $request->integer('ticketId');
@@ -257,7 +245,7 @@ class TicketController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->giftPurchase($version, $receiverAccountId, $ticketId, $deviceId, $accountId, $assetId, $customMessage, $gameType, $appKey);
+        $apiResult = $this->api->giftPurchase($receiverAccountId, $ticketId, $deviceId, $accountId, $assetId, $customMessage, $gameType, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -273,19 +261,16 @@ class TicketController extends Controller
      * Save Ticket.
      *
      */
-    public function saveTicket(Request $request, float $version): JsonResponse
+    public function saveTicket(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'actionType' => [
                     'required',
                     'string',
@@ -349,7 +334,6 @@ class TicketController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $actionType = $request->string('actionType')->value();
 
         $ticketObjectType = $request->string('ticketObjectType')->value();
@@ -387,7 +371,7 @@ class TicketController extends Controller
         $appVersion = $request->string('appVersion')->value();
 
 
-        $apiResult = $this->api->saveTicket($version, $actionType, $ticketObjectType, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $receiptData, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion);
+        $apiResult = $this->api->saveTicket($actionType, $ticketObjectType, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $receiptData, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -403,19 +387,16 @@ class TicketController extends Controller
      * Save Ticket with Reciept.
      *
      */
-    public function saveTicketViaFileUpload(Request $request, float $version): JsonResponse
+    public function saveTicketViaFileUpload(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'actionType' => [
                     'required',
                     'string',
@@ -480,7 +461,6 @@ class TicketController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $actionType = $request->string('actionType')->value();
 
         $ticketObjectType = $request->string('ticketObjectType')->value();
@@ -518,7 +498,7 @@ class TicketController extends Controller
         $appVersion = $request->string('appVersion')->value();
 
 
-        $apiResult = $this->api->saveTicketViaFileUpload($version, $actionType, $ticketObjectType, $receiptData, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion);
+        $apiResult = $this->api->saveTicketViaFileUpload($actionType, $ticketObjectType, $receiptData, $returnNulls, $deviceId, $accountId, $gameType, $appKey, $objectId, $purchaseCode, $receiptToken, $count, $ticketType, $purchaseProvider, $purchaseType, $returnProfileResponse, $includeProfileResponse, $appVersion);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -534,19 +514,16 @@ class TicketController extends Controller
      * Get Ticket Offers.
      *
      */
-    public function ticketOffers(Request $request, float $version): JsonResponse
+    public function ticketOffers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
             ],
         );
 
@@ -555,8 +532,7 @@ class TicketController extends Controller
         }
 
 
-
-        $apiResult = $this->api->ticketOffers($version);
+        $apiResult = $this->api->ticketOffers();
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TicketOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

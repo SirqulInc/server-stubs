@@ -28,12 +28,10 @@ interface AssetApiInterface {
      * Operation assetDownload
      *
      * Download Asset
-     * @param float $version
      * @param string $filename
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function assetDownload(
-            float $version,
             string $filename,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -44,7 +42,6 @@ interface AssetApiInterface {
      * Operation assetMorph
      *
      * Convert Offer to Creative
-     * @param float $version
      * @param int $offerId
      * @param \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter $adSize
      * @param null | int $creativeId
@@ -55,7 +52,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\AssetShortResponse
      */
     public function assetMorph(
-            float $version,
             int $offerId,
             \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter $adSize,
             ?int $creativeId,
@@ -72,7 +68,6 @@ interface AssetApiInterface {
      * Operation createAsset
      *
      * Create Asset
-     * @param float $version
      * @param null | bool $returnNulls
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -110,7 +105,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\AssetResponse
      */
     public function createAsset(
-            float $version,
             ?bool $returnNulls,
             ?string $deviceId,
             ?int $accountId,
@@ -154,7 +148,6 @@ interface AssetApiInterface {
      * Operation deleteAsset
      *
      * Delete Asset
-     * @param float $version
      * @param string $assetId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -163,7 +156,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteAsset(
-            float $version,
             string $assetId,
             ?string $deviceId,
             ?int $accountId,
@@ -178,7 +170,6 @@ interface AssetApiInterface {
      * Operation getAsset
      *
      * Get Asset
-     * @param float $version
      * @param int $assetId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -186,7 +177,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\AssetFullResponse
      */
     public function getAsset(
-            float $version,
             int $assetId,
             ?string $deviceId,
             ?int $accountId,
@@ -200,7 +190,6 @@ interface AssetApiInterface {
      * Operation removeAsset
      *
      * Remove Asset from Collection
-     * @param float $version
      * @param string $assetId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -212,7 +201,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeAsset(
-            float $version,
             string $assetId,
             ?string $deviceId,
             ?int $accountId,
@@ -230,7 +218,6 @@ interface AssetApiInterface {
      * Operation searchAssets
      *
      * Search Assets
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $albumIds
@@ -258,7 +245,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\AssetResponse[]
      */
     public function searchAssets(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $albumIds,
@@ -292,7 +278,6 @@ interface AssetApiInterface {
      * Operation updateAsset
      *
      * Update Asset
-     * @param float $version
      * @param int $assetId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -327,7 +312,6 @@ interface AssetApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateAsset(
-            float $version,
             int $assetId,
             ?string $deviceId,
             ?int $accountId,

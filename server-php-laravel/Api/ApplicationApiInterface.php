@@ -28,7 +28,6 @@ interface ApplicationApiInterface {
      * Operation createApplication
      *
      * Create Application
-     * @param float $version
      * @param string $appName
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -111,7 +110,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationResponse
      */
     public function createApplication(
-            float $version,
             string $appName,
             ?string $deviceId,
             ?int $accountId,
@@ -200,7 +198,6 @@ interface ApplicationApiInterface {
      * Operation createApplicationPlacement
      *
      * Create Ad Placement
-     * @param float $version
      * @param string $appKey
      * @param \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter $size
      * @param null | string $deviceId
@@ -215,7 +212,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\PlacementResponse
      */
     public function createApplicationPlacement(
-            float $version,
             string $appKey,
             \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter $size,
             ?string $deviceId,
@@ -236,13 +232,11 @@ interface ApplicationApiInterface {
      * Operation deleteApplication
      *
      * Delete Application
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteApplication(
-            float $version,
             ?int $accountId,
             ?string $appKey,
     ):
@@ -254,14 +248,12 @@ interface ApplicationApiInterface {
      * Operation deleteApplicationPlacement
      *
      * Delete Ad Placement
-     * @param float $version
      * @param int $placementId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\PlacementResponse
      */
     public function deleteApplicationPlacement(
-            float $version,
             int $placementId,
             ?string $deviceId,
             ?int $accountId,
@@ -274,13 +266,11 @@ interface ApplicationApiInterface {
      * Operation getApplication
      *
      * Get Application
-     * @param float $version
      * @param null | string $appKey
      * @param null | int $applicationId
      * @return \OpenAPI\Server\Model\ApplicationResponse
      */
     public function getApplication(
-            float $version,
             ?string $appKey,
             ?int $applicationId,
     ):
@@ -292,14 +282,12 @@ interface ApplicationApiInterface {
      * Operation getApplicationPlacement
      *
      * Get Ad Placement
-     * @param float $version
      * @param int $placementId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\PlacementResponse
      */
     public function getApplicationPlacement(
-            float $version,
             int $placementId,
             ?string $deviceId,
             ?int $accountId,
@@ -312,11 +300,9 @@ interface ApplicationApiInterface {
      * Operation getApplicationVersions
      *
      * Get API versions
-     * @param float $version
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getApplicationVersions(
-            float $version,
     ):
         \OpenAPI\Server\Model\SirqulResponse
     ;
@@ -326,7 +312,6 @@ interface ApplicationApiInterface {
      * Operation getUniqueUsersByApp
      *
      * Search Application Users
-     * @param float $version
      * @param string $appKey
      * @param null | string $q
      * @param null | string $keyword
@@ -338,7 +323,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\AccountListResponse
      */
     public function getUniqueUsersByApp(
-            float $version,
             string $appKey,
             ?string $q,
             ?string $keyword,
@@ -356,7 +340,6 @@ interface ApplicationApiInterface {
      * Operation listApplications
      *
      * List Applications
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $q
      * @param null | string $keyword
@@ -380,7 +363,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationShortResponse[]
      */
     public function listApplications(
-            float $version,
             ?int $accountId,
             ?string $q,
             ?string $keyword,
@@ -410,7 +392,6 @@ interface ApplicationApiInterface {
      * Operation searchApplicationPlacement
      *
      * Search for Ad Placements
-     * @param float $version
      * @param string $appKey
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -419,7 +400,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\PlacementResponse[]
      */
     public function searchApplicationPlacement(
-            float $version,
             string $appKey,
             ?string $deviceId,
             ?int $accountId,
@@ -434,7 +414,6 @@ interface ApplicationApiInterface {
      * Operation searchApplicationSettings
      *
      * Search for Application Settings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $connectionAccountId
@@ -446,7 +425,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationSettingsResponse
      */
     public function searchApplicationSettings(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $connectionAccountId,
@@ -464,7 +442,6 @@ interface ApplicationApiInterface {
      * Operation searchApplications
      *
      * Search Applications
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -484,7 +461,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationResponse[]
      */
     public function searchApplications(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,
@@ -510,7 +486,6 @@ interface ApplicationApiInterface {
      * Operation updateApplication
      *
      * Update Application
-     * @param float $version
      * @param string $appKey
      * @param string $appName
      * @param null | string $deviceId
@@ -594,7 +569,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationResponse
      */
     public function updateApplication(
-            float $version,
             string $appKey,
             string $appName,
             ?string $deviceId,
@@ -684,14 +658,12 @@ interface ApplicationApiInterface {
      * Operation updateApplicationActive
      *
      * Change Appliation Status
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param bool $active
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateApplicationActive(
-            float $version,
             int $accountId,
             string $appKey,
             bool $active,
@@ -704,7 +676,6 @@ interface ApplicationApiInterface {
      * Operation updateApplicationPlacement
      *
      * Update Ad Placement
-     * @param float $version
      * @param int $placementId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -719,7 +690,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\PlacementResponse
      */
     public function updateApplicationPlacement(
-            float $version,
             int $placementId,
             ?string $deviceId,
             ?int $accountId,
@@ -740,7 +710,6 @@ interface ApplicationApiInterface {
      * Operation uploadApplicationCertificate
      *
      * Create Application Certificate
-     * @param float $version
      * @param string $appKey
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -748,7 +717,6 @@ interface ApplicationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function uploadApplicationCertificate(
-            float $version,
             string $appKey,
             ?string $deviceId,
             ?int $accountId,

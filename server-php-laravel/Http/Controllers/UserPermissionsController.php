@@ -47,19 +47,16 @@ class UserPermissionsController extends Controller
      * Add User.
      *
      */
-    public function addUsersToPermissionable(Request $request, float $version): JsonResponse
+    public function addUsersToPermissionable(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'permissionableType' => [
                     'required',
                 ],
@@ -117,7 +114,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $permissionableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter::class);
 
         $permissionableId = $request->integer('permissionableId');
@@ -153,7 +149,7 @@ class UserPermissionsController extends Controller
         $audienceIds = $request->string('audienceIds')->value();
 
 
-        $apiResult = $this->api->addUsersToPermissionable($version, $permissionableType, $permissionableId, $deviceId, $accountId, $read, $write, $delete, $add, $connectionIds, $connectionAccountIds, $connectionGroupIds, $pending, $admin, $includeFriendGroup, $latitude, $longitude, $audienceIds);
+        $apiResult = $this->api->addUsersToPermissionable($permissionableType, $permissionableId, $deviceId, $accountId, $read, $write, $delete, $add, $connectionIds, $connectionAccountIds, $connectionGroupIds, $pending, $admin, $includeFriendGroup, $latitude, $longitude, $audienceIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -169,19 +165,16 @@ class UserPermissionsController extends Controller
      * Approve Permissionable.
      *
      */
-    public function approvePermissionable(Request $request, float $version): JsonResponse
+    public function approvePermissionable(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'permissionableType' => [
                     'required',
                 ],
@@ -204,7 +197,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $permissionableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter::class);
 
         $permissionableId = $request->integer('permissionableId');
@@ -216,7 +208,7 @@ class UserPermissionsController extends Controller
         $approvalStatus = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ApprovePermissionableApprovalStatusParameter::class);
 
 
-        $apiResult = $this->api->approvePermissionable($version, $permissionableType, $permissionableId, $deviceId, $accountId, $approvalStatus);
+        $apiResult = $this->api->approvePermissionable($permissionableType, $permissionableId, $deviceId, $accountId, $approvalStatus);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -232,19 +224,16 @@ class UserPermissionsController extends Controller
      * Leave.
      *
      */
-    public function leaveFromPermissionable(Request $request, float $version): JsonResponse
+    public function leaveFromPermissionable(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'permissionableType' => [
                     'required',
                     'string',
@@ -270,7 +259,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $permissionableType = $request->string('permissionableType')->value();
 
         $permissionableId = $request->integer('permissionableId');
@@ -284,7 +272,7 @@ class UserPermissionsController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->leaveFromPermissionable($version, $permissionableType, $permissionableId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->leaveFromPermissionable($permissionableType, $permissionableId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -300,19 +288,16 @@ class UserPermissionsController extends Controller
      * Remove User.
      *
      */
-    public function removeUsersFromPermissionable(Request $request, float $version): JsonResponse
+    public function removeUsersFromPermissionable(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'permissionableType' => [
                     'required',
                 ],
@@ -352,7 +337,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $permissionableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter::class);
 
         $permissionableId = $request->integer('permissionableId');
@@ -376,7 +360,7 @@ class UserPermissionsController extends Controller
         $audienceIds = $request->string('audienceIds')->value();
 
 
-        $apiResult = $this->api->removeUsersFromPermissionable($version, $permissionableType, $permissionableId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $connectionGroupIds, $removeFriendGroup, $latitude, $longitude, $audienceIds);
+        $apiResult = $this->api->removeUsersFromPermissionable($permissionableType, $permissionableId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $connectionGroupIds, $removeFriendGroup, $latitude, $longitude, $audienceIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -392,19 +376,16 @@ class UserPermissionsController extends Controller
      * Search Permissionables.
      *
      */
-    public function searchPermissionables(Request $request, float $version): JsonResponse
+    public function searchPermissionables(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -450,7 +431,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -478,7 +458,7 @@ class UserPermissionsController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchPermissionables($version, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $keyword, $sortField, $descending, $pending, $admin, $start, $limit);
+        $apiResult = $this->api->searchPermissionables($deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $keyword, $sortField, $descending, $pending, $admin, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -495,19 +475,16 @@ class UserPermissionsController extends Controller
      * Search Permissionables by Distnace.
      *
      */
-    public function searchPermissionablesFollowingDistance(Request $request, float $version): JsonResponse
+    public function searchPermissionablesFollowingDistance(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'latitude' => [
                     'required',
                 ],
@@ -555,7 +532,6 @@ class UserPermissionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $latitude = $request->float('latitude');
 
         $longitude = $request->float('longitude');
@@ -585,7 +561,7 @@ class UserPermissionsController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchPermissionablesFollowingDistance($version, $latitude, $longitude, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $searchRange, $keyword, $pending, $admin, $start, $limit);
+        $apiResult = $this->api->searchPermissionablesFollowingDistance($latitude, $longitude, $deviceId, $accountId, $connectionAccountId, $connectionAccountIds, $permissionableType, $permissionableId, $searchRange, $keyword, $pending, $admin, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

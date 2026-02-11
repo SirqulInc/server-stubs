@@ -28,7 +28,6 @@ interface UserPermissionsApiInterface {
      * Operation addUsersToPermissionable
      *
      * Add User
-     * @param float $version
      * @param \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType
      * @param int $permissionableId
      * @param null | string $deviceId
@@ -49,7 +48,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function addUsersToPermissionable(
-            float $version,
             \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType,
             int $permissionableId,
             ?string $deviceId,
@@ -76,7 +74,6 @@ interface UserPermissionsApiInterface {
      * Operation approvePermissionable
      *
      * Approve Permissionable
-     * @param float $version
      * @param \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType
      * @param int $permissionableId
      * @param null | string $deviceId
@@ -85,7 +82,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function approvePermissionable(
-            float $version,
             \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType,
             int $permissionableId,
             ?string $deviceId,
@@ -100,7 +96,6 @@ interface UserPermissionsApiInterface {
      * Operation leaveFromPermissionable
      *
      * Leave
-     * @param float $version
      * @param string $permissionableType
      * @param int $permissionableId
      * @param null | string $deviceId
@@ -110,7 +105,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function leaveFromPermissionable(
-            float $version,
             string $permissionableType,
             int $permissionableId,
             ?string $deviceId,
@@ -126,7 +120,6 @@ interface UserPermissionsApiInterface {
      * Operation removeUsersFromPermissionable
      *
      * Remove User
-     * @param float $version
      * @param \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType
      * @param int $permissionableId
      * @param null | string $deviceId
@@ -141,7 +134,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeUsersFromPermissionable(
-            float $version,
             \OpenAPI\Server\Model\AddUsersToPermissionablePermissionableTypeParameter $permissionableType,
             int $permissionableId,
             ?string $deviceId,
@@ -162,7 +154,6 @@ interface UserPermissionsApiInterface {
      * Operation searchPermissionables
      *
      * Search Permissionables
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $connectionAccountId
@@ -179,7 +170,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\UserPermissionsResponse[]
      */
     public function searchPermissionables(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $connectionAccountId,
@@ -202,7 +192,6 @@ interface UserPermissionsApiInterface {
      * Operation searchPermissionablesFollowingDistance
      *
      * Search Permissionables by Distnace
-     * @param float $version
      * @param float $latitude
      * @param float $longitude
      * @param null | string $deviceId
@@ -220,7 +209,6 @@ interface UserPermissionsApiInterface {
      * @return \OpenAPI\Server\Model\UserPermissionsResponse[]
      */
     public function searchPermissionablesFollowingDistance(
-            float $version,
             float $latitude,
             float $longitude,
             ?string $deviceId,

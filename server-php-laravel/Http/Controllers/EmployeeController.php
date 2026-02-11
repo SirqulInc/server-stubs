@@ -47,19 +47,16 @@ class EmployeeController extends Controller
      * Assign Employee.
      *
      */
-    public function assignEmployee(Request $request, float $version): JsonResponse
+    public function assignEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -82,7 +79,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $managerAccountId = $request->integer('managerAccountId');
@@ -92,7 +88,7 @@ class EmployeeController extends Controller
         $role = $request->string('role')->value();
 
 
-        $apiResult = $this->api->assignEmployee($version, $accountId, $managerAccountId, $employeeAccountId, $role);
+        $apiResult = $this->api->assignEmployee($accountId, $managerAccountId, $employeeAccountId, $role);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\EmployeeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -108,19 +104,16 @@ class EmployeeController extends Controller
      * Assign Employee to Location.
      *
      */
-    public function assignToLocationEmployee(Request $request, float $version): JsonResponse
+    public function assignToLocationEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -142,7 +135,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $retailerLocationId = $request->integer('retailerLocationId');
@@ -152,7 +144,7 @@ class EmployeeController extends Controller
         $assign = $request->boolean('assign');
 
 
-        $apiResult = $this->api->assignToLocationEmployee($version, $accountId, $retailerLocationId, $employeeAccountId, $assign);
+        $apiResult = $this->api->assignToLocationEmployee($accountId, $retailerLocationId, $employeeAccountId, $assign);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -168,19 +160,16 @@ class EmployeeController extends Controller
      * Create Employee.
      *
      */
-    public function createEmployee(Request $request, float $version): JsonResponse
+    public function createEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -281,7 +270,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $managerAccountId = $request->integer('managerAccountId');
@@ -343,7 +331,7 @@ class EmployeeController extends Controller
         $assignedDeviceId = $request->string('assignedDeviceId')->value();
 
 
-        $apiResult = $this->api->createEmployee($version, $accountId, $managerAccountId, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $aboutUs, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId);
+        $apiResult = $this->api->createEmployee($accountId, $managerAccountId, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $aboutUs, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\EmployeeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -359,19 +347,16 @@ class EmployeeController extends Controller
      * Delete Employee.
      *
      */
-    public function deleteEmployee(Request $request, float $version): JsonResponse
+    public function deleteEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -387,13 +372,12 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $employeeAccountId = $request->integer('employeeAccountId');
 
 
-        $apiResult = $this->api->deleteEmployee($version, $accountId, $employeeAccountId);
+        $apiResult = $this->api->deleteEmployee($accountId, $employeeAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -409,19 +393,16 @@ class EmployeeController extends Controller
      * Get Employee.
      *
      */
-    public function getEmployee(Request $request, float $version): JsonResponse
+    public function getEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -440,7 +421,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $employeeAccountId = $request->integer('employeeAccountId');
@@ -448,7 +428,7 @@ class EmployeeController extends Controller
         $settingsAppKey = $request->string('settingsAppKey')->value();
 
 
-        $apiResult = $this->api->getEmployee($version, $accountId, $employeeAccountId, $settingsAppKey);
+        $apiResult = $this->api->getEmployee($accountId, $employeeAccountId, $settingsAppKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\EmployeeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -464,19 +444,16 @@ class EmployeeController extends Controller
      * Search Employees.
      *
      */
-    public function searchEmployees(Request $request, float $version): JsonResponse
+    public function searchEmployees(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -535,7 +512,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $role = $request->string('role')->value();
@@ -571,7 +547,7 @@ class EmployeeController extends Controller
         $query = $request->string('query')->value();
 
 
-        $apiResult = $this->api->searchEmployees($version, $accountId, $role, $retailerId, $retailerLocationId, $q, $keyword, $sortField, $descending, $i, $start, $l, $limit, $activeOnly, $managedOnly, $settingsAppKey, $categoryIds, $query);
+        $apiResult = $this->api->searchEmployees($accountId, $role, $retailerId, $retailerLocationId, $q, $keyword, $sortField, $descending, $i, $start, $l, $limit, $activeOnly, $managedOnly, $settingsAppKey, $categoryIds, $query);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -588,19 +564,16 @@ class EmployeeController extends Controller
      * Unassign Employee.
      *
      */
-    public function unassignEmployee(Request $request, float $version): JsonResponse
+    public function unassignEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -616,13 +589,12 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $employeeAccountId = $request->integer('employeeAccountId');
 
 
-        $apiResult = $this->api->unassignEmployee($version, $accountId, $employeeAccountId);
+        $apiResult = $this->api->unassignEmployee($accountId, $employeeAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\EmployeeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -638,19 +610,16 @@ class EmployeeController extends Controller
      * Update Employee.
      *
      */
-    public function updateEmployee(Request $request, float $version): JsonResponse
+    public function updateEmployee(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -749,7 +718,6 @@ class EmployeeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $employeeAccountId = $request->integer('employeeAccountId');
@@ -811,7 +779,7 @@ class EmployeeController extends Controller
         $assignedDeviceId = $request->string('assignedDeviceId')->value();
 
 
-        $apiResult = $this->api->updateEmployee($version, $accountId, $employeeAccountId, $managerAccountId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $active, $password, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId);
+        $apiResult = $this->api->updateEmployee($accountId, $employeeAccountId, $managerAccountId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $assetId, $gender, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $role, $active, $password, $retailerLocationIds, $settingsAppKey, $appBlob, $assignedDeviceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\EmployeeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

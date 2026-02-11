@@ -28,7 +28,6 @@ interface FavoriteApiInterface {
      * Operation addFavorite
      *
      * Create Favorite
-     * @param float $version
      * @param int $favoritableId
      * @param string $favoritableType
      * @param null | string $deviceId
@@ -38,7 +37,6 @@ interface FavoriteApiInterface {
      * @return \OpenAPI\Server\Model\WrappedResponse
      */
     public function addFavorite(
-            float $version,
             int $favoritableId,
             string $favoritableType,
             ?string $deviceId,
@@ -54,7 +52,6 @@ interface FavoriteApiInterface {
      * Operation deleteFavorite
      *
      * Delete Favorite
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $favoriteId
@@ -63,7 +60,6 @@ interface FavoriteApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteFavorite(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $favoriteId,
@@ -78,7 +74,6 @@ interface FavoriteApiInterface {
      * Operation getFavorite
      *
      * Get Favorite
-     * @param float $version
      * @param int $favoriteId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -87,7 +82,6 @@ interface FavoriteApiInterface {
      * @return \OpenAPI\Server\Model\WrappedResponse
      */
     public function getFavorite(
-            float $version,
             int $favoriteId,
             ?string $deviceId,
             ?int $accountId,
@@ -102,7 +96,6 @@ interface FavoriteApiInterface {
      * Operation searchFavorites
      *
      * Search Favorites
-     * @param float $version
      * @param string $favoritableType
      * @param \OpenAPI\Server\Model\SearchFavoritesSortFieldParameter $sortField
      * @param bool $descending
@@ -120,7 +113,6 @@ interface FavoriteApiInterface {
      * @return \OpenAPI\Server\Model\SearchResponse
      */
     public function searchFavorites(
-            float $version,
             string $favoritableType,
             \OpenAPI\Server\Model\SearchFavoritesSortFieldParameter $sortField,
             bool $descending,
@@ -144,7 +136,6 @@ interface FavoriteApiInterface {
      * Operation whoHasFavorited
      *
      * Who has Favorited
-     * @param float $version
      * @param int $favoritableId
      * @param string $favoritableType
      * @param int $start
@@ -157,7 +148,6 @@ interface FavoriteApiInterface {
      * @return \OpenAPI\Server\Model\AccountResponse[]
      */
     public function whoHasFavorited(
-            float $version,
             int $favoritableId,
             string $favoritableType,
             int $start,

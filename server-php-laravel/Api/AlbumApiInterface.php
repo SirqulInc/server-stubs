@@ -28,7 +28,6 @@ interface AlbumApiInterface {
      * Operation addAlbumCollection
      *
      * Create Album
-     * @param float $version
      * @param string $title
      * @param bool $coverAssetNullable
      * @param bool $includeCoverInAssetList
@@ -78,7 +77,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\SearchResponse
      */
     public function addAlbumCollection(
-            float $version,
             string $title,
             bool $coverAssetNullable,
             bool $includeCoverInAssetList,
@@ -134,7 +132,6 @@ interface AlbumApiInterface {
      * Operation addAlbumUsers
      *
      * Add Album Users
-     * @param float $version
      * @param int $albumId
      * @param bool $includeFriendGroup
      * @param null | string $deviceId
@@ -148,7 +145,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function addAlbumUsers(
-            float $version,
             int $albumId,
             bool $includeFriendGroup,
             ?string $deviceId,
@@ -168,7 +164,6 @@ interface AlbumApiInterface {
      * Operation approveAlbum
      *
      * Approve Album
-     * @param float $version
      * @param int $albumId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -177,7 +172,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function approveAlbum(
-            float $version,
             int $albumId,
             ?string $deviceId,
             ?int $accountId,
@@ -192,7 +186,6 @@ interface AlbumApiInterface {
      * Operation getAlbumCollection
      *
      * Get Album
-     * @param float $version
      * @param bool $returnNulls
      * @param int $albumId
      * @param null | string $deviceId
@@ -205,7 +198,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\AlbumFullResponse
      */
     public function getAlbumCollection(
-            float $version,
             bool $returnNulls,
             int $albumId,
             ?string $deviceId,
@@ -224,14 +216,12 @@ interface AlbumApiInterface {
      * Operation leaveAlbum
      *
      * Leave Album
-     * @param float $version
      * @param int $albumId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function leaveAlbum(
-            float $version,
             int $albumId,
             ?string $deviceId,
             ?int $accountId,
@@ -244,14 +234,12 @@ interface AlbumApiInterface {
      * Operation removeAlbum
      *
      * Delete Album
-     * @param float $version
      * @param int $albumId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeAlbum(
-            float $version,
             int $albumId,
             ?string $deviceId,
             ?int $accountId,
@@ -264,7 +252,6 @@ interface AlbumApiInterface {
      * Operation removeAlbumUsers
      *
      * Remove Album Users
-     * @param float $version
      * @param int $albumId
      * @param bool $removeFriendGroup
      * @param null | string $deviceId
@@ -274,7 +261,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removeAlbumUsers(
-            float $version,
             int $albumId,
             bool $removeFriendGroup,
             ?string $deviceId,
@@ -290,7 +276,6 @@ interface AlbumApiInterface {
      * Operation searchAlbums
      *
      * Search Albums
-     * @param float $version
      * @param string $filter
      * @param int $albumTypeId
      * @param string $subType
@@ -354,7 +339,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\AlbumFullResponse[]
      */
     public function searchAlbums(
-            float $version,
             string $filter,
             int $albumTypeId,
             string $subType,
@@ -424,7 +408,6 @@ interface AlbumApiInterface {
      * Operation updateAlbumCollection
      *
      * Update Album
-     * @param float $version
      * @param int $albumId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -473,7 +456,6 @@ interface AlbumApiInterface {
      * @return \OpenAPI\Server\Model\AlbumResponse
      */
     public function updateAlbumCollection(
-            float $version,
             int $albumId,
             ?string $deviceId,
             ?int $accountId,

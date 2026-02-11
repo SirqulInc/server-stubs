@@ -28,7 +28,6 @@ interface PurchaseOrderApiInterface {
      * Operation createOrder
      *
      * Create Order
-     * @param float $version
      * @param string $appKey
      * @param string $cart
      * @param null | string $deviceId
@@ -44,7 +43,6 @@ interface PurchaseOrderApiInterface {
      * @return \OpenAPI\Server\Model\OrderResponse
      */
     public function createOrder(
-            float $version,
             string $appKey,
             string $cart,
             ?string $deviceId,
@@ -66,14 +64,12 @@ interface PurchaseOrderApiInterface {
      * Operation deleteOrder
      *
      * Delete Order
-     * @param float $version
      * @param int $orderId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteOrder(
-            float $version,
             int $orderId,
             ?string $deviceId,
             ?int $accountId,
@@ -86,7 +82,6 @@ interface PurchaseOrderApiInterface {
      * Operation getOrder
      *
      * Get Order
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $orderId
@@ -94,7 +89,6 @@ interface PurchaseOrderApiInterface {
      * @return \OpenAPI\Server\Model\OrderResponse
      */
     public function getOrder(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $orderId,
@@ -108,7 +102,6 @@ interface PurchaseOrderApiInterface {
      * Operation previewOrder
      *
      * Preview Order
-     * @param float $version
      * @param string $appKey
      * @param string $cart
      * @param null | string $deviceId
@@ -124,7 +117,6 @@ interface PurchaseOrderApiInterface {
      * @return \OpenAPI\Server\Model\OrderResponse
      */
     public function previewOrder(
-            float $version,
             string $appKey,
             string $cart,
             ?string $deviceId,
@@ -146,7 +138,6 @@ interface PurchaseOrderApiInterface {
      * Operation searchOrders
      *
      * Search Orders
-     * @param float $version
      * @param string $appKey
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -181,7 +172,6 @@ interface PurchaseOrderApiInterface {
      * @return \OpenAPI\Server\Model\OrderResponse[]
      */
     public function searchOrders(
-            float $version,
             string $appKey,
             ?string $deviceId,
             ?int $accountId,
@@ -222,7 +212,6 @@ interface PurchaseOrderApiInterface {
      * Operation updateOrder
      *
      * Update Order
-     * @param float $version
      * @param int $orderId
      * @param string $appKey
      * @param string $cart
@@ -237,7 +226,6 @@ interface PurchaseOrderApiInterface {
      * @return \OpenAPI\Server\Model\OrderResponse
      */
     public function updateOrder(
-            float $version,
             int $orderId,
             string $appKey,
             string $cart,

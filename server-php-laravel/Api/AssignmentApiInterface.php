@@ -28,13 +28,11 @@ interface AssignmentApiInterface {
      * Operation assigmentAssigneeAccountSearch
      *
      * Search Assignment Assignees
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @return \OpenAPI\Server\Model\AccountMiniResponse[]
      */
     public function assigmentAssigneeAccountSearch(
-            float $version,
             int $accountId,
             ?string $keyword,
     ):
@@ -46,7 +44,6 @@ interface AssignmentApiInterface {
      * Operation assignmentCreate
      *
      * Create Assignment
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param int $assigneeAccountId
@@ -57,7 +54,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentResponse
      */
     public function assignmentCreate(
-            float $version,
             int $accountId,
             string $name,
             int $assigneeAccountId,
@@ -74,13 +70,11 @@ interface AssignmentApiInterface {
      * Operation assignmentDelete
      *
      * Delete Assignment
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function assignmentDelete(
-            float $version,
             int $accountId,
             int $assignmentId,
     ):
@@ -92,13 +86,11 @@ interface AssignmentApiInterface {
      * Operation assignmentGet
      *
      * Get Assignment
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentId
      * @return \OpenAPI\Server\Model\AssignmentResponse
      */
     public function assignmentGet(
-            float $version,
             int $accountId,
             int $assignmentId,
     ):
@@ -110,7 +102,6 @@ interface AssignmentApiInterface {
      * Operation assignmentSearch
      *
      * Search Assignments
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\AssignmentSearchSortFieldParameter $sortField
      * @param bool $descending
@@ -125,7 +116,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentResponse[]
      */
     public function assignmentSearch(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\AssignmentSearchSortFieldParameter $sortField,
             bool $descending,
@@ -146,7 +136,6 @@ interface AssignmentApiInterface {
      * Operation assignmentStatusCreate
      *
      * Create Assignment Status
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentId
      * @param null | int $scheduledNotificationId
@@ -161,7 +150,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentStatusResponse
      */
     public function assignmentStatusCreate(
-            float $version,
             int $accountId,
             int $assignmentId,
             ?int $scheduledNotificationId,
@@ -182,13 +170,11 @@ interface AssignmentApiInterface {
      * Operation assignmentStatusDelete
      *
      * Deletes Assignment Status
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentStatusId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function assignmentStatusDelete(
-            float $version,
             int $accountId,
             int $assignmentStatusId,
     ):
@@ -200,13 +186,11 @@ interface AssignmentApiInterface {
      * Operation assignmentStatusGet
      *
      * Get Assignment Status
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentStatusId
      * @return \OpenAPI\Server\Model\AssignmentStatusResponse
      */
     public function assignmentStatusGet(
-            float $version,
             int $accountId,
             int $assignmentStatusId,
     ):
@@ -218,7 +202,6 @@ interface AssignmentApiInterface {
      * Operation assignmentStatusSearch
      *
      * Search Assignment Statuses
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\AssignmentStatusSearchSortFieldParameter $sortField
      * @param bool $descending
@@ -234,7 +217,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentStatusResponse[]
      */
     public function assignmentStatusSearch(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\AssignmentStatusSearchSortFieldParameter $sortField,
             bool $descending,
@@ -256,7 +238,6 @@ interface AssignmentApiInterface {
      * Operation assignmentStatusUpdate
      *
      * Update Assignment Status
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentStatusId
      * @param null | int $scheduledNotificationId
@@ -271,7 +252,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentStatusResponse
      */
     public function assignmentStatusUpdate(
-            float $version,
             int $accountId,
             int $assignmentStatusId,
             ?int $scheduledNotificationId,
@@ -292,7 +272,6 @@ interface AssignmentApiInterface {
      * Operation assignmentUpdate
      *
      * Update Assignment
-     * @param float $version
      * @param int $accountId
      * @param int $assignmentId
      * @param null | string $name
@@ -304,7 +283,6 @@ interface AssignmentApiInterface {
      * @return \OpenAPI\Server\Model\AssignmentResponse
      */
     public function assignmentUpdate(
-            float $version,
             int $accountId,
             int $assignmentId,
             ?string $name,

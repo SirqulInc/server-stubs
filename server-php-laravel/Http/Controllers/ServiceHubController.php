@@ -47,12 +47,12 @@ class ServiceHubController extends Controller
      * Create Service Hub.
      *
      */
-    public function createServiceHub(Request $request, float $version): JsonResponse
+    public function createServiceHub(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class ServiceHubController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ServiceHub::class);
 
 
-        $apiResult = $this->api->createServiceHub($version, $body);
+        $apiResult = $this->api->createServiceHub($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ServiceHub) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class ServiceHubController extends Controller
      * Delete Service Hub.
      *
      */
-    public function deleteServiceHub(Request $request, float $version, int $id): JsonResponse
+    public function deleteServiceHub(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class ServiceHubController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteServiceHub($version, $id);
+        $apiResult = $this->api->deleteServiceHub($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -127,19 +122,16 @@ class ServiceHubController extends Controller
      * Get Service Hub.
      *
      */
-    public function getServiceHub(Request $request, float $version, int $id): JsonResponse
+    public function getServiceHub(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -153,8 +145,7 @@ class ServiceHubController extends Controller
 
 
 
-
-        $apiResult = $this->api->getServiceHub($version, $id);
+        $apiResult = $this->api->getServiceHub($id);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -171,12 +162,12 @@ class ServiceHubController extends Controller
      * Update Service Hub.
      *
      */
-    public function postServiceHub(Request $request, float $version, int $id): JsonResponse
+    public function postServiceHub(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -189,11 +180,10 @@ class ServiceHubController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ServiceHub::class);
 
 
-        $apiResult = $this->api->postServiceHub($version, $id, $body);
+        $apiResult = $this->api->postServiceHub($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ServiceHub) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -209,12 +199,12 @@ class ServiceHubController extends Controller
      * Update Service Hub.
      *
      */
-    public function putServiceHub(Request $request, float $version, int $id): JsonResponse
+    public function putServiceHub(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -227,11 +217,10 @@ class ServiceHubController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ServiceHub::class);
 
 
-        $apiResult = $this->api->putServiceHub($version, $id, $body);
+        $apiResult = $this->api->putServiceHub($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ServiceHub) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -247,19 +236,16 @@ class ServiceHubController extends Controller
      * Search Service Hubs.
      *
      */
-    public function searchServiceHubs(Request $request, float $version): JsonResponse
+    public function searchServiceHubs(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -293,7 +279,6 @@ class ServiceHubController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -309,7 +294,7 @@ class ServiceHubController extends Controller
         $retailerId = $request->integer('retailerId');
 
 
-        $apiResult = $this->api->searchServiceHubs($version, $sortField, $descending, $start, $limit, $activeOnly, $keyword, $retailerId);
+        $apiResult = $this->api->searchServiceHubs($sortField, $descending, $start, $limit, $activeOnly, $keyword, $retailerId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

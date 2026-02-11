@@ -28,12 +28,10 @@ interface LocationApiV2ApiInterface {
      * Operation createLocationV2
      *
      * Create new location
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Location $body
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function createLocationV2(
-            float $version,
             ?\OpenAPI\Server\Model\Location $body,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -44,13 +42,11 @@ interface LocationApiV2ApiInterface {
      * Operation updateLocationV2
      *
      * Update an existing location
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\Location $body
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateLocationV2(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\Location $body,
     ):

@@ -47,19 +47,16 @@ class AppDataController extends Controller
      * Get App Data.
      *
      */
-    public function getAppData(Request $request, float $version): JsonResponse
+    public function getAppData(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'start' => [
                     'required',
                     'integer',
@@ -144,7 +141,6 @@ class AppDataController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $start = $request->integer('start');
 
         $limit = $request->integer('limit');
@@ -196,7 +192,7 @@ class AppDataController extends Controller
         $purchaseType = $request->string('purchaseType')->value();
 
 
-        $apiResult = $this->api->getAppData($version, $start, $limit, $deviceId, $accountId, $gameType, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType);
+        $apiResult = $this->api->getAppData($start, $limit, $deviceId, $accountId, $gameType, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AppResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -212,19 +208,16 @@ class AppDataController extends Controller
      * Create App Data.
      *
      */
-    public function postAppData(Request $request, float $version): JsonResponse
+    public function postAppData(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'gameType' => [
                     'required',
                     'string',
@@ -314,7 +307,6 @@ class AppDataController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $gameType = $request->string('gameType')->value();
 
         $start = $request->integer('start');
@@ -368,7 +360,7 @@ class AppDataController extends Controller
         $purchaseType = $request->string('purchaseType')->value();
 
 
-        $apiResult = $this->api->postAppData($version, $gameType, $start, $limit, $data, $deviceId, $accountId, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType);
+        $apiResult = $this->api->postAppData($gameType, $start, $limit, $data, $deviceId, $accountId, $includeGameData, $q, $keyword, $sortField, $descending, $i, $l, $gameObjectCount, $filter, $dateCreated, $ownerId, $missionIds, $gameIds, $packIds, $gameLevelIds, $appVersion, $includeHigherVersionPacks, $includeHigherVersionLevels, $responseGroups, $purchaseType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AppResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -384,19 +376,16 @@ class AppDataController extends Controller
      * Regenerate App Data.
      *
      */
-    public function regenAppData(Request $request, float $version): JsonResponse
+    public function regenAppData(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -416,7 +405,6 @@ class AppDataController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -426,7 +414,7 @@ class AppDataController extends Controller
         $apiVersion = $request->string('apiVersion')->value();
 
 
-        $apiResult = $this->api->regenAppData($version, $accountId, $appKey, $buildVersion, $apiVersion);
+        $apiResult = $this->api->regenAppData($accountId, $appKey, $buildVersion, $apiVersion);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -28,7 +28,6 @@ interface OfferStatusApiInterface {
      * Operation createOfferTransactionStatus
      *
      * Create Offer Status
-     * @param float $version
      * @param string $name
      * @param int $code
      * @param null | string $deviceId
@@ -42,7 +41,6 @@ interface OfferStatusApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionStatusResponse
      */
     public function createOfferTransactionStatus(
-            float $version,
             string $name,
             int $code,
             ?string $deviceId,
@@ -62,7 +60,6 @@ interface OfferStatusApiInterface {
      * Operation deleteOfferTransactionStatus
      *
      * Delete Offer Status
-     * @param float $version
      * @param int $statusId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -71,7 +68,6 @@ interface OfferStatusApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteOfferTransactionStatus(
-            float $version,
             int $statusId,
             ?string $deviceId,
             ?int $accountId,
@@ -86,7 +82,6 @@ interface OfferStatusApiInterface {
      * Operation getOfferTransactionStatus
      *
      * Get Offer Status
-     * @param float $version
      * @param int $statusId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -95,7 +90,6 @@ interface OfferStatusApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionStatusResponse
      */
     public function getOfferTransactionStatus(
-            float $version,
             int $statusId,
             ?string $deviceId,
             ?int $accountId,
@@ -110,7 +104,6 @@ interface OfferStatusApiInterface {
      * Operation searchOfferTransactionStatuses
      *
      * Search Offer Status
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -126,7 +119,6 @@ interface OfferStatusApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionStatusResponse[]
      */
     public function searchOfferTransactionStatuses(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,
@@ -148,7 +140,6 @@ interface OfferStatusApiInterface {
      * Operation updateOfferTransactionStatus
      *
      * Update Offer Status
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -163,7 +154,6 @@ interface OfferStatusApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionStatusResponse
      */
     public function updateOfferTransactionStatus(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,

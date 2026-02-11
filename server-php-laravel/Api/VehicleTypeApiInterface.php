@@ -28,13 +28,11 @@ interface VehicleTypeApiInterface {
      * Operation createVehicleType
      *
      * Create Vehicle Type
-     * @param float $version
      * @param string $vehicleType
      * @param null | \OpenAPI\Server\Model\VehicleType $body
      * @return \OpenAPI\Server\Model\VehicleType
      */
     public function createVehicleType(
-            float $version,
             string $vehicleType,
             ?\OpenAPI\Server\Model\VehicleType $body,
     ):
@@ -46,12 +44,10 @@ interface VehicleTypeApiInterface {
      * Operation deleteVehicleType
      *
      * Delete Vehicle Type
-     * @param float $version
      * @param int $vehicleTypeId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteVehicleType(
-            float $version,
             int $vehicleTypeId,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -62,12 +58,10 @@ interface VehicleTypeApiInterface {
      * Operation getVehicleType
      *
      * Get Vehicle Type
-     * @param float $version
      * @param int $vehicleTypeId
      * @return \OpenAPI\Server\Model\VehicleType
      */
     public function getVehicleType(
-            float $version,
             int $vehicleTypeId,
     ):
         \OpenAPI\Server\Model\VehicleType
@@ -78,7 +72,6 @@ interface VehicleTypeApiInterface {
      * Operation searchVehicleTypes
      *
      * Search Vehicle Type
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -89,7 +82,6 @@ interface VehicleTypeApiInterface {
      * @return \OpenAPI\Server\Model\VehicleType[]
      */
     public function searchVehicleTypes(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,
@@ -106,14 +98,12 @@ interface VehicleTypeApiInterface {
      * Operation updateVehicleType
      *
      * Update Vehicle Type
-     * @param float $version
      * @param int $vehicleTypeId
      * @param string $vehicleType
      * @param null | \OpenAPI\Server\Model\VehicleType $body
      * @return \OpenAPI\Server\Model\VehicleType
      */
     public function updateVehicleType(
-            float $version,
             int $vehicleTypeId,
             string $vehicleType,
             ?\OpenAPI\Server\Model\VehicleType $body,

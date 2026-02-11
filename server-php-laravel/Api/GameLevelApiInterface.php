@@ -28,7 +28,6 @@ interface GameLevelApiInterface {
      * Operation createGameLevel
      *
      * Create Game Level
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param string $gameData
@@ -58,7 +57,6 @@ interface GameLevelApiInterface {
      * @return \OpenAPI\Server\Model\GameLevelResponse
      */
     public function createGameLevel(
-            float $version,
             int $accountId,
             string $name,
             string $gameData,
@@ -94,13 +92,11 @@ interface GameLevelApiInterface {
      * Operation deleteGameLevel
      *
      * Delete Game Level
-     * @param float $version
      * @param int $accountId
      * @param int $levelId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteGameLevel(
-            float $version,
             int $accountId,
             int $levelId,
     ):
@@ -112,14 +108,12 @@ interface GameLevelApiInterface {
      * Operation getGameLevel
      *
      * Get Game Level
-     * @param float $version
      * @param int $accountId
      * @param int $levelId
      * @param null | bool $includeGameData
      * @return \OpenAPI\Server\Model\GameLevelResponse
      */
     public function getGameLevel(
-            float $version,
             int $accountId,
             int $levelId,
             ?bool $includeGameData,
@@ -132,7 +126,6 @@ interface GameLevelApiInterface {
      * Operation getGameLevelsByApplication
      *
      * Search Game Levels
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $keyword
@@ -146,7 +139,6 @@ interface GameLevelApiInterface {
      * @return \OpenAPI\Server\Model\GameLevelListResponse
      */
     public function getGameLevelsByApplication(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $keyword,
@@ -166,7 +158,6 @@ interface GameLevelApiInterface {
      * Operation getGameLevelsByBillableEntity
      *
      * Search Game Level by Billable Entity
-     * @param float $version
      * @param int $accountId
      * @param null | string $appKey
      * @param null | string $keyword
@@ -178,7 +169,6 @@ interface GameLevelApiInterface {
      * @return \OpenAPI\Server\Model\GameLevelResponse
      */
     public function getGameLevelsByBillableEntity(
-            float $version,
             int $accountId,
             ?string $appKey,
             ?string $keyword,
@@ -196,13 +186,11 @@ interface GameLevelApiInterface {
      * Operation getQuestionsInLevel
      *
      * Get Level Questions
-     * @param float $version
      * @param int $levelId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\QuestionResponse
      */
     public function getQuestionsInLevel(
-            float $version,
             int $levelId,
             int $accountId,
     ):
@@ -214,13 +202,11 @@ interface GameLevelApiInterface {
      * Operation getWordsInLevel
      *
      * Get Level Words
-     * @param float $version
      * @param int $levelId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\WordzWordResponse
      */
     public function getWordsInLevel(
-            float $version,
             int $levelId,
             int $accountId,
     ):
@@ -232,7 +218,6 @@ interface GameLevelApiInterface {
      * Operation updateGameLevel
      *
      * Update Game Level
-     * @param float $version
      * @param int $accountId
      * @param int $levelId
      * @param null | string $appKey
@@ -263,7 +248,6 @@ interface GameLevelApiInterface {
      * @return \OpenAPI\Server\Model\GameLevelResponse
      */
     public function updateGameLevel(
-            float $version,
             int $accountId,
             int $levelId,
             ?string $appKey,
@@ -300,14 +284,12 @@ interface GameLevelApiInterface {
      * Operation updateQuestionsInLevel
      *
      * Update Level Questions
-     * @param float $version
      * @param int $levelId
      * @param int $accountId
      * @param string $questionIds
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateQuestionsInLevel(
-            float $version,
             int $levelId,
             int $accountId,
             string $questionIds,
@@ -320,14 +302,12 @@ interface GameLevelApiInterface {
      * Operation updateWordsInLevel
      *
      * Update Level Words
-     * @param float $version
      * @param int $levelId
      * @param int $accountId
      * @param string $wordIds
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateWordsInLevel(
-            float $version,
             int $levelId,
             int $accountId,
             string $wordIds,

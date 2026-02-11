@@ -28,7 +28,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation createCredential
      *
      * Create Credential
-     * @param float $version
      * @param string $thirdPartyId
      * @param string $thirdPartyToken
      * @param string $networkUID
@@ -49,7 +48,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function createCredential(
-            float $version,
             string $thirdPartyId,
             string $thirdPartyToken,
             string $networkUID,
@@ -76,7 +74,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation createNetwork
      *
      * Create Network
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param bool $enableIntrospection
@@ -97,7 +94,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ThirdPartyNetworkResponse
      */
     public function createNetwork(
-            float $version,
             int $accountId,
             string $name,
             bool $enableIntrospection,
@@ -124,7 +120,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation deleteCredential
      *
      * Delete Credential
-     * @param float $version
      * @param int $accountId
      * @param string $networkUID
      * @param string $thirdPartyId
@@ -132,7 +127,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteCredential(
-            float $version,
             int $accountId,
             string $networkUID,
             string $thirdPartyId,
@@ -146,13 +140,11 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation deleteNetwork
      *
      * Delete Network
-     * @param float $version
      * @param int $accountId
      * @param string $networkUID
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteNetwork(
-            float $version,
             int $accountId,
             string $networkUID,
     ):
@@ -164,7 +156,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation getCredential
      *
      * Get Credential
-     * @param float $version
      * @param string $networkUID
      * @param string $appKey
      * @param null | int $accountId
@@ -183,7 +174,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function getCredential(
-            float $version,
             string $networkUID,
             string $appKey,
             ?int $accountId,
@@ -208,13 +198,11 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation getNetwork
      *
      * Get Network
-     * @param float $version
      * @param int $accountId
      * @param string $networkUID
      * @return \OpenAPI\Server\Model\ThirdPartyNetworkResponse
      */
     public function getNetwork(
-            float $version,
             int $accountId,
             string $networkUID,
     ):
@@ -226,7 +214,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation searchCredentials
      *
      * Search Credentials
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @param null | string $networkUID
@@ -236,7 +223,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ThirdPartyCredentialResponse[]
      */
     public function searchCredentials(
-            float $version,
             int $accountId,
             ?string $keyword,
             ?string $networkUID,
@@ -252,7 +238,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation searchNetworks
      *
      * Search Networks
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\SearchNetworksSortFieldParameter $sortField
      * @param bool $descending
@@ -264,7 +249,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ThirdPartyNetworkShortResponse[]
      */
     public function searchNetworks(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\SearchNetworksSortFieldParameter $sortField,
             bool $descending,
@@ -282,7 +266,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation sendMFAChallenge
      *
      * Send MFA Challenge
-     * @param float $version
      * @param string $networkUID
      * @param string $appKey
      * @param null | string $thirdPartyToken
@@ -291,7 +274,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function sendMFAChallenge(
-            float $version,
             string $networkUID,
             string $appKey,
             ?string $thirdPartyToken,
@@ -306,7 +288,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation updateCredential
      *
      * Update Credential
-     * @param float $version
      * @param string $networkUID
      * @param string $thirdPartyId
      * @param string $appKey
@@ -319,7 +300,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function updateCredential(
-            float $version,
             string $networkUID,
             string $thirdPartyId,
             string $appKey,
@@ -338,7 +318,6 @@ interface ThirdPartyCredentialsApiInterface {
      * Operation updateNetwork
      *
      * Update Network
-     * @param float $version
      * @param int $accountId
      * @param string $networkUID
      * @param null | string $name
@@ -360,7 +339,6 @@ interface ThirdPartyCredentialsApiInterface {
      * @return \OpenAPI\Server\Model\ThirdPartyNetworkResponse
      */
     public function updateNetwork(
-            float $version,
             int $accountId,
             string $networkUID,
             ?string $name,

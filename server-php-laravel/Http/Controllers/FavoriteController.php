@@ -47,19 +47,16 @@ class FavoriteController extends Controller
      * Create Favorite.
      *
      */
-    public function addFavorite(Request $request, float $version): JsonResponse
+    public function addFavorite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'favoritableId' => [
                     'required',
                     'integer',
@@ -85,7 +82,6 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $favoritableId = $request->integer('favoritableId');
 
         $favoritableType = $request->string('favoritableType')->value();
@@ -99,7 +95,7 @@ class FavoriteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addFavorite($version, $favoritableId, $favoritableType, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->addFavorite($favoritableId, $favoritableType, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WrappedResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -115,19 +111,16 @@ class FavoriteController extends Controller
      * Delete Favorite.
      *
      */
-    public function deleteFavorite(Request $request, float $version): JsonResponse
+    public function deleteFavorite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -150,7 +143,6 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -162,7 +154,7 @@ class FavoriteController extends Controller
         $favoritableType = $request->string('favoritableType')->value();
 
 
-        $apiResult = $this->api->deleteFavorite($version, $deviceId, $accountId, $favoriteId, $favoritableId, $favoritableType);
+        $apiResult = $this->api->deleteFavorite($deviceId, $accountId, $favoriteId, $favoritableId, $favoritableType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -178,19 +170,16 @@ class FavoriteController extends Controller
      * Get Favorite.
      *
      */
-    public function getFavorite(Request $request, float $version): JsonResponse
+    public function getFavorite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'favoriteId' => [
                     'required',
                     'integer',
@@ -212,7 +201,6 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $favoriteId = $request->integer('favoriteId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -224,7 +212,7 @@ class FavoriteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getFavorite($version, $favoriteId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getFavorite($favoriteId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WrappedResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -240,19 +228,16 @@ class FavoriteController extends Controller
      * Search Favorites.
      *
      */
-    public function searchFavorites(Request $request, float $version): JsonResponse
+    public function searchFavorites(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'favoritableType' => [
                     'required',
                     'string',
@@ -306,7 +291,6 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $favoritableType = $request->string('favoritableType')->value();
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchFavoritesSortFieldParameter::class);
@@ -336,7 +320,7 @@ class FavoriteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->searchFavorites($version, $favoritableType, $sortField, $descending, $start, $limit, $activeOnly, $returnFullResponse, $deviceId, $accountId, $connectionAccountId, $secondaryType, $keyword, $latitude, $longitude);
+        $apiResult = $this->api->searchFavorites($favoritableType, $sortField, $descending, $start, $limit, $activeOnly, $returnFullResponse, $deviceId, $accountId, $connectionAccountId, $secondaryType, $keyword, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SearchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -352,19 +336,16 @@ class FavoriteController extends Controller
      * Who has Favorited.
      *
      */
-    public function whoHasFavorited(Request $request, float $version): JsonResponse
+    public function whoHasFavorited(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'favoritableId' => [
                     'required',
                     'integer',
@@ -401,7 +382,6 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $favoritableId = $request->integer('favoritableId');
 
         $favoritableType = $request->string('favoritableType')->value();
@@ -421,7 +401,7 @@ class FavoriteController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->whoHasFavorited($version, $favoritableId, $favoritableType, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword);
+        $apiResult = $this->api->whoHasFavorited($favoritableId, $favoritableType, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

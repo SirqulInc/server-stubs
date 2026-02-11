@@ -47,19 +47,16 @@ class FlagController extends Controller
      * Create Flag.
      *
      */
-    public function createFlag(Request $request, float $version): JsonResponse
+    public function createFlag(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'flagableType' => [
                     'required',
                     'string',
@@ -88,7 +85,6 @@ class FlagController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $flagableType = $request->string('flagableType')->value();
 
         $flagableId = $request->integer('flagableId');
@@ -104,7 +100,7 @@ class FlagController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createFlag($version, $flagableType, $flagableId, $deviceId, $accountId, $flagDescription, $latitude, $longitude);
+        $apiResult = $this->api->createFlag($flagableType, $flagableId, $deviceId, $accountId, $flagDescription, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -120,19 +116,16 @@ class FlagController extends Controller
      * Delete Flag.
      *
      */
-    public function deleteFlag(Request $request, float $version): JsonResponse
+    public function deleteFlag(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -158,7 +151,6 @@ class FlagController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -172,7 +164,7 @@ class FlagController extends Controller
         $flagableId = $request->integer('flagableId');
 
 
-        $apiResult = $this->api->deleteFlag($version, $deviceId, $accountId, $itemBeingFlaggedType, $itemBeingFlaggedId, $flagableType, $flagableId);
+        $apiResult = $this->api->deleteFlag($deviceId, $accountId, $itemBeingFlaggedType, $itemBeingFlaggedId, $flagableType, $flagableId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -188,19 +180,16 @@ class FlagController extends Controller
      * Get Flag.
      *
      */
-    public function getFlag(Request $request, float $version): JsonResponse
+    public function getFlag(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'flagableType' => [
                     'required',
                     'string',
@@ -226,7 +215,6 @@ class FlagController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $flagableType = $request->string('flagableType')->value();
 
         $flagableId = $request->integer('flagableId');
@@ -240,7 +228,7 @@ class FlagController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getFlag($version, $flagableType, $flagableId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getFlag($flagableType, $flagableId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FlagResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -256,19 +244,16 @@ class FlagController extends Controller
      * Get Flag Threshold.
      *
      */
-    public function getFlagThreshold(Request $request, float $version): JsonResponse
+    public function getFlagThreshold(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'itemBeingFlaggedType' => [
                     'required',
                     'string',
@@ -284,13 +269,12 @@ class FlagController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $itemBeingFlaggedType = $request->string('itemBeingFlaggedType')->value();
 
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->getFlagThreshold($version, $itemBeingFlaggedType, $appKey);
+        $apiResult = $this->api->getFlagThreshold($itemBeingFlaggedType, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CountResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -306,19 +290,16 @@ class FlagController extends Controller
      * Update Flag Threshold.
      *
      */
-    public function updateFlagThreshold(Request $request, float $version): JsonResponse
+    public function updateFlagThreshold(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'itemBeingFlaggedType' => [
                     'required',
                     'string',
@@ -344,7 +325,6 @@ class FlagController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $itemBeingFlaggedType = $request->string('itemBeingFlaggedType')->value();
 
         $threshold = $request->integer('threshold');
@@ -356,7 +336,7 @@ class FlagController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->updateFlagThreshold($version, $itemBeingFlaggedType, $threshold, $appKey, $deviceId, $accountId);
+        $apiResult = $this->api->updateFlagThreshold($itemBeingFlaggedType, $threshold, $appKey, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CountResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

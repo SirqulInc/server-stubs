@@ -47,19 +47,16 @@ class FacebookController extends Controller
      * Get Facebook Token.
      *
      */
-    public function getToken(Request $request, float $version): JsonResponse
+    public function getToken(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -77,7 +74,6 @@ class FacebookController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -87,7 +83,7 @@ class FacebookController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getToken($version, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getToken($deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TokenResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -103,19 +99,16 @@ class FacebookController extends Controller
      * Post to Facebook.
      *
      */
-    public function graphInterface(Request $request, float $version): JsonResponse
+    public function graphInterface(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'event' => [
                     'required',
                     'string',
@@ -152,7 +145,6 @@ class FacebookController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $event = $request->string('event')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -174,7 +166,7 @@ class FacebookController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->graphInterface($version, $event, $deviceId, $accountId, $permissionableType, $permissionableId, $assetId, $gameType, $appKey, $latitude, $longitude);
+        $apiResult = $this->api->graphInterface($event, $deviceId, $accountId, $permissionableType, $permissionableId, $assetId, $gameType, $appKey, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

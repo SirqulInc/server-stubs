@@ -47,19 +47,16 @@ class TwitterController extends Controller
      * Authorize Twitter.
      *
      */
-    public function authorizeTwitter(Request $request, float $version): JsonResponse
+    public function authorizeTwitter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -71,11 +68,10 @@ class TwitterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->authorizeTwitter($version, $appKey);
+        $apiResult = $this->api->authorizeTwitter($appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -91,19 +87,16 @@ class TwitterController extends Controller
      * Login Twitter.
      *
      */
-    public function loginTwitter(Request $request, float $version): JsonResponse
+    public function loginTwitter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accessToken' => [
                     'required',
                     'string',
@@ -134,7 +127,6 @@ class TwitterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accessToken = $request->string('accessToken')->value();
 
         $accessTokenSecret = $request->string('accessTokenSecret')->value();
@@ -150,7 +142,7 @@ class TwitterController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->loginTwitter($version, $accessToken, $accessTokenSecret, $appKey, $responseFilters, $deviceId, $latitude, $longitude);
+        $apiResult = $this->api->loginTwitter($accessToken, $accessTokenSecret, $appKey, $responseFilters, $deviceId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

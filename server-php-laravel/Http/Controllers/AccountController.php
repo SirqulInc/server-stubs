@@ -47,19 +47,16 @@ class AccountController extends Controller
      * Search Accounts by Location.
      *
      */
-    public function accountLocationSearch(Request $request, float $version): JsonResponse
+    public function accountLocationSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -166,7 +163,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -236,7 +232,7 @@ class AccountController extends Controller
         $contentAdminOnly = $request->boolean('contentAdminOnly');
 
 
-        $apiResult = $this->api->accountLocationSearch($version, $deviceId, $accountId, $q, $keyword, $postalCode, $latitude, $longitude, $appKey, $range, $locationLastUpdated, $gender, $minAge, $maxAge, $companionshipIndex, $i, $start, $l, $limit, $searchMode, $sortField, $descending, $roles, $tags, $experience, $categoryIds, $audienceIds, $audienceOperator, $updateCurrentLocation, $updatePreferredSettings, $showExactLocations, $showConnectionToSearcher, $flagCountMinimum, $verifiedUserOnly, $contentAdminOnly);
+        $apiResult = $this->api->accountLocationSearch($deviceId, $accountId, $q, $keyword, $postalCode, $latitude, $longitude, $appKey, $range, $locationLastUpdated, $gender, $minAge, $maxAge, $companionshipIndex, $i, $start, $l, $limit, $searchMode, $sortField, $descending, $roles, $tags, $experience, $categoryIds, $audienceIds, $audienceOperator, $updateCurrentLocation, $updatePreferredSettings, $showExactLocations, $showConnectionToSearcher, $flagCountMinimum, $verifiedUserOnly, $contentAdminOnly);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserLocationSearchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -252,19 +248,16 @@ class AccountController extends Controller
      * Block Account.
      *
      */
-    public function blockAccount(Request $request, float $version): JsonResponse
+    public function blockAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountIdBeingBlocked' => [
                     'required',
                     'integer',
@@ -292,7 +285,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountIdBeingBlocked = $request->integer('accountIdBeingBlocked');
 
         $deviceId = $request->string('deviceId')->value();
@@ -308,7 +300,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->blockAccount($version, $accountIdBeingBlocked, $deviceId, $accountId, $blockFlagValue, $removeFromGroupsIfBlocked, $latitude, $longitude);
+        $apiResult = $this->api->blockAccount($accountIdBeingBlocked, $deviceId, $accountId, $blockFlagValue, $removeFromGroupsIfBlocked, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -324,19 +316,16 @@ class AccountController extends Controller
      * Create Account.
      *
      */
-    public function createAccount(Request $request, float $version): JsonResponse
+    public function createAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'username' => [
                     'required',
                     'string',
@@ -557,7 +546,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $username = $request->string('username')->value();
 
         $password = $request->string('password')->value();
@@ -703,7 +691,7 @@ class AccountController extends Controller
         $personalAudienceId = $request->integer('personalAudienceId');
 
 
-        $apiResult = $this->api->createAccount($version, $username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceId, $deviceIdType, $emailAddress, $assetId, $streetAddress, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $inviteToken, $referralAccountId, $sendValidation, $gameType, $appKey, $appVersion, $responseType, $audienceIdsToAdd, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $locationVisibility, $homeLatitude, $homeLongitude, $appNickname, $personalAudienceId);
+        $apiResult = $this->api->createAccount($username, $password, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceId, $deviceIdType, $emailAddress, $assetId, $streetAddress, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $inviteToken, $referralAccountId, $sendValidation, $gameType, $appKey, $appVersion, $responseType, $audienceIdsToAdd, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $locationVisibility, $homeLatitude, $homeLongitude, $appNickname, $personalAudienceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AccountLoginResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -719,19 +707,16 @@ class AccountController extends Controller
      * Update Account.
      *
      */
-    public function editAccount(Request $request, float $version): JsonResponse
+    public function editAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -982,7 +967,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1148,7 +1132,7 @@ class AccountController extends Controller
         $nonGuestUsername = $request->string('nonGuestUsername')->value();
 
 
-        $apiResult = $this->api->editAccount($version, $deviceId, $accountId, $connectionAccountId, $role, $assetId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $gender, $age, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $makeProfileInfoPublic, $makeGameInfoPublic, $makeFriendsInfoPublic, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $platforms, $tags, $aboutUs, $matchToken, $gameExperience, $categories, $categoryIds, $responseFilters, $showAsZipcode, $showExactLocation, $showOthersExactLocation, $acceptedTerms, $locationVisibility, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $gameType, $appKey, $latitude, $longitude, $returnProfile, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId, $appNickname, $personalAudienceId, $nonGuestUsername);
+        $apiResult = $this->api->editAccount($deviceId, $accountId, $connectionAccountId, $role, $assetId, $name, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $gender, $age, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $emailAddress, $streetAddress, $streetAddress2, $city, $state, $zipcode, $country, $makeProfileInfoPublic, $makeGameInfoPublic, $makeFriendsInfoPublic, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $platforms, $tags, $aboutUs, $matchToken, $gameExperience, $categories, $categoryIds, $responseFilters, $showAsZipcode, $showExactLocation, $showOthersExactLocation, $acceptedTerms, $locationVisibility, $appBlob, $appEnablePush, $appEnableSMS, $appEnableEmail, $gameType, $appKey, $latitude, $longitude, $returnProfile, $audienceIdsToAdd, $audienceIdsToRemove, $referralAccountId, $appNickname, $personalAudienceId, $nonGuestUsername);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileInfoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1164,19 +1148,16 @@ class AccountController extends Controller
      * Update Username and Email.
      *
      */
-    public function editUsername(Request $request, float $version): JsonResponse
+    public function editUsername(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1196,7 +1177,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1206,7 +1186,7 @@ class AccountController extends Controller
         $username = $request->string('username')->value();
 
 
-        $apiResult = $this->api->editUsername($version, $deviceId, $accountId, $emailAddress, $username);
+        $apiResult = $this->api->editUsername($deviceId, $accountId, $emailAddress, $username);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1222,19 +1202,16 @@ class AccountController extends Controller
      * Get Account.
      *
      */
-    public function getAccount(Request $request, float $version): JsonResponse
+    public function getAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'boolean',
                 ],
@@ -1276,7 +1253,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1302,7 +1278,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getAccount($version, $returnNulls, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $responseFilters, $gameType, $appKey, $purchaseType, $updateViewedDate, $latitude, $longitude);
+        $apiResult = $this->api->getAccount($returnNulls, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $responseFilters, $gameType, $appKey, $purchaseType, $updateViewedDate, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1318,19 +1294,16 @@ class AccountController extends Controller
      * Get Profile Assets.
      *
      */
-    public function getProfileAssets(Request $request, float $version): JsonResponse
+    public function getProfileAssets(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'boolean',
                 ],
@@ -1378,7 +1351,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1408,7 +1380,7 @@ class AccountController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getProfileAssets($version, $returnNulls, $deviceId, $accountId, $ownerId, $mediaTypes, $mimeTypes, $sortField, $descending, $latitude, $longitude, $i, $start, $l, $limit);
+        $apiResult = $this->api->getProfileAssets($returnNulls, $deviceId, $accountId, $ownerId, $mediaTypes, $mimeTypes, $sortField, $descending, $latitude, $longitude, $i, $start, $l, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssetListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1424,19 +1396,16 @@ class AccountController extends Controller
      * Search Accounts.
      *
      */
-    public function getReferralList(Request $request, float $version): JsonResponse
+    public function getReferralList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -1470,7 +1439,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1494,7 +1462,7 @@ class AccountController extends Controller
         $childrenChildren = $request->boolean('childrenChildren');
 
 
-        $apiResult = $this->api->getReferralList($version, $accountId, $appKey, $retrieveType, $levelLimit, $ancestorLevelLimit, $childrenLevelLimit, $ancestorListStart, $ancestorListLimit, $childrenListStart, $childrenListLimit, $childrenChildren);
+        $apiResult = $this->api->getReferralList($accountId, $appKey, $retrieveType, $levelLimit, $ancestorLevelLimit, $childrenLevelLimit, $ancestorListStart, $ancestorListLimit, $childrenListStart, $childrenListLimit, $childrenChildren);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1510,19 +1478,16 @@ class AccountController extends Controller
      * Get Account Settings.
      *
      */
-    public function getSettings(Request $request, float $version): JsonResponse
+    public function getSettings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1540,7 +1505,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1550,7 +1514,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getSettings($version, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->getSettings($deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserSettingsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1566,19 +1530,16 @@ class AccountController extends Controller
      * Login as Account.
      *
      */
-    public function loginDelegate(Request $request, float $version): JsonResponse
+    public function loginDelegate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accessToken' => [
                     'required',
                     'string',
@@ -1619,7 +1580,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accessToken = $request->string('accessToken')->value();
 
         $appKey = $request->string('appKey')->value();
@@ -1643,7 +1603,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->loginDelegate($version, $accessToken, $appKey, $deviceId, $accessTokenSecret, $delegatedAccountId, $delegatedUsername, $networkUID, $ageRestriction, $responseFilters, $latitude, $longitude);
+        $apiResult = $this->api->loginDelegate($accessToken, $appKey, $deviceId, $accessTokenSecret, $delegatedAccountId, $delegatedUsername, $networkUID, $ageRestriction, $responseFilters, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1659,19 +1619,16 @@ class AccountController extends Controller
      * Login Account.
      *
      */
-    public function loginGeneral(Request $request, float $version): JsonResponse
+    public function loginGeneral(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accessToken' => [
                     'required',
                     'string',
@@ -1719,7 +1676,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accessToken = $request->string('accessToken')->value();
 
         $networkUID = $request->string('networkUID')->value();
@@ -1747,7 +1703,7 @@ class AccountController extends Controller
         $thirdPartyCredentialId = $request->integer('thirdPartyCredentialId');
 
 
-        $apiResult = $this->api->loginGeneral($version, $accessToken, $networkUID, $appKey, $deviceId, $deviceIdType, $accessTokenSecret, $ageRestriction, $responseFilters, $latitude, $longitude, $emailMatch, $chosenAccountId, $thirdPartyCredentialId);
+        $apiResult = $this->api->loginGeneral($accessToken, $networkUID, $appKey, $deviceId, $deviceIdType, $accessTokenSecret, $ageRestriction, $responseFilters, $latitude, $longitude, $emailMatch, $chosenAccountId, $thirdPartyCredentialId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1763,19 +1719,16 @@ class AccountController extends Controller
      * Login Account (Username).
      *
      */
-    public function loginUsername(Request $request, float $version): JsonResponse
+    public function loginUsername(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'username' => [
                     'required',
                     'string',
@@ -1813,7 +1766,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $username = $request->string('username')->value();
 
         $password = $request->string('password')->value();
@@ -1835,7 +1787,7 @@ class AccountController extends Controller
         $responseFilters = $request->string('responseFilters')->value();
 
 
-        $apiResult = $this->api->loginUsername($version, $username, $password, $deviceId, $latitude, $longitude, $app, $gameType, $appKey, $returnProfile, $responseFilters);
+        $apiResult = $this->api->loginUsername($username, $password, $deviceId, $latitude, $longitude, $app, $gameType, $appKey, $returnProfile, $responseFilters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1851,19 +1803,16 @@ class AccountController extends Controller
      * Logout Account.
      *
      */
-    public function logout(Request $request, float $version): JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1884,7 +1833,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $deviceIdType = $request->string('deviceIdType')->value();
@@ -1896,7 +1844,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->logout($version, $deviceId, $deviceIdType, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->logout($deviceId, $deviceIdType, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1912,19 +1860,16 @@ class AccountController extends Controller
      * Merge Account.
      *
      */
-    public function mergeAccount(Request $request, float $version): JsonResponse
+    public function mergeAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'mergeAccountId' => [
                     'required',
                     'integer',
@@ -1946,7 +1891,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $mergeAccountId = $request->integer('mergeAccountId');
 
         $appKey = $request->string('appKey')->value();
@@ -1956,7 +1900,7 @@ class AccountController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->mergeAccount($version, $mergeAccountId, $appKey, $deviceId, $accountId);
+        $apiResult = $this->api->mergeAccount($mergeAccountId, $appKey, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1972,19 +1916,16 @@ class AccountController extends Controller
      * Update Password.
      *
      */
-    public function passwordChange(Request $request, float $version): JsonResponse
+    public function passwordChange(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2008,7 +1949,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $oldPassword = $request->string('oldPassword')->value();
@@ -2018,7 +1958,7 @@ class AccountController extends Controller
         $confirmPassword = $request->string('confirmPassword')->value();
 
 
-        $apiResult = $this->api->passwordChange($version, $accountId, $oldPassword, $newPassword, $confirmPassword);
+        $apiResult = $this->api->passwordChange($accountId, $oldPassword, $newPassword, $confirmPassword);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2034,19 +1974,16 @@ class AccountController extends Controller
      * Reset Password.
      *
      */
-    public function passwordReset(Request $request, float $version): JsonResponse
+    public function passwordReset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'token' => [
                     'required',
                     'string',
@@ -2066,7 +2003,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $token = $request->string('token')->value();
 
         $password = $request->string('password')->value();
@@ -2074,7 +2010,7 @@ class AccountController extends Controller
         $confirm = $request->string('confirm')->value();
 
 
-        $apiResult = $this->api->passwordReset($version, $token, $password, $confirm);
+        $apiResult = $this->api->passwordReset($token, $password, $confirm);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2090,19 +2026,16 @@ class AccountController extends Controller
      * Request Password Reset.
      *
      */
-    public function requestPasswordReset(Request $request, float $version): JsonResponse
+    public function requestPasswordReset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'email' => [
                     'required',
                     'string',
@@ -2126,7 +2059,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $email = $request->string('email')->value();
 
         $from = $request->string('from')->value();
@@ -2138,7 +2070,7 @@ class AccountController extends Controller
         $referer = $request->string('referer')->value();
 
 
-        $apiResult = $this->api->requestPasswordReset($version, $email, $from, $domain, $subUrl, $referer);
+        $apiResult = $this->api->requestPasswordReset($email, $from, $domain, $subUrl, $referer);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2154,19 +2086,16 @@ class AccountController extends Controller
      * Send Validation Request.
      *
      */
-    public function requestValidateAccount(Request $request, float $version): JsonResponse
+    public function requestValidateAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2178,11 +2107,10 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->requestValidateAccount($version, $accountId);
+        $apiResult = $this->api->requestValidateAccount($accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2198,19 +2126,16 @@ class AccountController extends Controller
      * Search Accounts.
      *
      */
-    public function searchAccounts(Request $request, float $version): JsonResponse
+    public function searchAccounts(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2269,7 +2194,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -2307,7 +2231,7 @@ class AccountController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchAccounts($version, $accountId, $appKey, $keyword, $latitude, $longitude, $radius, $gender, $gameExperience, $age, $categoryIds, $returnNulls, $responseFilters, $purchaseType, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchAccounts($accountId, $appKey, $keyword, $latitude, $longitude, $radius, $gender, $gameExperience, $age, $categoryIds, $returnNulls, $responseFilters, $purchaseType, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -2324,19 +2248,16 @@ class AccountController extends Controller
      * Login Account (Encrypted Username).
      *
      */
-    public function secureLogin(Request $request, float $version): JsonResponse
+    public function secureLogin(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'username' => [
                     'required',
                     'string',
@@ -2372,7 +2293,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $username = $request->string('username')->value();
 
         $password = $request->string('password')->value();
@@ -2392,7 +2312,7 @@ class AccountController extends Controller
         $responseFilters = $request->string('responseFilters')->value();
 
 
-        $apiResult = $this->api->secureLogin($version, $username, $password, $gameType, $deviceId, $charsetName, $latitude, $longitude, $returnProfile, $responseFilters);
+        $apiResult = $this->api->secureLogin($username, $password, $gameType, $deviceId, $charsetName, $latitude, $longitude, $returnProfile, $responseFilters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2408,19 +2328,16 @@ class AccountController extends Controller
      * Create Account (Encrypted Username).
      *
      */
-    public function secureSignup(Request $request, float $version): JsonResponse
+    public function secureSignup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'required',
                     'string',
@@ -2611,7 +2528,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $username = $request->string('username')->value();
@@ -2735,7 +2651,7 @@ class AccountController extends Controller
         $responseType = $request->string('responseType')->value();
 
 
-        $apiResult = $this->api->secureSignup($version, $deviceId, $username, $password, $name, $inviteToken, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceIdType, $emailAddress, $assetId, $address, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $charsetName, $gameType, $appKey, $appVersion, $responseType);
+        $apiResult = $this->api->secureSignup($deviceId, $username, $password, $name, $inviteToken, $prefixName, $firstName, $middleName, $lastName, $suffixName, $title, $deviceIdType, $emailAddress, $assetId, $address, $zipcode, $gender, $birthday, $homePhone, $cellPhone, $cellPhoneCarrier, $businessPhone, $role, $platforms, $tags, $aboutUs, $gameExperience, $categoryIds, $hometown, $height, $heightIndex, $ethnicity, $bodyType, $maritalStatus, $children, $religion, $education, $educationIndex, $smoke, $drink, $companionship, $companionshipIndex, $preferredMinAge, $preferredMaxAge, $preferredMinHeight, $preferredMaxHeight, $preferredGender, $preferredEducation, $preferredEducationIndex, $preferredBodyType, $preferredEthnicity, $preferredLocation, $preferredLocationRange, $latitude, $longitude, $acceptedTerms, $charsetName, $gameType, $appKey, $appVersion, $responseType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProfileInfoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2751,19 +2667,16 @@ class AccountController extends Controller
      * Save Match Token.
      *
      */
-    public function setMatchToken(Request $request, float $version): JsonResponse
+    public function setMatchToken(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -2790,7 +2703,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -2806,7 +2718,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->setMatchToken($version, $deviceId, $accountId, $matchToken, $gameType, $appKey, $latitude, $longitude);
+        $apiResult = $this->api->setMatchToken($deviceId, $accountId, $matchToken, $gameType, $appKey, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2822,19 +2734,16 @@ class AccountController extends Controller
      * Update Account Active Status.
      *
      */
-    public function updateActveStatus(Request $request, float $version): JsonResponse
+    public function updateActveStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -2860,7 +2769,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $connectionAccountId = $request->integer('connectionAccountId');
@@ -2872,7 +2780,7 @@ class AccountController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->updateActveStatus($version, $accountId, $connectionAccountId, $active, $deviceId, $appKey);
+        $apiResult = $this->api->updateActveStatus($accountId, $connectionAccountId, $active, $deviceId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2888,19 +2796,16 @@ class AccountController extends Controller
      * Update Location.
      *
      */
-    public function updateLocation(Request $request, float $version): JsonResponse
+    public function updateLocation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -2921,7 +2826,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -2933,7 +2837,7 @@ class AccountController extends Controller
         $clientTime = $request->integer('clientTime');
 
 
-        $apiResult = $this->api->updateLocation($version, $deviceId, $accountId, $latitude, $longitude, $clientTime);
+        $apiResult = $this->api->updateLocation($deviceId, $accountId, $latitude, $longitude, $clientTime);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2949,19 +2853,16 @@ class AccountController extends Controller
      * Update Account Settings.
      *
      */
-    public function updateSettings(Request $request, float $version): JsonResponse
+    public function updateSettings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -3003,7 +2904,6 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -3029,7 +2929,7 @@ class AccountController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->updateSettings($version, $deviceId, $accountId, $blockedNotifications, $suggestionMethod, $suggestionCount, $suggestionTimeFrame, $showOthersExactLocation, $showAsZipcode, $showExactLocation, $favoriteVisibility, $latitude, $longitude);
+        $apiResult = $this->api->updateSettings($deviceId, $accountId, $blockedNotifications, $suggestionMethod, $suggestionCount, $suggestionTimeFrame, $showOthersExactLocation, $showAsZipcode, $showExactLocation, $favoriteVisibility, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserSettingsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -3045,19 +2945,16 @@ class AccountController extends Controller
      * Save Validation Status.
      *
      */
-    public function validateAccountSignup(Request $request, float $version): JsonResponse
+    public function validateAccountSignup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'token' => [
                     'required',
                     'string',
@@ -3069,11 +2966,10 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $token = $request->string('token')->value();
 
 
-        $apiResult = $this->api->validateAccountSignup($version, $token);
+        $apiResult = $this->api->validateAccountSignup($token);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AccountLoginResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -3089,19 +2985,16 @@ class AccountController extends Controller
      * Validate Password Reset Token.
      *
      */
-    public function validatePasswordReset(Request $request, float $version): JsonResponse
+    public function validatePasswordReset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'token' => [
                     'required',
                     'string',
@@ -3113,11 +3006,10 @@ class AccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $token = $request->string('token')->value();
 
 
-        $apiResult = $this->api->validatePasswordReset($version, $token);
+        $apiResult = $this->api->validatePasswordReset($token);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

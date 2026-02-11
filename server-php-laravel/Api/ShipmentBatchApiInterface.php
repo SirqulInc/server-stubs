@@ -28,12 +28,10 @@ interface ShipmentBatchApiInterface {
      * Operation createShipmentBatch
      *
      * Create Shipment Batch
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\ShipmentBatch $body
      * @return \OpenAPI\Server\Model\ShipmentBatch
      */
     public function createShipmentBatch(
-            float $version,
             ?\OpenAPI\Server\Model\ShipmentBatch $body,
     ):
         \OpenAPI\Server\Model\ShipmentBatch
@@ -44,12 +42,10 @@ interface ShipmentBatchApiInterface {
      * Operation deleteShipmentBatch
      *
      * Delete Shipment Batch
-     * @param float $version
      * @param int $batchId
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteShipmentBatch(
-            float $version,
             int $batchId,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -60,12 +56,10 @@ interface ShipmentBatchApiInterface {
      * Operation getShipmentBatch
      *
      * Get Shipment Batch
-     * @param float $version
      * @param int $batchId
      * @return \OpenAPI\Server\Model\ShipmentBatch
      */
     public function getShipmentBatch(
-            float $version,
             int $batchId,
     ):
         \OpenAPI\Server\Model\ShipmentBatch
@@ -76,7 +70,6 @@ interface ShipmentBatchApiInterface {
      * Operation getShipmentBatchStatus
      *
      * Get Shipment Batch Status
-     * @param float $version
      * @param int $batchId
      * @param int $accountId
      * @param string $sortField
@@ -92,7 +85,6 @@ interface ShipmentBatchApiInterface {
      * @return \OpenAPI\Server\Model\ShipmentImportStatus[]
      */
     public function getShipmentBatchStatus(
-            float $version,
             int $batchId,
             int $accountId,
             string $sortField,
@@ -114,7 +106,6 @@ interface ShipmentBatchApiInterface {
      * Operation searchShipmentBatch
      *
      * Search Shipment Batch
-     * @param float $version
      * @param int $hubId
      * @param string $sortField
      * @param bool $descending
@@ -123,7 +114,6 @@ interface ShipmentBatchApiInterface {
      * @return \OpenAPI\Server\Model\ShipmentBatch[]
      */
     public function searchShipmentBatch(
-            float $version,
             int $hubId,
             string $sortField,
             bool $descending,

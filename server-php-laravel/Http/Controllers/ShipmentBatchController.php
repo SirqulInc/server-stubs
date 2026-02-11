@@ -47,12 +47,12 @@ class ShipmentBatchController extends Controller
      * Create Shipment Batch.
      *
      */
-    public function createShipmentBatch(Request $request, float $version): JsonResponse
+    public function createShipmentBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class ShipmentBatchController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ShipmentBatch::class);
 
 
-        $apiResult = $this->api->createShipmentBatch($version, $body);
+        $apiResult = $this->api->createShipmentBatch($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ShipmentBatch) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,19 +83,16 @@ class ShipmentBatchController extends Controller
      * Delete Shipment Batch.
      *
      */
-    public function deleteShipmentBatch(Request $request, float $version, int $batchId): JsonResponse
+    public function deleteShipmentBatch(Request $request, int $batchId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'batchId' => $batchId,
+                    'batchId' => $batchId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'batchId' => [
                     'required',
                     'integer',
@@ -110,8 +106,7 @@ class ShipmentBatchController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteShipmentBatch($version, $batchId);
+        $apiResult = $this->api->deleteShipmentBatch($batchId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -127,19 +122,16 @@ class ShipmentBatchController extends Controller
      * Get Shipment Batch.
      *
      */
-    public function getShipmentBatch(Request $request, float $version, int $batchId): JsonResponse
+    public function getShipmentBatch(Request $request, int $batchId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'batchId' => $batchId,
+                    'batchId' => $batchId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'batchId' => [
                     'required',
                     'integer',
@@ -153,8 +145,7 @@ class ShipmentBatchController extends Controller
 
 
 
-
-        $apiResult = $this->api->getShipmentBatch($version, $batchId);
+        $apiResult = $this->api->getShipmentBatch($batchId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ShipmentBatch) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,19 +161,16 @@ class ShipmentBatchController extends Controller
      * Get Shipment Batch Status.
      *
      */
-    public function getShipmentBatchStatus(Request $request, float $version, int $batchId): JsonResponse
+    public function getShipmentBatchStatus(Request $request, int $batchId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'batchId' => $batchId,
+                    'batchId' => $batchId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'batchId' => [
                     'required',
                     'integer',
@@ -233,7 +221,6 @@ class ShipmentBatchController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -257,7 +244,7 @@ class ShipmentBatchController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->getShipmentBatchStatus($version, $batchId, $accountId, $sortField, $descending, $start, $limit, $valid, $started, $completed, $hasShipment, $hasRoute, $keyword);
+        $apiResult = $this->api->getShipmentBatchStatus($batchId, $accountId, $sortField, $descending, $start, $limit, $valid, $started, $completed, $hasShipment, $hasRoute, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -274,19 +261,16 @@ class ShipmentBatchController extends Controller
      * Search Shipment Batch.
      *
      */
-    public function searchShipmentBatch(Request $request, float $version): JsonResponse
+    public function searchShipmentBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'hubId' => [
                     'required',
                     'integer',
@@ -314,7 +298,6 @@ class ShipmentBatchController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $hubId = $request->integer('hubId');
 
         $sortField = $request->string('sortField')->value();
@@ -326,7 +309,7 @@ class ShipmentBatchController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchShipmentBatch($version, $hubId, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchShipmentBatch($hubId, $sortField, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

@@ -28,7 +28,6 @@ interface LikeApiInterface {
      * Operation registerLike
      *
      * Create Like
-     * @param float $version
      * @param string $likableType
      * @param int $likableId
      * @param null | string $deviceId
@@ -44,7 +43,6 @@ interface LikeApiInterface {
      * @return \OpenAPI\Server\Model\LikableResponse
      */
     public function registerLike(
-            float $version,
             string $likableType,
             int $likableId,
             ?string $deviceId,
@@ -66,7 +64,6 @@ interface LikeApiInterface {
      * Operation removeLike
      *
      * Delete Like
-     * @param float $version
      * @param string $likableType
      * @param int $likableId
      * @param null | string $deviceId
@@ -76,7 +73,6 @@ interface LikeApiInterface {
      * @return \OpenAPI\Server\Model\LikableResponse
      */
     public function removeLike(
-            float $version,
             string $likableType,
             int $likableId,
             ?string $deviceId,
@@ -92,7 +88,6 @@ interface LikeApiInterface {
      * Operation searchLikes
      *
      * Search Likes
-     * @param float $version
      * @param string $likableType
      * @param int $likableId
      * @param null | string $deviceId
@@ -107,7 +102,6 @@ interface LikeApiInterface {
      * @return \OpenAPI\Server\Model\SearchResponse
      */
     public function searchLikes(
-            float $version,
             string $likableType,
             int $likableId,
             ?string $deviceId,

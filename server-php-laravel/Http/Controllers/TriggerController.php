@@ -47,19 +47,16 @@ class TriggerController extends Controller
      * Create Trigger.
      *
      */
-    public function createTrigger(Request $request, float $version): JsonResponse
+    public function createTrigger(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -107,7 +104,6 @@ class TriggerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -135,7 +131,7 @@ class TriggerController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->createTrigger($version, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active);
+        $apiResult = $this->api->createTrigger($accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TriggerResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -151,19 +147,16 @@ class TriggerController extends Controller
      * Delete Trigger.
      *
      */
-    public function deleteTrigger(Request $request, float $version): JsonResponse
+    public function deleteTrigger(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -179,13 +172,12 @@ class TriggerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $triggerId = $request->integer('triggerId');
 
 
-        $apiResult = $this->api->deleteTrigger($version, $accountId, $triggerId);
+        $apiResult = $this->api->deleteTrigger($accountId, $triggerId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -201,19 +193,16 @@ class TriggerController extends Controller
      * Get Trigger.
      *
      */
-    public function getTrigger(Request $request, float $version): JsonResponse
+    public function getTrigger(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -229,13 +218,12 @@ class TriggerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $triggerId = $request->integer('triggerId');
 
 
-        $apiResult = $this->api->getTrigger($version, $accountId, $triggerId);
+        $apiResult = $this->api->getTrigger($accountId, $triggerId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TriggerResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -251,19 +239,16 @@ class TriggerController extends Controller
      * Search Triggers.
      *
      */
-    public function searchTriggers(Request $request, float $version): JsonResponse
+    public function searchTriggers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -308,7 +293,6 @@ class TriggerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $groupingId = $request->string('groupingId')->value();
@@ -334,7 +318,7 @@ class TriggerController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchTriggers($version, $accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchTriggers($accountId, $groupingId, $filter, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -351,19 +335,16 @@ class TriggerController extends Controller
      * Update Trigger.
      *
      */
-    public function updateTrigger(Request $request, float $version): JsonResponse
+    public function updateTrigger(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'triggerId' => [
                     'required',
                     'integer',
@@ -414,7 +395,6 @@ class TriggerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $triggerId = $request->integer('triggerId');
 
         $accountId = $request->integer('accountId');
@@ -444,7 +424,7 @@ class TriggerController extends Controller
         $active = $request->boolean('active');
 
 
-        $apiResult = $this->api->updateTrigger($version, $triggerId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active);
+        $apiResult = $this->api->updateTrigger($triggerId, $accountId, $name, $appKey, $groupingId, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $conditionalInput, $visibility, $active);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TriggerResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

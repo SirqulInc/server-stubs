@@ -28,14 +28,12 @@ interface OptimizeApiInterface {
      * Operation getOptimizationResult
      *
      * Get Optimization Result
-     * @param float $version
      * @param string $batchID
      * @param int $start
      * @param int $limit
      * @return array<string,\OpenAPI\Server\Model\ShipmentOrder>
      */
     public function getOptimizationResult(
-            float $version,
             string $batchID,
             int $start,
             int $limit,
@@ -48,12 +46,10 @@ interface OptimizeApiInterface {
      * Operation requestOptimization
      *
      * Request Optimization
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\Orders $body
      * @return \OpenAPI\Server\Model\ImportStatuses
      */
     public function requestOptimization(
-            float $version,
             ?\OpenAPI\Server\Model\Orders $body,
     ):
         \OpenAPI\Server\Model\ImportStatuses

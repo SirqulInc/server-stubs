@@ -47,19 +47,16 @@ class OptimizeController extends Controller
      * Get Optimization Result.
      *
      */
-    public function getOptimizationResult(Request $request, float $version, string $batchID): JsonResponse
+    public function getOptimizationResult(Request $request, string $batchID): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'batchID' => $batchID,
+                    'batchID' => $batchID,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'batchID' => [
                     'required',
                     'string',
@@ -80,13 +77,12 @@ class OptimizeController extends Controller
         }
 
 
-
         $start = $request->integer('start');
 
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getOptimizationResult($version, $batchID, $start, $limit);
+        $apiResult = $this->api->getOptimizationResult($batchID, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -103,12 +99,12 @@ class OptimizeController extends Controller
      * Request Optimization.
      *
      */
-    public function requestOptimization(Request $request, float $version): JsonResponse
+    public function requestOptimization(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -120,11 +116,10 @@ class OptimizeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Orders::class);
 
 
-        $apiResult = $this->api->requestOptimization($version, $body);
+        $apiResult = $this->api->requestOptimization($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ImportStatuses) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

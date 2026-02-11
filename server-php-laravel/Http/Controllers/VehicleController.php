@@ -47,12 +47,12 @@ class VehicleController extends Controller
      * Create Vehicle.
      *
      */
-    public function createVehicle(Request $request, float $version): JsonResponse
+    public function createVehicle(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,13 +64,12 @@ class VehicleController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $vehicle = $request->string('vehicle')->value();
 
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Vehicle::class);
 
 
-        $apiResult = $this->api->createVehicle($version, $vehicle, $body);
+        $apiResult = $this->api->createVehicle($vehicle, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Vehicle) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -86,19 +85,16 @@ class VehicleController extends Controller
      * Delete Vehicle.
      *
      */
-    public function deleteVehicle(Request $request, float $version, int $id): JsonResponse
+    public function deleteVehicle(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -112,8 +108,7 @@ class VehicleController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteVehicle($version, $id);
+        $apiResult = $this->api->deleteVehicle($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -129,19 +124,16 @@ class VehicleController extends Controller
      * Get Vehicle.
      *
      */
-    public function getVehicle(Request $request, float $version, int $id): JsonResponse
+    public function getVehicle(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -155,8 +147,7 @@ class VehicleController extends Controller
 
 
 
-
-        $apiResult = $this->api->getVehicle($version, $id);
+        $apiResult = $this->api->getVehicle($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Vehicle) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -172,19 +163,16 @@ class VehicleController extends Controller
      * Search Vehicle.
      *
      */
-    public function searchVehicle(Request $request, float $version): JsonResponse
+    public function searchVehicle(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'hubId' => [
                     'required',
                     'integer',
@@ -219,7 +207,6 @@ class VehicleController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $hubId = $request->integer('hubId');
 
         $sortField = $request->string('sortField')->value();
@@ -235,7 +222,7 @@ class VehicleController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchVehicle($version, $hubId, $sortField, $descending, $start, $limit, $activeOnly, $keyword);
+        $apiResult = $this->api->searchVehicle($hubId, $sortField, $descending, $start, $limit, $activeOnly, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -252,12 +239,12 @@ class VehicleController extends Controller
      * Update Vehicle.
      *
      */
-    public function updateVehicle(Request $request, float $version, int $id): JsonResponse
+    public function updateVehicle(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -270,13 +257,12 @@ class VehicleController extends Controller
         }
 
 
-
         $vehicle = $request->string('vehicle')->value();
 
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Vehicle::class);
 
 
-        $apiResult = $this->api->updateVehicle($version, $id, $vehicle, $body);
+        $apiResult = $this->api->updateVehicle($id, $vehicle, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Vehicle) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

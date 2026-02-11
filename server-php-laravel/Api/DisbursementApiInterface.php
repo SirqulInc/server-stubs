@@ -28,12 +28,10 @@ interface DisbursementApiInterface {
      * Operation checkDisbursements
      *
      * Check Disbursements
-     * @param float $version
      * @param int $disbursementId
      * @return \OpenAPI\Server\Model\DisbursementResponse
      */
     public function checkDisbursements(
-            float $version,
             int $disbursementId,
     ):
         \OpenAPI\Server\Model\DisbursementResponse
@@ -44,7 +42,6 @@ interface DisbursementApiInterface {
      * Operation createDisbursement
      *
      * Create Disbursement
-     * @param float $version
      * @param int $accountId
      * @param int $receiverAccountId
      * @param int $originalSenderAccountId
@@ -58,7 +55,6 @@ interface DisbursementApiInterface {
      * @return \OpenAPI\Server\Model\DisbursementResponse
      */
     public function createDisbursement(
-            float $version,
             int $accountId,
             int $receiverAccountId,
             int $originalSenderAccountId,
@@ -78,13 +74,11 @@ interface DisbursementApiInterface {
      * Operation getDisbursement
      *
      * Get Disbursement
-     * @param float $version
      * @param int $accountId
      * @param int $disbursementId
      * @return \OpenAPI\Server\Model\DisbursementResponse
      */
     public function getDisbursement(
-            float $version,
             int $accountId,
             int $disbursementId,
     ):
@@ -96,7 +90,6 @@ interface DisbursementApiInterface {
      * Operation searchDisbursements
      *
      * Search Disbursements
-     * @param float $version
      * @param int $accountId
      * @param null | int $receiverAccountId
      * @param null | string $statuses
@@ -110,7 +103,6 @@ interface DisbursementApiInterface {
      * @return \OpenAPI\Server\Model\DisbursementResponse[]
      */
     public function searchDisbursements(
-            float $version,
             int $accountId,
             ?int $receiverAccountId,
             ?string $statuses,
@@ -130,7 +122,6 @@ interface DisbursementApiInterface {
      * Operation updateDisbursement
      *
      * Update Disbursement
-     * @param float $version
      * @param int $accountId
      * @param int $disbursementId
      * @param null | float $amount
@@ -144,7 +135,6 @@ interface DisbursementApiInterface {
      * @return \OpenAPI\Server\Model\DisbursementResponse
      */
     public function updateDisbursement(
-            float $version,
             int $accountId,
             int $disbursementId,
             ?float $amount,

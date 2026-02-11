@@ -47,19 +47,16 @@ class CategoryController extends Controller
      * Search Categories by Distance.
      *
      */
-    public function categoryDistanceSearch(Request $request, float $version): JsonResponse
+    public function categoryDistanceSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -122,7 +119,6 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -164,7 +160,7 @@ class CategoryController extends Controller
         $range = $request->float('range');
 
 
-        $apiResult = $this->api->categoryDistanceSearch($version, $accountId, $keyword, $appKey, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $type, $externalType, $minOfferCount, $latitude, $longitude, $range);
+        $apiResult = $this->api->categoryDistanceSearch($accountId, $keyword, $appKey, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $type, $externalType, $minOfferCount, $latitude, $longitude, $range);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -181,19 +177,16 @@ class CategoryController extends Controller
      * Create Category.
      *
      */
-    public function createCategory(Request $request, float $version): JsonResponse
+    public function createCategory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -245,7 +238,6 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -275,7 +267,7 @@ class CategoryController extends Controller
         $searchTags = $request->string('searchTags')->value();
 
 
-        $apiResult = $this->api->createCategory($version, $accountId, $name, $appKey, $parentCategoryId, $description, $type, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags);
+        $apiResult = $this->api->createCategory($accountId, $name, $appKey, $parentCategoryId, $description, $type, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CategoryTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -291,19 +283,16 @@ class CategoryController extends Controller
      * Delete Category.
      *
      */
-    public function deleteCategory(Request $request, float $version): JsonResponse
+    public function deleteCategory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -319,13 +308,12 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $categoryId = $request->integer('categoryId');
 
 
-        $apiResult = $this->api->deleteCategory($version, $accountId, $categoryId);
+        $apiResult = $this->api->deleteCategory($accountId, $categoryId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -341,19 +329,16 @@ class CategoryController extends Controller
      * Duplicate Category.
      *
      */
-    public function duplicateCategory(Request $request, float $version): JsonResponse
+    public function duplicateCategory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -375,7 +360,6 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $categoryId = $request->integer('categoryId');
@@ -385,7 +369,7 @@ class CategoryController extends Controller
         $parentCategoryId = $request->integer('parentCategoryId');
 
 
-        $apiResult = $this->api->duplicateCategory($version, $accountId, $categoryId, $appKey, $parentCategoryId);
+        $apiResult = $this->api->duplicateCategory($accountId, $categoryId, $appKey, $parentCategoryId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CategoryTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -401,19 +385,16 @@ class CategoryController extends Controller
      * Get Category.
      *
      */
-    public function getCategory(Request $request, float $version): JsonResponse
+    public function getCategory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'categoryId' => [
                     'required',
                     'integer',
@@ -428,13 +409,12 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $categoryId = $request->integer('categoryId');
 
         $returnExternal = $request->boolean('returnExternal');
 
 
-        $apiResult = $this->api->getCategory($version, $categoryId, $returnExternal);
+        $apiResult = $this->api->getCategory($categoryId, $returnExternal);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CategoryTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -450,19 +430,16 @@ class CategoryController extends Controller
      * Search Categories.
      *
      */
-    public function searchCategories(Request $request, float $version): JsonResponse
+    public function searchCategories(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -531,7 +508,6 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -575,7 +551,7 @@ class CategoryController extends Controller
         $searchMode = $request->string('searchMode')->value();
 
 
-        $apiResult = $this->api->searchCategories($version, $accountId, $keyword, $appKey, $categoryId, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $type, $externalType, $excludeExternalType, $minOfferCount, $searchDepth, $searchMode);
+        $apiResult = $this->api->searchCategories($accountId, $keyword, $appKey, $categoryId, $categoryIds, $parentCategoryIds, $rootOnly, $sortField, $responseGroup, $descending, $start, $limit, $activeOnly, $returnExternal, $exactMatch, $type, $externalType, $excludeExternalType, $minOfferCount, $searchDepth, $searchMode);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -592,19 +568,16 @@ class CategoryController extends Controller
      * Update Category.
      *
      */
-    public function updateCategory(Request $request, float $version): JsonResponse
+    public function updateCategory(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -656,7 +629,6 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $categoryId = $request->integer('categoryId');
@@ -686,7 +658,7 @@ class CategoryController extends Controller
         $searchTags = $request->string('searchTags')->value();
 
 
-        $apiResult = $this->api->updateCategory($version, $accountId, $categoryId, $parentCategoryId, $name, $description, $type, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags);
+        $apiResult = $this->api->updateCategory($accountId, $categoryId, $parentCategoryId, $name, $description, $type, $assetId, $externalId, $externalType, $externalCategorySlug, $sqootSlug, $active, $metaData, $searchTags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CategoryTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

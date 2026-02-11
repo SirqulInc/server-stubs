@@ -28,7 +28,6 @@ interface PathingApiInterface {
      * Operation computePath
      *
      * Calculate Path
-     * @param float $version
      * @param string $data
      * @param \OpenAPI\Server\Model\ComputePathUnitsParameter $units
      * @param bool $reducePath
@@ -36,7 +35,6 @@ interface PathingApiInterface {
      * @return \OpenAPI\Server\Model\PathingResponse
      */
     public function computePath(
-            float $version,
             string $data,
             \OpenAPI\Server\Model\ComputePathUnitsParameter $units,
             bool $reducePath,

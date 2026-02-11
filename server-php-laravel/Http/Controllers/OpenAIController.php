@@ -47,19 +47,16 @@ class OpenAIController extends Controller
      * Generate images with OpenAI.
      *
      */
-    public function imageGeneration(Request $request, float $version): JsonResponse
+    public function imageGeneration(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -78,7 +75,6 @@ class OpenAIController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $postBody = $request->string('postBody')->value();
@@ -86,7 +82,7 @@ class OpenAIController extends Controller
         $returnRawResponse = $request->boolean('returnRawResponse');
 
 
-        $apiResult = $this->api->imageGeneration($version, $accountId, $postBody, $returnRawResponse);
+        $apiResult = $this->api->imageGeneration($accountId, $postBody, $returnRawResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\WrappedProxyItemResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

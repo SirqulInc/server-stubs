@@ -28,12 +28,10 @@ interface ServiceHubApiInterface {
      * Operation createServiceHub
      *
      * Create Service Hub
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\ServiceHub $body
      * @return \OpenAPI\Server\Model\ServiceHub
      */
     public function createServiceHub(
-            float $version,
             ?\OpenAPI\Server\Model\ServiceHub $body,
     ):
         \OpenAPI\Server\Model\ServiceHub
@@ -44,12 +42,10 @@ interface ServiceHubApiInterface {
      * Operation deleteServiceHub
      *
      * Delete Service Hub
-     * @param float $version
      * @param int $id
      * @return \OpenAPI\Server\Model\NoContentDefault
      */
     public function deleteServiceHub(
-            float $version,
             int $id,
     ):
         \OpenAPI\Server\Model\NoContentDefault
@@ -60,12 +56,10 @@ interface ServiceHubApiInterface {
      * Operation getServiceHub
      *
      * Get Service Hub
-     * @param float $version
      * @param int $id
      * @return object
      */
     public function getServiceHub(
-            float $version,
             int $id,
     ):
         array
@@ -76,13 +70,11 @@ interface ServiceHubApiInterface {
      * Operation postServiceHub
      *
      * Update Service Hub
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\ServiceHub $body
      * @return \OpenAPI\Server\Model\ServiceHub
      */
     public function postServiceHub(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\ServiceHub $body,
     ):
@@ -94,13 +86,11 @@ interface ServiceHubApiInterface {
      * Operation putServiceHub
      *
      * Update Service Hub
-     * @param float $version
      * @param int $id
      * @param null | \OpenAPI\Server\Model\ServiceHub $body
      * @return \OpenAPI\Server\Model\ServiceHub
      */
     public function putServiceHub(
-            float $version,
             int $id,
             ?\OpenAPI\Server\Model\ServiceHub $body,
     ):
@@ -112,7 +102,6 @@ interface ServiceHubApiInterface {
      * Operation searchServiceHubs
      *
      * Search Service Hubs
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param int $start
@@ -123,7 +112,6 @@ interface ServiceHubApiInterface {
      * @return \OpenAPI\Server\Model\ServiceHub[]
      */
     public function searchServiceHubs(
-            float $version,
             string $sortField,
             bool $descending,
             int $start,

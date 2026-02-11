@@ -47,19 +47,16 @@ class RetailerController extends Controller
      * Create Retailer.
      *
      */
-    public function createRetailer(Request $request, float $version): JsonResponse
+    public function createRetailer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'name' => [
                     'required',
                     'string',
@@ -163,7 +160,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $name = $request->string('name')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -231,7 +227,7 @@ class RetailerController extends Controller
         $responseFormat = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AggregatedFilteredUsageResponseFormatParameter::class);
 
 
-        $apiResult = $this->api->createRetailer($version, $name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $categoryIdsToAdd, $categoryIdsToRemove, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $createDefaultLocation, $responseFormat);
+        $apiResult = $this->api->createRetailer($name, $deviceId, $accountId, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $categoryIdsToAdd, $categoryIdsToRemove, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $createDefaultLocation, $responseFormat);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -247,19 +243,16 @@ class RetailerController extends Controller
      * Delete Retailer.
      *
      */
-    public function deleteRetailer(Request $request, float $version): JsonResponse
+    public function deleteRetailer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -276,7 +269,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -284,7 +276,7 @@ class RetailerController extends Controller
         $retailerId = $request->integer('retailerId');
 
 
-        $apiResult = $this->api->deleteRetailer($version, $deviceId, $accountId, $retailerId);
+        $apiResult = $this->api->deleteRetailer($deviceId, $accountId, $retailerId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -300,19 +292,16 @@ class RetailerController extends Controller
      * Get Retailer.
      *
      */
-    public function getRetailer(Request $request, float $version): JsonResponse
+    public function getRetailer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerId' => [
                     'required',
                     'integer',
@@ -333,7 +322,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerId = $request->integer('retailerId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -343,7 +331,7 @@ class RetailerController extends Controller
         $includeCounts = $request->boolean('includeCounts');
 
 
-        $apiResult = $this->api->getRetailer($version, $retailerId, $deviceId, $accountId, $includeCounts);
+        $apiResult = $this->api->getRetailer($retailerId, $deviceId, $accountId, $includeCounts);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -359,19 +347,16 @@ class RetailerController extends Controller
      * Search Retailers.
      *
      */
-    public function getRetailers(Request $request, float $version): JsonResponse
+    public function getRetailers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'visibility' => [
                     'required',
                 ],
@@ -425,7 +410,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $visibility = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AddAlbumCollectionVisibilityParameter::class);
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\GetRetailersSortFieldParameter::class);
@@ -455,7 +439,7 @@ class RetailerController extends Controller
         $l = $request->integer('l');
 
 
-        $apiResult = $this->api->getRetailers($version, $visibility, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $categoryIds, $filterIds, $i, $l);
+        $apiResult = $this->api->getRetailers($visibility, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $categoryIds, $filterIds, $i, $l);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -472,19 +456,16 @@ class RetailerController extends Controller
      * Login Retailer.
      *
      */
-    public function retailerLoginCheck(Request $request, float $version): JsonResponse
+    public function retailerLoginCheck(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'username' => [
                     'required',
                     'string',
@@ -510,7 +491,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $username = $request->string('username')->value();
 
         $password = $request->string('password')->value();
@@ -524,7 +504,7 @@ class RetailerController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->retailerLoginCheck($version, $username, $password, $deviceId, $latitude, $longitude, $appKey);
+        $apiResult = $this->api->retailerLoginCheck($username, $password, $deviceId, $latitude, $longitude, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AccountLoginResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -540,19 +520,16 @@ class RetailerController extends Controller
      * Update Retailer.
      *
      */
-    public function updateRetailer(Request $request, float $version): JsonResponse
+    public function updateRetailer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerId' => [
                     'required',
                     'integer',
@@ -653,7 +630,6 @@ class RetailerController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerId = $request->integer('retailerId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -719,7 +695,7 @@ class RetailerController extends Controller
         $responseFormat = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AggregatedFilteredUsageResponseFormatParameter::class);
 
 
-        $apiResult = $this->api->updateRetailer($version, $retailerId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $active, $responseFormat);
+        $apiResult = $this->api->updateRetailer($retailerId, $deviceId, $accountId, $name, $streetAddress, $streetAddress2, $city, $state, $postalCode, $country, $businessPhone, $businessPhoneExt, $website, $email, $facebookUrl, $twitterUrl, $logo, $logoAssetId, $picture1, $picture1AssetId, $picture2, $picture2AssetId, $categoryIds, $filterIds, $latitude, $longitude, $metaData, $searchTags, $retailerType, $visibility, $active, $responseFormat);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

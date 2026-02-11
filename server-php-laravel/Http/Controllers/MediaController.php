@@ -47,19 +47,16 @@ class MediaController extends Controller
      * Create Media.
      *
      */
-    public function createMedia(Request $request, float $version): JsonResponse
+    public function createMedia(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -246,7 +243,6 @@ class MediaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $title = $request->string('title')->value();
@@ -362,7 +358,7 @@ class MediaController extends Controller
         $availabilitySummary = $request->string('availabilitySummary')->value();
 
 
-        $apiResult = $this->api->createMedia($version, $accountId, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $specialOfferType, $offerVisibility, $active, $retailerLocationIds, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $parentalRating, $availabilityDate, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary);
+        $apiResult = $this->api->createMedia($accountId, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $specialOfferType, $offerVisibility, $active, $retailerLocationIds, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $parentalRating, $availabilityDate, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -378,19 +374,16 @@ class MediaController extends Controller
      * Delete Media.
      *
      */
-    public function deleteMedia(Request $request, float $version): JsonResponse
+    public function deleteMedia(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -406,13 +399,12 @@ class MediaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $mediaId = $request->integer('mediaId');
 
 
-        $apiResult = $this->api->deleteMedia($version, $accountId, $mediaId);
+        $apiResult = $this->api->deleteMedia($accountId, $mediaId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -428,19 +420,16 @@ class MediaController extends Controller
      * Media Get.
      *
      */
-    public function getMedia(Request $request, float $version): JsonResponse
+    public function getMedia(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -456,13 +445,12 @@ class MediaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $mediaId = $request->integer('mediaId');
 
 
-        $apiResult = $this->api->getMedia($version, $accountId, $mediaId);
+        $apiResult = $this->api->getMedia($accountId, $mediaId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -478,19 +466,16 @@ class MediaController extends Controller
      * Search Media.
      *
      */
-    public function searchMedia(Request $request, float $version): JsonResponse
+    public function searchMedia(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -528,7 +513,6 @@ class MediaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $activeOnly = $request->boolean('activeOnly');
@@ -548,7 +532,7 @@ class MediaController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchMedia($version, $accountId, $activeOnly, $sortField, $descending, $keyword, $categoryIds, $filterIds, $start, $limit);
+        $apiResult = $this->api->searchMedia($accountId, $activeOnly, $sortField, $descending, $keyword, $categoryIds, $filterIds, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -565,19 +549,16 @@ class MediaController extends Controller
      * Update Media.
      *
      */
-    public function updateMedia(Request $request, float $version): JsonResponse
+    public function updateMedia(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -757,7 +738,6 @@ class MediaController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $mediaId = $request->integer('mediaId');
@@ -877,7 +857,7 @@ class MediaController extends Controller
         $availabilitySummary = $request->string('availabilitySummary')->value();
 
 
-        $apiResult = $this->api->updateMedia($version, $accountId, $mediaId, $retailerLocationIds, $offerLocations, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $availabilityDate, $parentalRating, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary);
+        $apiResult = $this->api->updateMedia($accountId, $mediaId, $retailerLocationIds, $offerLocations, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $conditionType, $isbn, $asin, $catalogNumbers, $availabilityDate, $parentalRating, $mediaType, $duration, $author, $releaseDate, $collectionIds, $availability, $availabilitySummary);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

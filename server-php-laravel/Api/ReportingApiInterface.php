@@ -28,7 +28,6 @@ interface ReportingApiInterface {
      * Operation createBatch
      *
      * Create Offline Report
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\CreateBatchStatusParameter $status
      * @param int $previewLimit
@@ -43,7 +42,6 @@ interface ReportingApiInterface {
      * @return \OpenAPI\Server\Model\ReportBatchResponse
      */
     public function createBatch(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\CreateBatchStatusParameter $status,
             int $previewLimit,
@@ -64,12 +62,10 @@ interface ReportingApiInterface {
      * Operation createRegionLegSummaryBatch
      *
      * Create Offline Report
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\RegionLegSummary[] $body
      * @return \OpenAPI\Server\Model\ReportRegionLegSummaryBatchResponse
      */
     public function createRegionLegSummaryBatch(
-            float $version,
             ?array $body,
     ):
         \OpenAPI\Server\Model\ReportRegionLegSummaryBatchResponse
@@ -80,13 +76,11 @@ interface ReportingApiInterface {
      * Operation deleteBatch
      *
      * Delete Offline Report
-     * @param float $version
      * @param int $accountId
      * @param int $batchId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteBatch(
-            float $version,
             int $accountId,
             int $batchId,
     ):
@@ -98,14 +92,12 @@ interface ReportingApiInterface {
      * Operation getReportBatch
      *
      * Get Offline Report
-     * @param float $version
      * @param int $accountId
      * @param int $batchId
      * @param bool $allResults
      * @return \OpenAPI\Server\Model\ReportBatchResponse
      */
     public function getReportBatch(
-            float $version,
             int $accountId,
             int $batchId,
             bool $allResults,
@@ -118,7 +110,6 @@ interface ReportingApiInterface {
      * Operation runReport
      *
      * Run Report
-     * @param float $version
      * @param bool $desc
      * @param null | int $accountId
      * @param null | string $query
@@ -130,7 +121,6 @@ interface ReportingApiInterface {
      * @return \OpenAPI\Server\Model\ReportResponse
      */
     public function runReport(
-            float $version,
             bool $desc,
             ?int $accountId,
             ?string $query,
@@ -148,7 +138,6 @@ interface ReportingApiInterface {
      * Operation searchBatch
      *
      * Search Offline Reports
-     * @param float $version
      * @param int $accountId
      * @param int $start
      * @param int $limit
@@ -161,7 +150,6 @@ interface ReportingApiInterface {
      * @return \OpenAPI\Server\Model\ReportBatchResponse[]
      */
     public function searchBatch(
-            float $version,
             int $accountId,
             int $start,
             int $limit,

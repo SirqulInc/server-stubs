@@ -47,19 +47,16 @@ class FilterController extends Controller
      * Create Filter.
      *
      */
-    public function createFilter(Request $request, float $version): JsonResponse
+    public function createFilter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -96,7 +93,6 @@ class FilterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -116,7 +112,7 @@ class FilterController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createFilter($version, $accountId, $name, $appKey, $parentFilterId, $description, $externalId, $externalType, $active, $metaData);
+        $apiResult = $this->api->createFilter($accountId, $name, $appKey, $parentFilterId, $description, $externalId, $externalType, $active, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FilterTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -132,19 +128,16 @@ class FilterController extends Controller
      * Delete Filter.
      *
      */
-    public function deleteFilter(Request $request, float $version): JsonResponse
+    public function deleteFilter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -160,13 +153,12 @@ class FilterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $filterId = $request->integer('filterId');
 
 
-        $apiResult = $this->api->deleteFilter($version, $accountId, $filterId);
+        $apiResult = $this->api->deleteFilter($accountId, $filterId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -182,19 +174,16 @@ class FilterController extends Controller
      * Get Filter.
      *
      */
-    public function getFilter(Request $request, float $version): JsonResponse
+    public function getFilter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'filterId' => [
                     'required',
                     'integer',
@@ -206,11 +195,10 @@ class FilterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $filterId = $request->integer('filterId');
 
 
-        $apiResult = $this->api->getFilter($version, $filterId);
+        $apiResult = $this->api->getFilter($filterId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FilterTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -226,19 +214,16 @@ class FilterController extends Controller
      * Search Filters.
      *
      */
-    public function searchFilters(Request $request, float $version): JsonResponse
+    public function searchFilters(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -274,7 +259,6 @@ class FilterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -296,7 +280,7 @@ class FilterController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchFilters($version, $accountId, $keyword, $appKey, $responseGroup, $rootOnly, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchFilters($accountId, $keyword, $appKey, $responseGroup, $rootOnly, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -313,19 +297,16 @@ class FilterController extends Controller
      * Update Filter.
      *
      */
-    public function updateFilter(Request $request, float $version): JsonResponse
+    public function updateFilter(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -362,7 +343,6 @@ class FilterController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $filterId = $request->integer('filterId');
@@ -382,7 +362,7 @@ class FilterController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->updateFilter($version, $accountId, $filterId, $parentFilterId, $name, $description, $externalId, $externalType, $active, $metaData);
+        $apiResult = $this->api->updateFilter($accountId, $filterId, $parentFilterId, $name, $description, $externalId, $externalType, $active, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FilterTreeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,19 +47,16 @@ class LikeController extends Controller
      * Create Like.
      *
      */
-    public function registerLike(Request $request, float $version): JsonResponse
+    public function registerLike(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'likableType' => [
                     'required',
                     'string',
@@ -103,7 +100,6 @@ class LikeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $likableType = $request->string('likableType')->value();
 
         $likableId = $request->integer('likableId');
@@ -129,7 +125,7 @@ class LikeController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->registerLike($version, $likableType, $likableId, $deviceId, $accountId, $permissionableType, $permissionableId, $like, $app, $gameType, $appKey, $latitude, $longitude);
+        $apiResult = $this->api->registerLike($likableType, $likableId, $deviceId, $accountId, $permissionableType, $permissionableId, $like, $app, $gameType, $appKey, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LikableResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -145,19 +141,16 @@ class LikeController extends Controller
      * Delete Like.
      *
      */
-    public function removeLike(Request $request, float $version): JsonResponse
+    public function removeLike(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'likableType' => [
                     'required',
                     'string',
@@ -183,7 +176,6 @@ class LikeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $likableType = $request->string('likableType')->value();
 
         $likableId = $request->integer('likableId');
@@ -197,7 +189,7 @@ class LikeController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeLike($version, $likableType, $likableId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->removeLike($likableType, $likableId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LikableResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -213,19 +205,16 @@ class LikeController extends Controller
      * Search Likes.
      *
      */
-    public function searchLikes(Request $request, float $version): JsonResponse
+    public function searchLikes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'likableType' => [
                     'required',
                     'string',
@@ -268,7 +257,6 @@ class LikeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $likableType = $request->string('likableType')->value();
 
         $likableId = $request->integer('likableId');
@@ -292,7 +280,7 @@ class LikeController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchLikes($version, $likableType, $likableId, $deviceId, $accountId, $connectionAccountIds, $sortField, $descending, $updatedSince, $updatedBefore, $start, $limit);
+        $apiResult = $this->api->searchLikes($likableType, $likableId, $deviceId, $accountId, $connectionAccountIds, $sortField, $descending, $updatedSince, $updatedBefore, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SearchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

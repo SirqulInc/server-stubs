@@ -28,7 +28,6 @@ interface ReservationApiInterface {
      * Operation createReservation
      *
      * Create Reservation
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $startDate
@@ -40,7 +39,6 @@ interface ReservationApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function createReservation(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $startDate,
@@ -58,14 +56,12 @@ interface ReservationApiInterface {
      * Operation deleteReservation
      *
      * Delete Reservation
-     * @param float $version
      * @param int $reservationId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deleteReservation(
-            float $version,
             int $reservationId,
             ?string $deviceId,
             ?int $accountId,
@@ -78,7 +74,6 @@ interface ReservationApiInterface {
      * Operation reservableAvailability
      *
      * Update Availability
-     * @param float $version
      * @param int $reservableId
      * @param \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType
      * @param null | string $deviceId
@@ -88,7 +83,6 @@ interface ReservationApiInterface {
      * @return \OpenAPI\Server\Model\AvailabilityResponse[]
      */
     public function reservableAvailability(
-            float $version,
             int $reservableId,
             \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType,
             ?string $deviceId,
@@ -104,7 +98,6 @@ interface ReservationApiInterface {
      * Operation searchAvailability
      *
      * Search Availability
-     * @param float $version
      * @param int $reservableId
      * @param \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType
      * @param null | string $deviceId
@@ -116,7 +109,6 @@ interface ReservationApiInterface {
      * @return \OpenAPI\Server\Model\AvailabilityResponse[]
      */
     public function searchAvailability(
-            float $version,
             int $reservableId,
             \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType,
             ?string $deviceId,
@@ -134,7 +126,6 @@ interface ReservationApiInterface {
      * Operation searchReservations
      *
      * Search Reservations
-     * @param float $version
      * @param null | string $deviceId
      * @param null | string $appKey
      * @param null | int $accountId
@@ -149,7 +140,6 @@ interface ReservationApiInterface {
      * @return \OpenAPI\Server\Model\ReservationResponse[]
      */
     public function searchReservations(
-            float $version,
             ?string $deviceId,
             ?string $appKey,
             ?int $accountId,
@@ -170,7 +160,6 @@ interface ReservationApiInterface {
      * Operation searchSchedule
      *
      * Search Schedule
-     * @param float $version
      * @param int $reservableId
      * @param \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType
      * @param int $startDate
@@ -181,7 +170,6 @@ interface ReservationApiInterface {
      * @return \OpenAPI\Server\Model\TimeSlotResponse[]
      */
     public function searchSchedule(
-            float $version,
             int $reservableId,
             \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter $reservableType,
             int $startDate,

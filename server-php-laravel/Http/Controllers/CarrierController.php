@@ -47,19 +47,16 @@ class CarrierController extends Controller
      * Search Carriers.
      *
      */
-    public function searchCarriers(Request $request, float $version): JsonResponse
+    public function searchCarriers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'keyword' => [
                     'string',
                 ],
@@ -82,7 +79,6 @@ class CarrierController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $keyword = $request->string('keyword')->value();
 
         $descending = $request->boolean('descending');
@@ -94,7 +90,7 @@ class CarrierController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchCarriers($version, $keyword, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchCarriers($keyword, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

@@ -47,19 +47,16 @@ class OfferController extends Controller
      * Update Offer Locations.
      *
      */
-    public function batchUpdateOfferLocations(Request $request, float $version): JsonResponse
+    public function batchUpdateOfferLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'data' => [
                     'required',
                     'string',
@@ -77,7 +74,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $data = $request->string('data')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -85,7 +81,7 @@ class OfferController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->batchUpdateOfferLocations($version, $data, $deviceId, $accountId);
+        $apiResult = $this->api->batchUpdateOfferLocations($data, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -101,19 +97,16 @@ class OfferController extends Controller
      * Create Offer.
      *
      */
-    public function createOffer(Request $request, float $version): JsonResponse
+    public function createOffer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'includeOfferLocations' => [
                     'required',
                     'boolean',
@@ -378,7 +371,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $includeOfferLocations = $request->boolean('includeOfferLocations');
 
         $title = $request->string('title')->value();
@@ -552,7 +544,7 @@ class OfferController extends Controller
         $availabilitySummary = $request->string('availabilitySummary')->value();
 
 
-        $apiResult = $this->api->createOffer($version, $includeOfferLocations, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $offerType, $specialOfferType, $offerVisibility, $active, $deviceId, $accountId, $tags, $parentOfferId, $retailerLocationIds, $offerLocations, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary);
+        $apiResult = $this->api->createOffer($includeOfferLocations, $title, $barcodeType, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPrice, $fullPrice, $discountPrice, $offerType, $specialOfferType, $offerVisibility, $active, $deviceId, $accountId, $tags, $parentOfferId, $retailerLocationIds, $offerLocations, $subTitle, $details, $subDetails, $finePrint, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $ticketPriceType, $showRemaining, $showRedeemed, $replaced, $featured, $categoryIds, $filterIds, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -568,19 +560,16 @@ class OfferController extends Controller
      * Delete Offer.
      *
      */
-    public function deleteOffer(Request $request, float $version): JsonResponse
+    public function deleteOffer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerId' => [
                     'required',
                     'integer',
@@ -598,7 +587,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerId = $request->integer('offerId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -606,7 +594,7 @@ class OfferController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteOffer($version, $offerId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteOffer($offerId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -622,19 +610,16 @@ class OfferController extends Controller
      * Delete Offer Location.
      *
      */
-    public function deleteOfferLocation(Request $request, float $version): JsonResponse
+    public function deleteOfferLocation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerLocationId' => [
                     'required',
                     'integer',
@@ -652,7 +637,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerLocationId = $request->integer('offerLocationId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -660,7 +644,7 @@ class OfferController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteOfferLocation($version, $offerLocationId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteOfferLocation($offerLocationId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -676,19 +660,16 @@ class OfferController extends Controller
      * Get Offer.
      *
      */
-    public function getOffer(Request $request, float $version): JsonResponse
+    public function getOffer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerId' => [
                     'required',
                     'integer',
@@ -710,7 +691,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerId = $request->integer('offerId');
 
         $includeOfferLocations = $request->boolean('includeOfferLocations');
@@ -720,7 +700,7 @@ class OfferController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getOffer($version, $offerId, $includeOfferLocations, $deviceId, $accountId);
+        $apiResult = $this->api->getOffer($offerId, $includeOfferLocations, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -736,19 +716,16 @@ class OfferController extends Controller
      * Get Offer.
      *
      */
-    public function getOfferDetails(Request $request, float $version): JsonResponse
+    public function getOfferDetails(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -783,7 +760,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -805,7 +781,7 @@ class OfferController extends Controller
         $includeChildOffers = $request->boolean('includeChildOffers');
 
 
-        $apiResult = $this->api->getOfferDetails($version, $deviceId, $accountId, $offerId, $offerLocationId, $distance, $latitude, $longitude, $includeOfferLocations, $includeRetailerLocations, $includeChildOffers);
+        $apiResult = $this->api->getOfferDetails($deviceId, $accountId, $offerId, $offerLocationId, $distance, $latitude, $longitude, $includeOfferLocations, $includeRetailerLocations, $includeChildOffers);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -821,19 +797,16 @@ class OfferController extends Controller
      * Get Offers (Counts).
      *
      */
-    public function getOfferListCounts(Request $request, float $version): JsonResponse
+    public function getOfferListCounts(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'latitude' => [
                     'required',
                 ],
@@ -851,7 +824,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $latitude = $request->float('latitude');
 
         $longitude = $request->float('longitude');
@@ -861,7 +833,7 @@ class OfferController extends Controller
         $distanceUnit = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\GetOfferListCountsDistanceUnitParameter::class);
 
 
-        $apiResult = $this->api->getOfferListCounts($version, $latitude, $longitude, $searchRange, $distanceUnit);
+        $apiResult = $this->api->getOfferListCounts($latitude, $longitude, $searchRange, $distanceUnit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ListCountResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -877,19 +849,16 @@ class OfferController extends Controller
      * Get Offer Location.
      *
      */
-    public function getOfferLocation(Request $request, float $version): JsonResponse
+    public function getOfferLocation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerLocationId' => [
                     'integer',
                 ],
@@ -903,13 +872,12 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerLocationId = $request->integer('offerLocationId');
 
         $udid = $request->string('udid')->value();
 
 
-        $apiResult = $this->api->getOfferLocation($version, $offerLocationId, $udid);
+        $apiResult = $this->api->getOfferLocation($offerLocationId, $udid);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferShortResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -925,19 +893,16 @@ class OfferController extends Controller
      * Search Offer Locations.
      *
      */
-    public function getOfferLocationsForRetailers(Request $request, float $version): JsonResponse
+    public function getOfferLocationsForRetailers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -1007,7 +972,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchOffersForConsumerGroupByParameter::class);
 
         $descending = $request->boolean('descending');
@@ -1049,7 +1013,7 @@ class OfferController extends Controller
         $lastNotificationSent = $request->integer('lastNotificationSent');
 
 
-        $apiResult = $this->api->getOfferLocationsForRetailers($version, $sortField, $descending, $start, $limit, $activeOnly, $includeRetailerLocation, $deviceId, $accountId, $keyword, $retailerId, $retailerLocationId, $offerType, $specialOfferType, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent);
+        $apiResult = $this->api->getOfferLocationsForRetailers($sortField, $descending, $start, $limit, $activeOnly, $includeRetailerLocation, $deviceId, $accountId, $keyword, $retailerId, $retailerLocationId, $offerType, $specialOfferType, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1066,19 +1030,16 @@ class OfferController extends Controller
      * Search Offers.
      *
      */
-    public function getOffersForRetailers(Request $request, float $version): JsonResponse
+    public function getOffersForRetailers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerVisibility' => [
                     'required',
                 ],
@@ -1183,7 +1144,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerVisibility = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateMediaOfferVisibilityParameter::class);
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchEventsSortFieldParameter::class);
@@ -1247,7 +1207,7 @@ class OfferController extends Controller
         $lastNotificationSent = $request->integer('lastNotificationSent');
 
 
-        $apiResult = $this->api->getOffersForRetailers($version, $offerVisibility, $sortField, $descending, $start, $limit, $availableOnly, $activeOnly, $includeCategories, $includeFilters, $includeOfferLocations, $deviceId, $accountId, $categoryIds, $filterIds, $q, $keyword, $retailerId, $retailerLocationId, $couponType, $offerType, $offerTypes, $specialOfferType, $i, $l, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent);
+        $apiResult = $this->api->getOffersForRetailers($offerVisibility, $sortField, $descending, $start, $limit, $availableOnly, $activeOnly, $includeCategories, $includeFilters, $includeOfferLocations, $deviceId, $accountId, $categoryIds, $filterIds, $q, $keyword, $retailerId, $retailerLocationId, $couponType, $offerType, $offerTypes, $specialOfferType, $i, $l, $barcodeType, $barcodeEntry, $isbn, $asin, $deviceStatus, $needsNotificationSent, $lastNotificationSent);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1264,19 +1224,16 @@ class OfferController extends Controller
      * Update Offer Transaction.
      *
      */
-    public function redeemOfferTransaction(Request $request, float $version): JsonResponse
+    public function redeemOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerTransactionId' => [
                     'required',
                     'integer',
@@ -1301,7 +1258,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerTransactionId = $request->integer('offerTransactionId');
 
         $status = $request->integer('status');
@@ -1313,7 +1269,7 @@ class OfferController extends Controller
         $offerLocationId = $request->integer('offerLocationId');
 
 
-        $apiResult = $this->api->redeemOfferTransaction($version, $offerTransactionId, $status, $deviceId, $accountId, $offerLocationId);
+        $apiResult = $this->api->redeemOfferTransaction($offerTransactionId, $status, $deviceId, $accountId, $offerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1329,19 +1285,16 @@ class OfferController extends Controller
      * Search Offer Transactions.
      *
      */
-    public function searchOfferTransactionsForRetailers(Request $request, float $version): JsonResponse
+    public function searchOfferTransactionsForRetailers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -1422,7 +1375,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchEventTransactionsSortFieldParameter::class);
 
         $descending = $request->boolean('descending');
@@ -1472,7 +1424,7 @@ class OfferController extends Controller
         $l = $request->integer('l');
 
 
-        $apiResult = $this->api->searchOfferTransactionsForRetailers($version, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $retailerId, $retailerLocationId, $offerId, $offerLocationId, $redeemed, $reservationsOnly, $couponType, $offerType, $specialOfferType, $customerAccountIds, $categoryIds, $redeemableStartDate, $redeemableEndDate, $i, $l);
+        $apiResult = $this->api->searchOfferTransactionsForRetailers($sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $q, $keyword, $retailerId, $retailerLocationId, $offerId, $offerLocationId, $redeemed, $reservationsOnly, $couponType, $offerType, $specialOfferType, $customerAccountIds, $categoryIds, $redeemableStartDate, $redeemableEndDate, $i, $l);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1489,19 +1441,16 @@ class OfferController extends Controller
      * Search Offers.
      *
      */
-    public function searchOffersForConsumer(Request $request, float $version): JsonResponse
+    public function searchOffersForConsumer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'latitude' => [
                     'required',
                 ],
@@ -1604,7 +1553,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $latitude = $request->float('latitude');
 
         $longitude = $request->float('longitude');
@@ -1668,7 +1616,7 @@ class OfferController extends Controller
         $groupBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchOffersForConsumerGroupByParameter::class);
 
 
-        $apiResult = $this->api->searchOffersForConsumer($version, $latitude, $longitude, $recommendationType, $locationId, $start, $limit, $maxRecommendations, $distanceUnit, $appKey, $deviceId, $accountId, $searchRange, $tags, $supportedPostalCodes, $keyword, $categories, $filters, $offerTypes, $type, $sortField, $recommendOfferIds, $retailerLocationIds, $offerId, $includeMission, $includeCategories, $includeFilters, $includeExpired, $includeFavorite, $closestOfferOnly, $searchExpression, $groupBy);
+        $apiResult = $this->api->searchOffersForConsumer($latitude, $longitude, $recommendationType, $locationId, $start, $limit, $maxRecommendations, $distanceUnit, $appKey, $deviceId, $accountId, $searchRange, $tags, $supportedPostalCodes, $keyword, $categories, $filters, $offerTypes, $type, $sortField, $recommendOfferIds, $retailerLocationIds, $offerId, $includeMission, $includeCategories, $includeFilters, $includeExpired, $includeFavorite, $closestOfferOnly, $searchExpression, $groupBy);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1684,19 +1632,16 @@ class OfferController extends Controller
      * Get Offers (Top).
      *
      */
-    public function topOfferTransactions(Request $request, float $version): JsonResponse
+    public function topOfferTransactions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'start' => [
                     'integer',
                 ],
@@ -1710,13 +1655,12 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $start = $request->integer('start');
 
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->topOfferTransactions($version, $start, $limit);
+        $apiResult = $this->api->topOfferTransactions($start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1732,19 +1676,16 @@ class OfferController extends Controller
      * Update Offer.
      *
      */
-    public function updateOffer(Request $request, float $version): JsonResponse
+    public function updateOffer(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerId' => [
                     'required',
                     'integer',
@@ -1998,7 +1939,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerId = $request->integer('offerId');
 
         $includeOfferLocations = $request->boolean('includeOfferLocations');
@@ -2174,7 +2114,7 @@ class OfferController extends Controller
         $availabilitySummary = $request->string('availabilitySummary')->value();
 
 
-        $apiResult = $this->api->updateOffer($version, $offerId, $includeOfferLocations, $deviceId, $accountId, $parentOfferId, $retailerLocationIds, $offerLocations, $tags, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $offerType, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary);
+        $apiResult = $this->api->updateOffer($offerId, $includeOfferLocations, $deviceId, $accountId, $parentOfferId, $retailerLocationIds, $offerLocations, $tags, $title, $subTitle, $details, $subDetails, $finePrint, $barcodeType, $barcodeEntry, $externalRedeemOptions, $externalUrl, $externalId, $ticketsRewardType, $ticketsReward, $activated, $expires, $noExpiration, $availableLimit, $availableLimitPerUser, $addedLimit, $viewLimit, $maxPrints, $ticketPriceType, $ticketPrice, $fullPrice, $discountPrice, $showRemaining, $showRedeemed, $replaced, $featured, $offerType, $specialOfferType, $offerVisibility, $categoryIds, $filterIds, $active, $barcodeAssetId, $imageAssetId, $imageAssetId1, $imageAssetId2, $imageAssetId3, $imageAssetId4, $imageAssetId5, $publisher, $redeemableStart, $redeemableEnd, $brand, $productType, $conditionType, $isbn, $asin, $catalogNumbers, $department, $features, $minimumPrice, $width, $height, $depth, $weight, $unit, $studio, $parentalRating, $publishDate, $availabilityDate, $sizeId, $listingId, $mediaType, $duration, $author, $releaseDate, $collectionIds, $rebootTimeHour, $rebootTimeMinute, $idleTimeoutInSecond, $serialNumber, $udid, $deviceType, $devicePower, $deviceInterference, $availability, $availabilitySummary);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RetailerOfferResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -2190,19 +2130,16 @@ class OfferController extends Controller
      * Activate Offer.
      *
      */
-    public function updateOfferStatus(Request $request, float $version): JsonResponse
+    public function updateOfferStatus(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerIds' => [
                     'required',
                     'string',
@@ -2224,7 +2161,6 @@ class OfferController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerIds = $request->string('offerIds')->value();
 
         $active = $request->boolean('active');
@@ -2234,7 +2170,7 @@ class OfferController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->updateOfferStatus($version, $offerIds, $active, $deviceId, $accountId);
+        $apiResult = $this->api->updateOfferStatus($offerIds, $active, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

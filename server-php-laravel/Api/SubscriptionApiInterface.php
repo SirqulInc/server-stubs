@@ -28,14 +28,12 @@ interface SubscriptionApiInterface {
      * Operation createSubscription
      *
      * Create Subscription
-     * @param float $version
      * @param int $accountId
      * @param null | int $planId
      * @param null | string $promoCode
      * @return \OpenAPI\Server\Model\SubscriptionResponse
      */
     public function createSubscription(
-            float $version,
             int $accountId,
             ?int $planId,
             ?string $promoCode,
@@ -48,12 +46,10 @@ interface SubscriptionApiInterface {
      * Operation deleteSubscription
      *
      * Delete Subscription
-     * @param float $version
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteSubscription(
-            float $version,
             int $accountId,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -64,12 +60,10 @@ interface SubscriptionApiInterface {
      * Operation getSubscription
      *
      * Get Subscription
-     * @param float $version
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SubscriptionResponse
      */
     public function getSubscription(
-            float $version,
             int $accountId,
     ):
         \OpenAPI\Server\Model\SubscriptionResponse
@@ -80,12 +74,10 @@ interface SubscriptionApiInterface {
      * Operation getSubscriptionPlan
      *
      * Get Subscription Plan
-     * @param float $version
      * @param int $planId
      * @return \OpenAPI\Server\Model\SubscriptionPlanResponse
      */
     public function getSubscriptionPlan(
-            float $version,
             int $planId,
     ):
         \OpenAPI\Server\Model\SubscriptionPlanResponse
@@ -96,13 +88,11 @@ interface SubscriptionApiInterface {
      * Operation getSubscriptionPlans
      *
      * List Subscription Plans
-     * @param float $version
      * @param null | bool $visible
      * @param null | string $role
      * @return \OpenAPI\Server\Model\SubscriptionPlanResponse[]
      */
     public function getSubscriptionPlans(
-            float $version,
             ?bool $visible,
             ?string $role,
     ):
@@ -114,7 +104,6 @@ interface SubscriptionApiInterface {
      * Operation getSubscriptionUsage
      *
      * Get Subscription Usage
-     * @param float $version
      * @param int $accountId
      * @param null | int $applicationId
      * @param null | int $start
@@ -122,7 +111,6 @@ interface SubscriptionApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationUsageResponse
      */
     public function getSubscriptionUsage(
-            float $version,
             int $accountId,
             ?int $applicationId,
             ?int $start,
@@ -136,7 +124,6 @@ interface SubscriptionApiInterface {
      * Operation updateSubscription
      *
      * Update Subscription
-     * @param float $version
      * @param int $accountId
      * @param null | int $planId
      * @param null | string $promoCode
@@ -144,7 +131,6 @@ interface SubscriptionApiInterface {
      * @return \OpenAPI\Server\Model\SubscriptionResponse
      */
     public function updateSubscription(
-            float $version,
             int $accountId,
             ?int $planId,
             ?string $promoCode,

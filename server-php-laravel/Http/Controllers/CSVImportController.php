@@ -47,19 +47,16 @@ class CSVImportController extends Controller
      * Detail Status.
      *
      */
-    public function getStatusCSV(Request $request, float $version): JsonResponse
+    public function getStatusCSV(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -86,7 +83,6 @@ class CSVImportController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $batchId = $request->integer('batchId');
@@ -98,7 +94,7 @@ class CSVImportController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getStatusCSV($version, $accountId, $batchId, $responseGroup, $start, $limit);
+        $apiResult = $this->api->getStatusCSV($accountId, $batchId, $responseGroup, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -114,19 +110,16 @@ class CSVImportController extends Controller
      * Search Status.
      *
      */
-    public function listStatusCSV(Request $request, float $version): JsonResponse
+    public function listStatusCSV(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -146,7 +139,6 @@ class CSVImportController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $start = $request->integer('start');
@@ -154,7 +146,7 @@ class CSVImportController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->listStatusCSV($version, $accountId, $start, $limit);
+        $apiResult = $this->api->listStatusCSV($accountId, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CsvImportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,19 +162,16 @@ class CSVImportController extends Controller
      * Batch Status.
      *
      */
-    public function statusCSV(Request $request, float $version): JsonResponse
+    public function statusCSV(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -198,13 +187,12 @@ class CSVImportController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $batchId = $request->integer('batchId');
 
 
-        $apiResult = $this->api->statusCSV($version, $accountId, $batchId);
+        $apiResult = $this->api->statusCSV($accountId, $batchId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CsvImportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -220,19 +208,16 @@ class CSVImportController extends Controller
      * Upload CSV.
      *
      */
-    public function uploadCSV(Request $request, float $version): JsonResponse
+    public function uploadCSV(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -257,7 +242,6 @@ class CSVImportController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $uploadType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UploadCSVUploadTypeParameter::class);
@@ -269,7 +253,7 @@ class CSVImportController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->uploadCSV($version, $accountId, $uploadType, $importFile, $fileFormat, $appKey);
+        $apiResult = $this->api->uploadCSV($accountId, $uploadType, $importFile, $fileFormat, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CsvImportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

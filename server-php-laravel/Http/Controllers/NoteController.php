@@ -47,19 +47,16 @@ class NoteController extends Controller
      * Batch Note Operation.
      *
      */
-    public function batchOperation(Request $request, float $version): JsonResponse
+    public function batchOperation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'notableId' => [
                     'required',
                     'integer',
@@ -84,7 +81,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $notableId = $request->integer('notableId');
 
         $notableType = $request->string('notableType')->value();
@@ -96,7 +92,7 @@ class NoteController extends Controller
         $batchOperation = $request->string('batchOperation')->value();
 
 
-        $apiResult = $this->api->batchOperation($version, $notableId, $notableType, $deviceId, $accountId, $batchOperation);
+        $apiResult = $this->api->batchOperation($notableId, $notableType, $deviceId, $accountId, $batchOperation);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -112,19 +108,16 @@ class NoteController extends Controller
      * Create Note.
      *
      */
-    public function createNote(Request $request, float $version): JsonResponse
+    public function createNote(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'comment' => [
                     'required',
                     'string',
@@ -255,7 +248,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $comment = $request->string('comment')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -341,7 +333,7 @@ class NoteController extends Controller
         $assetLongitude = $request->float('assetLongitude');
 
 
-        $apiResult = $this->api->createNote($version, $comment, $deviceId, $accountId, $notableType, $notableId, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $receiverAccountIds, $returnFullResponse, $initializeAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude);
+        $apiResult = $this->api->createNote($comment, $deviceId, $accountId, $notableType, $notableId, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $receiverAccountIds, $returnFullResponse, $initializeAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -357,19 +349,16 @@ class NoteController extends Controller
      * Delete Note.
      *
      */
-    public function deleteNote(Request $request, float $version): JsonResponse
+    public function deleteNote(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'noteId' => [
                     'required',
                     'integer',
@@ -394,7 +383,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $noteId = $request->integer('noteId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -408,7 +396,7 @@ class NoteController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->deleteNote($version, $noteId, $deviceId, $accountId, $latitude, $longitude, $appKey);
+        $apiResult = $this->api->deleteNote($noteId, $deviceId, $accountId, $latitude, $longitude, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -424,19 +412,16 @@ class NoteController extends Controller
      * Get Note.
      *
      */
-    public function getNote(Request $request, float $version): JsonResponse
+    public function getNote(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'noteId' => [
                     'required',
                     'integer',
@@ -457,7 +442,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $noteId = $request->integer('noteId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -467,7 +451,7 @@ class NoteController extends Controller
         $returnFullResponse = $request->boolean('returnFullResponse');
 
 
-        $apiResult = $this->api->getNote($version, $noteId, $deviceId, $accountId, $returnFullResponse);
+        $apiResult = $this->api->getNote($noteId, $deviceId, $accountId, $returnFullResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -483,19 +467,16 @@ class NoteController extends Controller
      * Search Notes.
      *
      */
-    public function searchNotes(Request $request, float $version): JsonResponse
+    public function searchNotes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -553,7 +534,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -589,7 +569,7 @@ class NoteController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchNotes($version, $deviceId, $accountId, $notableType, $notableId, $noteTypes, $appKey, $keyword, $flagCountMinimum, $flagsExceedThreshold, $includeInactive, $sortField, $descending, $returnFullResponse, $updatedSince, $updatedBefore, $start, $limit);
+        $apiResult = $this->api->searchNotes($deviceId, $accountId, $notableType, $notableId, $noteTypes, $appKey, $keyword, $flagCountMinimum, $flagsExceedThreshold, $includeInactive, $sortField, $descending, $returnFullResponse, $updatedSince, $updatedBefore, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -606,19 +586,16 @@ class NoteController extends Controller
      * Update Note.
      *
      */
-    public function updateNote(Request $request, float $version): JsonResponse
+    public function updateNote(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'noteId' => [
                     'required',
                     'integer',
@@ -746,7 +723,6 @@ class NoteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $noteId = $request->integer('noteId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -830,7 +806,7 @@ class NoteController extends Controller
         $assetLongitude = $request->float('assetLongitude');
 
 
-        $apiResult = $this->api->updateNote($version, $noteId, $deviceId, $accountId, $comment, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $returnFullResponse, $active, $updateAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude);
+        $apiResult = $this->api->updateNote($noteId, $deviceId, $accountId, $comment, $noteType, $assetIds, $tags, $permissionableType, $permissionableId, $appKey, $locationDescription, $latitude, $longitude, $metaData, $returnFullResponse, $active, $updateAsset, $assetReturnNulls, $assetAlbumId, $assetCollectionId, $assetAddToDefaultAlbum, $assetAddToMediaLibrary, $assetVersionCode, $assetVersionName, $assetMetaData, $assetCaption, $assetMedia, $assetMediaUrl, $assetMediaString, $assetMediaStringFileName, $assetMediaStringContentType, $assetAttachedMedia, $assetAttachedMediaUrl, $assetAttachedMediaString, $assetAttachedMediaStringFileName, $assetAttachedMediaStringContentType, $assetLocationDescription, $assetApp, $assetSearchTags, $assetLatitude, $assetLongitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,19 +47,16 @@ class ListingController extends Controller
      * Create Listing.
      *
      */
-    public function createListing(Request $request, float $version): JsonResponse
+    public function createListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -111,7 +108,6 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -141,7 +137,7 @@ class ListingController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createListing($version, $accountId, $name, $filterIds, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData);
+        $apiResult = $this->api->createListing($accountId, $name, $filterIds, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ListingFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -157,19 +153,16 @@ class ListingController extends Controller
      * Delete Listing.
      *
      */
-    public function deleteListing(Request $request, float $version): JsonResponse
+    public function deleteListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -185,13 +178,12 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $listingId = $request->integer('listingId');
 
 
-        $apiResult = $this->api->deleteListing($version, $accountId, $listingId);
+        $apiResult = $this->api->deleteListing($accountId, $listingId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -207,19 +199,16 @@ class ListingController extends Controller
      * Get Listing.
      *
      */
-    public function getListing(Request $request, float $version): JsonResponse
+    public function getListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'listingId' => [
                     'required',
                     'integer',
@@ -231,11 +220,10 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $listingId = $request->integer('listingId');
 
 
-        $apiResult = $this->api->getListing($version, $listingId);
+        $apiResult = $this->api->getListing($listingId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ListingFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -251,19 +239,16 @@ class ListingController extends Controller
      * Search Listings.
      *
      */
-    public function searchListing(Request $request, float $version): JsonResponse
+    public function searchListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -314,7 +299,6 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $keyword = $request->string('keyword')->value();
@@ -346,7 +330,7 @@ class ListingController extends Controller
         $externalGroupId = $request->string('externalGroupId')->value();
 
 
-        $apiResult = $this->api->searchListing($version, $accountId, $keyword, $start, $limit, $activeOnly, $latitude, $longitude, $startDate, $endDate, $categoryIds, $filterIds, $useListingOrderIds, $externalId, $externalId2, $externalGroupId);
+        $apiResult = $this->api->searchListing($accountId, $keyword, $start, $limit, $activeOnly, $latitude, $longitude, $startDate, $endDate, $categoryIds, $filterIds, $useListingOrderIds, $externalId, $externalId2, $externalGroupId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -363,19 +347,16 @@ class ListingController extends Controller
      * Summary Listing.
      *
      */
-    public function summaryListing(Request $request, float $version): JsonResponse
+    public function summaryListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -398,7 +379,6 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $startDate = $request->integer('startDate');
@@ -410,7 +390,7 @@ class ListingController extends Controller
         $useListingOrderIds = $request->boolean('useListingOrderIds');
 
 
-        $apiResult = $this->api->summaryListing($version, $accountId, $startDate, $categoryIds, $daysToInclude, $useListingOrderIds);
+        $apiResult = $this->api->summaryListing($accountId, $startDate, $categoryIds, $daysToInclude, $useListingOrderIds);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -427,19 +407,16 @@ class ListingController extends Controller
      * Update Listing.
      *
      */
-    public function updateListing(Request $request, float $version): JsonResponse
+    public function updateListing(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -494,7 +471,6 @@ class ListingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $listingId = $request->integer('listingId');
@@ -526,7 +502,7 @@ class ListingController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->updateListing($version, $accountId, $listingId, $filterIds, $name, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData);
+        $apiResult = $this->api->updateListing($accountId, $listingId, $filterIds, $name, $description, $start, $end, $locationName, $locationDescription, $isPrivate, $externalId, $externalId2, $externalGroupId, $active, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ListingFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

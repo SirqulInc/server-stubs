@@ -28,14 +28,12 @@ interface VatomApiInterface {
      * Operation createFollowing
      *
      * Create following
-     * @param float $version
      * @param int $accountId
      * @param string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function createFollowing(
-            float $version,
             int $accountId,
             string $vatomParameters,
             ?bool $returnRawResponse,
@@ -48,7 +46,6 @@ interface VatomApiInterface {
      * Operation createSpace
      *
      * Create Vatom Space
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomParameters
@@ -56,7 +53,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function createSpace(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomParameters,
@@ -70,7 +66,6 @@ interface VatomApiInterface {
      * Operation createVatomEvent
      *
      * Create Vatom Event
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomParameters
@@ -78,7 +73,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function createVatomEvent(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomParameters,
@@ -92,14 +86,12 @@ interface VatomApiInterface {
      * Operation deleteFollowing
      *
      * Delete following
-     * @param float $version
      * @param int $accountId
      * @param string $vatomRelsKey
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deleteFollowing(
-            float $version,
             int $accountId,
             string $vatomRelsKey,
             ?bool $returnRawResponse,
@@ -112,7 +104,6 @@ interface VatomApiInterface {
      * Operation deletePointsBalance
      *
      * Reset All Points Balance
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -120,7 +111,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deletePointsBalance(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -134,7 +124,6 @@ interface VatomApiInterface {
      * Operation deleteSpace
      *
      * Delete Vatom Space
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomSpaceId
@@ -142,7 +131,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deleteSpace(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomSpaceId,
@@ -156,7 +144,6 @@ interface VatomApiInterface {
      * Operation deleteVatomEvent
      *
      * Delete Vatom Event
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomEventId
@@ -164,7 +151,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deleteVatomEvent(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomEventId,
@@ -178,14 +164,12 @@ interface VatomApiInterface {
      * Operation deleteVatomNFT
      *
      * Delete Vatom NFT
-     * @param float $version
      * @param int $accountId
      * @param string $vatomId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function deleteVatomNFT(
-            float $version,
             int $accountId,
             string $vatomId,
             ?bool $returnRawResponse,
@@ -198,7 +182,6 @@ interface VatomApiInterface {
      * Operation executeActionOnNFT
      *
      * Execute Action on NFT
-     * @param float $version
      * @param int $accountId
      * @param string $vatomId
      * @param string $vatomParameters
@@ -206,7 +189,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function executeActionOnNFT(
-            float $version,
             int $accountId,
             string $vatomId,
             string $vatomParameters,
@@ -220,14 +202,12 @@ interface VatomApiInterface {
      * Operation geomapSearch
      *
      * Search Vatom Geo Map
-     * @param float $version
      * @param int $accountId
      * @param string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function geomapSearch(
-            float $version,
             int $accountId,
             string $vatomParameters,
             ?bool $returnRawResponse,
@@ -240,14 +220,12 @@ interface VatomApiInterface {
      * Operation getBusinessBehaviors
      *
      * Get Vatom Business Behaviors
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getBusinessBehaviors(
-            float $version,
             int $accountId,
             string $appKey,
             ?bool $returnRawResponse,
@@ -260,14 +238,12 @@ interface VatomApiInterface {
      * Operation getBusinessCoinsBalance
      *
      * Get the coins for a Business
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getBusinessCoinsBalance(
-            float $version,
             int $accountId,
             string $appKey,
             ?bool $returnRawResponse,
@@ -280,13 +256,11 @@ interface VatomApiInterface {
      * Operation getBusinessIds
      *
      * Get the user business ids
-     * @param float $version
      * @param int $accountId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getBusinessIds(
-            float $version,
             int $accountId,
             ?bool $returnRawResponse,
     ):
@@ -298,7 +272,6 @@ interface VatomApiInterface {
      * Operation getBusinessInfo
      *
      * Get Vatom Business Info
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $vatomParameters
@@ -306,7 +279,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getBusinessInfo(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $vatomParameters,
@@ -320,14 +292,12 @@ interface VatomApiInterface {
      * Operation getBusinessUsers
      *
      * Get Vatom Business Users
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getBusinessUsers(
-            float $version,
             int $accountId,
             string $appKey,
             ?bool $returnRawResponse,
@@ -340,7 +310,6 @@ interface VatomApiInterface {
      * Operation getCampaignGroupEntities
      *
      * Get Campaign Group Entities
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -348,7 +317,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getCampaignGroupEntities(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -362,7 +330,6 @@ interface VatomApiInterface {
      * Operation getCampaignGroupRules
      *
      * Get Campaign Group Rules
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -370,7 +337,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getCampaignGroupRules(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -384,7 +350,6 @@ interface VatomApiInterface {
      * Operation getCampaignGroupStats
      *
      * Get Campaign Group Stats
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -392,7 +357,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getCampaignGroupStats(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -406,7 +370,6 @@ interface VatomApiInterface {
      * Operation getCampaignInfo
      *
      * Get Campaign Info
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -414,7 +377,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getCampaignInfo(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -428,7 +390,6 @@ interface VatomApiInterface {
      * Operation getEventGuestList
      *
      * Get Vatom Event Guest List
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomEventId
@@ -436,7 +397,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getEventGuestList(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomEventId,
@@ -450,14 +410,12 @@ interface VatomApiInterface {
      * Operation getInventory
      *
      * Get Vatom User's Inventory
-     * @param float $version
      * @param int $accountId
      * @param string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getInventory(
-            float $version,
             int $accountId,
             string $vatomParameters,
             ?bool $returnRawResponse,
@@ -470,13 +428,11 @@ interface VatomApiInterface {
      * Operation getMyFollowing
      *
      * Get following
-     * @param float $version
      * @param int $accountId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getMyFollowing(
-            float $version,
             int $accountId,
             ?bool $returnRawResponse,
     ):
@@ -488,7 +444,6 @@ interface VatomApiInterface {
      * Operation getPointsBalance
      *
      * Get Points Balance
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $vatomCampaignId
@@ -496,7 +451,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getPointsBalance(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $vatomCampaignId,
@@ -510,7 +464,6 @@ interface VatomApiInterface {
      * Operation getPointsBalanceAsBusiness
      *
      * Get Points Balance as Business
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomUserId
@@ -519,7 +472,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getPointsBalanceAsBusiness(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomUserId,
@@ -534,7 +486,6 @@ interface VatomApiInterface {
      * Operation getSpace
      *
      * Get Vatom Space
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomSpaceId
@@ -542,7 +493,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getSpace(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomSpaceId,
@@ -556,7 +506,6 @@ interface VatomApiInterface {
      * Operation getUserCoinsAsBusiness
      *
      * Get the coins for a user (as a Business)
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $appKey
@@ -564,7 +513,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserCoinsAsBusiness(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $appKey,
@@ -578,7 +526,6 @@ interface VatomApiInterface {
      * Operation getUserCoinsBalance
      *
      * Gets the coins balance for a Vatom User
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param null | string $vatomParameters
@@ -586,7 +533,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserCoinsBalance(
-            float $version,
             int $accountId,
             string $vatomUserId,
             ?string $vatomParameters,
@@ -600,14 +546,12 @@ interface VatomApiInterface {
      * Operation getUserFollowers
      *
      * Get user followers
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserFollowers(
-            float $version,
             int $accountId,
             string $vatomUserId,
             ?bool $returnRawResponse,
@@ -620,14 +564,12 @@ interface VatomApiInterface {
      * Operation getUserFollowing
      *
      * Get user following
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserFollowing(
-            float $version,
             int $accountId,
             string $vatomUserId,
             ?bool $returnRawResponse,
@@ -640,14 +582,12 @@ interface VatomApiInterface {
      * Operation getUserInfo
      *
      * Get User Info
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserInfo(
-            float $version,
             int $accountId,
             string $vatomUserId,
             ?bool $returnRawResponse,
@@ -660,13 +600,11 @@ interface VatomApiInterface {
      * Operation getUserProfile
      *
      * Get Vatom User Profile
-     * @param float $version
      * @param int $accountId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getUserProfile(
-            float $version,
             int $accountId,
             ?bool $returnRawResponse,
     ):
@@ -678,7 +616,6 @@ interface VatomApiInterface {
      * Operation getVatomEvent
      *
      * Get Vatom Event
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomEventId
@@ -686,7 +623,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getVatomEvent(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomEventId,
@@ -700,14 +636,12 @@ interface VatomApiInterface {
      * Operation getVatomNFT
      *
      * Get Vatom NFT Details
-     * @param float $version
      * @param int $accountId
      * @param string $vatomId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getVatomNFT(
-            float $version,
             int $accountId,
             string $vatomId,
             ?bool $returnRawResponse,
@@ -720,7 +654,6 @@ interface VatomApiInterface {
      * Operation listCommunities
      *
      * List Vatom Communities
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $vatomParameters
@@ -728,7 +661,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function listCommunities(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $vatomParameters,
@@ -742,7 +674,6 @@ interface VatomApiInterface {
      * Operation listEvents
      *
      * List Vatom Events
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $vatomParameters
@@ -750,7 +681,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function listEvents(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $vatomParameters,
@@ -764,7 +694,6 @@ interface VatomApiInterface {
      * Operation listSpaces
      *
      * List Vatom Spaces
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $vatomParameters
@@ -772,7 +701,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function listSpaces(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $vatomParameters,
@@ -786,7 +714,6 @@ interface VatomApiInterface {
      * Operation listUserCoinTransactions
      *
      * List Coin Transactions for a Vatom User
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param null | string $vatomParameters
@@ -794,7 +721,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function listUserCoinTransactions(
-            float $version,
             int $accountId,
             string $vatomUserId,
             ?string $vatomParameters,
@@ -808,7 +734,6 @@ interface VatomApiInterface {
      * Operation listUserCoinTransactionsAsBusiness
      *
      * List coin transactions for a user (as a Business)
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $appKey
@@ -817,7 +742,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function listUserCoinTransactionsAsBusiness(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $appKey,
@@ -832,7 +756,6 @@ interface VatomApiInterface {
      * Operation performActionOnNFT
      *
      * Perform Action on NFT
-     * @param float $version
      * @param int $accountId
      * @param string $vatomId
      * @param string $vatomAction
@@ -841,7 +764,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function performActionOnNFT(
-            float $version,
             int $accountId,
             string $vatomId,
             string $vatomAction,
@@ -856,7 +778,6 @@ interface VatomApiInterface {
      * Operation redeemNFT
      *
      * Redeem NFT
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomParameters
@@ -864,7 +785,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function redeemNFT(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomParameters,
@@ -878,7 +798,6 @@ interface VatomApiInterface {
      * Operation redeemUserCoinsAsBusiness
      *
      * Redeem the coins for a user (as a Business)
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $appKey
@@ -887,7 +806,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function redeemUserCoinsAsBusiness(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $appKey,
@@ -902,14 +820,12 @@ interface VatomApiInterface {
      * Operation searchBusinesses
      *
      * Search for Vatom Businesses
-     * @param float $version
      * @param int $accountId
      * @param null | string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function searchBusinesses(
-            float $version,
             int $accountId,
             ?string $vatomParameters,
             ?bool $returnRawResponse,
@@ -922,14 +838,12 @@ interface VatomApiInterface {
      * Operation searchCampaignGroups
      *
      * Search Campaign Groups
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function searchCampaignGroups(
-            float $version,
             int $accountId,
             string $appKey,
             ?bool $returnRawResponse,
@@ -942,13 +856,11 @@ interface VatomApiInterface {
      * Operation searchIdentities
      *
      * Search User Identities
-     * @param float $version
      * @param int $accountId
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function searchIdentities(
-            float $version,
             int $accountId,
             ?bool $returnRawResponse,
     ):
@@ -960,14 +872,12 @@ interface VatomApiInterface {
      * Operation searchInventory
      *
      * Search Vatom User's Inventory
-     * @param float $version
      * @param int $accountId
      * @param null | string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function searchInventory(
-            float $version,
             int $accountId,
             ?string $vatomParameters,
             ?bool $returnRawResponse,
@@ -980,7 +890,6 @@ interface VatomApiInterface {
      * Operation sendNFT
      *
      * Send NFT
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomCampaignId
@@ -989,7 +898,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function sendNFT(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomCampaignId,
@@ -1004,7 +912,6 @@ interface VatomApiInterface {
      * Operation setPointsBalanceAsBusiness
      *
      * Set Points Balance as Business
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomUserId
@@ -1014,7 +921,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function setPointsBalanceAsBusiness(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomUserId,
@@ -1030,7 +936,6 @@ interface VatomApiInterface {
      * Operation transferUserCoins
      *
      * Transfer coins from Vatom Users
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $vatomParameters
@@ -1038,7 +943,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function transferUserCoins(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $vatomParameters,
@@ -1052,7 +956,6 @@ interface VatomApiInterface {
      * Operation updateBusinessCoins
      *
      * Fund coins for a Business
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomParameters
@@ -1060,7 +963,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateBusinessCoins(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomParameters,
@@ -1074,7 +976,6 @@ interface VatomApiInterface {
      * Operation updateEventGuestList
      *
      * Update Vatom Event Guest List
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomEventId
@@ -1083,7 +984,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateEventGuestList(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomEventId,
@@ -1098,7 +998,6 @@ interface VatomApiInterface {
      * Operation updateSpace
      *
      * Update Vatom Space
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomSpaceId
@@ -1107,7 +1006,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateSpace(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomSpaceId,
@@ -1122,7 +1020,6 @@ interface VatomApiInterface {
      * Operation updateUserCoinsAsBusiness
      *
      * Update the coins for a user (as a Business)
-     * @param float $version
      * @param int $accountId
      * @param string $vatomUserId
      * @param string $appKey
@@ -1131,7 +1028,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateUserCoinsAsBusiness(
-            float $version,
             int $accountId,
             string $vatomUserId,
             string $appKey,
@@ -1146,14 +1042,12 @@ interface VatomApiInterface {
      * Operation updateUserProfile
      *
      * Update Vatom User Profile
-     * @param float $version
      * @param int $accountId
      * @param string $vatomParameters
      * @param null | bool $returnRawResponse
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateUserProfile(
-            float $version,
             int $accountId,
             string $vatomParameters,
             ?bool $returnRawResponse,
@@ -1166,7 +1060,6 @@ interface VatomApiInterface {
      * Operation updateVatomEvent
      *
      * Update Vatom Event
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $vatomEventId
@@ -1175,7 +1068,6 @@ interface VatomApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function updateVatomEvent(
-            float $version,
             int $accountId,
             string $appKey,
             string $vatomEventId,

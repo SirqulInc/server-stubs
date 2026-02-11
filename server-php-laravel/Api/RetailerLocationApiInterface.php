@@ -28,7 +28,6 @@ interface RetailerLocationApiInterface {
      * Operation createRetailerLocationConsumer
      *
      * Create Retailer Location (Consumer)
-     * @param float $version
      * @param string $appKey
      * @param string $name
      * @param null | string $deviceId
@@ -61,7 +60,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse
      */
     public function createRetailerLocationConsumer(
-            float $version,
             string $appKey,
             string $name,
             ?string $deviceId,
@@ -100,7 +98,6 @@ interface RetailerLocationApiInterface {
      * Operation createRetailerLocations
      *
      * Create Retailer Location
-     * @param float $version
      * @param int $retailerId
      * @param string $name
      * @param string $streetAddress
@@ -143,7 +140,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse
      */
     public function createRetailerLocations(
-            float $version,
             int $retailerId,
             string $name,
             string $streetAddress,
@@ -192,14 +188,12 @@ interface RetailerLocationApiInterface {
      * Operation deleteRetailerLocation
      *
      * Delete Retailer Location
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $retailerLocationId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteRetailerLocation(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $retailerLocationId,
@@ -212,7 +206,6 @@ interface RetailerLocationApiInterface {
      * Operation getRetailerLocation
      *
      * Get Retailer Location
-     * @param float $version
      * @param int $retailerLocationId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -220,7 +213,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse
      */
     public function getRetailerLocation(
-            float $version,
             int $retailerLocationId,
             ?string $deviceId,
             ?int $accountId,
@@ -234,14 +226,12 @@ interface RetailerLocationApiInterface {
      * Operation getRetailerLocationConsumer
      *
      * Get Retailer Location (Consumer)
-     * @param float $version
      * @param int $retailerLocationId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\RetailerLocationResponse
      */
     public function getRetailerLocationConsumer(
-            float $version,
             int $retailerLocationId,
             ?string $deviceId,
             ?int $accountId,
@@ -254,7 +244,6 @@ interface RetailerLocationApiInterface {
      * Operation indexedRetailerLocationDistanceSearch
      *
      * Distance Search Retailer Locations (Indexed)
-     * @param float $version
      * @param float $latitude
      * @param float $longitude
      * @param float $searchRange
@@ -292,7 +281,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse[]
      */
     public function indexedRetailerLocationDistanceSearch(
-            float $version,
             float $latitude,
             float $longitude,
             float $searchRange,
@@ -336,7 +324,6 @@ interface RetailerLocationApiInterface {
      * Operation indexedRetailerLocationSearch
      *
      * Keyword Search Retailer Locations (Indexed)
-     * @param float $version
      * @param null | int $accountId
      * @param null | int $start
      * @param null | int $limit
@@ -368,7 +355,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse[]
      */
     public function indexedRetailerLocationSearch(
-            float $version,
             ?int $accountId,
             ?int $start,
             ?int $limit,
@@ -406,7 +392,6 @@ interface RetailerLocationApiInterface {
      * Operation searchRetailerLocations
      *
      * Search Retailer Locations (Owned)
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $q
@@ -435,7 +420,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse[]
      */
     public function searchRetailerLocations(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $q,
@@ -470,7 +454,6 @@ interface RetailerLocationApiInterface {
      * Operation updateRetailerLocations
      *
      * Update Retailer Location
-     * @param float $version
      * @param int $retailerLocationId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -515,7 +498,6 @@ interface RetailerLocationApiInterface {
      * @return \OpenAPI\Server\Model\RetailerLocationResponse
      */
     public function updateRetailerLocations(
-            float $version,
             int $retailerLocationId,
             ?string $deviceId,
             ?int $accountId,

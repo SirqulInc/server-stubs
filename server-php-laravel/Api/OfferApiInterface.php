@@ -28,14 +28,12 @@ interface OfferApiInterface {
      * Operation batchUpdateOfferLocations
      *
      * Update Offer Locations
-     * @param float $version
      * @param string $data
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function batchUpdateOfferLocations(
-            float $version,
             string $data,
             ?string $deviceId,
             ?int $accountId,
@@ -48,7 +46,6 @@ interface OfferApiInterface {
      * Operation createOffer
      *
      * Create Offer
-     * @param float $version
      * @param bool $includeOfferLocations
      * @param string $title
      * @param \OpenAPI\Server\Model\CreateMediaBarcodeTypeParameter $barcodeType
@@ -138,7 +135,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\RetailerOfferResponse
      */
     public function createOffer(
-            float $version,
             bool $includeOfferLocations,
             string $title,
             \OpenAPI\Server\Model\CreateMediaBarcodeTypeParameter $barcodeType,
@@ -234,14 +230,12 @@ interface OfferApiInterface {
      * Operation deleteOffer
      *
      * Delete Offer
-     * @param float $version
      * @param int $offerId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteOffer(
-            float $version,
             int $offerId,
             ?string $deviceId,
             ?int $accountId,
@@ -254,14 +248,12 @@ interface OfferApiInterface {
      * Operation deleteOfferLocation
      *
      * Delete Offer Location
-     * @param float $version
      * @param int $offerLocationId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteOfferLocation(
-            float $version,
             int $offerLocationId,
             ?string $deviceId,
             ?int $accountId,
@@ -274,7 +266,6 @@ interface OfferApiInterface {
      * Operation getOffer
      *
      * Get Offer
-     * @param float $version
      * @param int $offerId
      * @param bool $includeOfferLocations
      * @param null | string $deviceId
@@ -282,7 +273,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\RetailerOfferResponse
      */
     public function getOffer(
-            float $version,
             int $offerId,
             bool $includeOfferLocations,
             ?string $deviceId,
@@ -296,7 +286,6 @@ interface OfferApiInterface {
      * Operation getOfferDetails
      *
      * Get Offer
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $offerId
@@ -310,7 +299,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\OfferResponse
      */
     public function getOfferDetails(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $offerId,
@@ -330,7 +318,6 @@ interface OfferApiInterface {
      * Operation getOfferListCounts
      *
      * Get Offers (Counts)
-     * @param float $version
      * @param float $latitude
      * @param float $longitude
      * @param null | float $searchRange
@@ -338,7 +325,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\ListCountResponse
      */
     public function getOfferListCounts(
-            float $version,
             float $latitude,
             float $longitude,
             ?float $searchRange,
@@ -352,13 +338,11 @@ interface OfferApiInterface {
      * Operation getOfferLocation
      *
      * Get Offer Location
-     * @param float $version
      * @param null | int $offerLocationId
      * @param null | string $udid
      * @return \OpenAPI\Server\Model\OfferShortResponse
      */
     public function getOfferLocation(
-            float $version,
             ?int $offerLocationId,
             ?string $udid,
     ):
@@ -370,7 +354,6 @@ interface OfferApiInterface {
      * Operation getOfferLocationsForRetailers
      *
      * Search Offer Locations
-     * @param float $version
      * @param \OpenAPI\Server\Model\SearchOffersForConsumerGroupByParameter $sortField
      * @param bool $descending
      * @param int $start
@@ -394,7 +377,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\OfferShortResponse[]
      */
     public function getOfferLocationsForRetailers(
-            float $version,
             \OpenAPI\Server\Model\SearchOffersForConsumerGroupByParameter $sortField,
             bool $descending,
             int $start,
@@ -424,7 +406,6 @@ interface OfferApiInterface {
      * Operation getOffersForRetailers
      *
      * Search Offers
-     * @param float $version
      * @param \OpenAPI\Server\Model\CreateMediaOfferVisibilityParameter $offerVisibility
      * @param \OpenAPI\Server\Model\SearchEventsSortFieldParameter $sortField
      * @param bool $descending
@@ -459,7 +440,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\OfferResponse[]
      */
     public function getOffersForRetailers(
-            float $version,
             \OpenAPI\Server\Model\CreateMediaOfferVisibilityParameter $offerVisibility,
             \OpenAPI\Server\Model\SearchEventsSortFieldParameter $sortField,
             bool $descending,
@@ -500,7 +480,6 @@ interface OfferApiInterface {
      * Operation redeemOfferTransaction
      *
      * Update Offer Transaction
-     * @param float $version
      * @param int $offerTransactionId
      * @param int $status
      * @param null | string $deviceId
@@ -509,7 +488,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function redeemOfferTransaction(
-            float $version,
             int $offerTransactionId,
             int $status,
             ?string $deviceId,
@@ -524,7 +502,6 @@ interface OfferApiInterface {
      * Operation searchOfferTransactionsForRetailers
      *
      * Search Offer Transactions
-     * @param float $version
      * @param \OpenAPI\Server\Model\SearchEventTransactionsSortFieldParameter $sortField
      * @param bool $descending
      * @param int $start
@@ -552,7 +529,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse[]
      */
     public function searchOfferTransactionsForRetailers(
-            float $version,
             \OpenAPI\Server\Model\SearchEventTransactionsSortFieldParameter $sortField,
             bool $descending,
             int $start,
@@ -586,7 +562,6 @@ interface OfferApiInterface {
      * Operation searchOffersForConsumer
      *
      * Search Offers
-     * @param float $version
      * @param float $latitude
      * @param float $longitude
      * @param \OpenAPI\Server\Model\SearchOffersForConsumerRecommendationTypeParameter $recommendationType
@@ -621,7 +596,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\OfferListResponse
      */
     public function searchOffersForConsumer(
-            float $version,
             float $latitude,
             float $longitude,
             \OpenAPI\Server\Model\SearchOffersForConsumerRecommendationTypeParameter $recommendationType,
@@ -662,13 +636,11 @@ interface OfferApiInterface {
      * Operation topOfferTransactions
      *
      * Get Offers (Top)
-     * @param float $version
      * @param null | int $start
      * @param null | int $limit
      * @return \OpenAPI\Server\Model\OfferListResponse
      */
     public function topOfferTransactions(
-            float $version,
             ?int $start,
             ?int $limit,
     ):
@@ -680,7 +652,6 @@ interface OfferApiInterface {
      * Operation updateOffer
      *
      * Update Offer
-     * @param float $version
      * @param int $offerId
      * @param bool $includeOfferLocations
      * @param null | string $deviceId
@@ -771,7 +742,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\RetailerOfferResponse
      */
     public function updateOffer(
-            float $version,
             int $offerId,
             bool $includeOfferLocations,
             ?string $deviceId,
@@ -868,7 +838,6 @@ interface OfferApiInterface {
      * Operation updateOfferStatus
      *
      * Activate Offer
-     * @param float $version
      * @param string $offerIds
      * @param bool $active
      * @param null | string $deviceId
@@ -876,7 +845,6 @@ interface OfferApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateOfferStatus(
-            float $version,
             string $offerIds,
             bool $active,
             ?string $deviceId,

@@ -47,19 +47,16 @@ class ConnectionController extends Controller
      * Add Connection.
      *
      */
-    public function addConnectionToGroup(Request $request, float $version): JsonResponse
+    public function addConnectionToGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -94,7 +91,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $groupId = $request->integer('groupId');
@@ -114,7 +110,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addConnectionToGroup($version, $returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude);
+        $apiResult = $this->api->addConnectionToGroup($returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -130,19 +126,16 @@ class ConnectionController extends Controller
      * Add Connections.
      *
      */
-    public function addConnectionsToGroup(Request $request, float $version): JsonResponse
+    public function addConnectionsToGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'connectionGroupId' => [
                     'required',
                     'integer',
@@ -170,7 +163,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $connectionGroupId = $request->integer('connectionGroupId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -186,7 +178,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addConnectionsToGroup($version, $connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude);
+        $apiResult = $this->api->addConnectionsToGroup($connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -202,19 +194,16 @@ class ConnectionController extends Controller
      * Add Connection Groups.
      *
      */
-    public function addSubGroups(Request $request, float $version): JsonResponse
+    public function addSubGroups(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -244,7 +233,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $groupId = $request->integer('groupId');
@@ -260,7 +248,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addSubGroups($version, $returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->addSubGroups($returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -276,19 +264,16 @@ class ConnectionController extends Controller
      * Create or Update Connection.
      *
      */
-    public function createOrUpdateConnection(Request $request, float $version): JsonResponse
+    public function createOrUpdateConnection(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -338,7 +323,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -368,7 +352,7 @@ class ConnectionController extends Controller
         $connectionResponse = $request->boolean('connectionResponse');
 
 
-        $apiResult = $this->api->createOrUpdateConnection($version, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $groupId, $gameType, $appKey, $isTrusted, $ignoreFriendRequest, $isContact, $isBlocked, $isFollowing, $connectionResponse);
+        $apiResult = $this->api->createOrUpdateConnection($deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $groupId, $gameType, $appKey, $isTrusted, $ignoreFriendRequest, $isContact, $isBlocked, $isFollowing, $connectionResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -384,19 +368,16 @@ class ConnectionController extends Controller
      * Create or Update Connection Group.
      *
      */
-    public function createOrUpdateGroup(Request $request, float $version): JsonResponse
+    public function createOrUpdateGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -445,7 +426,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $deviceId = $request->string('deviceId')->value();
@@ -475,7 +455,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createOrUpdateGroup($version, $returnNulls, $deviceId, $accountId, $name, $groupId, $assetId, $connections, $description, $canViewProfileInfo, $canViewGameInfo, $canViewFriendInfo, $active, $latitude, $longitude);
+        $apiResult = $this->api->createOrUpdateGroup($returnNulls, $deviceId, $accountId, $name, $groupId, $assetId, $connections, $description, $canViewProfileInfo, $canViewGameInfo, $canViewFriendInfo, $active, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -491,19 +471,16 @@ class ConnectionController extends Controller
      * Accept Follow Request.
      *
      */
-    public function followAccept(Request $request, float $version): JsonResponse
+    public function followAccept(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -523,7 +500,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $connectionAccountId = $request->integer('connectionAccountId');
@@ -531,7 +507,7 @@ class ConnectionController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->followAccept($version, $accountId, $connectionAccountId, $appKey);
+        $apiResult = $this->api->followAccept($accountId, $connectionAccountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -547,19 +523,16 @@ class ConnectionController extends Controller
      * Reject Follow Request.
      *
      */
-    public function followReject(Request $request, float $version): JsonResponse
+    public function followReject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -579,7 +552,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $connectionAccountId = $request->integer('connectionAccountId');
@@ -587,7 +559,7 @@ class ConnectionController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->followReject($version, $accountId, $connectionAccountId, $appKey);
+        $apiResult = $this->api->followReject($accountId, $connectionAccountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -603,19 +575,16 @@ class ConnectionController extends Controller
      * Remove Follower / Unfollow.
      *
      */
-    public function followRemove(Request $request, float $version): JsonResponse
+    public function followRemove(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -635,7 +604,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $connectionAccountId = $request->integer('connectionAccountId');
@@ -643,7 +611,7 @@ class ConnectionController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->followRemove($version, $accountId, $connectionAccountId, $appKey);
+        $apiResult = $this->api->followRemove($accountId, $connectionAccountId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -659,19 +627,16 @@ class ConnectionController extends Controller
      * Send Follow Request.
      *
      */
-    public function followRequest(Request $request, float $version): JsonResponse
+    public function followRequest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -694,7 +659,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $connectionAccountId = $request->integer('connectionAccountId');
@@ -704,7 +668,7 @@ class ConnectionController extends Controller
         $approvalNeeded = $request->boolean('approvalNeeded');
 
 
-        $apiResult = $this->api->followRequest($version, $accountId, $connectionAccountId, $appKey, $approvalNeeded);
+        $apiResult = $this->api->followRequest($accountId, $connectionAccountId, $appKey, $approvalNeeded);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -720,19 +684,16 @@ class ConnectionController extends Controller
      * Accept Friend.
      *
      */
-    public function friendAccept(Request $request, float $version): JsonResponse
+    public function friendAccept(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'friendAccountId' => [
                     'required',
                     'integer',
@@ -763,7 +724,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $friendAccountId = $request->integer('friendAccountId');
 
         $notifyFriend = $request->boolean('notifyFriend');
@@ -779,7 +739,7 @@ class ConnectionController extends Controller
         $notificationMessage = $request->string('notificationMessage')->value();
 
 
-        $apiResult = $this->api->friendAccept($version, $friendAccountId, $notifyFriend, $deviceId, $accountId, $gameType, $appKey, $notificationMessage);
+        $apiResult = $this->api->friendAccept($friendAccountId, $notifyFriend, $deviceId, $accountId, $gameType, $appKey, $notificationMessage);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -795,19 +755,16 @@ class ConnectionController extends Controller
      * Decline Friend.
      *
      */
-    public function friendReject(Request $request, float $version): JsonResponse
+    public function friendReject(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'friendAccountId' => [
                     'required',
                     'integer',
@@ -837,7 +794,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $friendAccountId = $request->integer('friendAccountId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -853,7 +809,7 @@ class ConnectionController extends Controller
         $notificationMessage = $request->string('notificationMessage')->value();
 
 
-        $apiResult = $this->api->friendReject($version, $friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notifyFriend, $notificationMessage);
+        $apiResult = $this->api->friendReject($friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notifyFriend, $notificationMessage);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -869,19 +825,16 @@ class ConnectionController extends Controller
      * Delete Friend.
      *
      */
-    public function friendRemove(Request $request, float $version): JsonResponse
+    public function friendRemove(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'friendAccountId' => [
                     'required',
                     'integer',
@@ -905,7 +858,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $friendAccountId = $request->integer('friendAccountId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -917,7 +869,7 @@ class ConnectionController extends Controller
         $removeFromGroups = $request->boolean('removeFromGroups');
 
 
-        $apiResult = $this->api->friendRemove($version, $friendAccountId, $deviceId, $accountId, $notifyFriend, $removeFromGroups);
+        $apiResult = $this->api->friendRemove($friendAccountId, $deviceId, $accountId, $notifyFriend, $removeFromGroups);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -933,19 +885,16 @@ class ConnectionController extends Controller
      * Request Friend.
      *
      */
-    public function friendRequest(Request $request, float $version): JsonResponse
+    public function friendRequest(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'friendAccountId' => [
                     'required',
                     'integer',
@@ -972,7 +921,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $friendAccountId = $request->integer('friendAccountId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -986,7 +934,7 @@ class ConnectionController extends Controller
         $notificationMessage = $request->string('notificationMessage')->value();
 
 
-        $apiResult = $this->api->friendRequest($version, $friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notificationMessage);
+        $apiResult = $this->api->friendRequest($friendAccountId, $deviceId, $accountId, $gameType, $appKey, $notificationMessage);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1002,19 +950,16 @@ class ConnectionController extends Controller
      * Get Sent Friend Requests.
      *
      */
-    public function getConnectionSentFriendRequests(Request $request, float $version): JsonResponse
+    public function getConnectionSentFriendRequests(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1028,13 +973,12 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getConnectionSentFriendRequests($version, $deviceId, $accountId);
+        $apiResult = $this->api->getConnectionSentFriendRequests($deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1050,19 +994,16 @@ class ConnectionController extends Controller
      * Search Connections.
      *
      */
-    public function getConnections(Request $request, float $version): JsonResponse
+    public function getConnections(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -1119,7 +1060,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $filter = $request->string('filter')->value();
@@ -1151,7 +1091,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getConnections($version, $returnNulls, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $connectionAccountId, $q, $keyword, $i, $l, $latitude, $longitude);
+        $apiResult = $this->api->getConnections($returnNulls, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $connectionAccountId, $q, $keyword, $i, $l, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1167,19 +1107,16 @@ class ConnectionController extends Controller
      * Get Connection Group.
      *
      */
-    public function getGroupDetails(Request $request, float $version): JsonResponse
+    public function getGroupDetails(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'combineConnections' => [
                     'required',
                     'boolean',
@@ -1204,7 +1141,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $combineConnections = $request->boolean('combineConnections');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1218,7 +1154,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getGroupDetails($version, $combineConnections, $deviceId, $accountId, $groupId, $latitude, $longitude);
+        $apiResult = $this->api->getGroupDetails($combineConnections, $deviceId, $accountId, $groupId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1234,19 +1170,16 @@ class ConnectionController extends Controller
      * Search Connection Groups.
      *
      */
-    public function groupSearch(Request $request, float $version): JsonResponse
+    public function groupSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -1286,7 +1219,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\GroupSearchSortFieldParameter::class);
 
         $descending = $request->boolean('descending');
@@ -1308,7 +1240,7 @@ class ConnectionController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->groupSearch($version, $sortField, $descending, $activeOnly, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword);
+        $apiResult = $this->api->groupSearch($sortField, $descending, $activeOnly, $start, $limit, $deviceId, $accountId, $latitude, $longitude, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1325,19 +1257,16 @@ class ConnectionController extends Controller
      * Delete Connection.
      *
      */
-    public function removeConnectionFromGroup(Request $request, float $version): JsonResponse
+    public function removeConnectionFromGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -1372,7 +1301,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $groupId = $request->integer('groupId');
@@ -1392,7 +1320,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeConnectionFromGroup($version, $returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude);
+        $apiResult = $this->api->removeConnectionFromGroup($returnNulls, $groupId, $deviceId, $accountId, $connectionId, $connectionAccountId, $pendingId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1408,19 +1336,16 @@ class ConnectionController extends Controller
      * Remove Connections.
      *
      */
-    public function removeConnectionsFromGroup(Request $request, float $version): JsonResponse
+    public function removeConnectionsFromGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'connectionGroupId' => [
                     'required',
                     'integer',
@@ -1448,7 +1373,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $connectionGroupId = $request->integer('connectionGroupId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1464,7 +1388,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeConnectionsFromGroup($version, $connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude);
+        $apiResult = $this->api->removeConnectionsFromGroup($connectionGroupId, $deviceId, $accountId, $connectionIds, $connectionAccountIds, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1480,19 +1404,16 @@ class ConnectionController extends Controller
      * Delete Connection Group.
      *
      */
-    public function removeGroup(Request $request, float $version): JsonResponse
+    public function removeGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -1518,7 +1439,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $groupId = $request->integer('groupId');
@@ -1532,7 +1452,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeGroup($version, $returnNulls, $groupId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->removeGroup($returnNulls, $groupId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1548,19 +1468,16 @@ class ConnectionController extends Controller
      * Remove Connection Groups.
      *
      */
-    public function removeSubGroups(Request $request, float $version): JsonResponse
+    public function removeSubGroups(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -1590,7 +1507,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $groupId = $request->integer('groupId');
@@ -1606,7 +1522,7 @@ class ConnectionController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeSubGroups($version, $returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->removeSubGroups($returnNulls, $groupId, $subGroupIds, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1622,19 +1538,16 @@ class ConnectionController extends Controller
      * Search Possible Connections.
      *
      */
-    public function searchConnections(Request $request, float $version): JsonResponse
+    public function searchConnections(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -1688,7 +1601,6 @@ class ConnectionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $start = $request->integer('start');
@@ -1720,7 +1632,7 @@ class ConnectionController extends Controller
         $hasLocation = $request->boolean('hasLocation');
 
 
-        $apiResult = $this->api->searchConnections($version, $returnNulls, $start, $limit, $deviceId, $accountId, $q, $keyword, $latitude, $longitude, $gameType, $appKey, $i, $l, $sortField, $hasLocation);
+        $apiResult = $this->api->searchConnections($returnNulls, $start, $limit, $deviceId, $accountId, $q, $keyword, $latitude, $longitude, $gameType, $appKey, $i, $l, $sortField, $hasLocation);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConnectionListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

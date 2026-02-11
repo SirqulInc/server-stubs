@@ -28,7 +28,6 @@ interface PostalCodeApiInterface {
      * Operation createPostalCode
      *
      * Create Postal Code
-     * @param float $version
      * @param int $accountId
      * @param string $code
      * @param float $latitude
@@ -39,7 +38,6 @@ interface PostalCodeApiInterface {
      * @return \OpenAPI\Server\Model\PostalCodeResponse
      */
     public function createPostalCode(
-            float $version,
             int $accountId,
             string $code,
             float $latitude,
@@ -56,13 +54,11 @@ interface PostalCodeApiInterface {
      * Operation deletePostalCode
      *
      * Delete Postal Code
-     * @param float $version
      * @param int $accountId
      * @param int $postalCodeId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deletePostalCode(
-            float $version,
             int $accountId,
             int $postalCodeId,
     ):
@@ -74,12 +70,10 @@ interface PostalCodeApiInterface {
      * Operation getPostalCode
      *
      * Get Postal Code
-     * @param float $version
      * @param int $postalCodeId
      * @return \OpenAPI\Server\Model\PostalCodeResponse
      */
     public function getPostalCode(
-            float $version,
             int $postalCodeId,
     ):
         \OpenAPI\Server\Model\PostalCodeResponse
@@ -90,7 +84,6 @@ interface PostalCodeApiInterface {
      * Operation getPostalCodes
      *
      * Search Postal Codes
-     * @param float $version
      * @param string $sortField
      * @param bool $descending
      * @param null | float $latitude
@@ -102,7 +95,6 @@ interface PostalCodeApiInterface {
      * @return \OpenAPI\Server\Model\PostalCodeResponse[]
      */
     public function getPostalCodes(
-            float $version,
             string $sortField,
             bool $descending,
             ?float $latitude,
@@ -120,7 +112,6 @@ interface PostalCodeApiInterface {
      * Operation updatePostalCode
      *
      * Update Postal Code
-     * @param float $version
      * @param int $accountId
      * @param int $postalCodeId
      * @param null | string $code
@@ -132,7 +123,6 @@ interface PostalCodeApiInterface {
      * @return \OpenAPI\Server\Model\PostalCodeResponse
      */
     public function updatePostalCode(
-            float $version,
             int $accountId,
             int $postalCodeId,
             ?string $code,

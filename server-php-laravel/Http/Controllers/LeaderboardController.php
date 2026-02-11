@@ -47,19 +47,16 @@ class LeaderboardController extends Controller
      * Create a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation.
      *
      */
-    public function createLeaderboard(Request $request, float $version): JsonResponse
+    public function createLeaderboard(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -106,7 +103,6 @@ class LeaderboardController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -134,7 +130,7 @@ class LeaderboardController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createLeaderboard($version, $accountId, $appKey, $rankType, $leaderboardMode, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $sortField, $title, $description, $metaData);
+        $apiResult = $this->api->createLeaderboard($accountId, $appKey, $rankType, $leaderboardMode, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $sortField, $title, $description, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeaderboardResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -150,19 +146,16 @@ class LeaderboardController extends Controller
      * Delete the Leader Board.
      *
      */
-    public function deleteLeaderboard(Request $request, float $version): JsonResponse
+    public function deleteLeaderboard(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'leaderboardId' => [
                     'required',
                     'integer',
@@ -177,13 +170,12 @@ class LeaderboardController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $leaderboardId = $request->integer('leaderboardId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteLeaderboard($version, $leaderboardId, $accountId);
+        $apiResult = $this->api->deleteLeaderboard($leaderboardId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -199,19 +191,16 @@ class LeaderboardController extends Controller
      * Read a leaderboard by id and retrieve the matching ranking list.
      *
      */
-    public function getLeaderboard(Request $request, float $version): JsonResponse
+    public function getLeaderboard(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'leaderboardId' => [
                     'required',
                     'integer',
@@ -229,7 +218,6 @@ class LeaderboardController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $leaderboardId = $request->integer('leaderboardId');
 
         $accountId = $request->integer('accountId');
@@ -237,7 +225,7 @@ class LeaderboardController extends Controller
         $includeFullRankingList = $request->boolean('includeFullRankingList');
 
 
-        $apiResult = $this->api->getLeaderboard($version, $leaderboardId, $accountId, $includeFullRankingList);
+        $apiResult = $this->api->getLeaderboard($leaderboardId, $accountId, $includeFullRankingList);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeaderboardResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -253,19 +241,16 @@ class LeaderboardController extends Controller
      * Search leaderboard and retrieve the matching ranking list.
      *
      */
-    public function searchLeaderboards(Request $request, float $version): JsonResponse
+    public function searchLeaderboards(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -309,7 +294,6 @@ class LeaderboardController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -335,7 +319,7 @@ class LeaderboardController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchLeaderboards($version, $accountId, $appKey, $globalOnly, $keyword, $leaderboardIds, $rankTypes, $sortField, $descending, $includeInactive, $includeAppResponse, $start, $limit);
+        $apiResult = $this->api->searchLeaderboards($accountId, $appKey, $globalOnly, $keyword, $leaderboardIds, $rankTypes, $sortField, $descending, $includeInactive, $includeAppResponse, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeaderboardResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -351,19 +335,16 @@ class LeaderboardController extends Controller
      * Update a leaderboard based on the rankingType, rankMode(leaderboardMode), sortField and limitation.
      *
      */
-    public function updateLeaderboard(Request $request, float $version): JsonResponse
+    public function updateLeaderboard(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'leaderboardId' => [
                     'required',
                     'integer',
@@ -417,7 +398,6 @@ class LeaderboardController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $leaderboardId = $request->integer('leaderboardId');
 
         $accountId = $request->integer('accountId');
@@ -449,7 +429,7 @@ class LeaderboardController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->updateLeaderboard($version, $leaderboardId, $accountId, $appKey, $rankType, $leaderboardMode, $sortField, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $active, $title, $description, $metaData);
+        $apiResult = $this->api->updateLeaderboard($leaderboardId, $accountId, $appKey, $rankType, $leaderboardMode, $sortField, $iconMedia, $iconAssetId, $bannerMedia, $bannerAssetId, $limitation, $active, $title, $description, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeaderboardResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

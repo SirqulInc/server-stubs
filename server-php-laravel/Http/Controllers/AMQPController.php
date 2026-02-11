@@ -47,19 +47,16 @@ class AMQPController extends Controller
      * Create Consumer.
      *
      */
-    public function consumerCreate(Request $request, float $version): JsonResponse
+    public function consumerCreate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -115,7 +112,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $name = $request->string('name')->value();
@@ -145,7 +141,7 @@ class AMQPController extends Controller
         $useSSL = $request->boolean('useSSL');
 
 
-        $apiResult = $this->api->consumerCreate($version, $appKey, $name, $hostname, $username, $password, $dataMapping, $deviceId, $accountId, $port, $virtualHost, $exchanger, $exchangerType, $workers, $useSSL);
+        $apiResult = $this->api->consumerCreate($appKey, $name, $hostname, $username, $password, $dataMapping, $deviceId, $accountId, $port, $virtualHost, $exchanger, $exchangerType, $workers, $useSSL);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -161,19 +157,16 @@ class AMQPController extends Controller
      * Update Consumer.
      *
      */
-    public function consumerUpdate(Request $request, float $version): JsonResponse
+    public function consumerUpdate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -202,7 +195,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $queueId = $request->integer('queueId');
@@ -216,7 +208,7 @@ class AMQPController extends Controller
         $useSSL = $request->boolean('useSSL');
 
 
-        $apiResult = $this->api->consumerUpdate($version, $appKey, $queueId, $dataMapping, $deviceId, $accountId, $useSSL);
+        $apiResult = $this->api->consumerUpdate($appKey, $queueId, $dataMapping, $deviceId, $accountId, $useSSL);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -232,19 +224,16 @@ class AMQPController extends Controller
      * Create Queue.
      *
      */
-    public function queueCreate(Request $request, float $version): JsonResponse
+    public function queueCreate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -290,7 +279,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $name = $request->string('name')->value();
@@ -316,7 +304,7 @@ class AMQPController extends Controller
         $useSSL = $request->boolean('useSSL');
 
 
-        $apiResult = $this->api->queueCreate($version, $appKey, $name, $deviceId, $accountId, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL);
+        $apiResult = $this->api->queueCreate($appKey, $name, $deviceId, $accountId, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -332,19 +320,16 @@ class AMQPController extends Controller
      * Delete Queue.
      *
      */
-    public function queueDelete(Request $request, float $version): JsonResponse
+    public function queueDelete(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'queueId' => [
                     'required',
                     'integer',
@@ -362,7 +347,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $queueId = $request->integer('queueId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -370,7 +354,7 @@ class AMQPController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->queueDelete($version, $queueId, $deviceId, $accountId);
+        $apiResult = $this->api->queueDelete($queueId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -386,19 +370,16 @@ class AMQPController extends Controller
      * Get Queue.
      *
      */
-    public function queueGet(Request $request, float $version): JsonResponse
+    public function queueGet(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -427,7 +408,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -443,7 +423,7 @@ class AMQPController extends Controller
         $virtualHost = $request->string('virtualHost')->value();
 
 
-        $apiResult = $this->api->queueGet($version, $deviceId, $accountId, $queueId, $appKey, $name, $hostname, $virtualHost);
+        $apiResult = $this->api->queueGet($deviceId, $accountId, $queueId, $appKey, $name, $hostname, $virtualHost);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -459,19 +439,16 @@ class AMQPController extends Controller
      * Publish Queue.
      *
      */
-    public function queuePublish(Request $request, float $version): JsonResponse
+    public function queuePublish(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'message' => [
                     'required',
                     'string',
@@ -498,7 +475,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $message = $request->string('message')->value();
 
         $queueId = $request->integer('queueId');
@@ -512,7 +488,7 @@ class AMQPController extends Controller
         $virtualHost = $request->string('virtualHost')->value();
 
 
-        $apiResult = $this->api->queuePublish($version, $message, $queueId, $appKey, $name, $hostname, $virtualHost);
+        $apiResult = $this->api->queuePublish($message, $queueId, $appKey, $name, $hostname, $virtualHost);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -528,19 +504,16 @@ class AMQPController extends Controller
      * Search Queue.
      *
      */
-    public function queueSearch(Request $request, float $version): JsonResponse
+    public function queueSearch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'queueId' => [
                     'integer',
                 ],
@@ -566,7 +539,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $queueId = $request->integer('queueId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -580,7 +552,7 @@ class AMQPController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->queueSearch($version, $queueId, $deviceId, $accountId, $name, $start, $limit);
+        $apiResult = $this->api->queueSearch($queueId, $deviceId, $accountId, $name, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -596,19 +568,16 @@ class AMQPController extends Controller
      * Update Queue.
      *
      */
-    public function queueUpdate(Request $request, float $version): JsonResponse
+    public function queueUpdate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'queueId' => [
                     'required',
                     'integer',
@@ -653,7 +622,6 @@ class AMQPController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $queueId = $request->integer('queueId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -679,7 +647,7 @@ class AMQPController extends Controller
         $useSSL = $request->boolean('useSSL');
 
 
-        $apiResult = $this->api->queueUpdate($version, $queueId, $deviceId, $accountId, $appKey, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL);
+        $apiResult = $this->api->queueUpdate($queueId, $deviceId, $accountId, $appKey, $workers, $analyticTags, $hostname, $port, $username, $password, $virtualHost, $useSSL);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QueueResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

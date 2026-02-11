@@ -28,7 +28,6 @@ interface WorkflowApiInterface {
      * Operation runWorkflow
      *
      * Run Workflow
-     * @param float $version
      * @param int $accountId
      * @param int $workflowId
      * @param null | int $skuId
@@ -37,7 +36,6 @@ interface WorkflowApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function runWorkflow(
-            float $version,
             int $accountId,
             int $workflowId,
             ?int $skuId,

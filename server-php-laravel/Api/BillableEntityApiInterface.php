@@ -28,7 +28,6 @@ interface BillableEntityApiInterface {
      * Operation createBillableEntity
      *
      * Create Billable
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $name
@@ -44,7 +43,6 @@ interface BillableEntityApiInterface {
      * @return \OpenAPI\Server\Model\BillableEntityResponse
      */
     public function createBillableEntity(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $name,
@@ -66,13 +64,11 @@ interface BillableEntityApiInterface {
      * Operation deleteBillableEntity
      *
      * Delete Billable
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteBillableEntity(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
     ):
@@ -84,7 +80,6 @@ interface BillableEntityApiInterface {
      * Operation getBillableEntity
      *
      * Get Billable
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | bool $includeCounts
@@ -92,7 +87,6 @@ interface BillableEntityApiInterface {
      * @return \OpenAPI\Server\Model\BillableEntityResponse
      */
     public function getBillableEntity(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?bool $includeCounts,
@@ -106,7 +100,6 @@ interface BillableEntityApiInterface {
      * Operation updateBillableEntity
      *
      * Update Billable
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $name
@@ -122,7 +115,6 @@ interface BillableEntityApiInterface {
      * @return \OpenAPI\Server\Model\BillableEntityResponse
      */
     public function updateBillableEntity(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $name,

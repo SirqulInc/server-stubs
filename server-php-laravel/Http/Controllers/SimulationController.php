@@ -47,19 +47,16 @@ class SimulationController extends Controller
      * Routing Simulation.
      *
      */
-    public function simulation(Request $request, float $version): JsonResponse
+    public function simulation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'data' => [
                     'required',
                     'string',
@@ -75,13 +72,12 @@ class SimulationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $data = $request->string('data')->value();
 
         $realTime = $request->boolean('realTime');
 
 
-        $apiResult = $this->api->simulation($version, $data, $realTime);
+        $apiResult = $this->api->simulation($data, $realTime);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

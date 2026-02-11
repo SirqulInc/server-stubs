@@ -28,7 +28,6 @@ interface ScoreApiInterface {
      * Operation createScore
      *
      * Create Score
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $points
@@ -42,7 +41,6 @@ interface ScoreApiInterface {
      * @return \OpenAPI\Server\Model\ScoreResponse
      */
     public function createScore(
-            float $version,
             int $accountId,
             string $appKey,
             int $points,
@@ -62,7 +60,6 @@ interface ScoreApiInterface {
      * Operation getScore
      *
      * Get Score
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | int $missionId
@@ -75,7 +72,6 @@ interface ScoreApiInterface {
      * @return \OpenAPI\Server\Model\ScoreResponse
      */
     public function getScore(
-            float $version,
             int $accountId,
             string $appKey,
             ?int $missionId,
@@ -94,7 +90,6 @@ interface ScoreApiInterface {
      * Operation searchScores
      *
      * Search Score
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | int $missionId
@@ -105,7 +100,6 @@ interface ScoreApiInterface {
      * @return \OpenAPI\Server\Model\ScoreResponse[]
      */
     public function searchScores(
-            float $version,
             int $accountId,
             string $appKey,
             ?int $missionId,

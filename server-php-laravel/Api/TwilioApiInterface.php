@@ -28,7 +28,6 @@ interface TwilioApiInterface {
      * Operation smsBuyOffer
      *
      * Buy Offer by SMS
-     * @param float $version
      * @param string $appKey
      * @param string $body
      * @param string $from
@@ -36,7 +35,6 @@ interface TwilioApiInterface {
      * @return \OpenAPI\Server\Model\TwiMLResponse
      */
     public function smsBuyOffer(
-            float $version,
             string $appKey,
             string $body,
             string $from,

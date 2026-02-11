@@ -28,7 +28,6 @@ interface ApplicationConfigApiInterface {
      * Operation createApplicationConfig
      *
      * Create AppConfig
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $configVersion
@@ -39,7 +38,6 @@ interface ApplicationConfigApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationConfigResponse
      */
     public function createApplicationConfig(
-            float $version,
             int $accountId,
             string $appKey,
             string $configVersion,
@@ -56,13 +54,11 @@ interface ApplicationConfigApiInterface {
      * Operation deleteApplicationConfig
      *
      * Delete AppConfig
-     * @param float $version
      * @param int $accountId
      * @param int $configId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteApplicationConfig(
-            float $version,
             int $accountId,
             int $configId,
     ):
@@ -74,13 +70,11 @@ interface ApplicationConfigApiInterface {
      * Operation getApplicationConfig
      *
      * Get AppConfig
-     * @param float $version
      * @param int $accountId
      * @param int $configId
      * @return \OpenAPI\Server\Model\ApplicationConfigResponse
      */
     public function getApplicationConfig(
-            float $version,
             int $accountId,
             int $configId,
     ):
@@ -92,7 +86,6 @@ interface ApplicationConfigApiInterface {
      * Operation getApplicationConfigByConfigVersion
      *
      * Get AppConfig by Version
-     * @param float $version
      * @param string $appKey
      * @param string $configVersion
      * @param null | int $retailerId
@@ -102,7 +95,6 @@ interface ApplicationConfigApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationConfigResponse
      */
     public function getApplicationConfigByConfigVersion(
-            float $version,
             string $appKey,
             string $configVersion,
             ?int $retailerId,
@@ -118,7 +110,6 @@ interface ApplicationConfigApiInterface {
      * Operation searchApplicationConfig
      *
      * Search AppConfigs
-     * @param float $version
      * @param int $accountId
      * @param null | string $appKey
      * @param null | int $retailerId
@@ -132,7 +123,6 @@ interface ApplicationConfigApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationConfigResponse[]
      */
     public function searchApplicationConfig(
-            float $version,
             int $accountId,
             ?string $appKey,
             ?int $retailerId,
@@ -152,7 +142,6 @@ interface ApplicationConfigApiInterface {
      * Operation updateApplicationConfig
      *
      * Update AppConfig
-     * @param float $version
      * @param int $accountId
      * @param int $configId
      * @param null | string $appKey
@@ -164,7 +153,6 @@ interface ApplicationConfigApiInterface {
      * @return \OpenAPI\Server\Model\ApplicationConfigResponse
      */
     public function updateApplicationConfig(
-            float $version,
             int $accountId,
             int $configId,
             ?string $appKey,

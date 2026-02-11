@@ -47,19 +47,16 @@ class WalletController extends Controller
      * Create Wallet Offers.
      *
      */
-    public function createOfferTransaction(Request $request, float $version): JsonResponse
+    public function createOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -100,7 +97,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -124,7 +120,7 @@ class WalletController extends Controller
         $status = $request->integer('status');
 
 
-        $apiResult = $this->api->createOfferTransaction($version, $deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey, $status);
+        $apiResult = $this->api->createOfferTransaction($deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey, $status);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -141,19 +137,16 @@ class WalletController extends Controller
      * Delete Wallet Offer.
      *
      */
-    public function deleteOfferTransaction(Request $request, float $version): JsonResponse
+    public function deleteOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'transactionId' => [
                     'required',
                     'integer',
@@ -171,7 +164,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $transactionId = $request->integer('transactionId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -179,7 +171,7 @@ class WalletController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteOfferTransaction($version, $transactionId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteOfferTransaction($transactionId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -195,19 +187,16 @@ class WalletController extends Controller
      * Get Wallet Offer.
      *
      */
-    public function getOfferTransaction(Request $request, float $version): JsonResponse
+    public function getOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'transactionId' => [
                     'required',
                     'integer',
@@ -235,7 +224,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $transactionId = $request->integer('transactionId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -251,7 +239,7 @@ class WalletController extends Controller
         $returnFullResponse = $request->boolean('returnFullResponse');
 
 
-        $apiResult = $this->api->getOfferTransaction($version, $transactionId, $deviceId, $accountId, $includeMission, $latitude, $longitude, $returnFullResponse);
+        $apiResult = $this->api->getOfferTransaction($transactionId, $deviceId, $accountId, $includeMission, $latitude, $longitude, $returnFullResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferTransactionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -267,19 +255,16 @@ class WalletController extends Controller
      * Preview Wallet Offers.
      *
      */
-    public function previewOfferTransaction(Request $request, float $version): JsonResponse
+    public function previewOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -317,7 +302,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -339,7 +323,7 @@ class WalletController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->previewOfferTransaction($version, $deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey);
+        $apiResult = $this->api->previewOfferTransaction($deviceId, $accountId, $offerId, $offerLocationId, $offerCart, $promoCode, $currencyType, $usePoints, $metaData, $appKey);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -356,19 +340,16 @@ class WalletController extends Controller
      * Search Wallet Offers.
      *
      */
-    public function searchOfferTransactions(Request $request, float $version): JsonResponse
+    public function searchOfferTransactions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -495,7 +476,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -579,7 +559,7 @@ class WalletController extends Controller
         $recurringExpirationBefore = $request->integer('recurringExpirationBefore');
 
 
-        $apiResult = $this->api->searchOfferTransactions($version, $deviceId, $accountId, $keyword, $retailerId, $retailerIds, $retailerLocationId, $retailerLocationIds, $excludeRetailerLocationIds, $offerId, $offerIds, $offerLocationId, $offerLocationIds, $offerType, $offerTypes, $specialOfferType, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $sortField, $descending, $start, $limit, $latitude, $longitude, $redeemableStartDate, $redeemableEndDate, $filterByParentOffer, $startedSince, $startedBefore, $endedSince, $endedBefore, $redeemed, $statuses, $reservationsOnly, $activeOnly, $returnFullResponse, $recurringStartedSince, $recurringStartedBefore, $recurringExpirationSince, $recurringExpirationBefore);
+        $apiResult = $this->api->searchOfferTransactions($deviceId, $accountId, $keyword, $retailerId, $retailerIds, $retailerLocationId, $retailerLocationIds, $excludeRetailerLocationIds, $offerId, $offerIds, $offerLocationId, $offerLocationIds, $offerType, $offerTypes, $specialOfferType, $specialOfferTypes, $categoryIds, $filterIds, $offerAudienceIds, $sortField, $descending, $start, $limit, $latitude, $longitude, $redeemableStartDate, $redeemableEndDate, $filterByParentOffer, $startedSince, $startedBefore, $endedSince, $endedBefore, $redeemed, $statuses, $reservationsOnly, $activeOnly, $returnFullResponse, $recurringStartedSince, $recurringStartedBefore, $recurringExpirationSince, $recurringExpirationBefore);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -596,19 +576,16 @@ class WalletController extends Controller
      * Update Wallet Offer.
      *
      */
-    public function updateOfferTransaction(Request $request, float $version): JsonResponse
+    public function updateOfferTransaction(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'transactionId' => [
                     'required',
                     'integer',
@@ -655,7 +632,6 @@ class WalletController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $transactionId = $request->integer('transactionId');
 
         $status = $request->integer('status');
@@ -683,7 +659,7 @@ class WalletController extends Controller
         $exceptionMembershipOfferIds = $request->string('exceptionMembershipOfferIds')->value();
 
 
-        $apiResult = $this->api->updateOfferTransaction($version, $transactionId, $status, $deviceId, $accountId, $offerLocationId, $currencyType, $usePoints, $appKey, $latitude, $longitude, $metaData, $returnFullResponse, $exceptionMembershipOfferIds);
+        $apiResult = $this->api->updateOfferTransaction($transactionId, $status, $deviceId, $accountId, $offerLocationId, $currencyType, $usePoints, $appKey, $latitude, $longitude, $metaData, $returnFullResponse, $exceptionMembershipOfferIds);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferTransactionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,12 +47,12 @@ class DependentController extends Controller
      * Create Dependent.
      *
      */
-    public function create(Request $request, float $version, int $accountId): JsonResponse
+    public function create(Request $request, int $accountId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'accountId' => $accountId,
+                    'accountId' => $accountId,
                 ],
                 $request->all(),
             ),
@@ -65,11 +65,10 @@ class DependentController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Account::class);
 
 
-        $apiResult = $this->api->create($version, $accountId, $body);
+        $apiResult = $this->api->create($accountId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -85,19 +84,16 @@ class DependentController extends Controller
      * Get dependent list of an account.
      *
      */
-    public function getDependents(Request $request, float $version, int $accountId): JsonResponse
+    public function getDependents(Request $request, int $accountId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'accountId' => $accountId,
+                    'accountId' => $accountId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -111,8 +107,7 @@ class DependentController extends Controller
 
 
 
-
-        $apiResult = $this->api->getDependents($version, $accountId);
+        $apiResult = $this->api->getDependents($accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -128,19 +123,16 @@ class DependentController extends Controller
      * Delete Dependent.
      *
      */
-    public function removeDependent(Request $request, float $version, int $accountId, int $dependentId): JsonResponse
+    public function removeDependent(Request $request, int $accountId, int $dependentId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'accountId' => $accountId,'dependentId' => $dependentId,
+                    'accountId' => $accountId,'dependentId' => $dependentId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -159,8 +151,7 @@ class DependentController extends Controller
 
 
 
-
-        $apiResult = $this->api->removeDependent($version, $accountId, $dependentId);
+        $apiResult = $this->api->removeDependent($accountId, $dependentId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);

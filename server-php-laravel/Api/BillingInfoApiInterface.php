@@ -28,7 +28,6 @@ interface BillingInfoApiInterface {
      * Operation addPaymentMethod
      *
      * Update Payment Method
-     * @param float $version
      * @param int $accountId
      * @param null | int $paymentMethodId
      * @param null | string $accountName
@@ -55,7 +54,6 @@ interface BillingInfoApiInterface {
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function addPaymentMethod(
-            float $version,
             int $accountId,
             ?int $paymentMethodId,
             ?string $accountName,
@@ -88,7 +86,6 @@ interface BillingInfoApiInterface {
      * Operation createPaymentMethod
      *
      * Create Payment Method
-     * @param float $version
      * @param int $accountId
      * @param null | string $accountName
      * @param null | string $firstName
@@ -117,7 +114,6 @@ interface BillingInfoApiInterface {
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function createPaymentMethod(
-            float $version,
             int $accountId,
             ?string $accountName,
             ?string $firstName,
@@ -152,7 +148,6 @@ interface BillingInfoApiInterface {
      * Operation createSmartContract
      *
      * Create Smart Contract
-     * @param float $version
      * @param int $accountId
      * @param string $tokenName
      * @param string $tokenSymbol
@@ -160,7 +155,6 @@ interface BillingInfoApiInterface {
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function createSmartContract(
-            float $version,
             int $accountId,
             string $tokenName,
             string $tokenSymbol,
@@ -174,14 +168,12 @@ interface BillingInfoApiInterface {
      * Operation getCryptoBalance
      *
      * Get Crypto Balances
-     * @param float $version
      * @param int $accountId
      * @param null | int $ownerAccountId
      * @param null | int $paymentMethodId
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function getCryptoBalance(
-            float $version,
             int $accountId,
             ?int $ownerAccountId,
             ?int $paymentMethodId,
@@ -194,14 +186,12 @@ interface BillingInfoApiInterface {
      * Operation getPaymentMethod
      *
      * Get Payment Method
-     * @param float $version
      * @param int $accountId
      * @param null | int $paymentMethodId
      * @param null | bool $getCurrentBalance
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function getPaymentMethod(
-            float $version,
             int $accountId,
             ?int $paymentMethodId,
             ?bool $getCurrentBalance,
@@ -214,7 +204,6 @@ interface BillingInfoApiInterface {
      * Operation searchPaymentMethod
      *
      * Search Payment Methods
-     * @param float $version
      * @param int $accountId
      * @param null | string $provider
      * @param null | string $type
@@ -226,7 +215,6 @@ interface BillingInfoApiInterface {
      * @return \OpenAPI\Server\Model\PaymentTypesResponse
      */
     public function searchPaymentMethod(
-            float $version,
             int $accountId,
             ?string $provider,
             ?string $type,

@@ -47,19 +47,16 @@ class NotificationController extends Controller
      * Create Notification Template.
      *
      */
-    public function createNotificationTemplate(Request $request, float $version): JsonResponse
+    public function createNotificationTemplate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -92,7 +89,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $conduit = $request->string('conduit')->value();
@@ -108,7 +104,7 @@ class NotificationController extends Controller
         $tags = $request->string('tags')->value();
 
 
-        $apiResult = $this->api->createNotificationTemplate($version, $accountId, $conduit, $title, $body, $appKey, $event, $tags);
+        $apiResult = $this->api->createNotificationTemplate($accountId, $conduit, $title, $body, $appKey, $event, $tags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationTemplateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -124,19 +120,16 @@ class NotificationController extends Controller
      * Create or update blocked notification settings.
      *
      */
-    public function createOrUpdateBlockedNotifications(Request $request, float $version): JsonResponse
+    public function createOrUpdateBlockedNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -155,7 +148,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $data = $request->string('data')->value();
@@ -163,7 +155,7 @@ class NotificationController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->createOrUpdateBlockedNotifications($version, $appKey, $data, $accountId);
+        $apiResult = $this->api->createOrUpdateBlockedNotifications($appKey, $data, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BlockedNotificationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -179,19 +171,16 @@ class NotificationController extends Controller
      * Delete Notification Template.
      *
      */
-    public function deleteNotificationTemplate(Request $request, float $version): JsonResponse
+    public function deleteNotificationTemplate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -207,13 +196,12 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $notificationTemplateId = $request->integer('notificationTemplateId');
 
 
-        $apiResult = $this->api->deleteNotificationTemplate($version, $accountId, $notificationTemplateId);
+        $apiResult = $this->api->deleteNotificationTemplate($accountId, $notificationTemplateId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationTemplateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -229,19 +217,16 @@ class NotificationController extends Controller
      * Get Notification Template.
      *
      */
-    public function getNotificationTemplate(Request $request, float $version): JsonResponse
+    public function getNotificationTemplate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -257,13 +242,12 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $notificationTemplateId = $request->integer('notificationTemplateId');
 
 
-        $apiResult = $this->api->getNotificationTemplate($version, $accountId, $notificationTemplateId);
+        $apiResult = $this->api->getNotificationTemplate($accountId, $notificationTemplateId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationTemplateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -279,19 +263,16 @@ class NotificationController extends Controller
      * Get Notifications.
      *
      */
-    public function getNotifications(Request $request, float $version): JsonResponse
+    public function getNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -360,7 +341,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -404,7 +384,7 @@ class NotificationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getNotifications($version, $deviceId, $accountId, $connectionAccountId, $appKey, $eventType, $contentIds, $contentTypes, $parentIds, $parentTypes, $actionCategory, $conduits, $keyword, $returnReadMessages, $markAsRead, $fromDate, $latitude, $longitude, $returnSent, $ignoreFlagged, $start, $limit);
+        $apiResult = $this->api->getNotifications($deviceId, $accountId, $connectionAccountId, $appKey, $eventType, $contentIds, $contentTypes, $parentIds, $parentTypes, $actionCategory, $conduits, $keyword, $returnReadMessages, $markAsRead, $fromDate, $latitude, $longitude, $returnSent, $ignoreFlagged, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationMessageListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -420,19 +400,16 @@ class NotificationController extends Controller
      * Register Notification Token.
      *
      */
-    public function registerNotificationToken(Request $request, float $version): JsonResponse
+    public function registerNotificationToken(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'token' => [
                     'required',
                     'string',
@@ -469,7 +446,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $token = $request->string('token')->value();
 
         $pushType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\RegisterNotificationTokenPushTypeParameter::class);
@@ -491,7 +467,7 @@ class NotificationController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->registerNotificationToken($version, $token, $pushType, $deviceId, $accountId, $environment, $appKey, $gameType, $active, $latitude, $longitude);
+        $apiResult = $this->api->registerNotificationToken($token, $pushType, $deviceId, $accountId, $environment, $appKey, $gameType, $active, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -507,19 +483,16 @@ class NotificationController extends Controller
      * Search on the user's blocked notification settings.
      *
      */
-    public function searchBlockedNotifications(Request $request, float $version): JsonResponse
+    public function searchBlockedNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -564,7 +537,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $accountId = $request->integer('accountId');
@@ -590,7 +562,7 @@ class NotificationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchBlockedNotifications($version, $appKey, $accountId, $searchTags, $events, $conduits, $customTypes, $contentTypes, $contentIds, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchBlockedNotifications($appKey, $accountId, $searchTags, $events, $conduits, $customTypes, $contentTypes, $contentIds, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BlockedNotificationResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -606,19 +578,16 @@ class NotificationController extends Controller
      * Search Notification Templates.
      *
      */
-    public function searchNotificationTemplate(Request $request, float $version): JsonResponse
+    public function searchNotificationTemplate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -664,7 +633,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -688,7 +656,7 @@ class NotificationController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchNotificationTemplate($version, $accountId, $sortField, $descending, $start, $limit, $appKey, $event, $conduit, $globalOnly, $reservedOnly, $keyword);
+        $apiResult = $this->api->searchNotificationTemplate($accountId, $sortField, $descending, $start, $limit, $appKey, $event, $conduit, $globalOnly, $reservedOnly, $keyword);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationTemplateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -704,19 +672,16 @@ class NotificationController extends Controller
      * Search for Recipients.
      *
      */
-    public function searchRecipients(Request $request, float $version): JsonResponse
+    public function searchRecipients(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -763,7 +728,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchRecipientsSortFieldParameter::class);
 
         $deviceId = $request->string('deviceId')->value();
@@ -791,7 +755,7 @@ class NotificationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchRecipients($version, $sortField, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $recipientAccountIds, $descending, $start, $limit);
+        $apiResult = $this->api->searchRecipients($sortField, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $recipientAccountIds, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -808,19 +772,16 @@ class NotificationController extends Controller
      * Search for Recipients (Counts/Grouped).
      *
      */
-    public function searchRecipientsCount(Request $request, float $version): JsonResponse
+    public function searchRecipientsCount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -864,7 +825,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -890,7 +850,7 @@ class NotificationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchRecipientsCount($version, $deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchRecipientsCount($deviceId, $accountId, $appKey, $conduit, $keyword, $audienceId, $audienceIds, $connectionGroupIds, $sortField, $descending, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationRecipientResponseListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -906,19 +866,16 @@ class NotificationController extends Controller
      * Send Batch Notifications.
      *
      */
-    public function sendBatchNotifications(Request $request, float $version): JsonResponse
+    public function sendBatchNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -956,7 +913,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -976,7 +932,7 @@ class NotificationController extends Controller
         $parentType = $request->string('parentType')->value();
 
 
-        $apiResult = $this->api->sendBatchNotifications($version, $accountId, $appKey, $customMessage, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType);
+        $apiResult = $this->api->sendBatchNotifications($accountId, $appKey, $customMessage, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -992,19 +948,16 @@ class NotificationController extends Controller
      * Send Custom Notifications.
      *
      */
-    public function sendCustomNotifications(Request $request, float $version): JsonResponse
+    public function sendCustomNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -1064,7 +1017,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1102,7 +1054,7 @@ class NotificationController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->sendCustomNotifications($version, $deviceId, $accountId, $receiverAccountIds, $includeFriendGroup, $appKey, $gameType, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType, $actionCategory, $subject, $customMessage, $friendOnlyAPNS, $latitude, $longitude);
+        $apiResult = $this->api->sendCustomNotifications($deviceId, $accountId, $receiverAccountIds, $includeFriendGroup, $appKey, $gameType, $conduit, $contentId, $contentName, $contentType, $parentId, $parentType, $actionCategory, $subject, $customMessage, $friendOnlyAPNS, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1118,19 +1070,16 @@ class NotificationController extends Controller
      * Update Notification Template.
      *
      */
-    public function updateNotificationTemplate(Request $request, float $version): JsonResponse
+    public function updateNotificationTemplate(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1155,7 +1104,6 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $notificationTemplateId = $request->integer('notificationTemplateId');
@@ -1167,7 +1115,7 @@ class NotificationController extends Controller
         $tags = $request->string('tags')->value();
 
 
-        $apiResult = $this->api->updateNotificationTemplate($version, $accountId, $notificationTemplateId, $title, $body, $tags);
+        $apiResult = $this->api->updateNotificationTemplate($accountId, $notificationTemplateId, $title, $body, $tags);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NotificationTemplateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

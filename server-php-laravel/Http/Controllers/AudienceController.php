@@ -47,19 +47,16 @@ class AudienceController extends Controller
      * Create Audience.
      *
      */
-    public function createAudience(Request $request, float $version): JsonResponse
+    public function createAudience(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -156,7 +153,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -216,7 +212,7 @@ class AudienceController extends Controller
         $uniqueName = $request->boolean('uniqueName');
 
 
-        $apiResult = $this->api->createAudience($version, $accountId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $startTimeOffset, $endTimeOffset, $sendSuggestion, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName);
+        $apiResult = $this->api->createAudience($accountId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $startTimeOffset, $endTimeOffset, $sendSuggestion, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -232,19 +228,16 @@ class AudienceController extends Controller
      * Delete Audience.
      *
      */
-    public function deleteAudience(Request $request, float $version): JsonResponse
+    public function deleteAudience(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -260,13 +253,12 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $audienceId = $request->integer('audienceId');
 
 
-        $apiResult = $this->api->deleteAudience($version, $accountId, $audienceId);
+        $apiResult = $this->api->deleteAudience($accountId, $audienceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -282,19 +274,16 @@ class AudienceController extends Controller
      * Get Age Groups.
      *
      */
-    public function getAgeGroups(Request $request, float $version): JsonResponse
+    public function getAgeGroups(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
             ],
         );
 
@@ -303,8 +292,7 @@ class AudienceController extends Controller
         }
 
 
-
-        $apiResult = $this->api->getAgeGroups($version);
+        $apiResult = $this->api->getAgeGroups();
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -321,19 +309,16 @@ class AudienceController extends Controller
      * Get Audience.
      *
      */
-    public function getAudience(Request $request, float $version): JsonResponse
+    public function getAudience(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -361,7 +346,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $audienceId = $request->integer('audienceId');
@@ -375,7 +359,7 @@ class AudienceController extends Controller
         $albumTypesForCount = $request->string('albumTypesForCount')->value();
 
 
-        $apiResult = $this->api->getAudience($version, $accountId, $audienceId, $appKey, $returnAccountCount, $returnAlbumCount, $albumTypesForCount);
+        $apiResult = $this->api->getAudience($accountId, $audienceId, $appKey, $returnAccountCount, $returnAlbumCount, $albumTypesForCount);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -391,19 +375,16 @@ class AudienceController extends Controller
      * Search Audiences.
      *
      */
-    public function getAudienceList(Request $request, float $version): JsonResponse
+    public function getAudienceList(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -467,7 +448,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $albumIds = $request->string('albumIds')->value();
@@ -507,7 +487,7 @@ class AudienceController extends Controller
         $albumTypesForCount = $request->string('albumTypesForCount')->value();
 
 
-        $apiResult = $this->api->getAudienceList($version, $accountId, $albumIds, $keyword, $keywordFields, $sortField, $descending, $start, $limit, $sendSuggestion, $activeOnly, $groupByGroupingId, $appKey, $returnGlobal, $exactKeyword, $audienceType, $audienceTypes, $returnAccountCount, $returnAlbumCount, $albumTypesForCount);
+        $apiResult = $this->api->getAudienceList($accountId, $albumIds, $keyword, $keywordFields, $sortField, $descending, $start, $limit, $sendSuggestion, $activeOnly, $groupByGroupingId, $appKey, $returnGlobal, $exactKeyword, $audienceType, $audienceTypes, $returnAccountCount, $returnAlbumCount, $albumTypesForCount);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -524,19 +504,16 @@ class AudienceController extends Controller
      * Get Devices.
      *
      */
-    public function getDevices(Request $request, float $version): JsonResponse
+    public function getDevices(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'includeInactive' => [
                     'required',
                     'boolean',
@@ -548,11 +525,10 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $includeInactive = $request->boolean('includeInactive');
 
 
-        $apiResult = $this->api->getDevices($version, $includeInactive);
+        $apiResult = $this->api->getDevices($includeInactive);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -569,19 +545,16 @@ class AudienceController extends Controller
      * Get Experiences.
      *
      */
-    public function getExperiences(Request $request, float $version): JsonResponse
+    public function getExperiences(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
             ],
         );
 
@@ -590,8 +563,7 @@ class AudienceController extends Controller
         }
 
 
-
-        $apiResult = $this->api->getExperiences($version);
+        $apiResult = $this->api->getExperiences();
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -607,19 +579,16 @@ class AudienceController extends Controller
      * Get GroupedAudiences.
      *
      */
-    public function getGroupedAudiences(Request $request, float $version): JsonResponse
+    public function getGroupedAudiences(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -635,13 +604,12 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $audienceGroupingId = $request->string('audienceGroupingId')->value();
 
 
-        $apiResult = $this->api->getGroupedAudiences($version, $accountId, $audienceGroupingId);
+        $apiResult = $this->api->getGroupedAudiences($accountId, $audienceGroupingId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -657,19 +625,16 @@ class AudienceController extends Controller
      * List Suggestions by Audience.
      *
      */
-    public function listByAccount(Request $request, float $version): JsonResponse
+    public function listByAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -689,7 +654,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $limit = $request->integer('limit');
@@ -697,7 +661,7 @@ class AudienceController extends Controller
         $suggestionType = $request->string('suggestionType')->value();
 
 
-        $apiResult = $this->api->listByAccount($version, $accountId, $limit, $suggestionType);
+        $apiResult = $this->api->listByAccount($accountId, $limit, $suggestionType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -713,19 +677,16 @@ class AudienceController extends Controller
      * List Offers by Audience.
      *
      */
-    public function listByAudience(Request $request, float $version): JsonResponse
+    public function listByAudience(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'limit' => [
                     'required',
                     'integer',
@@ -750,7 +711,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $limit = $request->integer('limit');
 
         $gender = $request->string('gender')->value();
@@ -764,7 +724,7 @@ class AudienceController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->listByAudience($version, $limit, $gender, $age, $categoryIds, $latitude, $longitude);
+        $apiResult = $this->api->listByAudience($limit, $gender, $age, $categoryIds, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -780,19 +740,16 @@ class AudienceController extends Controller
      * List Sent Suggestions.
      *
      */
-    public function listLastestByAccount(Request $request, float $version): JsonResponse
+    public function listLastestByAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -812,7 +769,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $timeframe = $request->integer('timeframe');
@@ -820,7 +776,7 @@ class AudienceController extends Controller
         $suggestionType = $request->string('suggestionType')->value();
 
 
-        $apiResult = $this->api->listLastestByAccount($version, $accountId, $timeframe, $suggestionType);
+        $apiResult = $this->api->listLastestByAccount($accountId, $timeframe, $suggestionType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OfferListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -836,19 +792,16 @@ class AudienceController extends Controller
      * Send Suggestions.
      *
      */
-    public function sendByAccount(Request $request, float $version): JsonResponse
+    public function sendByAccount(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -866,7 +819,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $latitude = $request->float('latitude');
@@ -874,7 +826,7 @@ class AudienceController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->sendByAccount($version, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->sendByAccount($accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -890,19 +842,16 @@ class AudienceController extends Controller
      * Update Audience.
      *
      */
-    public function updateAudience(Request $request, float $version): JsonResponse
+    public function updateAudience(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1005,7 +954,6 @@ class AudienceController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $audienceId = $request->integer('audienceId');
@@ -1069,7 +1017,7 @@ class AudienceController extends Controller
         $uniqueName = $request->boolean('uniqueName');
 
 
-        $apiResult = $this->api->updateAudience($version, $accountId, $audienceId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $active, $sendSuggestion, $startTimeOffset, $endTimeOffset, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName);
+        $apiResult = $this->api->updateAudience($accountId, $audienceId, $name, $description, $searchTags, $gender, $ageGroups, $categoryIds, $applicationIds, $gameExperienceLevel, $devices, $deviceIds, $deviceVersions, $locations, $radius, $active, $sendSuggestion, $startTimeOffset, $endTimeOffset, $associateDescription, $associateType, $associateId, $groupingId, $metaData, $visibility, $audienceType, $useOrder, $cohortRegionsData, $appKey, $trilaterationTypes, $uniqueName);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

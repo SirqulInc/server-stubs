@@ -47,19 +47,16 @@ class ThemeDescriptorController extends Controller
      * Create/Update Theme.
      *
      */
-    public function addOrUpdateThemeDescriptor(Request $request, float $version): JsonResponse
+    public function addOrUpdateThemeDescriptor(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'publicRead' => [
                     'required',
                     'boolean',
@@ -152,7 +149,6 @@ class ThemeDescriptorController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $publicRead = $request->boolean('publicRead');
 
         $publicWrite = $request->boolean('publicWrite');
@@ -208,7 +204,7 @@ class ThemeDescriptorController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->addOrUpdateThemeDescriptor($version, $publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $completeWithDefaultValues, $deviceId, $accountId, $gameType, $themeDescriptorId, $title, $description, $connectionIdsToAdd, $connectionGroupIdsToAdd, $appVersion, $colorValueJson, $stringReplacerJson, $customJsonObjects, $iconImage, $sceneAtlasImage, $bgImage, $bgSound, $musicSelection, $locationDescription, $latitude, $longitude);
+        $apiResult = $this->api->addOrUpdateThemeDescriptor($publicRead, $publicWrite, $publicDelete, $publicAdd, $visibility, $includeFriendGroup, $completeWithDefaultValues, $deviceId, $accountId, $gameType, $themeDescriptorId, $title, $description, $connectionIdsToAdd, $connectionGroupIdsToAdd, $appVersion, $colorValueJson, $stringReplacerJson, $customJsonObjects, $iconImage, $sceneAtlasImage, $bgImage, $bgSound, $musicSelection, $locationDescription, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ThemeDescriptorResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -224,19 +220,16 @@ class ThemeDescriptorController extends Controller
      * Get Theme.
      *
      */
-    public function getThemeDescriptor(Request $request, float $version): JsonResponse
+    public function getThemeDescriptor(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'themeDescriptorId' => [
                     'required',
                     'integer',
@@ -261,7 +254,6 @@ class ThemeDescriptorController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $themeDescriptorId = $request->integer('themeDescriptorId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -275,7 +267,7 @@ class ThemeDescriptorController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getThemeDescriptor($version, $themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude);
+        $apiResult = $this->api->getThemeDescriptor($themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PurchaseItemListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -291,19 +283,16 @@ class ThemeDescriptorController extends Controller
      * Search Themes.
      *
      */
-    public function getThemeDescriptors(Request $request, float $version): JsonResponse
+    public function getThemeDescriptors(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'filter' => [
                     'required',
                     'string',
@@ -368,7 +357,6 @@ class ThemeDescriptorController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $filter = $request->string('filter')->value();
 
         $sortField = $request->string('sortField')->value();
@@ -406,7 +394,7 @@ class ThemeDescriptorController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getThemeDescriptors($version, $filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $appVersion, $latitude, $longitude);
+        $apiResult = $this->api->getThemeDescriptors($filter, $sortField, $descending, $start, $limit, $deviceId, $accountId, $gameType, $contestType, $ownerId, $q, $keyword, $i, $l, $dateCreated, $appVersion, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PurchaseItemListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -422,19 +410,16 @@ class ThemeDescriptorController extends Controller
      * Delete Theme.
      *
      */
-    public function removeThemeDescriptor(Request $request, float $version): JsonResponse
+    public function removeThemeDescriptor(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'themeDescriptorId' => [
                     'required',
                     'integer',
@@ -459,7 +444,6 @@ class ThemeDescriptorController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $themeDescriptorId = $request->integer('themeDescriptorId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -473,7 +457,7 @@ class ThemeDescriptorController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeThemeDescriptor($version, $themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude);
+        $apiResult = $this->api->removeThemeDescriptor($themeDescriptorId, $deviceId, $accountId, $gameType, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

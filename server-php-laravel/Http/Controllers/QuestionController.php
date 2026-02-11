@@ -47,19 +47,16 @@ class QuestionController extends Controller
      * Create Question.
      *
      */
-    public function createQuestion(Request $request, float $version): JsonResponse
+    public function createQuestion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -106,7 +103,6 @@ class QuestionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $question = $request->string('question')->value();
@@ -130,7 +126,7 @@ class QuestionController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->createQuestion($version, $accountId, $question, $answers, $active, $allocateTickets, $ticketCount, $tags, $videoURL, $assetId, $ticketType, $points);
+        $apiResult = $this->api->createQuestion($accountId, $question, $answers, $active, $allocateTickets, $ticketCount, $tags, $videoURL, $assetId, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QuestionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -146,19 +142,16 @@ class QuestionController extends Controller
      * Delete Question.
      *
      */
-    public function deleteQuestion(Request $request, float $version): JsonResponse
+    public function deleteQuestion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'questionId' => [
                     'required',
                     'integer',
@@ -174,13 +167,12 @@ class QuestionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $questionId = $request->integer('questionId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteQuestion($version, $questionId, $accountId);
+        $apiResult = $this->api->deleteQuestion($questionId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -196,19 +188,16 @@ class QuestionController extends Controller
      * Get Question.
      *
      */
-    public function getQuestion(Request $request, float $version): JsonResponse
+    public function getQuestion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'questionId' => [
                     'required',
                     'integer',
@@ -224,13 +213,12 @@ class QuestionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $questionId = $request->integer('questionId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getQuestion($version, $questionId, $accountId);
+        $apiResult = $this->api->getQuestion($questionId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QuestionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -246,19 +234,16 @@ class QuestionController extends Controller
      * Search Questions.
      *
      */
-    public function searchQuestions(Request $request, float $version): JsonResponse
+    public function searchQuestions(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -293,7 +278,6 @@ class QuestionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $sortField = $request->string('sortField')->value();
@@ -309,7 +293,7 @@ class QuestionController extends Controller
         $keyword = $request->string('keyword')->value();
 
 
-        $apiResult = $this->api->searchQuestions($version, $accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword);
+        $apiResult = $this->api->searchQuestions($accountId, $sortField, $descending, $activeOnly, $start, $limit, $keyword);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -326,19 +310,16 @@ class QuestionController extends Controller
      * Update Question.
      *
      */
-    public function updateQuestion(Request $request, float $version): JsonResponse
+    public function updateQuestion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'questionId' => [
                     'required',
                     'integer',
@@ -385,7 +366,6 @@ class QuestionController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $questionId = $request->integer('questionId');
 
         $accountId = $request->integer('accountId');
@@ -411,7 +391,7 @@ class QuestionController extends Controller
         $points = $request->integer('points');
 
 
-        $apiResult = $this->api->updateQuestion($version, $questionId, $accountId, $ticketCount, $question, $answers, $tags, $videoURL, $assetId, $active, $allocateTickets, $ticketType, $points);
+        $apiResult = $this->api->updateQuestion($questionId, $accountId, $ticketCount, $question, $answers, $tags, $videoURL, $assetId, $active, $allocateTickets, $ticketType, $points);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\QuestionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

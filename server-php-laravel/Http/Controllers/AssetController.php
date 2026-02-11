@@ -47,19 +47,16 @@ class AssetController extends Controller
      * Download Asset.
      *
      */
-    public function assetDownload(Request $request, float $version, string $filename): JsonResponse
+    public function assetDownload(Request $request, string $filename): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'filename' => $filename,
+                    'filename' => $filename,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'filename' => [
                     'required',
                     'regex:/.+/',
@@ -74,8 +71,7 @@ class AssetController extends Controller
 
 
 
-
-        $apiResult = $this->api->assetDownload($version, $filename);
+        $apiResult = $this->api->assetDownload($filename);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -91,19 +87,16 @@ class AssetController extends Controller
      * Convert Offer to Creative.
      *
      */
-    public function assetMorph(Request $request, float $version): JsonResponse
+    public function assetMorph(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'offerId' => [
                     'required',
                     'integer',
@@ -133,7 +126,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $offerId = $request->integer('offerId');
 
         $adSize = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateApplicationPlacementSizeParameter::class);
@@ -149,7 +141,7 @@ class AssetController extends Controller
         $template = $request->string('template')->value();
 
 
-        $apiResult = $this->api->assetMorph($version, $offerId, $adSize, $creativeId, $width, $height, $backgroundSize, $template);
+        $apiResult = $this->api->assetMorph($offerId, $adSize, $creativeId, $width, $height, $backgroundSize, $template);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssetShortResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -165,19 +157,16 @@ class AssetController extends Controller
      * Create Asset.
      *
      */
-    public function createAsset(Request $request, float $version): JsonResponse
+    public function createAsset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'boolean',
                 ],
@@ -285,7 +274,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $deviceId = $request->string('deviceId')->value();
@@ -355,7 +343,7 @@ class AssetController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->createAsset($version, $returnNulls, $deviceId, $accountId, $albumId, $collectionId, $addToDefaultAlbum, $addToMediaLibrary, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $app, $appKey, $searchTags, $latitude, $longitude);
+        $apiResult = $this->api->createAsset($returnNulls, $deviceId, $accountId, $albumId, $collectionId, $addToDefaultAlbum, $addToMediaLibrary, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $app, $appKey, $searchTags, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssetResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -371,19 +359,16 @@ class AssetController extends Controller
      * Delete Asset.
      *
      */
-    public function deleteAsset(Request $request, float $version): JsonResponse
+    public function deleteAsset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'assetId' => [
                     'required',
                     'string',
@@ -405,7 +390,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $assetId = $request->string('assetId')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -417,7 +401,7 @@ class AssetController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->deleteAsset($version, $assetId, $deviceId, $accountId, $latitude, $longitude);
+        $apiResult = $this->api->deleteAsset($assetId, $deviceId, $accountId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -433,19 +417,16 @@ class AssetController extends Controller
      * Get Asset.
      *
      */
-    public function getAsset(Request $request, float $version): JsonResponse
+    public function getAsset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'assetId' => [
                     'required',
                     'integer',
@@ -466,7 +447,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $assetId = $request->integer('assetId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -476,7 +456,7 @@ class AssetController extends Controller
         $noteDescending = $request->boolean('noteDescending');
 
 
-        $apiResult = $this->api->getAsset($version, $assetId, $deviceId, $accountId, $noteDescending);
+        $apiResult = $this->api->getAsset($assetId, $deviceId, $accountId, $noteDescending);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AssetFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -492,19 +472,16 @@ class AssetController extends Controller
      * Remove Asset from Collection.
      *
      */
-    public function removeAsset(Request $request, float $version): JsonResponse
+    public function removeAsset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'assetId' => [
                     'required',
                     'string',
@@ -535,7 +512,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $assetId = $request->string('assetId')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -553,7 +529,7 @@ class AssetController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->removeAsset($version, $assetId, $deviceId, $accountId, $albumId, $collectionId, $removeFromDefaultAlbums, $latitude, $longitude);
+        $apiResult = $this->api->removeAsset($assetId, $deviceId, $accountId, $albumId, $collectionId, $removeFromDefaultAlbums, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -569,19 +545,16 @@ class AssetController extends Controller
      * Search Assets.
      *
      */
-    public function searchAssets(Request $request, float $version): JsonResponse
+    public function searchAssets(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -661,7 +634,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -711,7 +683,7 @@ class AssetController extends Controller
         $assignedAccountId = $request->integer('assignedAccountId');
 
 
-        $apiResult = $this->api->searchAssets($version, $deviceId, $accountId, $albumIds, $assetIds, $appKey, $mediaType, $mimeType, $keyword, $versionCode, $versionName, $updatedSince, $updatedBefore, $sortField, $descending, $searchMediaLibrary, $filterByBillable, $activeOnly, $returnApp, $start, $limit, $searchMode, $assetType, $approvalStatus, $assignedAccountId);
+        $apiResult = $this->api->searchAssets($deviceId, $accountId, $albumIds, $assetIds, $appKey, $mediaType, $mimeType, $keyword, $versionCode, $versionName, $updatedSince, $updatedBefore, $sortField, $descending, $searchMediaLibrary, $filterByBillable, $activeOnly, $returnApp, $start, $limit, $searchMode, $assetType, $approvalStatus, $assignedAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -728,19 +700,16 @@ class AssetController extends Controller
      * Update Asset.
      *
      */
-    public function updateAsset(Request $request, float $version): JsonResponse
+    public function updateAsset(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'assetId' => [
                     'required',
                     'integer',
@@ -840,7 +809,6 @@ class AssetController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $assetId = $request->integer('assetId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -904,7 +872,7 @@ class AssetController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->updateAsset($version, $assetId, $deviceId, $accountId, $albumId, $attachedAssetId, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $searchTags, $appKey, $latitude, $longitude);
+        $apiResult = $this->api->updateAsset($assetId, $deviceId, $accountId, $albumId, $attachedAssetId, $versionCode, $versionName, $metaData, $caption, $assetType, $approvalStatus, $assignedAccountId, $media, $mediaUrl, $mediaString, $mediaStringFileName, $mediaStringContentType, $mediaHeight, $mediaWidth, $attachedMedia, $attachedMediaUrl, $attachedMediaString, $attachedMediaStringFileName, $attachedMediaStringContentType, $attachedMediaHeight, $attachedMediaWidth, $locationDescription, $searchTags, $appKey, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

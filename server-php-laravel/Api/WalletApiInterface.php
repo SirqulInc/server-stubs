@@ -28,7 +28,6 @@ interface WalletApiInterface {
      * Operation createOfferTransaction
      *
      * Create Wallet Offers
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $offerId
@@ -43,7 +42,6 @@ interface WalletApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse[]
      */
     public function createOfferTransaction(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $offerId,
@@ -64,14 +62,12 @@ interface WalletApiInterface {
      * Operation deleteOfferTransaction
      *
      * Delete Wallet Offer
-     * @param float $version
      * @param int $transactionId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteOfferTransaction(
-            float $version,
             int $transactionId,
             ?string $deviceId,
             ?int $accountId,
@@ -84,7 +80,6 @@ interface WalletApiInterface {
      * Operation getOfferTransaction
      *
      * Get Wallet Offer
-     * @param float $version
      * @param int $transactionId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -95,7 +90,6 @@ interface WalletApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse
      */
     public function getOfferTransaction(
-            float $version,
             int $transactionId,
             ?string $deviceId,
             ?int $accountId,
@@ -112,7 +106,6 @@ interface WalletApiInterface {
      * Operation previewOfferTransaction
      *
      * Preview Wallet Offers
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $offerId
@@ -126,7 +119,6 @@ interface WalletApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse[]
      */
     public function previewOfferTransaction(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $offerId,
@@ -146,7 +138,6 @@ interface WalletApiInterface {
      * Operation searchOfferTransactions
      *
      * Search Wallet Offers
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $keyword
@@ -191,7 +182,6 @@ interface WalletApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse[]
      */
     public function searchOfferTransactions(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $keyword,
@@ -242,7 +232,6 @@ interface WalletApiInterface {
      * Operation updateOfferTransaction
      *
      * Update Wallet Offer
-     * @param float $version
      * @param int $transactionId
      * @param int $status
      * @param null | string $deviceId
@@ -259,7 +248,6 @@ interface WalletApiInterface {
      * @return \OpenAPI\Server\Model\OfferTransactionResponse
      */
     public function updateOfferTransaction(
-            float $version,
             int $transactionId,
             int $status,
             ?string $deviceId,

@@ -47,19 +47,16 @@ class AlbumController extends Controller
      * Create Album.
      *
      */
-    public function addAlbumCollection(Request $request, float $version): JsonResponse
+    public function addAlbumCollection(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'title' => [
                     'required',
                     'string',
@@ -209,7 +206,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $title = $request->string('title')->value();
 
         $coverAssetNullable = $request->boolean('coverAssetNullable');
@@ -303,7 +299,7 @@ class AlbumController extends Controller
         $linkedObjectId = $request->integer('linkedObjectId');
 
 
-        $apiResult = $this->api->addAlbumCollection($version, $title, $coverAssetNullable, $includeCoverInAssetList, $publicRead, $publicWrite, $publicDelete, $publicAdd, $anonymous, $deviceId, $accountId, $assetsToAdd, $media, $mediaURL, $assetId, $attachedMedia, $attachedMediaURL, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $latitude, $longitude, $locationDescription, $visibility, $gameType, $appKey, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $approvalStatus, $linkedObjectType, $linkedObjectId);
+        $apiResult = $this->api->addAlbumCollection($title, $coverAssetNullable, $includeCoverInAssetList, $publicRead, $publicWrite, $publicDelete, $publicAdd, $anonymous, $deviceId, $accountId, $assetsToAdd, $media, $mediaURL, $assetId, $attachedMedia, $attachedMediaURL, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $latitude, $longitude, $locationDescription, $visibility, $gameType, $appKey, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $approvalStatus, $linkedObjectType, $linkedObjectId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SearchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -319,19 +315,16 @@ class AlbumController extends Controller
      * Add Album Users.
      *
      */
-    public function addAlbumUsers(Request $request, float $version): JsonResponse
+    public function addAlbumUsers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -371,7 +364,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $includeFriendGroup = $request->boolean('includeFriendGroup');
@@ -393,7 +385,7 @@ class AlbumController extends Controller
         $connectionGroups = $request->string('connectionGroups')->value();
 
 
-        $apiResult = $this->api->addAlbumUsers($version, $albumId, $includeFriendGroup, $deviceId, $accountId, $read, $write, $delete, $add, $connections, $connectionGroups);
+        $apiResult = $this->api->addAlbumUsers($albumId, $includeFriendGroup, $deviceId, $accountId, $read, $write, $delete, $add, $connections, $connectionGroups);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -409,19 +401,16 @@ class AlbumController extends Controller
      * Approve Album.
      *
      */
-    public function approveAlbum(Request $request, float $version): JsonResponse
+    public function approveAlbum(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -444,7 +433,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -456,7 +444,7 @@ class AlbumController extends Controller
         $verified = $request->boolean('verified');
 
 
-        $apiResult = $this->api->approveAlbum($version, $albumId, $deviceId, $accountId, $approvalStatus, $verified);
+        $apiResult = $this->api->approveAlbum($albumId, $deviceId, $accountId, $approvalStatus, $verified);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -472,19 +460,16 @@ class AlbumController extends Controller
      * Get Album.
      *
      */
-    public function getAlbumCollection(Request $request, float $version): JsonResponse
+    public function getAlbumCollection(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -521,7 +506,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $albumId = $request->integer('albumId');
@@ -541,7 +525,7 @@ class AlbumController extends Controller
         $audiencePreviewSize = $request->integer('audiencePreviewSize');
 
 
-        $apiResult = $this->api->getAlbumCollection($version, $returnNulls, $albumId, $deviceId, $accountId, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize);
+        $apiResult = $this->api->getAlbumCollection($returnNulls, $albumId, $deviceId, $accountId, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -557,19 +541,16 @@ class AlbumController extends Controller
      * Leave Album.
      *
      */
-    public function leaveAlbum(Request $request, float $version): JsonResponse
+    public function leaveAlbum(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -587,7 +568,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -595,7 +575,7 @@ class AlbumController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->leaveAlbum($version, $albumId, $deviceId, $accountId);
+        $apiResult = $this->api->leaveAlbum($albumId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -611,19 +591,16 @@ class AlbumController extends Controller
      * Delete Album.
      *
      */
-    public function removeAlbum(Request $request, float $version): JsonResponse
+    public function removeAlbum(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -641,7 +618,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -649,7 +625,7 @@ class AlbumController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->removeAlbum($version, $albumId, $deviceId, $accountId);
+        $apiResult = $this->api->removeAlbum($albumId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -665,19 +641,16 @@ class AlbumController extends Controller
      * Remove Album Users.
      *
      */
-    public function removeAlbumUsers(Request $request, float $version): JsonResponse
+    public function removeAlbumUsers(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -705,7 +678,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $removeFriendGroup = $request->boolean('removeFriendGroup');
@@ -719,7 +691,7 @@ class AlbumController extends Controller
         $connectionGroups = $request->string('connectionGroups')->value();
 
 
-        $apiResult = $this->api->removeAlbumUsers($version, $albumId, $removeFriendGroup, $deviceId, $accountId, $connections, $connectionGroups);
+        $apiResult = $this->api->removeAlbumUsers($albumId, $removeFriendGroup, $deviceId, $accountId, $connections, $connectionGroups);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -735,19 +707,16 @@ class AlbumController extends Controller
      * Search Albums.
      *
      */
-    public function searchAlbums(Request $request, float $version): JsonResponse
+    public function searchAlbums(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'filter' => [
                     'required',
                     'string',
@@ -949,7 +918,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $filter = $request->string('filter')->value();
 
         $albumTypeId = $request->integer('albumTypeId');
@@ -1071,7 +1039,7 @@ class AlbumController extends Controller
         $generateAlbums = $request->boolean('generateAlbums');
 
 
-        $apiResult = $this->api->searchAlbums($version, $filter, $albumTypeId, $subType, $includeInactive, $sortField, $descending, $start, $limit, $range, $includeLiked, $includeFavorited, $includePermissions, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize, $deviceId, $accountId, $connectionAccountId, $ownerId, $albumIds, $excludeAlbumIds, $mediaId, $keyword, $albumType, $limitPerAlbumType, $dateCreated, $updatedSince, $updatedBefore, $createdSince, $createdBefore, $startedSince, $startedBefore, $endedSince, $endedBefore, $latitude, $longitude, $appKey, $categoryIds, $categoryFilterIds, $audienceIds, $excludeAudienceIds, $includeCompletable, $includeRating, $searchMode, $stackSearch, $stackWindowSize, $minStackPerPage, $stackPaginationIdentifier, $stackDetails, $flagCountMinimum, $removeFlaggedContent, $verifiedFilter, $linkedObjectType, $linkedObjectId, $orderAudienceId, $ignoreDefaultAppFilter, $searchExpression, $generateAlbums);
+        $apiResult = $this->api->searchAlbums($filter, $albumTypeId, $subType, $includeInactive, $sortField, $descending, $start, $limit, $range, $includeLiked, $includeFavorited, $includePermissions, $likePreviewSize, $assetPreviewSize, $notePreviewSize, $connectionPreviewSize, $audiencePreviewSize, $deviceId, $accountId, $connectionAccountId, $ownerId, $albumIds, $excludeAlbumIds, $mediaId, $keyword, $albumType, $limitPerAlbumType, $dateCreated, $updatedSince, $updatedBefore, $createdSince, $createdBefore, $startedSince, $startedBefore, $endedSince, $endedBefore, $latitude, $longitude, $appKey, $categoryIds, $categoryFilterIds, $audienceIds, $excludeAudienceIds, $includeCompletable, $includeRating, $searchMode, $stackSearch, $stackWindowSize, $minStackPerPage, $stackPaginationIdentifier, $stackDetails, $flagCountMinimum, $removeFlaggedContent, $verifiedFilter, $linkedObjectType, $linkedObjectId, $orderAudienceId, $ignoreDefaultAppFilter, $searchExpression, $generateAlbums);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -1088,19 +1056,16 @@ class AlbumController extends Controller
      * Update Album.
      *
      */
-    public function updateAlbumCollection(Request $request, float $version): JsonResponse
+    public function updateAlbumCollection(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'albumId' => [
                     'required',
                     'integer',
@@ -1241,7 +1206,6 @@ class AlbumController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $albumId = $request->integer('albumId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1333,7 +1297,7 @@ class AlbumController extends Controller
         $indexNow = $request->boolean('indexNow');
 
 
-        $apiResult = $this->api->updateAlbumCollection($version, $albumId, $deviceId, $accountId, $assetsToAdd, $assetsToRemove, $assetId, $media, $mediaURL, $active, $title, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $publicRead, $publicWrite, $publicDelete, $publicAdd, $latitude, $longitude, $locationDescription, $visibility, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $anonymous, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $linkedObjectType, $linkedObjectId, $indexNow);
+        $apiResult = $this->api->updateAlbumCollection($albumId, $deviceId, $accountId, $assetsToAdd, $assetsToRemove, $assetId, $media, $mediaURL, $active, $title, $startDate, $endDate, $tags, $description, $albumType, $albumTypeId, $subType, $publicRead, $publicWrite, $publicDelete, $publicAdd, $latitude, $longitude, $locationDescription, $visibility, $cellPhone, $streetAddress, $streetAddress2, $city, $state, $postalCode, $fullAddress, $anonymous, $metaData, $categoryIds, $categoryFilterIds, $audienceIds, $audienceIdsToAdd, $audienceIdsToRemove, $includeAllAppUsersAsMembers, $includeAudiencesAsMembers, $audienceOperator, $linkedObjectType, $linkedObjectId, $indexNow);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AlbumResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

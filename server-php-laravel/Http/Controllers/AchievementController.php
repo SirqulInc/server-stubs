@@ -42,24 +42,21 @@ class AchievementController extends Controller
     }
 
     /**
-     * Operation apiVersionAchievementTierSearchPost
+     * Operation achievementTierSearchPost
      *
      * Searches an Achievement Tier.
      *
      */
-    public function apiVersionAchievementTierSearchPost(Request $request, float $version): JsonResponse
+    public function achievementTierSearchPost(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -100,7 +97,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -124,7 +120,7 @@ class AchievementController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->apiVersionAchievementTierSearchPost($version, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType, $sortField, $descending, $descendingGoal, $start, $limit);
+        $apiResult = $this->api->achievementTierSearchPost($deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType, $sortField, $descending, $descendingGoal, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementTierResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -140,19 +136,16 @@ class AchievementController extends Controller
      * Create Achievement.
      *
      */
-    public function createAchievement(Request $request, float $version): JsonResponse
+    public function createAchievement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -201,7 +194,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $title = $request->string('title')->value();
@@ -229,7 +221,7 @@ class AchievementController extends Controller
         $triggerDefinition = $request->string('triggerDefinition')->value();
 
 
-        $apiResult = $this->api->createAchievement($version, $appKey, $title, $deviceId, $accountId, $analyticsTag, $description, $rankType, $rankIncrement, $minIncrement, $maxIncrement, $validate, $active, $triggerDefinition);
+        $apiResult = $this->api->createAchievement($appKey, $title, $deviceId, $accountId, $analyticsTag, $description, $rankType, $rankIncrement, $minIncrement, $maxIncrement, $validate, $active, $triggerDefinition);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -245,19 +237,16 @@ class AchievementController extends Controller
      * Create Achievement Tier.
      *
      */
-    public function createAchievementTier(Request $request, float $version): JsonResponse
+    public function createAchievementTier(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'achievementId' => [
                     'required',
                     'integer',
@@ -309,7 +298,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $achievementId = $request->integer('achievementId');
 
         $scoreAllInstances = $request->boolean('scoreAllInstances');
@@ -339,7 +327,7 @@ class AchievementController extends Controller
         $gameObjectId = $request->integer('gameObjectId');
 
 
-        $apiResult = $this->api->createAchievementTier($version, $achievementId, $scoreAllInstances, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId);
+        $apiResult = $this->api->createAchievementTier($achievementId, $scoreAllInstances, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementTierResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -355,19 +343,16 @@ class AchievementController extends Controller
      * Delete Achievement.
      *
      */
-    public function deleteAchievement(Request $request, float $version): JsonResponse
+    public function deleteAchievement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'achievementId' => [
                     'required',
                     'integer',
@@ -382,13 +367,12 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $achievementId = $request->integer('achievementId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteAchievement($version, $achievementId, $accountId);
+        $apiResult = $this->api->deleteAchievement($achievementId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -404,19 +388,16 @@ class AchievementController extends Controller
      * Delete Achievement Tier.
      *
      */
-    public function deleteAchievementTier(Request $request, float $version): JsonResponse
+    public function deleteAchievementTier(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'achievementTierId' => [
                     'required',
                     'integer',
@@ -431,13 +412,12 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $achievementTierId = $request->integer('achievementTierId');
 
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteAchievementTier($version, $achievementTierId, $accountId);
+        $apiResult = $this->api->deleteAchievementTier($achievementTierId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -453,19 +433,16 @@ class AchievementController extends Controller
      * Get Achievement.
      *
      */
-    public function getAchievement(Request $request, float $version): JsonResponse
+    public function getAchievement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'achievementId' => [
                     'required',
                     'integer',
@@ -486,7 +463,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $achievementId = $request->integer('achievementId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -496,7 +472,7 @@ class AchievementController extends Controller
         $achievementType = $request->string('achievementType')->value();
 
 
-        $apiResult = $this->api->getAchievement($version, $achievementId, $deviceId, $accountId, $achievementType);
+        $apiResult = $this->api->getAchievement($achievementId, $deviceId, $accountId, $achievementType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementTierResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -512,19 +488,16 @@ class AchievementController extends Controller
      * Gets an achievement tier.
      *
      */
-    public function getAchievementTier(Request $request, float $version): JsonResponse
+    public function getAchievementTier(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -540,13 +513,12 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $achievementTierId = $request->integer('achievementTierId');
 
 
-        $apiResult = $this->api->getAchievementTier($version, $accountId, $achievementTierId);
+        $apiResult = $this->api->getAchievementTier($accountId, $achievementTierId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementTierResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -562,19 +534,16 @@ class AchievementController extends Controller
      * Get Achievement Progress.
      *
      */
-    public function getUserAchievements(Request $request, float $version): JsonResponse
+    public function getUserAchievements(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'returnNulls' => [
                     'required',
                     'boolean',
@@ -616,7 +585,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $returnNulls = $request->boolean('returnNulls');
 
         $appKey = $request->string('appKey')->value();
@@ -640,7 +608,7 @@ class AchievementController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->getUserAchievements($version, $returnNulls, $appKey, $includeUndiscovered, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $rankType, $achievementType, $latitude, $longitude);
+        $apiResult = $this->api->getUserAchievements($returnNulls, $appKey, $includeUndiscovered, $deviceId, $accountId, $connectionAccountEmail, $connectionAccountId, $rankType, $achievementType, $latitude, $longitude);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -657,19 +625,16 @@ class AchievementController extends Controller
      * List Achievement Tags.
      *
      */
-    public function listAchievementTags(Request $request, float $version): JsonResponse
+    public function listAchievementTags(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'string',
                 ],
@@ -680,11 +645,10 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->listAchievementTags($version, $appKey);
+        $apiResult = $this->api->listAchievementTags($appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -700,19 +664,16 @@ class AchievementController extends Controller
      * List Achievements.
      *
      */
-    public function listAchievements(Request $request, float $version): JsonResponse
+    public function listAchievements(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                 ],
@@ -757,7 +718,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ListAchievementsSortFieldParameter::class);
 
         $descending = $request->boolean('descending');
@@ -781,7 +741,7 @@ class AchievementController extends Controller
         $rankType = $request->string('rankType')->value();
 
 
-        $apiResult = $this->api->listAchievements($version, $sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType);
+        $apiResult = $this->api->listAchievements($sortField, $descending, $start, $limit, $activeOnly, $deviceId, $accountId, $appKey, $keyword, $achievementType, $rankType);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -798,19 +758,16 @@ class AchievementController extends Controller
      * Search Achievements.
      *
      */
-    public function searchAchievements(Request $request, float $version): JsonResponse
+    public function searchAchievements(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -860,7 +817,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $sortField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchAchievementsSortFieldParameter::class);
@@ -886,7 +842,7 @@ class AchievementController extends Controller
         $rankType = $request->string('rankType')->value();
 
 
-        $apiResult = $this->api->searchAchievements($version, $appKey, $sortField, $descending, $includeTiers, $includeInactiveTiers, $start, $limit, $deviceId, $accountId, $keyword, $achievementType, $rankType);
+        $apiResult = $this->api->searchAchievements($appKey, $sortField, $descending, $includeTiers, $includeInactiveTiers, $start, $limit, $deviceId, $accountId, $keyword, $achievementType, $rankType);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -903,19 +859,16 @@ class AchievementController extends Controller
      * Update Achievement.
      *
      */
-    public function updateAchievement(Request $request, float $version): JsonResponse
+    public function updateAchievement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -968,7 +921,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -1000,7 +952,7 @@ class AchievementController extends Controller
         $triggerDefinition = $request->string('triggerDefinition')->value();
 
 
-        $apiResult = $this->api->updateAchievement($version, $deviceId, $accountId, $achievementId, $analyticsTag, $title, $description, $rankType, $rankIncrement, $minIncrement, $nullMinIncrement, $maxIncrement, $nullMaxIncrement, $validate, $active, $triggerDefinition);
+        $apiResult = $this->api->updateAchievement($deviceId, $accountId, $achievementId, $analyticsTag, $title, $description, $rankType, $rankIncrement, $minIncrement, $nullMinIncrement, $maxIncrement, $nullMaxIncrement, $validate, $active, $triggerDefinition);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1016,19 +968,16 @@ class AchievementController extends Controller
      * Update Achievement Tier.
      *
      */
-    public function updateAchievementTier(Request $request, float $version): JsonResponse
+    public function updateAchievementTier(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'achievementTierId' => [
                     'required',
                     'integer',
@@ -1079,7 +1028,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $achievementTierId = $request->integer('achievementTierId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -1109,7 +1057,7 @@ class AchievementController extends Controller
         $scoreAllInstances = $request->boolean('scoreAllInstances');
 
 
-        $apiResult = $this->api->updateAchievementTier($version, $achievementTierId, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreAllInstances);
+        $apiResult = $this->api->updateAchievementTier($achievementTierId, $deviceId, $accountId, $icon, $iconAssetId, $title, $description, $goalCount, $missionId, $gameId, $packId, $gameLevelId, $gameObjectId, $scoreAllInstances);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AchievementTierResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1125,19 +1073,16 @@ class AchievementController extends Controller
      * Update Achievement Progress.
      *
      */
-    public function updateUserAchievement(Request $request, float $version): JsonResponse
+    public function updateUserAchievement(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1170,7 +1115,6 @@ class AchievementController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $achievementId = $request->integer('achievementId');
@@ -1188,7 +1132,7 @@ class AchievementController extends Controller
         $returnProgress = $request->boolean('returnProgress');
 
 
-        $apiResult = $this->api->updateUserAchievement($version, $accountId, $achievementId, $tag, $customId, $increment, $startDate, $endDate, $returnProgress);
+        $apiResult = $this->api->updateUserAchievement($accountId, $achievementId, $tag, $customId, $increment, $startDate, $endDate, $returnProgress);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

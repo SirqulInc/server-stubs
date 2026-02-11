@@ -47,19 +47,16 @@ class StopController extends Controller
      * Get Stop.
      *
      */
-    public function getStop(Request $request, float $version, int $id): JsonResponse
+    public function getStop(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -73,8 +70,7 @@ class StopController extends Controller
 
 
 
-
-        $apiResult = $this->api->getStop($version, $id);
+        $apiResult = $this->api->getStop($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Stop) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -90,12 +86,12 @@ class StopController extends Controller
      * Update Stop.
      *
      */
-    public function updateStop(Request $request, float $version, int $id): JsonResponse
+    public function updateStop(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -108,11 +104,10 @@ class StopController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Stop::class);
 
 
-        $apiResult = $this->api->updateStop($version, $id, $body);
+        $apiResult = $this->api->updateStop($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Stop) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

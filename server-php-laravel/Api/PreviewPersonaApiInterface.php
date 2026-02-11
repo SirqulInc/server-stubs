@@ -28,7 +28,6 @@ interface PreviewPersonaApiInterface {
      * Operation createPersona
      *
      * Create Persona
-     * @param float $version
      * @param int $accountId
      * @param string $title
      * @param null | string $previewAccounts
@@ -41,7 +40,6 @@ interface PreviewPersonaApiInterface {
      * @return \OpenAPI\Server\Model\PreviewPersonaResponse
      */
     public function createPersona(
-            float $version,
             int $accountId,
             string $title,
             ?string $previewAccounts,
@@ -60,13 +58,11 @@ interface PreviewPersonaApiInterface {
      * Operation deletePersona
      *
      * Delete Persona
-     * @param float $version
      * @param int $accountId
      * @param int $personaId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deletePersona(
-            float $version,
             int $accountId,
             int $personaId,
     ):
@@ -78,13 +74,11 @@ interface PreviewPersonaApiInterface {
      * Operation getPersonaList
      *
      * Get Persona
-     * @param float $version
      * @param int $accountId
      * @param int $personaId
      * @return \OpenAPI\Server\Model\PreviewPersonaResponse
      */
     public function getPersonaList(
-            float $version,
             int $accountId,
             int $personaId,
     ):
@@ -96,14 +90,12 @@ interface PreviewPersonaApiInterface {
      * Operation searchPersona
      *
      * Search Personas
-     * @param float $version
      * @param int $accountId
      * @param int $start
      * @param int $limit
      * @return \OpenAPI\Server\Model\PreviewPersonaResponse
      */
     public function searchPersona(
-            float $version,
             int $accountId,
             int $start,
             int $limit,
@@ -116,7 +108,6 @@ interface PreviewPersonaApiInterface {
      * Operation updatePersona
      *
      * Update Persona
-     * @param float $version
      * @param int $accountId
      * @param int $personaId
      * @param null | string $title
@@ -131,7 +122,6 @@ interface PreviewPersonaApiInterface {
      * @return \OpenAPI\Server\Model\PreviewPersonaResponse
      */
     public function updatePersona(
-            float $version,
             int $accountId,
             int $personaId,
             ?string $title,

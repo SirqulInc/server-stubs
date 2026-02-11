@@ -28,7 +28,6 @@ interface RetailerApiInterface {
      * Operation createRetailer
      *
      * Create Retailer
-     * @param float $version
      * @param string $name
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -65,7 +64,6 @@ interface RetailerApiInterface {
      * @return \OpenAPI\Server\Model\RetailerFullResponse
      */
     public function createRetailer(
-            float $version,
             string $name,
             ?string $deviceId,
             ?int $accountId,
@@ -108,14 +106,12 @@ interface RetailerApiInterface {
      * Operation deleteRetailer
      *
      * Delete Retailer
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $retailerId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteRetailer(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $retailerId,
@@ -128,7 +124,6 @@ interface RetailerApiInterface {
      * Operation getRetailer
      *
      * Get Retailer
-     * @param float $version
      * @param int $retailerId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -136,7 +131,6 @@ interface RetailerApiInterface {
      * @return \OpenAPI\Server\Model\RetailerFullResponse
      */
     public function getRetailer(
-            float $version,
             int $retailerId,
             ?string $deviceId,
             ?int $accountId,
@@ -150,7 +144,6 @@ interface RetailerApiInterface {
      * Operation getRetailers
      *
      * Search Retailers
-     * @param float $version
      * @param \OpenAPI\Server\Model\AddAlbumCollectionVisibilityParameter $visibility
      * @param \OpenAPI\Server\Model\GetRetailersSortFieldParameter $sortField
      * @param bool $descending
@@ -168,7 +161,6 @@ interface RetailerApiInterface {
      * @return \OpenAPI\Server\Model\RetailerResponse[]
      */
     public function getRetailers(
-            float $version,
             \OpenAPI\Server\Model\AddAlbumCollectionVisibilityParameter $visibility,
             \OpenAPI\Server\Model\GetRetailersSortFieldParameter $sortField,
             bool $descending,
@@ -192,7 +184,6 @@ interface RetailerApiInterface {
      * Operation retailerLoginCheck
      *
      * Login Retailer
-     * @param float $version
      * @param string $username
      * @param string $password
      * @param null | string $deviceId
@@ -202,7 +193,6 @@ interface RetailerApiInterface {
      * @return \OpenAPI\Server\Model\AccountLoginResponse
      */
     public function retailerLoginCheck(
-            float $version,
             string $username,
             string $password,
             ?string $deviceId,
@@ -218,7 +208,6 @@ interface RetailerApiInterface {
      * Operation updateRetailer
      *
      * Update Retailer
-     * @param float $version
      * @param int $retailerId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -254,7 +243,6 @@ interface RetailerApiInterface {
      * @return \OpenAPI\Server\Model\RetailerFullResponse
      */
     public function updateRetailer(
-            float $version,
             int $retailerId,
             ?string $deviceId,
             ?int $accountId,

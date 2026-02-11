@@ -28,7 +28,6 @@ interface AccountApiInterface {
      * Operation accountLocationSearch
      *
      * Search Accounts by Location
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $q
@@ -66,7 +65,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\UserLocationSearchResponse
      */
     public function accountLocationSearch(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $q,
@@ -110,7 +108,6 @@ interface AccountApiInterface {
      * Operation blockAccount
      *
      * Block Account
-     * @param float $version
      * @param int $accountIdBeingBlocked
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -121,7 +118,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function blockAccount(
-            float $version,
             int $accountIdBeingBlocked,
             ?string $deviceId,
             ?int $accountId,
@@ -138,7 +134,6 @@ interface AccountApiInterface {
      * Operation createAccount
      *
      * Create Account
-     * @param float $version
      * @param string $username
      * @param string $password
      * @param null | string $name
@@ -214,7 +209,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\AccountLoginResponse
      */
     public function createAccount(
-            float $version,
             string $username,
             string $password,
             ?string $name,
@@ -296,7 +290,6 @@ interface AccountApiInterface {
      * Operation editAccount
      *
      * Update Account
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $connectionAccountId
@@ -382,7 +375,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileInfoResponse
      */
     public function editAccount(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $connectionAccountId,
@@ -474,7 +466,6 @@ interface AccountApiInterface {
      * Operation editUsername
      *
      * Update Username and Email
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $emailAddress
@@ -482,7 +473,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function editUsername(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $emailAddress,
@@ -496,7 +486,6 @@ interface AccountApiInterface {
      * Operation getAccount
      *
      * Get Account
-     * @param float $version
      * @param null | bool $returnNulls
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -512,7 +501,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function getAccount(
-            float $version,
             ?bool $returnNulls,
             ?string $deviceId,
             ?int $accountId,
@@ -534,7 +522,6 @@ interface AccountApiInterface {
      * Operation getProfileAssets
      *
      * Get Profile Assets
-     * @param float $version
      * @param null | bool $returnNulls
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -552,7 +539,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\AssetListResponse
      */
     public function getProfileAssets(
-            float $version,
             ?bool $returnNulls,
             ?string $deviceId,
             ?int $accountId,
@@ -576,7 +562,6 @@ interface AccountApiInterface {
      * Operation getReferralList
      *
      * Search Accounts
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @param null | string $retrieveType
@@ -591,7 +576,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\NoContent200
      */
     public function getReferralList(
-            float $version,
             ?int $accountId,
             ?string $appKey,
             ?string $retrieveType,
@@ -612,7 +596,6 @@ interface AccountApiInterface {
      * Operation getSettings
      *
      * Get Account Settings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -620,7 +603,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\UserSettingsResponse
      */
     public function getSettings(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,
@@ -634,7 +616,6 @@ interface AccountApiInterface {
      * Operation loginDelegate
      *
      * Login as Account
-     * @param float $version
      * @param string $accessToken
      * @param string $appKey
      * @param null | string $deviceId
@@ -649,7 +630,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function loginDelegate(
-            float $version,
             string $accessToken,
             string $appKey,
             ?string $deviceId,
@@ -670,7 +650,6 @@ interface AccountApiInterface {
      * Operation loginGeneral
      *
      * Login Account
-     * @param float $version
      * @param string $accessToken
      * @param string $networkUID
      * @param string $appKey
@@ -687,7 +666,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function loginGeneral(
-            float $version,
             string $accessToken,
             string $networkUID,
             string $appKey,
@@ -710,7 +688,6 @@ interface AccountApiInterface {
      * Operation loginUsername
      *
      * Login Account (Username)
-     * @param float $version
      * @param string $username
      * @param string $password
      * @param null | string $deviceId
@@ -724,7 +701,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function loginUsername(
-            float $version,
             string $username,
             string $password,
             ?string $deviceId,
@@ -744,7 +720,6 @@ interface AccountApiInterface {
      * Operation logout
      *
      * Logout Account
-     * @param float $version
      * @param null | string $deviceId
      * @param null | string $deviceIdType
      * @param null | int $accountId
@@ -753,7 +728,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function logout(
-            float $version,
             ?string $deviceId,
             ?string $deviceIdType,
             ?int $accountId,
@@ -768,7 +742,6 @@ interface AccountApiInterface {
      * Operation mergeAccount
      *
      * Merge Account
-     * @param float $version
      * @param int $mergeAccountId
      * @param string $appKey
      * @param null | string $deviceId
@@ -776,7 +749,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function mergeAccount(
-            float $version,
             int $mergeAccountId,
             string $appKey,
             ?string $deviceId,
@@ -790,7 +762,6 @@ interface AccountApiInterface {
      * Operation passwordChange
      *
      * Update Password
-     * @param float $version
      * @param int $accountId
      * @param string $oldPassword
      * @param string $newPassword
@@ -798,7 +769,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function passwordChange(
-            float $version,
             int $accountId,
             string $oldPassword,
             string $newPassword,
@@ -812,14 +782,12 @@ interface AccountApiInterface {
      * Operation passwordReset
      *
      * Reset Password
-     * @param float $version
      * @param string $token
      * @param string $password
      * @param string $confirm
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function passwordReset(
-            float $version,
             string $token,
             string $password,
             string $confirm,
@@ -832,7 +800,6 @@ interface AccountApiInterface {
      * Operation requestPasswordReset
      *
      * Request Password Reset
-     * @param float $version
      * @param string $email
      * @param null | string $from
      * @param null | string $domain
@@ -841,7 +808,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function requestPasswordReset(
-            float $version,
             string $email,
             ?string $from,
             ?string $domain,
@@ -856,12 +822,10 @@ interface AccountApiInterface {
      * Operation requestValidateAccount
      *
      * Send Validation Request
-     * @param float $version
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function requestValidateAccount(
-            float $version,
             int $accountId,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -872,7 +836,6 @@ interface AccountApiInterface {
      * Operation searchAccounts
      *
      * Search Accounts
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $keyword
@@ -894,7 +857,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse[]
      */
     public function searchAccounts(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $keyword,
@@ -922,7 +884,6 @@ interface AccountApiInterface {
      * Operation secureLogin
      *
      * Login Account (Encrypted Username)
-     * @param float $version
      * @param string $username
      * @param string $password
      * @param string $gameType
@@ -935,7 +896,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function secureLogin(
-            float $version,
             string $username,
             string $password,
             string $gameType,
@@ -954,7 +914,6 @@ interface AccountApiInterface {
      * Operation secureSignup
      *
      * Create Account (Encrypted Username)
-     * @param float $version
      * @param string $deviceId
      * @param string $username
      * @param string $password
@@ -1019,7 +978,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\ProfileInfoResponse
      */
     public function secureSignup(
-            float $version,
             string $deviceId,
             string $username,
             string $password,
@@ -1090,7 +1048,6 @@ interface AccountApiInterface {
      * Operation setMatchToken
      *
      * Save Match Token
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $matchToken
@@ -1101,7 +1058,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function setMatchToken(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $matchToken,
@@ -1118,7 +1074,6 @@ interface AccountApiInterface {
      * Operation updateActveStatus
      *
      * Update Account Active Status
-     * @param float $version
      * @param int $accountId
      * @param int $connectionAccountId
      * @param bool $active
@@ -1127,7 +1082,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateActveStatus(
-            float $version,
             int $accountId,
             int $connectionAccountId,
             bool $active,
@@ -1142,7 +1096,6 @@ interface AccountApiInterface {
      * Operation updateLocation
      *
      * Update Location
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $latitude
@@ -1151,7 +1104,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function updateLocation(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $latitude,
@@ -1166,7 +1118,6 @@ interface AccountApiInterface {
      * Operation updateSettings
      *
      * Update Account Settings
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $blockedNotifications
@@ -1182,7 +1133,6 @@ interface AccountApiInterface {
      * @return \OpenAPI\Server\Model\UserSettingsResponse
      */
     public function updateSettings(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $blockedNotifications,
@@ -1204,12 +1154,10 @@ interface AccountApiInterface {
      * Operation validateAccountSignup
      *
      * Save Validation Status
-     * @param float $version
      * @param string $token
      * @return \OpenAPI\Server\Model\AccountLoginResponse
      */
     public function validateAccountSignup(
-            float $version,
             string $token,
     ):
         \OpenAPI\Server\Model\AccountLoginResponse
@@ -1220,12 +1168,10 @@ interface AccountApiInterface {
      * Operation validatePasswordReset
      *
      * Validate Password Reset Token
-     * @param float $version
      * @param string $token
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function validatePasswordReset(
-            float $version,
             string $token,
     ):
         \OpenAPI\Server\Model\SirqulResponse

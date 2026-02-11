@@ -47,19 +47,16 @@ class ReservationController extends Controller
      * Create Reservation.
      *
      */
-    public function createReservation(Request $request, float $version): JsonResponse
+    public function createReservation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -91,7 +88,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -109,7 +105,7 @@ class ReservationController extends Controller
         $metaData = $request->string('metaData')->value();
 
 
-        $apiResult = $this->api->createReservation($version, $deviceId, $accountId, $startDate, $endDate, $offerId, $offerLocationId, $appKey, $metaData);
+        $apiResult = $this->api->createReservation($deviceId, $accountId, $startDate, $endDate, $offerId, $offerLocationId, $appKey, $metaData);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -125,19 +121,16 @@ class ReservationController extends Controller
      * Delete Reservation.
      *
      */
-    public function deleteReservation(Request $request, float $version): JsonResponse
+    public function deleteReservation(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'reservationId' => [
                     'required',
                     'integer',
@@ -155,7 +148,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $reservationId = $request->integer('reservationId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -163,7 +155,7 @@ class ReservationController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deleteReservation($version, $reservationId, $deviceId, $accountId);
+        $apiResult = $this->api->deleteReservation($reservationId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -179,19 +171,16 @@ class ReservationController extends Controller
      * Update Availability.
      *
      */
-    public function reservableAvailability(Request $request, float $version): JsonResponse
+    public function reservableAvailability(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'reservableId' => [
                     'required',
                     'integer',
@@ -218,7 +207,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $reservableId = $request->integer('reservableId');
 
         $reservableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter::class);
@@ -232,7 +220,7 @@ class ReservationController extends Controller
         $availabilitySummary = $request->string('availabilitySummary')->value();
 
 
-        $apiResult = $this->api->reservableAvailability($version, $reservableId, $reservableType, $deviceId, $accountId, $availability, $availabilitySummary);
+        $apiResult = $this->api->reservableAvailability($reservableId, $reservableType, $deviceId, $accountId, $availability, $availabilitySummary);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -249,19 +237,16 @@ class ReservationController extends Controller
      * Search Availability.
      *
      */
-    public function searchAvailability(Request $request, float $version): JsonResponse
+    public function searchAvailability(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'reservableId' => [
                     'required',
                     'integer',
@@ -294,7 +279,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $reservableId = $request->integer('reservableId');
 
         $reservableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter::class);
@@ -312,7 +296,7 @@ class ReservationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchAvailability($version, $reservableId, $reservableType, $deviceId, $accountId, $startDate, $endDate, $start, $limit);
+        $apiResult = $this->api->searchAvailability($reservableId, $reservableType, $deviceId, $accountId, $startDate, $endDate, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -329,19 +313,16 @@ class ReservationController extends Controller
      * Search Reservations.
      *
      */
-    public function searchReservations(Request $request, float $version): JsonResponse
+    public function searchReservations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -381,7 +362,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $appKey = $request->string('appKey')->value();
@@ -405,7 +385,7 @@ class ReservationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchReservations($version, $deviceId, $appKey, $accountId, $filterAccountId, $reservableId, $reservableType, $keyword, $startDate, $endDate, $start, $limit);
+        $apiResult = $this->api->searchReservations($deviceId, $appKey, $accountId, $filterAccountId, $reservableId, $reservableType, $keyword, $startDate, $endDate, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -422,19 +402,16 @@ class ReservationController extends Controller
      * Search Schedule.
      *
      */
-    public function searchSchedule(Request $request, float $version): JsonResponse
+    public function searchSchedule(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'reservableId' => [
                     'required',
                     'integer',
@@ -466,7 +443,6 @@ class ReservationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $reservableId = $request->integer('reservableId');
 
         $reservableType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SearchRatingIndexesRatableTypeParameter::class);
@@ -482,7 +458,7 @@ class ReservationController extends Controller
         $timeBucketMins = $request->integer('timeBucketMins');
 
 
-        $apiResult = $this->api->searchSchedule($version, $reservableId, $reservableType, $startDate, $endDate, $deviceId, $accountId, $timeBucketMins);
+        $apiResult = $this->api->searchSchedule($reservableId, $reservableType, $startDate, $endDate, $deviceId, $accountId, $timeBucketMins);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

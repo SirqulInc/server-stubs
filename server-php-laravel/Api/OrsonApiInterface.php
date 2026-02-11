@@ -28,7 +28,6 @@ interface OrsonApiInterface {
      * Operation addMovie
      *
      * Add Movie
-     * @param float $version
      * @param int $accountId
      * @param string $movieName
      * @param null | string $thirdPartyAccountId
@@ -39,7 +38,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiAddMovieResponse
      */
     public function addMovie(
-            float $version,
             int $accountId,
             string $movieName,
             ?string $thirdPartyAccountId,
@@ -56,7 +54,6 @@ interface OrsonApiInterface {
      * Operation aiDocs
      *
      * Search Docs
-     * @param float $version
      * @param int $accountId
      * @param string $doc
      * @param null | bool $returnTopics
@@ -65,7 +62,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiProtoResponse
      */
     public function aiDocs(
-            float $version,
             int $accountId,
             string $doc,
             ?bool $returnTopics,
@@ -80,7 +76,6 @@ interface OrsonApiInterface {
      * Operation aiFindImages
      *
      * Find images
-     * @param float $version
      * @param int $accountId
      * @param string $text
      * @param null | string $parseFlag
@@ -89,7 +84,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiProtoResponse
      */
     public function aiFindImages(
-            float $version,
             int $accountId,
             string $text,
             ?string $parseFlag,
@@ -104,7 +98,6 @@ interface OrsonApiInterface {
      * Operation aiTags
      *
      * Search Tags
-     * @param float $version
      * @param int $accountId
      * @param string $tags
      * @param null | string $conditional
@@ -113,7 +106,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiProtoResponse
      */
     public function aiTags(
-            float $version,
             int $accountId,
             string $tags,
             ?string $conditional,
@@ -128,7 +120,6 @@ interface OrsonApiInterface {
      * Operation aiText
      *
      * Search Text
-     * @param float $version
      * @param int $accountId
      * @param string $terms
      * @param null | string $conditional
@@ -137,7 +128,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiProtoResponse
      */
     public function aiText(
-            float $version,
             int $accountId,
             string $terms,
             ?string $conditional,
@@ -152,7 +142,6 @@ interface OrsonApiInterface {
      * Operation batch
      *
      * Batch Analysis
-     * @param float $version
      * @param int $accountId
      * @param null | string $thirdPartyAccountId
      * @param null | int $limit
@@ -163,7 +152,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiBatchResponse
      */
     public function batch(
-            float $version,
             int $accountId,
             ?string $thirdPartyAccountId,
             ?int $limit,
@@ -180,13 +168,11 @@ interface OrsonApiInterface {
      * Operation createInstantEpisode
      *
      * Creates an instant episode
-     * @param float $version
      * @param int $accountId
      * @param string $data
      * @return \OpenAPI\Server\Model\OrsonEpisodeResponse
      */
     public function createInstantEpisode(
-            float $version,
             int $accountId,
             string $data,
     ):
@@ -198,7 +184,6 @@ interface OrsonApiInterface {
      * Operation createVoiceCanvas
      *
      * Create VoiceCanvas images
-     * @param float $version
      * @param int $accountId
      * @param string $dimensions
      * @param null | string $thirdPartyAccountId
@@ -211,7 +196,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiVoiceCanvasResponse
      */
     public function createVoiceCanvas(
-            float $version,
             int $accountId,
             string $dimensions,
             ?string $thirdPartyAccountId,
@@ -230,7 +214,6 @@ interface OrsonApiInterface {
      * Operation emotion
      *
      * Detect emotions
-     * @param float $version
      * @param int $accountId
      * @param null | string $thirdPartyAccountId
      * @param null | \Illuminate\Http\UploadedFile $file
@@ -239,7 +222,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiEmotionsResponse
      */
     public function emotion(
-            float $version,
             int $accountId,
             ?string $thirdPartyAccountId,
             ?\Illuminate\Http\UploadedFile $file,
@@ -254,13 +236,11 @@ interface OrsonApiInterface {
      * Operation getAddMovieResult
      *
      * Get Add Movie Result
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiAddMovieResponse
      */
     public function getAddMovieResult(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -272,13 +252,11 @@ interface OrsonApiInterface {
      * Operation getBatch
      *
      * Get Batch Analysis Results
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiBatchResponse
      */
     public function getBatch(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -290,13 +268,11 @@ interface OrsonApiInterface {
      * Operation getEmotion
      *
      * Get Emotion Results
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiEmotionsResponse
      */
     public function getEmotion(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -308,13 +284,11 @@ interface OrsonApiInterface {
      * Operation getEpisodeStatus
      *
      * Check episode status
-     * @param float $version
      * @param int $episodeId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonEpisodeResponse
      */
     public function getEpisodeStatus(
-            float $version,
             int $episodeId,
             int $accountId,
     ):
@@ -326,13 +300,11 @@ interface OrsonApiInterface {
      * Operation getRenderStatus
      *
      * Check episode status
-     * @param float $version
      * @param string $renderId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonRenderResponse
      */
     public function getRenderStatus(
-            float $version,
             string $renderId,
             int $accountId,
     ):
@@ -344,13 +316,11 @@ interface OrsonApiInterface {
      * Operation getSTT
      *
      * Get Speach to Text Result
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiSTTResponse
      */
     public function getSTT(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -362,13 +332,11 @@ interface OrsonApiInterface {
      * Operation getTTS
      *
      * Get Text to Speach Result
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiTTSResponse
      */
     public function getTTS(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -380,13 +348,11 @@ interface OrsonApiInterface {
      * Operation getTechTune
      *
      * Get TechTune Results
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiTechTuneResponse
      */
     public function getTechTune(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -398,13 +364,11 @@ interface OrsonApiInterface {
      * Operation getTopics
      *
      * Get Topics
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiTopicsResponse
      */
     public function getTopics(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -416,13 +380,11 @@ interface OrsonApiInterface {
      * Operation getVoiceCanvas
      *
      * Get VoiceCanvas images
-     * @param float $version
      * @param string $requestId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\OrsonAiVoiceCanvasResponse
      */
     public function getVoiceCanvas(
-            float $version,
             string $requestId,
             int $accountId,
     ):
@@ -434,13 +396,11 @@ interface OrsonApiInterface {
      * Operation startVideoRender
      *
      * Starts a StoryStitch video render
-     * @param float $version
      * @param int $accountId
      * @param string $data
      * @return \OpenAPI\Server\Model\OrsonRenderResponse
      */
     public function startVideoRender(
-            float $version,
             int $accountId,
             string $data,
     ):
@@ -452,7 +412,6 @@ interface OrsonApiInterface {
      * Operation stt
      *
      * Speach to Text
-     * @param float $version
      * @param int $accountId
      * @param null | string $thirdPartyAccountId
      * @param null | string $sourceLanguage
@@ -463,7 +422,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiSTTResponse
      */
     public function stt(
-            float $version,
             int $accountId,
             ?string $thirdPartyAccountId,
             ?string $sourceLanguage,
@@ -480,7 +438,6 @@ interface OrsonApiInterface {
      * Operation summarizeTopics
      *
      * Summarize Topics
-     * @param float $version
      * @param int $accountId
      * @param null | string $thirdPartyAccountId
      * @param null | string $doc
@@ -492,7 +449,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiTopicsResponse
      */
     public function summarizeTopics(
-            float $version,
             int $accountId,
             ?string $thirdPartyAccountId,
             ?string $doc,
@@ -510,7 +466,6 @@ interface OrsonApiInterface {
      * Operation techTune
      *
      * Detect Technical Issues
-     * @param float $version
      * @param int $accountId
      * @param int $numFacesExpected
      * @param null | string $thirdPartyAccountId
@@ -520,7 +475,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiTechTuneResponse
      */
     public function techTune(
-            float $version,
             int $accountId,
             int $numFacesExpected,
             ?string $thirdPartyAccountId,
@@ -536,7 +490,6 @@ interface OrsonApiInterface {
      * Operation tts
      *
      * Text to Speach
-     * @param float $version
      * @param int $accountId
      * @param string $text
      * @param null | string $thirdPartyAccountId
@@ -546,7 +499,6 @@ interface OrsonApiInterface {
      * @return \OpenAPI\Server\Model\OrsonAiTTSResponse
      */
     public function tts(
-            float $version,
             int $accountId,
             string $text,
             ?string $thirdPartyAccountId,

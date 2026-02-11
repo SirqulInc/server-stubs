@@ -47,19 +47,16 @@ class ScheduledNotificationController extends Controller
      * Create Scheduled Notification.
      *
      */
-    public function createScheduledNotification(Request $request, float $version): JsonResponse
+    public function createScheduledNotification(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -172,7 +169,6 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $name = $request->string('name')->value();
@@ -242,7 +238,7 @@ class ScheduledNotificationController extends Controller
         $sendToAll = $request->boolean('sendToAll');
 
 
-        $apiResult = $this->api->createScheduledNotification($version, $accountId, $name, $type, $message, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $sendNow, $eventType, $deepLinkURI, $sendToAll);
+        $apiResult = $this->api->createScheduledNotification($accountId, $name, $type, $message, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $payload, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $sendNow, $eventType, $deepLinkURI, $sendToAll);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScheduledNotificationFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -258,19 +254,16 @@ class ScheduledNotificationController extends Controller
      * Delete Scheduled Notification.
      *
      */
-    public function deleteScheduledNotification(Request $request, float $version): JsonResponse
+    public function deleteScheduledNotification(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -289,7 +282,6 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $scheduledNotificationId = $request->integer('scheduledNotificationId');
@@ -297,7 +289,7 @@ class ScheduledNotificationController extends Controller
         $deleteByGroupingId = $request->boolean('deleteByGroupingId');
 
 
-        $apiResult = $this->api->deleteScheduledNotification($version, $accountId, $scheduledNotificationId, $deleteByGroupingId);
+        $apiResult = $this->api->deleteScheduledNotification($accountId, $scheduledNotificationId, $deleteByGroupingId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScheduledNotificationFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -313,19 +305,16 @@ class ScheduledNotificationController extends Controller
      * Get Scheduled Notification.
      *
      */
-    public function getScheduledNotification(Request $request, float $version): JsonResponse
+    public function getScheduledNotification(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -341,13 +330,12 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $scheduledNotificationId = $request->integer('scheduledNotificationId');
 
 
-        $apiResult = $this->api->getScheduledNotification($version, $accountId, $scheduledNotificationId);
+        $apiResult = $this->api->getScheduledNotification($accountId, $scheduledNotificationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScheduledNotificationFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -363,19 +351,16 @@ class ScheduledNotificationController extends Controller
      * Generate Schedule Notifications.
      *
      */
-    public function scheduleNotificationListings(Request $request, float $version): JsonResponse
+    public function scheduleNotificationListings(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -413,7 +398,6 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -431,7 +415,7 @@ class ScheduledNotificationController extends Controller
         $type = $request->string('type')->value();
 
 
-        $apiResult = $this->api->scheduleNotificationListings($version, $accountId, $appKey, $reportName, $message, $offset, $recipientReportId, $reportParams, $type);
+        $apiResult = $this->api->scheduleNotificationListings($accountId, $appKey, $reportName, $message, $offset, $recipientReportId, $reportParams, $type);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -447,19 +431,16 @@ class ScheduledNotificationController extends Controller
      * Search Scheduled Notifications.
      *
      */
-    public function searchScheduledNotifications(Request $request, float $version): JsonResponse
+    public function searchScheduledNotifications(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -528,7 +509,6 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $groupingId = $request->string('groupingId')->value();
@@ -570,7 +550,7 @@ class ScheduledNotificationController extends Controller
         $returnAudienceAccountCount = $request->boolean('returnAudienceAccountCount');
 
 
-        $apiResult = $this->api->searchScheduledNotifications($version, $accountId, $groupingId, $audienceId, $filter, $types, $contentIds, $contentTypes, $parentIds, $parentTypes, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly, $groupByGroupingId, $returnAudienceAccountCount);
+        $apiResult = $this->api->searchScheduledNotifications($accountId, $groupingId, $audienceId, $filter, $types, $contentIds, $contentTypes, $parentIds, $parentTypes, $statuses, $templateTypes, $appKey, $keyword, $sortField, $descending, $start, $limit, $activeOnly, $groupByGroupingId, $returnAudienceAccountCount);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScheduledNotificationFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -586,19 +566,16 @@ class ScheduledNotificationController extends Controller
      * Update Scheduled Notification.
      *
      */
-    public function updateScheduledNotification(Request $request, float $version): JsonResponse
+    public function updateScheduledNotification(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'scheduledNotificationId' => [
                     'required',
                     'integer',
@@ -721,7 +698,6 @@ class ScheduledNotificationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $scheduledNotificationId = $request->integer('scheduledNotificationId');
 
         $accountId = $request->integer('accountId');
@@ -799,7 +775,7 @@ class ScheduledNotificationController extends Controller
         $sendToAll = $request->boolean('sendToAll');
 
 
-        $apiResult = $this->api->updateScheduledNotification($version, $scheduledNotificationId, $accountId, $name, $type, $message, $payload, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $errorMessage, $status, $updateByGroupingId, $sendNow, $eventType, $deepLinkURI, $sendToAll);
+        $apiResult = $this->api->updateScheduledNotification($scheduledNotificationId, $accountId, $name, $type, $message, $payload, $contentId, $contentName, $contentType, $parentId, $parentType, $appKey, $groupingId, $connectionGroupIds, $connectionAccountIds, $audienceId, $audienceIds, $albumIds, $reportId, $reportParams, $endpointURL, $scheduledDate, $startDate, $endDate, $cronExpression, $cronType, $metaData, $conditionalInput, $templateType, $visibility, $active, $errorMessage, $status, $updateByGroupingId, $sendNow, $eventType, $deepLinkURI, $sendToAll);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ScheduledNotificationFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

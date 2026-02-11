@@ -28,7 +28,6 @@ interface RetailerV2ApiInterface {
      * Operation getRetaokiler
      *
      * Get Retailer
-     * @param float $version
      * @param int $retailerId
      * @param bool $activeOnly
      * @param null | string $keyword
@@ -38,7 +37,6 @@ interface RetailerV2ApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getRetaokiler(
-            float $version,
             int $retailerId,
             bool $activeOnly,
             ?string $keyword,

@@ -28,7 +28,6 @@ interface RegionApiInterface {
      * Operation createRegion
      *
      * Create Region
-     * @param float $version
      * @param int $accountId
      * @param string $regionClass
      * @param string $shortName
@@ -53,7 +52,6 @@ interface RegionApiInterface {
      * @return \OpenAPI\Server\Model\RegionResponse
      */
     public function createRegion(
-            float $version,
             int $accountId,
             string $regionClass,
             string $shortName,
@@ -84,13 +82,11 @@ interface RegionApiInterface {
      * Operation deleteRegion
      *
      * Delete Region
-     * @param float $version
      * @param int $accountId
      * @param int $regionId
      * @return \OpenAPI\Server\Model\RegionResponse
      */
     public function deleteRegion(
-            float $version,
             int $accountId,
             int $regionId,
     ):
@@ -102,13 +98,11 @@ interface RegionApiInterface {
      * Operation getRegion
      *
      * Get Region
-     * @param float $version
      * @param int $regionId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\RegionResponse
      */
     public function getRegion(
-            float $version,
             int $regionId,
             ?int $accountId,
     ):
@@ -120,7 +114,6 @@ interface RegionApiInterface {
      * Operation searchRegions
      *
      * Search Regions
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $query
      * @param null | string $keyword
@@ -146,7 +139,6 @@ interface RegionApiInterface {
      * @return \OpenAPI\Server\Model\RegionResponse[]
      */
     public function searchRegions(
-            float $version,
             ?int $accountId,
             ?string $query,
             ?string $keyword,
@@ -178,7 +170,6 @@ interface RegionApiInterface {
      * Operation updateRegion
      *
      * Update Region
-     * @param float $version
      * @param int $accountId
      * @param int $regionId
      * @param null | string $regionClass
@@ -205,7 +196,6 @@ interface RegionApiInterface {
      * @return \OpenAPI\Server\Model\RegionResponse
      */
     public function updateRegion(
-            float $version,
             int $accountId,
             int $regionId,
             ?string $regionClass,

@@ -47,19 +47,16 @@ class InviteController extends Controller
      * Accept Invite.
      *
      */
-    public function acceptInvite(Request $request, float $version): JsonResponse
+    public function acceptInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'token' => [
                     'required',
                     'string',
@@ -111,7 +108,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $token = $request->string('token')->value();
 
         $accountId = $request->integer('accountId');
@@ -141,7 +137,7 @@ class InviteController extends Controller
         $autoFavoriteRetailerLocation = $request->boolean('autoFavoriteRetailerLocation');
 
 
-        $apiResult = $this->api->acceptInvite($version, $token, $accountId, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey, $autoFriend, $autoAttendEvent, $autoFavoriteOffer, $autoFavoriteOfferLocation, $autoFavoriteRetailerLocation);
+        $apiResult = $this->api->acceptInvite($token, $accountId, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey, $autoFriend, $autoAttendEvent, $autoFavoriteOffer, $autoFavoriteOfferLocation, $autoFavoriteRetailerLocation);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConsumerInviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -157,19 +153,16 @@ class InviteController extends Controller
      * Invite to Contest.
      *
      */
-    public function albumContestInvite(Request $request, float $version): JsonResponse
+    public function albumContestInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -196,7 +189,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -212,7 +204,7 @@ class InviteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->albumContestInvite($version, $deviceId, $accountId, $appId, $appKey, $albumContestId, $latitude, $longitude);
+        $apiResult = $this->api->albumContestInvite($deviceId, $accountId, $appId, $appKey, $albumContestId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -228,19 +220,16 @@ class InviteController extends Controller
      * Invite to Collection.
      *
      */
-    public function albumInvite(Request $request, float $version): JsonResponse
+    public function albumInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -267,7 +256,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -283,7 +271,7 @@ class InviteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->albumInvite($version, $deviceId, $accountId, $appId, $appKey, $albumId, $latitude, $longitude);
+        $apiResult = $this->api->albumInvite($deviceId, $accountId, $appId, $appKey, $albumId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -299,19 +287,16 @@ class InviteController extends Controller
      * Invite to Event.
      *
      */
-    public function eventInvite(Request $request, float $version): JsonResponse
+    public function eventInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -337,7 +322,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -349,7 +333,7 @@ class InviteController extends Controller
         $retailerLocationId = $request->integer('retailerLocationId');
 
 
-        $apiResult = $this->api->eventInvite($version, $accountId, $appKey, $listingId, $receiverAccountIds, $retailerLocationId);
+        $apiResult = $this->api->eventInvite($accountId, $appKey, $listingId, $receiverAccountIds, $retailerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -365,19 +349,16 @@ class InviteController extends Controller
      * Invite to Game Level.
      *
      */
-    public function gameInvite(Request $request, float $version): JsonResponse
+    public function gameInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -404,7 +385,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -420,7 +400,7 @@ class InviteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->gameInvite($version, $deviceId, $accountId, $appId, $appKey, $gameLevelId, $latitude, $longitude);
+        $apiResult = $this->api->gameInvite($deviceId, $accountId, $appId, $appKey, $gameLevelId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -436,19 +416,16 @@ class InviteController extends Controller
      * Get Invite.
      *
      */
-    public function getInvite(Request $request, float $version): JsonResponse
+    public function getInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -483,7 +460,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $token = $request->string('token')->value();
@@ -503,7 +479,7 @@ class InviteController extends Controller
         $appKey = $request->string('appKey')->value();
 
 
-        $apiResult = $this->api->getInvite($version, $accountId, $token, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey);
+        $apiResult = $this->api->getInvite($accountId, $token, $albumId, $missionId, $albumContestId, $offerId, $offerLocationId, $retailerLocationId, $appKey);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -519,19 +495,16 @@ class InviteController extends Controller
      * Invite to Mission.
      *
      */
-    public function missionInvite(Request $request, float $version): JsonResponse
+    public function missionInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -558,7 +531,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -574,7 +546,7 @@ class InviteController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->missionInvite($version, $deviceId, $accountId, $appId, $appKey, $missionId, $latitude, $longitude);
+        $apiResult = $this->api->missionInvite($deviceId, $accountId, $appId, $appKey, $missionId, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -590,19 +562,16 @@ class InviteController extends Controller
      * Invite to Offer.
      *
      */
-    public function offerInvite(Request $request, float $version): JsonResponse
+    public function offerInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -622,7 +591,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -630,7 +598,7 @@ class InviteController extends Controller
         $offerId = $request->integer('offerId');
 
 
-        $apiResult = $this->api->offerInvite($version, $accountId, $appKey, $offerId);
+        $apiResult = $this->api->offerInvite($accountId, $appKey, $offerId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -646,19 +614,16 @@ class InviteController extends Controller
      * Invite to Offer Location.
      *
      */
-    public function offerLocationInvite(Request $request, float $version): JsonResponse
+    public function offerLocationInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -678,7 +643,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -686,7 +650,7 @@ class InviteController extends Controller
         $offerLocationId = $request->integer('offerLocationId');
 
 
-        $apiResult = $this->api->offerLocationInvite($version, $accountId, $appKey, $offerLocationId);
+        $apiResult = $this->api->offerLocationInvite($accountId, $appKey, $offerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -702,19 +666,16 @@ class InviteController extends Controller
      * Invite to Retailer Location.
      *
      */
-    public function retailerLocationInvite(Request $request, float $version): JsonResponse
+    public function retailerLocationInvite(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -737,7 +698,6 @@ class InviteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -747,7 +707,7 @@ class InviteController extends Controller
         $albumId = $request->integer('albumId');
 
 
-        $apiResult = $this->api->retailerLocationInvite($version, $accountId, $appKey, $retailerLocationId, $albumId);
+        $apiResult = $this->api->retailerLocationInvite($accountId, $appKey, $retailerLocationId, $albumId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\InviteResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

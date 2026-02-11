@@ -47,19 +47,16 @@ class OrsonController extends Controller
      * Add Movie.
      *
      */
-    public function addMovie(Request $request, float $version): JsonResponse
+    public function addMovie(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -90,7 +87,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $movieName = $request->string('movieName')->value();
@@ -106,7 +102,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->addMovie($version, $accountId, $movieName, $thirdPartyAccountId, $tags, $file, $url, $callback);
+        $apiResult = $this->api->addMovie($accountId, $movieName, $thirdPartyAccountId, $tags, $file, $url, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiAddMovieResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -122,19 +118,16 @@ class OrsonController extends Controller
      * Search Docs.
      *
      */
-    public function aiDocs(Request $request, float $version): JsonResponse
+    public function aiDocs(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -159,7 +152,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $doc = $request->string('doc')->value();
@@ -171,7 +163,7 @@ class OrsonController extends Controller
         $offset = $request->integer('offset');
 
 
-        $apiResult = $this->api->aiDocs($version, $accountId, $doc, $returnTopics, $limit, $offset);
+        $apiResult = $this->api->aiDocs($accountId, $doc, $returnTopics, $limit, $offset);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiProtoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -187,19 +179,16 @@ class OrsonController extends Controller
      * Find images.
      *
      */
-    public function aiFindImages(Request $request, float $version): JsonResponse
+    public function aiFindImages(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -224,7 +213,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $text = $request->string('text')->value();
@@ -236,7 +224,7 @@ class OrsonController extends Controller
         $size = $request->string('size')->value();
 
 
-        $apiResult = $this->api->aiFindImages($version, $accountId, $text, $parseFlag, $fetchFlag, $size);
+        $apiResult = $this->api->aiFindImages($accountId, $text, $parseFlag, $fetchFlag, $size);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiProtoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -252,19 +240,16 @@ class OrsonController extends Controller
      * Search Tags.
      *
      */
-    public function aiTags(Request $request, float $version): JsonResponse
+    public function aiTags(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -289,7 +274,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $tags = $request->string('tags')->value();
@@ -301,7 +285,7 @@ class OrsonController extends Controller
         $offset = $request->integer('offset');
 
 
-        $apiResult = $this->api->aiTags($version, $accountId, $tags, $conditional, $limit, $offset);
+        $apiResult = $this->api->aiTags($accountId, $tags, $conditional, $limit, $offset);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiProtoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -317,19 +301,16 @@ class OrsonController extends Controller
      * Search Text.
      *
      */
-    public function aiText(Request $request, float $version): JsonResponse
+    public function aiText(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -354,7 +335,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $terms = $request->string('terms')->value();
@@ -366,7 +346,7 @@ class OrsonController extends Controller
         $offset = $request->integer('offset');
 
 
-        $apiResult = $this->api->aiText($version, $accountId, $terms, $conditional, $limit, $offset);
+        $apiResult = $this->api->aiText($accountId, $terms, $conditional, $limit, $offset);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiProtoResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -382,19 +362,16 @@ class OrsonController extends Controller
      * Batch Analysis.
      *
      */
-    public function batch(Request $request, float $version): JsonResponse
+    public function batch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -424,7 +401,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $thirdPartyAccountId = $request->string('thirdPartyAccountId')->value();
@@ -440,7 +416,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->batch($version, $accountId, $thirdPartyAccountId, $limit, $operations, $file, $url, $callback);
+        $apiResult = $this->api->batch($accountId, $thirdPartyAccountId, $limit, $operations, $file, $url, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiBatchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -456,19 +432,16 @@ class OrsonController extends Controller
      * Creates an instant episode.
      *
      */
-    public function createInstantEpisode(Request $request, float $version): JsonResponse
+    public function createInstantEpisode(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -484,13 +457,12 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $data = $request->string('data')->value();
 
 
-        $apiResult = $this->api->createInstantEpisode($version, $accountId, $data);
+        $apiResult = $this->api->createInstantEpisode($accountId, $data);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonEpisodeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -506,19 +478,16 @@ class OrsonController extends Controller
      * Create VoiceCanvas images.
      *
      */
-    public function createVoiceCanvas(Request $request, float $version): JsonResponse
+    public function createVoiceCanvas(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -555,7 +524,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $dimensions = $request->string('dimensions')->value();
@@ -575,7 +543,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->createVoiceCanvas($version, $accountId, $dimensions, $thirdPartyAccountId, $text, $file, $url, $parseFlag, $fetchFlag, $callback);
+        $apiResult = $this->api->createVoiceCanvas($accountId, $dimensions, $thirdPartyAccountId, $text, $file, $url, $parseFlag, $fetchFlag, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiVoiceCanvasResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -591,19 +559,16 @@ class OrsonController extends Controller
      * Detect emotions.
      *
      */
-    public function emotion(Request $request, float $version): JsonResponse
+    public function emotion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -627,7 +592,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $thirdPartyAccountId = $request->string('thirdPartyAccountId')->value();
@@ -639,7 +603,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->emotion($version, $accountId, $thirdPartyAccountId, $file, $url, $callback);
+        $apiResult = $this->api->emotion($accountId, $thirdPartyAccountId, $file, $url, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiEmotionsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -655,19 +619,16 @@ class OrsonController extends Controller
      * Get Add Movie Result.
      *
      */
-    public function getAddMovieResult(Request $request, float $version, string $requestId): JsonResponse
+    public function getAddMovieResult(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -684,11 +645,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getAddMovieResult($version, $requestId, $accountId);
+        $apiResult = $this->api->getAddMovieResult($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiAddMovieResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -704,19 +664,16 @@ class OrsonController extends Controller
      * Get Batch Analysis Results.
      *
      */
-    public function getBatch(Request $request, float $version, string $requestId): JsonResponse
+    public function getBatch(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -733,11 +690,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getBatch($version, $requestId, $accountId);
+        $apiResult = $this->api->getBatch($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiBatchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -753,19 +709,16 @@ class OrsonController extends Controller
      * Get Emotion Results.
      *
      */
-    public function getEmotion(Request $request, float $version, string $requestId): JsonResponse
+    public function getEmotion(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -782,11 +735,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getEmotion($version, $requestId, $accountId);
+        $apiResult = $this->api->getEmotion($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiEmotionsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -802,19 +754,16 @@ class OrsonController extends Controller
      * Check episode status.
      *
      */
-    public function getEpisodeStatus(Request $request, float $version, int $episodeId): JsonResponse
+    public function getEpisodeStatus(Request $request, int $episodeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'episodeId' => $episodeId,
+                    'episodeId' => $episodeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'episodeId' => [
                     'required',
                     'integer',
@@ -831,11 +780,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getEpisodeStatus($version, $episodeId, $accountId);
+        $apiResult = $this->api->getEpisodeStatus($episodeId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonEpisodeResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -851,19 +799,16 @@ class OrsonController extends Controller
      * Check episode status.
      *
      */
-    public function getRenderStatus(Request $request, float $version, string $renderId): JsonResponse
+    public function getRenderStatus(Request $request, string $renderId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'renderId' => $renderId,
+                    'renderId' => $renderId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'renderId' => [
                     'required',
                     'string',
@@ -880,11 +825,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getRenderStatus($version, $renderId, $accountId);
+        $apiResult = $this->api->getRenderStatus($renderId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonRenderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -900,19 +844,16 @@ class OrsonController extends Controller
      * Get Speach to Text Result.
      *
      */
-    public function getSTT(Request $request, float $version, string $requestId): JsonResponse
+    public function getSTT(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -929,11 +870,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getSTT($version, $requestId, $accountId);
+        $apiResult = $this->api->getSTT($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiSTTResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -949,19 +889,16 @@ class OrsonController extends Controller
      * Get Text to Speach Result.
      *
      */
-    public function getTTS(Request $request, float $version, string $requestId): JsonResponse
+    public function getTTS(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -978,11 +915,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getTTS($version, $requestId, $accountId);
+        $apiResult = $this->api->getTTS($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTTSResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -998,19 +934,16 @@ class OrsonController extends Controller
      * Get TechTune Results.
      *
      */
-    public function getTechTune(Request $request, float $version, string $requestId): JsonResponse
+    public function getTechTune(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -1027,11 +960,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getTechTune($version, $requestId, $accountId);
+        $apiResult = $this->api->getTechTune($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTechTuneResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1047,19 +979,16 @@ class OrsonController extends Controller
      * Get Topics.
      *
      */
-    public function getTopics(Request $request, float $version, string $requestId): JsonResponse
+    public function getTopics(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -1076,11 +1005,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getTopics($version, $requestId, $accountId);
+        $apiResult = $this->api->getTopics($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTopicsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1096,19 +1024,16 @@ class OrsonController extends Controller
      * Get VoiceCanvas images.
      *
      */
-    public function getVoiceCanvas(Request $request, float $version, string $requestId): JsonResponse
+    public function getVoiceCanvas(Request $request, string $requestId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'requestId' => $requestId,
+                    'requestId' => $requestId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'requestId' => [
                     'required',
                     'string',
@@ -1125,11 +1050,10 @@ class OrsonController extends Controller
         }
 
 
-
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getVoiceCanvas($version, $requestId, $accountId);
+        $apiResult = $this->api->getVoiceCanvas($requestId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiVoiceCanvasResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1145,19 +1069,16 @@ class OrsonController extends Controller
      * Starts a StoryStitch video render.
      *
      */
-    public function startVideoRender(Request $request, float $version): JsonResponse
+    public function startVideoRender(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1173,13 +1094,12 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $data = $request->string('data')->value();
 
 
-        $apiResult = $this->api->startVideoRender($version, $accountId, $data);
+        $apiResult = $this->api->startVideoRender($accountId, $data);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonRenderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1195,19 +1115,16 @@ class OrsonController extends Controller
      * Speach to Text.
      *
      */
-    public function stt(Request $request, float $version): JsonResponse
+    public function stt(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1237,7 +1154,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $thirdPartyAccountId = $request->string('thirdPartyAccountId')->value();
@@ -1253,7 +1169,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->stt($version, $accountId, $thirdPartyAccountId, $sourceLanguage, $targetLanguage, $file, $url, $callback);
+        $apiResult = $this->api->stt($accountId, $thirdPartyAccountId, $sourceLanguage, $targetLanguage, $file, $url, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiSTTResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1269,19 +1185,16 @@ class OrsonController extends Controller
      * Summarize Topics.
      *
      */
-    public function summarizeTopics(Request $request, float $version): JsonResponse
+    public function summarizeTopics(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1314,7 +1227,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $thirdPartyAccountId = $request->string('thirdPartyAccountId')->value();
@@ -1332,7 +1244,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->summarizeTopics($version, $accountId, $thirdPartyAccountId, $doc, $file, $url, $limit, $offset, $callback);
+        $apiResult = $this->api->summarizeTopics($accountId, $thirdPartyAccountId, $doc, $file, $url, $limit, $offset, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTopicsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1348,19 +1260,16 @@ class OrsonController extends Controller
      * Detect Technical Issues.
      *
      */
-    public function techTune(Request $request, float $version): JsonResponse
+    public function techTune(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1388,7 +1297,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $numFacesExpected = $request->integer('numFacesExpected');
@@ -1402,7 +1310,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->techTune($version, $accountId, $numFacesExpected, $thirdPartyAccountId, $file, $url, $callback);
+        $apiResult = $this->api->techTune($accountId, $numFacesExpected, $thirdPartyAccountId, $file, $url, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTechTuneResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1418,19 +1326,16 @@ class OrsonController extends Controller
      * Text to Speach.
      *
      */
-    public function tts(Request $request, float $version): JsonResponse
+    public function tts(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -1458,7 +1363,6 @@ class OrsonController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $text = $request->string('text')->value();
@@ -1472,7 +1376,7 @@ class OrsonController extends Controller
         $callback = $request->string('callback')->value();
 
 
-        $apiResult = $this->api->tts($version, $accountId, $text, $thirdPartyAccountId, $language, $voice, $callback);
+        $apiResult = $this->api->tts($accountId, $text, $thirdPartyAccountId, $language, $voice, $callback);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrsonAiTTSResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

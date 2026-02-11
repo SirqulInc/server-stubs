@@ -28,7 +28,6 @@ interface GameApiInterface {
      * Operation createGame
      *
      * Create a Game
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @param null | string $title
@@ -39,7 +38,6 @@ interface GameApiInterface {
      * @return \OpenAPI\Server\Model\GameResponse
      */
     public function createGame(
-            float $version,
             ?int $accountId,
             ?string $appKey,
             ?string $title,
@@ -56,13 +54,11 @@ interface GameApiInterface {
      * Operation deleteGame
      *
      * Delete a Game
-     * @param float $version
      * @param int $accountId
      * @param int $gameId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteGame(
-            float $version,
             int $accountId,
             int $gameId,
     ):
@@ -74,14 +70,12 @@ interface GameApiInterface {
      * Operation getGame
      *
      * Get a Game by id
-     * @param float $version
      * @param int $accountId
      * @param int $gameId
      * @param null | bool $includeGameData
      * @return \OpenAPI\Server\Model\GameResponse
      */
     public function getGame(
-            float $version,
             int $accountId,
             int $gameId,
             ?bool $includeGameData,
@@ -94,7 +88,6 @@ interface GameApiInterface {
      * Operation searchGames
      *
      * Search a Game
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $start
@@ -106,7 +99,6 @@ interface GameApiInterface {
      * @return \OpenAPI\Server\Model\GameResponse
      */
     public function searchGames(
-            float $version,
             int $accountId,
             string $appKey,
             int $start,
@@ -124,7 +116,6 @@ interface GameApiInterface {
      * Operation updateGame
      *
      * Update a Game
-     * @param float $version
      * @param null | int $accountId
      * @param null | int $gameId
      * @param null | string $appKey
@@ -136,7 +127,6 @@ interface GameApiInterface {
      * @return \OpenAPI\Server\Model\GameResponse
      */
     public function updateGame(
-            float $version,
             ?int $accountId,
             ?int $gameId,
             ?string $appKey,

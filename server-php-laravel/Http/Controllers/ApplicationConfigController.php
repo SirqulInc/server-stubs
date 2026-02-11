@@ -47,19 +47,16 @@ class ApplicationConfigController extends Controller
      * Create AppConfig.
      *
      */
-    public function createApplicationConfig(Request $request, float $version): JsonResponse
+    public function createApplicationConfig(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -92,7 +89,6 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -108,7 +104,7 @@ class ApplicationConfigController extends Controller
         $udid = $request->string('udid')->value();
 
 
-        $apiResult = $this->api->createApplicationConfig($version, $accountId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid);
+        $apiResult = $this->api->createApplicationConfig($accountId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationConfigResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -124,19 +120,16 @@ class ApplicationConfigController extends Controller
      * Delete AppConfig.
      *
      */
-    public function deleteApplicationConfig(Request $request, float $version): JsonResponse
+    public function deleteApplicationConfig(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -152,13 +145,12 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $configId = $request->integer('configId');
 
 
-        $apiResult = $this->api->deleteApplicationConfig($version, $accountId, $configId);
+        $apiResult = $this->api->deleteApplicationConfig($accountId, $configId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -174,19 +166,16 @@ class ApplicationConfigController extends Controller
      * Get AppConfig.
      *
      */
-    public function getApplicationConfig(Request $request, float $version): JsonResponse
+    public function getApplicationConfig(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -202,13 +191,12 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $configId = $request->integer('configId');
 
 
-        $apiResult = $this->api->getApplicationConfig($version, $accountId, $configId);
+        $apiResult = $this->api->getApplicationConfig($accountId, $configId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationConfigResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -224,19 +212,16 @@ class ApplicationConfigController extends Controller
      * Get AppConfig by Version.
      *
      */
-    public function getApplicationConfigByConfigVersion(Request $request, float $version): JsonResponse
+    public function getApplicationConfigByConfigVersion(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -264,7 +249,6 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $configVersion = $request->string('configVersion')->value();
@@ -278,7 +262,7 @@ class ApplicationConfigController extends Controller
         $allowOlderVersions = $request->boolean('allowOlderVersions');
 
 
-        $apiResult = $this->api->getApplicationConfigByConfigVersion($version, $appKey, $configVersion, $retailerId, $retailerLocationId, $udid, $allowOlderVersions);
+        $apiResult = $this->api->getApplicationConfigByConfigVersion($appKey, $configVersion, $retailerId, $retailerLocationId, $udid, $allowOlderVersions);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationConfigResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -294,19 +278,16 @@ class ApplicationConfigController extends Controller
      * Search AppConfigs.
      *
      */
-    public function searchApplicationConfig(Request $request, float $version): JsonResponse
+    public function searchApplicationConfig(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -345,7 +326,6 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -367,7 +347,7 @@ class ApplicationConfigController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->searchApplicationConfig($version, $accountId, $appKey, $retailerId, $retailerLocationId, $udid, $configVersion, $sortField, $descending, $start, $limit);
+        $apiResult = $this->api->searchApplicationConfig($accountId, $appKey, $retailerId, $retailerLocationId, $udid, $configVersion, $sortField, $descending, $start, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -384,19 +364,16 @@ class ApplicationConfigController extends Controller
      * Update AppConfig.
      *
      */
-    public function updateApplicationConfig(Request $request, float $version): JsonResponse
+    public function updateApplicationConfig(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -430,7 +407,6 @@ class ApplicationConfigController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $configId = $request->integer('configId');
@@ -448,7 +424,7 @@ class ApplicationConfigController extends Controller
         $udid = $request->string('udid')->value();
 
 
-        $apiResult = $this->api->updateApplicationConfig($version, $accountId, $configId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid);
+        $apiResult = $this->api->updateApplicationConfig($accountId, $configId, $appKey, $configVersion, $assetId, $retailerId, $retailerLocationId, $udid);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ApplicationConfigResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

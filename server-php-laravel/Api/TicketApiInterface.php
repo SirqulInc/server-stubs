@@ -28,7 +28,6 @@ interface TicketApiInterface {
      * Operation getTicketCount
      *
      * Get Ticket Count
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $gameType
@@ -37,7 +36,6 @@ interface TicketApiInterface {
      * @return \OpenAPI\Server\Model\CountResponse
      */
     public function getTicketCount(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $gameType,
@@ -52,7 +50,6 @@ interface TicketApiInterface {
      * Operation getTicketList
      *
      * Get Ticket List
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $ticketObjectType
@@ -65,7 +62,6 @@ interface TicketApiInterface {
      * @return \OpenAPI\Server\Model\TicketListResponse
      */
     public function getTicketList(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $ticketObjectType,
@@ -84,7 +80,6 @@ interface TicketApiInterface {
      * Operation giftPurchase
      *
      * Gift Tickets
-     * @param float $version
      * @param int $receiverAccountId
      * @param int $ticketId
      * @param null | string $deviceId
@@ -96,7 +91,6 @@ interface TicketApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function giftPurchase(
-            float $version,
             int $receiverAccountId,
             int $ticketId,
             ?string $deviceId,
@@ -114,7 +108,6 @@ interface TicketApiInterface {
      * Operation saveTicket
      *
      * Save Ticket
-     * @param float $version
      * @param string $actionType
      * @param string $ticketObjectType
      * @param null | bool $returnNulls
@@ -136,7 +129,6 @@ interface TicketApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function saveTicket(
-            float $version,
             string $actionType,
             string $ticketObjectType,
             ?bool $returnNulls,
@@ -164,7 +156,6 @@ interface TicketApiInterface {
      * Operation saveTicketViaFileUpload
      *
      * Save Ticket with Reciept
-     * @param float $version
      * @param string $actionType
      * @param string $ticketObjectType
      * @param \Illuminate\Http\UploadedFile $receiptData
@@ -186,7 +177,6 @@ interface TicketApiInterface {
      * @return \OpenAPI\Server\Model\ProfileResponse
      */
     public function saveTicketViaFileUpload(
-            float $version,
             string $actionType,
             string $ticketObjectType,
             \Illuminate\Http\UploadedFile $receiptData,
@@ -214,11 +204,9 @@ interface TicketApiInterface {
      * Operation ticketOffers
      *
      * Get Ticket Offers
-     * @param float $version
      * @return \OpenAPI\Server\Model\TicketOfferResponse
      */
     public function ticketOffers(
-            float $version,
     ):
         \OpenAPI\Server\Model\TicketOfferResponse
     ;

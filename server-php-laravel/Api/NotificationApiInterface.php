@@ -28,7 +28,6 @@ interface NotificationApiInterface {
      * Operation createNotificationTemplate
      *
      * Create Notification Template
-     * @param float $version
      * @param int $accountId
      * @param string $conduit
      * @param string $title
@@ -39,7 +38,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationTemplateResponse
      */
     public function createNotificationTemplate(
-            float $version,
             int $accountId,
             string $conduit,
             string $title,
@@ -56,14 +54,12 @@ interface NotificationApiInterface {
      * Operation createOrUpdateBlockedNotifications
      *
      * Create or update blocked notification settings
-     * @param float $version
      * @param string $appKey
      * @param string $data
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\BlockedNotificationResponse
      */
     public function createOrUpdateBlockedNotifications(
-            float $version,
             string $appKey,
             string $data,
             ?int $accountId,
@@ -76,13 +72,11 @@ interface NotificationApiInterface {
      * Operation deleteNotificationTemplate
      *
      * Delete Notification Template
-     * @param float $version
      * @param int $accountId
      * @param int $notificationTemplateId
      * @return \OpenAPI\Server\Model\NotificationTemplateResponse
      */
     public function deleteNotificationTemplate(
-            float $version,
             int $accountId,
             int $notificationTemplateId,
     ):
@@ -94,13 +88,11 @@ interface NotificationApiInterface {
      * Operation getNotificationTemplate
      *
      * Get Notification Template
-     * @param float $version
      * @param int $accountId
      * @param int $notificationTemplateId
      * @return \OpenAPI\Server\Model\NotificationTemplateResponse
      */
     public function getNotificationTemplate(
-            float $version,
             int $accountId,
             int $notificationTemplateId,
     ):
@@ -112,7 +104,6 @@ interface NotificationApiInterface {
      * Operation getNotifications
      *
      * Get Notifications
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $connectionAccountId
@@ -137,7 +128,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationMessageListResponse
      */
     public function getNotifications(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $connectionAccountId,
@@ -168,7 +158,6 @@ interface NotificationApiInterface {
      * Operation registerNotificationToken
      *
      * Register Notification Token
-     * @param float $version
      * @param string $token
      * @param \OpenAPI\Server\Model\RegisterNotificationTokenPushTypeParameter $pushType
      * @param null | string $deviceId
@@ -182,7 +171,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function registerNotificationToken(
-            float $version,
             string $token,
             \OpenAPI\Server\Model\RegisterNotificationTokenPushTypeParameter $pushType,
             ?string $deviceId,
@@ -202,7 +190,6 @@ interface NotificationApiInterface {
      * Operation searchBlockedNotifications
      *
      * Search on the user's blocked notification settings
-     * @param float $version
      * @param string $appKey
      * @param null | int $accountId
      * @param null | string $searchTags
@@ -218,7 +205,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\BlockedNotificationResponse
      */
     public function searchBlockedNotifications(
-            float $version,
             string $appKey,
             ?int $accountId,
             ?string $searchTags,
@@ -240,7 +226,6 @@ interface NotificationApiInterface {
      * Operation searchNotificationTemplate
      *
      * Search Notification Templates
-     * @param float $version
      * @param int $accountId
      * @param string $sortField
      * @param bool $descending
@@ -255,7 +240,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationTemplateResponse
      */
     public function searchNotificationTemplate(
-            float $version,
             int $accountId,
             string $sortField,
             bool $descending,
@@ -276,7 +260,6 @@ interface NotificationApiInterface {
      * Operation searchRecipients
      *
      * Search for Recipients
-     * @param float $version
      * @param \OpenAPI\Server\Model\SearchRecipientsSortFieldParameter $sortField
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -293,7 +276,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationRecipientResponse[]
      */
     public function searchRecipients(
-            float $version,
             \OpenAPI\Server\Model\SearchRecipientsSortFieldParameter $sortField,
             ?string $deviceId,
             ?int $accountId,
@@ -316,7 +298,6 @@ interface NotificationApiInterface {
      * Operation searchRecipientsCount
      *
      * Search for Recipients (Counts/Grouped)
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -332,7 +313,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationRecipientResponseListResponse
      */
     public function searchRecipientsCount(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -354,7 +334,6 @@ interface NotificationApiInterface {
      * Operation sendBatchNotifications
      *
      * Send Batch Notifications
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param string $customMessage
@@ -367,7 +346,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function sendBatchNotifications(
-            float $version,
             int $accountId,
             string $appKey,
             string $customMessage,
@@ -386,7 +364,6 @@ interface NotificationApiInterface {
      * Operation sendCustomNotifications
      *
      * Send Custom Notifications
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $receiverAccountIds
@@ -408,7 +385,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function sendCustomNotifications(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $receiverAccountIds,
@@ -436,7 +412,6 @@ interface NotificationApiInterface {
      * Operation updateNotificationTemplate
      *
      * Update Notification Template
-     * @param float $version
      * @param int $accountId
      * @param int $notificationTemplateId
      * @param null | string $title
@@ -445,7 +420,6 @@ interface NotificationApiInterface {
      * @return \OpenAPI\Server\Model\NotificationTemplateResponse
      */
     public function updateNotificationTemplate(
-            float $version,
             int $accountId,
             int $notificationTemplateId,
             ?string $title,

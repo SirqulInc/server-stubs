@@ -28,7 +28,6 @@ interface CSVImportApiInterface {
      * Operation getStatusCSV
      *
      * Detail Status
-     * @param float $version
      * @param int $accountId
      * @param int $batchId
      * @param \OpenAPI\Server\Model\GetStatusCSVResponseGroupParameter $responseGroup
@@ -37,7 +36,6 @@ interface CSVImportApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function getStatusCSV(
-            float $version,
             int $accountId,
             int $batchId,
             \OpenAPI\Server\Model\GetStatusCSVResponseGroupParameter $responseGroup,
@@ -52,14 +50,12 @@ interface CSVImportApiInterface {
      * Operation listStatusCSV
      *
      * Search Status
-     * @param float $version
      * @param int $accountId
      * @param int $start
      * @param int $limit
      * @return \OpenAPI\Server\Model\CsvImportResponse
      */
     public function listStatusCSV(
-            float $version,
             int $accountId,
             int $start,
             int $limit,
@@ -72,13 +68,11 @@ interface CSVImportApiInterface {
      * Operation statusCSV
      *
      * Batch Status
-     * @param float $version
      * @param int $accountId
      * @param int $batchId
      * @return \OpenAPI\Server\Model\CsvImportResponse
      */
     public function statusCSV(
-            float $version,
             int $accountId,
             int $batchId,
     ):
@@ -90,7 +84,6 @@ interface CSVImportApiInterface {
      * Operation uploadCSV
      *
      * Upload CSV
-     * @param float $version
      * @param int $accountId
      * @param \OpenAPI\Server\Model\UploadCSVUploadTypeParameter $uploadType
      * @param \Illuminate\Http\UploadedFile $importFile
@@ -99,7 +92,6 @@ interface CSVImportApiInterface {
      * @return \OpenAPI\Server\Model\CsvImportResponse
      */
     public function uploadCSV(
-            float $version,
             int $accountId,
             \OpenAPI\Server\Model\UploadCSVUploadTypeParameter $uploadType,
             \Illuminate\Http\UploadedFile $importFile,

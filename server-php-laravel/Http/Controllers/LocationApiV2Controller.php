@@ -47,12 +47,12 @@ class LocationApiV2Controller extends Controller
      * Create new location.
      *
      */
-    public function createLocationV2(Request $request, float $version): JsonResponse
+    public function createLocationV2(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,11 +64,10 @@ class LocationApiV2Controller extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Location::class);
 
 
-        $apiResult = $this->api->createLocationV2($version, $body);
+        $apiResult = $this->api->createLocationV2($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -84,12 +83,12 @@ class LocationApiV2Controller extends Controller
      * Update an existing location.
      *
      */
-    public function updateLocationV2(Request $request, float $version, int $id): JsonResponse
+    public function updateLocationV2(Request $request, int $id): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,
+                    'id' => $id,
                 ],
                 $request->all(),
             ),
@@ -102,11 +101,10 @@ class LocationApiV2Controller extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Location::class);
 
 
-        $apiResult = $this->api->updateLocationV2($version, $id, $body);
+        $apiResult = $this->api->updateLocationV2($id, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -47,19 +47,16 @@ class AnalyticsController extends Controller
      * Get User Activity.
      *
      */
-    public function activities(Request $request, float $version): JsonResponse
+    public function activities(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'start' => [
                     'required',
                     'integer',
@@ -79,7 +76,6 @@ class AnalyticsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $start = $request->integer('start');
 
         $limit = $request->integer('limit');
@@ -87,7 +83,7 @@ class AnalyticsController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->activities($version, $start, $limit, $accountId);
+        $apiResult = $this->api->activities($start, $limit, $accountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -104,19 +100,16 @@ class AnalyticsController extends Controller
      * Get Aggregated Filtered Usage.
      *
      */
-    public function aggregatedFilteredUsage(Request $request, float $version): JsonResponse
+    public function aggregatedFilteredUsage(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -210,7 +203,6 @@ class AnalyticsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -274,7 +266,7 @@ class AnalyticsController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->aggregatedFilteredUsage($version, $deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $groupByRoot, $groupBy, $distinctCount, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude);
+        $apiResult = $this->api->aggregatedFilteredUsage($deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $groupByRoot, $groupBy, $distinctCount, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ChartData) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -290,19 +282,16 @@ class AnalyticsController extends Controller
      * Get Filtered Usage.
      *
      */
-    public function filteredUsage(Request $request, float $version): JsonResponse
+    public function filteredUsage(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -418,7 +407,6 @@ class AnalyticsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -498,7 +486,7 @@ class AnalyticsController extends Controller
         $longitude = $request->float('longitude');
 
 
-        $apiResult = $this->api->filteredUsage($version, $deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $customId, $customType, $customValue, $customValue2, $customLong, $customLong2, $customMessage, $customMessage2, $groupBy, $distinctCount, $sumColumn, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude);
+        $apiResult = $this->api->filteredUsage($deviceId, $accountId, $applicationId, $appKey, $startDate, $endDate, $deviceType, $device, $deviceOS, $gender, $ageGroup, $country, $state, $city, $zip, $model, $tag, $userAccountId, $userAccountDisplay, $userAccountUsername, $customId, $customType, $customValue, $customValue2, $customLong, $customLong2, $customMessage, $customMessage2, $groupBy, $distinctCount, $sumColumn, $sortField, $descending, $hideUnknown, $responseFormat, $l, $limit, $latitude, $longitude);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ChartData) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -514,19 +502,16 @@ class AnalyticsController extends Controller
      * Create Usage Record.
      *
      */
-    public function usage(Request $request, float $version): JsonResponse
+    public function usage(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'tag' => [
                     'required',
                     'string',
@@ -624,7 +609,6 @@ class AnalyticsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $tag = $request->string('tag')->value();
 
         $deviceId = $request->string('deviceId')->value();
@@ -688,7 +672,7 @@ class AnalyticsController extends Controller
         $customLong2 = $request->integer('customLong2');
 
 
-        $apiResult = $this->api->usage($version, $tag, $deviceId, $accountId, $applicationId, $appKey, $appVersion, $device, $deviceType, $deviceOS, $model, $latitude, $longitude, $customId, $customType, $achievementIncrement, $city, $state, $country, $zip, $locationDescription, $clientTime, $errorMessage, $ip, $userAgent, $backgroundEvent, $customMessage, $customMessage2, $customValue, $customValue2, $customLong, $customLong2);
+        $apiResult = $this->api->usage($tag, $deviceId, $accountId, $applicationId, $appKey, $appVersion, $device, $deviceType, $deviceOS, $model, $latitude, $longitude, $customId, $customType, $achievementIncrement, $city, $state, $country, $zip, $locationDescription, $clientTime, $errorMessage, $ip, $userAgent, $backgroundEvent, $customMessage, $customMessage2, $customValue, $customValue2, $customLong, $customLong2);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -704,19 +688,16 @@ class AnalyticsController extends Controller
      * Create Multiple Usage Records.
      *
      */
-    public function usageBatch(Request $request, float $version): JsonResponse
+    public function usageBatch(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -760,7 +741,6 @@ class AnalyticsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $device = $request->string('device')->value();
@@ -784,7 +764,7 @@ class AnalyticsController extends Controller
         $returnSummaryResponse = $request->boolean('returnSummaryResponse');
 
 
-        $apiResult = $this->api->usageBatch($version, $appKey, $device, $data, $deviceId, $accountId, $appVersion, $deviceType, $deviceOS, $model, $updateRanking, $returnSummaryResponse);
+        $apiResult = $this->api->usageBatch($appKey, $device, $data, $deviceId, $accountId, $appVersion, $deviceType, $deviceOS, $model, $updateRanking, $returnSummaryResponse);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

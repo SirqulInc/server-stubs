@@ -28,7 +28,6 @@ interface LocationApiInterface {
      * Operation cacheTrilaterationData
      *
      * Create Trilateration Data with File
-     * @param float $version
      * @param string $udid
      * @param null | int $sourceTime
      * @param null | int $minimumSampleSize
@@ -37,7 +36,6 @@ interface LocationApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function cacheTrilaterationData(
-            float $version,
             string $udid,
             ?int $sourceTime,
             ?int $minimumSampleSize,
@@ -52,12 +50,10 @@ interface LocationApiInterface {
      * Operation cacheTrilaterationDataGzip
      *
      * Create Trilateration Data with Rest
-     * @param float $version
      * @param null | \OpenAPI\Server\Model\TrilatCacheRequest $body
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function cacheTrilaterationDataGzip(
-            float $version,
             ?\OpenAPI\Server\Model\TrilatCacheRequest $body,
     ):
         \OpenAPI\Server\Model\SirqulResponse
@@ -68,12 +64,10 @@ interface LocationApiInterface {
      * Operation getLocationByIp
      *
      * Get Location by IP
-     * @param float $version
      * @param null | string $ip
      * @return \OpenAPI\Server\Model\CoordsResponse
      */
     public function getLocationByIp(
-            float $version,
             ?string $ip,
     ):
         \OpenAPI\Server\Model\CoordsResponse
@@ -84,7 +78,6 @@ interface LocationApiInterface {
      * Operation getLocationByTrilateration
      *
      * Get Location by Trilateration
-     * @param float $version
      * @param null | int $accountId
      * @param null | float $latitude
      * @param null | float $longitude
@@ -93,7 +86,6 @@ interface LocationApiInterface {
      * @return \OpenAPI\Server\Model\GeoPointResponse
      */
     public function getLocationByTrilateration(
-            float $version,
             ?int $accountId,
             ?float $latitude,
             ?float $longitude,
@@ -108,7 +100,6 @@ interface LocationApiInterface {
      * Operation getLocations
      *
      * Search Regions or Postal Codes
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | float $currentlatitude
@@ -131,7 +122,6 @@ interface LocationApiInterface {
      * @return \OpenAPI\Server\Model\LocationSearchResponse
      */
     public function getLocations(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?float $currentlatitude,

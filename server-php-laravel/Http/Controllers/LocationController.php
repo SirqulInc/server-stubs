@@ -47,19 +47,16 @@ class LocationController extends Controller
      * Create Trilateration Data with File.
      *
      */
-    public function cacheTrilaterationData(Request $request, float $version): JsonResponse
+    public function cacheTrilaterationData(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'udid' => [
                     'required',
                     'string',
@@ -83,7 +80,6 @@ class LocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $udid = $request->string('udid')->value();
 
         $sourceTime = $request->integer('sourceTime');
@@ -95,7 +91,7 @@ class LocationController extends Controller
         $dataFile = $request->file('dataFile');
 
 
-        $apiResult = $this->api->cacheTrilaterationData($version, $udid, $sourceTime, $minimumSampleSize, $data, $dataFile);
+        $apiResult = $this->api->cacheTrilaterationData($udid, $sourceTime, $minimumSampleSize, $data, $dataFile);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -111,12 +107,12 @@ class LocationController extends Controller
      * Create Trilateration Data with Rest.
      *
      */
-    public function cacheTrilaterationDataGzip(Request $request, float $version): JsonResponse
+    public function cacheTrilaterationDataGzip(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -128,11 +124,10 @@ class LocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\TrilatCacheRequest::class);
 
 
-        $apiResult = $this->api->cacheTrilaterationDataGzip($version, $body);
+        $apiResult = $this->api->cacheTrilaterationDataGzip($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -148,19 +143,16 @@ class LocationController extends Controller
      * Get Location by IP.
      *
      */
-    public function getLocationByIp(Request $request, float $version): JsonResponse
+    public function getLocationByIp(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'ip' => [
                     'string',
                 ],
@@ -171,11 +163,10 @@ class LocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $ip = $request->string('ip')->value();
 
 
-        $apiResult = $this->api->getLocationByIp($version, $ip);
+        $apiResult = $this->api->getLocationByIp($ip);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CoordsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -191,19 +182,16 @@ class LocationController extends Controller
      * Get Location by Trilateration.
      *
      */
-    public function getLocationByTrilateration(Request $request, float $version): JsonResponse
+    public function getLocationByTrilateration(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'integer',
                 ],
@@ -224,7 +212,6 @@ class LocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $latitude = $request->float('latitude');
@@ -236,7 +223,7 @@ class LocationController extends Controller
         $responseFilters = $request->string('responseFilters')->value();
 
 
-        $apiResult = $this->api->getLocationByTrilateration($version, $accountId, $latitude, $longitude, $data, $responseFilters);
+        $apiResult = $this->api->getLocationByTrilateration($accountId, $latitude, $longitude, $data, $responseFilters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GeoPointResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -252,19 +239,16 @@ class LocationController extends Controller
      * Search Regions or Postal Codes.
      *
      */
-    public function getLocations(Request $request, float $version): JsonResponse
+    public function getLocations(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -320,7 +304,6 @@ class LocationController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -360,7 +343,7 @@ class LocationController extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getLocations($version, $deviceId, $accountId, $currentlatitude, $currentlongitude, $currentLatitude, $currentLongitude, $query, $zipcode, $zipCode, $selectedMaplatitude, $selectedMaplongitude, $selectedMapLatitude, $selectedMapLongitude, $searchRange, $useGeocode, $i, $start, $l, $limit);
+        $apiResult = $this->api->getLocations($deviceId, $accountId, $currentlatitude, $currentlongitude, $currentLatitude, $currentLongitude, $query, $zipcode, $zipCode, $selectedMaplatitude, $selectedMaplongitude, $selectedMapLatitude, $selectedMapLongitude, $searchRange, $useGeocode, $i, $start, $l, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LocationSearchResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

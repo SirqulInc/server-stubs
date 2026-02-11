@@ -28,7 +28,6 @@ interface TrackingApiInterface {
      * Operation batchSaveTracking
      *
      * Create Batch Tracking
-     * @param float $version
      * @param string $data
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -39,7 +38,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\Leg[]
      */
     public function batchSaveTracking(
-            float $version,
             string $data,
             ?string $deviceId,
             ?int $accountId,
@@ -56,7 +54,6 @@ interface TrackingApiInterface {
      * Operation getPredictedLocations
      *
      * Get Predicted Locations
-     * @param float $version
      * @param int $accountId
      * @param null | float $latitude
      * @param null | float $longitude
@@ -69,7 +66,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\PredictedLocationResponse
      */
     public function getPredictedLocations(
-            float $version,
             int $accountId,
             ?float $latitude,
             ?float $longitude,
@@ -88,14 +84,12 @@ interface TrackingApiInterface {
      * Operation getPredictedPath
      *
      * Get Tracking Path
-     * @param float $version
      * @param int $accountId
      * @param int $startStepId
      * @param int $endStepId
      * @return \OpenAPI\Server\Model\StepResponse[]
      */
     public function getPredictedPath(
-            float $version,
             int $accountId,
             int $startStepId,
             int $endStepId,
@@ -108,7 +102,6 @@ interface TrackingApiInterface {
      * Operation getPreferredLocations
      *
      * Search Preferred Locations
-     * @param float $version
      * @param int $accountId
      * @param null | float $latitude
      * @param null | float $longitude
@@ -123,7 +116,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\PreferredLocationResponse[]
      */
     public function getPreferredLocations(
-            float $version,
             int $accountId,
             ?float $latitude,
             ?float $longitude,
@@ -144,7 +136,6 @@ interface TrackingApiInterface {
      * Operation getTrackingLegs
      *
      * Search Tracking
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $ownerId
@@ -156,7 +147,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\LegResponse[]
      */
     public function getTrackingLegs(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $ownerId,
@@ -174,7 +164,6 @@ interface TrackingApiInterface {
      * Operation saveTrackingLeg
      *
      * Create Tracking Leg
-     * @param float $version
      * @param float $startLat
      * @param float $startLng
      * @param int $startDate
@@ -190,7 +179,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function saveTrackingLeg(
-            float $version,
             float $startLat,
             float $startLng,
             int $startDate,
@@ -212,7 +200,6 @@ interface TrackingApiInterface {
      * Operation saveTrackingStep
      *
      * Create Tracking Step
-     * @param float $version
      * @param int $legId
      * @param float $startLat
      * @param float $startLng
@@ -227,7 +214,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function saveTrackingStep(
-            float $version,
             int $legId,
             float $startLat,
             float $startLng,
@@ -248,7 +234,6 @@ interface TrackingApiInterface {
      * Operation searchAccountsWithTrackingLegs
      *
      * List Tracking
-     * @param float $version
      * @param int $accountId
      * @param null | string $keyword
      * @param null | int $startDate
@@ -266,7 +251,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\AccountMiniResponse[]
      */
     public function searchAccountsWithTrackingLegs(
-            float $version,
             int $accountId,
             ?string $keyword,
             ?int $startDate,
@@ -290,7 +274,6 @@ interface TrackingApiInterface {
      * Operation searchTrackingLegs
      *
      * Search Tracking (Billable)
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param null | string $trackingDeviceId
@@ -302,7 +285,6 @@ interface TrackingApiInterface {
      * @return \OpenAPI\Server\Model\LegResponse[]
      */
     public function searchTrackingLegs(
-            float $version,
             int $accountId,
             string $appKey,
             ?string $trackingDeviceId,

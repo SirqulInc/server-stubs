@@ -47,19 +47,16 @@ class ParticipantsController extends Controller
      * Process All Participant Feeds.
      *
      */
-    public function processAllParticipants(Request $request, float $version): JsonResponse
+    public function processAllParticipants(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -77,7 +74,6 @@ class ParticipantsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $appKey = $request->string('appKey')->value();
@@ -85,7 +81,7 @@ class ParticipantsController extends Controller
         $useShortNameAsID = $request->boolean('useShortNameAsID');
 
 
-        $apiResult = $this->api->processAllParticipants($version, $accountId, $appKey, $useShortNameAsID);
+        $apiResult = $this->api->processAllParticipants($accountId, $appKey, $useShortNameAsID);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -101,19 +97,16 @@ class ParticipantsController extends Controller
      * Process Participants Feed.
      *
      */
-    public function processParticipants(Request $request, float $version): JsonResponse
+    public function processParticipants(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'accountId' => [
                     'required',
                     'integer',
@@ -138,7 +131,6 @@ class ParticipantsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $accountId = $request->integer('accountId');
 
         $league = $request->string('league')->value();
@@ -150,7 +142,7 @@ class ParticipantsController extends Controller
         $file = $request->file('file');
 
 
-        $apiResult = $this->api->processParticipants($version, $accountId, $league, $appKey, $useShortNameAsID, $file);
+        $apiResult = $this->api->processParticipants($accountId, $league, $appKey, $useShortNameAsID, $file);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

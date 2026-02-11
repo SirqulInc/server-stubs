@@ -28,7 +28,6 @@ interface TriggerApiInterface {
      * Operation createTrigger
      *
      * Create Trigger
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param null | string $appKey
@@ -45,7 +44,6 @@ interface TriggerApiInterface {
      * @return \OpenAPI\Server\Model\TriggerResponse
      */
     public function createTrigger(
-            float $version,
             int $accountId,
             string $name,
             ?string $appKey,
@@ -68,13 +66,11 @@ interface TriggerApiInterface {
      * Operation deleteTrigger
      *
      * Delete Trigger
-     * @param float $version
      * @param int $accountId
      * @param int $triggerId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteTrigger(
-            float $version,
             int $accountId,
             int $triggerId,
     ):
@@ -86,13 +82,11 @@ interface TriggerApiInterface {
      * Operation getTrigger
      *
      * Get Trigger
-     * @param float $version
      * @param int $accountId
      * @param int $triggerId
      * @return \OpenAPI\Server\Model\TriggerResponse
      */
     public function getTrigger(
-            float $version,
             int $accountId,
             int $triggerId,
     ):
@@ -104,7 +98,6 @@ interface TriggerApiInterface {
      * Operation searchTriggers
      *
      * Search Triggers
-     * @param float $version
      * @param int $accountId
      * @param null | string $groupingId
      * @param null | string $filter
@@ -120,7 +113,6 @@ interface TriggerApiInterface {
      * @return \OpenAPI\Server\Model\TriggerResponse[]
      */
     public function searchTriggers(
-            float $version,
             int $accountId,
             ?string $groupingId,
             ?string $filter,
@@ -142,7 +134,6 @@ interface TriggerApiInterface {
      * Operation updateTrigger
      *
      * Update Trigger
-     * @param float $version
      * @param int $triggerId
      * @param int $accountId
      * @param null | string $name
@@ -160,7 +151,6 @@ interface TriggerApiInterface {
      * @return \OpenAPI\Server\Model\TriggerResponse
      */
     public function updateTrigger(
-            float $version,
             int $triggerId,
             int $accountId,
             ?string $name,

@@ -28,7 +28,6 @@ interface WordApiInterface {
      * Operation createWord
      *
      * Create Word
-     * @param float $version
      * @param int $accountId
      * @param string $word
      * @param string $definition
@@ -41,7 +40,6 @@ interface WordApiInterface {
      * @return \OpenAPI\Server\Model\WordzWordResponse
      */
     public function createWord(
-            float $version,
             int $accountId,
             string $word,
             string $definition,
@@ -60,13 +58,11 @@ interface WordApiInterface {
      * Operation deleteWord
      *
      * Delete Word
-     * @param float $version
      * @param int $wordId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteWord(
-            float $version,
             int $wordId,
             int $accountId,
     ):
@@ -78,13 +74,11 @@ interface WordApiInterface {
      * Operation getWord
      *
      * Get Word
-     * @param float $version
      * @param int $wordId
      * @param int $accountId
      * @return \OpenAPI\Server\Model\WordzWordResponse
      */
     public function getWord(
-            float $version,
             int $wordId,
             int $accountId,
     ):
@@ -96,7 +90,6 @@ interface WordApiInterface {
      * Operation getWords
      *
      * Search Words
-     * @param float $version
      * @param int $accountId
      * @param string $sortField
      * @param bool $descending
@@ -107,7 +100,6 @@ interface WordApiInterface {
      * @return \OpenAPI\Server\Model\WordzWordResponse[]
      */
     public function getWords(
-            float $version,
             int $accountId,
             string $sortField,
             bool $descending,
@@ -124,7 +116,6 @@ interface WordApiInterface {
      * Operation updateWord
      *
      * Update Word
-     * @param float $version
      * @param int $wordId
      * @param int $accountId
      * @param int $ticketCount
@@ -138,7 +129,6 @@ interface WordApiInterface {
      * @return \OpenAPI\Server\Model\WordzWordResponse
      */
     public function updateWord(
-            float $version,
             int $wordId,
             int $accountId,
             int $ticketCount,

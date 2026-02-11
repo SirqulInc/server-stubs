@@ -47,12 +47,12 @@ class VehicleTypeController extends Controller
      * Create Vehicle Type.
      *
      */
-    public function createVehicleType(Request $request, float $version): JsonResponse
+    public function createVehicleType(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -64,13 +64,12 @@ class VehicleTypeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $vehicleType = $request->string('vehicleType')->value();
 
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\VehicleType::class);
 
 
-        $apiResult = $this->api->createVehicleType($version, $vehicleType, $body);
+        $apiResult = $this->api->createVehicleType($vehicleType, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\VehicleType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -86,19 +85,16 @@ class VehicleTypeController extends Controller
      * Delete Vehicle Type.
      *
      */
-    public function deleteVehicleType(Request $request, float $version, int $vehicleTypeId): JsonResponse
+    public function deleteVehicleType(Request $request, int $vehicleTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'vehicleTypeId' => $vehicleTypeId,
+                    'vehicleTypeId' => $vehicleTypeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'vehicleTypeId' => [
                     'required',
                     'integer',
@@ -112,8 +108,7 @@ class VehicleTypeController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteVehicleType($version, $vehicleTypeId);
+        $apiResult = $this->api->deleteVehicleType($vehicleTypeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -129,19 +124,16 @@ class VehicleTypeController extends Controller
      * Get Vehicle Type.
      *
      */
-    public function getVehicleType(Request $request, float $version, int $vehicleTypeId): JsonResponse
+    public function getVehicleType(Request $request, int $vehicleTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'vehicleTypeId' => $vehicleTypeId,
+                    'vehicleTypeId' => $vehicleTypeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'vehicleTypeId' => [
                     'required',
                     'integer',
@@ -155,8 +147,7 @@ class VehicleTypeController extends Controller
 
 
 
-
-        $apiResult = $this->api->getVehicleType($version, $vehicleTypeId);
+        $apiResult = $this->api->getVehicleType($vehicleTypeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\VehicleType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -172,19 +163,16 @@ class VehicleTypeController extends Controller
      * Search Vehicle Type.
      *
      */
-    public function searchVehicleTypes(Request $request, float $version): JsonResponse
+    public function searchVehicleTypes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -218,7 +206,6 @@ class VehicleTypeController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -234,7 +221,7 @@ class VehicleTypeController extends Controller
         $hubId = $request->integer('hubId');
 
 
-        $apiResult = $this->api->searchVehicleTypes($version, $sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId);
+        $apiResult = $this->api->searchVehicleTypes($sortField, $descending, $start, $limit, $activeOnly, $retailerId, $hubId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -251,12 +238,12 @@ class VehicleTypeController extends Controller
      * Update Vehicle Type.
      *
      */
-    public function updateVehicleType(Request $request, float $version, int $vehicleTypeId): JsonResponse
+    public function updateVehicleType(Request $request, int $vehicleTypeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'vehicleTypeId' => $vehicleTypeId,
+                    'vehicleTypeId' => $vehicleTypeId,
                 ],
                 $request->all(),
             ),
@@ -269,13 +256,12 @@ class VehicleTypeController extends Controller
         }
 
 
-
         $vehicleType = $request->string('vehicleType')->value();
 
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\VehicleType::class);
 
 
-        $apiResult = $this->api->updateVehicleType($version, $vehicleTypeId, $vehicleType, $body);
+        $apiResult = $this->api->updateVehicleType($vehicleTypeId, $vehicleType, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\VehicleType) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

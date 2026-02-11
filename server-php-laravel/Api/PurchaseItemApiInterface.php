@@ -28,7 +28,6 @@ interface PurchaseItemApiInterface {
      * Operation createPurchaseItem
      *
      * Create Purchase
-     * @param float $version
      * @param string $appKey
      * @param string $name
      * @param \OpenAPI\Server\Model\CreatePurchaseItemPurchaseTypeParameter $purchaseType
@@ -52,7 +51,6 @@ interface PurchaseItemApiInterface {
      * @return \OpenAPI\Server\Model\PurchaseItemFullResponse
      */
     public function createPurchaseItem(
-            float $version,
             string $appKey,
             string $name,
             \OpenAPI\Server\Model\CreatePurchaseItemPurchaseTypeParameter $purchaseType,
@@ -82,14 +80,12 @@ interface PurchaseItemApiInterface {
      * Operation deletePurchaseItem
      *
      * Delete Purchase
-     * @param float $version
      * @param int $purchaseItemId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deletePurchaseItem(
-            float $version,
             int $purchaseItemId,
             ?string $deviceId,
             ?int $accountId,
@@ -102,14 +98,12 @@ interface PurchaseItemApiInterface {
      * Operation getPurchaseItem
      *
      * Get Purchase
-     * @param float $version
      * @param int $purchaseItemId
      * @param null | string $deviceId
      * @param null | int $accountId
      * @return \OpenAPI\Server\Model\PurchaseItemFullResponse
      */
     public function getPurchaseItem(
-            float $version,
             int $purchaseItemId,
             ?string $deviceId,
             ?int $accountId,
@@ -122,7 +116,6 @@ interface PurchaseItemApiInterface {
      * Operation searchPurchaseItems
      *
      * Search Purchases
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | string $appKey
@@ -138,7 +131,6 @@ interface PurchaseItemApiInterface {
      * @return \OpenAPI\Server\Model\PurchaseItemResponse[]
      */
     public function searchPurchaseItems(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?string $appKey,
@@ -160,7 +152,6 @@ interface PurchaseItemApiInterface {
      * Operation updatePurchaseItem
      *
      * Update Purchase
-     * @param float $version
      * @param int $purchaseItemId
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -185,7 +176,6 @@ interface PurchaseItemApiInterface {
      * @return \OpenAPI\Server\Model\PurchaseItemFullResponse
      */
     public function updatePurchaseItem(
-            float $version,
             int $purchaseItemId,
             ?string $deviceId,
             ?int $accountId,

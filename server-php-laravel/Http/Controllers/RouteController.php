@@ -47,19 +47,16 @@ class RouteController extends Controller
      * Approve Route.
      *
      */
-    public function approveRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function approveRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -73,8 +70,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->approveRoute($version, $routeId);
+        $apiResult = $this->api->approveRoute($routeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -90,12 +86,12 @@ class RouteController extends Controller
      * Copy Route.
      *
      */
-    public function copyRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function copyRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
@@ -108,11 +104,10 @@ class RouteController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Route::class);
 
 
-        $apiResult = $this->api->copyRoute($version, $routeId, $body);
+        $apiResult = $this->api->copyRoute($routeId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -128,12 +123,12 @@ class RouteController extends Controller
      * Create Route.
      *
      */
-    public function createRoute(Request $request, float $version): JsonResponse
+    public function createRoute(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
@@ -145,11 +140,10 @@ class RouteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Route::class);
 
 
-        $apiResult = $this->api->createRoute($version, $body);
+        $apiResult = $this->api->createRoute($body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -165,19 +159,16 @@ class RouteController extends Controller
      * Update Route Directions.
      *
      */
-    public function createRouteDirections(Request $request, float $version, int $routeId): JsonResponse
+    public function createRouteDirections(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -191,8 +182,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->createRouteDirections($version, $routeId);
+        $apiResult = $this->api->createRouteDirections($routeId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -209,19 +199,16 @@ class RouteController extends Controller
      * Create Route Polyline.
      *
      */
-    public function createRoutePolyline(Request $request, float $version, int $routeId): JsonResponse
+    public function createRoutePolyline(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -235,8 +222,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->createRoutePolyline($version, $routeId);
+        $apiResult = $this->api->createRoutePolyline($routeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -252,19 +238,16 @@ class RouteController extends Controller
      * Delete Route.
      *
      */
-    public function deleteRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function deleteRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -278,8 +261,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->deleteRoute($version, $routeId);
+        $apiResult = $this->api->deleteRoute($routeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -295,19 +277,16 @@ class RouteController extends Controller
      * Disapprove Route.
      *
      */
-    public function disapproveRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function disapproveRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -321,8 +300,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->disapproveRoute($version, $routeId);
+        $apiResult = $this->api->disapproveRoute($routeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -338,19 +316,16 @@ class RouteController extends Controller
      * Get Route.
      *
      */
-    public function getRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function getRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -367,11 +342,10 @@ class RouteController extends Controller
         }
 
 
-
         $showInheritedProperties = $request->boolean('showInheritedProperties');
 
 
-        $apiResult = $this->api->getRoute($version, $routeId, $showInheritedProperties);
+        $apiResult = $this->api->getRoute($routeId, $showInheritedProperties);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -387,19 +361,16 @@ class RouteController extends Controller
      * Get Route Directions.
      *
      */
-    public function getRouteDirections(Request $request, float $version, int $routeId): JsonResponse
+    public function getRouteDirections(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -413,8 +384,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->getRouteDirections($version, $routeId);
+        $apiResult = $this->api->getRouteDirections($routeId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -431,19 +401,16 @@ class RouteController extends Controller
      * Get Route Shipments.
      *
      */
-    public function getRouteShipments(Request $request, float $version, int $routeId): JsonResponse
+    public function getRouteShipments(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -457,8 +424,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->getRouteShipments($version, $routeId);
+        $apiResult = $this->api->getRouteShipments($routeId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -475,19 +441,16 @@ class RouteController extends Controller
      * Get Route Stop.
      *
      */
-    public function getRouteStop(Request $request, float $version, int $routeId, int $stopId): JsonResponse
+    public function getRouteStop(Request $request, int $routeId, int $stopId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,'stopId' => $stopId,
+                    'routeId' => $routeId,'stopId' => $stopId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -506,8 +469,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->getRouteStop($version, $routeId, $stopId);
+        $apiResult = $this->api->getRouteStop($routeId, $stopId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Stop) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -523,19 +485,16 @@ class RouteController extends Controller
      * Get Route Stops.
      *
      */
-    public function getRouteStops(Request $request, float $version, int $routeId): JsonResponse
+    public function getRouteStops(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -552,11 +511,10 @@ class RouteController extends Controller
         }
 
 
-
         $confirmedOnly = $request->boolean('confirmedOnly');
 
 
-        $apiResult = $this->api->getRouteStops($version, $routeId, $confirmedOnly);
+        $apiResult = $this->api->getRouteStops($routeId, $confirmedOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -573,19 +531,16 @@ class RouteController extends Controller
      * Get Shipments At Stop.
      *
      */
-    public function getShipmentsAtStop(Request $request, float $version, int $routeId, int $stopId): JsonResponse
+    public function getShipmentsAtStop(Request $request, int $routeId, int $stopId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,'stopId' => $stopId,
+                    'routeId' => $routeId,'stopId' => $stopId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -604,8 +559,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->getShipmentsAtStop($version, $routeId, $stopId);
+        $apiResult = $this->api->getShipmentsAtStop($routeId, $stopId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -622,19 +576,16 @@ class RouteController extends Controller
      * Optimize Route.
      *
      */
-    public function optimizeRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function optimizeRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -648,8 +599,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->optimizeRoute($version, $routeId);
+        $apiResult = $this->api->optimizeRoute($routeId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -665,19 +615,16 @@ class RouteController extends Controller
      * Delete Stop.
      *
      */
-    public function removeStop(Request $request, float $version, int $routeId, int $stopId): JsonResponse
+    public function removeStop(Request $request, int $routeId, int $stopId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,'stopId' => $stopId,
+                    'routeId' => $routeId,'stopId' => $stopId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'routeId' => [
                     'required',
                     'integer',
@@ -696,8 +643,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->removeStop($version, $routeId, $stopId);
+        $apiResult = $this->api->removeStop($routeId, $stopId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -713,12 +659,12 @@ class RouteController extends Controller
      * Reorder Route Stops.
      *
      */
-    public function reorderRouteStopsPatch(Request $request, float $version, int $routeId): JsonResponse
+    public function reorderRouteStopsPatch(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
@@ -731,11 +677,10 @@ class RouteController extends Controller
         }
 
 
-
         $body = $request->get('body');
 
 
-        $apiResult = $this->api->reorderRouteStopsPatch($version, $routeId, $body);
+        $apiResult = $this->api->reorderRouteStopsPatch($routeId, $body);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -752,12 +697,12 @@ class RouteController extends Controller
      * Reorder Route Stops.
      *
      */
-    public function reorderRouteStopsPost(Request $request, float $version, int $routeId): JsonResponse
+    public function reorderRouteStopsPost(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
@@ -770,11 +715,10 @@ class RouteController extends Controller
         }
 
 
-
         $body = $request->get('body');
 
 
-        $apiResult = $this->api->reorderRouteStopsPost($version, $routeId, $body);
+        $apiResult = $this->api->reorderRouteStopsPost($routeId, $body);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -791,19 +735,16 @@ class RouteController extends Controller
      * Search Routes.
      *
      */
-    public function searchRoutes(Request $request, float $version): JsonResponse
+    public function searchRoutes(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'sortField' => [
                     'required',
                     'string',
@@ -882,7 +823,6 @@ class RouteController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $sortField = $request->string('sortField')->value();
 
         $descending = $request->boolean('descending');
@@ -926,7 +866,7 @@ class RouteController extends Controller
         $parentId = $request->integer('parentId');
 
 
-        $apiResult = $this->api->searchRoutes($version, $sortField, $descending, $start, $limit, $activeOnly, $includesEmpty, $rootOnly, $showInheritedProperties, $hubId, $programId, $scheduledStart, $scheduledEnd, $updatedStart, $updatedEnd, $featured, $seatCount, $approved, $started, $completed, $valid, $parentId);
+        $apiResult = $this->api->searchRoutes($sortField, $descending, $start, $limit, $activeOnly, $includesEmpty, $rootOnly, $showInheritedProperties, $hubId, $programId, $scheduledStart, $scheduledEnd, $updatedStart, $updatedEnd, $featured, $seatCount, $approved, $started, $completed, $valid, $parentId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -943,19 +883,16 @@ class RouteController extends Controller
      * Set Driver.
      *
      */
-    public function setDriver(Request $request, float $version, int $id, int $driverId): JsonResponse
+    public function setDriver(Request $request, int $id, int $driverId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'id' => $id,'driverId' => $driverId,
+                    'id' => $id,'driverId' => $driverId,
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'id' => [
                     'required',
                     'integer',
@@ -974,8 +911,7 @@ class RouteController extends Controller
 
 
 
-
-        $apiResult = $this->api->setDriver($version, $id, $driverId);
+        $apiResult = $this->api->setDriver($id, $driverId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);
@@ -991,12 +927,12 @@ class RouteController extends Controller
      * Update Route.
      *
      */
-    public function updateRoute(Request $request, float $version, int $routeId): JsonResponse
+    public function updateRoute(Request $request, int $routeId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,
+                    'routeId' => $routeId,
                 ],
                 $request->all(),
             ),
@@ -1009,11 +945,10 @@ class RouteController extends Controller
         }
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Route::class);
 
 
-        $apiResult = $this->api->updateRoute($version, $routeId, $body);
+        $apiResult = $this->api->updateRoute($routeId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Route) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1029,12 +964,12 @@ class RouteController extends Controller
      * Update Route Stop.
      *
      */
-    public function updateRouteStop(Request $request, float $version, int $routeId, int $stopId): JsonResponse
+    public function updateRouteStop(Request $request, int $routeId, int $stopId): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,'routeId' => $routeId,'stopId' => $stopId,
+                    'routeId' => $routeId,'stopId' => $stopId,
                 ],
                 $request->all(),
             ),
@@ -1048,11 +983,10 @@ class RouteController extends Controller
 
 
 
-
         $body = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Stop::class);
 
 
-        $apiResult = $this->api->updateRouteStop($version, $routeId, $stopId, $body);
+        $apiResult = $this->api->updateRouteStop($routeId, $stopId, $body);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContentDefault) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 0);

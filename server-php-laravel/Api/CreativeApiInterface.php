@@ -28,13 +28,11 @@ interface CreativeApiInterface {
      * Operation addPreview
      *
      * Add Preview
-     * @param float $version
      * @param int $accountId
      * @param int $creativeId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function addPreview(
-            float $version,
             int $accountId,
             int $creativeId,
     ):
@@ -46,7 +44,6 @@ interface CreativeApiInterface {
      * Operation adsFind
      *
      * Find Missions
-     * @param float $version
      * @param string $appKey
      * @param bool $randomize
      * @param bool $targetedAdsOnly
@@ -66,7 +63,6 @@ interface CreativeApiInterface {
      * @return \OpenAPI\Server\Model\MissionResponse[]
      */
     public function adsFind(
-            float $version,
             string $appKey,
             bool $randomize,
             bool $targetedAdsOnly,
@@ -92,7 +88,6 @@ interface CreativeApiInterface {
      * Operation createCreative
      *
      * Create Creative
-     * @param float $version
      * @param int $accountId
      * @param string $name
      * @param bool $active
@@ -111,7 +106,6 @@ interface CreativeApiInterface {
      * @return \OpenAPI\Server\Model\CreativeResponse
      */
     public function createCreative(
-            float $version,
             int $accountId,
             string $name,
             bool $active,
@@ -136,13 +130,11 @@ interface CreativeApiInterface {
      * Operation deleteCreative
      *
      * Delete Creative
-     * @param float $version
      * @param int $accountId
      * @param int $creativeId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function deleteCreative(
-            float $version,
             int $accountId,
             int $creativeId,
     ):
@@ -154,13 +146,11 @@ interface CreativeApiInterface {
      * Operation getCreative
      *
      * Get Creative
-     * @param float $version
      * @param int $accountId
      * @param int $creativeId
      * @return \OpenAPI\Server\Model\CreativeResponse
      */
     public function getCreative(
-            float $version,
             int $accountId,
             int $creativeId,
     ):
@@ -172,7 +162,6 @@ interface CreativeApiInterface {
      * Operation getCreativesByApplication
      *
      * Search Creatives
-     * @param float $version
      * @param int $accountId
      * @param string $appKey
      * @param int $start
@@ -182,7 +171,6 @@ interface CreativeApiInterface {
      * @return \OpenAPI\Server\Model\CreativeResponse[]
      */
     public function getCreativesByApplication(
-            float $version,
             int $accountId,
             string $appKey,
             int $start,
@@ -198,13 +186,11 @@ interface CreativeApiInterface {
      * Operation removePreview
      *
      * Remove Preview
-     * @param float $version
      * @param int $accountId
      * @param int $creativeId
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function removePreview(
-            float $version,
             int $accountId,
             int $creativeId,
     ):
@@ -216,7 +202,6 @@ interface CreativeApiInterface {
      * Operation updateCreative
      *
      * Update Creative
-     * @param float $version
      * @param int $accountId
      * @param int $creativeId
      * @param null | string $name
@@ -234,7 +219,6 @@ interface CreativeApiInterface {
      * @return \OpenAPI\Server\Model\CreativeResponse
      */
     public function updateCreative(
-            float $version,
             int $accountId,
             int $creativeId,
             ?string $name,

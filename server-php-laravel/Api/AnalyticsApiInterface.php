@@ -28,14 +28,12 @@ interface AnalyticsApiInterface {
      * Operation activities
      *
      * Get User Activity
-     * @param float $version
      * @param int $start
      * @param int $limit
      * @param int $accountId
      * @return \OpenAPI\Server\Model\UserActivityResponse[]
      */
     public function activities(
-            float $version,
             int $start,
             int $limit,
             int $accountId,
@@ -48,7 +46,6 @@ interface AnalyticsApiInterface {
      * Operation aggregatedFilteredUsage
      *
      * Get Aggregated Filtered Usage
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $applicationId
@@ -83,7 +80,6 @@ interface AnalyticsApiInterface {
      * @return \OpenAPI\Server\Model\ChartData
      */
     public function aggregatedFilteredUsage(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $applicationId,
@@ -124,7 +120,6 @@ interface AnalyticsApiInterface {
      * Operation filteredUsage
      *
      * Get Filtered Usage
-     * @param float $version
      * @param null | string $deviceId
      * @param null | int $accountId
      * @param null | int $applicationId
@@ -167,7 +162,6 @@ interface AnalyticsApiInterface {
      * @return \OpenAPI\Server\Model\ChartData
      */
     public function filteredUsage(
-            float $version,
             ?string $deviceId,
             ?int $accountId,
             ?int $applicationId,
@@ -216,7 +210,6 @@ interface AnalyticsApiInterface {
      * Operation usage
      *
      * Create Usage Record
-     * @param float $version
      * @param string $tag
      * @param null | string $deviceId
      * @param null | int $accountId
@@ -251,7 +244,6 @@ interface AnalyticsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function usage(
-            float $version,
             string $tag,
             ?string $deviceId,
             ?int $accountId,
@@ -292,7 +284,6 @@ interface AnalyticsApiInterface {
      * Operation usageBatch
      *
      * Create Multiple Usage Records
-     * @param float $version
      * @param string $appKey
      * @param string $device
      * @param string $data
@@ -307,7 +298,6 @@ interface AnalyticsApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function usageBatch(
-            float $version,
             string $appKey,
             string $device,
             string $data,

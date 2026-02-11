@@ -47,19 +47,16 @@ class RetailerV2Controller extends Controller
      * Get Retailer.
      *
      */
-    public function getRetaokiler(Request $request, float $version): JsonResponse
+    public function getRetaokiler(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'retailerId' => [
                     'required',
                     'integer',
@@ -87,7 +84,6 @@ class RetailerV2Controller extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $retailerId = $request->integer('retailerId');
 
         $activeOnly = $request->boolean('activeOnly');
@@ -101,7 +97,7 @@ class RetailerV2Controller extends Controller
         $limit = $request->integer('limit');
 
 
-        $apiResult = $this->api->getRetaokiler($version, $retailerId, $activeOnly, $keyword, $sortField, $start, $limit);
+        $apiResult = $this->api->getRetaokiler($retailerId, $activeOnly, $keyword, $sortField, $start, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

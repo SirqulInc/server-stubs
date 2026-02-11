@@ -28,7 +28,6 @@ interface CarrierApiInterface {
      * Operation searchCarriers
      *
      * Search Carriers
-     * @param float $version
      * @param null | string $keyword
      * @param null | bool $descending
      * @param null | int $start
@@ -37,7 +36,6 @@ interface CarrierApiInterface {
      * @return \OpenAPI\Server\Model\CellCarrierResponse[]
      */
     public function searchCarriers(
-            float $version,
             ?string $keyword,
             ?bool $descending,
             ?int $start,

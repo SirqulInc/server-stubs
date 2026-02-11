@@ -47,19 +47,16 @@ class PurchaseItemController extends Controller
      * Create Purchase.
      *
      */
-    public function createPurchaseItem(Request $request, float $version): JsonResponse
+    public function createPurchaseItem(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'appKey' => [
                     'required',
                     'string',
@@ -127,7 +124,6 @@ class PurchaseItemController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $appKey = $request->string('appKey')->value();
 
         $name = $request->string('name')->value();
@@ -169,7 +165,7 @@ class PurchaseItemController extends Controller
         $offerLocationId = $request->integer('offerLocationId');
 
 
-        $apiResult = $this->api->createPurchaseItem($version, $appKey, $name, $purchaseType, $deviceId, $accountId, $description, $tickets, $price, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $allocateTickets, $ticketType, $points, $offerLocationId);
+        $apiResult = $this->api->createPurchaseItem($appKey, $name, $purchaseType, $deviceId, $accountId, $description, $tickets, $price, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $allocateTickets, $ticketType, $points, $offerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PurchaseItemFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -185,19 +181,16 @@ class PurchaseItemController extends Controller
      * Delete Purchase.
      *
      */
-    public function deletePurchaseItem(Request $request, float $version): JsonResponse
+    public function deletePurchaseItem(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'purchaseItemId' => [
                     'required',
                     'integer',
@@ -215,7 +208,6 @@ class PurchaseItemController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $purchaseItemId = $request->integer('purchaseItemId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -223,7 +215,7 @@ class PurchaseItemController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->deletePurchaseItem($version, $purchaseItemId, $deviceId, $accountId);
+        $apiResult = $this->api->deletePurchaseItem($purchaseItemId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SirqulResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -239,19 +231,16 @@ class PurchaseItemController extends Controller
      * Get Purchase.
      *
      */
-    public function getPurchaseItem(Request $request, float $version): JsonResponse
+    public function getPurchaseItem(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'purchaseItemId' => [
                     'required',
                     'integer',
@@ -269,7 +258,6 @@ class PurchaseItemController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $purchaseItemId = $request->integer('purchaseItemId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -277,7 +265,7 @@ class PurchaseItemController extends Controller
         $accountId = $request->integer('accountId');
 
 
-        $apiResult = $this->api->getPurchaseItem($version, $purchaseItemId, $deviceId, $accountId);
+        $apiResult = $this->api->getPurchaseItem($purchaseItemId, $deviceId, $accountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PurchaseItemFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -293,19 +281,16 @@ class PurchaseItemController extends Controller
      * Search Purchases.
      *
      */
-    public function searchPurchaseItems(Request $request, float $version): JsonResponse
+    public function searchPurchaseItems(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'deviceId' => [
                     'string',
                 ],
@@ -348,7 +333,6 @@ class PurchaseItemController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $deviceId = $request->string('deviceId')->value();
 
         $accountId = $request->integer('accountId');
@@ -374,7 +358,7 @@ class PurchaseItemController extends Controller
         $activeOnly = $request->boolean('activeOnly');
 
 
-        $apiResult = $this->api->searchPurchaseItems($version, $deviceId, $accountId, $appKey, $filterByBillable, $purchaseType, $serviceAction, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
+        $apiResult = $this->api->searchPurchaseItems($deviceId, $accountId, $appKey, $filterByBillable, $purchaseType, $serviceAction, $keyword, $sortField, $descending, $start, $limit, $activeOnly);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -391,19 +375,16 @@ class PurchaseItemController extends Controller
      * Update Purchase.
      *
      */
-    public function updatePurchaseItem(Request $request, float $version): JsonResponse
+    public function updatePurchaseItem(Request $request): JsonResponse
     {
         $validator = Validator::make(
             array_merge(
                 [
-                    'version' => $version,
+                    
                 ],
                 $request->all(),
             ),
             [
-                'version' => [
-                    'required',
-                ],
                 'purchaseItemId' => [
                     'required',
                     'integer',
@@ -472,7 +453,6 @@ class PurchaseItemController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-
         $purchaseItemId = $request->integer('purchaseItemId');
 
         $deviceId = $request->string('deviceId')->value();
@@ -516,7 +496,7 @@ class PurchaseItemController extends Controller
         $offerLocationId = $request->integer('offerLocationId');
 
 
-        $apiResult = $this->api->updatePurchaseItem($version, $purchaseItemId, $deviceId, $accountId, $name, $description, $tickets, $price, $purchaseType, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $active, $allocateTickets, $ticketType, $points, $offerLocationId);
+        $apiResult = $this->api->updatePurchaseItem($purchaseItemId, $deviceId, $accountId, $name, $description, $tickets, $price, $purchaseType, $purchaseCode, $secretKey, $purchaseLimit, $serviceAction, $coverAssetId, $promoAssetId, $giftable, $assetable, $active, $allocateTickets, $ticketType, $points, $offerLocationId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PurchaseItemFullResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

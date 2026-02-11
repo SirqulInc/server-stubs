@@ -28,7 +28,6 @@ interface AppDataApiInterface {
      * Operation getAppData
      *
      * Get App Data
-     * @param float $version
      * @param int $start
      * @param int $limit
      * @param null | string $deviceId
@@ -57,7 +56,6 @@ interface AppDataApiInterface {
      * @return \OpenAPI\Server\Model\AppResponse
      */
     public function getAppData(
-            float $version,
             int $start,
             int $limit,
             ?string $deviceId,
@@ -92,7 +90,6 @@ interface AppDataApiInterface {
      * Operation postAppData
      *
      * Create App Data
-     * @param float $version
      * @param string $gameType
      * @param int $start
      * @param int $limit
@@ -122,7 +119,6 @@ interface AppDataApiInterface {
      * @return \OpenAPI\Server\Model\AppResponse
      */
     public function postAppData(
-            float $version,
             string $gameType,
             int $start,
             int $limit,
@@ -158,7 +154,6 @@ interface AppDataApiInterface {
      * Operation regenAppData
      *
      * Regenerate App Data
-     * @param float $version
      * @param null | int $accountId
      * @param null | string $appKey
      * @param null | string $buildVersion
@@ -166,7 +161,6 @@ interface AppDataApiInterface {
      * @return \OpenAPI\Server\Model\SirqulResponse
      */
     public function regenAppData(
-            float $version,
             ?int $accountId,
             ?string $appKey,
             ?string $buildVersion,
