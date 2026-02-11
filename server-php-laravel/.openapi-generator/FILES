@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 Api/AMQPApiInterface.php
 Api/AccountApiInterface.php
 Api/AchievementApiInterface.php
