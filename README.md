@@ -1,8 +1,71 @@
 # server-stubs
 Sirqul Server Stubs for Agentic AI to use to interface with Sirqul
 
-# sdks
-Sirqul SDKs for Agentic AI
+# Supported Servers and Frameworks
+
+FastEndpoints ASP.NET Server
+
+
+Pistache C++ REST Server
+
+
+CSharp / Azure Functions v4 Server
+
+
+Erlang Server stub library
+
+
+Go API Server
+
+
+GraphQL Nodejs Express Server
+
+
+Haskell Server
+
+
+Java Play Server
+
+
+Jaxrs-cxf
+
+
+Jaxrs-jersey
+
+
+Jaxrs-resteasy
+
+
+Kotlin Library Server
+
+
+Kotlin Spring Server
+
+
+Laravel PHP Server
+
+
+Python Connexion Server
+
+
+Python Flask Server
+
+
+Ruby on Rails Server
+
+
+Rust Server
+
+
+Scala Play Server
+
+
+Scalatra Server
+
+
+Spring Boot Server
+
+
 
 # Accounts Service
 
